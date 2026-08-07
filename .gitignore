@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+.node_modules.lock
+
+# Build / deploy
+dist/
+.output/
+.vercel/
+.tanstack/
+.nitro/
+.vinxi/
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# Logs & OS
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
+
+# Agent QA (not app source)
+screenshots/
+artifacts/
+
+# Portable build output (rebuild with: npm run build:portable)
+public/portable/ABC-Adventure/
+public/portable/ABC-Adventure-Portable.zip
+
+# Editor
+.idea/
+.vscode/
+*.swp
+*~
