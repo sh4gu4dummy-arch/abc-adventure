@@ -67,3 +67,18 @@ Celebration: confetti + modal via `abc-letter-complete` event.
 npm run dev              # online preview :8080
 npm run build:portable   # rebuild offline ZIP
 ```
+
+## Git checkpoints
+
+Local git is enabled so we can restore after big mistakes.
+
+- Branch: `main`
+- After major features/fixes, we commit a checkpoint
+- Not a cloud backup — lives with this workspace session
+- To restore a checkpoint, ask: “go back to the commit about …”
+
+```bash
+git log --oneline      # list checkpoints
+# restore is done by the builder when you ask
+```
+
