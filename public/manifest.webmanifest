@@ -1,0 +1,18 @@
+{
+  "name": "ABC Adventure — Letter World",
+  "short_name": "ABC Adventure",
+  "description": "Cartoon alphabet learning for young learners — 26 letters, word posters, sounds, tracing, and games.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fff8f0",
+  "theme_color": "#ff6b6b",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/letters/a.webp",
+      "sizes": "512x512",
+      "type": "image/webp",
+      "purpose": "any"
+    }
+  ]
+}

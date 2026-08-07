@@ -1,0 +1,119 @@
+import { useState } from "react";
+import { Play, Volume2 } from "lucide-react";
+import type { WordEntry } from "@/data/alphabet";
+import { LetterWord } from "./LetterWord";
+import { speakWord } from "@/lib/speak";
+import { cn } from "@/lib/utils";
+
+export function PosterCard({
+  letter,
+  accent,
+  hue,
+  word,
+  imageSrc,
+  onOpen,
+  seen,
+  compact,
+  requiresVideo,
+}: {
+  letter: string;
+  accent: string;
+  hue: string;
+  word: WordEntry;
+  imageSrc: string;
+  onOpen?: () => void;
+  seen?: boolean;
+  compact?: boolean;
+  requiresVideo?: boolean;
+}) {
+  const [imgOk, setImgOk] = useState(true);
+
+  return (
+    <button
+      type="button"
+      onClick={onOpen}
+      className={cn(
+        "pressable group relative flex flex-col overflow-hidden rounded-[var(--radius-lg)] border-2 border-border bg-surface text-left shadow-[var(--shadow-card)]",
+        "cv-auto",
+      )}
+      style={{ boxShadow: `0 10px 0 0 color-mix(in oklab, ${hue} 35%, transparent)` }}
+    >
+      <div
+        className={cn(
+          "poster-frame relative w-full overflow-hidden",
+          compact ? "aspect-[4/5]" : "aspect-[3/4]",
+        )}
+        style={{
+          background: `linear-gradient(160deg, ${hue}33, ${hue}11 60%, var(--color-surface))`,
+        }}
+      >
+        {imgOk ? (
+          <img
+            src={imageSrc}
+            alt={`Poster for ${word.word}`}
+            className="poster-art h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+            loading="lazy"
+            decoding="async"
+            sizes="(max-width: 768px) 45vw, 200px"
+            onError={() => setImgOk(false)}
+          />
+        ) : (
+          <div className="flex h-full w-full flex-col items-center justify-center gap-2 p-4">
+            <span
+              className="font-display text-6xl font-bold opacity-90"
+              style={{ color: accent }}
+            >
+              {letter.toUpperCase()}
+            </span>
+            <span className="text-center text-sm font-semibold text-ink-soft">{word.hint}</span>
+          </div>
+        )}
+        <div
+          className="absolute left-2 top-2 flex size-10 items-center justify-center rounded-full font-display text-xl font-bold text-white shadow-md"
+          style={{ background: accent }}
+          aria-hidden
+        >
+          {letter.toUpperCase()}
+        </div>
+        {requiresVideo && !seen && (
+          <div
+            className="absolute bottom-2 left-1/2 flex -translate-x-1/2 items-center gap-1 rounded-[var(--radius-pill)] px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-white shadow-md"
+            style={{ background: accent }}
+          >
+            <Play className="size-3 fill-white" /> Video
+          </div>
+        )}
+        {seen && (
+          <div className="absolute right-2 top-2 rounded-full bg-success px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white">
+            Seen
+          </div>
+        )}
+      </div>
+      <div className="flex items-start justify-between gap-2 p-3 sm:p-4">
+        <div className="min-w-0">
+          <LetterWord word={word.word} accent={accent} size={compact ? "sm" : "md"} />
+          <p className="mt-1 truncate text-xs font-medium text-muted sm:text-sm">{word.hint}</p>
+        </div>
+        <span
+          role="button"
+          tabIndex={0}
+          onClick={(e) => {
+            e.stopPropagation();
+            speakWord(word.word);
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              e.stopPropagation();
+              speakWord(word.word);
+            }
+          }}
+          className="flex size-10 shrink-0 items-center justify-center rounded-full border-2 border-border bg-surface-soft text-ink-soft hover:bg-sky/40"
+          aria-label={`Say ${word.word}`}
+        >
+          <Volume2 className="size-4" />
+        </span>
+      </div>
+    </button>
+  );
+}

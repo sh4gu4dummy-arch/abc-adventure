@@ -1,0 +1,2207 @@
+[
+  {
+    "id": "b38fa5611e591673",
+    "text": "“Best day ever!” hummed the bear.",
+    "out": "public/audio/b38fa5611e591673.mp3"
+  },
+  {
+    "id": "ff587fd38a298e51",
+    "text": "“Gorgeous!” giggled the giraffe.",
+    "out": "public/audio/ff587fd38a298e51.mp3"
+  },
+  {
+    "id": "120966a0e3f3ffaf",
+    "text": "“Question?” she asked.",
+    "out": "public/audio/120966a0e3f3ffaf.mp3"
+  },
+  {
+    "id": "c1365e1be6e9895d",
+    "text": "A bear bounced a ball beside a banana boat.",
+    "out": "public/audio/c1365e1be6e9895d.mp3"
+  },
+  {
+    "id": "fb0a5588102eafe2",
+    "text": "A bear bounced a ball beside a banana boat. A butterfly and a bird landed softly. “Best day ever!” hummed the bear.",
+    "out": "public/audio/fb0a5588102eafe2.mp3"
+  },
+  {
+    "id": "d324b5a95d45c167",
+    "text": "A butterfly and a bird landed softly.",
+    "out": "public/audio/d324b5a95d45c167.mp3"
+  },
+  {
+    "id": "93eff65b94498263",
+    "text": "A cat baked a cake in a little car under a fluffy cloud.",
+    "out": "public/audio/93eff65b94498263.mp3"
+  },
+  {
+    "id": "1c7a2b3aa1e498b1",
+    "text": "A cat baked a cake in a little car under a fluffy cloud. Then it shared a cookie from a cup. Cozy and clever!",
+    "out": "public/audio/1c7a2b3aa1e498b1.mp3"
+  },
+  {
+    "id": "4b44dbe27515a961",
+    "text": "A dog and a duck met a gentle dinosaur.",
+    "out": "public/audio/4b44dbe27515a961.mp3"
+  },
+  {
+    "id": "5631f2ae2a1f97a7",
+    "text": "A dog and a duck met a gentle dinosaur. They shared a donut, danced to a drum, and opened a bright door. Delightful day!",
+    "out": "public/audio/5631f2ae2a1f97a7.mp3"
+  },
+  {
+    "id": "d864c1dba453ad19",
+    "text": "A duck said quack and found a quarter.",
+    "out": "public/audio/d864c1dba453ad19.mp3"
+  },
+  {
+    "id": "0e33910781c4a24a",
+    "text": "A flower bloomed as a firetruck zoomed by, and a fairy winked.",
+    "out": "public/audio/0e33910781c4a24a.mp3"
+  },
+  {
+    "id": "6315e3de9c855475",
+    "text": "A fox and a frog watched a fish splash.",
+    "out": "public/audio/6315e3de9c855475.mp3"
+  },
+  {
+    "id": "6571b0a56c1963b6",
+    "text": "A fox and a frog watched a fish splash. A flower bloomed as a firetruck zoomed by, and a fairy winked. Fantastic fun!",
+    "out": "public/audio/6571b0a56c1963b6.mp3"
+  },
+  {
+    "id": "72f20f8bb631e340",
+    "text": "A fox counted to six and began to mix.",
+    "out": "public/audio/72f20f8bb631e340.mp3"
+  },
+  {
+    "id": "e7946332df4cb8b7",
+    "text": "A gift sat under a guitar while a goat munched nearby.",
+    "out": "public/audio/e7946332df4cb8b7.mp3"
+  },
+  {
+    "id": "568c672b6b08ff53",
+    "text": "A giraffe in the garden plucked grapes.",
+    "out": "public/audio/568c672b6b08ff53.mp3"
+  },
+  {
+    "id": "e7f4e90031053f0e",
+    "text": "A giraffe in the garden plucked grapes. A gift sat under a guitar while a goat munched nearby. “Gorgeous!” giggled the giraffe.",
+    "out": "public/audio/e7f4e90031053f0e.mp3"
+  },
+  {
+    "id": "f2fa4c978aba8fae",
+    "text": "A heart of honey made everyone smile as a helicopter whirred past.",
+    "out": "public/audio/f2fa4c978aba8fae.mp3"
+  },
+  {
+    "id": "24b22a0bf5d746b1",
+    "text": "A horse wore a happy hat near a house.",
+    "out": "public/audio/24b22a0bf5d746b1.mp3"
+  },
+  {
+    "id": "18de6cf0d6345a7e",
+    "text": "A horse wore a happy hat near a house. A heart of honey made everyone smile as a helicopter whirred past. Hooray!",
+    "out": "public/audio/18de6cf0d6345a7e.mp3"
+  },
+  {
+    "id": "fa6ba891bf0fbfcb",
+    "text": "A jellyfish jiggled, jam tasted sweet, and a jet streaked across the sky.",
+    "out": "public/audio/fa6ba891bf0fbfcb.mp3"
+  },
+  {
+    "id": "2510846f400e96b4",
+    "text": "A kangaroo flew a kite with a key on a string.",
+    "out": "public/audio/2510846f400e96b4.mp3"
+  },
+  {
+    "id": "191ef81382e399c1",
+    "text": "A kangaroo flew a kite with a key on a string. The king danced in the kitchen with a tiny kitten. Keep kicking, K!",
+    "out": "public/audio/191ef81382e399c1.mp3"
+  },
+  {
+    "id": "edd5adfbd20ab46c",
+    "text": "A lion under a leaf licked a lemon lollipop by a lamp, then climbed a ladder of light.",
+    "out": "public/audio/edd5adfbd20ab46c.mp3"
+  },
+  {
+    "id": "40a30ed32214e5e9",
+    "text": "A lion under a leaf licked a lemon lollipop by a lamp, then climbed a ladder of light. Lovely!",
+    "out": "public/audio/40a30ed32214e5e9.mp3"
+  },
+  {
+    "id": "ea06f03c1afcecf4",
+    "text": "A monkey and a mouse climbed a mountain under the moon, sipping milk and spotting a mushroom.",
+    "out": "public/audio/ea06f03c1afcecf4.mp3"
+  },
+  {
+    "id": "8efc0b53fc59a11e",
+    "text": "A monkey and a mouse climbed a mountain under the moon, sipping milk and spotting a mushroom. Magical!",
+    "out": "public/audio/8efc0b53fc59a11e.mp3"
+  },
+  {
+    "id": "a52ef474905c9dd0",
+    "text": "A notebook held noodle doodles next to a net.",
+    "out": "public/audio/a52ef474905c9dd0.mp3"
+  },
+  {
+    "id": "64267b0e68a335e9",
+    "text": "A pencil drew a puppy.",
+    "out": "public/audio/64267b0e68a335e9.mp3"
+  },
+  {
+    "id": "06092dfc3ca5f1ed",
+    "text": "A penguin played piano while a pig ate pizza.",
+    "out": "public/audio/06092dfc3ca5f1ed.mp3"
+  },
+  {
+    "id": "02668502bd8d8009",
+    "text": "A penguin played piano while a pig ate pizza. A pencil drew a puppy. Perfect!",
+    "out": "public/audio/02668502bd8d8009.mp3"
+  },
+  {
+    "id": "e8a157640ad882db",
+    "text": "A rabbit rode a rocket over a rainbow.",
+    "out": "public/audio/e8a157640ad882db.mp3"
+  },
+  {
+    "id": "54942e5184610447",
+    "text": "A rabbit rode a rocket over a rainbow. A robot smelled a rose in the soft rain. Ready, set, roar!",
+    "out": "public/audio/54942e5184610447.mp3"
+  },
+  {
+    "id": "1f4722e1eb801707",
+    "text": "A robot smelled a rose in the soft rain.",
+    "out": "public/audio/1f4722e1eb801707.mp3"
+  },
+  {
+    "id": "d4667590a8a48b29",
+    "text": "A tiger sat in a tree by a train.",
+    "out": "public/audio/d4667590a8a48b29.mp3"
+  },
+  {
+    "id": "3a874e68415208f3",
+    "text": "A tiger sat in a tree by a train. A turtle nibbled a tomato and found a shiny tooth. Terrific!",
+    "out": "public/audio/3a874e68415208f3.mp3"
+  },
+  {
+    "id": "b37b8e4d61370c64",
+    "text": "A turtle nibbled a tomato and found a shiny tooth.",
+    "out": "public/audio/b37b8e4d61370c64.mp3"
+  },
+  {
+    "id": "787a39a74a48fb3f",
+    "text": "A van carried a violin past a volcano full of vegetables.",
+    "out": "public/audio/787a39a74a48fb3f.mp3"
+  },
+  {
+    "id": "14cadbec202452d9",
+    "text": "A van carried a violin past a volcano full of vegetables. Someone wore a vest and pushed a vacuum. Vivacious!",
+    "out": "public/audio/14cadbec202452d9.mp3"
+  },
+  {
+    "id": "6292e2ae128a7317",
+    "text": "A whale watched water through a window.",
+    "out": "public/audio/6292e2ae128a7317.mp3"
+  },
+  {
+    "id": "b0bcd793e8f958ce",
+    "text": "A whale watched water through a window. A worm checked a watch from a red wagon. Wonderful!",
+    "out": "public/audio/b0bcd793e8f958ce.mp3"
+  },
+  {
+    "id": "e680f99c2f97e558",
+    "text": "A worm checked a watch from a red wagon.",
+    "out": "public/audio/e680f99c2f97e558.mp3"
+  },
+  {
+    "id": "2f403ca4a5fd5ecc",
+    "text": "A yak bounced a yo-yo with yellow yarn on a yacht, then spooned yogurt.",
+    "out": "public/audio/2f403ca4a5fd5ecc.mp3"
+  },
+  {
+    "id": "2b0fddf84f02ba68",
+    "text": "A yak bounced a yo-yo with yellow yarn on a yacht, then spooned yogurt. Yes, yes, yes!",
+    "out": "public/audio/2b0fddf84f02ba68.mp3"
+  },
+  {
+    "id": "43629d389a5c3725",
+    "text": "A zebra zipped to the zoo.",
+    "out": "public/audio/43629d389a5c3725.mp3"
+  },
+  {
+    "id": "2388549ae9ab4c79",
+    "text": "A zebra zipped to the zoo. Zero worries — just a zigzag path past a zucchini patch. Zany and fun!",
+    "out": "public/audio/2388549ae9ab4c79.mp3"
+  },
+  {
+    "id": "1f462b979d937699",
+    "text": "Amazing! You finished the letter A! You earned a sticker!",
+    "out": "public/audio/1f462b979d937699.mp3"
+  },
+  {
+    "id": "e6b98a89dc2c867e",
+    "text": "Amazing! You finished the letter B! You earned a sticker!",
+    "out": "public/audio/e6b98a89dc2c867e.mp3"
+  },
+  {
+    "id": "a351e3b6e38f54aa",
+    "text": "Amazing! You finished the letter C! You earned a sticker!",
+    "out": "public/audio/a351e3b6e38f54aa.mp3"
+  },
+  {
+    "id": "3b7b1e3428fe09d1",
+    "text": "Amazing! You finished the letter D! You earned a sticker!",
+    "out": "public/audio/3b7b1e3428fe09d1.mp3"
+  },
+  {
+    "id": "1952204cf7878a6f",
+    "text": "Amazing! You finished the letter E! You earned a sticker!",
+    "out": "public/audio/1952204cf7878a6f.mp3"
+  },
+  {
+    "id": "308fa895d6295a4e",
+    "text": "Amazing! You finished the letter F! You earned a sticker!",
+    "out": "public/audio/308fa895d6295a4e.mp3"
+  },
+  {
+    "id": "b0a4c4a39729c6c2",
+    "text": "Amazing! You finished the letter G! You earned a sticker!",
+    "out": "public/audio/b0a4c4a39729c6c2.mp3"
+  },
+  {
+    "id": "83e7e3291c8d72f7",
+    "text": "Amazing! You finished the letter H! You earned a sticker!",
+    "out": "public/audio/83e7e3291c8d72f7.mp3"
+  },
+  {
+    "id": "ec72be3c0d10697e",
+    "text": "Amazing! You finished the letter I! You earned a sticker!",
+    "out": "public/audio/ec72be3c0d10697e.mp3"
+  },
+  {
+    "id": "79d5056331e7dd2f",
+    "text": "Amazing! You finished the letter J! You earned a sticker!",
+    "out": "public/audio/79d5056331e7dd2f.mp3"
+  },
+  {
+    "id": "af727b7a0c226edc",
+    "text": "Amazing! You finished the letter K! You earned a sticker!",
+    "out": "public/audio/af727b7a0c226edc.mp3"
+  },
+  {
+    "id": "99981daffa86637d",
+    "text": "Amazing! You finished the letter L! You earned a sticker!",
+    "out": "public/audio/99981daffa86637d.mp3"
+  },
+  {
+    "id": "dd7cf20c5a68b6ea",
+    "text": "Amazing! You finished the letter M! You earned a sticker!",
+    "out": "public/audio/dd7cf20c5a68b6ea.mp3"
+  },
+  {
+    "id": "420fe4ab0d26f08b",
+    "text": "Amazing! You finished the letter N! You earned a sticker!",
+    "out": "public/audio/420fe4ab0d26f08b.mp3"
+  },
+  {
+    "id": "bbcf9b72eef037a4",
+    "text": "Amazing! You finished the letter O! You earned a sticker!",
+    "out": "public/audio/bbcf9b72eef037a4.mp3"
+  },
+  {
+    "id": "b81c3a647f35a594",
+    "text": "Amazing! You finished the letter P! You earned a sticker!",
+    "out": "public/audio/b81c3a647f35a594.mp3"
+  },
+  {
+    "id": "d2eb998bc777f808",
+    "text": "Amazing! You finished the letter Q! You earned a sticker!",
+    "out": "public/audio/d2eb998bc777f808.mp3"
+  },
+  {
+    "id": "2b2ec5cf5d44a427",
+    "text": "Amazing! You finished the letter R! You earned a sticker!",
+    "out": "public/audio/2b2ec5cf5d44a427.mp3"
+  },
+  {
+    "id": "215c853714cf7e08",
+    "text": "Amazing! You finished the letter S! You earned a sticker!",
+    "out": "public/audio/215c853714cf7e08.mp3"
+  },
+  {
+    "id": "f7a71507b853ff9e",
+    "text": "Amazing! You finished the letter T! You earned a sticker!",
+    "out": "public/audio/f7a71507b853ff9e.mp3"
+  },
+  {
+    "id": "a8426d155425c9a4",
+    "text": "Amazing! You finished the letter U! You earned a sticker!",
+    "out": "public/audio/a8426d155425c9a4.mp3"
+  },
+  {
+    "id": "e18940f727a27aea",
+    "text": "Amazing! You finished the letter V! You earned a sticker!",
+    "out": "public/audio/e18940f727a27aea.mp3"
+  },
+  {
+    "id": "ab30ddd79ba921a3",
+    "text": "Amazing! You finished the letter W! You earned a sticker!",
+    "out": "public/audio/ab30ddd79ba921a3.mp3"
+  },
+  {
+    "id": "dca5b1ba6081344b",
+    "text": "Amazing! You finished the letter X! You earned a sticker!",
+    "out": "public/audio/dca5b1ba6081344b.mp3"
+  },
+  {
+    "id": "ad0a80bc6bc5f224",
+    "text": "Amazing! You finished the letter Y! You earned a sticker!",
+    "out": "public/audio/ad0a80bc6bc5f224.mp3"
+  },
+  {
+    "id": "3b4963fbfd8ec731",
+    "text": "Amazing! You finished the letter Z! You earned a sticker!",
+    "out": "public/audio/3b4963fbfd8ec731.mp3"
+  },
+  {
+    "id": "a2b5939dad40f765",
+    "text": "An airplane flew over an alligator, and an astronaut waved hello.",
+    "out": "public/audio/a2b5939dad40f765.mp3"
+  },
+  {
+    "id": "8926a431e74cdf3d",
+    "text": "An ant found a shiny apple by an anchor.",
+    "out": "public/audio/8926a431e74cdf3d.mp3"
+  },
+  {
+    "id": "e2bfa98bda32d135",
+    "text": "An ant found a shiny apple by an anchor. An airplane flew over an alligator, and an astronaut waved hello. What an amazing A adventure!",
+    "out": "public/audio/e2bfa98bda32d135.mp3"
+  },
+  {
+    "id": "ec7cb55c5a0edaa3",
+    "text": "An eagle soared above the earth, carrying an envelope to a friendly elf.",
+    "out": "public/audio/ec7cb55c5a0edaa3.mp3"
+  },
+  {
+    "id": "fd76bec1db31bd23",
+    "text": "An elephant found a golden egg.",
+    "out": "public/audio/fd76bec1db31bd23.mp3"
+  },
+  {
+    "id": "a61df80312ee1373",
+    "text": "An elephant found a golden egg. An eagle soared above the earth, carrying an envelope to a friendly elf. Exciting!",
+    "out": "public/audio/a61df80312ee1373.mp3"
+  },
+  {
+    "id": "a215c7f917ba7251",
+    "text": "An insect hummed while an iron pressed a flag, and an iguana lounged in the sun.",
+    "out": "public/audio/a215c7f917ba7251.mp3"
+  },
+  {
+    "id": "a3d3a4a960e3a955",
+    "text": "An octopus hugged an orange near a warm oven while an ostrich raced by.",
+    "out": "public/audio/a3d3a4a960e3a955.mp3"
+  },
+  {
+    "id": "1daca30f13c2c3ba",
+    "text": "An owl watched the ocean.",
+    "out": "public/audio/1daca30f13c2c3ba.mp3"
+  },
+  {
+    "id": "0be86ff422411952",
+    "text": "An owl watched the ocean. An octopus hugged an orange near a warm oven while an ostrich raced by. Oh my!",
+    "out": "public/audio/0be86ff422411952.mp3"
+  },
+  {
+    "id": "fcf3379c4b1a73fe",
+    "text": "An x-ray showed a xylophone in a box.",
+    "out": "public/audio/fcf3379c4b1a73fe.mp3"
+  },
+  {
+    "id": "a3f06b7630c28727",
+    "text": "An x-ray showed a xylophone in a box. A fox counted to six and began to mix. Extra exciting!",
+    "out": "public/audio/a3f06b7630c28727.mp3"
+  },
+  {
+    "id": "8f8c77e7404ca30d",
+    "text": "Anchor",
+    "out": "public/audio/8f8c77e7404ca30d.mp3"
+  },
+  {
+    "id": "862d26c6bb7d337b",
+    "text": "At night, a nose sniffed a nest.",
+    "out": "public/audio/862d26c6bb7d337b.mp3"
+  },
+  {
+    "id": "b37ec85259f4267e",
+    "text": "At night, a nose sniffed a nest. A notebook held noodle doodles next to a net. Nice and neat!",
+    "out": "public/audio/b37ec85259f4267e.mp3"
+  },
+  {
+    "id": "fe7e2953e9474b2b",
+    "text": "Bird",
+    "out": "public/audio/fe7e2953e9474b2b.mp3"
+  },
+  {
+    "id": "32df1c6b5569eea3",
+    "text": "Capital A",
+    "out": "public/audio/32df1c6b5569eea3.mp3"
+  },
+  {
+    "id": "3cb2017e8614cd16",
+    "text": "Capital B",
+    "out": "public/audio/3cb2017e8614cd16.mp3"
+  },
+  {
+    "id": "bee547b783fca440",
+    "text": "Capital C",
+    "out": "public/audio/bee547b783fca440.mp3"
+  },
+  {
+    "id": "f3ba52ad064ce8b0",
+    "text": "Capital D",
+    "out": "public/audio/f3ba52ad064ce8b0.mp3"
+  },
+  {
+    "id": "209ace28d0e4ad3c",
+    "text": "Capital E",
+    "out": "public/audio/209ace28d0e4ad3c.mp3"
+  },
+  {
+    "id": "82ec34edb98ae7cd",
+    "text": "Capital F",
+    "out": "public/audio/82ec34edb98ae7cd.mp3"
+  },
+  {
+    "id": "54c68e51a1df5d1f",
+    "text": "Capital G",
+    "out": "public/audio/54c68e51a1df5d1f.mp3"
+  },
+  {
+    "id": "31f9d159e1e4905d",
+    "text": "Capital H",
+    "out": "public/audio/31f9d159e1e4905d.mp3"
+  },
+  {
+    "id": "5403f683649152aa",
+    "text": "Capital I",
+    "out": "public/audio/5403f683649152aa.mp3"
+  },
+  {
+    "id": "73023c05646cbc94",
+    "text": "Capital J",
+    "out": "public/audio/73023c05646cbc94.mp3"
+  },
+  {
+    "id": "fa8a138e8fc404cf",
+    "text": "Capital K",
+    "out": "public/audio/fa8a138e8fc404cf.mp3"
+  },
+  {
+    "id": "bd0cc7f272329c68",
+    "text": "Capital L",
+    "out": "public/audio/bd0cc7f272329c68.mp3"
+  },
+  {
+    "id": "1c110e671528d8fa",
+    "text": "Capital M",
+    "out": "public/audio/1c110e671528d8fa.mp3"
+  },
+  {
+    "id": "0dabf9f9801e2443",
+    "text": "Capital N",
+    "out": "public/audio/0dabf9f9801e2443.mp3"
+  },
+  {
+    "id": "7b432ee2e7357227",
+    "text": "Capital O",
+    "out": "public/audio/7b432ee2e7357227.mp3"
+  },
+  {
+    "id": "dfee7630d1724a70",
+    "text": "Capital P",
+    "out": "public/audio/dfee7630d1724a70.mp3"
+  },
+  {
+    "id": "1dbed1ca3ff015c8",
+    "text": "Capital Q",
+    "out": "public/audio/1dbed1ca3ff015c8.mp3"
+  },
+  {
+    "id": "9b6418c0927f169e",
+    "text": "Capital R",
+    "out": "public/audio/9b6418c0927f169e.mp3"
+  },
+  {
+    "id": "f0f3560ddac8bf6a",
+    "text": "Capital S",
+    "out": "public/audio/f0f3560ddac8bf6a.mp3"
+  },
+  {
+    "id": "5ba8fb0a5604f2e6",
+    "text": "Capital T",
+    "out": "public/audio/5ba8fb0a5604f2e6.mp3"
+  },
+  {
+    "id": "58d4fac38953073a",
+    "text": "Capital U",
+    "out": "public/audio/58d4fac38953073a.mp3"
+  },
+  {
+    "id": "63a1ea567eaa6003",
+    "text": "Capital V",
+    "out": "public/audio/63a1ea567eaa6003.mp3"
+  },
+  {
+    "id": "a0d66809cd88e4b9",
+    "text": "Capital W",
+    "out": "public/audio/a0d66809cd88e4b9.mp3"
+  },
+  {
+    "id": "e97bce237f65dfc0",
+    "text": "Capital X",
+    "out": "public/audio/e97bce237f65dfc0.mp3"
+  },
+  {
+    "id": "34907828277c73b4",
+    "text": "Capital Y",
+    "out": "public/audio/34907828277c73b4.mp3"
+  },
+  {
+    "id": "295f7452d6a531ec",
+    "text": "Capital Z",
+    "out": "public/audio/295f7452d6a531ec.mp3"
+  },
+  {
+    "id": "496dddd35626fbf7",
+    "text": "Cozy and clever!",
+    "out": "public/audio/496dddd35626fbf7.mp3"
+  },
+  {
+    "id": "04b9507105b0665d",
+    "text": "Cup",
+    "out": "public/audio/04b9507105b0665d.mp3"
+  },
+  {
+    "id": "a6da7a293c271e5f",
+    "text": "Delightful day!",
+    "out": "public/audio/a6da7a293c271e5f.mp3"
+  },
+  {
+    "id": "478d47b06dda44ac",
+    "text": "Door",
+    "out": "public/audio/478d47b06dda44ac.mp3"
+  },
+  {
+    "id": "234ac699c962fe57",
+    "text": "Elf",
+    "out": "public/audio/234ac699c962fe57.mp3"
+  },
+  {
+    "id": "11b11cc8a15a0492",
+    "text": "Everyone shared a smile and a cozy sock.",
+    "out": "public/audio/11b11cc8a15a0492.mp3"
+  },
+  {
+    "id": "fa6bbbe6f073e166",
+    "text": "Exciting!",
+    "out": "public/audio/fa6bbbe6f073e166.mp3"
+  },
+  {
+    "id": "30b4e015bba84e1a",
+    "text": "Extra exciting!",
+    "out": "public/audio/30b4e015bba84e1a.mp3"
+  },
+  {
+    "id": "05474df28288ca0f",
+    "text": "Fairy",
+    "out": "public/audio/05474df28288ca0f.mp3"
+  },
+  {
+    "id": "2ab358e399b3fa6a",
+    "text": "Fantastic fun!",
+    "out": "public/audio/2ab358e399b3fa6a.mp3"
+  },
+  {
+    "id": "0e3f5fc25846b7ff",
+    "text": "Goat",
+    "out": "public/audio/0e3f5fc25846b7ff.mp3"
+  },
+  {
+    "id": "8650ed71847836e6",
+    "text": "Great! Now find the big capital letters!",
+    "out": "public/audio/8650ed71847836e6.mp3"
+  },
+  {
+    "id": "fda201fd52a223f4",
+    "text": "Helicopter",
+    "out": "public/audio/fda201fd52a223f4.mp3"
+  },
+  {
+    "id": "f58bd8302014fefb",
+    "text": "Hooray!",
+    "out": "public/audio/f58bd8302014fefb.mp3"
+  },
+  {
+    "id": "0b7e4316e8b71022",
+    "text": "Ice cream melted by an igloo on an island.",
+    "out": "public/audio/0b7e4316e8b71022.mp3"
+  },
+  {
+    "id": "9a2fbfcf96160551",
+    "text": "Ice cream melted by an igloo on an island. An insect hummed while an iron pressed a flag, and an iguana lounged in the sun. Incredible!",
+    "out": "public/audio/9a2fbfcf96160551.mp3"
+  },
+  {
+    "id": "7c57b6b46bb68aea",
+    "text": "Iguana",
+    "out": "public/audio/7c57b6b46bb68aea.mp3"
+  },
+  {
+    "id": "600bda5c70176276",
+    "text": "Incredible!",
+    "out": "public/audio/600bda5c70176276.mp3"
+  },
+  {
+    "id": "0f1ff25f3e96c077",
+    "text": "Jet",
+    "out": "public/audio/0f1ff25f3e96c077.mp3"
+  },
+  {
+    "id": "da98e0c0e4663b4d",
+    "text": "Joyful jump!",
+    "out": "public/audio/da98e0c0e4663b4d.mp3"
+  },
+  {
+    "id": "76dad5f4d587c360",
+    "text": "Juice dripped on a jacket in the jungle.",
+    "out": "public/audio/76dad5f4d587c360.mp3"
+  },
+  {
+    "id": "c2c9b1999f35bea9",
+    "text": "Juice dripped on a jacket in the jungle. A jellyfish jiggled, jam tasted sweet, and a jet streaked across the sky. Joyful jump!",
+    "out": "public/audio/c2c9b1999f35bea9.mp3"
+  },
+  {
+    "id": "ce27545831ab78b3",
+    "text": "Keep kicking, K!",
+    "out": "public/audio/ce27545831ab78b3.mp3"
+  },
+  {
+    "id": "77f69ac1090abb15",
+    "text": "Kitten",
+    "out": "public/audio/77f69ac1090abb15.mp3"
+  },
+  {
+    "id": "0bf3d1de57b0e0d5",
+    "text": "Ladder",
+    "out": "public/audio/0bf3d1de57b0e0d5.mp3"
+  },
+  {
+    "id": "c4db7ac19ac81bd4",
+    "text": "Little a",
+    "out": "public/audio/c4db7ac19ac81bd4.mp3"
+  },
+  {
+    "id": "46fd1e44c01ae615",
+    "text": "Little b",
+    "out": "public/audio/46fd1e44c01ae615.mp3"
+  },
+  {
+    "id": "0e10343c30eadf3d",
+    "text": "Little c",
+    "out": "public/audio/0e10343c30eadf3d.mp3"
+  },
+  {
+    "id": "cff0e9ad8d0a497f",
+    "text": "Little d",
+    "out": "public/audio/cff0e9ad8d0a497f.mp3"
+  },
+  {
+    "id": "fedd79a4eed22144",
+    "text": "Little e",
+    "out": "public/audio/fedd79a4eed22144.mp3"
+  },
+  {
+    "id": "33672b4fc7162c46",
+    "text": "Little f",
+    "out": "public/audio/33672b4fc7162c46.mp3"
+  },
+  {
+    "id": "dbaadf9fdf9ce964",
+    "text": "Little g",
+    "out": "public/audio/dbaadf9fdf9ce964.mp3"
+  },
+  {
+    "id": "7fa5e3f9bcb612b0",
+    "text": "Little h",
+    "out": "public/audio/7fa5e3f9bcb612b0.mp3"
+  },
+  {
+    "id": "6bb1b5d1269cde52",
+    "text": "Little i",
+    "out": "public/audio/6bb1b5d1269cde52.mp3"
+  },
+  {
+    "id": "4a6f1adb7f5e22fa",
+    "text": "Little j",
+    "out": "public/audio/4a6f1adb7f5e22fa.mp3"
+  },
+  {
+    "id": "f748b9344eba5983",
+    "text": "Little k",
+    "out": "public/audio/f748b9344eba5983.mp3"
+  },
+  {
+    "id": "75e0f51f77e882c3",
+    "text": "Little l",
+    "out": "public/audio/75e0f51f77e882c3.mp3"
+  },
+  {
+    "id": "cc723f40c7701e7f",
+    "text": "Little m",
+    "out": "public/audio/cc723f40c7701e7f.mp3"
+  },
+  {
+    "id": "a803b429228f3dd0",
+    "text": "Little n",
+    "out": "public/audio/a803b429228f3dd0.mp3"
+  },
+  {
+    "id": "93378be23d113fdb",
+    "text": "Little o",
+    "out": "public/audio/93378be23d113fdb.mp3"
+  },
+  {
+    "id": "dfd3164f31fb9f02",
+    "text": "Little p",
+    "out": "public/audio/dfd3164f31fb9f02.mp3"
+  },
+  {
+    "id": "0c50801a3718e52a",
+    "text": "Little q",
+    "out": "public/audio/0c50801a3718e52a.mp3"
+  },
+  {
+    "id": "23d094c4cfd1572a",
+    "text": "Little r",
+    "out": "public/audio/23d094c4cfd1572a.mp3"
+  },
+  {
+    "id": "f805fc28dfa475dc",
+    "text": "Little s",
+    "out": "public/audio/f805fc28dfa475dc.mp3"
+  },
+  {
+    "id": "d0bd09d3c4762026",
+    "text": "Little t",
+    "out": "public/audio/d0bd09d3c4762026.mp3"
+  },
+  {
+    "id": "4b6b4f60e970d62b",
+    "text": "Little u",
+    "out": "public/audio/4b6b4f60e970d62b.mp3"
+  },
+  {
+    "id": "a86100a8d583de2b",
+    "text": "Little v",
+    "out": "public/audio/a86100a8d583de2b.mp3"
+  },
+  {
+    "id": "897fe2e5a4fd1622",
+    "text": "Little w",
+    "out": "public/audio/897fe2e5a4fd1622.mp3"
+  },
+  {
+    "id": "589ce48b391a84ef",
+    "text": "Little x",
+    "out": "public/audio/589ce48b391a84ef.mp3"
+  },
+  {
+    "id": "f40b9b791c5d3cf5",
+    "text": "Little y",
+    "out": "public/audio/f40b9b791c5d3cf5.mp3"
+  },
+  {
+    "id": "dccfd67396a920dc",
+    "text": "Little z",
+    "out": "public/audio/dccfd67396a920dc.mp3"
+  },
+  {
+    "id": "f71edd8dfbebb296",
+    "text": "Lovely!",
+    "out": "public/audio/f71edd8dfbebb296.mp3"
+  },
+  {
+    "id": "dab16b1e3a7bb795",
+    "text": "Magical!",
+    "out": "public/audio/dab16b1e3a7bb795.mp3"
+  },
+  {
+    "id": "fd7391b6720b809c",
+    "text": "Mix",
+    "out": "public/audio/fd7391b6720b809c.mp3"
+  },
+  {
+    "id": "aa146572cac44a81",
+    "text": "Mushroom",
+    "out": "public/audio/aa146572cac44a81.mp3"
+  },
+  {
+    "id": "9bb81c2eccbed59e",
+    "text": "Net",
+    "out": "public/audio/9bb81c2eccbed59e.mp3"
+  },
+  {
+    "id": "9e805718ce56a19f",
+    "text": "Nice and neat!",
+    "out": "public/audio/9e805718ce56a19f.mp3"
+  },
+  {
+    "id": "6a18baeb0e51ecf9",
+    "text": "Oh my!",
+    "out": "public/audio/6a18baeb0e51ecf9.mp3"
+  },
+  {
+    "id": "1b062ffa273dd059",
+    "text": "Ostrich",
+    "out": "public/audio/1b062ffa273dd059.mp3"
+  },
+  {
+    "id": "7a97934e13227abf",
+    "text": "Perfect!",
+    "out": "public/audio/7a97934e13227abf.mp3"
+  },
+  {
+    "id": "004d2ee4389247f7",
+    "text": "Puppy",
+    "out": "public/audio/004d2ee4389247f7.mp3"
+  },
+  {
+    "id": "0d3830748786cef6",
+    "text": "Quarter",
+    "out": "public/audio/0d3830748786cef6.mp3"
+  },
+  {
+    "id": "2c73c3e351b383cc",
+    "text": "Quite quirky!",
+    "out": "public/audio/2c73c3e351b383cc.mp3"
+  },
+  {
+    "id": "0a858c95bc97fa8f",
+    "text": "Rain",
+    "out": "public/audio/0a858c95bc97fa8f.mp3"
+  },
+  {
+    "id": "b9c0ff1a2aba5f4f",
+    "text": "Ready, set, roar!",
+    "out": "public/audio/b9c0ff1a2aba5f4f.mp3"
+  },
+  {
+    "id": "4398f8e7d93c89f0",
+    "text": "Sock",
+    "out": "public/audio/4398f8e7d93c89f0.mp3"
+  },
+  {
+    "id": "91702ed013f43169",
+    "text": "Someone wore a vest and pushed a vacuum.",
+    "out": "public/audio/91702ed013f43169.mp3"
+  },
+  {
+    "id": "2725114f6471156e",
+    "text": "Super!",
+    "out": "public/audio/2725114f6471156e.mp3"
+  },
+  {
+    "id": "34ae018ed9232692",
+    "text": "Terrific!",
+    "out": "public/audio/34ae018ed9232692.mp3"
+  },
+  {
+    "id": "7b04aff199fa8d25",
+    "text": "The end! Great listening!",
+    "out": "public/audio/7b04aff199fa8d25.mp3"
+  },
+  {
+    "id": "7e3bd49234fd646b",
+    "text": "The king danced in the kitchen with a tiny kitten.",
+    "out": "public/audio/7e3bd49234fd646b.mp3"
+  },
+  {
+    "id": "ed367d4be0d0ae0f",
+    "text": "The queen quilted quietly.",
+    "out": "public/audio/ed367d4be0d0ae0f.mp3"
+  },
+  {
+    "id": "d92b3f3e724e06d4",
+    "text": "The queen quilted quietly. “Question?” she asked. A duck said quack and found a quarter. Quite quirky!",
+    "out": "public/audio/d92b3f3e724e06d4.mp3"
+  },
+  {
+    "id": "088cac14c6b8d815",
+    "text": "The sun and a star smiled on a snake on a ship.",
+    "out": "public/audio/088cac14c6b8d815.mp3"
+  },
+  {
+    "id": "11a6964dbc916303",
+    "text": "The sun and a star smiled on a snake on a ship. Everyone shared a smile and a cozy sock. Super!",
+    "out": "public/audio/11a6964dbc916303.mp3"
+  },
+  {
+    "id": "0c28afab4ae9b353",
+    "text": "Then it shared a cookie from a cup.",
+    "out": "public/audio/0c28afab4ae9b353.mp3"
+  },
+  {
+    "id": "661fb98df2097b01",
+    "text": "They shared a donut, danced to a drum, and opened a bright door.",
+    "out": "public/audio/661fb98df2097b01.mp3"
+  },
+  {
+    "id": "0d7c7e8a5407acc5",
+    "text": "Tooth",
+    "out": "public/audio/0d7c7e8a5407acc5.mp3"
+  },
+  {
+    "id": "860891107053ff3d",
+    "text": "Ukulele",
+    "out": "public/audio/860891107053ff3d.mp3"
+  },
+  {
+    "id": "f04e4a0de6e896a0",
+    "text": "Unbelievable!",
+    "out": "public/audio/f04e4a0de6e896a0.mp3"
+  },
+  {
+    "id": "d6b11c12903a2773",
+    "text": "Under an umbrella, a unicorn put on a uniform, looked up, and strummed a ukulele.",
+    "out": "public/audio/d6b11c12903a2773.mp3"
+  },
+  {
+    "id": "0baf02f63fcd9f92",
+    "text": "Under an umbrella, a unicorn put on a uniform, looked up, and strummed a ukulele. Unbelievable!",
+    "out": "public/audio/0baf02f63fcd9f92.mp3"
+  },
+  {
+    "id": "5fe15df2c7882707",
+    "text": "Vacuum",
+    "out": "public/audio/5fe15df2c7882707.mp3"
+  },
+  {
+    "id": "2451652b5e95c55a",
+    "text": "Vivacious!",
+    "out": "public/audio/2451652b5e95c55a.mp3"
+  },
+  {
+    "id": "724a583ad173fd81",
+    "text": "Wagon",
+    "out": "public/audio/724a583ad173fd81.mp3"
+  },
+  {
+    "id": "3a146025ede7bef1",
+    "text": "What an amazing A adventure!",
+    "out": "public/audio/3a146025ede7bef1.mp3"
+  },
+  {
+    "id": "e65e8c7504556ee0",
+    "text": "Wonderful!",
+    "out": "public/audio/e65e8c7504556ee0.mp3"
+  },
+  {
+    "id": "59669aabd9e11c45",
+    "text": "Yes, yes, yes!",
+    "out": "public/audio/59669aabd9e11c45.mp3"
+  },
+  {
+    "id": "fc0dd8c3a32feacf",
+    "text": "Yes! Airplane!",
+    "out": "public/audio/fc0dd8c3a32feacf.mp3"
+  },
+  {
+    "id": "b358fe9c50411633",
+    "text": "Yes! Alligator!",
+    "out": "public/audio/b358fe9c50411633.mp3"
+  },
+  {
+    "id": "34cc000fb79dc527",
+    "text": "Yes! Anchor starts with A!",
+    "out": "public/audio/34cc000fb79dc527.mp3"
+  },
+  {
+    "id": "ab4dfeffaf4fa5ad",
+    "text": "Yes! Anchor!",
+    "out": "public/audio/ab4dfeffaf4fa5ad.mp3"
+  },
+  {
+    "id": "71f397de7e2d02cb",
+    "text": "Yes! Ant!",
+    "out": "public/audio/71f397de7e2d02cb.mp3"
+  },
+  {
+    "id": "4138cc338f685835",
+    "text": "Yes! Apple!",
+    "out": "public/audio/4138cc338f685835.mp3"
+  },
+  {
+    "id": "cbd232a4593aaeb9",
+    "text": "Yes! Astronaut!",
+    "out": "public/audio/cbd232a4593aaeb9.mp3"
+  },
+  {
+    "id": "adb639fe3731f088",
+    "text": "Yes! Ball!",
+    "out": "public/audio/adb639fe3731f088.mp3"
+  },
+  {
+    "id": "b424094bd97be92e",
+    "text": "Yes! Banana!",
+    "out": "public/audio/b424094bd97be92e.mp3"
+  },
+  {
+    "id": "1f7a29265795d46b",
+    "text": "Yes! Bear!",
+    "out": "public/audio/1f7a29265795d46b.mp3"
+  },
+  {
+    "id": "3264f422f159c1b4",
+    "text": "Yes! Bird starts with B!",
+    "out": "public/audio/3264f422f159c1b4.mp3"
+  },
+  {
+    "id": "524a02545bbea4e1",
+    "text": "Yes! Bird!",
+    "out": "public/audio/524a02545bbea4e1.mp3"
+  },
+  {
+    "id": "2295469897967f32",
+    "text": "Yes! Boat!",
+    "out": "public/audio/2295469897967f32.mp3"
+  },
+  {
+    "id": "716250d6e81f5598",
+    "text": "Yes! Box!",
+    "out": "public/audio/716250d6e81f5598.mp3"
+  },
+  {
+    "id": "970be722e394ea49",
+    "text": "Yes! Butterfly!",
+    "out": "public/audio/970be722e394ea49.mp3"
+  },
+  {
+    "id": "e66b381d88529fb4",
+    "text": "Yes! Cake!",
+    "out": "public/audio/e66b381d88529fb4.mp3"
+  },
+  {
+    "id": "42da1039ea325f84",
+    "text": "Yes! Car!",
+    "out": "public/audio/42da1039ea325f84.mp3"
+  },
+  {
+    "id": "4a4259b9e94c2b3c",
+    "text": "Yes! Cat!",
+    "out": "public/audio/4a4259b9e94c2b3c.mp3"
+  },
+  {
+    "id": "20d4b21e1cb45015",
+    "text": "Yes! Cloud!",
+    "out": "public/audio/20d4b21e1cb45015.mp3"
+  },
+  {
+    "id": "b93a11403db4e9f7",
+    "text": "Yes! Cookie!",
+    "out": "public/audio/b93a11403db4e9f7.mp3"
+  },
+  {
+    "id": "7059367350c72924",
+    "text": "Yes! Cup starts with C!",
+    "out": "public/audio/7059367350c72924.mp3"
+  },
+  {
+    "id": "9290d08f996bb3a4",
+    "text": "Yes! Cup!",
+    "out": "public/audio/9290d08f996bb3a4.mp3"
+  },
+  {
+    "id": "494abc5637a85e4c",
+    "text": "Yes! Dinosaur!",
+    "out": "public/audio/494abc5637a85e4c.mp3"
+  },
+  {
+    "id": "3cdcb473550e4afa",
+    "text": "Yes! Dog!",
+    "out": "public/audio/3cdcb473550e4afa.mp3"
+  },
+  {
+    "id": "356214e4b384dde9",
+    "text": "Yes! Donut!",
+    "out": "public/audio/356214e4b384dde9.mp3"
+  },
+  {
+    "id": "0bc674f1cd0608f7",
+    "text": "Yes! Door starts with D!",
+    "out": "public/audio/0bc674f1cd0608f7.mp3"
+  },
+  {
+    "id": "75cc7cdea8d06279",
+    "text": "Yes! Door!",
+    "out": "public/audio/75cc7cdea8d06279.mp3"
+  },
+  {
+    "id": "b38ae6a50b971250",
+    "text": "Yes! Drum!",
+    "out": "public/audio/b38ae6a50b971250.mp3"
+  },
+  {
+    "id": "ce0b7a0120da5b86",
+    "text": "Yes! Duck!",
+    "out": "public/audio/ce0b7a0120da5b86.mp3"
+  },
+  {
+    "id": "e52af77a316035ca",
+    "text": "Yes! Eagle!",
+    "out": "public/audio/e52af77a316035ca.mp3"
+  },
+  {
+    "id": "9492fe5b6495fdb3",
+    "text": "Yes! Earth!",
+    "out": "public/audio/9492fe5b6495fdb3.mp3"
+  },
+  {
+    "id": "d1df458b624d6d98",
+    "text": "Yes! Egg!",
+    "out": "public/audio/d1df458b624d6d98.mp3"
+  },
+  {
+    "id": "abe7a19c6021db1e",
+    "text": "Yes! Elephant!",
+    "out": "public/audio/abe7a19c6021db1e.mp3"
+  },
+  {
+    "id": "e66e5cc1702cb693",
+    "text": "Yes! Elf starts with E!",
+    "out": "public/audio/e66e5cc1702cb693.mp3"
+  },
+  {
+    "id": "de84b72c3436b485",
+    "text": "Yes! Elf!",
+    "out": "public/audio/de84b72c3436b485.mp3"
+  },
+  {
+    "id": "c33e0653b2634fb7",
+    "text": "Yes! Envelope!",
+    "out": "public/audio/c33e0653b2634fb7.mp3"
+  },
+  {
+    "id": "2895ac68f10e3af0",
+    "text": "Yes! Fairy starts with F!",
+    "out": "public/audio/2895ac68f10e3af0.mp3"
+  },
+  {
+    "id": "6a79d118bb66076c",
+    "text": "Yes! Fairy!",
+    "out": "public/audio/6a79d118bb66076c.mp3"
+  },
+  {
+    "id": "f8f75a2f87862e27",
+    "text": "Yes! Firetruck!",
+    "out": "public/audio/f8f75a2f87862e27.mp3"
+  },
+  {
+    "id": "93d94e625b6d273a",
+    "text": "Yes! Fish!",
+    "out": "public/audio/93d94e625b6d273a.mp3"
+  },
+  {
+    "id": "d0cc441f6d5a9294",
+    "text": "Yes! Flower!",
+    "out": "public/audio/d0cc441f6d5a9294.mp3"
+  },
+  {
+    "id": "3d63c180d5fc2889",
+    "text": "Yes! Fox!",
+    "out": "public/audio/3d63c180d5fc2889.mp3"
+  },
+  {
+    "id": "c6d63b9f9c462343",
+    "text": "Yes! Frog!",
+    "out": "public/audio/c6d63b9f9c462343.mp3"
+  },
+  {
+    "id": "06d9218bdf9f7af7",
+    "text": "Yes! Garden!",
+    "out": "public/audio/06d9218bdf9f7af7.mp3"
+  },
+  {
+    "id": "04eb455c8a56449e",
+    "text": "Yes! Gift!",
+    "out": "public/audio/04eb455c8a56449e.mp3"
+  },
+  {
+    "id": "55b4069e2aec0b31",
+    "text": "Yes! Giraffe!",
+    "out": "public/audio/55b4069e2aec0b31.mp3"
+  },
+  {
+    "id": "be4c8d70544b416c",
+    "text": "Yes! Goat starts with G!",
+    "out": "public/audio/be4c8d70544b416c.mp3"
+  },
+  {
+    "id": "0c66c641d95b73bd",
+    "text": "Yes! Goat!",
+    "out": "public/audio/0c66c641d95b73bd.mp3"
+  },
+  {
+    "id": "6d3c8e39de9c4954",
+    "text": "Yes! Grapes!",
+    "out": "public/audio/6d3c8e39de9c4954.mp3"
+  },
+  {
+    "id": "eb0a8333775702b2",
+    "text": "Yes! Guitar!",
+    "out": "public/audio/eb0a8333775702b2.mp3"
+  },
+  {
+    "id": "83661e28563ded0a",
+    "text": "Yes! Hat!",
+    "out": "public/audio/83661e28563ded0a.mp3"
+  },
+  {
+    "id": "e081ba6619353286",
+    "text": "Yes! Heart!",
+    "out": "public/audio/e081ba6619353286.mp3"
+  },
+  {
+    "id": "53866bb836eefd8c",
+    "text": "Yes! Helicopter starts with H!",
+    "out": "public/audio/53866bb836eefd8c.mp3"
+  },
+  {
+    "id": "1c66813561d7a99c",
+    "text": "Yes! Helicopter!",
+    "out": "public/audio/1c66813561d7a99c.mp3"
+  },
+  {
+    "id": "253ef35b248a98ce",
+    "text": "Yes! Honey!",
+    "out": "public/audio/253ef35b248a98ce.mp3"
+  },
+  {
+    "id": "91a419cb7bbd4916",
+    "text": "Yes! Horse!",
+    "out": "public/audio/91a419cb7bbd4916.mp3"
+  },
+  {
+    "id": "fd3d0f18667e90dd",
+    "text": "Yes! House!",
+    "out": "public/audio/fd3d0f18667e90dd.mp3"
+  },
+  {
+    "id": "ce05cc6afa83759b",
+    "text": "Yes! Ice cream!",
+    "out": "public/audio/ce05cc6afa83759b.mp3"
+  },
+  {
+    "id": "da41dcac223ae56a",
+    "text": "Yes! Igloo!",
+    "out": "public/audio/da41dcac223ae56a.mp3"
+  },
+  {
+    "id": "c7089dfceabfca59",
+    "text": "Yes! Iguana starts with I!",
+    "out": "public/audio/c7089dfceabfca59.mp3"
+  },
+  {
+    "id": "fdd3254e6be58683",
+    "text": "Yes! Iguana!",
+    "out": "public/audio/fdd3254e6be58683.mp3"
+  },
+  {
+    "id": "a271844999d8e1f4",
+    "text": "Yes! Insect!",
+    "out": "public/audio/a271844999d8e1f4.mp3"
+  },
+  {
+    "id": "344617ff59f690d4",
+    "text": "Yes! Iron!",
+    "out": "public/audio/344617ff59f690d4.mp3"
+  },
+  {
+    "id": "31cae26115e3b303",
+    "text": "Yes! Island!",
+    "out": "public/audio/31cae26115e3b303.mp3"
+  },
+  {
+    "id": "4c49bd177cb746c1",
+    "text": "Yes! Jacket!",
+    "out": "public/audio/4c49bd177cb746c1.mp3"
+  },
+  {
+    "id": "e5022809b7bdb9c8",
+    "text": "Yes! Jam!",
+    "out": "public/audio/e5022809b7bdb9c8.mp3"
+  },
+  {
+    "id": "dc748fe6881c4b72",
+    "text": "Yes! Jellyfish!",
+    "out": "public/audio/dc748fe6881c4b72.mp3"
+  },
+  {
+    "id": "7a6982b3394f52d8",
+    "text": "Yes! Jet starts with J!",
+    "out": "public/audio/7a6982b3394f52d8.mp3"
+  },
+  {
+    "id": "2f18d15d76113938",
+    "text": "Yes! Jet!",
+    "out": "public/audio/2f18d15d76113938.mp3"
+  },
+  {
+    "id": "cd8b504cc48d795b",
+    "text": "Yes! Juice!",
+    "out": "public/audio/cd8b504cc48d795b.mp3"
+  },
+  {
+    "id": "abb907bb511461f0",
+    "text": "Yes! Jungle!",
+    "out": "public/audio/abb907bb511461f0.mp3"
+  },
+  {
+    "id": "38b18a53b4afca08",
+    "text": "Yes! Kangaroo!",
+    "out": "public/audio/38b18a53b4afca08.mp3"
+  },
+  {
+    "id": "1926379d898007ee",
+    "text": "Yes! Key!",
+    "out": "public/audio/1926379d898007ee.mp3"
+  },
+  {
+    "id": "941a8fc6a4bde8d2",
+    "text": "Yes! King!",
+    "out": "public/audio/941a8fc6a4bde8d2.mp3"
+  },
+  {
+    "id": "8bf4c75ff10592ee",
+    "text": "Yes! Kitchen!",
+    "out": "public/audio/8bf4c75ff10592ee.mp3"
+  },
+  {
+    "id": "4db090fd7ebcb476",
+    "text": "Yes! Kite!",
+    "out": "public/audio/4db090fd7ebcb476.mp3"
+  },
+  {
+    "id": "699b6720bddf233c",
+    "text": "Yes! Kitten starts with K!",
+    "out": "public/audio/699b6720bddf233c.mp3"
+  },
+  {
+    "id": "b44b3127cbef1246",
+    "text": "Yes! Kitten!",
+    "out": "public/audio/b44b3127cbef1246.mp3"
+  },
+  {
+    "id": "c55796145e26e395",
+    "text": "Yes! Ladder starts with L!",
+    "out": "public/audio/c55796145e26e395.mp3"
+  },
+  {
+    "id": "b3896ef5abf9a61e",
+    "text": "Yes! Ladder!",
+    "out": "public/audio/b3896ef5abf9a61e.mp3"
+  },
+  {
+    "id": "e3be13411e03f418",
+    "text": "Yes! Lamp!",
+    "out": "public/audio/e3be13411e03f418.mp3"
+  },
+  {
+    "id": "75e850d30f76f3e1",
+    "text": "Yes! Leaf!",
+    "out": "public/audio/75e850d30f76f3e1.mp3"
+  },
+  {
+    "id": "398dd5637501ef50",
+    "text": "Yes! Lemon!",
+    "out": "public/audio/398dd5637501ef50.mp3"
+  },
+  {
+    "id": "90673b5574c0b9de",
+    "text": "Yes! Lion!",
+    "out": "public/audio/90673b5574c0b9de.mp3"
+  },
+  {
+    "id": "3ec9716507550129",
+    "text": "Yes! Lollipop!",
+    "out": "public/audio/3ec9716507550129.mp3"
+  },
+  {
+    "id": "866a5564bf77eb40",
+    "text": "Yes! Milk!",
+    "out": "public/audio/866a5564bf77eb40.mp3"
+  },
+  {
+    "id": "4d56bc4ba26a7c7b",
+    "text": "Yes! Mix starts with X!",
+    "out": "public/audio/4d56bc4ba26a7c7b.mp3"
+  },
+  {
+    "id": "b087c96f3704ca5d",
+    "text": "Yes! Mix!",
+    "out": "public/audio/b087c96f3704ca5d.mp3"
+  },
+  {
+    "id": "f60c034bb93ede02",
+    "text": "Yes! Monkey!",
+    "out": "public/audio/f60c034bb93ede02.mp3"
+  },
+  {
+    "id": "d64b7be7e478ff66",
+    "text": "Yes! Moon!",
+    "out": "public/audio/d64b7be7e478ff66.mp3"
+  },
+  {
+    "id": "66d351c696832d08",
+    "text": "Yes! Mountain!",
+    "out": "public/audio/66d351c696832d08.mp3"
+  },
+  {
+    "id": "80910c291461136b",
+    "text": "Yes! Mouse!",
+    "out": "public/audio/80910c291461136b.mp3"
+  },
+  {
+    "id": "0fa960f27f98aa44",
+    "text": "Yes! Mushroom starts with M!",
+    "out": "public/audio/0fa960f27f98aa44.mp3"
+  },
+  {
+    "id": "7614ba37c6e52030",
+    "text": "Yes! Mushroom!",
+    "out": "public/audio/7614ba37c6e52030.mp3"
+  },
+  {
+    "id": "cead1bd689d79e5f",
+    "text": "Yes! Nest!",
+    "out": "public/audio/cead1bd689d79e5f.mp3"
+  },
+  {
+    "id": "fa7305a648dbe528",
+    "text": "Yes! Net starts with N!",
+    "out": "public/audio/fa7305a648dbe528.mp3"
+  },
+  {
+    "id": "34892d13600c493f",
+    "text": "Yes! Net!",
+    "out": "public/audio/34892d13600c493f.mp3"
+  },
+  {
+    "id": "13e73c67d3ce0870",
+    "text": "Yes! Night!",
+    "out": "public/audio/13e73c67d3ce0870.mp3"
+  },
+  {
+    "id": "4a4c402c05054790",
+    "text": "Yes! Noodle!",
+    "out": "public/audio/4a4c402c05054790.mp3"
+  },
+  {
+    "id": "ace6b319bced48fb",
+    "text": "Yes! Nose!",
+    "out": "public/audio/ace6b319bced48fb.mp3"
+  },
+  {
+    "id": "5cdb99aa27eeae80",
+    "text": "Yes! Notebook!",
+    "out": "public/audio/5cdb99aa27eeae80.mp3"
+  },
+  {
+    "id": "8b85d193f7fa277e",
+    "text": "Yes! Ocean!",
+    "out": "public/audio/8b85d193f7fa277e.mp3"
+  },
+  {
+    "id": "d63120a1f269e819",
+    "text": "Yes! Octopus!",
+    "out": "public/audio/d63120a1f269e819.mp3"
+  },
+  {
+    "id": "f146afdcf570e162",
+    "text": "Yes! Orange!",
+    "out": "public/audio/f146afdcf570e162.mp3"
+  },
+  {
+    "id": "0dfb7dd28c0ed1aa",
+    "text": "Yes! Ostrich starts with O!",
+    "out": "public/audio/0dfb7dd28c0ed1aa.mp3"
+  },
+  {
+    "id": "b777da37ed59147e",
+    "text": "Yes! Ostrich!",
+    "out": "public/audio/b777da37ed59147e.mp3"
+  },
+  {
+    "id": "6d70f5215c6bb7c5",
+    "text": "Yes! Oven!",
+    "out": "public/audio/6d70f5215c6bb7c5.mp3"
+  },
+  {
+    "id": "025ffcbcf1242122",
+    "text": "Yes! Owl!",
+    "out": "public/audio/025ffcbcf1242122.mp3"
+  },
+  {
+    "id": "2fdd8d8f076f4da6",
+    "text": "Yes! Pencil!",
+    "out": "public/audio/2fdd8d8f076f4da6.mp3"
+  },
+  {
+    "id": "499b5fd50615c99d",
+    "text": "Yes! Penguin!",
+    "out": "public/audio/499b5fd50615c99d.mp3"
+  },
+  {
+    "id": "d5c2cf9787569882",
+    "text": "Yes! Piano!",
+    "out": "public/audio/d5c2cf9787569882.mp3"
+  },
+  {
+    "id": "e39e6f16135f4966",
+    "text": "Yes! Pig!",
+    "out": "public/audio/e39e6f16135f4966.mp3"
+  },
+  {
+    "id": "34064faa777c6b86",
+    "text": "Yes! Pizza!",
+    "out": "public/audio/34064faa777c6b86.mp3"
+  },
+  {
+    "id": "391b7d3708aed8ff",
+    "text": "Yes! Puppy starts with P!",
+    "out": "public/audio/391b7d3708aed8ff.mp3"
+  },
+  {
+    "id": "1a3b107cca57f24a",
+    "text": "Yes! Puppy!",
+    "out": "public/audio/1a3b107cca57f24a.mp3"
+  },
+  {
+    "id": "0043f3bf63f71839",
+    "text": "Yes! Quack!",
+    "out": "public/audio/0043f3bf63f71839.mp3"
+  },
+  {
+    "id": "97cc7f69364b0ccb",
+    "text": "Yes! Quarter starts with Q!",
+    "out": "public/audio/97cc7f69364b0ccb.mp3"
+  },
+  {
+    "id": "51261ebb95f2dc52",
+    "text": "Yes! Quarter!",
+    "out": "public/audio/51261ebb95f2dc52.mp3"
+  },
+  {
+    "id": "a64edd1dfe4d2b58",
+    "text": "Yes! Queen!",
+    "out": "public/audio/a64edd1dfe4d2b58.mp3"
+  },
+  {
+    "id": "bc7012519b1e7cd5",
+    "text": "Yes! Question!",
+    "out": "public/audio/bc7012519b1e7cd5.mp3"
+  },
+  {
+    "id": "e35a21d31939669c",
+    "text": "Yes! Quiet!",
+    "out": "public/audio/e35a21d31939669c.mp3"
+  },
+  {
+    "id": "4d31fef8adb3b39b",
+    "text": "Yes! Quilt!",
+    "out": "public/audio/4d31fef8adb3b39b.mp3"
+  },
+  {
+    "id": "b75572bae4145381",
+    "text": "Yes! Rabbit!",
+    "out": "public/audio/b75572bae4145381.mp3"
+  },
+  {
+    "id": "2f0466f1ec2aec4c",
+    "text": "Yes! Rain starts with R!",
+    "out": "public/audio/2f0466f1ec2aec4c.mp3"
+  },
+  {
+    "id": "ea15238c39fa0ea2",
+    "text": "Yes! Rain!",
+    "out": "public/audio/ea15238c39fa0ea2.mp3"
+  },
+  {
+    "id": "cba9fba2b559d694",
+    "text": "Yes! Rainbow!",
+    "out": "public/audio/cba9fba2b559d694.mp3"
+  },
+  {
+    "id": "916c383581bec40a",
+    "text": "Yes! Robot!",
+    "out": "public/audio/916c383581bec40a.mp3"
+  },
+  {
+    "id": "10613acb68b551fe",
+    "text": "Yes! Rocket!",
+    "out": "public/audio/10613acb68b551fe.mp3"
+  },
+  {
+    "id": "9d30808be1001028",
+    "text": "Yes! Rose!",
+    "out": "public/audio/9d30808be1001028.mp3"
+  },
+  {
+    "id": "986178649fc16a01",
+    "text": "Yes! Ship!",
+    "out": "public/audio/986178649fc16a01.mp3"
+  },
+  {
+    "id": "aef37fda50611c11",
+    "text": "Yes! Six!",
+    "out": "public/audio/aef37fda50611c11.mp3"
+  },
+  {
+    "id": "e4745323ac01f202",
+    "text": "Yes! Smile!",
+    "out": "public/audio/e4745323ac01f202.mp3"
+  },
+  {
+    "id": "49b8ffc062726f91",
+    "text": "Yes! Snake!",
+    "out": "public/audio/49b8ffc062726f91.mp3"
+  },
+  {
+    "id": "4a2ac4caae61e395",
+    "text": "Yes! Sock starts with S!",
+    "out": "public/audio/4a2ac4caae61e395.mp3"
+  },
+  {
+    "id": "67df715465a5a0da",
+    "text": "Yes! Sock!",
+    "out": "public/audio/67df715465a5a0da.mp3"
+  },
+  {
+    "id": "483fc924ea259519",
+    "text": "Yes! Star!",
+    "out": "public/audio/483fc924ea259519.mp3"
+  },
+  {
+    "id": "bb9d1b0bb4daf6bc",
+    "text": "Yes! Sun!",
+    "out": "public/audio/bb9d1b0bb4daf6bc.mp3"
+  },
+  {
+    "id": "0d972eb8bbe33128",
+    "text": "Yes! Tiger!",
+    "out": "public/audio/0d972eb8bbe33128.mp3"
+  },
+  {
+    "id": "e2ed1436be9d90fd",
+    "text": "Yes! Tomato!",
+    "out": "public/audio/e2ed1436be9d90fd.mp3"
+  },
+  {
+    "id": "f3c49ab301da7eb9",
+    "text": "Yes! Tooth starts with T!",
+    "out": "public/audio/f3c49ab301da7eb9.mp3"
+  },
+  {
+    "id": "29340f65060ee25e",
+    "text": "Yes! Tooth!",
+    "out": "public/audio/29340f65060ee25e.mp3"
+  },
+  {
+    "id": "60028d29ac869314",
+    "text": "Yes! Train!",
+    "out": "public/audio/60028d29ac869314.mp3"
+  },
+  {
+    "id": "c6afe21a4bbda62e",
+    "text": "Yes! Tree!",
+    "out": "public/audio/c6afe21a4bbda62e.mp3"
+  },
+  {
+    "id": "c3fff48e5e24b445",
+    "text": "Yes! Turtle!",
+    "out": "public/audio/c3fff48e5e24b445.mp3"
+  },
+  {
+    "id": "a141e5da7f766c9c",
+    "text": "Yes! Ukulele starts with U!",
+    "out": "public/audio/a141e5da7f766c9c.mp3"
+  },
+  {
+    "id": "b3c975e30ed0f135",
+    "text": "Yes! Ukulele!",
+    "out": "public/audio/b3c975e30ed0f135.mp3"
+  },
+  {
+    "id": "efc8ce4efb3073f6",
+    "text": "Yes! Umbrella!",
+    "out": "public/audio/efc8ce4efb3073f6.mp3"
+  },
+  {
+    "id": "62971d8b1120f60d",
+    "text": "Yes! Under!",
+    "out": "public/audio/62971d8b1120f60d.mp3"
+  },
+  {
+    "id": "c35b7f8c29205f96",
+    "text": "Yes! Unicorn!",
+    "out": "public/audio/c35b7f8c29205f96.mp3"
+  },
+  {
+    "id": "73a9154a871c6a13",
+    "text": "Yes! Uniform!",
+    "out": "public/audio/73a9154a871c6a13.mp3"
+  },
+  {
+    "id": "d4786bf672eb85dc",
+    "text": "Yes! Up!",
+    "out": "public/audio/d4786bf672eb85dc.mp3"
+  },
+  {
+    "id": "f70a27d757339ed6",
+    "text": "Yes! Vacuum starts with V!",
+    "out": "public/audio/f70a27d757339ed6.mp3"
+  },
+  {
+    "id": "a920427bfe7d87e5",
+    "text": "Yes! Vacuum!",
+    "out": "public/audio/a920427bfe7d87e5.mp3"
+  },
+  {
+    "id": "38b8659689b100e9",
+    "text": "Yes! Van!",
+    "out": "public/audio/38b8659689b100e9.mp3"
+  },
+  {
+    "id": "277a3a7832d4d661",
+    "text": "Yes! Vegetable!",
+    "out": "public/audio/277a3a7832d4d661.mp3"
+  },
+  {
+    "id": "c3c0110279fa8f57",
+    "text": "Yes! Vest!",
+    "out": "public/audio/c3c0110279fa8f57.mp3"
+  },
+  {
+    "id": "c45a242521cb344a",
+    "text": "Yes! Violin!",
+    "out": "public/audio/c45a242521cb344a.mp3"
+  },
+  {
+    "id": "d06c1bd7e64a6d5a",
+    "text": "Yes! Volcano!",
+    "out": "public/audio/d06c1bd7e64a6d5a.mp3"
+  },
+  {
+    "id": "4d4b6aee08ced3b3",
+    "text": "Yes! Wagon starts with W!",
+    "out": "public/audio/4d4b6aee08ced3b3.mp3"
+  },
+  {
+    "id": "9e3f0af4abfc6cdb",
+    "text": "Yes! Wagon!",
+    "out": "public/audio/9e3f0af4abfc6cdb.mp3"
+  },
+  {
+    "id": "84c10bf0587da5e1",
+    "text": "Yes! Watch!",
+    "out": "public/audio/84c10bf0587da5e1.mp3"
+  },
+  {
+    "id": "5f7f0dc68e5cae6b",
+    "text": "Yes! Water!",
+    "out": "public/audio/5f7f0dc68e5cae6b.mp3"
+  },
+  {
+    "id": "215f70c9b9d2dd93",
+    "text": "Yes! Whale!",
+    "out": "public/audio/215f70c9b9d2dd93.mp3"
+  },
+  {
+    "id": "4c8732e78d21d6cc",
+    "text": "Yes! Window!",
+    "out": "public/audio/4c8732e78d21d6cc.mp3"
+  },
+  {
+    "id": "95796fd6eb02cf1c",
+    "text": "Yes! Worm!",
+    "out": "public/audio/95796fd6eb02cf1c.mp3"
+  },
+  {
+    "id": "01daa2c53456e763",
+    "text": "Yes! X-ray!",
+    "out": "public/audio/01daa2c53456e763.mp3"
+  },
+  {
+    "id": "3d1be015f1037bad",
+    "text": "Yes! Xylophone!",
+    "out": "public/audio/3d1be015f1037bad.mp3"
+  },
+  {
+    "id": "144a9855b15d972e",
+    "text": "Yes! Yacht!",
+    "out": "public/audio/144a9855b15d972e.mp3"
+  },
+  {
+    "id": "8e8005c9b1df238e",
+    "text": "Yes! Yak!",
+    "out": "public/audio/8e8005c9b1df238e.mp3"
+  },
+  {
+    "id": "e51d2c872976bd89",
+    "text": "Yes! Yarn!",
+    "out": "public/audio/e51d2c872976bd89.mp3"
+  },
+  {
+    "id": "db48e9bad9dd858a",
+    "text": "Yes! Yellow!",
+    "out": "public/audio/db48e9bad9dd858a.mp3"
+  },
+  {
+    "id": "f7a06c26737d84e6",
+    "text": "Yes! Yo-yo!",
+    "out": "public/audio/f7a06c26737d84e6.mp3"
+  },
+  {
+    "id": "7f2ebba18d83eb94",
+    "text": "Yes! Yogurt starts with Y!",
+    "out": "public/audio/7f2ebba18d83eb94.mp3"
+  },
+  {
+    "id": "b31a59bf082b4627",
+    "text": "Yes! Yogurt!",
+    "out": "public/audio/b31a59bf082b4627.mp3"
+  },
+  {
+    "id": "261293f474b743c5",
+    "text": "Yes! Zebra!",
+    "out": "public/audio/261293f474b743c5.mp3"
+  },
+  {
+    "id": "8f1e2bba8aa0bdee",
+    "text": "Yes! Zero!",
+    "out": "public/audio/8f1e2bba8aa0bdee.mp3"
+  },
+  {
+    "id": "05e8708957887cab",
+    "text": "Yes! Zigzag!",
+    "out": "public/audio/05e8708957887cab.mp3"
+  },
+  {
+    "id": "9def51433a888be5",
+    "text": "Yes! Zipper!",
+    "out": "public/audio/9def51433a888be5.mp3"
+  },
+  {
+    "id": "367c4f044cb358a9",
+    "text": "Yes! Zoo!",
+    "out": "public/audio/367c4f044cb358a9.mp3"
+  },
+  {
+    "id": "025edab021f94c3e",
+    "text": "Yes! Zucchini starts with Z!",
+    "out": "public/audio/025edab021f94c3e.mp3"
+  },
+  {
+    "id": "233ac4c45a9a6e37",
+    "text": "Yes! Zucchini!",
+    "out": "public/audio/233ac4c45a9a6e37.mp3"
+  },
+  {
+    "id": "2fbc6155c29379fd",
+    "text": "Yogurt",
+    "out": "public/audio/2fbc6155c29379fd.mp3"
+  },
+  {
+    "id": "ccf144acdacace5f",
+    "text": "You found Anchor! Great eyes!",
+    "out": "public/audio/ccf144acdacace5f.mp3"
+  },
+  {
+    "id": "42a365bb05dfc24d",
+    "text": "You found big and little A! Awesome!",
+    "out": "public/audio/42a365bb05dfc24d.mp3"
+  },
+  {
+    "id": "e9af2c673f1a32f4",
+    "text": "You found big and little B! Awesome!",
+    "out": "public/audio/e9af2c673f1a32f4.mp3"
+  },
+  {
+    "id": "d60b46f6621d00f2",
+    "text": "You found big and little C! Awesome!",
+    "out": "public/audio/d60b46f6621d00f2.mp3"
+  },
+  {
+    "id": "8980702967be37a9",
+    "text": "You found big and little D! Awesome!",
+    "out": "public/audio/8980702967be37a9.mp3"
+  },
+  {
+    "id": "d56192b011da2a78",
+    "text": "You found big and little E! Awesome!",
+    "out": "public/audio/d56192b011da2a78.mp3"
+  },
+  {
+    "id": "976c8f1b31029228",
+    "text": "You found big and little F! Awesome!",
+    "out": "public/audio/976c8f1b31029228.mp3"
+  },
+  {
+    "id": "cffcc8b01e00b569",
+    "text": "You found big and little G! Awesome!",
+    "out": "public/audio/cffcc8b01e00b569.mp3"
+  },
+  {
+    "id": "dc3048bb127a716e",
+    "text": "You found big and little H! Awesome!",
+    "out": "public/audio/dc3048bb127a716e.mp3"
+  },
+  {
+    "id": "0a10e7eecee0bcce",
+    "text": "You found big and little I! Awesome!",
+    "out": "public/audio/0a10e7eecee0bcce.mp3"
+  },
+  {
+    "id": "eaad3a44c761fe3b",
+    "text": "You found big and little J! Awesome!",
+    "out": "public/audio/eaad3a44c761fe3b.mp3"
+  },
+  {
+    "id": "2f364a67b52e475c",
+    "text": "You found big and little K! Awesome!",
+    "out": "public/audio/2f364a67b52e475c.mp3"
+  },
+  {
+    "id": "ec3ad18f255d7de2",
+    "text": "You found big and little L! Awesome!",
+    "out": "public/audio/ec3ad18f255d7de2.mp3"
+  },
+  {
+    "id": "9762946ba00e9616",
+    "text": "You found big and little M! Awesome!",
+    "out": "public/audio/9762946ba00e9616.mp3"
+  },
+  {
+    "id": "d900a8e4398ca760",
+    "text": "You found big and little N! Awesome!",
+    "out": "public/audio/d900a8e4398ca760.mp3"
+  },
+  {
+    "id": "6f1bdd09bd30103b",
+    "text": "You found big and little O! Awesome!",
+    "out": "public/audio/6f1bdd09bd30103b.mp3"
+  },
+  {
+    "id": "757299e6cb52c259",
+    "text": "You found big and little P! Awesome!",
+    "out": "public/audio/757299e6cb52c259.mp3"
+  },
+  {
+    "id": "f2cb9540d221d33c",
+    "text": "You found big and little Q! Awesome!",
+    "out": "public/audio/f2cb9540d221d33c.mp3"
+  },
+  {
+    "id": "5d3c842e73d0d8f8",
+    "text": "You found big and little R! Awesome!",
+    "out": "public/audio/5d3c842e73d0d8f8.mp3"
+  },
+  {
+    "id": "12ed1a3d84d0dccf",
+    "text": "You found big and little S! Awesome!",
+    "out": "public/audio/12ed1a3d84d0dccf.mp3"
+  },
+  {
+    "id": "56518caff4ba6f0e",
+    "text": "You found big and little T! Awesome!",
+    "out": "public/audio/56518caff4ba6f0e.mp3"
+  },
+  {
+    "id": "4a5432c05a9e202c",
+    "text": "You found big and little U! Awesome!",
+    "out": "public/audio/4a5432c05a9e202c.mp3"
+  },
+  {
+    "id": "de5dabb019cca6a3",
+    "text": "You found big and little V! Awesome!",
+    "out": "public/audio/de5dabb019cca6a3.mp3"
+  },
+  {
+    "id": "61535da2088a1e51",
+    "text": "You found big and little W! Awesome!",
+    "out": "public/audio/61535da2088a1e51.mp3"
+  },
+  {
+    "id": "2074931996f4bc43",
+    "text": "You found big and little X! Awesome!",
+    "out": "public/audio/2074931996f4bc43.mp3"
+  },
+  {
+    "id": "ed94e67ffec723dd",
+    "text": "You found big and little Y! Awesome!",
+    "out": "public/audio/ed94e67ffec723dd.mp3"
+  },
+  {
+    "id": "2aa07a9ec5b84d80",
+    "text": "You found big and little Z! Awesome!",
+    "out": "public/audio/2aa07a9ec5b84d80.mp3"
+  },
+  {
+    "id": "96f938c9917d9323",
+    "text": "You found Bird! Great eyes!",
+    "out": "public/audio/96f938c9917d9323.mp3"
+  },
+  {
+    "id": "bac1bb8319999c21",
+    "text": "You found Cup! Great eyes!",
+    "out": "public/audio/bac1bb8319999c21.mp3"
+  },
+  {
+    "id": "da4c1297bfe14412",
+    "text": "You found Door! Great eyes!",
+    "out": "public/audio/da4c1297bfe14412.mp3"
+  },
+  {
+    "id": "08902f8f50763650",
+    "text": "You found Elf! Great eyes!",
+    "out": "public/audio/08902f8f50763650.mp3"
+  },
+  {
+    "id": "5acfc15080600138",
+    "text": "You found Fairy! Great eyes!",
+    "out": "public/audio/5acfc15080600138.mp3"
+  },
+  {
+    "id": "16826a1c37cd842d",
+    "text": "You found Goat! Great eyes!",
+    "out": "public/audio/16826a1c37cd842d.mp3"
+  },
+  {
+    "id": "7c23c81a0e9d7e23",
+    "text": "You found Helicopter! Great eyes!",
+    "out": "public/audio/7c23c81a0e9d7e23.mp3"
+  },
+  {
+    "id": "69e0b315ed4e966b",
+    "text": "You found Iguana! Great eyes!",
+    "out": "public/audio/69e0b315ed4e966b.mp3"
+  },
+  {
+    "id": "9ff5b7ede770d97d",
+    "text": "You found Jet! Great eyes!",
+    "out": "public/audio/9ff5b7ede770d97d.mp3"
+  },
+  {
+    "id": "ecd8cbecde763869",
+    "text": "You found Kitten! Great eyes!",
+    "out": "public/audio/ecd8cbecde763869.mp3"
+  },
+  {
+    "id": "6ec438260f1ff1de",
+    "text": "You found Ladder! Great eyes!",
+    "out": "public/audio/6ec438260f1ff1de.mp3"
+  },
+  {
+    "id": "ba664b422c84c5a9",
+    "text": "You found Mix! Great eyes!",
+    "out": "public/audio/ba664b422c84c5a9.mp3"
+  },
+  {
+    "id": "7a060379142bb132",
+    "text": "You found Mushroom! Great eyes!",
+    "out": "public/audio/7a060379142bb132.mp3"
+  },
+  {
+    "id": "0924e3622cb0c803",
+    "text": "You found Net! Great eyes!",
+    "out": "public/audio/0924e3622cb0c803.mp3"
+  },
+  {
+    "id": "29d4758d6845cb58",
+    "text": "You found Ostrich! Great eyes!",
+    "out": "public/audio/29d4758d6845cb58.mp3"
+  },
+  {
+    "id": "decf5439b09970aa",
+    "text": "You found Puppy! Great eyes!",
+    "out": "public/audio/decf5439b09970aa.mp3"
+  },
+  {
+    "id": "18a7c4256518b95b",
+    "text": "You found Quarter! Great eyes!",
+    "out": "public/audio/18a7c4256518b95b.mp3"
+  },
+  {
+    "id": "0c847dd81f690911",
+    "text": "You found Rain! Great eyes!",
+    "out": "public/audio/0c847dd81f690911.mp3"
+  },
+  {
+    "id": "50d82607ee126d64",
+    "text": "You found Sock! Great eyes!",
+    "out": "public/audio/50d82607ee126d64.mp3"
+  },
+  {
+    "id": "4c53ef0d29c60179",
+    "text": "You found Tooth! Great eyes!",
+    "out": "public/audio/4c53ef0d29c60179.mp3"
+  },
+  {
+    "id": "ee461e98c3556013",
+    "text": "You found Ukulele! Great eyes!",
+    "out": "public/audio/ee461e98c3556013.mp3"
+  },
+  {
+    "id": "d403f0e2ee642707",
+    "text": "You found Vacuum! Great eyes!",
+    "out": "public/audio/d403f0e2ee642707.mp3"
+  },
+  {
+    "id": "48db6549025062ad",
+    "text": "You found Wagon! Great eyes!",
+    "out": "public/audio/48db6549025062ad.mp3"
+  },
+  {
+    "id": "40e5013677af65f3",
+    "text": "You found Yogurt! Great eyes!",
+    "out": "public/audio/40e5013677af65f3.mp3"
+  },
+  {
+    "id": "e61f2552e325a35c",
+    "text": "You found Zucchini! Great eyes!",
+    "out": "public/audio/e61f2552e325a35c.mp3"
+  },
+  {
+    "id": "9c7bd540bfe9b8aa",
+    "text": "You matched them all! Super memory!",
+    "out": "public/audio/9c7bd540bfe9b8aa.mp3"
+  },
+  {
+    "id": "586f217edb47dd9b",
+    "text": "Zany and fun!",
+    "out": "public/audio/586f217edb47dd9b.mp3"
+  },
+  {
+    "id": "bba49cd7dce9d0ab",
+    "text": "Zero worries — just a zigzag path past a zucchini patch.",
+    "out": "public/audio/bba49cd7dce9d0ab.mp3"
+  },
+  {
+    "id": "5d58745357ed5263",
+    "text": "Zucchini",
+    "out": "public/audio/5d58745357ed5263.mp3"
+  }
+]
