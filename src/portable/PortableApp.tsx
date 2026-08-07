@@ -27,20 +27,36 @@ import { ThemeToggle } from "@/components/alphabet/ThemeToggle";
 import { getWordLesson, wordRequiresVideo } from "@/data/word-lessons";
 import { TracePad } from "@/components/alphabet/TracePad";
 import { MatchGame } from "@/components/alphabet/MatchGame";
+import { MemoryMatch } from "@/components/alphabet/MemoryMatch";
 import { ISpy } from "@/components/alphabet/ISpy";
+import { StoryMode } from "@/components/alphabet/StoryMode";
+import { CaseHunt } from "@/components/alphabet/CaseHunt";
+import { GfxToggle } from "@/components/alphabet/GfxToggle";
 import { StarBar } from "@/components/alphabet/StarBar";
 import { markSection, markVisited, markWordSeen, useProgress } from "@/lib/progress";
 import { speak, speakLetter } from "@/lib/speak";
 import { cn } from "@/lib/utils";
 
-type Tab = "words" | "sound" | "trace" | "match" | "ispy" | "facts";
+type Tab =
+  | "words"
+  | "sound"
+  | "trace"
+  | "match"
+  | "memory"
+  | "ispy"
+  | "story"
+  | "cases"
+  | "facts";
 
 const TABS: { id: Tab; label: string; icon: typeof BookOpen }[] = [
   { id: "words", label: "Words", icon: BookOpen },
   { id: "sound", label: "Sound", icon: Volume2 },
   { id: "trace", label: "Trace", icon: Pencil },
   { id: "match", label: "Match", icon: Gamepad2 },
+  { id: "memory", label: "Pairs", icon: Gamepad2 },
   { id: "ispy", label: "I Spy", icon: Eye },
+  { id: "story", label: "Story", icon: BookOpen },
+  { id: "cases", label: "Aa hunt", icon: Sparkles },
   { id: "facts", label: "Fun", icon: Info },
 ];
 
@@ -93,6 +109,11 @@ function HomeView() {
           </p>
         </div>
         <div className="flex flex-col items-start gap-2 sm:items-end">
+          <div className="flex flex-wrap gap-2">
+            <VoiceToggle compact />
+            <ThemeToggle compact />
+            <GfxToggle compact />
+          </div>
           <StarBar />
           <div className="w-full min-w-[180px] rounded-[var(--radius-pill)] border-2 border-border bg-surface px-3 py-2 sm:w-auto">
             <div className="mb-1 flex justify-between text-[10px] font-bold uppercase tracking-wide text-muted">
@@ -162,7 +183,7 @@ function HomeView() {
 
       <footer className="mt-10 space-y-2 text-center text-sm text-muted">
         <p className="font-medium">
-          Offline portable package · Progress saves on this device · 156 posters · AI voice clips
+          Offline portable · Progress on this device · 156 posters + videos · AI voice · no internet
         </p>
         <p className="text-xs">
           Tip: keep this whole folder together. Open <strong>index.html</strong> anytime — no install.
@@ -216,6 +237,7 @@ function LetterView({ entry }: { entry: LetterEntry }) {
         <div className="flex items-center gap-2">
           <VoiceToggle compact />
           <ThemeToggle compact />
+          <GfxToggle compact />
           <StarBar />
         </div>
       </div>
@@ -353,7 +375,10 @@ function LetterView({ entry }: { entry: LetterEntry }) {
 
       {tab === "trace" && <TracePad letter={displayLetter} accent={entry.accent} />}
       {tab === "match" && <MatchGame entry={entry} />}
+      {tab === "memory" && <MemoryMatch entry={entry} />}
       {tab === "ispy" && <ISpy entry={entry} />}
+      {tab === "story" && <StoryMode entry={entry} />}
+      {tab === "cases" && <CaseHunt entry={entry} />}
 
       {tab === "facts" && (
         <button

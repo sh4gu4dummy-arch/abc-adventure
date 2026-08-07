@@ -272,3 +272,21 @@ export function __resetProfilesForTests() {
   cache = emptyStore;
   cacheRaw = null;
 }
+
+/** Ensure a player exists so progress saves (portable / first launch). */
+export function ensureDefaultProfile(name = "Explorer"): PlayerProfile {
+  const s = readStore();
+  if (s.activeId) {
+    const cur = s.profiles.find((p) => p.id === s.activeId);
+    if (cur) return cur;
+  }
+  if (s.profiles.length > 0) {
+    const first = s.profiles[0]!;
+    selectProfile(first.id);
+    return first;
+  }
+  const created = createProfile({ name, avatar: "star" });
+  selectProfile(created.id);
+  return created;
+}
+

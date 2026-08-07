@@ -1,8 +1,27 @@
 {
-  "name": "ABC-Adventure-Portable.zip",
-  "bytes": 21194789,
-  "mb": 20.2,
-  "builtAt": "2026-08-07T02:22:56.859Z",
-  "sha256_12": "710ed9513f2e",
-  "files": 1129
+  "builtAt": "2026-08-07T10:07:31.836Z",
+  "portableApp": {
+    "name": "ABC-Adventure-Portable.zip",
+    "bytes": 131422688,
+    "mb": 125.3,
+    "sha256_12": "4d20ecc261e6",
+    "folder": "ABC-Adventure",
+    "files": 2742,
+    "includes": [
+      "posters",
+      "letters",
+      "videos",
+      "audio",
+      "fonts",
+      "app.js",
+      "app.css"
+    ]
+  },
+  "sourceCode": {
+    "name": "ABC-Adventure-Source.zip",
+    "bytes": 132102115,
+    "mb": 126,
+    "sha256_12": "084e7a8f664c",
+    "note": "Full project source without node_modules. Run npm install after unzip."
+  }
 }
