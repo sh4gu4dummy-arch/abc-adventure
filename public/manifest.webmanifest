@@ -4,15 +4,27 @@
   "description": "Cartoon alphabet learning for young learners — 26 letters, word posters, sounds, tracing, and games.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#fff8f0",
+  "background_color": "#fff5eb",
   "theme_color": "#ff6b6b",
   "lang": "en",
   "icons": [
     {
-      "src": "/letters/a.webp",
-      "sizes": "512x512",
-      "type": "image/webp",
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
       "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/app-icon-512-round.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }

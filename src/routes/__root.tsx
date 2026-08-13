@@ -13,6 +13,7 @@ import { RequirePlayer } from "@/components/alphabet/ProfileGate";
 import { initLayoutMode } from "@/lib/layout-mode";
 import { initGfxMode } from "@/lib/gfx-pref";
 import { initThemeMode } from "@/lib/theme-pref";
+import { ensureDefaultProfile } from "@/lib/profiles";
 import {
   isEmbeddedPreview,
   isGrokSandboxHost,
@@ -50,6 +51,9 @@ export const Route = createRootRoute({
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "manifest", href: "/manifest.webmanifest" },
+      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+      { rel: "icon", href: "/favicon.ico", sizes: "any" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
     ],
   }),
   component: RootShell,
@@ -73,6 +77,8 @@ function RootShell() {
     initLayoutMode();
     initGfxMode();
     initThemeMode();
+    // Local player — no Grok account / cookies required (critical in iframe preview)
+    ensureDefaultProfile("Explorer");
   }, []);
 
   useEffect(() => {

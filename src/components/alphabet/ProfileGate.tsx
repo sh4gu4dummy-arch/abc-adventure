@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useState } from "react";
 import {
   Award,
   ExternalLink,
@@ -16,6 +16,7 @@ import {
   formatLastPlayed,
   profileStats,
   selectProfile,
+  ensureDefaultProfile,
   useActiveProfile,
   useProfileStore,
   type AvatarId,
@@ -53,6 +54,18 @@ export function ProfileGate({
   useEffect(() => {
     setEmbedded(isEmbeddedPreview());
   }, []);
+
+  // Embedded preview: skip the gate — local profile, zero cookie/sign-in.
+  useEffect(() => {
+    if (mode !== "gate") return;
+    if (typeof window === "undefined") return;
+    if (!isEmbeddedPreview() && !isGrokSandboxHost()) return;
+    void (async () => {
+      await requestPreviewStorageAccess();
+      ensureDefaultProfile("Explorer");
+      onDone?.();
+    })();
+  }, [mode, onDone]);
 
   const sorted = useMemo(
     () => [...store.profiles].sort((a, b) => b.lastPlayedAt - a.lastPlayedAt),
@@ -128,14 +141,16 @@ export function ProfileGate({
               <Sparkles className="size-5" />
               Play now
             </button>
+            {/* Play now uses on-device storage only — no Grok cookies needed.
+                Optional escape hatch if the host chrome still shows a cookie note. */}
             {embedded && (
               <button
                 type="button"
                 onClick={() => openPreviewTopLevel()}
-                className="pressable flex w-full items-center justify-center gap-2 rounded-[var(--radius-md)] border-2 border-primary/30 bg-primary/10 px-4 py-2.5 text-sm font-bold text-primary"
+                className="pressable flex w-full items-center justify-center gap-2 rounded-[var(--radius-md)] border-2 border-border bg-surface px-4 py-2 text-xs font-semibold text-ink-soft"
               >
-                <ExternalLink className="size-4" />
-                Open full window (best if you see a cookie warning)
+                <ExternalLink className="size-3.5" />
+                Open in full window
               </button>
             )}
           </div>
@@ -300,10 +315,13 @@ export function ProfileGate({
 
 export function RequirePlayer({ children }: { children: React.ReactNode }) {
   const store = useProfileStore();
-  const profile = store.profiles.find((p) => p.id === store.activeId);
-  if (!profile) {
-    return <ProfileGate mode="gate" />;
-  }
+  const profile = store.profiles.find((p) => p.id === store.activeId) ?? null;
+
+  useLayoutEffect(() => {
+    if (!profile) ensureDefaultProfile("Explorer");
+  }, [profile]);
+
+  if (!profile) return null;
   return <>{children}</>;
 }
 

@@ -37,3 +37,24 @@ public/portable/meta.json
 .vscode/
 *.swp
 *~
+
+# Versioned portable packages (large) — kept on disk for downloads, optional in git
+public/portable/*.zip
+public/portable/abc-adventure-*-portable/
+
+# Android / JDK local toolchain (not published)
+.android-sdk/
+.jdk-21/
+# Generated Capacitor web copy (rebuild with cap sync)
+android/app/src/main/assets/public/
+android/app/src/main/assets/capacitor.config.json
+android/app/build/
+android/.gradle/
+android/build/
+android/capacitor-cordova-android-plugins/build/
+android/local.properties
+
+android/app/abc-adventure-release.keystore
+android/captain-definition
+*.keystore
+public/portable/*.apk

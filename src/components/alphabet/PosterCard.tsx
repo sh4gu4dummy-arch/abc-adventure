@@ -51,7 +51,7 @@ export function PosterCard({
           <img
             src={imageSrc}
             alt={`Poster for ${word.word}`}
-            className="poster-art h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+            className="poster-art h-full w-full object-cover motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-out group-hover:scale-[1.03]"
             loading="lazy"
             decoding="async"
             sizes="(max-width: 768px) 45vw, 200px"

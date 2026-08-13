@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">ABC Adventure</string>
+    <string name="title_activity_main">ABC Adventure</string>
+    <string name="package_name">com.abcadventure.letterworld</string>
+    <string name="custom_url_scheme">com.abcadventure.letterworld</string>
+</resources>

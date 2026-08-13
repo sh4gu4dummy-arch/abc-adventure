@@ -68,9 +68,9 @@ const env = (key: string): string | undefined => {
   return value ? value : undefined;
 };
 
-// Explicit off-switch. The deployer sets `VITE_AUTH_ENABLED=true` when it
-// provisions auth; set it to "false" to force auth off everywhere (dev user).
-const authDisabled = env("VITE_AUTH_ENABLED") === "false";
+// Letter World defaults to local profiles only. Cloud sign-in is opt-in:
+// deployer / env must set `VITE_AUTH_ENABLED=true` to enable federation.
+const authDisabled = env("VITE_AUTH_ENABLED") !== "true";
 
 // Broker federation creds: the deployer injects a per-app client when deployed;
 // otherwise fall back to the shared live-preview client, which the broker accepts

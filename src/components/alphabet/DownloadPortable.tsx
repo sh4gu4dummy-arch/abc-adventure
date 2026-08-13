@@ -1,24 +1,46 @@
 import { useEffect, useState } from "react";
-import { Download, Check, Loader2, HardDrive, Code2, AppWindow } from "lucide-react";
+import {
+  Download,
+  Check,
+  Loader2,
+  HardDrive,
+  Code2,
+  AppWindow,
+  FolderArchive,
+  Smartphone,
+} from "lucide-react";
+import {
+  APP_VERSION,
+  APP_VERSION_LABEL,
+  packageFileName,
+  packagePublicPath,
+} from "@/lib/version";
 
 type PackageMeta = {
   name: string;
   mb: number;
   bytes: number;
   sha256_12?: string;
+  path?: string;
+  kind?: string;
+  note?: string;
 };
 
 type MetaFile = {
+  version?: string;
+  versionLabel?: string;
   builtAt?: string;
   portableApp?: PackageMeta & { files?: number };
+  codeOnly?: PackageMeta;
   sourceCode?: PackageMeta;
-  // legacy shape
-  name?: string;
-  mb?: number;
+  apk?: PackageMeta;
+  packages?: {
+    portable?: PackageMeta;
+    code?: PackageMeta;
+    codebase?: PackageMeta;
+    apk?: PackageMeta;
+  };
 };
-
-const APP_ZIP = "/portable/ABC-Adventure-Portable.zip";
-const SOURCE_ZIP = "/portable/ABC-Adventure-Source.zip";
 
 function DownloadCard({
   href,
@@ -57,6 +79,9 @@ function DownloadCard({
         <div className="min-w-0">
           <h3 className="font-display text-lg font-bold text-ink">{title}</h3>
           <p className="mt-1 text-sm font-medium leading-snug text-ink-soft">{blurb}</p>
+          <p className="mt-1.5 break-all font-mono text-[10px] font-semibold text-muted">
+            {filename}
+          </p>
           {typeof mb === "number" && (
             <p className="mt-1 text-xs font-bold uppercase tracking-wide text-muted">
               ~{mb} MB ZIP
@@ -85,7 +110,10 @@ function DownloadCard({
 }
 
 /**
- * Offline downloads: playable HTML app + full source codebase.
+ * Versioned offline downloads:
+ *  - Portable app (playable)
+ *  - Code only (essential source, small)
+ *  - Codebase (source + all assets)
  */
 export function DownloadPortable({ className }: { className?: string }) {
   const [meta, setMeta] = useState<MetaFile | null>(null);
@@ -98,15 +126,55 @@ export function DownloadPortable({ className }: { className?: string }) {
         if (!cancelled && j) setMeta(j as MetaFile);
       })
       .catch(() => {
-        /* optional */
+        /* optional until packages are built */
       });
     return () => {
       cancelled = true;
     };
   }, []);
 
-  const appMb = meta?.portableApp?.mb ?? meta?.mb;
-  const srcMb = meta?.sourceCode?.mb;
+  const version = meta?.version ?? APP_VERSION;
+  const label = meta?.versionLabel ?? APP_VERSION_LABEL;
+
+  const portableName =
+    meta?.packages?.portable?.name ??
+    meta?.portableApp?.name ??
+    packageFileName("portable", version);
+  const codeName =
+    meta?.packages?.code?.name ??
+    meta?.codeOnly?.name ??
+    packageFileName("code", version);
+  const codebaseName =
+    meta?.packages?.codebase?.name ??
+    meta?.sourceCode?.name ??
+    packageFileName("codebase", version);
+  const apkName =
+    meta?.packages?.apk?.name ??
+    meta?.apk?.name ??
+    packageFileName("apk", version);
+
+  const portableHref =
+    meta?.packages?.portable?.path ??
+    meta?.portableApp?.path ??
+    packagePublicPath("portable", version);
+  const codeHref =
+    meta?.packages?.code?.path ??
+    meta?.codeOnly?.path ??
+    packagePublicPath("code", version);
+  const codebaseHref =
+    meta?.packages?.codebase?.path ??
+    meta?.sourceCode?.path ??
+    packagePublicPath("codebase", version);
+  const apkHref =
+    meta?.packages?.apk?.path ??
+    meta?.apk?.path ??
+    packagePublicPath("apk", version);
+
+  const appMb = meta?.packages?.portable?.mb ?? meta?.portableApp?.mb;
+  const codeMb = meta?.packages?.code?.mb ?? meta?.codeOnly?.mb;
+  const codebaseMb = meta?.packages?.codebase?.mb ?? meta?.sourceCode?.mb;
+  const apkMb = meta?.packages?.apk?.mb ?? meta?.apk?.mb;
+
   const built = meta?.builtAt
     ? new Date(meta.builtAt).toLocaleDateString(undefined, {
         year: "numeric",
@@ -116,44 +184,65 @@ export function DownloadPortable({ className }: { className?: string }) {
     : null;
 
   return (
-    <section
-      className={className}
-      aria-label="Offline downloads"
-    >
+    <section className={className} aria-label="Offline downloads">
       <div className="mb-3 flex flex-wrap items-end justify-between gap-2">
         <div>
           <h2 className="font-display text-xl font-bold text-ink sm:text-2xl">
             Take it offline
           </h2>
           <p className="mt-1 max-w-xl text-sm font-medium text-ink-soft">
-            Download a ready-to-play offline app, or the full project source to edit and rebuild.
-            Both work without an internet connection after download.
+            Every file name includes the version so you always know what you
+            downloaded. Packages are archives — they download, they never open
+            the app in a new tab.
           </p>
         </div>
-        {built && (
-          <p className="text-[11px] font-bold uppercase tracking-wide text-muted">
-            Packages built {built}
+        <div className="text-right">
+          <p className="rounded-[var(--radius-pill)] border-2 border-border bg-surface px-3 py-1 text-xs font-bold uppercase tracking-wide text-ink">
+            {label}
           </p>
-        )}
+          {built && (
+            <p className="mt-1 text-[11px] font-bold uppercase tracking-wide text-muted">
+              Packages built {built}
+            </p>
+          )}
+        </div>
       </div>
 
       <div className="grid gap-3 sm:grid-cols-2">
         <DownloadCard
-          href={APP_ZIP}
-          filename="ABC-Adventure-Portable.zip"
+          href={apkHref}
+          filename={apkName}
+          title="Android APK"
+          blurb="Install on Android (sideload). Full offline Letter World with posters, videos, and voice."
+          icon={Smartphone}
+          mb={apkMb}
+          accent="#1B5E20"
+        />
+        <DownloadCard
+          href={portableHref}
+          filename={portableName}
           title="Portable app"
-          blurb="Unzip and open index.html — posters, videos, voice, games. Perfect for USB sticks and classroom laptops."
+          blurb="Ready to play offline. Unzip and open index.html — posters, videos, voice, games."
           icon={AppWindow}
           mb={appMb}
           accent="var(--color-ink)"
         />
         <DownloadCard
-          href={SOURCE_ZIP}
-          filename="ABC-Adventure-Source.zip"
-          title="Full source code"
-          blurb="Complete codebase (no node_modules). Unzip, run npm install, then npm run dev or rebuild the portable app."
+          href={codeHref}
+          filename={codeName}
+          title="Code only"
+          blurb="Essential source to view and build — no heavy media. Small, fast ZIP."
           icon={Code2}
-          mb={srcMb}
+          mb={codeMb}
+          accent="var(--color-primary)"
+        />
+        <DownloadCard
+          href={codebaseHref}
+          filename={codebaseName}
+          title="Code + assets"
+          blurb="Full project source including all posters, videos, and audio. No node_modules."
+          icon={FolderArchive}
+          mb={codebaseMb}
           accent="var(--color-accent)"
         />
       </div>
@@ -161,8 +250,11 @@ export function DownloadPortable({ className }: { className?: string }) {
       <p className="mt-3 flex items-start gap-1.5 text-xs font-medium leading-snug text-ink-soft sm:text-sm">
         <HardDrive className="mt-0.5 size-3.5 shrink-0 text-muted" />
         <span>
-          Keep each ZIP’s files together after unzipping. Progress saves only on the device
-          that opens the portable app. Source package is for developers / backups.
+          <strong className="text-ink">Android APK</strong> installs on phones/tablets.
+          <strong className="text-ink"> Portable app</strong> is the offline HTML package for computers.
+          <strong className="text-ink"> Code</strong> / <strong className="text-ink">Code + assets</strong>{" "}
+          are source archives (download only). Progress saves on the device that opens the app.
+          Current version: {label}.
         </span>
       </p>
     </section>

@@ -1,17 +1,6 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
-import {
-  ArrowLeft,
-  BookOpen,
-  ChevronLeft,
-  ChevronRight,
-  Eye,
-  Flame,
-  Gamepad2,
-  Pencil,
-  Sparkles,
-  Volume2,
-} from "lucide-react";
+import { ArrowLeft, BookOpen, ChevronLeft, ChevronRight, Flame, Gamepad2, Pencil, Settings2, Sparkles, Volume2 } from "lucide-react";
 import {
   LETTERS,
   getLetter,
@@ -21,20 +10,16 @@ import {
 } from "@/data/alphabet";
 import { getWordLesson, wordRequiresVideo } from "@/data/word-lessons";
 import { CaseHunt } from "@/components/alphabet/CaseHunt";
-import { GfxToggle } from "@/components/alphabet/GfxToggle";
-import { ThemeToggle } from "@/components/alphabet/ThemeToggle";
 import { ISpy } from "@/components/alphabet/ISpy";
-import { LayoutToggle } from "@/components/alphabet/LayoutToggle";
 import { LetterCompleteBanner } from "@/components/alphabet/LetterCompleteBanner";
 import { MatchGame } from "@/components/alphabet/MatchGame";
 import { MemoryMatch } from "@/components/alphabet/MemoryMatch";
 import { PosterCard } from "@/components/alphabet/PosterCard";
 import { PosterLightbox } from "@/components/alphabet/PosterLightbox";
-import { PlayerChip } from "@/components/alphabet/ProfileGate";
+import { PlayerChip, ProfileGate } from "@/components/alphabet/ProfileGate";
 import { StarBar } from "@/components/alphabet/StarBar";
 import { StoryMode } from "@/components/alphabet/StoryMode";
 import { TracePad } from "@/components/alphabet/TracePad";
-import { VoiceToggle } from "@/components/alphabet/VoiceToggle";
 import { WordLessonModal } from "@/components/alphabet/WordLessonModal";
 import {
   getLetterChecklist,
@@ -48,6 +33,14 @@ import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/letter/$letter")({
   component: LetterPage,
+  validateSearch: (s: Record<string, unknown>) => {
+    const raw = String(s.tab ?? "");
+    const tab =
+      raw === "words" || raw === "sound" || raw === "trace" || raw === "games"
+        ? raw
+        : undefined;
+    return tab ? { tab } : {};
+  },
 });
 
 type TabId = "words" | "sound" | "trace" | "games";
@@ -70,14 +63,32 @@ const GAMES: { id: GameId; label: string; blurb: string }[] = [
 
 function LetterPage() {
   const { letter: raw } = Route.useParams();
-  const navigate = useNavigate();
+  const search = Route.useSearch();
   const entry = getLetter(raw);
   const progress = useProgress();
-  const [tab, setTab] = useState<TabId>("words");
+  const initialTab: TabId =
+    search.tab === "words" ||
+    search.tab === "sound" ||
+    search.tab === "trace" ||
+    search.tab === "games"
+      ? search.tab
+      : "words";
+  const [tab, setTab] = useState<TabId>(initialTab);
   const [game, setGame] = useState<GameId>("match");
   const [switching, setSwitching] = useState(false);
   const [lightbox, setLightbox] = useState<WordEntry | null>(null);
   const [lessonWord, setLessonWord] = useState<WordEntry | null>(null);
+
+  useEffect(() => {
+    if (
+      search.tab === "words" ||
+      search.tab === "sound" ||
+      search.tab === "trace" ||
+      search.tab === "games"
+    ) {
+      setTab(search.tab);
+    }
+  }, [search.tab]);
 
   useEffect(() => {
     if (!entry) return;
@@ -131,31 +142,33 @@ function LetterPage() {
   return (
     <main className="app-shell-letter">
       {switching && (
-        // lazy import avoided — ProfileGate switch is on home; keep chip only
-        null
+        <ProfileGate mode="switch" onDone={() => setSwitching(false)} />
       )}
 
-      <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-        <div className="flex flex-wrap items-center gap-2">
+      <div className="letter-toolbar">
+        <div className="flex min-w-0 items-center gap-2">
           <Link
             to="/"
             className="pressable inline-flex items-center gap-1.5 rounded-[var(--radius-pill)] border-2 border-border bg-surface px-3 py-2 text-sm font-bold text-ink"
           >
             <ArrowLeft className="size-4" /> Home
           </Link>
-          <PlayerChip onSwitch={() => setSwitching(false)} />
+          <PlayerChip onSwitch={() => setSwitching(true)} />
           {isToday && (
-            <span className="inline-flex items-center gap-1 rounded-[var(--radius-pill)] bg-primary/12 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-primary">
-              <Flame className="size-3.5" /> Today's letter
+            <span className="hidden items-center gap-1 rounded-[var(--radius-pill)] bg-primary/12 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-primary sm:inline-flex">
+              <Flame className="size-3.5" /> Today
             </span>
           )}
         </div>
-        <div className="flex flex-wrap items-center gap-2">
-          <VoiceToggle />
-          <LayoutToggle compact />
-          <GfxToggle compact />
-          <ThemeToggle compact />
-          <StarBar />
+        <div className="flex shrink-0 items-center gap-1.5">
+          <StarBar compact />
+          <Link
+            to="/settings"
+            className="pressable inline-flex size-10 items-center justify-center rounded-full border-2 border-border bg-surface text-ink"
+            aria-label="Settings"
+          >
+            <Settings2 className="size-5" />
+          </Link>
         </div>
       </div>
 
