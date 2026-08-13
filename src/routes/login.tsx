@@ -29,17 +29,18 @@ function Login() {
           without an account.
         </p>
 
-        {embedded && (
-          <div className="rounded-[var(--radius-md)] border border-amber-300/60 bg-amber-50 px-3 py-2 text-xs font-medium text-amber-900">
-            Preview frame can block cookies. Prefer{" "}
+        {embedded && authEnabled && (
+          <div className="rounded-[var(--radius-md)] border border-border bg-surface-soft px-3 py-2 text-xs font-medium text-ink-soft">
+            Cloud sign-in is optional. Letter World saves progress on this device
+            without cookies.{" "}
             <button
               type="button"
-              className="font-bold underline"
+              className="font-bold text-primary underline"
               onClick={() => openPreviewTopLevel()}
             >
-              open full window
+              Open full window
             </button>{" "}
-            — or use popup sign-in below.
+            only if you want Grok account sign-in.
           </div>
         )}
 

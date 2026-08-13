@@ -14,7 +14,7 @@ import { persistDailyIfNeeded, useDailyPath, useProgress } from "@/lib/progress"
 import { speak } from "@/lib/speak";
 import { cn } from "@/lib/utils";
 
-type MissionTab = "words" | "trace" | "match";
+type MissionTab = "words" | "trace" | "games";
 
 const GOALS: {
   id: "video" | "trace" | "game";
@@ -41,7 +41,7 @@ const GOALS: {
     id: "game",
     label: "Win a mini-game",
     hint: "Match, memory, story, or hunt",
-    tab: "match",
+    tab: "games",
     icon: Gamepad2,
   },
 ];
@@ -119,7 +119,7 @@ export function DailyPath() {
           <Link
             to="/letter/$letter"
             params={{ letter: daily.letter.toLowerCase() }}
-            className="pressable group relative flex shrink-0 items-center gap-3 rounded-[var(--radius-lg)] border-2 border-white/50 px-4 py-3 text-white shadow-[var(--shadow-letter)] sm:min-w-[11rem] sm:flex-col sm:justify-center sm:py-5"
+            className="pressable group relative flex shrink-0 items-center gap-3 rounded-[var(--radius-lg)] border-2 border-white/40 px-3 py-2.5 text-white sm:min-w-[10rem] sm:flex-col sm:justify-center sm:py-4"
             style={{
               background: `linear-gradient(145deg, ${hue} 0%, ${accent} 100%)`,
             }}
@@ -128,14 +128,11 @@ export function DailyPath() {
             }}
             aria-label={`Open letter ${daily.letter} for today's adventure`}
           >
-            <span className="font-display text-5xl font-black leading-none sm:text-6xl">
+            <span className="font-display text-4xl font-black leading-none sm:text-5xl">
               {daily.letter}
             </span>
             <span className="text-left text-xs font-bold uppercase tracking-wide text-white/90 sm:text-center">
               Letter {daily.letter}
-              <span className="mt-0.5 block text-[10px] font-semibold normal-case tracking-normal text-white/75">
-                Tap to open
-              </span>
             </span>
           </Link>
 

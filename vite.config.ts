@@ -129,6 +129,17 @@ export default defineConfig(({ command }) => ({
     host: "0.0.0.0",
     port: 8080,
     strictPort: true,
+    // Android SDK / JDK trees are huge — never watch them (ENOSPC).
+    watch: {
+      ignored: [
+        "**/.android-sdk/**",
+        "**/.jdk-21/**",
+        "**/android/**",
+        "**/public/portable/**",
+        "**/node_modules/**",
+        "**/.git/**",
+      ],
+    },
   },
   resolve: { tsconfigPaths: true },
   plugins: [

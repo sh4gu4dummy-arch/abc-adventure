@@ -7,9 +7,10 @@ Kids alphabet learning app (ages ~3–6): 26 letters, cartoon posters, neural vo
 | Surface | Status | Notes |
 |---|---|---|
 | **1. Online web app** | Active | Mobile + desktop layouts with **Auto / Phone / Desktop** toggle |
-| **2. Offline portable ZIP** | Active | Download from home: playable HTML app (posters+videos+voice) |
-| **2b. Full source ZIP** | Active | Download codebase (no node_modules) for backup/edit |
-| **3. Android APK** | **Backburner** | Planned — Capacitor wrapper of the portable package for true offline Android installs without revisiting the site. Do **not** rebuild APK on every content tweak until packaging is automated. |
+| **2. Offline portable ZIP** | Active | Versioned `*-portable.zip` on Downloads page |
+| **2b. Code only ZIP** | Active | Essential source, no heavy media (`*-code.zip`) |
+| **2c. Code + assets ZIP** | Active | Full source + media (`*-codebase.zip`) |
+| **3. Android APK** | Active | Capacitor offline app — `abc-adventure-vX.YYY.apk` on Downloads. Rebuild only on request: `npm run build:apk`. |
 
 ## Layout system
 
@@ -71,10 +72,10 @@ npm run build:portable   # rebuild offline ZIP
 
 ## Git checkpoints
 
-Local git is enabled so we can restore after big mistakes.
+Local git is enabled so we can restore after mistakes.
 
 - Branch: `main`
-- After major features/fixes, we commit a checkpoint
+- **Commit after every change** (user request 2026-08-12). Don't wait to ask.
 - Not a cloud backup — lives with this workspace session
 - To restore a checkpoint, ask: “go back to the commit about …”
 
@@ -83,16 +84,33 @@ git log --oneline      # list checkpoints
 # restore is done by the builder when you ask
 ```
 
-## Offline packages
+## Versioning & downloads
 
-```bash
-npm run build:portable   # rebuild both ZIPs under public/portable/
-```
+- **Current version:** `0.001` (`v0.001`) — stored in `VERSION` and `src/lib/version.ts` (keep in sync).
+- Bump on each meaningful update (0.002, 0.003, …).
+- **Rebuild packages only when the user asks** (`npm run build:portable`) — never auto-export on every change.
 
-| Package | Path | Use |
-|---|---|---|
-| Portable app | `ABC-Adventure-Portable.zip` | Unzip → open `index.html` (or Open helper) |
-| Full source | `ABC-Adventure-Source.zip` | Unzip → `npm install` → `npm run dev` |
+### File naming (mandatory)
 
-Both are linked from the home screen **Take it offline** section.
+| Kind | File name pattern |
+|---|---|
+| Portable app (playable) | `abc-adventure-vX.YYY-portable.zip` |
+| Code only (source, no media) | `abc-adventure-vX.YYY-code.zip` |
+| Code + assets (full source) | `abc-adventure-vX.YYY-codebase.zip` |
+| APK (when built) | `abc-adventure-vX.YYY.apk` |
 
+- Code downloads are **source archives** (download only — never navigate/run as the app).
+- Portable is the only ready-to-play offline bundle.
+
+## Android APK
+
+- **Stack:** Capacitor Android wrapping the portable offline web build
+- **Package id:** `com.abcadventure.letterworld`
+- **File:** `public/portable/abc-adventure-v{VERSION}.apk`
+- **Build (only when asked):**
+  ```bash
+  npm run build:portable   # refresh web assets if needed
+  npm run build:apk        # Gradle release APK → public/portable/
+  ```
+- Toolchain lives in `.android-sdk/` + `.jdk-21/` (not required for web-only work)
+- Sideload: enable “Install unknown apps”, open the APK on the device

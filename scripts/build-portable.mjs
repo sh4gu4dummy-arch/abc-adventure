@@ -1,7 +1,12 @@
 /**
- * Build offline download packages:
- *  1) Portable HTML app  → public/portable/ABC-Adventure/ + ABC-Adventure-Portable.zip
- *  2) Full source code   → public/portable/ABC-Adventure-Source.zip
+ * Build versioned offline download packages (run ONLY when the user asks).
+ *
+ * Outputs under public/portable/:
+ *   abc-adventure-vX.YYY-portable.zip   — ready-to-play offline HTML app
+ *   abc-adventure-vX.YYY-code.zip       — essential source only (no heavy media)
+ *   abc-adventure-vX.YYY-codebase.zip   — full source + all assets
+ *
+ * Version comes from /VERSION (and must match src/lib/version.ts).
  *
  * Usage: npm run build:portable
  */
@@ -16,20 +21,51 @@ import {
   existsSync,
   readdirSync,
   statSync,
-  copyFileSync,
 } from "node:fs";
-import { join, dirname, relative } from "node:path";
+import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { createHash } from "node:crypto";
-import { createWriteStream } from "node:fs";
-import { pipeline } from "node:stream/promises";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, "..");
 const portableRoot = join(root, "public", "portable");
-const outDir = join(portableRoot, "ABC-Adventure");
-const appZipPath = join(portableRoot, "ABC-Adventure-Portable.zip");
-const sourceZipPath = join(portableRoot, "ABC-Adventure-Source.zip");
+
+const APP_SLUG = "abc-adventure";
+
+function readVersion() {
+  const raw = readFileSync(join(root, "VERSION"), "utf8").trim();
+  if (!/^\d+\.\d{3}$/.test(raw)) {
+    throw new Error(
+      `VERSION must look like 0.001 (got ${JSON.stringify(raw)}). Bump VERSION and src/lib/version.ts together.`,
+    );
+  }
+  // Keep client constant in sync
+  const verTs = readFileSync(join(root, "src", "lib", "version.ts"), "utf8");
+  const m = verTs.match(/export const APP_VERSION = "([^"]+)"/);
+  if (!m || m[1] !== raw) {
+    throw new Error(
+      `src/lib/version.ts APP_VERSION (${m?.[1] ?? "?"}) must equal VERSION file (${raw}).`,
+    );
+  }
+  return raw;
+}
+
+const VERSION = readVersion();
+const VTAG = `v${VERSION}`;
+
+function pkgName(kind) {
+  if (kind === "portable") return `${APP_SLUG}-${VTAG}-portable.zip`;
+  if (kind === "code") return `${APP_SLUG}-${VTAG}-code.zip`;
+  if (kind === "codebase") return `${APP_SLUG}-${VTAG}-codebase.zip`;
+  if (kind === "apk") return `${APP_SLUG}-${VTAG}.apk`;
+  throw new Error(kind);
+}
+
+const portableFolderName = `${APP_SLUG}-${VTAG}-portable`;
+const outDir = join(portableRoot, portableFolderName);
+const appZipPath = join(portableRoot, pkgName("portable"));
+const codeZipPath = join(portableRoot, pkgName("code"));
+const codebaseZipPath = join(portableRoot, pkgName("codebase"));
 
 function rimraf(p) {
   if (existsSync(p)) rmSync(p, { recursive: true, force: true });
@@ -58,98 +94,153 @@ function fileMeta(path, name) {
   };
 }
 
-function zipWithPython(sourceDir, zipPath, rootName) {
+function zipWithPython(sourceDir, zipPath) {
   rimraf(zipPath);
-  // zip contents of sourceDir as rootName/
   const parent = dirname(sourceDir);
   const base = sourceDir.split(/[/\\]/).pop();
   execSync(
     `python3 -c "import shutil; shutil.make_archive(r'${zipPath.slice(0, -4)}', 'zip', r'${parent}', r'${base}')"`,
     { stdio: "inherit" },
   );
-  void rootName;
 }
 
-function zipSourceTree(zipPath) {
+/**
+ * Zip project source.
+ * mode "code"     → essential source only (no heavy media / generated assets)
+ * mode "codebase" → full project including public media assets
+ */
+function zipSourceTree(zipPath, mode) {
   rimraf(zipPath);
-  // Python zip of selected roots into ABC-Adventure-Source/
-  const script = `
+  const prefix =
+    mode === "code"
+      ? `${APP_SLUG}-${VTAG}-code`
+      : `${APP_SLUG}-${VTAG}-codebase`;
+
+  const scriptFixed = `
 import os, zipfile
 from pathlib import Path
 root = Path(${JSON.stringify(root)})
 zip_path = Path(${JSON.stringify(zipPath)})
-include_dirs = ["src", "public", "scripts", "migrations", ".grok"]
+mode = ${JSON.stringify(mode)}
+prefix = ${JSON.stringify(prefix)}
+version = ${JSON.stringify(VERSION)}
+vtag = ${JSON.stringify(VTAG)}
+app_slug = ${JSON.stringify(APP_SLUG)}
+
+include_dirs_code = ["src", "scripts", "migrations"]
+include_dirs_full = ["src", "public", "scripts", "migrations", ".grok"]
 include_files = [
   "package.json", "package-lock.json", "tsconfig.json", "vite.config.ts",
-  "eslint.config.mjs", ".prettierrc", "startup.sh", "PROJECT.md", "AGENTS.md", ".gitignore",
+  "eslint.config.mjs", ".prettierrc", "startup.sh", "PROJECT.md", "AGENTS.md",
+  ".gitignore", "VERSION",
 ]
+public_keep_code = {
+  "favicon.ico", "favicon.png", "favicon.svg", "apple-touch-icon.png",
+  "manifest.webmanifest", "robots.txt", "sw.js",
+}
 skip_dir_names = {
   "node_modules", ".git", ".vercel", ".tanstack", ".nitro", ".output", "dist",
-  "screenshots", "artifacts", "ABC-Adventure",
+  "screenshots", "artifacts",
 }
 skip_file_suffixes = (".zip", ".log")
-skip_file_names = {"ABC-Adventure-Portable.zip", "ABC-Adventure-Source.zip"}
 
 def should_skip_dir(name: str) -> bool:
-  return name in skip_dir_names or name.startswith(".")
+  return name in skip_dir_names or (name.startswith(".") and name not in {".grok"})
 
 with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=6) as zf:
-  prefix = "ABC-Adventure-Source"
   for f in include_files:
     p = root / f
     if p.is_file():
       zf.write(p, f"{prefix}/{f}")
-  for d in include_dirs:
-    base = root / d
-    if not base.exists():
-      continue
-    for dirpath, dirnames, filenames in os.walk(base):
-      # prune
-      dirnames[:] = [x for x in dirnames if not should_skip_dir(x)]
-      # also prune portable built app folder under public/portable
-      rel = Path(dirpath).relative_to(root)
-      for name in filenames:
-        if name in skip_file_names or name.endswith(skip_file_suffixes):
-          continue
-        # skip large QA cutouts under public/videos frames if any non-mp4 noise except cutouts we keep? keep all public media
-        fp = Path(dirpath) / name
-        # skip nested portable app rebuild folder
-        parts = fp.relative_to(root).parts
-        if "portable" in parts and "ABC-Adventure" in parts:
-          continue
-        if name == "meta.json" and "portable" in parts:
-          continue
-        arc = f"{prefix}/{fp.relative_to(root).as_posix()}"
-        zf.write(fp, arc)
-  # tiny README for source package
-  readme = """ABC Adventure — Full Source Code
-================================
 
-This ZIP is the complete project source (no node_modules).
+  if mode == "code":
+    for d in include_dirs_code:
+      base = root / d
+      if not base.exists():
+        continue
+      for dirpath, dirnames, filenames in os.walk(base):
+        dirnames[:] = [x for x in dirnames if not should_skip_dir(x)]
+        for name in filenames:
+          if name.endswith(skip_file_suffixes):
+            continue
+          fp = Path(dirpath) / name
+          arc = f"{prefix}/{fp.relative_to(root).as_posix()}"
+          zf.write(fp, arc)
+    pub = root / "public"
+    if pub.exists():
+      for name in public_keep_code:
+        p = pub / name
+        if p.is_file():
+          zf.write(p, f"{prefix}/public/{name}")
+    readme = f"""ABC Adventure — Code only ({vtag})
+=====================================
+
+Essential source to view and build the project.
+NO heavy media (posters, videos, audio, letter art, fonts pack).
 
 SETUP
 -----
 1. Unzip
 2. npm install
-3. npm run dev          # online app on port 8080
-4. npm run build:portable  # rebuild offline HTML package
+3. npm run dev
+4. To rebuild offline packages (when you have assets): npm run build:portable
 
-See PROJECT.md for product notes.
+For a complete tree with all assets, download:
+  {app_slug}-{vtag}-codebase.zip
+
+Version: {version}
 """
-  zf.writestr(f"{prefix}/README-SOURCE.txt", readme)
-print("source zip files:", len(zf.namelist()) if False else "ok")
+    zf.writestr(f"{prefix}/README-CODE.txt", readme)
+  else:
+    for d in include_dirs_full:
+      base = root / d
+      if not base.exists():
+        continue
+      for dirpath, dirnames, filenames in os.walk(base):
+        dirnames[:] = [x for x in dirnames if not should_skip_dir(x)]
+        for name in filenames:
+          if name.endswith(skip_file_suffixes):
+            continue
+          fp = Path(dirpath) / name
+          parts = fp.relative_to(root).parts
+          if "portable" in parts:
+            continue
+          arc = f"{prefix}/{fp.relative_to(root).as_posix()}"
+          zf.write(fp, arc)
+    readme = f"""ABC Adventure — Full codebase ({vtag})
+========================================
+
+Complete project including media assets (posters, videos, audio, fonts).
+No node_modules.
+
+SETUP
+-----
+1. Unzip
+2. npm install
+3. npm run dev
+4. npm run build:portable   # rebuild versioned offline packages
+
+Portable (playable) package is a separate download:
+  {app_slug}-{vtag}-portable.zip
+
+Version: {version}
+"""
+    zf.writestr(f"{prefix}/README-CODEBASE.txt", readme)
+
 print("wrote", zip_path, "bytes", zip_path.stat().st_size)
 `;
-  writeFileSync(join(root, "scripts", ".tmp-zip-source.py"), script);
-  execSync(`python3 "${join(root, "scripts", ".tmp-zip-source.py")}"`, { stdio: "inherit" });
+  const tmp = join(root, "scripts", `.tmp-zip-${mode}.py`);
+  writeFileSync(tmp, scriptFixed);
+  execSync(`python3 "${tmp}"`, { stdio: "inherit" });
   try {
-    rmSync(join(root, "scripts", ".tmp-zip-source.py"));
+    rmSync(tmp);
   } catch {
     /* ignore */
   }
 }
 
 // ─── Portable HTML app ───────────────────────────────────────────
+console.log(`→ Building packages for ${VTAG}`);
 console.log("→ Clean portable app output");
 rimraf(outDir);
 mkdirSync(outDir, { recursive: true });
@@ -208,18 +299,13 @@ for (const dir of ["posters", "letters", "audio", "fonts", "videos"]) {
   cpSync(src, join(outDir, dir), {
     recursive: true,
     filter: (p) => {
-      // skip frame dumps / huge debug folders inside videos if any
       const base = p.split(/[/\\]/).pop() || "";
       if (base === "apple-frames") return false;
-      if (base.endsWith(".wav") && p.includes(`${join("audio", "sfx")}`)) {
-        // keep mp3 only in sfx to shrink a bit — optional, keep wav for reliability
-      }
       return true;
     },
   });
 }
 
-// Drop huge non-essential debug assets from videos
 const appleFrames = join(outDir, "videos", "apple-frames");
 if (existsSync(appleFrames)) rimraf(appleFrames);
 const cutout = join(outDir, "videos", "apple-cutout.png");
@@ -235,12 +321,13 @@ writeFileSync(
   <meta name="theme-color" content="#ff6b6b" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="color-scheme" content="light dark" />
-  <title>ABC Adventure — Offline</title>
+  <title>ABC Adventure ${VTAG} — Offline</title>
   <meta name="description" content="Fully offline alphabet learning for kids — posters, videos, AI voice, tracing, and games. No internet required." />
   <link rel="stylesheet" href="./app.css" />
   <script>
     window.__ABC_ASSET_BASE__ = "./";
     window.__ABC_PORTABLE__ = true;
+    window.__ABC_VERSION__ = ${JSON.stringify(VERSION)};
     (function(){
       try{
         var gk='abc-gfx-pref-v1';var gp=localStorage.getItem(gk)||'auto';
@@ -286,19 +373,19 @@ writeFileSync(
 
 writeFileSync(
   join(outDir, "README.txt"),
-  `ABC Adventure — Portable Offline App
-====================================
+  `ABC Adventure ${VTAG} — Portable Offline App
+===========================================
 
 100% offline after download. No install. No account.
+Package: ${pkgName("portable")}
 
 HOW TO OPEN
 -----------
 1. Unzip the whole folder anywhere (USB stick, laptop, tablet).
 2. Keep ALL files together (index.html next to posters/, videos/, audio/, …).
 3. Open index.html:
-   • Double-click index.html   (works in most browsers)
+   • Double-click index.html
    • Or run Open-ABC-Adventure.bat (Windows) / Open-ABC-Adventure.command (Mac)
-     if your browser blocks media on file:// links.
 
 WHAT'S INCLUDED
 ---------------
@@ -307,16 +394,8 @@ WHAT'S INCLUDED
 • Neural AI voice clips (Teacher + Buddy)
 • Trace, Match, Pairs, I Spy, Story, Aa hunt
 • Stars & progress saved on THIS device only
-• Dark / light theme + graphics High / Lite
 
-TIPS
-----
-• Classroom USB: copy the whole ABC-Adventure folder.
-• If sound or video fails after double-click, use the Open-… helper
-  (starts a tiny local server — still fully offline).
-• Progress is per browser / device (localStorage).
-
-Made with Grok
+Version: ${VERSION}
 `,
 );
 
@@ -326,7 +405,7 @@ writeFileSync(
 cd "$(dirname "$0")"
 PORT=8765
 if command -v python3 >/dev/null 2>&1; then
-  echo "ABC Adventure (offline) → http://127.0.0.1:$PORT/"
+  echo "ABC Adventure ${VTAG} (offline) → http://127.0.0.1:$PORT/"
   (sleep 1; open "http://127.0.0.1:$PORT/" 2>/dev/null || xdg-open "http://127.0.0.1:$PORT/" 2>/dev/null || true) &
   python3 -m http.server "$PORT"
 elif command -v python >/dev/null 2>&1; then
@@ -364,29 +443,81 @@ if %ERRORLEVEL%==0 (
 `,
 );
 
-console.log("→ Zip portable HTML app");
-zipWithPython(outDir, appZipPath, "ABC-Adventure");
+console.log("→ Zip portable HTML app →", pkgName("portable"));
+zipWithPython(outDir, appZipPath);
 
-console.log("→ Zip full source codebase");
-zipSourceTree(sourceZipPath);
+console.log("→ Zip code-only source →", pkgName("code"));
+zipSourceTree(codeZipPath, "code");
 
-const appMeta = fileMeta(appZipPath, "ABC-Adventure-Portable.zip");
-const srcMeta = fileMeta(sourceZipPath, "ABC-Adventure-Source.zip");
+console.log("→ Zip full codebase + assets →", pkgName("codebase"));
+zipSourceTree(codebaseZipPath, "codebase");
+
+// Remove legacy unversioned names if present
+for (const legacy of [
+  "ABC-Adventure-Portable.zip",
+  "ABC-Adventure-Source.zip",
+  "ABC-Adventure",
+]) {
+  const p = join(portableRoot, legacy);
+  if (existsSync(p) && p !== outDir) {
+    console.log("→ Remove legacy", legacy);
+    rimraf(p);
+  }
+}
+
+const appMeta = fileMeta(appZipPath, pkgName("portable"));
+const codeMeta = fileMeta(codeZipPath, pkgName("code"));
+const codebaseMeta = fileMeta(codebaseZipPath, pkgName("codebase"));
+
 const meta = {
+  version: VERSION,
+  versionLabel: VTAG,
+  slug: APP_SLUG,
   builtAt: new Date().toISOString(),
+  packages: {
+    portable: {
+      ...appMeta,
+      kind: "portable",
+      path: `/portable/${pkgName("portable")}`,
+      folder: portableFolderName,
+      files: countFiles(outDir),
+      note: "Ready-to-play offline HTML app (unzip → open index.html).",
+    },
+    code: {
+      ...codeMeta,
+      kind: "code",
+      path: `/portable/${pkgName("code")}`,
+      note: "Essential source only — no posters/videos/audio. Small, fast download.",
+    },
+    codebase: {
+      ...codebaseMeta,
+      kind: "codebase",
+      path: `/portable/${pkgName("codebase")}`,
+      note: "Full source + all media assets. No node_modules.",
+    },
+  },
+  // Convenience aliases used by the UI
   portableApp: {
     ...appMeta,
-    folder: "ABC-Adventure",
+    kind: "portable",
+    path: `/portable/${pkgName("portable")}`,
+    folder: portableFolderName,
     files: countFiles(outDir),
-    includes: ["posters", "letters", "videos", "audio", "fonts", "app.js", "app.css"],
+  },
+  codeOnly: {
+    ...codeMeta,
+    kind: "code",
+    path: `/portable/${pkgName("code")}`,
   },
   sourceCode: {
-    ...srcMeta,
-    note: "Full project source without node_modules. Run npm install after unzip.",
+    ...codebaseMeta,
+    kind: "codebase",
+    path: `/portable/${pkgName("codebase")}`,
   },
 };
+
 writeFileSync(join(portableRoot, "meta.json"), JSON.stringify(meta, null, 2));
-console.log("✓ Packages ready:");
-console.log("  App:   ", appMeta);
-console.log("  Source:", srcMeta);
-console.log("  Files in app folder:", meta.portableApp.files);
+console.log("✓ Packages ready for", VTAG);
+console.log("  Portable:", appMeta);
+console.log("  Code:    ", codeMeta);
+console.log("  Codebase:", codebaseMeta);

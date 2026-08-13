@@ -24,11 +24,11 @@ export const authClient = createAuthClient({
 });
 
 /**
- * True when sign-in UI should be shown. On by default (preview via the baked
- * preview client, deployed apps via the injected per-app client); set
- * `VITE_AUTH_ENABLED=false` to force it off (dev user — see `use-current-user`).
+ * True when Grok cloud sign-in UI is shown.
+ * OFF by default for Letter World — kids use on-device profiles (no cookies).
+ * Set `VITE_AUTH_ENABLED=true` only if you want optional cloud sign-in.
  */
-export const authEnabled = import.meta.env.VITE_AUTH_ENABLED !== "false";
+export const authEnabled = import.meta.env.VITE_AUTH_ENABLED === "true";
 
 /** The upstream providers to render sign-in buttons for. */
 export { GROK_PROVIDERS };
