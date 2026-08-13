@@ -342,7 +342,8 @@ function LetterPage() {
         <section className="space-y-3">
           <h2 className="font-display text-xl font-bold text-ink">Trace {entry.letter}</h2>
           <p className="text-sm font-semibold text-ink-soft">
-            Draw over the big letter with your finger or mouse, then tap “I traced it!”
+            Draw over the big letter with your finger. Going outside is OK —
+            when you’ve covered enough, it finishes by itself.
           </p>
           <TracePad
             letter={entry.letter}
