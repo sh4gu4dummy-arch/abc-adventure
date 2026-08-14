@@ -71,7 +71,7 @@ npm run build:portable   # rebuild offline ZIP
 ```
 
 - **Letter Buddies series:** `/buddies` live stage (real letter mascots, one voice line at a time). Review pack: `public/review/letter-buddies/` (420p mp4 + sources + frames). The shaky Ken-burns episode was deleted.
-- **Imagine save:** chat Imagine plays in-thread but does not write a sandbox path (even after remounting `/workspace/artifacts`). Ways that *do* produce a file: (1) user downloads the chat clip / [grok.com/files](https://grok.com/files) and sends it back; (2) `sh scripts/fetch-imagine-video.sh <url>` for a `vidgen.x.ai` or imagine-post link; (3) official API `XAI_API_KEY=… sh scripts/imagine-i2v-api.sh image.webp "prompt" out.mp4` — response includes `video.url` we can curl. Remount: `sh scripts/ensure-imagine-artifacts.sh`. Pull persisted artifacts: `sh scripts/pull-imagine-artifacts.sh`.
+- **Imagine save:** chat Imagine often plays in-thread but does not write a sandbox path. Sister-project finding: the generated file lives on `vidgen.x.ai` and save can fail when sandbox DNS cannot resolve that host (use Google DNS `8.8.8.8` / pin `104.18.18.80`). **Here, `vidgen.x.ai` already resolves** (`104.18.18.80`); the remaining hole is the Imagine tool not handing us the URL. If a `https://vidgen.x.ai/...mp4` URL appears (tool error, chat copy-link, or grok.com/files): `sh scripts/fetch-vidgen.sh <url> <outfile.mp4>`. Also `scripts/fetch-imagine-video.sh` and API path `scripts/imagine-i2v-api.sh` (needs `XAI_API_KEY`). Remount artifacts: `sh scripts/ensure-imagine-artifacts.sh`.
 - **Meet the buddy:** every letter has a 10s 480×720 clip at `public/videos/buddies/{a-z}.mp4` (rebuild with `python3 scripts/build-buddy-videos.py`). Tap the buddy or **Meet A**.
 
 ## Art split
@@ -101,7 +101,7 @@ npm run build:apk      # only when asked
 
 ## Versioning & downloads
 
-- **Current version:** `0.009` (`v0.009`) — stored in `VERSION` and `src/lib/version.ts` (keep in sync).
+- **Current version:** `0.010` (`v0.010`) — stored in `VERSION` and `src/lib/version.ts` (keep in sync).
 - Bump on **every** update.
 - Code-only package tracks the current version. Portable / APK / codebase keep their last-built version until rebuilt.
 
