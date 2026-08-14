@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { Sparkles } from "lucide-react";
+import { getLetter } from "@/data/alphabet";
 import { ConfettiBurst } from "./ConfettiBurst";
 import { stickerFor } from "./LetterCompleteBanner";
 import { speak } from "@/lib/speak";
 
 /**
- * Listens for abc-letter-complete and shows confetti + sticker modal.
+ * Listens for abc-letter-complete and shows confetti + sticker + rhyme.
  */
 export function CelebrateOverlay() {
   const [letter, setLetter] = useState<string | null>(null);
@@ -15,13 +16,18 @@ export function CelebrateOverlay() {
       const L = (e as CustomEvent<{ letter: string }>).detail?.letter;
       if (!L) return;
       setLetter(L);
-      void speak(`Amazing! You finished the letter ${L}! You earned a sticker!`);
+      const rhyme = getLetter(L)?.rhyme;
+      void (async () => {
+        await speak(`Amazing! You finished the letter ${L}! You earned a sticker!`);
+        if (rhyme) await speak(rhyme);
+      })();
     }
     window.addEventListener("abc-letter-complete", onComplete);
     return () => window.removeEventListener("abc-letter-complete", onComplete);
   }, []);
 
   if (!letter) return null;
+  const rhyme = getLetter(letter)?.rhyme;
 
   return (
     <>
@@ -42,9 +48,11 @@ export function CelebrateOverlay() {
           <h2 className="mt-4 font-display text-3xl font-bold text-ink">
             You finished {letter}!
           </h2>
-          <p className="mt-2 text-sm font-medium text-ink-soft">
-            Sticker unlocked. Keep going — every letter has a prize!
-          </p>
+          {rhyme && (
+            <p className="mt-3 rounded-[var(--radius-md)] bg-surface-soft px-3 py-2 text-sm font-bold leading-snug text-ink">
+              {rhyme}
+            </p>
+          )}
           <button
             type="button"
             onClick={() => setLetter(null)}

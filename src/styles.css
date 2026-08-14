@@ -189,6 +189,56 @@ html.theme-light {
     transform: translateY(2px) scale(0.98);
   }
 
+  .trace-ghost-stroke {
+    fill: none;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    stroke-dasharray: 8 10;
+    animation: trace-ghost-dash 2.4s linear infinite;
+  }
+
+  .trace-start-dot {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    width: 1.65rem;
+    height: 1.65rem;
+    margin-left: -0.825rem;
+    margin-top: -0.825rem;
+    border-radius: 999px;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 800;
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.12);
+    animation: trace-start-pulse 1.2s ease-in-out infinite;
+  }
+
+  @keyframes trace-ghost-dash {
+    to {
+      stroke-dashoffset: -72;
+    }
+  }
+
+  @keyframes trace-start-pulse {
+    50% {
+      transform: scale(1.12);
+    }
+  }
+
+  html.gfx-paused .trace-ghost-stroke,
+  html.gfx-lite .trace-ghost-stroke,
+  html.gfx-paused .trace-start-dot,
+  html.gfx-lite .trace-start-dot {
+    animation: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .trace-ghost-stroke,
+    .trace-start-dot {
+      animation: none;
+    }
+  }
+
   .cv-auto {
     content-visibility: auto;
     contain-intrinsic-size: auto 220px;

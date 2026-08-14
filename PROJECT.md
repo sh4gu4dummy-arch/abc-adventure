@@ -91,7 +91,7 @@ npm run build:apk      # only when asked
 
 ## Versioning & downloads
 
-- **Current version:** `0.002` (`v0.002`) — stored in `VERSION` and `src/lib/version.ts` (keep in sync).
+- **Current version:** `0.003` (`v0.003`) — stored in `VERSION` and `src/lib/version.ts` (keep in sync).
 - Bump on **every** update.
 - Code-only package tracks the current version. Portable / APK / codebase keep their last-built version until rebuilt.
 

@@ -1,22 +1,37 @@
-import { useMemo, useState } from "react";
-import { posterPath, type LetterEntry } from "@/data/alphabet";
+import { useEffect, useMemo, useState } from "react";
+import { Ear } from "lucide-react";
+import { LETTERS, type LetterEntry } from "@/data/alphabet";
 import { markSection } from "@/lib/progress";
 import { speak } from "@/lib/speak";
 import { cn } from "@/lib/utils";
-import { Eye } from "lucide-react";
+import { GamePicture } from "./GamePicture";
+import { LetterWord } from "./LetterWord";
 
 export function ISpy({ entry }: { entry: LetterEntry }) {
   const [round, setRound] = useState(0);
   const target = useMemo(() => {
-    const idx = round % entry.words.length;
-    return entry.words[idx]!;
+    return entry.words[round % entry.words.length]!;
   }, [entry, round]);
   const [found, setFound] = useState(false);
   const [wrong, setWrong] = useState<string | null>(null);
 
   const tiles = useMemo(() => {
-    return [...entry.words].sort(() => Math.random() - 0.5);
-  }, [entry, round]);
+    const othersHere = entry.words
+      .filter((w) => w.slug !== target.slug)
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 2)
+      .map((w) => ({ ...w, letter: entry.letter }));
+    const outsider = LETTERS.filter((l) => l.letter !== entry.letter)
+      .flatMap((l) => l.words.map((w) => ({ ...w, letter: l.letter })))
+      .sort(() => Math.random() - 0.5)[0]!;
+    return [...othersHere, { ...target, letter: entry.letter }, outsider].sort(
+      () => Math.random() - 0.5,
+    );
+  }, [entry, target, round]);
+
+  useEffect(() => {
+    void speak(target.word);
+  }, [target.word, round]);
 
   function pick(slug: string) {
     if (found) return;
@@ -24,10 +39,10 @@ export function ISpy({ entry }: { entry: LetterEntry }) {
       setFound(true);
       setWrong(null);
       markSection(entry.letter, "ispy");
-      speak(`You found ${target.word}! Great eyes!`);
+      void speak(`You found ${target.word}! Great eyes!`);
     } else {
       setWrong(slug);
-      speak("Keep looking!");
+      void speak("Keep looking!");
       setTimeout(() => setWrong(null), 600);
     }
   }
@@ -42,30 +57,34 @@ export function ISpy({ entry }: { entry: LetterEntry }) {
     <div className="space-y-4">
       <div className="text-center">
         <p className="inline-flex items-center gap-1.5 rounded-[var(--radius-pill)] bg-sky/30 px-3 py-1 text-xs font-bold uppercase tracking-wide text-accent">
-          <Eye className="size-3.5" /> I Spy
+          <Ear className="size-3.5" /> I hear
         </p>
         <p className="mt-2 font-display text-xl font-bold text-ink sm:text-2xl">
-          I spy with my little eye something that starts with{" "}
-          <span style={{ color: entry.accent }}>{entry.letter}</span>…
+          Listen, then tap that picture
         </p>
-        <p className="mt-2 text-lg font-semibold text-ink-soft">
-          Find the{" "}
-          <span className="font-display font-bold" style={{ color: entry.accent }}>
-            {target.word}
-          </span>
-          !
-        </p>
-        <p className="mt-1 text-sm font-medium text-muted">{target.hint}</p>
+        <button
+          type="button"
+          onClick={() => void speak(target.word)}
+          className="pressable mt-2 inline-flex min-h-11 items-center gap-2 rounded-[var(--radius-pill)] px-4 text-sm font-bold text-white"
+          style={{ background: entry.accent }}
+        >
+          <Ear className="size-4" /> Hear it again
+        </button>
+        {found && (
+          <p className="mt-3">
+            <LetterWord word={target.word} accent={entry.accent} size="md" />
+          </p>
+        )}
       </div>
 
-      <div className="posters-grid">
+      <div className="grid grid-cols-2 gap-3">
         {tiles.map((w) => {
-          const isTarget = w.slug === target.slug;
+          const isTarget = w.slug === target.slug && w.letter === entry.letter;
           const showWin = found && isTarget;
           const showMiss = wrong === w.slug;
           return (
             <button
-              key={`${round}-${w.slug}`}
+              key={`${round}-${w.letter}-${w.slug}`}
               type="button"
               onClick={() => pick(w.slug)}
               className={cn(
@@ -74,16 +93,14 @@ export function ISpy({ entry }: { entry: LetterEntry }) {
                 showMiss && "border-primary ring-4 ring-primary/25",
                 !showWin && !showMiss && "border-border",
               )}
-              aria-label={found || isTarget ? w.word : "Poster to find"}
+              aria-label={found && isTarget ? w.word : "Picture"}
             >
               <div className="aspect-square overflow-hidden bg-surface-soft">
-                <img
-                  src={posterPath(entry.letter, w.slug)}
-                  alt={found ? w.word : ""}
-                  className={cn(
-                    "h-full w-full object-cover transition",
-                    !found && !showMiss && "brightness-95",
-                  )}
+                <GamePicture
+                  letter={w.letter}
+                  slug={w.slug}
+                  word={w.word}
+                  revealWord={showWin}
                 />
               </div>
             </button>
@@ -99,7 +116,7 @@ export function ISpy({ entry }: { entry: LetterEntry }) {
             className="pressable rounded-[var(--radius-pill)] px-6 py-3 font-display font-bold text-white"
             style={{ background: entry.accent }}
           >
-            Next spy
+            Next listen
           </button>
         </div>
       )}

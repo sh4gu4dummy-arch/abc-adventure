@@ -40,7 +40,7 @@ const GOALS: {
   {
     id: "game",
     label: "Win a mini-game",
-    hint: "Match, memory, story, or hunt",
+    hint: "Hear it, tap it, or sort Aa",
     tab: "games",
     icon: Gamepad2,
   },
@@ -51,7 +51,8 @@ const GOALS: {
  */
 export function DailyPath() {
   const daily = useDailyPath();
-  const { stars } = useProgress();
+  const { stars, completed } = useProgress();
+  const allLettersDone = completed.length >= 26;
   const entry = getLetter(daily.letter);
   const doneCount = GOALS.filter((g) => daily.goals[g.id]).length;
   const allDone = daily.completed;
@@ -80,12 +81,18 @@ export function DailyPath() {
               Today's adventure
             </p>
             <h2 className="mt-2 font-display text-xl font-bold text-ink sm:text-2xl">
-              {allDone ? "You finished today!" : `Let's learn ${daily.letter}`}
+              {allDone
+                ? "You finished today!"
+                : allLettersDone
+                  ? `Let's play ${daily.letter}`
+                  : `Next letter: ${daily.letter}`}
             </h2>
             <p className="mt-1 max-w-md text-sm font-medium text-ink-soft">
               {allDone
                 ? "Amazing work — come back tomorrow for a new path. You can still play free."
-                : "Three little missions. Tap the big letter to start."}
+                : allLettersDone
+                  ? "Three little missions. Tap the big letter to start."
+                  : "First unfinished letter. Three little missions — tap to start."}
             </p>
           </div>
 
