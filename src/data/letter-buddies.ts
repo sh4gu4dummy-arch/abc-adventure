@@ -19,7 +19,7 @@ export const LETTER_BUDDIES_EPISODES: BuddyEpisode[] = [
     title: "CAT",
     blurb: "C, A, and T play together — then they make a word.",
     video: "videos/series/letter-buddies-ep01-cat.mp4",
-    poster: "videos/series/ep01-stills/06-cat.png",
+    poster: "letters/c.webp",
     letters: ["C", "A", "T"],
     seconds: 60,
   },

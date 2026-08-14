@@ -70,7 +70,7 @@ npm run dev              # online preview :8080
 npm run build:portable   # rebuild offline ZIP
 ```
 
-- **Letter Buddies series:** `/buddies` (home card + C/A/T letter pages). Ep 1 CAT is `public/videos/series/letter-buddies-ep01-cat.mp4` (60s 420p). Rebuild: `python3 scripts/build-letter-buddies-ep01.py`.
+- **Letter Buddies series:** `/buddies` live stage (real letter mascots, one voice line at a time). The shaky Ken-burns “episode” was deleted — do not restore it.
 - **Meet the buddy:** every letter has a 10s 480×720 clip at `public/videos/buddies/{a-z}.mp4` (rebuild with `python3 scripts/build-buddy-videos.py`). Tap the buddy or **Meet A**.
 
 ## Art split
@@ -100,7 +100,7 @@ npm run build:apk      # only when asked
 
 ## Versioning & downloads
 
-- **Current version:** `0.006` (`v0.006`) — stored in `VERSION` and `src/lib/version.ts` (keep in sync).
+- **Current version:** `0.007` (`v0.007`) — stored in `VERSION` and `src/lib/version.ts` (keep in sync).
 - Bump on **every** update.
 - Code-only package tracks the current version. Portable / APK / codebase keep their last-built version until rebuilt.
 
