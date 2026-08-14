@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { Sparkles } from "lucide-react";
-import { getLetter } from "@/data/alphabet";
+import { getLetter, letterHeroPath } from "@/data/alphabet";
 import { ConfettiBurst } from "./ConfettiBurst";
-import { stickerFor } from "./LetterCompleteBanner";
 import { speak } from "@/lib/speak";
 
 /**
@@ -42,8 +41,12 @@ export function CelebrateOverlay() {
           <p className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-accent">
             <Sparkles className="size-3.5" /> Letter complete
           </p>
-          <div className="mx-auto mt-4 flex size-24 items-center justify-center rounded-[2rem] bg-star/30 text-5xl shadow-inner">
-            {stickerFor(letter)}
+          <div className="mx-auto mt-4 size-28 overflow-hidden rounded-[2rem] border-4 border-star/50 shadow-inner">
+            <img
+              src={letterHeroPath(letter)}
+              alt=""
+              className="size-full object-cover"
+            />
           </div>
           <h2 className="mt-4 font-display text-3xl font-bold text-ink">
             You finished {letter}!

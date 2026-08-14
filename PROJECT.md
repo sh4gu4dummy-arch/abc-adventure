@@ -70,6 +70,12 @@ npm run dev              # online preview :8080
 npm run build:portable   # rebuild offline ZIP
 ```
 
+## Art split
+
+- **Buddies** (letter is the character): `public/letters/` + R–Z files in `public/posters/` → home tiles, letter hero, stickers, story actors, letter-friends row.
+- **Scenes** (the real thing in a world): A–Q in `public/posters/` + fills in `public/posters-scene/` → word cards and listening games.
+- Originals are never overwritten. See `public/art-archive/README.md`.
+
 ## Git checkpoints
 
 Local git is enabled so we can restore after mistakes.
@@ -91,7 +97,7 @@ npm run build:apk      # only when asked
 
 ## Versioning & downloads
 
-- **Current version:** `0.003` (`v0.003`) — stored in `VERSION` and `src/lib/version.ts` (keep in sync).
+- **Current version:** `0.004` (`v0.004`) — stored in `VERSION` and `src/lib/version.ts` (keep in sync).
 - Bump on **every** update.
 - Code-only package tracks the current version. Portable / APK / codebase keep their last-built version until rebuilt.
 

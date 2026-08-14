@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Play, Volume2 } from "lucide-react";
 import type { WordEntry } from "@/data/alphabet";
+import { wordBuddyPath } from "@/data/alphabet";
 import { LetterWord } from "./LetterWord";
 import { speakWord } from "@/lib/speak";
 import { cn } from "@/lib/utils";
@@ -26,7 +27,14 @@ export function PosterCard({
   compact?: boolean;
   requiresVideo?: boolean;
 }) {
+  const fallback = wordBuddyPath(letter, word.slug);
+  const [src, setSrc] = useState(imageSrc);
   const [imgOk, setImgOk] = useState(true);
+
+  useEffect(() => {
+    setSrc(imageSrc);
+    setImgOk(true);
+  }, [imageSrc]);
 
   return (
     <button
@@ -49,13 +57,16 @@ export function PosterCard({
       >
         {imgOk ? (
           <img
-            src={imageSrc}
+            src={src}
             alt={`Poster for ${word.word}`}
             className="poster-art h-full w-full object-cover motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-out group-hover:scale-[1.03]"
             loading="lazy"
             decoding="async"
             sizes="(max-width: 768px) 45vw, 200px"
-            onError={() => setImgOk(false)}
+            onError={() => {
+              if (src !== fallback) setSrc(fallback);
+              else setImgOk(false);
+            }}
           />
         ) : (
           <div className="flex h-full w-full flex-col items-center justify-center gap-2 p-4">

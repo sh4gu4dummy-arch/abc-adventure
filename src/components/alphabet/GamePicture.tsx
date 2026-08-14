@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { posterPath } from "@/data/alphabet";
+import { useEffect, useState } from "react";
+import { posterPath, wordBuddyPath } from "@/data/alphabet";
 import { cn } from "@/lib/utils";
 
-/** Big picture-only tile — no printed word (pre-readers). */
+/** Big picture-only tile — no printed word (pre-readers). Prefers scene art. */
 export function GamePicture({
   letter,
   slug,
@@ -17,7 +17,16 @@ export function GamePicture({
   /** Show the word only after success — never as the question. */
   revealWord?: boolean;
 }) {
+  const preferred = posterPath(letter, slug);
+  const fallback = wordBuddyPath(letter, slug);
+  const [src, setSrc] = useState(preferred);
   const [failed, setFailed] = useState(false);
+
+  useEffect(() => {
+    setSrc(preferred);
+    setFailed(false);
+  }, [preferred]);
+
   if (failed) {
     return (
       <div
@@ -35,11 +44,14 @@ export function GamePicture({
   }
   return (
     <img
-      src={posterPath(letter, slug)}
+      src={src}
       alt={revealWord ? word : ""}
       className={cn("h-full w-full object-cover", className)}
       loading="eager"
-      onError={() => setFailed(true)}
+      onError={() => {
+        if (src !== fallback) setSrc(fallback);
+        else setFailed(true);
+      }}
     />
   );
 }

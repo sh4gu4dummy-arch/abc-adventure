@@ -1,4 +1,5 @@
 import { assetUrl } from "@/lib/assets";
+import { isBuddyWordPoster, sceneKey, hasSceneFill } from "@/data/art-roles";
 
 export type WordEntry = {
   word: string;
@@ -522,10 +523,24 @@ export function getLetter(letter: string): LetterEntry | undefined {
   return LETTERS.find((l) => l.letter.toLowerCase() === letter.toLowerCase());
 }
 
+/** Scene art for “what is this word?” (games + word grid). */
 export function posterPath(letter: string, slug: string): string {
-  return assetUrl(`posters/${letter.toLowerCase()}-${slug}.webp`);
+  const key = sceneKey(letter, slug);
+  if (hasSceneFill(letter, slug)) {
+    return assetUrl(`posters-scene/${key}.webp`);
+  }
+  return assetUrl(`posters/${key}.webp`);
 }
 
+/** Original poster file — A–Q scenes, R–Z letter-buddies. Never deleted. */
+export function wordBuddyPath(letter: string, slug: string): string {
+  return assetUrl(`posters/${sceneKey(letter, slug)}.webp`);
+}
+
+/** Letter mascot (always a letter-buddy). */
 export function letterHeroPath(letter: string): string {
   return assetUrl(`letters/${letter.toLowerCase()}.webp`);
 }
+
+export { isBuddyWordPoster } from "@/data/art-roles";
+
