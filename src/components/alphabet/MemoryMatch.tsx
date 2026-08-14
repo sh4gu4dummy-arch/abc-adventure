@@ -1,81 +1,29 @@
 import { useMemo, useState } from "react";
 import { Shuffle } from "lucide-react";
 import type { LetterEntry } from "@/data/alphabet";
-import { posterPath } from "@/data/alphabet";
 import { markSection } from "@/lib/progress";
 import { speak } from "@/lib/speak";
 import { cn } from "@/lib/utils";
+import { GamePicture } from "./GamePicture";
 
 type Card = {
   id: string;
   pair: string;
-  kind: "img" | "word";
   word: string;
   slug: string;
 };
 
 function buildDeck(entry: LetterEntry): Card[] {
-  // 3 pairs from the 6 words (keeps the board phone-friendly)
   const picks = [...entry.words].sort(() => Math.random() - 0.5).slice(0, 3);
   const cards: Card[] = [];
   for (const w of picks) {
-    cards.push({
-      id: `${w.slug}-img`,
-      pair: w.slug,
-      kind: "img",
-      word: w.word,
-      slug: w.slug,
-    });
-    cards.push({
-      id: `${w.slug}-word`,
-      pair: w.slug,
-      kind: "word",
-      word: w.word,
-      slug: w.slug,
-    });
+    cards.push({ id: `${w.slug}-a`, pair: w.slug, word: w.word, slug: w.slug });
+    cards.push({ id: `${w.slug}-b`, pair: w.slug, word: w.word, slug: w.slug });
   }
   return cards.sort(() => Math.random() - 0.5);
 }
 
-function CardImage({
-  letter,
-  slug,
-  word,
-  hue,
-  accent,
-}: {
-  letter: string;
-  slug: string;
-  word: string;
-  hue: string;
-  accent: string;
-}) {
-  const [failed, setFailed] = useState(false);
-  if (failed) {
-    return (
-      <div
-        className="flex h-full w-full flex-col items-center justify-center gap-1 p-2"
-        style={{ background: `linear-gradient(145deg, ${hue}, ${accent})` }}
-      >
-        <span className="font-display text-3xl font-bold text-white">{letter}</span>
-        <span className="text-center text-sm font-bold text-white">{word}</span>
-      </div>
-    );
-  }
-  return (
-    <img
-      src={posterPath(letter, slug)}
-      alt={word}
-      className="h-full w-full object-cover"
-      loading="eager"
-      onError={() => setFailed(true)}
-    />
-  );
-}
-
-/**
- * Memory pairs: match each word card with its poster (3 pairs from 6 words).
- */
+/** Picture ↔ picture memory. Print appears only after a match. */
 export function MemoryMatch({ entry }: { entry: LetterEntry }) {
   const [round, setRound] = useState(0);
   const deck = useMemo(() => buildDeck(entry), [entry, round]);
@@ -143,15 +91,18 @@ export function MemoryMatch({ entry }: { entry: LetterEntry }) {
   return (
     <div className="space-y-4">
       <div className="text-center">
-        <p className="font-display text-xl font-bold text-ink sm:text-2xl">Memory pairs</p>
+        <p className="font-display text-xl font-bold text-ink sm:text-2xl">
+          Find the matching pictures
+        </p>
         <p className="mt-1 text-sm font-medium text-muted">
-          Match each word with its picture · Moves: {moves}
+          Same picture twice · Moves: {moves}
         </p>
       </div>
 
       <div className="grid grid-cols-3 gap-2 sm:gap-3">
         {deck.map((card) => {
           const isUp = flipped.includes(card.id) || matched.includes(card.pair);
+          const isMatch = matched.includes(card.pair);
           return (
             <button
               key={`${round}-${card.id}`}
@@ -160,36 +111,17 @@ export function MemoryMatch({ entry }: { entry: LetterEntry }) {
               disabled={lock && !isUp}
               className={cn(
                 "pressable relative aspect-[3/4] overflow-hidden rounded-[var(--radius-md)] border-2 shadow-[var(--shadow-card)]",
-                matched.includes(card.pair)
-                  ? "border-success ring-2 ring-success/30"
-                  : "border-border",
+                isMatch ? "border-success ring-2 ring-success/30" : "border-border",
               )}
               aria-label={isUp ? card.word : "Hidden card"}
             >
               {isUp ? (
-                card.kind === "img" ? (
-                  <CardImage
-                    letter={entry.letter}
-                    slug={card.slug}
-                    word={card.word}
-                    hue={entry.hue}
-                    accent={entry.accent}
-                  />
-                ) : (
-                  <div
-                    className="flex h-full w-full flex-col items-center justify-center gap-1 p-2"
-                    style={{
-                      background: `linear-gradient(145deg, ${entry.hue}, ${entry.accent})`,
-                    }}
-                  >
-                    <span className="font-display text-3xl font-bold text-white sm:text-4xl">
-                      {entry.letter}
-                    </span>
-                    <span className="text-center text-sm font-bold text-white sm:text-base">
-                      {card.word}
-                    </span>
-                  </div>
-                )
+                <GamePicture
+                  letter={entry.letter}
+                  slug={card.slug}
+                  word={card.word}
+                  revealWord={isMatch}
+                />
               ) : (
                 <div className="flex h-full w-full items-center justify-center bg-ink text-3xl font-bold text-white">
                   ?

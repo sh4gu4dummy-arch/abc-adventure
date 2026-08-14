@@ -27,6 +27,7 @@ import { PlayerAvatar } from "./AvatarIcon";
 import { cn } from "@/lib/utils";
 import {
   isEmbeddedPreview,
+  isGrokSandboxHost,
   openPreviewTopLevel,
   requestPreviewStorageAccess,
 } from "@/lib/preview-safe";

@@ -9,6 +9,34 @@ const ROWS = 20;
 /** Share of letter cells that must be inked. Lenient — not a coloring book. */
 const COVER_THRESHOLD = 0.48;
 const INK_WIDTH = 20;
+const START_HINT: Record<string, { x: number; y: number }> = {
+  A: { x: 50, y: 22 },
+  B: { x: 32, y: 22 },
+  C: { x: 68, y: 28 },
+  D: { x: 32, y: 22 },
+  E: { x: 32, y: 22 },
+  F: { x: 32, y: 22 },
+  G: { x: 70, y: 30 },
+  H: { x: 30, y: 22 },
+  I: { x: 50, y: 20 },
+  J: { x: 58, y: 20 },
+  K: { x: 32, y: 22 },
+  L: { x: 34, y: 22 },
+  M: { x: 26, y: 78 },
+  N: { x: 30, y: 22 },
+  O: { x: 50, y: 20 },
+  P: { x: 32, y: 22 },
+  Q: { x: 50, y: 20 },
+  R: { x: 32, y: 22 },
+  S: { x: 66, y: 26 },
+  T: { x: 28, y: 22 },
+  U: { x: 30, y: 24 },
+  V: { x: 28, y: 24 },
+  W: { x: 24, y: 24 },
+  X: { x: 30, y: 24 },
+  Y: { x: 30, y: 24 },
+  Z: { x: 30, y: 24 },
+};
 
 function idx(c: number, r: number) {
   return r * COLS + c;
@@ -297,13 +325,45 @@ export function TracePad({
   }
 
   const shown = done ? 100 : Math.min(99, Math.round((cover / COVER_THRESHOLD) * 100));
+  const showGhost = !done && cover < 0.06;
+  const start = START_HINT[guideLetter] ?? { x: 32, y: 22 };
 
   return (
     <div className="space-y-3">
-      <div className="overflow-hidden rounded-[var(--radius-lg)] border-2 border-dashed border-border shadow-[var(--shadow-card)]">
+      <div className="relative overflow-hidden rounded-[var(--radius-lg)] border-2 border-dashed border-border shadow-[var(--shadow-card)]">
+        {showGhost && (
+          <div className="pointer-events-none absolute inset-0 z-[1]">
+            <svg
+              className="h-full w-full"
+              viewBox="0 0 100 100"
+              preserveAspectRatio="xMidYMid meet"
+              aria-hidden
+            >
+              <text
+                x="50"
+                y="62"
+                textAnchor="middle"
+                fontSize="58"
+                fontWeight="700"
+                stroke={accent}
+                strokeWidth="1.6"
+                className="trace-ghost-stroke"
+                style={{ fontFamily: "system-ui, Nunito, Fredoka, sans-serif" }}
+              >
+                {guideLetter}
+              </text>
+            </svg>
+            <span
+              className="trace-start-dot"
+              style={{ left: `${start.x}%`, top: `${start.y}%`, background: accent }}
+            >
+              1
+            </span>
+          </div>
+        )}
         <canvas
           ref={canvasRef}
-          className="block w-full touch-none"
+          className="relative block w-full touch-none"
           onPointerDown={pointerDown}
           onPointerMove={pointerMove}
           onPointerUp={pointerUp}
@@ -337,7 +397,7 @@ export function TracePad({
         <p className="text-sm font-semibold text-ink-soft">
           {done
             ? `Nice tracing! Letter ${guideLetter} is finished.`
-            : "Follow the big letter. Going outside a little is OK — just cover most of it."}
+            : "Start at the 1, then follow the moving dots. Going outside a little is OK."}
         </p>
       </div>
 

@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
-import { ArrowLeft, BookOpen, ChevronLeft, ChevronRight, Flame, Gamepad2, Pencil, Settings2, Sparkles, Volume2 } from "lucide-react";
+import { ArrowLeft, BookOpen, ChevronLeft, ChevronRight, Flame, Gamepad2, Pencil, Settings2, Volume2 } from "lucide-react";
 import {
   LETTERS,
   getLetter,
@@ -19,11 +19,11 @@ import { PosterLightbox } from "@/components/alphabet/PosterLightbox";
 import { PlayerChip, ProfileGate } from "@/components/alphabet/ProfileGate";
 import { StarBar } from "@/components/alphabet/StarBar";
 import { StoryMode } from "@/components/alphabet/StoryMode";
+import { SoundLesson } from "@/components/alphabet/SoundLesson";
 import { TracePad } from "@/components/alphabet/TracePad";
 import { WordLessonModal } from "@/components/alphabet/WordLessonModal";
 import {
   getLetterChecklist,
-  markSection,
   markVisited,
   tryCompleteLetter,
   useProgress,
@@ -54,11 +54,11 @@ const TABS: { id: TabId; label: string; icon: typeof BookOpen }[] = [
 ];
 
 const GAMES: { id: GameId; label: string; blurb: string }[] = [
-  { id: "match", label: "Match", blurb: "Which poster starts with this letter?" },
-  { id: "memory", label: "Pairs", blurb: "Match word to picture" },
-  { id: "ispy", label: "I Spy", blurb: "Find the picture I say" },
+  { id: "match", label: "Match", blurb: "Hear the sound — tap the picture" },
+  { id: "memory", label: "Pairs", blurb: "Find two pictures that match" },
+  { id: "ispy", label: "I Hear", blurb: "Listen, then tap that picture" },
   { id: "story", label: "Story", blurb: "Watch the words in action" },
-  { id: "cases", label: "Aa hunt", blurb: "Find upper & lower case" },
+  { id: "cases", label: "Aa sort", blurb: "Sort big and little letters" },
 ];
 
 function LetterPage() {
@@ -203,7 +203,7 @@ function LetterPage() {
                 {entry.name}
               </h1>
               <p className="mt-1 max-w-md text-sm font-semibold text-white/90 sm:text-base">
-                {entry.soundHint ?? `Says “${entry.letter.toLowerCase()}”`}
+                {entry.soundCue}
               </p>
             </div>
           </div>
@@ -211,7 +211,6 @@ function LetterPage() {
             <button
               type="button"
               onClick={() => {
-                markSection(entry.letter, "sound");
                 void speakLetter(entry.letter);
               }}
               className="pressable inline-flex items-center gap-2 rounded-[var(--radius-pill)] bg-white/95 px-4 py-2.5 text-sm font-bold shadow"
@@ -303,38 +302,7 @@ function LetterPage() {
 
       {tab === "sound" && (
         <section className="card-surface space-y-4 rounded-[var(--radius-xl)] p-5">
-          <h2 className="font-display text-xl font-bold text-ink">Letter sound</h2>
-          <p className="text-base font-semibold text-ink-soft">
-            {entry.soundHint ?? `The letter ${entry.letter} makes a friendly sound.`}
-          </p>
-          {entry.rhyme && (
-            <p className="rounded-[var(--radius-lg)] bg-surface-soft p-3 text-sm font-bold text-ink">
-              Rhyme: {entry.rhyme}
-            </p>
-          )}
-          {entry.funFact && (
-            <p className="text-sm font-medium text-ink-soft">
-              <Sparkles className="mr-1 inline size-4 text-star" />
-              {entry.funFact}
-            </p>
-          )}
-          <button
-            type="button"
-            onClick={() => {
-              markSection(entry.letter, "sound");
-              void speak(
-                entry.soundHint ??
-                  `Letter ${entry.letter}. ${entry.words[0]?.word ?? ""}`,
-              );
-            }}
-            className="pressable inline-flex min-h-12 items-center gap-2 rounded-[var(--radius-pill)] px-5 font-bold text-white"
-            style={{ background: entry.accent }}
-          >
-            <Volume2 className="size-5" /> Play sound lesson
-          </button>
-          {check.sound && (
-            <p className="text-sm font-bold text-success">Sound heard — checklist check!</p>
-          )}
+          <SoundLesson entry={entry} />
         </section>
       )}
 
