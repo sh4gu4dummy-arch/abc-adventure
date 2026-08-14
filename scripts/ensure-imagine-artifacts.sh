@@ -1,27 +1,37 @@
 #!/bin/sh
-# Keep /workspace/artifacts (grok-files FUSE) readable so Imagine can
-# persist clips. The mount goes stale and returns EACCES even as root.
+# Keep /workspace/artifacts as the grok-files FUSE locker.
+# Do NOT replace it with a regular folder — Imagine writes into the locker.
 set -eu
 ART=/workspace/artifacts
-if ls "$ART" >/dev/null 2>&1; then
+
+is_fuse() {
+  findmnt -n -o FSTYPE "$ART" 2>/dev/null | grep -q fuse
+}
+
+write_ok() {
+  mkdir -p "$ART/imagine_videos" 2>/dev/null || return 1
+  echo ok > "$ART/imagine_videos/_write_test.txt" 2>/dev/null || return 1
+  test -r "$ART/imagine_videos/_write_test.txt"
+}
+
+if is_fuse && write_ok; then
   exit 0
 fi
-echo "artifacts mount stale — remounting grok-files" >&2
+
+echo "artifacts locker not writable FUSE — remounting grok-files (not a fake dir)" >&2
 grok-files unmount "$ART" >/dev/null 2>&1 || true
-sleep 0.5
-mkdir -p "$ART" 2>/dev/null || true
-nohup grok-files mount / "$ART" --no-supervisor --ttl 30m \
-  --content-cache memory --deny-delete off --occ known \
-  --occ-conflict-policy retain >>/tmp/grok-files-mount.log 2>&1 &
-# wait up to ~5s
+sleep 0.4
+# mountpoint must exist; this is the FUSE target, not a replacement locker
+[ -d "$ART" ] || mkdir "$ART"
+nohup grok-files mount / "$ART" >>/tmp/grok-files-mount.log 2>&1 &
 i=0
-while [ "$i" -lt 10 ]; do
-  if ls "$ART" >/dev/null 2>&1; then
-    echo "artifacts remounted"
+while [ "$i" -lt 15 ]; do
+  if is_fuse && write_ok; then
+    echo "artifacts FUSE locker remounted"
     exit 0
   fi
-  sleep 0.5
+  sleep 0.4
   i=$((i + 1))
 done
-echo "WARN: artifacts still not listable — use grok-files CLI" >&2
+echo "WARN: artifacts FUSE locker still not writable" >&2
 exit 1
