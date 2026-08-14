@@ -70,6 +70,8 @@ npm run dev              # online preview :8080
 npm run build:portable   # rebuild offline ZIP
 ```
 
+- **Meet the buddy:** every letter has a 10s 480×720 clip at `public/videos/buddies/{a-z}.mp4` (rebuild with `python3 scripts/build-buddy-videos.py`). Tap the buddy or **Meet A**.
+
 ## Art split
 
 - **Buddies** (letter is the character): `public/letters/` + R–Z files in `public/posters/` → home tiles, letter hero, stickers, story actors, letter-friends row.
@@ -97,7 +99,7 @@ npm run build:apk      # only when asked
 
 ## Versioning & downloads
 
-- **Current version:** `0.004` (`v0.004`) — stored in `VERSION` and `src/lib/version.ts` (keep in sync).
+- **Current version:** `0.005` (`v0.005`) — stored in `VERSION` and `src/lib/version.ts` (keep in sync).
 - Bump on **every** update.
 - Code-only package tracks the current version. Portable / APK / codebase keep their last-built version until rebuilt.
 

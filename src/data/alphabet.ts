@@ -542,5 +542,11 @@ export function letterHeroPath(letter: string): string {
   return assetUrl(`letters/${letter.toLowerCase()}.webp`);
 }
 
+/** 10s 480p meet-the-buddy clip. */
+export function letterBuddyVideoPath(letter: string): string {
+  return assetUrl(`videos/buddies/${letter.toLowerCase()}.mp4`);
+}
+
 export { isBuddyWordPoster } from "@/data/art-roles";
+
 
