@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   BookOpen,
+  Clapperboard,
   Download,
   Gamepad2,
   Settings2,
@@ -16,6 +17,10 @@ import {
   ProfileGate,
 } from "@/components/alphabet/ProfileGate";
 import { DailyPath } from "@/components/alphabet/DailyPath";
+import {
+  LETTER_BUDDIES_EPISODES,
+  buddyPosterPath,
+} from "@/data/letter-buddies";
 import { useProgress } from "@/lib/progress";
 
 export const Route = createFileRoute("/")({ component: Home });
@@ -85,6 +90,8 @@ function Home() {
       </header>
 
       <DailyPath />
+
+      <LetterBuddiesCard />
 
       <section className="mb-6" aria-label="Alphabet">
         <div className="mb-3 flex items-end justify-between gap-2">
@@ -177,5 +184,31 @@ function Tip({
         <p className="text-sm font-medium text-ink-soft">{body}</p>
       </div>
     </div>
+  );
+}
+
+function LetterBuddiesCard() {
+  const ep = LETTER_BUDDIES_EPISODES[0];
+  if (!ep) return null;
+  return (
+    <Link
+      to="/buddies"
+      className="pressable mb-6 flex overflow-hidden rounded-[var(--radius-xl)] border-2 border-border bg-surface shadow-[var(--shadow-card)]"
+    >
+      <img
+        src={buddyPosterPath(ep)}
+        alt=""
+        className="h-28 w-[7.5rem] shrink-0 object-cover sm:h-32 sm:w-44"
+      />
+      <span className="flex min-w-0 flex-1 flex-col justify-center p-3 sm:p-4">
+        <span className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wide text-accent">
+          <Clapperboard className="size-3.5" /> Letter Buddies
+        </span>
+        <span className="font-display text-xl font-bold text-ink">
+          Episode {ep.n}: {ep.title}
+        </span>
+        <span className="text-sm font-semibold text-ink-soft">{ep.blurb}</span>
+      </span>
+    </Link>
   );
 }

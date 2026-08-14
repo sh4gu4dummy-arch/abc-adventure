@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
-import { ArrowLeft, BookOpen, ChevronLeft, ChevronRight, Flame, Gamepad2, Pencil, Settings2, Volume2 } from "lucide-react";
+import { ArrowLeft, BookOpen, ChevronLeft, ChevronRight, Clapperboard, Flame, Gamepad2, Pencil, Settings2, Volume2 } from "lucide-react";
 import {
   LETTERS,
   getLetter,
@@ -23,6 +23,7 @@ import { SoundLesson } from "@/components/alphabet/SoundLesson";
 import { TracePad } from "@/components/alphabet/TracePad";
 import { MeetBuddyButton, MeetBuddyModal } from "@/components/alphabet/MeetBuddy";
 import { WordFriends } from "@/components/alphabet/WordFriends";
+import { episodesForLetter } from "@/data/letter-buddies";
 import { WordLessonModal } from "@/components/alphabet/WordLessonModal";
 import {
   getLetterChecklist,
@@ -217,6 +218,14 @@ function LetterPage() {
               <Volume2 className="size-4" /> Hear letter
             </button>
             <MeetBuddyButton entry={entry} onOpen={() => setMeetOpen(true)} />
+            {episodesForLetter(entry.letter).length > 0 && (
+              <Link
+                to="/buddies"
+                className="pressable inline-flex items-center gap-2 rounded-[var(--radius-pill)] bg-white/20 px-4 py-2.5 text-sm font-bold text-white"
+              >
+                <Clapperboard className="size-4" /> Letter Buddies
+              </Link>
+            )}
             {prev && (
               <Link
                 to="/letter/$letter"
