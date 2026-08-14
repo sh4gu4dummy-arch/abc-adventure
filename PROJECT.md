@@ -75,29 +75,34 @@ npm run build:portable   # rebuild offline ZIP
 Local git is enabled so we can restore after mistakes.
 
 - Branch: `main`
-- **Commit after every change** (user request 2026-08-12). Don't wait to ask.
+- **Commit after every change.** Don't wait to ask.
+- **Bump version on every change** (`VERSION` + `src/lib/version.ts`, 0.002, 0.003, …).
+- **Refresh the code-only ZIP** every change (`npm run build:code` → `abc-adventure-vX.YYY-code.zip`).
+- **Do not rebuild portable ZIP, full codebase ZIP, or APK** unless the user asks.
 - Not a cloud backup — lives with this workspace session
 - To restore a checkpoint, ask: “go back to the commit about …”
 
 ```bash
 git log --oneline      # list checkpoints
-# restore is done by the builder when you ask
+npm run build:code     # small source ZIP for Downloads
+npm run build:portable # only when asked
+npm run build:apk      # only when asked
 ```
 
 ## Versioning & downloads
 
-- **Current version:** `0.001` (`v0.001`) — stored in `VERSION` and `src/lib/version.ts` (keep in sync).
-- Bump on each meaningful update (0.002, 0.003, …).
-- **Rebuild packages only when the user asks** (`npm run build:portable`) — never auto-export on every change.
+- **Current version:** `0.002` (`v0.002`) — stored in `VERSION` and `src/lib/version.ts` (keep in sync).
+- Bump on **every** update.
+- Code-only package tracks the current version. Portable / APK / codebase keep their last-built version until rebuilt.
 
 ### File naming (mandatory)
 
-| Kind | File name pattern |
-|---|---|
-| Portable app (playable) | `abc-adventure-vX.YYY-portable.zip` |
-| Code only (source, no media) | `abc-adventure-vX.YYY-code.zip` |
-| Code + assets (full source) | `abc-adventure-vX.YYY-codebase.zip` |
-| APK (when built) | `abc-adventure-vX.YYY.apk` |
+| Kind | File name pattern | When rebuilt |
+|---|---|---|
+| Code only (source, no media) | `abc-adventure-vX.YYY-code.zip` | Every change |
+| Portable app (playable) | `abc-adventure-vX.YYY-portable.zip` | Only when asked |
+| Code + assets (full source) | `abc-adventure-vX.YYY-codebase.zip` | Only when asked |
+| APK | `abc-adventure-vX.YYY.apk` | Only when asked |
 
 - Code downloads are **source archives** (download only — never navigate/run as the app).
 - Portable is the only ready-to-play offline bundle.

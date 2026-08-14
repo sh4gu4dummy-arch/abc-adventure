@@ -133,42 +133,38 @@ export function DownloadPortable({ className }: { className?: string }) {
     };
   }, []);
 
-  const version = meta?.version ?? APP_VERSION;
-  const label = meta?.versionLabel ?? APP_VERSION_LABEL;
-
-  const portableName =
-    meta?.packages?.portable?.name ??
-    meta?.portableApp?.name ??
-    packageFileName("portable", version);
+  const appLabel = APP_VERSION_LABEL;
   const codeName =
     meta?.packages?.code?.name ??
     meta?.codeOnly?.name ??
-    packageFileName("code", version);
+    packageFileName("code", APP_VERSION);
+  const portableName =
+    meta?.packages?.portable?.name ??
+    meta?.portableApp?.name ??
+    packageFileName("portable");
   const codebaseName =
     meta?.packages?.codebase?.name ??
     meta?.sourceCode?.name ??
-    packageFileName("codebase", version);
+    packageFileName("codebase");
   const apkName =
-    meta?.packages?.apk?.name ??
-    meta?.apk?.name ??
-    packageFileName("apk", version);
+    meta?.packages?.apk?.name ?? meta?.apk?.name ?? packageFileName("apk");
 
   const portableHref =
     meta?.packages?.portable?.path ??
     meta?.portableApp?.path ??
-    packagePublicPath("portable", version);
+    packagePublicPath("portable");
   const codeHref =
     meta?.packages?.code?.path ??
     meta?.codeOnly?.path ??
-    packagePublicPath("code", version);
+    packagePublicPath("code", APP_VERSION);
   const codebaseHref =
     meta?.packages?.codebase?.path ??
     meta?.sourceCode?.path ??
-    packagePublicPath("codebase", version);
+    packagePublicPath("codebase");
   const apkHref =
     meta?.packages?.apk?.path ??
     meta?.apk?.path ??
-    packagePublicPath("apk", version);
+    packagePublicPath("apk");
 
   const appMb = meta?.packages?.portable?.mb ?? meta?.portableApp?.mb;
   const codeMb = meta?.packages?.code?.mb ?? meta?.codeOnly?.mb;
@@ -198,7 +194,7 @@ export function DownloadPortable({ className }: { className?: string }) {
         </div>
         <div className="text-right">
           <p className="rounded-[var(--radius-pill)] border-2 border-border bg-surface px-3 py-1 text-xs font-bold uppercase tracking-wide text-ink">
-            {label}
+            {appLabel}
           </p>
           {built && (
             <p className="mt-1 text-[11px] font-bold uppercase tracking-wide text-muted">
@@ -254,7 +250,9 @@ export function DownloadPortable({ className }: { className?: string }) {
           <strong className="text-ink"> Portable app</strong> is the offline HTML package for computers.
           <strong className="text-ink"> Code</strong> / <strong className="text-ink">Code + assets</strong>{" "}
           are source archives (download only). Progress saves on the device that opens the app.
-          Current version: {label}.
+          Current app version: {appLabel}. Code-only ZIP tracks this version.
+          Portable / APK / full codebase stay on their last-built file until you
+          ask to refresh them.
         </span>
       </p>
     </section>
