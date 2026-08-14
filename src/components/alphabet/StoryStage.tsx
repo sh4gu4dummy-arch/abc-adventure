@@ -1,4 +1,4 @@
-import { posterPath, type WordEntry } from "@/data/alphabet";
+import { wordBuddyPath, type WordEntry } from "@/data/alphabet";
 import type { StoryAction, StoryScene } from "@/data/stories";
 import { LetterWord } from "./LetterWord";
 import { cn } from "@/lib/utils";
@@ -231,7 +231,7 @@ export function StoryStage({
           >
             <div className="story-actor-frame">
               <img
-                src={posterPath(letter, w.slug)}
+                src={wordBuddyPath(letter, w.slug)}
                 alt={w.word}
                 className="story-actor-img"
                 draggable={false}

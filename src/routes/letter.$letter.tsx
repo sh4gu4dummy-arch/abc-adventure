@@ -21,6 +21,7 @@ import { StarBar } from "@/components/alphabet/StarBar";
 import { StoryMode } from "@/components/alphabet/StoryMode";
 import { SoundLesson } from "@/components/alphabet/SoundLesson";
 import { TracePad } from "@/components/alphabet/TracePad";
+import { WordFriends } from "@/components/alphabet/WordFriends";
 import { WordLessonModal } from "@/components/alphabet/WordLessonModal";
 import {
   getLetterChecklist,
@@ -178,29 +179,23 @@ function LetterPage() {
           background: `linear-gradient(135deg, ${entry.hue} 0%, ${entry.accent} 100%)`,
         }}
       >
-        <img
-          src={letterHeroPath(entry.letter)}
-          alt=""
-          className="poster-art pointer-events-none absolute -right-6 -top-6 h-40 w-40 rounded-3xl object-cover opacity-40 sm:h-52 sm:w-52"
-          decoding="async"
-          onError={(e) => {
-            (e.target as HTMLImageElement).style.display = "none";
-          }}
-        />
         <div className="relative flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-4">
-            <div
-              className="flex size-20 items-center justify-center rounded-[1.5rem] bg-white/95 font-display text-5xl font-bold shadow-lg sm:size-24 sm:text-6xl"
-              style={{ color: entry.accent }}
-            >
-              {displayLetter}
-            </div>
+            <img
+              src={letterHeroPath(entry.letter)}
+              alt=""
+              className="size-[5.5rem] shrink-0 rounded-[1.4rem] border-4 border-white/85 object-cover shadow-lg sm:size-28"
+              decoding="async"
+            />
             <div className="text-white">
               <p className="text-sm font-bold uppercase tracking-wider text-white/80">
                 Letter {entry.letter}
               </p>
               <h1 className="font-display text-3xl font-bold drop-shadow sm:text-4xl">
-                {entry.name}
+                {displayLetter}
+                <span className="ml-2 text-2xl font-bold opacity-90 sm:text-3xl">
+                  {entry.name}
+                </span>
               </h1>
               <p className="mt-1 max-w-md text-sm font-semibold text-white/90 sm:text-base">
                 {entry.soundCue}
@@ -297,6 +292,7 @@ function LetterPage() {
               );
             })}
           </div>
+          <WordFriends entry={entry} />
         </section>
       )}
 

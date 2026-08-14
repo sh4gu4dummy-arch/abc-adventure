@@ -4,6 +4,7 @@ import {
   useProgress,
   type LetterChecklist,
 } from "@/lib/progress";
+import { letterHeroPath } from "@/data/alphabet";
 import { cn } from "@/lib/utils";
 
 const STICKER_EMOJI: Record<string, string> = {
@@ -67,8 +68,12 @@ export function LetterCompleteBanner({
             <>Finish letter checklist</>
           )}
         </p>
-        <span className="text-2xl" aria-hidden>
-          {stickerFor(letter)}
+        <span className="size-10 overflow-hidden rounded-xl border-2 border-white/70 shadow-sm" aria-hidden>
+          <img
+            src={letterHeroPath(letter)}
+            alt=""
+            className="size-full object-cover"
+          />
         </span>
       </div>
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
@@ -128,11 +133,13 @@ export function StickerShelf() {
       {list.map((L) => (
         <div
           key={L}
-          className="flex size-12 flex-col items-center justify-center rounded-2xl border-2 border-border bg-surface shadow-[var(--shadow-card)]"
+          className="relative size-14 overflow-hidden rounded-2xl border-2 border-border bg-surface shadow-[var(--shadow-card)]"
           title={`Letter ${L}`}
         >
-          <span className="text-xl leading-none">{stickerFor(L)}</span>
-          <span className="text-[10px] font-bold text-ink">{L}</span>
+          <img src={letterHeroPath(L)} alt="" className="size-full object-cover" />
+          <span className="absolute bottom-0.5 right-1 text-[10px] font-black text-white drop-shadow">
+            {L}
+          </span>
         </div>
       ))}
     </div>

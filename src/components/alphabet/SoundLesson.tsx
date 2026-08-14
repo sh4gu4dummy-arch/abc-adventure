@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { Check, Volume2 } from "lucide-react";
 import type { LetterEntry } from "@/data/alphabet";
-import { posterPath } from "@/data/alphabet";
+import { posterPath, wordBuddyPath } from "@/data/alphabet";
 import { markSection } from "@/lib/progress";
 import { speak, speakWord } from "@/lib/speak";
 import { cn } from "@/lib/utils";
@@ -82,6 +82,12 @@ export function SoundLesson({ entry }: { entry: LetterEntry }) {
                   src={posterPath(entry.letter, sample.slug)}
                   alt=""
                   className="mb-1 size-14 rounded-xl object-cover"
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).src = wordBuddyPath(
+                      entry.letter,
+                      sample.slug,
+                    );
+                  }}
                 />
               ) : (
                 <span
