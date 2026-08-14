@@ -21,6 +21,7 @@ import { StarBar } from "@/components/alphabet/StarBar";
 import { StoryMode } from "@/components/alphabet/StoryMode";
 import { SoundLesson } from "@/components/alphabet/SoundLesson";
 import { TracePad } from "@/components/alphabet/TracePad";
+import { MeetBuddyButton, MeetBuddyModal } from "@/components/alphabet/MeetBuddy";
 import { WordFriends } from "@/components/alphabet/WordFriends";
 import { WordLessonModal } from "@/components/alphabet/WordLessonModal";
 import {
@@ -79,6 +80,7 @@ function LetterPage() {
   const [switching, setSwitching] = useState(false);
   const [lightbox, setLightbox] = useState<WordEntry | null>(null);
   const [lessonWord, setLessonWord] = useState<WordEntry | null>(null);
+  const [meetOpen, setMeetOpen] = useState(false);
 
   useEffect(() => {
     if (
@@ -184,8 +186,9 @@ function LetterPage() {
             <img
               src={letterHeroPath(entry.letter)}
               alt=""
-              className="size-[5.5rem] shrink-0 rounded-[1.4rem] border-4 border-white/85 object-cover shadow-lg sm:size-28"
+              className="size-[5.5rem] shrink-0 cursor-pointer rounded-[1.4rem] border-4 border-white/85 object-cover shadow-lg sm:size-28"
               decoding="async"
+              onClick={() => setMeetOpen(true)}
             />
             <div className="text-white">
               <p className="text-sm font-bold uppercase tracking-wider text-white/80">
@@ -213,6 +216,7 @@ function LetterPage() {
             >
               <Volume2 className="size-4" /> Hear letter
             </button>
+            <MeetBuddyButton entry={entry} onOpen={() => setMeetOpen(true)} />
             {prev && (
               <Link
                 to="/letter/$letter"
@@ -377,6 +381,10 @@ function LetterPage() {
           />
         );
       })()}
+
+      {meetOpen && (
+        <MeetBuddyModal entry={entry} onClose={() => setMeetOpen(false)} />
+      )}
     </main>
   );
 }
