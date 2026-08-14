@@ -1,12 +1,16 @@
 /**
- * App version — bump VERSION (project root) and this file together on each
- * meaningful release. Download packages are named with this number.
+ * App version — bump VERSION (project root) and this file together on every change.
  *
- * Format: major.minor as 0.001, 0.002, … (display / files: v0.001)
- * Rebuild download ZIPs only when the user asks (npm run build:portable).
+ * Format: 0.001, 0.002, … (display / files: v0.001)
+ *
+ * After each change:
+ *   1. Bump this + VERSION
+ *   2. Rebuild code-only ZIP (`npm run build:code`)
+ *   3. Git commit
+ * Portable / codebase / APK wait until the user asks.
  */
 
-export const APP_VERSION = "0.001";
+export const APP_VERSION = "0.002";
 export const APP_VERSION_LABEL = `v${APP_VERSION}`;
 export const APP_SLUG = "abc-adventure";
 export const APP_DISPLAY_NAME = "ABC Adventure";

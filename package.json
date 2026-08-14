@@ -10,6 +10,7 @@
     "dev": "vite dev --host 0.0.0.0 --port 8080",
     "build": "vite build && npm run db:migrate",
     "build:portable": "node scripts/build-portable.mjs",
+    "build:code": "node scripts/build-code-zip.mjs",
     "db:migrate": "node scripts/migrate.mjs",
     "build:dev": "vite build --mode development",
     "preview": "vite preview --host 0.0.0.0 --port 8080",
@@ -96,5 +97,5 @@
     "typescript-eslint": "^8.56.1",
     "vite": "^8.1.0"
   },
-  "version": "0.001"
+  "version": "0.002"
 }
