@@ -1,60 +1,53 @@
-# Dependencies
-node_modules/
-.node_modules.lock
 
-# Build / deploy
-dist/
-.output/
-.vercel/
-.tanstack/
-.nitro/
-.vinxi/
-
-# Env / secrets
-.env
-.env.*
 !.env.example
-
-# Logs & OS
-*.log
-npm-debug.log*
-.DS_Store
-Thumbs.db
-
 # Agent QA (not app source)
-screenshots/
-artifacts/
-
-# Portable build output (rebuild with: npm run build:portable)
-# ZIPs are generated artifacts served for download — not versioned in git
-public/portable/ABC-Adventure/
-public/portable/ABC-Adventure-Portable.zip
-public/portable/ABC-Adventure-Source.zip
-public/portable/meta.json
-
+# Android / JDK local toolchain (not published)
+# Build / deploy
+# Dependencies
 # Editor
-.idea/
-.vscode/
+# Env / secrets
+# Generated Capacitor web copy (rebuild with cap sync)
+# Logs & OS
+# Portable build output (rebuild with: npm run build:portable)
+# Versioned portable packages (large) — kept on disk for downloads, optional in git
+# ZIPs are generated artifacts served for download — not versioned in git
+*.keystore
+*.log
 *.swp
 *~
-
-# Versioned portable packages (large) — kept on disk for downloads, optional in git
-public/portable/*.zip
-public/portable/abc-adventure-*-portable/
-
-# Android / JDK local toolchain (not published)
+.DS_Store
 .android-sdk/
+.env
+.env.*
+.idea/
 .jdk-21/
-# Generated Capacitor web copy (rebuild with cap sync)
-android/app/src/main/assets/public/
-android/app/src/main/assets/capacitor.config.json
-android/app/build/
+.nitro/
+.node_modules.lock
+.output/
+.tanstack/
+.vercel/
+.vinxi/
+.vscode/
+/public/review/imagine/
+Thumbs.db
 android/.gradle/
+android/app/abc-adventure-release.keystore
+android/app/build/
+android/app/src/main/assets/capacitor.config.json
+android/app/src/main/assets/public/
 android/build/
 android/capacitor-cordova-android-plugins/build/
-android/local.properties
-
-android/app/abc-adventure-release.keystore
 android/captain-definition
-*.keystore
+android/local.properties
+artifacts/
+dist/
+node_modules/
+npm-debug.log*
 public/portable/*.apk
+public/portable/*.zip
+public/portable/ABC-Adventure-Portable.zip
+public/portable/ABC-Adventure-Source.zip
+public/portable/ABC-Adventure/
+public/portable/abc-adventure-*-portable/
+public/portable/meta.json
+screenshots/

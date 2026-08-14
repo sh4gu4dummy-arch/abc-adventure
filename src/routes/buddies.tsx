@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, Clapperboard } from "lucide-react";
 import { LetterBuddiesShow } from "@/components/alphabet/LetterBuddiesShow";
 import { LETTER_BUDDIES_EPISODES, buddyPosterPath } from "@/data/letter-buddies";
+import { assetUrl } from "@/lib/assets";
 
 export const Route = createFileRoute("/buddies")({
   component: BuddiesPage,
@@ -63,6 +64,20 @@ function BuddiesPage() {
           ))}
         </div>
       </div>
+
+      <section className="mt-6" aria-label="Review cut">
+        <h2 className="mb-2 font-display text-lg font-bold text-ink">Review cut</h2>
+        <p className="mb-2 text-sm font-medium text-ink-soft">
+          Same show, saved as a 420p file so you can scrub it.
+        </p>
+        <video
+          className="w-full overflow-hidden rounded-[var(--radius-lg)] border-2 border-border"
+          controls
+          playsInline
+          preload="metadata"
+          src={assetUrl("review/letter-buddies/ep01-stage-420p.mp4")}
+        />
+      </section>
 
       <section className="mt-6" aria-label="Episodes">
         <h2 className="mb-2 font-display text-lg font-bold text-ink">Episodes</h2>

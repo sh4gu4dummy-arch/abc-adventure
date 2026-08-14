@@ -70,7 +70,8 @@ npm run dev              # online preview :8080
 npm run build:portable   # rebuild offline ZIP
 ```
 
-- **Letter Buddies series:** `/buddies` live stage (real letter mascots, one voice line at a time). The shaky Ken-burns “episode” was deleted — do not restore it.
+- **Letter Buddies series:** `/buddies` live stage (real letter mascots, one voice line at a time). Review pack: `public/review/letter-buddies/` (420p mp4 + sources + frames). The shaky Ken-burns episode was deleted.
+- **Imagine save:** clips often generate in chat but do not land on disk. Cause: `/workspace/artifacts` is a `grok-files` FUSE mount that goes stale (`EACCES`). Remount with `sh scripts/ensure-imagine-artifacts.sh` (also run from `startup.sh`). Pull any files that *did* persist with `sh scripts/pull-imagine-artifacts.sh` → `public/review/imagine/` (gitignored). Even after a healthy remount, Imagine may still report “could not be saved” — that last hop is a platform bug; retry the tool, then pull.
 - **Meet the buddy:** every letter has a 10s 480×720 clip at `public/videos/buddies/{a-z}.mp4` (rebuild with `python3 scripts/build-buddy-videos.py`). Tap the buddy or **Meet A**.
 
 ## Art split
@@ -100,7 +101,7 @@ npm run build:apk      # only when asked
 
 ## Versioning & downloads
 
-- **Current version:** `0.007` (`v0.007`) — stored in `VERSION` and `src/lib/version.ts` (keep in sync).
+- **Current version:** `0.008` (`v0.008`) — stored in `VERSION` and `src/lib/version.ts` (keep in sync).
 - Bump on **every** update.
 - Code-only package tracks the current version. Portable / APK / codebase keep their last-built version until rebuilt.
 
