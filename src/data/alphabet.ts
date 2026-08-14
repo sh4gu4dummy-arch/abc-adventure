@@ -542,9 +542,15 @@ export function letterHeroPath(letter: string): string {
   return assetUrl(`letters/${letter.toLowerCase()}.webp`);
 }
 
-/** 10s 480p meet-the-buddy clip. */
+/** 10s local bounce, or Imagine clip when we have one. */
+const IMAGINE_BUDDY = new Set(["a", "c", "t"]);
+
 export function letterBuddyVideoPath(letter: string): string {
-  return assetUrl(`videos/buddies/${letter.toLowerCase()}.mp4`);
+  const l = letter.toLowerCase();
+  if (IMAGINE_BUDDY.has(l)) {
+    return assetUrl(`videos/imagine/${l}.mp4`);
+  }
+  return assetUrl(`videos/buddies/${l}.mp4`);
 }
 
 export { isBuddyWordPoster } from "@/data/art-roles";
