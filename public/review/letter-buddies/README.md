@@ -15,8 +15,10 @@ Chat Imagine **makes** the clip (you see it in this thread) but **does not write
    `XAI_API_KEY=… sh scripts/imagine-i2v-api.sh public/letters/c.webp "waves a paw" public/videos/imagine/c.mp4 10`
    That API returns a real `video.url` we can curl.
 
-If you already have a `vidgen.x.ai` or `grok.com/imagine/post/…` link:
-`sh scripts/fetch-imagine-video.sh '<url>' c-wave.mp4`
+If a clip URL looks like `https://vidgen.x.ai/...mp4`:
+
+`sh scripts/fetch-vidgen.sh '<url>' public/review/imagine/videos/name.mp4`
+
 
 ## Sources
 
