@@ -87,15 +87,22 @@ export function TracePad({
       ctx.font = letterFont(h);
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
+      const cx = w / 2;
+      const cy = h / 2 + 4;
+
+      // Soft body — the letter to color in
       ctx.fillStyle = accent;
-      ctx.globalAlpha = 0.18;
-      ctx.fillText(guideLetter, w / 2, h / 2 + 4);
-      ctx.globalAlpha = 0.4;
+      ctx.globalAlpha = 0.16;
+      ctx.fillText(guideLetter, cx, cy);
+
+      // Still outline on the glyph rim (same font + origin as the fill)
+      ctx.globalAlpha = 0.5;
       ctx.strokeStyle = accent;
-      ctx.lineWidth = 3;
-      ctx.setLineDash([10, 10]);
-      ctx.strokeText(guideLetter, w / 2, h / 2 + 4);
+      ctx.lineWidth = 4;
+      ctx.lineJoin = "round";
+      ctx.lineCap = "round";
       ctx.setLineDash([]);
+      ctx.strokeText(guideLetter, cx, cy);
       ctx.globalAlpha = 1;
     },
     [accent, guideLetter],
@@ -330,36 +337,14 @@ export function TracePad({
 
   return (
     <div className="space-y-3">
-      <div className="relative overflow-hidden rounded-[var(--radius-lg)] border-2 border-dashed border-border shadow-[var(--shadow-card)]">
+      <div className="relative overflow-hidden rounded-[var(--radius-lg)] border-2 border-border shadow-[var(--shadow-card)]">
         {showGhost && (
-          <div className="pointer-events-none absolute inset-0 z-[1]">
-            <svg
-              className="h-full w-full"
-              viewBox="0 0 100 100"
-              preserveAspectRatio="xMidYMid meet"
-              aria-hidden
-            >
-              <text
-                x="50"
-                y="62"
-                textAnchor="middle"
-                fontSize="58"
-                fontWeight="700"
-                stroke={accent}
-                strokeWidth="1.6"
-                className="trace-ghost-stroke"
-                style={{ fontFamily: "system-ui, Nunito, Fredoka, sans-serif" }}
-              >
-                {guideLetter}
-              </text>
-            </svg>
-            <span
-              className="trace-start-dot"
-              style={{ left: `${start.x}%`, top: `${start.y}%`, background: accent }}
-            >
-              1
-            </span>
-          </div>
+          <span
+            className="trace-start-dot"
+            style={{ left: `${start.x}%`, top: `${start.y}%`, background: accent }}
+          >
+            1
+          </span>
         )}
         <canvas
           ref={canvasRef}
@@ -397,7 +382,7 @@ export function TracePad({
         <p className="text-sm font-semibold text-ink-soft">
           {done
             ? `Nice tracing! Letter ${guideLetter} is finished.`
-            : "Start at the 1, then follow the moving dots. Going outside a little is OK."}
+            : "Start at the 1 and stay on the letter. Going outside a little is OK."}
         </p>
       </div>
 
