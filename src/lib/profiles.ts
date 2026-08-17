@@ -1,10 +1,24 @@
 import { useSyncExternalStore } from "react";
 import type { ProgressState } from "@/lib/progress";
 import { emptyProgress, normalizeProgress } from "@/lib/progress-core";
-import { safeGetItem, safeRemoveItem, safeSetItem } from "@/lib/preview-safe";
+import {
+  idbGet,
+  idbSet,
+  safeGetItem,
+  safeRemoveItem,
+  safeSetItem,
+} from "@/lib/preview-safe";
 
+/** Stable key — never bump without reading the old one first. */
 const STORE_KEY = "abc-adventure-profiles-v1";
+const BACKUP_KEY = "abc-adventure-profiles-backup";
 const LEGACY_PROGRESS_KEY = "abc-adventure-progress-v1";
+/** Older / typo keys we might have written in past builds */
+const LEGACY_PROFILE_KEYS = [
+  "abc-adventure-profiles",
+  "abc-adventure-profiles-v0",
+  "abc-profiles-v1",
+];
 
 export type AvatarId =
   | "star"
@@ -57,6 +71,7 @@ const emptyStore: ProfileStore = { activeId: null, profiles: [] };
 
 let cache: ProfileStore = emptyStore;
 let cacheRaw: string | null = null;
+let idbHydrated = false;
 
 function uid() {
   return `p_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`;
@@ -67,6 +82,107 @@ function emit() {
     window.dispatchEvent(new Event("abc-profiles"));
     window.dispatchEvent(new Event("abc-progress"));
   }
+}
+
+function isAvatar(v: unknown): v is AvatarId {
+  return (
+    typeof v === "string" &&
+    AVATAR_OPTIONS.some((a) => a.id === v)
+  );
+}
+
+function parseOneProfile(raw: unknown): PlayerProfile | null {
+  if (!raw || typeof raw !== "object") return null;
+  const p = raw as Partial<PlayerProfile>;
+  const id = typeof p.id === "string" && p.id ? p.id : uid();
+  const name =
+    typeof p.name === "string" && p.name.trim() ? p.name.trim() : "Explorer";
+  try {
+    return {
+      id,
+      name,
+      avatar: isAvatar(p.avatar) ? p.avatar : "star",
+      color: typeof p.color === "string" && p.color ? p.color : AVATAR_COLORS[0]!,
+      createdAt: typeof p.createdAt === "number" ? p.createdAt : Date.now(),
+      lastPlayedAt:
+        typeof p.lastPlayedAt === "number" ? p.lastPlayedAt : Date.now(),
+      progress: normalizeProgress(p.progress),
+    };
+  } catch {
+    return null;
+  }
+}
+
+function parseStore(raw: string | null): ProfileStore | null {
+  if (!raw) return null;
+  try {
+    const parsed = JSON.parse(raw) as unknown;
+    let list: unknown[] = [];
+    let activeId: string | null = null;
+    if (Array.isArray(parsed)) {
+      list = parsed;
+    } else if (parsed && typeof parsed === "object") {
+      const o = parsed as Record<string, unknown>;
+      if (Array.isArray(o.profiles)) list = o.profiles;
+      else if (Array.isArray(o.players)) list = o.players;
+      if (typeof o.activeId === "string" || o.activeId === null) {
+        activeId = o.activeId as string | null;
+      }
+    } else {
+      return null;
+    }
+    const profiles = list
+      .map(parseOneProfile)
+      .filter((p): p is PlayerProfile => Boolean(p));
+    if (!profiles.length && !Array.isArray(parsed) && list.length === 0) {
+      // empty object with no profiles — treat as empty, not corrupt
+      return { activeId: null, profiles: [] };
+    }
+    if (activeId && !profiles.some((p) => p.id === activeId)) activeId = null;
+    return { activeId, profiles };
+  } catch {
+    return null;
+  }
+}
+
+function richness(s: ProfileStore): number {
+  let stars = 0;
+  let played = 0;
+  for (const p of s.profiles) {
+    stars += p.progress?.stars ?? 0;
+    played = Math.max(played, p.lastPlayedAt || 0);
+  }
+  return s.profiles.length * 1_000_000 + stars * 100 + (played > 0 ? 1 : 0);
+}
+
+function richer(a: ProfileStore, b: ProfileStore): ProfileStore {
+  return richness(a) >= richness(b) ? a : b;
+}
+
+function collectFromLocal(): ProfileStore {
+  const candidates: ProfileStore[] = [];
+  const keys = [STORE_KEY, BACKUP_KEY, ...LEGACY_PROFILE_KEYS];
+  for (const k of keys) {
+    const parsed = parseStore(safeGetItem(k));
+    if (parsed && parsed.profiles.length) candidates.push(parsed);
+  }
+  if (!candidates.length) {
+    const migrated = migrateLegacy([]);
+    if (migrated.length) return { activeId: null, profiles: migrated };
+    return emptyStore;
+  }
+  return candidates.reduce(richer);
+}
+
+function persistCopies(state: ProfileStore) {
+  const raw = JSON.stringify(state);
+  safeSetItem(STORE_KEY, raw);
+  if (state.profiles.length > 0) {
+    safeSetItem(BACKUP_KEY, raw);
+    void idbSet(STORE_KEY, raw);
+  }
+  cache = state;
+  cacheRaw = raw;
 }
 
 function migrateLegacy(profiles: PlayerProfile[]): PlayerProfile[] {
@@ -103,54 +219,93 @@ function readStore(): ProfileStore {
   try {
     const raw = safeGetItem(STORE_KEY);
     if (raw === cacheRaw && cacheRaw !== null) return cache;
+    const recovered = collectFromLocal();
+    cache = recovered;
     cacheRaw = raw;
-    if (!raw) {
-      const migrated = migrateLegacy([]);
-      if (migrated.length) {
-        const next: ProfileStore = {
-          activeId: null,
-          profiles: migrated,
-        };
-        writeStore(next);
-        return next;
+    if (recovered.profiles.length) {
+      // keep primary + backup in sync with the richest copy we found
+      const primary = parseStore(raw);
+      if (!primary || richness(recovered) > richness(primary)) {
+        persistCopies(recovered);
       }
-      cache = emptyStore;
-      return cache;
     }
-    const parsed = JSON.parse(raw) as ProfileStore;
-    const profiles = (parsed.profiles ?? []).map((p) => ({
-      ...p,
-      progress: normalizeProgress(p.progress),
-    }));
-    const fixed = profiles.length ? profiles : migrateLegacy([]);
-    cache = {
-      activeId: parsed.activeId ?? null,
-      profiles: fixed,
-    };
-    if (fixed !== profiles) {
-      writeStore(cache);
-    }
+    hydrateFromIdb();
     return cache;
   } catch {
-    cache = emptyStore;
+    const recovered = collectFromLocal();
+    cache = recovered;
     cacheRaw = null;
-    return emptyStore;
+    hydrateFromIdb();
+    return cache;
   }
 }
 
-function writeStore(state: ProfileStore) {
+function hydrateFromIdb() {
+  if (idbHydrated || typeof window === "undefined") return;
+  idbHydrated = true;
+  void idbGet(STORE_KEY).then((raw) => {
+    const fromIdb = parseStore(raw);
+    if (!fromIdb || !fromIdb.profiles.length) return;
+    const current = collectFromLocal();
+    const best = richer(current, fromIdb);
+    if (richness(best) > richness(current) || current.profiles.length === 0) {
+      persistCopies(best);
+      emit();
+    }
+  });
+}
+
+function mergeProfiles(
+  existing: PlayerProfile[],
+  incoming: PlayerProfile[],
+  dropId?: string,
+): PlayerProfile[] {
+  const byId = new Map<string, PlayerProfile>();
+  for (const p of existing) byId.set(p.id, p);
+  for (const p of incoming) {
+    const prev = byId.get(p.id);
+    if (!prev) {
+      byId.set(p.id, p);
+      continue;
+    }
+    const prevStars = prev.progress?.stars ?? 0;
+    const nextStars = p.progress?.stars ?? 0;
+    byId.set(p.id, nextStars >= prevStars ? p : prev);
+  }
+  if (dropId) byId.delete(dropId);
+  return [...byId.values()];
+}
+
+function writeStore(
+  state: ProfileStore,
+  opts?: { allowEmpty?: boolean; dropId?: string },
+) {
   if (typeof window === "undefined") return;
+  const existing = collectFromLocal();
+  const mergedProfiles = mergeProfiles(
+    existing.profiles,
+    state.profiles,
+    opts?.dropId,
+  );
+  if (
+    !opts?.allowEmpty &&
+    mergedProfiles.length === 0 &&
+    existing.profiles.length > 0
+  ) {
+    cache = existing;
+    return;
+  }
   const next: ProfileStore = {
     activeId: state.activeId,
-    profiles: state.profiles.map((p) => ({
+    profiles: mergedProfiles.map((p) => ({
       ...p,
       progress: normalizeProgress(p.progress),
     })),
   };
-  const raw = JSON.stringify(next);
-  safeSetItem(STORE_KEY, raw);
-  cache = next;
-  cacheRaw = raw;
+  if (next.activeId && !next.profiles.some((p) => p.id === next.activeId)) {
+    next.activeId = next.profiles[0]?.id ?? null;
+  }
+  persistCopies(next);
   emit();
 }
 
@@ -217,10 +372,13 @@ export function selectProfile(id: string) {
 export function deleteProfile(id: string) {
   const s = readStore();
   const profiles = s.profiles.filter((p) => p.id !== id);
-  writeStore({
-    activeId: s.activeId === id ? null : s.activeId,
-    profiles,
-  });
+  writeStore(
+    {
+      activeId: s.activeId === id ? null : s.activeId,
+      profiles,
+    },
+    { allowEmpty: true, dropId: id },
+  );
 }
 
 export function clearActiveProfile() {
@@ -269,6 +427,7 @@ export function useActiveProfile(): PlayerProfile | null {
 /** For tests / portable export cleanup */
 export function __resetProfilesForTests() {
   safeRemoveItem(STORE_KEY);
+  safeRemoveItem(BACKUP_KEY);
   cache = emptyStore;
   cacheRaw = null;
 }
@@ -289,4 +448,3 @@ export function ensureDefaultProfile(name = "Explorer"): PlayerProfile {
   selectProfile(created.id);
   return created;
 }
-
