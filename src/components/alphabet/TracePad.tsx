@@ -4,11 +4,11 @@ import { markSection } from "@/lib/progress";
 import { getGfxSnapshot } from "@/lib/gfx-pref";
 import { speak } from "@/lib/speak";
 
-const COLS = 24;
-const ROWS = 20;
-/** Share of letter cells that must be inked. Lenient — not a coloring book. */
-const COVER_THRESHOLD = 0.48;
-const INK_WIDTH = 20;
+const COLS = 32;
+const ROWS = 26;
+/** Real share of the letter body that must be inked before it counts. */
+const COVER_THRESHOLD = 0.78;
+const INK_WIDTH = 18;
 const START_HINT: Record<string, { x: number; y: number }> = {
   A: { x: 50, y: 22 },
   B: { x: 32, y: 22 },
@@ -163,15 +163,7 @@ export function TracePad({
       let count = 0;
       for (let r = 0; r < ROWS; r++) {
         for (let c = 0; c < COLS; c++) {
-          let on = 0;
-          for (let dr = -1; dr <= 1 && !on; dr++) {
-            for (let dc = -1; dc <= 1 && !on; dc++) {
-              const rr = r + dr;
-              const cc = c + dc;
-              if (rr < 0 || rr >= ROWS || cc < 0 || cc >= COLS) continue;
-              if (raw[idx(cc, rr)]) on = 1;
-            }
-          }
+          const on = raw[idx(c, r)];
           dilated[idx(c, r)] = on;
           if (on) count += 1;
         }
@@ -232,13 +224,19 @@ export function TracePad({
   function stampInk(x: number, y: number, w: number, h: number) {
     const c = Math.max(0, Math.min(COLS - 1, Math.floor((x / w) * COLS)));
     const r = Math.max(0, Math.min(ROWS - 1, Math.floor((y / h) * ROWS)));
-    for (let dr = -1; dr <= 1; dr++) {
-      for (let dc = -1; dc <= 1; dc++) {
-        const rr = r + dr;
-        const cc = c + dc;
-        if (rr < 0 || rr >= ROWS || cc < 0 || cc >= COLS) continue;
-        inkMask.current[idx(cc, rr)] = 1;
-      }
+    inkMask.current[idx(c, r)] = 1;
+    // One-cell slop so a fat finger still counts, but a scribble can't fill the letter
+    const n = [
+      [0, -1],
+      [0, 1],
+      [-1, 0],
+      [1, 0],
+    ];
+    for (const [dc, dr] of n) {
+      const rr = r + dr;
+      const cc = c + dc;
+      if (rr < 0 || rr >= ROWS || cc < 0 || cc >= COLS) continue;
+      inkMask.current[idx(cc, rr)] = 1;
     }
   }
 
@@ -255,15 +253,14 @@ export function TracePad({
   }
 
   function publishCover(ratio: number) {
-    setCover((prev) => (Math.abs(prev - ratio) >= 0.015 ? ratio : prev));
+    setCover((prev) => (Math.abs(prev - ratio) >= 0.01 ? ratio : prev));
     if (finishedRef.current) return;
     if (ratio < COVER_THRESHOLD) return;
     finishedRef.current = true;
     setDone(true);
-    setCover(1);
     markSection(letter, "trace");
     onDone?.();
-    void speak(`Nice tracing! You finished letter ${guideLetter}!`);
+    void speak(`Nice tracing! You can keep filling letter ${guideLetter} if you want.`);
   }
 
   function pos(e: React.PointerEvent<HTMLCanvasElement>) {
@@ -273,7 +270,6 @@ export function TracePad({
   }
 
   function pointerDown(e: React.PointerEvent<HTMLCanvasElement>) {
-    if (done || finishedRef.current) return;
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext("2d");
     if (!canvas || !ctx) return;
@@ -292,7 +288,7 @@ export function TracePad({
   }
 
   function pointerMove(e: React.PointerEvent<HTMLCanvasElement>) {
-    if (!drawing.current || done || finishedRef.current) return;
+    if (!drawing.current) return;
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext("2d");
     if (!canvas || !ctx) return;
@@ -317,9 +313,10 @@ export function TracePad({
   }
 
   function pointerUp() {
+    if (!drawing.current) return;
     drawing.current = false;
     lastPt.current = null;
-    if (!finishedRef.current) publishCover(coverageRatio());
+    publishCover(coverageRatio());
   }
 
   function clear() {
@@ -331,9 +328,10 @@ export function TracePad({
     setupCanvas();
   }
 
-  const shown = done ? 100 : Math.min(99, Math.round((cover / COVER_THRESHOLD) * 100));
-  const showGhost = !done && cover < 0.06;
+  const shown = Math.min(100, Math.round(cover * 100));
+  const showGhost = cover < 0.06;
   const start = START_HINT[guideLetter] ?? { x: 32, y: 22 };
+  const filled = cover >= 0.96;
 
   return (
     <div className="space-y-3">
@@ -359,7 +357,13 @@ export function TracePad({
 
       <div className="space-y-1.5">
         <div className="flex items-center justify-between text-[11px] font-bold uppercase tracking-wide text-muted">
-          <span>{done ? "All done" : "Keep tracing"}</span>
+          <span>
+            {filled
+              ? "All filled"
+              : done
+                ? "Keep going if you want"
+                : "Keep tracing"}
+          </span>
           <span>{shown}%</span>
         </div>
         <div
@@ -374,15 +378,21 @@ export function TracePad({
             className="h-full rounded-full"
             style={{
               width: `${shown}%`,
-              background: done ? "var(--color-success)" : accent,
+              background: filled
+                ? "var(--color-success)"
+                : done
+                  ? "var(--color-success)"
+                  : accent,
               transition: "width 160ms ease-out",
             }}
           />
         </div>
         <p className="text-sm font-semibold text-ink-soft">
-          {done
-            ? `Nice tracing! Letter ${guideLetter} is finished.`
-            : "Start at the 1 and stay on the letter. Going outside a little is OK."}
+          {filled
+            ? `Beautiful! Letter ${guideLetter} is all filled in.`
+            : done
+              ? `Nice tracing! You can keep filling ${guideLetter} if you want.`
+              : "Start at the 1 and stay on the letter. Going outside a little is OK."}
         </p>
       </div>
 
