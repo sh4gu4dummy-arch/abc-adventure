@@ -104,3 +104,82 @@ export function safeRemoveItem(key: string): void {
   }
   memory.delete(key);
 }
+
+const IDB_NAME = "abc-adventure-kv";
+const IDB_STORE = "kv";
+
+function openKv(): Promise<IDBDatabase | null> {
+  if (typeof indexedDB === "undefined") return Promise.resolve(null);
+  return new Promise((resolve) => {
+    try {
+      const open = indexedDB.open(IDB_NAME, 1);
+      open.onupgradeneeded = () => {
+        const db = open.result;
+        if (!db.objectStoreNames.contains(IDB_STORE)) db.createObjectStore(IDB_STORE);
+      };
+      open.onerror = () => resolve(null);
+      open.onsuccess = () => resolve(open.result);
+    } catch {
+      resolve(null);
+    }
+  });
+}
+
+/** Best-effort IndexedDB get (null if blocked / missing). */
+export function idbGet(key: string): Promise<string | null> {
+  return openKv().then(
+    (db) =>
+      new Promise((resolve) => {
+        if (!db) return resolve(null);
+        try {
+          const tx = db.transaction(IDB_STORE, "readonly");
+          const req = tx.objectStore(IDB_STORE).get(key);
+          req.onsuccess = () => {
+            const v = req.result;
+            resolve(typeof v === "string" ? v : null);
+            db.close();
+          };
+          req.onerror = () => {
+            resolve(null);
+            db.close();
+          };
+        } catch {
+          try {
+            db.close();
+          } catch {
+            /* ignore */
+          }
+          resolve(null);
+        }
+      }),
+  );
+}
+
+/** Best-effort IndexedDB set. Never throws. */
+export function idbSet(key: string, value: string): Promise<void> {
+  return openKv().then(
+    (db) =>
+      new Promise((resolve) => {
+        if (!db) return resolve();
+        try {
+          const tx = db.transaction(IDB_STORE, "readwrite");
+          tx.objectStore(IDB_STORE).put(value, key);
+          tx.oncomplete = () => {
+            db.close();
+            resolve();
+          };
+          tx.onerror = () => {
+            db.close();
+            resolve();
+          };
+        } catch {
+          try {
+            db.close();
+          } catch {
+            /* ignore */
+          }
+          resolve();
+        }
+      }),
+  );
+}
