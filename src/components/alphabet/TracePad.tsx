@@ -6,8 +6,8 @@ import { speak } from "@/lib/speak";
 
 const COLS = 32;
 const ROWS = 26;
-/** Real share of the letter body that must be inked before it counts. */
-const COVER_THRESHOLD = 0.78;
+/** Share of the letter that must be touched. A full stroke path is enough — not a coloring book. */
+const COVER_THRESHOLD = 0.60;
 const INK_WIDTH = 18;
 const START_HINT: Record<string, { x: number; y: number }> = {
   A: { x: 50, y: 22 },
@@ -224,19 +224,13 @@ export function TracePad({
   function stampInk(x: number, y: number, w: number, h: number) {
     const c = Math.max(0, Math.min(COLS - 1, Math.floor((x / w) * COLS)));
     const r = Math.max(0, Math.min(ROWS - 1, Math.floor((y / h) * ROWS)));
-    inkMask.current[idx(c, r)] = 1;
-    // One-cell slop so a fat finger still counts, but a scribble can't fill the letter
-    const n = [
-      [0, -1],
-      [0, 1],
-      [-1, 0],
-      [1, 0],
-    ];
-    for (const [dc, dr] of n) {
-      const rr = r + dr;
-      const cc = c + dc;
-      if (rr < 0 || rr >= ROWS || cc < 0 || cc >= COLS) continue;
-      inkMask.current[idx(cc, rr)] = 1;
+    for (let dr = -1; dr <= 1; dr++) {
+      for (let dc = -1; dc <= 1; dc++) {
+        const rr = r + dr;
+        const cc = c + dc;
+        if (rr < 0 || rr >= ROWS || cc < 0 || cc >= COLS) continue;
+        inkMask.current[idx(cc, rr)] = 1;
+      }
     }
   }
 
