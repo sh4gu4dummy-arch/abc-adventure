@@ -101,7 +101,7 @@ npm run build:apk      # only when asked
 
 ## Versioning & downloads
 
-- **Current version:** `0.015` (`v0.015`) — stored in `VERSION` and `src/lib/version.ts` (keep in sync).
+- **Current version:** `0.016` (`v0.016`) — stored in `VERSION` and `src/lib/version.ts` (keep in sync).
 - **Saved journeys** live in `localStorage` key `abc-adventure-profiles-v1` (never bump without reading the old key). A backup key + IndexedDB copy are written on every save. Updates must **merge** profiles by id — never overwrite a real save with an empty/default Explorer. Explicit delete is the only way a journey is removed.
 - Bump on **every** update.
 - Code-only package tracks the current version. Portable / APK / codebase keep their last-built version until rebuilt.
