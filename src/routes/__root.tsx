@@ -13,7 +13,6 @@ import { RequirePlayer } from "@/components/alphabet/ProfileGate";
 import { initLayoutMode } from "@/lib/layout-mode";
 import { initGfxMode } from "@/lib/gfx-pref";
 import { initThemeMode } from "@/lib/theme-pref";
-import { ensureDefaultProfile } from "@/lib/profiles";
 import {
   isEmbeddedPreview,
   isGrokSandboxHost,
@@ -77,8 +76,6 @@ function RootShell() {
     initLayoutMode();
     initGfxMode();
     initThemeMode();
-    // Local player — no Grok account / cookies required (critical in iframe preview)
-    ensureDefaultProfile("Explorer");
   }, []);
 
   useEffect(() => {

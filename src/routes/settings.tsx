@@ -1,18 +1,47 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, Settings2, UserRound } from "lucide-react";
-import { useState } from "react";
+import { ArrowLeft, Settings2, UserRound, Download, Upload } from "lucide-react";
+import { useRef, useState, type ChangeEvent } from "react";
 import { LayoutToggle } from "@/components/alphabet/LayoutToggle";
 import { GfxToggle } from "@/components/alphabet/GfxToggle";
 import { ThemeToggle } from "@/components/alphabet/ThemeToggle";
 import { VoiceToggle } from "@/components/alphabet/VoiceToggle";
 import { PlayerChip, ProfileGate } from "@/components/alphabet/ProfileGate";
-import { clearActiveProfile } from "@/lib/profiles";
+import { clearActiveProfile, exportJourneysJson, importJourneysJson } from "@/lib/profiles";
 import { APP_VERSION_LABEL } from "@/lib/version";
 
 export const Route = createFileRoute("/settings")({ component: SettingsPage });
 
 function SettingsPage() {
   const [switching, setSwitching] = useState(false);
+  const [backupMsg, setBackupMsg] = useState<string | null>(null);
+  const fileRef = useRef<HTMLInputElement>(null);
+
+  function downloadBackup() {
+    const blob = new Blob([exportJourneysJson()], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `abc-adventure-journeys-${APP_VERSION_LABEL}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+    setBackupMsg("Journeys file saved.");
+  }
+
+  function onRestoreFile(e: ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    e.target.value = "";
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        importJourneysJson(String(reader.result || ""));
+        setBackupMsg("Journeys restored.");
+      } catch {
+        setBackupMsg("That file didn’t look like a journeys backup.");
+      }
+    };
+    reader.readAsText(file);
+  }
 
   return (
     <main className="app-shell">
@@ -58,6 +87,32 @@ function SettingsPage() {
             Back to who's learning
           </button>
         </div>
+        <div className="mt-4 flex flex-wrap gap-2">
+          <button
+            type="button"
+            onClick={downloadBackup}
+            className="pressable inline-flex items-center gap-1.5 rounded-[var(--radius-pill)] border-2 border-border bg-surface px-3 py-2 text-sm font-bold text-ink"
+          >
+            <Download className="size-4" /> Save journeys backup
+          </button>
+          <button
+            type="button"
+            onClick={() => fileRef.current?.click()}
+            className="pressable inline-flex items-center gap-1.5 rounded-[var(--radius-pill)] border-2 border-border bg-surface px-3 py-2 text-sm font-bold text-ink"
+          >
+            <Upload className="size-4" /> Restore journeys
+          </button>
+          <input
+            ref={fileRef}
+            type="file"
+            accept="application/json,.json"
+            className="hidden"
+            onChange={onRestoreFile}
+          />
+        </div>
+        {backupMsg && (
+          <p className="mt-2 text-xs font-bold text-ink-soft">{backupMsg}</p>
+        )}
       </section>
 
       <section className="card-surface mb-4 space-y-4 rounded-[var(--radius-xl)] p-4 sm:p-5">

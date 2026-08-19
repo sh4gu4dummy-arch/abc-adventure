@@ -6,6 +6,8 @@ import {
   idbSet,
   safeGetItem,
   safeRemoveItem,
+  safeSessionGet,
+  safeSessionSet,
   safeSetItem,
 } from "@/lib/preview-safe";
 
@@ -71,7 +73,8 @@ const emptyStore: ProfileStore = { activeId: null, profiles: [] };
 
 let cache: ProfileStore = emptyStore;
 let cacheRaw: string | null = null;
-let idbHydrated = false;
+let hydrateDone = false;
+let restorePromise: Promise<ProfileStore> | null = null;
 
 function uid() {
   return `p_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`;
@@ -163,8 +166,10 @@ function collectFromLocal(): ProfileStore {
   const candidates: ProfileStore[] = [];
   const keys = [STORE_KEY, BACKUP_KEY, ...LEGACY_PROFILE_KEYS];
   for (const k of keys) {
-    const parsed = parseStore(safeGetItem(k));
-    if (parsed && parsed.profiles.length) candidates.push(parsed);
+    for (const raw of [safeGetItem(k), safeSessionGet(k)]) {
+      const parsed = parseStore(raw);
+      if (parsed && parsed.profiles.length) candidates.push(parsed);
+    }
   }
   if (!candidates.length) {
     const migrated = migrateLegacy([]);
@@ -174,15 +179,43 @@ function collectFromLocal(): ProfileStore {
   return candidates.reduce(richer);
 }
 
-function persistCopies(state: ProfileStore) {
+function persistCopies(
+  state: ProfileStore,
+  opts?: { writeIdb?: boolean },
+) {
   const raw = JSON.stringify(state);
   safeSetItem(STORE_KEY, raw);
+  safeSessionSet(STORE_KEY, raw);
   if (state.profiles.length > 0) {
     safeSetItem(BACKUP_KEY, raw);
-    void idbSet(STORE_KEY, raw);
+    safeSessionSet(BACKUP_KEY, raw);
+    if (opts?.writeIdb && hydrateDone) {
+      void writeIdbMerged(state);
+    }
   }
   cache = state;
   cacheRaw = raw;
+}
+
+async function writeIdbMerged(
+  state: ProfileStore,
+  opts?: { dropId?: string; allowEmpty?: boolean },
+) {
+  const existing = parseStore(await idbGet(STORE_KEY)) ?? emptyStore;
+  const profiles = mergeProfiles(existing.profiles, state.profiles, opts?.dropId);
+  if (!opts?.allowEmpty && profiles.length === 0 && existing.profiles.length > 0) {
+    return;
+  }
+  const next: ProfileStore = {
+    activeId:
+      state.activeId && profiles.some((p) => p.id === state.activeId)
+        ? state.activeId
+        : existing.activeId && profiles.some((p) => p.id === existing.activeId)
+          ? existing.activeId
+          : (profiles[0]?.id ?? null),
+    profiles,
+  };
+  await idbSet(STORE_KEY, JSON.stringify(next));
 }
 
 function migrateLegacy(profiles: PlayerProfile[]): PlayerProfile[] {
@@ -217,42 +250,49 @@ function migrateLegacy(profiles: PlayerProfile[]): PlayerProfile[] {
 function readStore(): ProfileStore {
   if (typeof window === "undefined") return emptyStore;
   try {
-    const raw = safeGetItem(STORE_KEY);
+    const raw = safeGetItem(STORE_KEY) ?? safeSessionGet(STORE_KEY);
     if (raw === cacheRaw && cacheRaw !== null) return cache;
     const recovered = collectFromLocal();
     cache = recovered;
     cacheRaw = raw;
     if (recovered.profiles.length) {
-      // keep primary + backup in sync with the richest copy we found
       const primary = parseStore(raw);
       if (!primary || richness(recovered) > richness(primary)) {
-        persistCopies(recovered);
+        persistCopies(recovered, { writeIdb: hydrateDone });
       }
     }
-    hydrateFromIdb();
+    void restoreProfiles();
     return cache;
   } catch {
     const recovered = collectFromLocal();
     cache = recovered;
     cacheRaw = null;
-    hydrateFromIdb();
+    void restoreProfiles();
     return cache;
   }
 }
 
-function hydrateFromIdb() {
-  if (idbHydrated || typeof window === "undefined") return;
-  idbHydrated = true;
-  void idbGet(STORE_KEY).then((raw) => {
-    const fromIdb = parseStore(raw);
-    if (!fromIdb || !fromIdb.profiles.length) return;
-    const current = collectFromLocal();
-    const best = richer(current, fromIdb);
-    if (richness(best) > richness(current) || current.profiles.length === 0) {
-      persistCopies(best);
+/** Load IDB first. Never create a default player until this finishes. */
+export function restoreProfiles(): Promise<ProfileStore> {
+  if (typeof window === "undefined") return Promise.resolve(emptyStore);
+  if (restorePromise) return restorePromise;
+  restorePromise = (async () => {
+    const local = collectFromLocal();
+    let fromIdb: ProfileStore = emptyStore;
+    try {
+      fromIdb = parseStore(await idbGet(STORE_KEY)) ?? emptyStore;
+    } catch {
+      fromIdb = emptyStore;
+    }
+    const best = richer(local, fromIdb);
+    hydrateDone = true;
+    if (best.profiles.length) {
+      persistCopies(best, { writeIdb: true });
       emit();
     }
-  });
+    return cache.profiles.length ? cache : best;
+  })();
+  return restorePromise;
 }
 
 function mergeProfiles(
@@ -306,6 +346,7 @@ function writeStore(
     next.activeId = next.profiles[0]?.id ?? null;
   }
   persistCopies(next);
+  if (hydrateDone) void writeIdbMerged(next, opts);
   emit();
 }
 
@@ -430,10 +471,16 @@ export function __resetProfilesForTests() {
   safeRemoveItem(BACKUP_KEY);
   cache = emptyStore;
   cacheRaw = null;
+  hydrateDone = false;
+  restorePromise = null;
 }
 
-/** Ensure a player exists so progress saves (portable / first launch). */
-export function ensureDefaultProfile(name = "Explorer"): PlayerProfile {
+/**
+ * Pick an existing player if we have one.
+ * Does NOT create a new Explorer until restore has finished — that was
+ * overwriting real journeys on every update.
+ */
+export function ensureDefaultProfile(name = "Explorer"): PlayerProfile | null {
   const s = readStore();
   if (s.activeId) {
     const cur = s.profiles.find((p) => p.id === s.activeId);
@@ -444,7 +491,46 @@ export function ensureDefaultProfile(name = "Explorer"): PlayerProfile {
     selectProfile(first.id);
     return first;
   }
+  if (!hydrateDone) return null;
   const created = createProfile({ name, avatar: "star" });
   selectProfile(created.id);
   return created;
+}
+
+export async function ensureDefaultProfileReady(
+  name = "Explorer",
+): Promise<PlayerProfile> {
+  await restoreProfiles();
+  const existing = ensureDefaultProfile(name);
+  if (existing) return existing;
+  const created = createProfile({ name, avatar: "star" });
+  selectProfile(created.id);
+  return created;
+}
+
+export function exportJourneysJson(): string {
+  const s = readStore();
+  return JSON.stringify(
+    {
+      kind: "abc-adventure-journeys",
+      version: 1,
+      exportedAt: new Date().toISOString(),
+      store: s,
+    },
+    null,
+    2,
+  );
+}
+
+export function importJourneysJson(raw: string): ProfileStore {
+  const parsed = JSON.parse(raw) as { store?: ProfileStore } | ProfileStore;
+  const incoming =
+    parsed && typeof parsed === "object" && "store" in parsed
+      ? parseStore(JSON.stringify((parsed as { store: ProfileStore }).store))
+      : parseStore(raw);
+  if (!incoming || !incoming.profiles.length) {
+    throw new Error("No journeys in that file");
+  }
+  writeStore(incoming);
+  return readStore();
 }

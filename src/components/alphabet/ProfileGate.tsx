@@ -16,7 +16,7 @@ import {
   formatLastPlayed,
   profileStats,
   selectProfile,
-  ensureDefaultProfile,
+  ensureDefaultProfileReady,
   useActiveProfile,
   useProfileStore,
   type AvatarId,
@@ -63,7 +63,7 @@ export function ProfileGate({
     if (!isEmbeddedPreview() && !isGrokSandboxHost()) return;
     void (async () => {
       await requestPreviewStorageAccess();
-      ensureDefaultProfile("Explorer");
+      await ensureDefaultProfileReady("Explorer");
       onDone?.();
     })();
   }, [mode, onDone]);
@@ -317,11 +317,20 @@ export function ProfileGate({
 export function RequirePlayer({ children }: { children: React.ReactNode }) {
   const store = useProfileStore();
   const profile = store.profiles.find((p) => p.id === store.activeId) ?? null;
+  const [ready, setReady] = useState(false);
 
   useLayoutEffect(() => {
-    if (!profile) ensureDefaultProfile("Explorer");
-  }, [profile]);
+    let cancelled = false;
+    void (async () => {
+      await ensureDefaultProfileReady("Explorer");
+      if (!cancelled) setReady(true);
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
+  if (!ready && !profile) return null;
   if (!profile) return null;
   return <>{children}</>;
 }
