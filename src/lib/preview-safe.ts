@@ -96,6 +96,23 @@ export function safeSetItem(key: string, value: string): void {
   }
 }
 
+export function safeSessionGet(key: string): string | null {
+  try {
+    return window.sessionStorage.getItem(key);
+  } catch {
+    return memory.get(`s:${key}`) ?? null;
+  }
+}
+
+export function safeSessionSet(key: string, value: string): void {
+  try {
+    window.sessionStorage.setItem(key, value);
+    memory.set(`s:${key}`, value);
+  } catch {
+    memory.set(`s:${key}`, value);
+  }
+}
+
 export function safeRemoveItem(key: string): void {
   try {
     window.localStorage.removeItem(key);
