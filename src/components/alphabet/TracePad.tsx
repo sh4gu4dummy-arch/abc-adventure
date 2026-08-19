@@ -6,8 +6,8 @@ import { speak } from "@/lib/speak";
 
 const COLS = 32;
 const ROWS = 26;
-/** Share of the letter that must be touched. A full stroke path is enough — not a coloring book. */
-const COVER_THRESHOLD = 0.60;
+/** Full letter path (e.g. A needs both legs AND the bar). Two strokes alone shouldn't count. */
+const COVER_THRESHOLD = 0.70;
 const INK_WIDTH = 18;
 const START_HINT: Record<string, { x: number; y: number }> = {
   A: { x: 50, y: 22 },
