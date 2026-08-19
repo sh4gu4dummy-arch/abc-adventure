@@ -10,7 +10,7 @@
  * Portable / codebase / APK wait until the user asks.
  */
 
-export const APP_VERSION = "0.016";
+export const APP_VERSION = "0.017";
 export const APP_VERSION_LABEL = `v${APP_VERSION}`;
 export const APP_SLUG = "abc-adventure";
 export const APP_DISPLAY_NAME = "ABC Adventure";
@@ -35,4 +35,27 @@ export function packageFileName(kind: PackageKind, version = APP_VERSION): strin
 /** Public URL path under /portable/ for a built package. */
 export function packagePublicPath(kind: PackageKind, version = APP_VERSION): string {
   return `/portable/${packageFileName(kind, version)}`;
+}
+
+/** "v0.017 · Updated Aug 19, 2026, 8:12 AM" for download cards. */
+export function formatPackageUpdated(
+  iso?: string | null,
+  version?: string | null,
+): string {
+  const v = version
+    ? version.startsWith("v")
+      ? version
+      : `v${version}`
+    : "";
+  if (!iso) return v;
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return v;
+  const when = d.toLocaleString(undefined, {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+  });
+  return v ? `${v} · Updated ${when}` : `Updated ${when}`;
 }
