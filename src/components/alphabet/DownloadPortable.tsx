@@ -12,6 +12,7 @@ import {
 import {
   APP_VERSION,
   APP_VERSION_LABEL,
+  formatPackageUpdated,
   packageFileName,
   packagePublicPath,
 } from "@/lib/version";
@@ -24,12 +25,15 @@ type PackageMeta = {
   path?: string;
   kind?: string;
   note?: string;
+  version?: string;
+  builtAt?: string;
 };
 
 type MetaFile = {
   version?: string;
   versionLabel?: string;
   builtAt?: string;
+  codeBuiltAt?: string;
   portableApp?: PackageMeta & { files?: number };
   codeOnly?: PackageMeta;
   sourceCode?: PackageMeta;
@@ -50,6 +54,7 @@ function DownloadCard({
   icon: Icon,
   mb,
   accent,
+  stamp,
 }: {
   href: string;
   filename: string;
@@ -58,6 +63,7 @@ function DownloadCard({
   icon: typeof Download;
   mb?: number;
   accent: string;
+  stamp?: string;
 }) {
   const [state, setState] = useState<"idle" | "starting" | "done">("idle");
 
@@ -82,9 +88,14 @@ function DownloadCard({
           <p className="mt-1.5 break-all font-mono text-[10px] font-semibold text-muted">
             {filename}
           </p>
+          {stamp && (
+            <p className="mt-1 text-xs font-bold text-ink">
+              {stamp}
+            </p>
+          )}
           {typeof mb === "number" && (
             <p className="mt-1 text-xs font-bold uppercase tracking-wide text-muted">
-              ~{mb} MB ZIP
+              ~{mb} MB
             </p>
           )}
         </div>
@@ -171,12 +182,39 @@ export function DownloadPortable({ className }: { className?: string }) {
   const codebaseMb = meta?.packages?.codebase?.mb ?? meta?.sourceCode?.mb;
   const apkMb = meta?.packages?.apk?.mb ?? meta?.apk?.mb;
 
+  const stampFor = (
+    pkg?: PackageMeta,
+    fallbackVersion?: string,
+    fallbackIso?: string,
+  ) =>
+    formatPackageUpdated(
+      pkg?.builtAt ?? fallbackIso,
+      pkg?.version ?? fallbackVersion,
+    );
+
+  const codeStamp = stampFor(
+    meta?.packages?.code ?? meta?.codeOnly,
+    APP_VERSION,
+    meta?.codeBuiltAt ?? meta?.builtAt,
+  );
+  const portableStamp = stampFor(
+    meta?.packages?.portable ?? meta?.portableApp,
+    meta?.packages?.portable?.name?.match(/v[\d.]+/)?.[0] ?? meta?.version,
+    meta?.builtAt,
+  );
+  const codebaseStamp = stampFor(
+    meta?.packages?.codebase ?? meta?.sourceCode,
+    meta?.packages?.codebase?.name?.match(/v[\d.]+/)?.[0] ?? meta?.version,
+    meta?.builtAt,
+  );
+  const apkStamp = stampFor(
+    meta?.packages?.apk ?? meta?.apk,
+    meta?.packages?.apk?.name?.match(/v[\d.]+/)?.[0] ?? meta?.version,
+    meta?.builtAt,
+  );
+
   const built = meta?.builtAt
-    ? new Date(meta.builtAt).toLocaleDateString(undefined, {
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-      })
+    ? formatPackageUpdated(meta.builtAt, meta.versionLabel ?? meta.version)
     : null;
 
   return (
@@ -197,8 +235,10 @@ export function DownloadPortable({ className }: { className?: string }) {
             {appLabel}
           </p>
           {built && (
-            <p className="mt-1 text-[11px] font-bold uppercase tracking-wide text-muted">
-              Packages built {built}
+            <p className="mt-1 text-[11px] font-bold text-muted">
+              Last package refresh
+              <br />
+              {built}
             </p>
           )}
         </div>
@@ -213,6 +253,7 @@ export function DownloadPortable({ className }: { className?: string }) {
           icon={Smartphone}
           mb={apkMb}
           accent="#1B5E20"
+          stamp={apkStamp}
         />
         <DownloadCard
           href={portableHref}
@@ -222,6 +263,7 @@ export function DownloadPortable({ className }: { className?: string }) {
           icon={AppWindow}
           mb={appMb}
           accent="var(--color-ink)"
+          stamp={portableStamp}
         />
         <DownloadCard
           href={codeHref}
@@ -231,6 +273,7 @@ export function DownloadPortable({ className }: { className?: string }) {
           icon={Code2}
           mb={codeMb}
           accent="var(--color-primary)"
+          stamp={codeStamp}
         />
         <DownloadCard
           href={codebaseHref}
@@ -240,6 +283,7 @@ export function DownloadPortable({ className }: { className?: string }) {
           icon={FolderArchive}
           mb={codebaseMb}
           accent="var(--color-accent)"
+          stamp={codebaseStamp}
         />
       </div>
 
@@ -250,9 +294,8 @@ export function DownloadPortable({ className }: { className?: string }) {
           <strong className="text-ink"> Portable app</strong> is the offline HTML package for computers.
           <strong className="text-ink"> Code</strong> / <strong className="text-ink">Code + assets</strong>{" "}
           are source archives (download only). Progress saves on the device that opens the app.
-          Current app version: {appLabel}. Code-only ZIP tracks this version.
-          Portable / APK / full codebase stay on their last-built file until you
-          ask to refresh them.
+          Current app version: {appLabel}. Each file lists its version and the
+          date and time it was last built.
         </span>
       </p>
     </section>

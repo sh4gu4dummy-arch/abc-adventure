@@ -465,58 +465,78 @@ for (const legacy of [
   }
 }
 
+const now = new Date().toISOString();
 const appMeta = fileMeta(appZipPath, pkgName("portable"));
 const codeMeta = fileMeta(codeZipPath, pkgName("code"));
 const codebaseMeta = fileMeta(codebaseZipPath, pkgName("codebase"));
+
+let prev = {};
+const metaPath = join(portableRoot, "meta.json");
+if (existsSync(metaPath)) {
+  try {
+    prev = JSON.parse(readFileSync(metaPath, "utf8"));
+  } catch {
+    prev = {};
+  }
+}
+
+const pkg = (kind, extra) => ({
+  version: VERSION,
+  builtAt: now,
+  ...extra,
+});
 
 const meta = {
   version: VERSION,
   versionLabel: VTAG,
   slug: APP_SLUG,
-  builtAt: new Date().toISOString(),
+  builtAt: now,
+  appVersion: VERSION,
+  appVersionLabel: VTAG,
   packages: {
-    portable: {
+    ...((prev.packages && prev.packages.apk) ? { apk: prev.packages.apk } : {}),
+    portable: pkg("portable", {
       ...appMeta,
       kind: "portable",
       path: `/portable/${pkgName("portable")}`,
       folder: portableFolderName,
       files: countFiles(outDir),
       note: "Ready-to-play offline HTML app (unzip → open index.html).",
-    },
-    code: {
+    }),
+    code: pkg("code", {
       ...codeMeta,
       kind: "code",
       path: `/portable/${pkgName("code")}`,
       note: "Essential source only — no posters/videos/audio. Small, fast download.",
-    },
-    codebase: {
+    }),
+    codebase: pkg("codebase", {
       ...codebaseMeta,
       kind: "codebase",
       path: `/portable/${pkgName("codebase")}`,
       note: "Full source + all media assets. No node_modules.",
-    },
+    }),
   },
-  // Convenience aliases used by the UI
-  portableApp: {
+  portableApp: pkg("portable", {
     ...appMeta,
     kind: "portable",
     path: `/portable/${pkgName("portable")}`,
     folder: portableFolderName,
     files: countFiles(outDir),
-  },
-  codeOnly: {
+  }),
+  codeOnly: pkg("code", {
     ...codeMeta,
     kind: "code",
     path: `/portable/${pkgName("code")}`,
-  },
-  sourceCode: {
+  }),
+  sourceCode: pkg("codebase", {
     ...codebaseMeta,
     kind: "codebase",
     path: `/portable/${pkgName("codebase")}`,
-  },
+  }),
+  ...(prev.apk ? { apk: prev.apk } : {}),
 };
 
-writeFileSync(join(portableRoot, "meta.json"), JSON.stringify(meta, null, 2));
+writeFileSync(metaPath, JSON.stringify(meta, null, 2) + "\n");
 console.log("✓ Packages ready for", VTAG);
 console.log("  Portable:", appMeta);
 console.log("  Code:    ", codeMeta);

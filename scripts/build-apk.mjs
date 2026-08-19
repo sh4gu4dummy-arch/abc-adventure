@@ -111,6 +111,8 @@ const apkMeta = {
   mb: Math.round((bytes / (1024 * 1024)) * 10) / 10,
   sha256_12: hash,
   kind: "apk",
+  version,
+  builtAt: new Date().toISOString(),
   path: `/portable/${apkName}`,
   note: "Android installable APK (sideload). Offline letter world with media bundled.",
 };
@@ -127,6 +129,9 @@ if (existsSync(metaPath)) {
 meta.version = version;
 meta.versionLabel = vtag;
 meta.slug = APP_SLUG;
+meta.builtAt = apkMeta.builtAt;
+meta.appVersion = version;
+meta.appVersionLabel = vtag;
 meta.apk = apkMeta;
 meta.packages = { ...(meta.packages || {}), apk: apkMeta };
 writeFileSync(metaPath, JSON.stringify(meta, null, 2) + "\n");

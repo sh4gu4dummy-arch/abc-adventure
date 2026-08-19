@@ -26,8 +26,9 @@ function DownloadsPage() {
           </span>
         </div>
         <p className="mt-1 max-w-md text-sm font-medium text-ink-soft">
-          Portable app and full source ZIP for offline use. Progress still saves
-          on each device.
+          Portable app, Android APK, and source ZIPs. Each file shows its
+          version and when it was last built. Progress still saves on each
+          device.
         </p>
       </header>
 
