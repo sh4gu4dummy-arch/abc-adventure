@@ -10,7 +10,7 @@
  * Portable / codebase / APK wait until the user asks.
  */
 
-export const APP_VERSION = "0.020";
+export const APP_VERSION = "0.021";
 export const APP_VERSION_LABEL = `v${APP_VERSION}`;
 export const APP_SLUG = "abc-adventure";
 export const APP_DISPLAY_NAME = "ABC Adventure";

@@ -131,9 +131,14 @@ function SettingsPage() {
           </div>
           <div>
             <p className="mb-2 text-xs font-bold uppercase tracking-wide text-muted">
-              Layout
+              Portrait / Landscape
             </p>
             <LayoutToggle />
+            <p className="mt-2 text-xs font-medium text-ink-soft">
+              Auto follows how you hold the phone. Lock Portrait or Landscape
+              to keep that layout. On the installed app it also tries to lock
+              the screen.
+            </p>
           </div>
           <div>
             <p className="mb-2 text-xs font-bold uppercase tracking-wide text-muted">
