@@ -6,8 +6,11 @@ import { speak } from "@/lib/speak";
 
 const COLS = 32;
 const ROWS = 26;
-/** Full letter path (e.g. A needs both legs AND the bar). Two strokes alone shouldn't count. */
+/** Overall fill of the glyph. */
 const COVER_THRESHOLD = 0.70;
+/** Each occupied 3×3 zone of the letter must be touched — skips a bar/bowl. */
+const ZONE_MIN = 0.4;
+const ZONE_MIN_CELLS = 5;
 const INK_WIDTH = 18;
 const START_HINT: Record<string, { x: number; y: number }> = {
   A: { x: 50, y: 22 },
@@ -246,10 +249,54 @@ export function TracePad({
     return hit / total;
   }
 
+  /** True when every chunk of the letter (bar, bowl, stem…) has been touched. */
+  function zonesComplete() {
+    const letterBits = letterMask.current;
+    const ink = inkMask.current;
+    let minC = COLS;
+    let maxC = -1;
+    let minR = ROWS;
+    let maxR = -1;
+    for (let r = 0; r < ROWS; r++) {
+      for (let c = 0; c < COLS; c++) {
+        if (!letterBits[idx(c, r)]) continue;
+        if (c < minC) minC = c;
+        if (c > maxC) maxC = c;
+        if (r < minR) minR = r;
+        if (r > maxR) maxR = r;
+      }
+    }
+    if (maxC < minC) return false;
+    const bw = maxC - minC + 1;
+    const bh = maxR - minR + 1;
+    for (let zr = 0; zr < 3; zr++) {
+      for (let zc = 0; zc < 3; zc++) {
+        const c0 = minC + Math.floor((zc * bw) / 3);
+        const c1 = minC + Math.floor(((zc + 1) * bw) / 3) - 1;
+        const r0 = minR + Math.floor((zr * bh) / 3);
+        const r1 = minR + Math.floor(((zr + 1) * bh) / 3) - 1;
+        const cEnd = zc === 2 ? maxC : Math.max(c0, c1);
+        const rEnd = zr === 2 ? maxR : Math.max(r0, r1);
+        let cells = 0;
+        let hit = 0;
+        for (let r = r0; r <= rEnd; r++) {
+          for (let c = c0; c <= cEnd; c++) {
+            if (!letterBits[idx(c, r)]) continue;
+            cells += 1;
+            if (ink[idx(c, r)]) hit += 1;
+          }
+        }
+        if (cells < ZONE_MIN_CELLS) continue;
+        if (hit / cells < ZONE_MIN) return false;
+      }
+    }
+    return true;
+  }
+
   function publishCover(ratio: number) {
     setCover((prev) => (Math.abs(prev - ratio) >= 0.01 ? ratio : prev));
     if (finishedRef.current) return;
-    if (ratio < COVER_THRESHOLD) return;
+    if (ratio < COVER_THRESHOLD || !zonesComplete()) return;
     finishedRef.current = true;
     setDone(true);
     markSection(letter, "trace");
@@ -386,7 +433,7 @@ export function TracePad({
             ? `Beautiful! Letter ${guideLetter} is all filled in.`
             : done
               ? `Nice tracing! You can keep filling ${guideLetter} if you want.`
-              : "Start at the 1 and stay on the letter. Going outside a little is OK."}
+              : "Start at the 1. Trace every part of the letter — bars, bowls, and stems."}
         </p>
       </div>
 
