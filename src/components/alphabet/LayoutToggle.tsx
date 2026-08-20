@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Monitor, Smartphone, Sparkles } from "lucide-react";
+import { RectangleHorizontal, Smartphone, Sparkles } from "lucide-react";
 import {
   useLayoutMode,
   type LayoutPreference,
@@ -10,17 +10,17 @@ const OPTIONS: {
   id: LayoutPreference;
   label: string;
   short: string;
-  icon: typeof Monitor;
+  icon: typeof Smartphone;
 }[] = [
   { id: "auto", label: "Auto", short: "Auto", icon: Sparkles },
-  { id: "phone", label: "Phone", short: "Phone", icon: Smartphone },
-  { id: "desktop", label: "Desktop", short: "Desk", icon: Monitor },
+  { id: "portrait", label: "Portrait", short: "Port.", icon: Smartphone },
+  { id: "landscape", label: "Landscape", short: "Land.", icon: RectangleHorizontal },
 ];
 
 /**
- * Phone / Desktop / Auto layout switcher.
- * Saved on this device; Auto follows screen width.
- * Defers reading localStorage until after mount to avoid SSR hydration mismatch.
+ * Portrait / Landscape / Auto.
+ * Auto follows how you hold the device. Locked modes keep that layout
+ * and try to lock screen orientation on phones (installed app / APK).
  */
 export function LayoutToggle({
   compact,
@@ -36,15 +36,18 @@ export function LayoutToggle({
     setReady(true);
   }, []);
 
-  // SSR + first client paint: stable defaults (matches server HTML)
   const preference: LayoutPreference = ready ? live.preference : "auto";
-  const resolved = ready ? live.resolved : "phone";
+  const view = ready
+    ? live.resolved === "phone"
+      ? "Portrait"
+      : "Landscape"
+    : "…";
 
   return (
     <div
       className={cn("inline-flex flex-col items-stretch gap-1", className)}
       role="group"
-      aria-label="Layout mode"
+      aria-label="Portrait or landscape"
     >
       <div className="inline-flex overflow-hidden rounded-[var(--radius-pill)] border-2 border-border bg-surface p-0.5 shadow-[var(--shadow-card)]">
         {OPTIONS.map((opt) => {
@@ -56,7 +59,7 @@ export function LayoutToggle({
               type="button"
               onClick={() => live.setPreference(opt.id)}
               className={cn(
-                "pressable inline-flex min-h-10 items-center justify-center gap-1.5 rounded-[var(--radius-pill)] px-2.5 text-xs font-bold transition-colors sm:px-3 sm:text-sm",
+                "pressable inline-flex min-h-11 min-w-11 items-center justify-center gap-1.5 rounded-[var(--radius-pill)] px-2.5 text-xs font-bold transition-colors sm:px-3 sm:text-sm",
                 active
                   ? "bg-ink text-white"
                   : "text-ink-soft hover:bg-surface-soft",
@@ -64,13 +67,13 @@ export function LayoutToggle({
               aria-pressed={active}
               title={
                 opt.id === "auto"
-                  ? "Follow screen size"
-                  : opt.id === "phone"
-                    ? "Phone layout (portrait stack)"
-                    : "Desktop layout (wide landscape)"
+                  ? "Follow how you hold the device"
+                  : opt.id === "portrait"
+                    ? "Portrait — stacked phone layout"
+                    : "Landscape — wide layout"
               }
             >
-              <Icon className="size-3.5 sm:size-4" aria-hidden />
+              <Icon className="size-4" aria-hidden />
               <span>{compact ? opt.short : opt.label}</span>
             </button>
           );
@@ -82,7 +85,7 @@ export function LayoutToggle({
           suppressHydrationWarning
         >
           {ready
-            ? `View: ${resolved === "phone" ? "Phone" : "Desktop"}${preference === "auto" ? " · auto" : " · locked"}`
+            ? `View: ${view}${preference === "auto" ? " · auto" : " · locked"}`
             : "View: …"}
         </p>
       )}

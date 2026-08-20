@@ -31,6 +31,7 @@ import { MemoryMatch } from "@/components/alphabet/MemoryMatch";
 import { ISpy } from "@/components/alphabet/ISpy";
 import { StoryMode } from "@/components/alphabet/StoryMode";
 import { CaseHunt } from "@/components/alphabet/CaseHunt";
+import { LayoutToggle } from "@/components/alphabet/LayoutToggle";
 import { GfxToggle } from "@/components/alphabet/GfxToggle";
 import { StarBar } from "@/components/alphabet/StarBar";
 import { markSection, markVisited, markWordSeen, useProgress } from "@/lib/progress";
@@ -112,6 +113,7 @@ function HomeView() {
           <div className="flex flex-wrap gap-2">
             <VoiceToggle compact />
             <ThemeToggle compact />
+            <LayoutToggle compact />
             <GfxToggle compact />
           </div>
           <StarBar />
@@ -237,6 +239,7 @@ function LetterView({ entry }: { entry: LetterEntry }) {
         <div className="flex items-center gap-2">
           <VoiceToggle compact />
           <ThemeToggle compact />
+          <LayoutToggle compact />
           <GfxToggle compact />
           <StarBar />
         </div>
