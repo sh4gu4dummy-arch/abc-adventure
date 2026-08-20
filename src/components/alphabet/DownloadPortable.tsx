@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import {
   Download,
   Check,
@@ -14,7 +14,6 @@ import {
   APP_VERSION_LABEL,
   formatPackageUpdated,
   packageFileName,
-  packagePublicPath,
 } from "@/lib/version";
 
 type PackageMeta = {
@@ -46,6 +45,10 @@ type MetaFile = {
   };
 };
 
+function dlHref(filename: string): string {
+  return `/dl/${encodeURIComponent(filename)}`;
+}
+
 function DownloadCard({
   href,
   filename,
@@ -65,11 +68,41 @@ function DownloadCard({
   accent: string;
   stamp?: string;
 }) {
-  const [state, setState] = useState<"idle" | "starting" | "done">("idle");
+  const [state, setState] = useState<"idle" | "starting" | "done" | "error">("idle");
 
-  function onClick() {
+  async function onClick(e: MouseEvent<HTMLAnchorElement>) {
+    e.preventDefault();
+    e.stopPropagation();
     setState("starting");
-    window.setTimeout(() => setState("done"), 1200);
+    const large = (mb ?? 0) > 8;
+    try {
+      if (large) {
+        const a = document.createElement("a");
+        a.href = href;
+        a.download = filename;
+        a.rel = "noopener";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setState("done");
+      } else {
+        const res = await fetch(href, { credentials: "same-origin" });
+        if (!res.ok) throw new Error(`missing ${res.status}`);
+        const blob = await res.blob();
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = filename;
+        a.rel = "noopener";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        window.setTimeout(() => URL.revokeObjectURL(url), 2000);
+        setState("done");
+      }
+    } catch {
+      setState("error");
+    }
     window.setTimeout(() => setState("idle"), 4500);
   }
 
@@ -114,7 +147,7 @@ function DownloadCard({
         ) : (
           <Download className="size-5" />
         )}
-        {state === "done" ? "Download started!" : `Download ${title}`}
+        {state === "done" ? "Download started!" : state === "error" ? "Not found — retry" : `Download ${title}`}
       </a>
     </div>
   );
@@ -160,22 +193,10 @@ export function DownloadPortable({ className }: { className?: string }) {
   const apkName =
     meta?.packages?.apk?.name ?? meta?.apk?.name ?? packageFileName("apk");
 
-  const portableHref =
-    meta?.packages?.portable?.path ??
-    meta?.portableApp?.path ??
-    packagePublicPath("portable");
-  const codeHref =
-    meta?.packages?.code?.path ??
-    meta?.codeOnly?.path ??
-    packagePublicPath("code", APP_VERSION);
-  const codebaseHref =
-    meta?.packages?.codebase?.path ??
-    meta?.sourceCode?.path ??
-    packagePublicPath("codebase");
-  const apkHref =
-    meta?.packages?.apk?.path ??
-    meta?.apk?.path ??
-    packagePublicPath("apk");
+  const portableHref = dlHref(portableName);
+  const codeHref = dlHref(codeName);
+  const codebaseHref = dlHref(codebaseName);
+  const apkHref = dlHref(apkName);
 
   const appMb = meta?.packages?.portable?.mb ?? meta?.portableApp?.mb;
   const codeMb = meta?.packages?.code?.mb ?? meta?.codeOnly?.mb;

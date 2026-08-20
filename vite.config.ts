@@ -4,6 +4,89 @@ import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { nitro } from "nitro/vite";
+import { createReadStream, existsSync, statSync } from "node:fs";
+import { basename, extname, join } from "node:path";
+
+/**
+ * Serve versioned zip/apk from public/portable/.
+ * Vite + TanStack fall through those paths to the SPA, which 404s
+ * ("Not Found") when you open a download in a new tab.
+ */
+function portableDownloadPlugin(): Plugin {
+  const dir = join(process.cwd(), "public", "portable");
+  const mime: Record<string, string> = {
+    ".zip": "application/zip",
+    ".apk": "application/vnd.android.package-archive",
+    ".json": "application/json",
+  };
+
+  function handler(
+    req: { url?: string; method?: string },
+    res: {
+      statusCode: number;
+      setHeader: (k: string, v: string) => void;
+      end: (c?: string) => void;
+    },
+    next: () => void,
+  ) {
+    const pathOnly = decodeURIComponent((req.url ?? "").split("?", 1)[0] ?? "");
+    let name = "";
+    if (pathOnly.startsWith("/dl/")) name = pathOnly.slice(4);
+    else if (pathOnly.startsWith("/portable/")) name = pathOnly.slice("/portable/".length);
+    else {
+      next();
+      return;
+    }
+    if (!name || name.includes("/") || name.includes("\\") || name.includes("..")) {
+      next();
+      return;
+    }
+    if (!/^[A-Za-z0-9._-]+$/.test(name)) {
+      next();
+      return;
+    }
+    const ext = extname(name).toLowerCase();
+    const type = mime[ext];
+    if (!type) {
+      next();
+      return;
+    }
+    const file = join(dir, basename(name));
+    if (!existsSync(file) || !statSync(file).isFile()) {
+      res.statusCode = 404;
+      res.setHeader("content-type", "text/plain; charset=utf-8");
+      res.end("File not found");
+      return;
+    }
+    const st = statSync(file);
+    res.statusCode = 200;
+    res.setHeader("content-type", type);
+    res.setHeader("content-length", String(st.size));
+    res.setHeader("cache-control", "no-store");
+    res.setHeader("x-content-type-options", "nosniff");
+    if (ext !== ".json") {
+      res.setHeader(
+        "content-disposition",
+        `attachment; filename="${basename(file)}"`,
+      );
+    }
+    if ((req.method ?? "GET").toUpperCase() === "HEAD") {
+      res.end();
+      return;
+    }
+    createReadStream(file).pipe(res as unknown as NodeJS.WritableStream);
+  }
+
+  return {
+    name: "abc-portable-downloads",
+    configureServer(server) {
+      server.middlewares.use(handler);
+    },
+    configurePreviewServer(server) {
+      server.middlewares.use(handler);
+    },
+  };
+}
 
 /**
  * Finish PGLite bootstrap during dev-server setup (before traffic). Vite awaits
@@ -143,6 +226,7 @@ export default defineConfig(({ command }) => ({
   },
   resolve: { tsconfigPaths: true },
   plugins: [
+    portableDownloadPlugin(),
     pgliteBootstrapPlugin(),
     // Before tanstackStart so /auth/popup never falls through to the SPA.
     authPopupPlugin(),
