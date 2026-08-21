@@ -24,6 +24,7 @@ import {
 import { ACHIEVEMENTS } from "@/lib/progress-core";
 import { useProgress } from "@/lib/progress";
 import { PlayerAvatar } from "./AvatarIcon";
+import { VersionBadge } from "./VersionBadge";
 import { cn } from "@/lib/utils";
 import {
   isEmbeddedPreview,
@@ -122,9 +123,10 @@ export function ProfileGate({
           </p>
           <h1
             id="profile-gate-title"
-            className="mt-3 font-display text-3xl font-bold text-ink sm:text-4xl"
+            className="mt-3 flex flex-wrap items-baseline justify-center gap-x-2 gap-y-1 font-display text-3xl font-bold text-ink sm:text-4xl"
           >
             {mode === "switch" ? "Switch player" : "Who's learning?"}
+            <VersionBadge />
           </h1>
           <p className="mx-auto mt-2 max-w-md text-sm font-medium text-ink-soft sm:text-base">
             Each kid keeps their own stars, stickers, and achievements on this device

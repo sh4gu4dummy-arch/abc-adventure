@@ -3,6 +3,7 @@ import { ArrowLeft, Clapperboard } from "lucide-react";
 import { LetterBuddiesShow } from "@/components/alphabet/LetterBuddiesShow";
 import { LETTER_BUDDIES_EPISODES, buddyPosterPath } from "@/data/letter-buddies";
 import { assetUrl } from "@/lib/assets";
+import { VersionBadge } from "@/components/alphabet/VersionBadge";
 
 export const Route = createFileRoute("/buddies")({
   component: BuddiesPage,
@@ -37,7 +38,10 @@ function BuddiesPage() {
         <p className="inline-flex items-center gap-1.5 rounded-[var(--radius-pill)] bg-accent/15 px-3 py-1 text-xs font-bold uppercase tracking-wider text-accent">
           <Clapperboard className="size-3.5" /> Series
         </p>
-        <h1 className="mt-2 font-display text-3xl font-bold text-ink">Letter Buddies</h1>
+        <h1 className="mt-2 flex flex-wrap items-baseline gap-x-2 gap-y-1 font-display text-3xl font-bold text-ink">
+          Letter Buddies
+          <VersionBadge />
+        </h1>
         <p className="mt-1 max-w-lg text-sm font-medium text-ink-soft">
           The letters play together and make simple words.
         </p>

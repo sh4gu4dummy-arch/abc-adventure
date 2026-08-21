@@ -33,6 +33,7 @@ import {
 } from "@/lib/progress";
 import { speak, speakLetter } from "@/lib/speak";
 import { cn } from "@/lib/utils";
+import { VersionBadge } from "@/components/alphabet/VersionBadge";
 
 export const Route = createFileRoute("/letter/$letter")({
   component: LetterPage,
@@ -165,6 +166,7 @@ function LetterPage() {
           )}
         </div>
         <div className="flex shrink-0 items-center gap-1.5">
+          <VersionBadge />
           <StarBar compact />
           <Link
             to="/settings"

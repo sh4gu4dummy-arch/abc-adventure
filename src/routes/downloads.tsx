@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, Download } from "lucide-react";
 import { DownloadPortable } from "@/components/alphabet/DownloadPortable";
-import { APP_VERSION_LABEL } from "@/lib/version";
+import { VersionBadge } from "@/components/alphabet/VersionBadge";
 
 export const Route = createFileRoute("/downloads")({ component: DownloadsPage });
 
@@ -21,9 +21,7 @@ function DownloadsPage() {
         </p>
         <div className="mt-2 flex flex-wrap items-center gap-2">
           <h1 className="font-display text-3xl font-bold text-ink">Downloads</h1>
-          <span className="rounded-[var(--radius-pill)] border-2 border-border bg-surface px-2.5 py-0.5 text-xs font-bold text-ink">
-            {APP_VERSION_LABEL}
-          </span>
+          <VersionBadge />
         </div>
         <p className="mt-1 max-w-md text-sm font-medium text-ink-soft">
           Portable app, Android APK, and source ZIPs. Each file shows its
