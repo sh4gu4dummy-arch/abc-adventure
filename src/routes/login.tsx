@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { GROK_PROVIDERS, authEnabled, signIn } from "@/lib/auth/client";
+import { VersionBadge } from "@/components/alphabet/VersionBadge";
 import {
   isEmbeddedPreview,
   openPreviewTopLevel,
@@ -23,7 +24,10 @@ function Login() {
         <Link to="/" className="text-sm font-semibold text-ink-soft hover:text-ink">
           ← Back to Letter World
         </Link>
-        <h1 className="font-display text-2xl font-bold text-ink">Sign in</h1>
+        <h1 className="flex flex-wrap items-baseline gap-x-2 gap-y-1 font-display text-2xl font-bold text-ink">
+          Sign in
+          <VersionBadge />
+        </h1>
         <p className="text-sm text-ink-soft">
           Optional — each kid's stars and stickers already save on this device
           without an account.

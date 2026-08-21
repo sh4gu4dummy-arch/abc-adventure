@@ -33,6 +33,7 @@ import { StoryMode } from "@/components/alphabet/StoryMode";
 import { CaseHunt } from "@/components/alphabet/CaseHunt";
 import { LayoutToggle } from "@/components/alphabet/LayoutToggle";
 import { GfxToggle } from "@/components/alphabet/GfxToggle";
+import { VersionBadge } from "@/components/alphabet/VersionBadge";
 import { StarBar } from "@/components/alphabet/StarBar";
 import { markSection, markVisited, markWordSeen, useProgress } from "@/lib/progress";
 import { speak, speakLetter } from "@/lib/speak";
@@ -102,8 +103,9 @@ function HomeView() {
           <p className="inline-flex items-center gap-1.5 rounded-[var(--radius-pill)] bg-accent/15 px-3 py-1 text-xs font-bold uppercase tracking-wider text-accent">
             <Sparkles className="size-3.5" /> Letter World · Offline
           </p>
-          <h1 className="font-display text-3xl font-bold leading-tight text-ink sm:text-4xl md:text-5xl">
+          <h1 className="flex flex-wrap items-baseline gap-x-2 gap-y-1 font-display text-3xl font-bold leading-tight text-ink sm:text-4xl md:text-5xl">
             ABC Adventure
+            <VersionBadge />
           </h1>
           <p className="max-w-xl text-base font-medium text-ink-soft sm:text-lg">
             Fully portable alphabet fun — posters, sounds, tracing, and games. No internet needed.
@@ -237,6 +239,7 @@ function LetterView({ entry }: { entry: LetterEntry }) {
           <ArrowLeft className="size-4" /> Home
         </button>
         <div className="flex items-center gap-2">
+          <VersionBadge />
           <VoiceToggle compact />
           <ThemeToggle compact />
           <LayoutToggle compact />

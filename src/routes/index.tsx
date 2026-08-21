@@ -18,6 +18,7 @@ import {
 } from "@/components/alphabet/ProfileGate";
 import { DailyPath } from "@/components/alphabet/DailyPath";
 import { LayoutToggle } from "@/components/alphabet/LayoutToggle";
+import { VersionBadge } from "@/components/alphabet/VersionBadge";
 import {
   LETTER_BUDDIES_EPISODES,
   buddyPosterPath,
@@ -66,8 +67,9 @@ function Home() {
           <p className="inline-flex items-center gap-1.5 rounded-[var(--radius-pill)] bg-accent/15 px-3 py-1 text-xs font-bold uppercase tracking-wider text-accent">
             <Sparkles className="size-3.5" /> Letter World
           </p>
-          <h1 className="mt-2 font-display text-3xl font-bold leading-tight text-ink sm:text-4xl">
+          <h1 className="mt-2 flex flex-wrap items-baseline gap-x-2 gap-y-1 font-display text-3xl font-bold leading-tight text-ink sm:text-4xl">
             ABC Adventure
+            <VersionBadge />
           </h1>
           <p className="mt-1 max-w-lg text-sm font-medium text-ink-soft sm:text-base">
             Pick a letter — posters, sounds, tracing, and games.

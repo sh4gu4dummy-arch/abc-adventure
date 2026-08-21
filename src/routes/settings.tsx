@@ -8,6 +8,7 @@ import { VoiceToggle } from "@/components/alphabet/VoiceToggle";
 import { PlayerChip, ProfileGate } from "@/components/alphabet/ProfileGate";
 import { clearActiveProfile, exportJourneysJson, importJourneysJson } from "@/lib/profiles";
 import { APP_VERSION_LABEL } from "@/lib/version";
+import { VersionBadge } from "@/components/alphabet/VersionBadge";
 
 export const Route = createFileRoute("/settings")({ component: SettingsPage });
 
@@ -60,7 +61,10 @@ function SettingsPage() {
         <p className="inline-flex items-center gap-1.5 rounded-[var(--radius-pill)] bg-primary/12 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary">
           <Settings2 className="size-3.5" /> Preferences
         </p>
-        <h1 className="mt-2 font-display text-3xl font-bold text-ink">Settings</h1>
+        <h1 className="mt-2 flex flex-wrap items-baseline gap-x-2 gap-y-1 font-display text-3xl font-bold text-ink">
+          Settings
+          <VersionBadge />
+        </h1>
         <p className="mt-1 max-w-md text-sm font-medium text-ink-soft">
           Voice, look, and player — saved on this device only.
         </p>
