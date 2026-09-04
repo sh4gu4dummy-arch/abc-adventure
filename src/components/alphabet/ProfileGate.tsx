@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useMemo, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import {
   Award,
   ExternalLink,
@@ -17,6 +17,7 @@ import {
   profileStats,
   selectProfile,
   ensureDefaultProfileReady,
+  importJourneysJson,
   useActiveProfile,
   useProfileStore,
   type AvatarId,
@@ -52,6 +53,8 @@ export function ProfileGate({
   const [avatar, setAvatar] = useState<AvatarId>("star");
   const [confirmDelete, setConfirmDelete] = useState<string | null>(null);
   const [embedded, setEmbedded] = useState(false);
+  const [restoreMsg, setRestoreMsg] = useState<string | null>(null);
+  const restoreRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     setEmbedded(isEmbeddedPreview());
@@ -129,8 +132,9 @@ export function ProfileGate({
             <VersionBadge />
           </h1>
           <p className="mx-auto mt-2 max-w-md text-sm font-medium text-ink-soft sm:text-base">
-            Each kid keeps their own stars, stickers, and achievements on this device
-            — no Grok sign-in needed.
+            Each kid keeps their own stars, stickers, and achievements.
+            Progress is saved on this device and backed up so updates
+            don't wipe it.
           </p>
         </div>
 
@@ -308,6 +312,39 @@ export function ProfileGate({
                 <Plus className="size-5" />
                 New player
               </button>
+            )}
+            <input
+              ref={restoreRef}
+              type="file"
+              accept="application/json,.json"
+              className="hidden"
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                e.target.value = "";
+                if (!file) return;
+                const reader = new FileReader();
+                reader.onload = () => {
+                  try {
+                    importJourneysJson(String(reader.result || ""));
+                    setRestoreMsg("Journeys restored.");
+                  } catch {
+                    setRestoreMsg("That file didn’t look like a journeys backup.");
+                  }
+                };
+                reader.readAsText(file);
+              }}
+            />
+            <button
+              type="button"
+              onClick={() => restoreRef.current?.click()}
+              className="pressable mt-2 w-full text-sm font-bold text-ink-soft underline-offset-2 hover:text-ink hover:underline"
+            >
+              Restore journeys from a file
+            </button>
+            {restoreMsg && (
+              <p className="mt-2 text-center text-xs font-semibold text-ink-soft">
+                {restoreMsg}
+              </p>
             )}
           </div>
         )}

@@ -40,6 +40,8 @@ android/capacitor-cordova-android-plugins/build/
 android/captain-definition
 android/local.properties
 artifacts/
+data/journeys.json
+data/
 dist/
 node_modules/
 npm-debug.log*
