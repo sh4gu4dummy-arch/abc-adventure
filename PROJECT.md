@@ -107,12 +107,13 @@ npm run build:apk      # only when asked
 
 Private repo: [github.com/sh4gu4dummy-arch/abc-adventure](https://github.com/sh4gu4dummy-arch/abc-adventure)
 
-**Every 10 versions** (next: **v0.040**, then v0.050, v0.060…): **remind** the user — do not do it automatically — to:
+**Local git:** commit every app change (do not lose work).
 
-1. **Push to GitHub** (`git push origin main`)
-2. **Update the Grok Publish link** (republish so the public/share URL matches this version)
+**GitHub push:** not every commit. Only on the 10-version marks — **v0.040, v0.050, v0.060…** — and only after reminding the user (or if they say “push”). Last push: **v0.030**.
 
-In-between versions: commit locally as usual; wait for the reminder or an explicit “push” / “publish”.
+**Grok Publish:** same cadence — remind at those marks so the public link matches.
+
+Do not `git push` in between unless asked.
 
 - **Saved journeys** live in `localStorage` + sessionStorage + IndexedDB (`abc-adventure-profiles-v1`). Restore from IDB **before** creating a default Explorer — never overwrite a real save. Settings has Save/Restore journeys backup.
 - Bump on **every** update.
