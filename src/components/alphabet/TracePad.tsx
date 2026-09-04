@@ -6,11 +6,11 @@ import { speak } from "@/lib/speak";
 
 const COLS = 32;
 const ROWS = 26;
-/** Path traced — not colored in. ~55% of the fat glyph is a full stroke. */
-const COVER_THRESHOLD = 0.55;
-/** Each occupied 3×3 zone of the letter must be touched — skips a bar/bowl. */
-const ZONE_MIN = 0.28;
-const ZONE_MIN_CELLS = 5;
+/** Share of the visible letter that ink must touch. Tracing, not coloring in. */
+const COVER_THRESHOLD = 0.42;
+/** Each occupied 3×3 zone of the letter core must be touched (bar/bowl/stem). */
+const ZONE_MIN = 0.18;
+const ZONE_MIN_CELLS = 4;
 const INK_WIDTH = 18;
 const START_HINT: Record<string, { x: number; y: number }> = {
   A: { x: 50, y: 22 },
@@ -63,6 +63,7 @@ export function TracePad({
   const drawing = useRef(false);
   const lastPt = useRef<{ x: number; y: number } | null>(null);
   const letterMask = useRef<Uint8Array>(new Uint8Array(COLS * ROWS));
+  const coreMask = useRef<Uint8Array>(new Uint8Array(COLS * ROWS));
   const inkMask = useRef<Uint8Array>(new Uint8Array(COLS * ROWS));
   const letterCellCount = useRef(0);
   const finishedRef = useRef(false);
@@ -120,15 +121,10 @@ export function TracePad({
       if (!octx) return;
       octx.clearRect(0, 0, off.width, off.height);
       octx.fillStyle = "#000";
-      octx.strokeStyle = "#000";
       octx.font = letterFont(h);
       octx.textAlign = "center";
       octx.textBaseline = "middle";
-      octx.lineJoin = "round";
-      octx.lineCap = "round";
-      octx.lineWidth = 32;
       octx.fillText(guideLetter, off.width / 2, off.height / 2 + 4);
-      octx.strokeText(guideLetter, off.width / 2, off.height / 2 + 4);
 
       const img = octx.getImageData(0, 0, off.width, off.height).data;
       const raw = new Uint8Array(COLS * ROWS);
@@ -171,7 +167,24 @@ export function TracePad({
           if (on) count += 1;
         }
       }
+      const core = new Uint8Array(COLS * ROWS);
+      let coreCount = 0;
+      for (let r = 1; r < ROWS - 1; r++) {
+        for (let c = 1; c < COLS - 1; c++) {
+          if (!dilated[idx(c, r)]) continue;
+          if (
+            dilated[idx(c - 1, r)] &&
+            dilated[idx(c + 1, r)] &&
+            dilated[idx(c, r - 1)] &&
+            dilated[idx(c, r + 1)]
+          ) {
+            core[idx(c, r)] = 1;
+            coreCount += 1;
+          }
+        }
+      }
       letterMask.current = dilated;
+      coreMask.current = coreCount >= 12 ? core : dilated;
       letterCellCount.current = Math.max(count, 1);
     },
     [guideLetter],
@@ -227,8 +240,8 @@ export function TracePad({
   function stampInk(x: number, y: number, w: number, h: number) {
     const c = Math.max(0, Math.min(COLS - 1, Math.floor((x / w) * COLS)));
     const r = Math.max(0, Math.min(ROWS - 1, Math.floor((y / h) * ROWS)));
-    for (let dr = -1; dr <= 1; dr++) {
-      for (let dc = -1; dc <= 1; dc++) {
+    for (let dr = -2; dr <= 2; dr++) {
+      for (let dc = -2; dc <= 2; dc++) {
         const rr = r + dr;
         const cc = c + dc;
         if (rr < 0 || rr >= ROWS || cc < 0 || cc >= COLS) continue;
@@ -251,7 +264,7 @@ export function TracePad({
 
   /** True when every chunk of the letter (bar, bowl, stem…) has been touched. */
   function zonesComplete() {
-    const letterBits = letterMask.current;
+    const bits = coreMask.current;
     const ink = inkMask.current;
     let minC = COLS;
     let maxC = -1;
@@ -259,7 +272,7 @@ export function TracePad({
     let maxR = -1;
     for (let r = 0; r < ROWS; r++) {
       for (let c = 0; c < COLS; c++) {
-        if (!letterBits[idx(c, r)]) continue;
+        if (!bits[idx(c, r)]) continue;
         if (c < minC) minC = c;
         if (c > maxC) maxC = c;
         if (r < minR) minR = r;
@@ -281,7 +294,7 @@ export function TracePad({
         let hit = 0;
         for (let r = r0; r <= rEnd; r++) {
           for (let c = c0; c <= cEnd; c++) {
-            if (!letterBits[idx(c, r)]) continue;
+            if (!bits[idx(c, r)]) continue;
             cells += 1;
             if (ink[idx(c, r)]) hit += 1;
           }
