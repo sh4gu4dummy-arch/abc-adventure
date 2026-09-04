@@ -5,7 +5,9 @@ All original artwork still lives in the project.
 | Path | What it is | Home in the app |
 |---|---|---|
 | `public/letters/*.webp` | Letter mascots (the letter IS a character) | Home tiles, letter hero, stickers, celebration |
-| `public/art-archive/letter-tiles-objects/` | Original A–P **object** tiles (apple, cat, dog…) replaced on the grid in v0.028 | Kept so we can restore; word scenes still in `public/posters/` |
+| `public/art-archive/letter-tiles-objects/` | Original A–P **object** tiles (apple, cat, dog…) | Backup; word scenes still in `public/posters/` |
+| `public/art-archive/letter-tiles-old-style/` | Original M, Q–Z tiles (moon, 2D characters) | Backup from before the matching 3D set |
+| `public/art-archive/letter-buddies-new/` | Source JPGs for the matching 3D letter-buddies | Masters for `public/letters/` |
 | `public/posters/{a–q}-*.webp` | Word **scenes** (cat on a rug, dog in a park) | Word cards + listening games |
 | `public/posters/{r–z}-*.webp` | Word **letter-buddies** (Rabbit-R, Snake-S) | Story theater actors + “letter friends” row |
 | `public/posters-scene/{r–z}-*.webp` | Scene fills (from existing word videos) | Word cards + listening games for R–Z |
