@@ -10,7 +10,8 @@
  *              story actors, and the "letter friends" row.
  *
  * Originals are never overwritten:
- *  - public/letters/*.webp          letter mascots (buddy)
+ *  - public/letters/*.webp          letter mascots (buddy) — all 26 characters
+ *  - public/art-archive/letter-tiles-objects/  original A–P object tiles
  *  - public/posters/{l}-{slug}.webp A–Q = scenes, R–Z = word-buddies
  *  - public/posters-scene/          new scene fills for R–Z holes only
  */

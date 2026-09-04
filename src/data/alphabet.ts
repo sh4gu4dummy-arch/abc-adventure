@@ -1,5 +1,6 @@
 import { assetUrl } from "@/lib/assets";
 import { isBuddyWordPoster, sceneKey, hasSceneFill } from "@/data/art-roles";
+import { APP_VERSION } from "@/lib/version";
 
 export type WordEntry = {
   word: string;
@@ -539,7 +540,7 @@ export function wordBuddyPath(letter: string, slug: string): string {
 
 /** Letter mascot (always a letter-buddy). */
 export function letterHeroPath(letter: string): string {
-  return assetUrl(`letters/${letter.toLowerCase()}.webp`);
+  return `${assetUrl(`letters/${letter.toLowerCase()}.webp`)}?v=${APP_VERSION}`;
 }
 
 /** 10s local bounce, or Imagine clip when we have one. */
