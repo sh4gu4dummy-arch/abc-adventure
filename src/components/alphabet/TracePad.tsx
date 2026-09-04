@@ -6,10 +6,10 @@ import { speak } from "@/lib/speak";
 
 const COLS = 32;
 const ROWS = 26;
-/** Overall fill of the glyph. */
-const COVER_THRESHOLD = 0.70;
+/** Path traced — not colored in. ~55% of the fat glyph is a full stroke. */
+const COVER_THRESHOLD = 0.55;
 /** Each occupied 3×3 zone of the letter must be touched — skips a bar/bowl. */
-const ZONE_MIN = 0.4;
+const ZONE_MIN = 0.28;
 const ZONE_MIN_CELLS = 5;
 const INK_WIDTH = 18;
 const START_HINT: Record<string, { x: number; y: number }> = {
