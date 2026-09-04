@@ -101,7 +101,7 @@ npm run build:apk      # only when asked
 
 ## Versioning & downloads
 
-- **Current version:** `0.029` (`v0.029`) — stored in `VERSION` and `src/lib/version.ts` (keep in sync).
+- **Current version:** `0.030` (`v0.030`) — stored in `VERSION` and `src/lib/version.ts` (keep in sync).
 - **Saved journeys** live in `localStorage` + sessionStorage + IndexedDB (`abc-adventure-profiles-v1`). Restore from IDB **before** creating a default Explorer — never overwrite a real save. Settings has Save/Restore journeys backup.
 - Bump on **every** update.
 - Code-only package tracks the current version. Portable / APK / codebase keep their last-built version until rebuilt.
