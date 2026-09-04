@@ -12,12 +12,12 @@
  * Same marks: remind to update the Grok Publish link.
  */
 
-export const APP_VERSION = "0.030";
+export const APP_VERSION = "0.031";
 export const APP_VERSION_LABEL = `v${APP_VERSION}`;
 export const APP_SLUG = "abc-adventure";
 export const APP_DISPLAY_NAME = "ABC Adventure";
 
-export type PackageKind = "portable" | "code" | "codebase" | "apk";
+export type PackageKind = "portable" | "code" | "codebase" | "apk" | "media";
 
 /** Downloadable file name for a package kind (includes version). */
 export function packageFileName(kind: PackageKind, version = APP_VERSION): string {
@@ -29,6 +29,8 @@ export function packageFileName(kind: PackageKind, version = APP_VERSION): strin
       return `${APP_SLUG}-${v}-code.zip`;
     case "codebase":
       return `${APP_SLUG}-${v}-codebase.zip`;
+    case "media":
+      return `${APP_SLUG}-${v}-media.zip`;
     case "apk":
       return `${APP_SLUG}-${v}.apk`;
   }

@@ -8,6 +8,7 @@ import {
   AppWindow,
   FolderArchive,
   Smartphone,
+  Images,
 } from "lucide-react";
 import {
   APP_VERSION,
@@ -33,14 +34,17 @@ type MetaFile = {
   versionLabel?: string;
   builtAt?: string;
   codeBuiltAt?: string;
+  mediaBuiltAt?: string;
   portableApp?: PackageMeta & { files?: number };
   codeOnly?: PackageMeta;
   sourceCode?: PackageMeta;
   apk?: PackageMeta;
+  mediaOnly?: PackageMeta;
   packages?: {
     portable?: PackageMeta;
     code?: PackageMeta;
     codebase?: PackageMeta;
+    media?: PackageMeta;
     apk?: PackageMeta;
   };
 };
@@ -192,16 +196,22 @@ export function DownloadPortable({ className }: { className?: string }) {
     packageFileName("codebase");
   const apkName =
     meta?.packages?.apk?.name ?? meta?.apk?.name ?? packageFileName("apk");
+  const mediaName =
+    meta?.packages?.media?.name ??
+    meta?.mediaOnly?.name ??
+    packageFileName("media");
 
   const portableHref = dlHref(portableName);
   const codeHref = dlHref(codeName);
   const codebaseHref = dlHref(codebaseName);
   const apkHref = dlHref(apkName);
+  const mediaHref = dlHref(mediaName);
 
   const appMb = meta?.packages?.portable?.mb ?? meta?.portableApp?.mb;
   const codeMb = meta?.packages?.code?.mb ?? meta?.codeOnly?.mb;
   const codebaseMb = meta?.packages?.codebase?.mb ?? meta?.sourceCode?.mb;
   const apkMb = meta?.packages?.apk?.mb ?? meta?.apk?.mb;
+  const mediaMb = meta?.packages?.media?.mb ?? meta?.mediaOnly?.mb;
 
   const stampFor = (
     pkg?: PackageMeta,
@@ -232,6 +242,11 @@ export function DownloadPortable({ className }: { className?: string }) {
     meta?.packages?.apk ?? meta?.apk,
     meta?.packages?.apk?.name?.match(/v[\d.]+/)?.[0] ?? meta?.version,
     meta?.builtAt,
+  );
+  const mediaStamp = stampFor(
+    meta?.packages?.media ?? meta?.mediaOnly,
+    APP_VERSION,
+    meta?.mediaBuiltAt ?? meta?.builtAt,
   );
 
   const built = meta?.builtAt
@@ -287,6 +302,16 @@ export function DownloadPortable({ className }: { className?: string }) {
           stamp={portableStamp}
         />
         <DownloadCard
+          href={mediaHref}
+          filename={mediaName}
+          title="Media only"
+          blurb="Letter characters, word pictures, videos, and voice. No code — just the art."
+          icon={Images}
+          mb={mediaMb}
+          accent="#0CA678"
+          stamp={mediaStamp}
+        />
+        <DownloadCard
           href={codeHref}
           filename={codeName}
           title="Code only"
@@ -313,6 +338,7 @@ export function DownloadPortable({ className }: { className?: string }) {
         <span>
           <strong className="text-ink">Android APK</strong> installs on phones/tablets.
           <strong className="text-ink"> Portable app</strong> is the offline HTML package for computers.
+          <strong className="text-ink"> Media only</strong> is pictures, videos, and voice (no app).
           <strong className="text-ink"> Code</strong> / <strong className="text-ink">Code + assets</strong>{" "}
           are source archives (download only). Progress saves on the device that opens the app.
           Current app version: {appLabel}. Each file lists its version and the
