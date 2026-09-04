@@ -7,10 +7,7 @@ import { speak } from "@/lib/speak";
 const COLS = 32;
 const ROWS = 26;
 /** Share of the visible letter that ink must touch. Tracing, not coloring in. */
-const COVER_THRESHOLD = 0.42;
-/** Each occupied 3×3 zone of the letter core must be touched (bar/bowl/stem). */
-const ZONE_MIN = 0.18;
-const ZONE_MIN_CELLS = 4;
+const COVER_THRESHOLD = 0.48;
 const INK_WIDTH = 18;
 const START_HINT: Record<string, { x: number; y: number }> = {
   A: { x: 50, y: 22 },
@@ -240,8 +237,8 @@ export function TracePad({
   function stampInk(x: number, y: number, w: number, h: number) {
     const c = Math.max(0, Math.min(COLS - 1, Math.floor((x / w) * COLS)));
     const r = Math.max(0, Math.min(ROWS - 1, Math.floor((y / h) * ROWS)));
-    for (let dr = -2; dr <= 2; dr++) {
-      for (let dc = -2; dc <= 2; dc++) {
+    for (let dr = -1; dr <= 1; dr++) {
+      for (let dc = -1; dc <= 1; dc++) {
         const rr = r + dr;
         const cc = c + dc;
         if (rr < 0 || rr >= ROWS || cc < 0 || cc >= COLS) continue;
@@ -262,9 +259,12 @@ export function TracePad({
     return hit / total;
   }
 
-  /** True when every chunk of the letter (bar, bowl, stem…) has been touched. */
-  function zonesComplete() {
-    const bits = coreMask.current;
+  /**
+   * The middle of the letter (A/H bar, B/R bowls, etc.).
+   * Side strokes must not count as the bar — only ink in the inner box.
+   */
+  function connectorComplete() {
+    const bits = letterMask.current;
     const ink = inkMask.current;
     let minC = COLS;
     let maxC = -1;
@@ -279,37 +279,31 @@ export function TracePad({
         if (r > maxR) maxR = r;
       }
     }
-    if (maxC < minC) return false;
+    if (maxC < minC) return true;
     const bw = maxC - minC + 1;
     const bh = maxR - minR + 1;
-    for (let zr = 0; zr < 3; zr++) {
-      for (let zc = 0; zc < 3; zc++) {
-        const c0 = minC + Math.floor((zc * bw) / 3);
-        const c1 = minC + Math.floor(((zc + 1) * bw) / 3) - 1;
-        const r0 = minR + Math.floor((zr * bh) / 3);
-        const r1 = minR + Math.floor(((zr + 1) * bh) / 3) - 1;
-        const cEnd = zc === 2 ? maxC : Math.max(c0, c1);
-        const rEnd = zr === 2 ? maxR : Math.max(r0, r1);
-        let cells = 0;
-        let hit = 0;
-        for (let r = r0; r <= rEnd; r++) {
-          for (let c = c0; c <= cEnd; c++) {
-            if (!bits[idx(c, r)]) continue;
-            cells += 1;
-            if (ink[idx(c, r)]) hit += 1;
-          }
-        }
-        if (cells < ZONE_MIN_CELLS) continue;
-        if (hit / cells < ZONE_MIN) return false;
+    const c0 = minC + Math.floor(bw * 0.36);
+    const c1 = minC + Math.floor(bw * 0.64);
+    const r0 = minR + Math.floor(bh * 0.32);
+    const r1 = minR + Math.floor(bh * 0.68);
+    let cells = 0;
+    let hit = 0;
+    for (let r = r0; r <= r1; r++) {
+      for (let c = c0; c <= c1; c++) {
+        if (!bits[idx(c, r)]) continue;
+        cells += 1;
+        if (ink[idx(c, r)]) hit += 1;
       }
     }
-    return true;
+    // Open letters (C, L) have no interior bar — skip.
+    if (cells < 6) return true;
+    return hit / cells >= 0.4;
   }
 
   function publishCover(ratio: number) {
     setCover((prev) => (Math.abs(prev - ratio) >= 0.01 ? ratio : prev));
     if (finishedRef.current) return;
-    if (ratio < COVER_THRESHOLD || !zonesComplete()) return;
+    if (ratio < COVER_THRESHOLD || !connectorComplete()) return;
     finishedRef.current = true;
     setDone(true);
     markSection(letter, "trace");
