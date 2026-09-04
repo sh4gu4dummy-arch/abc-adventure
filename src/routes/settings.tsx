@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, Settings2, UserRound, Download, Upload } from "lucide-react";
+import { ArrowLeft, Settings2, UserRound, Download, Upload, Images } from "lucide-react";
 import { useRef, useState, type ChangeEvent } from "react";
 import { LayoutToggle } from "@/components/alphabet/LayoutToggle";
 import { GfxToggle } from "@/components/alphabet/GfxToggle";
@@ -152,6 +152,23 @@ function SettingsPage() {
           </div>
         </div>
       </section>
+
+      <Link
+        to="/art"
+        className="card-surface mb-4 flex items-center gap-3 rounded-[var(--radius-xl)] p-4 sm:p-5"
+      >
+        <span className="inline-flex size-11 items-center justify-center rounded-full bg-accent/15 text-accent">
+          <Images className="size-5" />
+        </span>
+        <span className="min-w-0">
+          <span className="block font-display text-lg font-bold text-ink">
+            Art archive
+          </span>
+          <span className="block text-sm font-medium text-ink-soft">
+            Old home tiles we kept — apple, cat, moon M, 2D Q–Z.
+          </span>
+        </span>
+      </Link>
 
       <p className="text-center text-xs font-medium text-muted">
         App {APP_VERSION_LABEL} · Need offline copies?{" "}
