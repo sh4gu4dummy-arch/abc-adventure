@@ -8,6 +8,7 @@
  *   2. Rebuild code-only ZIP (`npm run build:code`)
  *   3. Git commit
  * Portable / codebase / APK wait until the user asks.
+ * Every 10 versions (0.040, 0.050, …): remind to push GitHub + Grok Publish.
  */
 
 export const APP_VERSION = "0.030";
