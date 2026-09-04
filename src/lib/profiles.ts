@@ -148,14 +148,20 @@ function parseStore(raw: string | null): ProfileStore | null {
   }
 }
 
+function progressScore(p: PlayerProfile): number {
+  const pr = p.progress;
+  return (
+    (pr?.stars ?? 0) * 100 +
+    (pr?.completed?.length ?? 0) * 40 +
+    (pr?.visited?.length ?? 0) * 10 +
+    (pr?.wordsSeen?.length ?? 0)
+  );
+}
+
 function richness(s: ProfileStore): number {
   let stars = 0;
-  let played = 0;
-  for (const p of s.profiles) {
-    stars += p.progress?.stars ?? 0;
-    played = Math.max(played, p.lastPlayedAt || 0);
-  }
-  return s.profiles.length * 1_000_000 + stars * 100 + (played > 0 ? 1 : 0);
+  for (const p of s.profiles) stars += progressScore(p);
+  return s.profiles.length * 1_000_000 + stars;
 }
 
 function richer(a: ProfileStore, b: ProfileStore): ProfileStore {
@@ -192,6 +198,7 @@ function persistCopies(
     if (opts?.writeIdb && hydrateDone) {
       void writeIdbMerged(state);
     }
+    scheduleServerPush(state);
   }
   cache = state;
   cacheRaw = raw;
@@ -272,29 +279,6 @@ function readStore(): ProfileStore {
   }
 }
 
-/** Load IDB first. Never create a default player until this finishes. */
-export function restoreProfiles(): Promise<ProfileStore> {
-  if (typeof window === "undefined") return Promise.resolve(emptyStore);
-  if (restorePromise) return restorePromise;
-  restorePromise = (async () => {
-    const local = collectFromLocal();
-    let fromIdb: ProfileStore = emptyStore;
-    try {
-      fromIdb = parseStore(await idbGet(STORE_KEY)) ?? emptyStore;
-    } catch {
-      fromIdb = emptyStore;
-    }
-    const best = richer(local, fromIdb);
-    hydrateDone = true;
-    if (best.profiles.length) {
-      persistCopies(best, { writeIdb: true });
-      emit();
-    }
-    return cache.profiles.length ? cache : best;
-  })();
-  return restorePromise;
-}
-
 function mergeProfiles(
   existing: PlayerProfile[],
   incoming: PlayerProfile[],
@@ -308,12 +292,77 @@ function mergeProfiles(
       byId.set(p.id, p);
       continue;
     }
-    const prevStars = prev.progress?.stars ?? 0;
-    const nextStars = p.progress?.stars ?? 0;
-    byId.set(p.id, nextStars >= prevStars ? p : prev);
+    byId.set(p.id, progressScore(p) >= progressScore(prev) ? p : prev);
   }
   if (dropId) byId.delete(dropId);
   return [...byId.values()];
+}
+
+function mergeStores(a: ProfileStore, b: ProfileStore): ProfileStore {
+  const profiles = mergeProfiles(a.profiles, b.profiles);
+  const activeId =
+    a.activeId && profiles.some((p) => p.id === a.activeId)
+      ? a.activeId
+      : b.activeId && profiles.some((p) => p.id === b.activeId)
+        ? b.activeId
+        : (profiles[0]?.id ?? null);
+  return { activeId, profiles };
+}
+
+let serverPushTimer: ReturnType<typeof setTimeout> | null = null;
+
+function scheduleServerPush(state: ProfileStore) {
+  if (typeof window === "undefined") return;
+  if (!state.profiles.length) return;
+  if (serverPushTimer) clearTimeout(serverPushTimer);
+  const payload = JSON.stringify({ store: state });
+  serverPushTimer = setTimeout(() => {
+    void fetch("/api/journeys", {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: payload,
+      keepalive: true,
+    }).catch(() => {
+      /* preview-only backup */
+    });
+  }, 500);
+}
+
+async function pullServerJourneys(): Promise<ProfileStore | null> {
+  try {
+    const res = await fetch("/api/journeys", { cache: "no-store" });
+    if (!res.ok) return null;
+    const json = (await res.json()) as { store?: unknown };
+    if (!json?.store) return null;
+    return parseStore(JSON.stringify(json.store));
+  } catch {
+    return null;
+  }
+}
+
+/** Load IDB + server backup first. Never create a default player until this finishes. */
+export function restoreProfiles(): Promise<ProfileStore> {
+  if (typeof window === "undefined") return Promise.resolve(emptyStore);
+  if (restorePromise) return restorePromise;
+  restorePromise = (async () => {
+    const local = collectFromLocal();
+    let fromIdb: ProfileStore = emptyStore;
+    try {
+      fromIdb = parseStore(await idbGet(STORE_KEY)) ?? emptyStore;
+    } catch {
+      fromIdb = emptyStore;
+    }
+    const fromServer = (await pullServerJourneys()) ?? emptyStore;
+    let best = mergeStores(mergeStores(local, fromIdb), fromServer);
+    if (!best.profiles.length) best = richer(local, richer(fromIdb, fromServer));
+    hydrateDone = true;
+    if (best.profiles.length) {
+      persistCopies(best, { writeIdb: true });
+      emit();
+    }
+    return cache.profiles.length ? cache : best;
+  })();
+  return restorePromise;
 }
 
 function writeStore(
