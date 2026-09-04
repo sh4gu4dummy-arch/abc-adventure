@@ -10,6 +10,7 @@ Kids alphabet learning app (ages ~3–6): 26 letters, cartoon posters, neural vo
 | **2. Offline portable ZIP** | Active | Versioned `*-portable.zip` on Downloads page |
 | **2b. Code only ZIP** | Active | Essential source, no heavy media (`*-code.zip`) |
 | **2c. Code + assets ZIP** | Active | Full source + media (`*-codebase.zip`) |
+| **2d. Media only ZIP** | Active | Letters, posters, videos, audio (`*-media.zip`) — no source |
 | **3. Android APK** | Active | Capacitor offline app — `abc-adventure-vX.YYY.apk` on Downloads. Rebuild only on request: `npm run build:apk`. |
 
 ## Layout system
@@ -101,7 +102,7 @@ npm run build:apk      # only when asked
 
 ## Versioning & downloads
 
-- **Current version:** `0.030` (`v0.030`) — stored in `VERSION` and `src/lib/version.ts` (keep in sync).
+- **Current version:** `0.031` (`v0.031`) — stored in `VERSION` and `src/lib/version.ts` (keep in sync).
 
 ## GitHub + Grok Publish cadence
 
