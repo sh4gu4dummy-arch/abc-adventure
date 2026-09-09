@@ -28,6 +28,7 @@ in chat.
     own gag. Check the whole alphabet, not just the current letter.
 11. Archive old art; never overwrite originals. Use Imagine API download
     into `public/` (locker may fail). Copy stills into the repo immediately.
+12. **GitHub:** after every commit, push. Do not ask.
 
 ## How to write rules
 

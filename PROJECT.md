@@ -113,7 +113,7 @@ npm run build:apk      # only when asked
 
 ## Versioning & downloads
 
-- **Current version:** `0.062` (`v0.062`) — stored in `VERSION` and `src/lib/version.ts` (keep in sync).
+- **Current version:** `0.063` (`v0.063`) — stored in `VERSION` and `src/lib/version.ts` (keep in sync).
 
 ## GitHub + Grok Publish cadence
 
@@ -121,11 +121,9 @@ Private repo: [github.com/sh4gu4dummy-arch/abc-adventure](https://github.com/sh4
 
 **Local git:** commit every app change (do not lose work).
 
-**GitHub push:** not every commit. Only on the 10-version marks — **v0.040, v0.050, v0.060…** — and only after reminding the user (or if they say “push”). Last push: **v0.030**.
+**GitHub push:** every commit. Do not ask. Private repo above.
 
-**Grok Publish:** same cadence — remind at those marks so the public link matches.
-
-Do not `git push` in between unless asked.
+**Grok Publish:** remind at v0.070, v0.080… so the public link can match.
 
 - **Saved journeys** live in `localStorage` + sessionStorage + IndexedDB (`abc-adventure-profiles-v1`). Restore from IDB **before** creating a default Explorer — never overwrite a real save. Settings has Save/Restore journeys backup.
 - Bump on **every** update.
