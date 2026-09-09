@@ -96,12 +96,12 @@ export const WORD_LESSONS: Record<string, WordLesson> = {
   "f-fox": { ...lesson("F", "fox", "Fox", "The fox finds a snack in the forest."), durationSec: 10, loopVideo: true },
   "f-fairy": { ...lesson("F", "fairy", "Fairy", "The fairy flies from the flower."), durationSec: 10, loopVideo: true },
   // --- Letter G ---
-  "g-giraffe": lesson("G", "giraffe", "Giraffe", "The giraffe stands tall on the savanna."),
-  "g-grapes": lesson("G", "grapes", "Grapes", "The grapes hang in the sunny garden."),
-  "g-guitar": lesson("G", "guitar", "Guitar", "The guitar is ready on the stage."),
-  "g-garden": lesson("G", "garden", "Garden", "The garden is full of green plants."),
-  "g-gift": lesson("G", "gift", "Gift", "The gift sits under the party table."),
-  "g-goat": lesson("G", "goat", "Goat", "The goat climbs on the farm hill."),
+  "g-giraffe": { ...lesson("G", "giraffe", "Giraffe", "The giraffe grabs green leaves."), durationSec: 10, loopVideo: true },
+  "g-grapes": { ...lesson("G", "grapes", "Grapes", "The grapes grow in the garden."), durationSec: 10, loopVideo: true },
+  "g-guitar": { ...lesson("G", "guitar", "Guitar", "A girl plays the guitar."), durationSec: 10, loopVideo: true },
+  "g-garden": { ...lesson("G", "garden", "Garden", "Green plants grow in the garden."), durationSec: 10, loopVideo: true },
+  "g-gift": { ...lesson("G", "gift", "Gift", "A girl opens a green gift."), durationSec: 10, loopVideo: false },
+  "g-goat": { ...lesson("G", "goat", "Goat", "The goat gobbles the grass."), durationSec: 10, loopVideo: true },
   // --- Letter H ---
   "h-hat": lesson("H", "hat", "Hat", "The hat rests on the cozy chair."),
   "h-house": lesson("H", "house", "House", "The house stands in the sunny yard."),
