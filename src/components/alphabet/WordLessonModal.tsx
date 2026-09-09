@@ -165,6 +165,7 @@ export function WordLessonModal({
             video.src = src;
           }
           video.muted = true;
+          video.loop = true;
           try {
             video.currentTime = 0;
           } catch {
@@ -321,7 +322,7 @@ export function WordLessonModal({
               muted
               preload="none"
               poster={imageSrc}
-              loop={false}
+              loop
               className={cn(
                 "absolute inset-0 z-[1] h-full w-full object-cover",
                 showVideo ? "opacity-100" : "opacity-0",
