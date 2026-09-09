@@ -128,16 +128,16 @@ const STORY_BEATS: Record<string, StoryBeat[]> = {
       cast: ["elephant", "egg"],
     },
     {
-      text: "An eagle soared above the earth, carrying an envelope to a friendly elf.",
+      text: "An eagle soared above the earth. A friendly elf bent an elbow.",
       action: "fly",
       scene: "sky",
-      cast: ["eagle", "earth", "envelope", "elf"],
+      cast: ["eagle", "earth", "elbow", "elf"],
     },
     {
       text: "Exciting!",
       action: "celebrate",
       scene: "party",
-      cast: ["elephant", "egg", "eagle", "earth", "envelope", "elf"],
+      cast: ["elephant", "egg", "eagle", "earth", "elbow", "elf"],
     },
   ],
   F: [
