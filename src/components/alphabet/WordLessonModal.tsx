@@ -211,13 +211,8 @@ export function WordLessonModal({
     const start = Date.now();
     const estMs = Math.max((lesson.durationSec ?? 10) * 1000, 9000);
     const tick = window.setInterval(() => {
-      if (cancelledRef.current) return;
+      if (cancelledRef.current || finishing.current) return;
       const v = videoRef.current;
-      // Looping clips rewind currentTime — use wall clock so the bar doesn't snap.
-      if (lesson.loopVideo === true) {
-        setProgress(Math.min(0.97, (Date.now() - start) / estMs));
-        return;
-      }
       if (v && v.duration && Number.isFinite(v.duration) && v.duration > 0) {
         setProgress(Math.min(0.97, v.currentTime / v.duration));
       } else {
@@ -225,42 +220,56 @@ export function WordLessonModal({
       }
     }, lite ? 160 : 100);
 
+    const stopTick = () => window.clearInterval(tick);
+
     try {
       setCaption("word");
       playSfx(lesson.sfxSparkle, 0.28);
 
       for (let i = 0; i < 3; i++) {
-        if (skipRef.current || cancelledRef.current) return;
+        if (skipRef.current || cancelledRef.current) {
+          stopTick();
+          return;
+        }
         await speak(lesson.word);
-        if (skipRef.current || cancelledRef.current) return;
+        if (skipRef.current || cancelledRef.current) {
+          stopTick();
+          return;
+        }
         await new Promise((r) => setTimeout(r, 180));
       }
 
-      if (skipRef.current || cancelledRef.current) return;
+      if (skipRef.current || cancelledRef.current) {
+        stopTick();
+        return;
+      }
       setCaption("sentence");
       playSfx(lesson.sfxSparkle, 0.22);
       await speak(lesson.sentence);
-      if (skipRef.current || cancelledRef.current) return;
+      if (skipRef.current || cancelledRef.current) {
+        stopTick();
+        return;
+      }
+
+      const left = estMs - (Date.now() - start);
+      if (left > 200) {
+        await new Promise<void>((resolve) => {
+          const t = window.setTimeout(() => resolve(), left);
+          const iv = window.setInterval(() => {
+            if (cancelledRef.current || finishing.current) {
+              window.clearTimeout(t);
+              window.clearInterval(iv);
+              resolve();
+            }
+          }, 120);
+          window.setTimeout(() => window.clearInterval(iv), left + 50);
+        });
+      }
     } finally {
-      window.clearInterval(tick);
+      stopTick();
     }
 
-    if (cancelledRef.current) return;
-    const left = estMs - (Date.now() - start);
-    if (left > 200) {
-      await new Promise<void>((resolve) => {
-        const t = window.setTimeout(() => resolve(), left);
-        const iv = window.setInterval(() => {
-          if (cancelledRef.current || skipRef.current) {
-            window.clearTimeout(t);
-            window.clearInterval(iv);
-            resolve();
-          }
-        }, 120);
-        window.setTimeout(() => window.clearInterval(iv), left + 50);
-      });
-    }
-    if (cancelledRef.current) return;
+    if (cancelledRef.current || finishing.current) return;
     if (lesson.loopVideo !== true) holdLastFrame(videoRef.current);
     await finishLesson();
   }
