@@ -1182,4 +1182,10 @@ export const SPEECH_MAP: Record<string, string> = {
   "Lily lights the lamp.": "57824d92692f964b.mp3",
   "Lily unwraps a lollipop.": "c388df62d0b5dad1.mp3",
   "Leo goes up the ladder.": "5a4ed0a84c576c39.mp3",
+  "Mia smiles at the moon.": "46faa1ae41d71670.mp3",
+  "The monkey hangs by its tail.": "b9cccd30ce66d0b9.mp3",
+  "The mouse nibbles cheese.": "b3694a44493510c4.mp3",
+  "Mia hikes the mountain.": "daafcc0d204e9e81.mp3",
+  "Mia sips milk.": "c37cc263dc2c0984.mp3",
+  "A mushroom pops up.": "ebae80d549707d85.mp3",
 };
