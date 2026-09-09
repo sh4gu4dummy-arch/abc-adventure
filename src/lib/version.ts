@@ -7,12 +7,12 @@
  *   1. Bump this + VERSION
  *   2. Rebuild code-only ZIP (`npm run build:code`)
  *   3. Git commit
+ *   4. Push GitHub (every commit — do not ask)
  * Portable / codebase / APK wait until the user asks.
- * GitHub push is NOT every commit — only v0.040, v0.050, v0.060… after a reminder.
- * Same marks: remind to update the Grok Publish link.
+ * Grok Publish: still remind at v0.070, v0.080… so the public link can match.
  */
 
-export const APP_VERSION = "0.062";
+export const APP_VERSION = "0.063";
 export const APP_VERSION_LABEL = `v${APP_VERSION}`;
 export const APP_SLUG = "abc-adventure";
 export const APP_DISPLAY_NAME = "ABC Adventure";
