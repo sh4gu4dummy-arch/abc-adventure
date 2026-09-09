@@ -1200,4 +1200,9 @@ export const SPEECH_MAP: Record<string, string> = {
   "The octopus juggles.": "4a3c234f61b16546.mp3",
   "Otto peeks in the oven.": "610c9fb49a291f0f.mp3",
   "The ostrich flaps.": "b2e34b7b3e76fb7a.mp3",
+  "Pip spins a pizza.": "447cd6b5a9e4ac1e.mp3",
+  "The pig rolls in mud.": "f452ad13ad3be249.mp3",
+  "Pip sharpens a pencil.": "df5fc5db0ba79393.mp3",
+  "Pip taps the piano keys.": "ee0131e73e1f95fe.mp3",
+  "The puppy wags its tail.": "84eae0abd486cd54.mp3",
 };
