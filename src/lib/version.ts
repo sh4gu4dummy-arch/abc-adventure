@@ -12,7 +12,7 @@
  * Same marks: remind to update the Grok Publish link.
  */
 
-export const APP_VERSION = "0.050";
+export const APP_VERSION = "0.051";
 export const APP_VERSION_LABEL = `v${APP_VERSION}`;
 export const APP_SLUG = "abc-adventure";
 export const APP_DISPLAY_NAME = "ABC Adventure";
