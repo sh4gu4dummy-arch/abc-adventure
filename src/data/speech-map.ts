@@ -988,6 +988,7 @@ export const SPEECH_MAP: Record<string, string> = {
   "The duck swims in the little pond.": "5b2f5f1251c5a21d.mp3",
   "The dinosaur stomps in the jungle.": "9c02cfdc04d30af2.mp3",
   "The donut sits on the bakery shelf.": "791c8b70995dcefb.mp3",
+  "They put sprinkles on the donut.": "643b206d8df33017.mp3",
   "The drum goes boom on the stage.": "10617029553dd285.mp3",
   "The door opens to a bright room.": "fe5e0e3d4803547c.mp3",
   "A big smile lights up the room.": "3107424511ea3cc5.mp3",

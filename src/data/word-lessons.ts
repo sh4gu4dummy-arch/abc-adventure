@@ -70,12 +70,12 @@ export const WORD_LESSONS: Record<string, WordLesson> = {
   "c-cookie": { ...lesson("C", "cookie", "Cookie", "They eat a cookie and drop crumbs."), durationSec: 10, loopVideo: true },
   "c-cup": { ...lesson("C", "cup", "Cup", "They pour milk in the cup."), durationSec: 10, loopVideo: false },
   // --- Letter D ---
-  "d-dog": lesson("D", "dog", "Dog", "The dog plays in the sunny yard."),
-  "d-duck": lesson("D", "duck", "Duck", "The duck swims in the little pond."),
-  "d-dinosaur": lesson("D", "dinosaur", "Dinosaur", "The dinosaur stomps in the jungle."),
-  "d-donut": lesson("D", "donut", "Donut", "The donut sits on the bakery shelf."),
-  "d-drum": lesson("D", "drum", "Drum", "The drum goes boom on the stage."),
-  "d-door": lesson("D", "door", "Door", "The door opens to a bright room."),
+  "d-dog": { ...lesson("D", "dog", "Dog", "The dog plays in the sunny yard."), durationSec: 10, loopVideo: true },
+  "d-duck": { ...lesson("D", "duck", "Duck", "The duck swims in the little pond."), durationSec: 10, loopVideo: true },
+  "d-dinosaur": { ...lesson("D", "dinosaur", "Dinosaur", "The dinosaur stomps in the jungle."), durationSec: 10, loopVideo: true },
+  "d-donut": { ...lesson("D", "donut", "Donut", "They put sprinkles on the donut."), durationSec: 10, loopVideo: false },
+  "d-drum": { ...lesson("D", "drum", "Drum", "The drum goes boom on the stage."), durationSec: 10, loopVideo: true },
+  "d-door": { ...lesson("D", "door", "Door", "The door opens to a bright room."), durationSec: 10, loopVideo: false },
   // --- Letter E ---
   "e-elephant": lesson("E", "elephant", "Elephant", "The elephant walks on the savanna."),
   "e-egg": lesson("E", "egg", "Egg", "The egg rests in the soft nest."),
