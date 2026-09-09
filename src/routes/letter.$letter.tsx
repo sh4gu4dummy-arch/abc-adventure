@@ -378,8 +378,14 @@ function LetterPage() {
         const lesson = getWordLesson(entry.letter, lessonWord.slug);
         if (!lesson) return null;
         const key = `${entry.letter.toLowerCase()}-${lessonWord.slug}`;
+        const lessonWords = entry.words.filter((w) => getWordLesson(entry.letter, w.slug));
+        const i = lessonWords.findIndex((w) => w.slug === lessonWord.slug);
+        const prevW = i >= 0 ? lessonWords[(i - 1 + lessonWords.length) % lessonWords.length] : undefined;
+        const nextW = i >= 0 ? lessonWords[(i + 1) % lessonWords.length] : undefined;
+        const canHop = lessonWords.length > 1;
         return (
           <WordLessonModal
+            key={`${entry.letter}-${lessonWord.slug}`}
             letter={entry.letter}
             accent={entry.accent}
             hue={entry.hue}
@@ -389,6 +395,10 @@ function LetterPage() {
             alreadySeen={seenSet.has(key)}
             onClose={() => setLessonWord(null)}
             onUnlocked={() => tryCompleteLetter(entry.letter)}
+            onPrev={canHop && prevW ? () => setLessonWord(prevW) : undefined}
+            onNext={canHop && nextW ? () => setLessonWord(nextW) : undefined}
+            prevLabel={prevW?.word}
+            nextLabel={nextW?.word}
           />
         );
       })()}
