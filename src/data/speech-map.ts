@@ -968,6 +968,7 @@ export const SPEECH_MAP: Record<string, string> = {
   "The alligator smiles by the water.": "716d03a359461fad.mp3",
   "The astronaut waves in outer space.": "cbaf441ba9ac3d6f.mp3",
   "The anchor stands by the blue water.": "72325255f54c3f0c.mp3",
+  "The anchor drops into the blue water.": "cb391c06000b62da.mp3",
   "The ball bounces at the playground.": "a3affff24cb4c16a.mp3",
   "The bear sits in the green forest.": "a903101ccbfff219.mp3",
   "The butterfly flies over the flowers.": "542bff49abf87f41.mp3",
