@@ -113,7 +113,7 @@ export const LETTERS: LetterEntry[] = [
       { word: "Egg", slug: "egg", hint: "Breakfast oval" },
       { word: "Eagle", slug: "eagle", hint: "Soars above mountains" },
       { word: "Earth", slug: "earth", hint: "Our blue-green home" },
-      { word: "Envelope", slug: "envelope", hint: "Holds a letter" },
+      { word: "Elbow", slug: "elbow", hint: "The bend in your arm" },
       { word: "Elf", slug: "elf", hint: "A tiny magical helper" },
     ],
     rhyme: "E is for elephant, big and gray — swinging its trunk every day!",
