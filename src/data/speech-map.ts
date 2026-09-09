@@ -1188,4 +1188,10 @@ export const SPEECH_MAP: Record<string, string> = {
   "Mia hikes the mountain.": "daafcc0d204e9e81.mp3",
   "Mia sips milk.": "c37cc263dc2c0984.mp3",
   "A mushroom pops up.": "ebae80d549707d85.mp3",
+  "A bird brings twigs to the nest.": "c4f07d08a1335fa2.mp3",
+  "Nina snuggles at night.": "07cfb85c29665b78.mp3",
+  "Nina wrinkles her nose.": "c8e0afb68de7cf34.mp3",
+  "Nina writes in a notebook.": "5a3c90ba929e3620.mp3",
+  "Nina slurps noodles.": "2e1d32aa9c0adb81.mp3",
+  "Nina catches with a net.": "03bb2e917fbb809b.mp3",
 };
