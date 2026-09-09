@@ -22,6 +22,7 @@ in chat.
    eat — not slow chewing. Hatch = closed egg, then poke, then chick out.
 7. Anatomy stays real for that animal: fish fins are fins, not hands.
    Clouds are puffs, not tails. No movie-lookalikes (no McQueen car).
+   Letter-buddy eyes sit ON the letter body, not in a hole or gap.
 8. Food is food. Do not put a face on something a kid then eats.
 9. Friendly, not scary: dinosaurs smile, no snarl/teeth; fires stay small.
 10. **Don’t repeat the same action across word videos.** Each clip needs its
