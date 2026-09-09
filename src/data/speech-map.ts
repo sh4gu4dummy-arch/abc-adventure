@@ -1229,4 +1229,10 @@ export const SPEECH_MAP: Record<string, string> = {
   "The turtle tucks in.": "8cd920913392e07d.mp3",
   "Tess picks a tomato.": "9cdada73d2db9274.mp3",
   "Tess wiggles a tooth.": "692c48899a4b7ac7.mp3",
+  "Uma opens an umbrella.": "6047ad86d536739e.mp3",
+  "The unicorn prances.": "ca0a770dbe0bc39f.mp3",
+  "Uma crawls under the table.": "92e6e3fa90437ad0.mp3",
+  "Uma buttons her uniform.": "5a767c8735d0e01a.mp3",
+  "Uma jumps up.": "9ed085af69c6b244.mp3",
+  "Uma plucks the ukulele.": "664e3620adec09c7.mp3",
 };
