@@ -1205,4 +1205,10 @@ export const SPEECH_MAP: Record<string, string> = {
   "Pip sharpens a pencil.": "df5fc5db0ba79393.mp3",
   "Pip taps the piano keys.": "ee0131e73e1f95fe.mp3",
   "The puppy wags its tail.": "84eae0abd486cd54.mp3",
+  "The queen twirls.": "5751b3a9167122e5.mp3",
+  "Quinn snuggles in a quilt.": "fe62930d0bc8367d.mp3",
+  "Quinn asks a question.": "e53bb601f2b3d374.mp3",
+  "Quinn tiptoes.": "041922fc98e807a0.mp3",
+  "A duck quacks.": "56072e2ad9b81fca.mp3",
+  "Quinn flips a quarter.": "3122d67edc1777bd.mp3",
 };
