@@ -527,15 +527,16 @@ export function getLetter(letter: string): LetterEntry | undefined {
 /** Scene art for “what is this word?” (games + word grid). */
 export function posterPath(letter: string, slug: string): string {
   const key = sceneKey(letter, slug);
+  const v = `?v=${APP_VERSION}`;
   if (hasSceneFill(letter, slug)) {
-    return assetUrl(`posters-scene/${key}.webp`);
+    return assetUrl(`posters-scene/${key}.webp`) + v;
   }
-  return assetUrl(`posters/${key}.webp`);
+  return assetUrl(`posters/${key}.webp`) + v;
 }
 
 /** Original poster file — A–Q scenes, R–Z letter-buddies. Never deleted. */
 export function wordBuddyPath(letter: string, slug: string): string {
-  return assetUrl(`posters/${sceneKey(letter, slug)}.webp`);
+  return `${assetUrl(`posters/${sceneKey(letter, slug)}.webp`)}?v=${APP_VERSION}`;
 }
 
 /** Letter mascot (always a letter-buddy). */
