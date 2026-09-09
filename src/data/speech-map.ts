@@ -1253,4 +1253,10 @@ export const SPEECH_MAP: Record<string, string> = {
   "Max spots a fox.": "ceebe8c9c24753a0.mp3",
   "Max counts to six.": "44849c2d250cb91e.mp3",
   "Max mixes pancake batter.": "232e8a9ddc4f918e.mp3",
+  "The yo-yo goes down and up.": "af7895902a553068.mp3",
+  "Yasmin paints with yellow.": "69ba6d29a66e7a36.mp3",
+  "The yak yawns.": "882b34971c2a5493.mp3",
+  "Yasmin winds yarn.": "27006d999c58ff57.mp3",
+  "Yasmin waves from a yacht.": "3480188ca9a1ee62.mp3",
+  "Yasmin spoons yogurt.": "6efa629f1bf387ce.mp3",
 };
