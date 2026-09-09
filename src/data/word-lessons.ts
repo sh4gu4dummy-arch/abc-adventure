@@ -3,7 +3,8 @@
  *
  * RULE: sentence must describe what is ON SCREEN in that word's video
  * (scene + action). Write sentence + scene together.
- * Unlock only after full lesson finishes.
+ * Action must KEEP GOING through the sentence — do not freeze after a
+ * 2-second gag. Unlock only after full lesson finishes.
  */
 
 export type WordLesson = {
