@@ -10,6 +10,10 @@
  * 3. Word-card thumbnail MUST be frame 1 of that word's video (not the end).
  * 4. Action must KEEP GOING through the sentence — do not freeze after a
  *    2-second gag. Unlock only after full lesson finishes.
+ * 5. Snappy kid-cartoon, not creepy: fast beats (frog = ninja tongue, insta
+ *    eat). Hatch = closed egg → poke → chick out. Fish fins are fins not
+ *    hands. Clouds have no tails. Food has no face if it gets eaten. No
+ *    movie-lookalikes. Friendly dinosaurs. Full taste list: AGENTS.project.md.
  */
 
 export type WordLesson = {
