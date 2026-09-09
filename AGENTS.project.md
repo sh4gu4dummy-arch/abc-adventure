@@ -23,6 +23,10 @@ in chat.
 7. Anatomy stays real for that animal: fish fins are fins, not hands.
    Clouds are puffs, not tails. No movie-lookalikes (no McQueen car).
    Letter-buddy eyes sit ON the letter body, not in a hole or gap.
+   Letter-buddy stills must **fill the tile like the neighbors**: letter-color
+   wash to the edges, character large. Never a small figure on white/gray
+   studio. After any remake, compare fill vs D/H before shipping. Do not
+   wait for the user to catch a thumbnail mismatch.
 8. Food is food. Do not put a face on something a kid then eats.
 9. Friendly, not scary: dinosaurs smile, no snarl/teeth; fires stay small.
 10. **Don’t repeat the same action across word videos.** Each clip needs its
