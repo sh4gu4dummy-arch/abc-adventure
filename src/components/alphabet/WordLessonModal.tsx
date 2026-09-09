@@ -82,6 +82,7 @@ export function WordLessonModal({
   const [videoFailed, setVideoFailed] = useState(false);
   const finishing = useRef(false);
   const skipRef = useRef(false);
+  const cancelledRef = useRef(false);
   const [seekReady, setSeekReady] = useState(false);
   const wantVideo = shouldPlayLessonVideo() && !videoFailed;
   const lite = getGfxSnapshot().resolved === "lite";
@@ -103,6 +104,7 @@ export function WordLessonModal({
 
   useEffect(() => {
     return () => {
+      cancelledRef.current = true;
       skipRef.current = true;
       finishing.current = true;
       stopSpeech();
@@ -130,10 +132,10 @@ export function WordLessonModal({
   }, []);
 
   async function finishLesson() {
-    if (finishing.current) return;
+    if (cancelledRef.current || finishing.current) return;
     finishing.current = true;
     skipRef.current = true;
-    holdLastFrame(videoRef.current);
+    if (lesson.loopVideo !== true) holdLastFrame(videoRef.current);
     markWordSeen(letter, word.slug);
     setPhase("done");
     setProgress(1);
@@ -153,7 +155,7 @@ export function WordLessonModal({
     }
     playSfx(lesson.sfxSuccess, 0.4);
     onUnlocked?.();
-    if (skipRef.current) return;
+    if (cancelledRef.current) return;
     void speak("Great job!");
   }
 
@@ -165,6 +167,7 @@ export function WordLessonModal({
     setShowVideo(false);
     finishing.current = false;
     skipRef.current = false;
+    cancelledRef.current = false;
 
     playSfx(lesson.sfxPop, 0.3);
 
@@ -206,9 +209,15 @@ export function WordLessonModal({
     }
 
     const start = Date.now();
-    const estMs = Math.max((lesson.durationSec ?? 6) * 1000, 6500);
+    const estMs = Math.max((lesson.durationSec ?? 10) * 1000, 9000);
     const tick = window.setInterval(() => {
+      if (cancelledRef.current) return;
       const v = videoRef.current;
+      // Looping clips rewind currentTime — use wall clock so the bar doesn't snap.
+      if (lesson.loopVideo === true) {
+        setProgress(Math.min(0.97, (Date.now() - start) / estMs));
+        return;
+      }
       if (v && v.duration && Number.isFinite(v.duration) && v.duration > 0) {
         setProgress(Math.min(0.97, v.currentTime / v.duration));
       } else {
@@ -221,23 +230,38 @@ export function WordLessonModal({
       playSfx(lesson.sfxSparkle, 0.28);
 
       for (let i = 0; i < 3; i++) {
-        if (skipRef.current) return;
+        if (skipRef.current || cancelledRef.current) return;
         await speak(lesson.word);
-        if (skipRef.current) return;
+        if (skipRef.current || cancelledRef.current) return;
         await new Promise((r) => setTimeout(r, 180));
       }
 
-      if (skipRef.current) return;
+      if (skipRef.current || cancelledRef.current) return;
       setCaption("sentence");
       playSfx(lesson.sfxSparkle, 0.22);
       await speak(lesson.sentence);
-      if (skipRef.current) return;
+      if (skipRef.current || cancelledRef.current) return;
     } finally {
       window.clearInterval(tick);
     }
 
-    if (skipRef.current) return;
-    holdLastFrame(videoRef.current);
+    if (cancelledRef.current) return;
+    const left = estMs - (Date.now() - start);
+    if (left > 200) {
+      await new Promise<void>((resolve) => {
+        const t = window.setTimeout(() => resolve(), left);
+        const iv = window.setInterval(() => {
+          if (cancelledRef.current || skipRef.current) {
+            window.clearTimeout(t);
+            window.clearInterval(iv);
+            resolve();
+          }
+        }, 120);
+        window.setTimeout(() => window.clearInterval(iv), left + 50);
+      });
+    }
+    if (cancelledRef.current) return;
+    if (lesson.loopVideo !== true) holdLastFrame(videoRef.current);
     await finishLesson();
   }
 
@@ -248,27 +272,26 @@ export function WordLessonModal({
   }
 
   function applySeek(frac: number) {
-    if (phase !== "playing" || finishing.current) return;
+    if (phase !== "playing" || finishing.current || cancelledRef.current) return;
     const v = videoRef.current;
     if (v && v.duration && Number.isFinite(v.duration) && v.duration > 0) {
       v.currentTime = frac * v.duration;
       setProgress(frac);
       if (frac < 0.45) setCaption("word");
       else setCaption("sentence");
-      if (frac >= 0.92) {
+      // Only landing (non-loop) clips complete when you scrub to the end.
+      if (lesson.loopVideo !== true && frac >= 0.92) {
         stopSpeech();
+        skipRef.current = true;
         void finishLesson();
       }
       return;
     }
     setProgress(frac);
-    if (frac >= 0.92) {
-      stopSpeech();
-      void finishLesson();
-    }
   }
 
   function closeNow() {
+    cancelledRef.current = true;
     skipRef.current = true;
     stopSpeech();
     const v = videoRef.current;
