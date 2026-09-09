@@ -982,6 +982,7 @@ export const SPEECH_MAP: Record<string, string> = {
   "The soft cloud floats in the sky.": "4599e38953075dbd.mp3",
   "The cookie cools on the baking tray.": "b99b12e561310ef3.mp3",
   "They eat a cookie and drop crumbs.": "4abe9c369d748305.mp3",
+  "A boy eats a cookie and drops crumbs.": "06228261b411828c.mp3",
   "The cup sits on the cozy table.": "cfec0689ec1fd7c2.mp3",
   "They pour milk in the cup.": "934604bea306ee7f.mp3",
   "The dog plays in the sunny yard.": "0b44bd7ec23f3a1e.mp3",
