@@ -1211,4 +1211,10 @@ export const SPEECH_MAP: Record<string, string> = {
   "Quinn tiptoes.": "041922fc98e807a0.mp3",
   "A duck quacks.": "56072e2ad9b81fca.mp3",
   "Quinn flips a quarter.": "3122d67edc1777bd.mp3",
+  "Rita points at a rainbow.": "5db0cc13acb53e33.mp3",
+  "The robot marches.": "d56aedbc871626d4.mp3",
+  "The rocket blasts off.": "4d5755d60767649b.mp3",
+  "The rabbit munches a carrot.": "f9ad482764ff3fad.mp3",
+  "Rita smells a rose.": "a2405b196846057f.mp3",
+  "Rain drips on Rita.": "56b02355b8e312ac.mp3",
 };
