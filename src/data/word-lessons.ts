@@ -56,12 +56,12 @@ export const WORD_LESSONS: Record<string, WordLesson> = {
   "a-astronaut": { ...lesson("A", "astronaut", "Astronaut", "The astronaut waves in outer space."), durationSec: 10, loopVideo: true },
   "a-anchor": { ...lesson("A", "anchor", "Anchor", "The anchor drops into the blue water."), durationSec: 10, loopVideo: false },
   // --- Letter B ---
-  "b-ball": lesson("B", "ball", "Ball", "The ball bounces at the playground."),
-  "b-bear": lesson("B", "bear", "Bear", "The bear sits in the green forest."),
-  "b-butterfly": lesson("B", "butterfly", "Butterfly", "The butterfly flies over the flowers."),
-  "b-banana": lesson("B", "banana", "Banana", "The banana rests on the kitchen table."),
-  "b-boat": lesson("B", "boat", "Boat", "The boat sails on the blue water."),
-  "b-bird": lesson("B", "bird", "Bird", "The bird flies up in the sky."),
+  "b-ball": { ...lesson("B", "ball", "Ball", "The ball bounces at the playground."), durationSec: 10, loopVideo: true },
+  "b-bear": { ...lesson("B", "bear", "Bear", "The bear sits in the green forest."), durationSec: 10, loopVideo: true },
+  "b-butterfly": { ...lesson("B", "butterfly", "Butterfly", "The butterfly flies over the flowers."), durationSec: 10, loopVideo: true },
+  "b-banana": { ...lesson("B", "banana", "Banana", "The banana rests on the kitchen table."), durationSec: 10, loopVideo: false },
+  "b-boat": { ...lesson("B", "boat", "Boat", "The boat sails on the blue water."), durationSec: 10, loopVideo: true },
+  "b-bird": { ...lesson("B", "bird", "Bird", "The bird flies up in the sky."), durationSec: 10, loopVideo: true },
   // --- Letter C ---
   "c-cat": lesson("C", "cat", "Cat", "The cat naps by the sunny window."),
   "c-cake": lesson("C", "cake", "Cake", "The cake is ready for the party."),
