@@ -1259,4 +1259,10 @@ export const SPEECH_MAP: Record<string, string> = {
   "Yasmin winds yarn.": "27006d999c58ff57.mp3",
   "Yasmin waves from a yacht.": "3480188ca9a1ee62.mp3",
   "Yasmin spoons yogurt.": "6efa629f1bf387ce.mp3",
+  "The zebra zigzags.": "49ed5df648bd529f.mp3",
+  "Zed visits the zoo.": "5003d00877687a88.mp3",
+  "Zed zips the zipper.": "092008698a5b1c42.mp3",
+  "Zed writes a zero.": "90b51cb3fb7e2fb4.mp3",
+  "Zed runs a zigzag.": "fc3b89f0a310970b.mp3",
+  "Zed washes a zucchini.": "f628a9973c3e871b.mp3",
 };
