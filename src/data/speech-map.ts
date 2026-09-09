@@ -1176,4 +1176,10 @@ export const SPEECH_MAP: Record<string, string> = {
   "Zero balloons float in the room.": "4ef9810126f17fca.mp3",
   "You finished today's adventure! Five bonus stars!": "6df11b725652a0ee.mp3",
   "Great streak!": "b45e5fa04cec892e.mp3",
+  "The lion leaps.": "90ddfc3ee49ac076.mp3",
+  "The leaf twirls.": "a4cba9d021480bbf.mp3",
+  "Lily squeezes a lemon.": "9db1c31d4b63556c.mp3",
+  "Lily lights the lamp.": "57824d92692f964b.mp3",
+  "Lily unwraps a lollipop.": "c388df62d0b5dad1.mp3",
+  "Leo goes up the ladder.": "5a4ed0a84c576c39.mp3",
 };
