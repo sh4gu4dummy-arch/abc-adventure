@@ -33,7 +33,7 @@ import { StoryMode } from "@/components/alphabet/StoryMode";
 import { CaseHunt } from "@/components/alphabet/CaseHunt";
 import { LayoutToggle } from "@/components/alphabet/LayoutToggle";
 import { GfxToggle } from "@/components/alphabet/GfxToggle";
-import { VersionBadge } from "@/components/alphabet/VersionBadge";
+import { VersionBadge, VersionCorner } from "@/components/alphabet/VersionBadge";
 import { StarBar } from "@/components/alphabet/StarBar";
 import { markSection, markVisited, markWordSeen, useProgress } from "@/lib/progress";
 import { speak, speakLetter } from "@/lib/speak";
@@ -86,9 +86,21 @@ export function PortableApp() {
 
   if (route.page === "letter" && route.letter) {
     const entry = getLetter(route.letter);
-    if (entry) return <LetterView entry={entry} />;
+    if (entry) {
+      return (
+        <>
+          <LetterView entry={entry} />
+          <VersionCorner />
+        </>
+      );
+    }
   }
-  return <HomeView />;
+  return (
+    <>
+      <HomeView />
+      <VersionCorner />
+    </>
+  );
 }
 
 function HomeView() {
