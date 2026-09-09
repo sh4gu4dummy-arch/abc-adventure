@@ -340,8 +340,6 @@ export function WordLessonModal({
               <span className="rounded-[var(--radius-pill)] bg-white px-4 py-2 font-display text-lg font-bold text-on-light shadow">
                 Tap to play story
               </span>
-                Tap to play story
-              </span>
             </button>
           )}
 
