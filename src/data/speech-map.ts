@@ -1015,6 +1015,7 @@ export const SPEECH_MAP: Record<string, string> = {
   "A chick pecks out of the egg.": "b1ced7764834454d.mp3",
   "The elephant walks on the savanna.": "7e2f285db0647856.mp3",
   "The elephant eats the green leaves.": "92b1cb5cc8bf448d.mp3",
+  "The elephant picks up a peanut.": "db2be811e729ffef.mp3",
   "The elf smiles in the magic forest.": "eb32718b727715c3.mp3",
   "The elf helps a friend.": "dc8c00df9a8d257b.mp3",
   "The envelope waits on the desk.": "8956df777a713594.mp3",

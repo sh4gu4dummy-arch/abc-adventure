@@ -88,7 +88,7 @@ export const WORD_LESSONS: Record<string, WordLesson> = {
   "d-drum": { ...lesson("D", "drum", "Drum", "The drum goes boom on the stage."), durationSec: 10, loopVideo: true },
   "d-door": { ...lesson("D", "door", "Door", "A kid opens the door."), durationSec: 10, loopVideo: false },
   // --- Letter E ---
-  "e-elephant": { ...lesson("E", "elephant", "Elephant", "The elephant eats the green leaves."), durationSec: 10, loopVideo: true },
+  "e-elephant": { ...lesson("E", "elephant", "Elephant", "The elephant picks up a peanut."), durationSec: 10, loopVideo: true },
   "e-egg": { ...lesson("E", "egg", "Egg", "A chick pecks out of the egg."), durationSec: 10, loopVideo: false },
   "e-eagle": { ...lesson("E", "eagle", "Eagle", "The eagle sees the green trees."), durationSec: 10, loopVideo: true },
   "e-earth": { ...lesson("E", "earth", "Earth", "The Earth spins every day."), durationSec: 10, loopVideo: true },
