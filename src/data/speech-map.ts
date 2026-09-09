@@ -1223,4 +1223,10 @@ export const SPEECH_MAP: Record<string, string> = {
   "Sam steers the ship.": "b4fa6fc9399f67c3.mp3",
   "Sam smiles.": "f563d6e7a70959d5.mp3",
   "Sam tosses a sock.": "3ce9adc8c977afc7.mp3",
+  "Tess hugs a tree.": "7b24a0c2b9d348d4.mp3",
+  "The tiger yawns.": "df8756d037d6404d.mp3",
+  "The train toots.": "726a78eb796cc588.mp3",
+  "The turtle tucks in.": "8cd920913392e07d.mp3",
+  "Tess picks a tomato.": "9cdada73d2db9274.mp3",
+  "Tess wiggles a tooth.": "692c48899a4b7ac7.mp3",
 };
