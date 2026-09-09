@@ -79,11 +79,11 @@ export function WordLessonModal({
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && phase !== "playing") onClose();
+      if (e.key === "Escape") closeNow();
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [onClose, phase]);
+  }, [onClose]);
 
   useEffect(() => {
     return () => {
@@ -242,6 +242,24 @@ export function WordLessonModal({
     }
   }
 
+  function closeNow() {
+    skipRef.current = true;
+    stopSpeech();
+    const v = videoRef.current;
+    if (v) {
+      try {
+        v.pause();
+      } catch {
+        /* ignore */
+      }
+    }
+    if (musicRef.current) {
+      musicRef.current.pause();
+      musicRef.current = null;
+    }
+    onClose();
+  }
+
   function skipAhead() {
     if (phase !== "playing" || finishing.current) return;
     const v = videoRef.current;
@@ -268,16 +286,9 @@ export function WordLessonModal({
           <VoiceToggle compact preview={phase !== "playing"} />
           <button
             type="button"
-            onClick={() => {
-              if (phase === "playing") return;
-              onClose();
-            }}
-            disabled={phase === "playing"}
-            className={cn(
-              "flex size-11 items-center justify-center rounded-full bg-surface text-ink shadow-md",
-              phase === "playing" && "opacity-40",
-            )}
-            aria-label={phase === "playing" ? "Finish the video first" : "Close"}
+            onClick={closeNow}
+            className="flex size-11 items-center justify-center rounded-full bg-surface text-ink shadow-md"
+            aria-label="Close"
           >
             <X className="size-5" />
           </button>
