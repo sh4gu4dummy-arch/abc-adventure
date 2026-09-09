@@ -1235,4 +1235,10 @@ export const SPEECH_MAP: Record<string, string> = {
   "Uma buttons her uniform.": "5a767c8735d0e01a.mp3",
   "Uma jumps up.": "9ed085af69c6b244.mp3",
   "Uma plucks the ukulele.": "664e3620adec09c7.mp3",
+  "Vin bows the violin.": "eca37b4d7c37c449.mp3",
+  "The volcano puffs smoke.": "898d6cbaba790dcd.mp3",
+  "Vin's van beeps.": "7e8277ba9b6f6841.mp3",
+  "Vin washes vegetables.": "869e77fe8f2a5afb.mp3",
+  "Vin buttons a vest.": "ff81b4cca230fc73.mp3",
+  "Vin vacuums.": "2d2bc3bc9f7c01a0.mp3",
 };
