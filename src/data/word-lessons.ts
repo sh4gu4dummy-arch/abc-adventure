@@ -109,12 +109,12 @@ export const WORD_LESSONS: Record<string, WordLesson> = {
   "g-gift": { ...lesson("G", "gift", "Gift", "A girl opens a green gift."), durationSec: 10, loopVideo: false },
   "g-goat": { ...lesson("G", "goat", "Goat", "The goat gobbles the grass."), durationSec: 10, loopVideo: true },
   // --- Letter H ---
-  "h-hat": lesson("H", "hat", "Hat", "The hat rests on the cozy chair."),
-  "h-house": lesson("H", "house", "House", "The house stands in the sunny yard."),
-  "h-horse": lesson("H", "horse", "Horse", "The horse runs in the green field."),
-  "h-heart": lesson("H", "heart", "Heart", "The heart floats by the bright window."),
-  "h-honey": lesson("H", "honey", "Honey", "The honey jar sits on the kitchen table."),
-  "h-helicopter": lesson("H", "helicopter", "Helicopter", "The helicopter flies through the clouds."),
+  "h-hat": { ...lesson("H", "hat", "Hat", "Hugo puts on his hat."), durationSec: 10, loopVideo: false },
+  "h-house": { ...lesson("H", "house", "House", "Hank hides in the house."), durationSec: 10, loopVideo: false },
+  "h-horse": { ...lesson("H", "horse", "Horse", "The horse hurries up the hill."), durationSec: 10, loopVideo: true },
+  "h-heart": { ...lesson("H", "heart", "Heart", "Holly draws a heart."), durationSec: 10, loopVideo: false },
+  "h-honey": { ...lesson("H", "honey", "Honey", "Hank has honey on his toast."), durationSec: 10, loopVideo: true },
+  "h-helicopter": { ...lesson("H", "helicopter", "Helicopter", "The helicopter hovers high."), durationSec: 10, loopVideo: true },
   // --- Letter I ---
   "i-ice-cream": lesson("I", "ice-cream", "Ice cream", "The ice cream cools on the summer table."),
   "i-igloo": lesson("I", "igloo", "Igloo", "The igloo sits in the soft snow."),
