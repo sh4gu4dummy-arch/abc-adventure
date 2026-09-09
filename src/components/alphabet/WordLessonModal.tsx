@@ -73,6 +73,7 @@ export function WordLessonModal({
   const [showVideo, setShowVideo] = useState(false);
   const [videoFailed, setVideoFailed] = useState(false);
   const finishing = useRef(false);
+  const skipRef = useRef(false);
   const wantVideo = shouldPlayLessonVideo() && !videoFailed;
   const lite = getGfxSnapshot().resolved === "lite";
 
@@ -107,6 +108,7 @@ export function WordLessonModal({
   async function finishLesson() {
     if (finishing.current) return;
     finishing.current = true;
+    skipRef.current = true;
     holdLastFrame(videoRef.current);
     markWordSeen(letter, word.slug);
     setPhase("done");
@@ -137,6 +139,7 @@ export function WordLessonModal({
     setCaption("none");
     setShowVideo(false);
     finishing.current = false;
+    skipRef.current = false;
 
     playSfx(lesson.sfxPop, 0.3);
 
@@ -179,8 +182,12 @@ export function WordLessonModal({
     const start = Date.now();
     const estMs = Math.max((lesson.durationSec ?? 6) * 1000, 6500);
     const tick = window.setInterval(() => {
-      const p = Math.min(0.97, (Date.now() - start) / estMs);
-      setProgress(p);
+      const v = videoRef.current;
+      if (v && v.duration && Number.isFinite(v.duration) && v.duration > 0) {
+        setProgress(Math.min(0.97, v.currentTime / v.duration));
+      } else {
+        setProgress(Math.min(0.97, (Date.now() - start) / estMs));
+      }
     }, lite ? 160 : 100);
 
     try {
@@ -188,19 +195,62 @@ export function WordLessonModal({
       playSfx(lesson.sfxSparkle, 0.28);
 
       for (let i = 0; i < 3; i++) {
+        if (skipRef.current) return;
         await speak(lesson.word);
+        if (skipRef.current) return;
         await new Promise((r) => setTimeout(r, 180));
       }
 
+      if (skipRef.current) return;
       setCaption("sentence");
       playSfx(lesson.sfxSparkle, 0.22);
       await speak(lesson.sentence);
+      if (skipRef.current) return;
     } finally {
       window.clearInterval(tick);
     }
 
+    if (skipRef.current) return;
     holdLastFrame(videoRef.current);
     await finishLesson();
+  }
+
+  function fractionFromEvent(el: HTMLElement, clientX: number) {
+    const rect = el.getBoundingClientRect();
+    if (rect.width <= 0) return 0;
+    return Math.min(1, Math.max(0, (clientX - rect.left) / rect.width));
+  }
+
+  function applySeek(frac: number) {
+    if (phase !== "playing" || finishing.current) return;
+    const v = videoRef.current;
+    if (v && v.duration && Number.isFinite(v.duration) && v.duration > 0) {
+      v.currentTime = frac * v.duration;
+      setProgress(frac);
+      if (frac < 0.45) setCaption("word");
+      else setCaption("sentence");
+      if (frac >= 0.92) {
+        stopSpeech();
+        void finishLesson();
+      }
+      return;
+    }
+    setProgress(frac);
+    if (frac >= 0.92) {
+      stopSpeech();
+      void finishLesson();
+    }
+  }
+
+  function skipAhead() {
+    if (phase !== "playing" || finishing.current) return;
+    const v = videoRef.current;
+    if (v && v.duration && Number.isFinite(v.duration) && v.duration > 0) {
+      const jump = Math.max(2, v.duration * 0.2);
+      applySeek(Math.min(1, (v.currentTime + jump) / v.duration));
+      return;
+    }
+    applySeek(Math.min(1, progress + 0.25));
   }
 
   return (
@@ -293,7 +343,7 @@ export function WordLessonModal({
           </div>
 
           {(phase === "playing" || phase === "done") && (
-            <div className="pointer-events-none absolute inset-x-0 bottom-8 z-[3] flex justify-center px-4">
+            <div className="pointer-events-none absolute inset-x-0 bottom-14 z-[3] flex justify-center px-4">
               {caption === "word" && (
                 <div
                   className="rounded-[var(--radius-lg)] bg-white px-5 py-3 text-center shadow-lg"
@@ -317,12 +367,47 @@ export function WordLessonModal({
           )}
 
           {phase === "playing" && (
-            <div className="absolute inset-x-0 bottom-0 z-[3] h-1.5 bg-black/20">
-              <div
-                className="h-full transition-[width] duration-150"
-                style={{ width: `${progress * 100}%`, background: accent }}
+            <>
+              <button
+                type="button"
+                className="absolute inset-0 z-[2] cursor-pointer bg-transparent"
+                aria-label="Skip ahead"
+                onClick={skipAhead}
               />
-            </div>
+              <div
+                className="absolute inset-x-0 bottom-0 z-[4] h-11 cursor-pointer touch-none px-2"
+                role="slider"
+                aria-label="Video time"
+                aria-valuemin={0}
+                aria-valuemax={100}
+                aria-valuenow={Math.round(progress * 100)}
+                onPointerDown={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  (e.currentTarget as HTMLDivElement).setPointerCapture(e.pointerId);
+                  applySeek(fractionFromEvent(e.currentTarget, e.clientX));
+                }}
+                onPointerMove={(e) => {
+                  if (e.buttons === 0) return;
+                  e.preventDefault();
+                  applySeek(fractionFromEvent(e.currentTarget, e.clientX));
+                }}
+              >
+                <div className="absolute inset-x-3 bottom-3 h-2.5 overflow-hidden rounded-full bg-black/40">
+                  <div
+                    className="h-full rounded-full"
+                    style={{ width: `${progress * 100}%`, background: accent }}
+                  />
+                </div>
+                <div
+                  className="pointer-events-none absolute bottom-[0.45rem] size-4 rounded-full border-2 border-white bg-white shadow"
+                  style={{
+                    left: `calc(${progress * 100}% * 0.92 + 0.75rem)`,
+                    background: accent,
+                  }}
+                />
+              </div>
+            </>
           )}
 
           {phase === "ready" && (
