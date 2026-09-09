@@ -3,6 +3,7 @@
  *
  * RULE: sentence must describe what is ON SCREEN in that word's video
  * (scene + action). Write sentence + scene together.
+ * Word-card thumbnail MUST be frame 1 of that word's video (not the end).
  * Action must KEEP GOING through the sentence — do not freeze after a
  * 2-second gag. Unlock only after full lesson finishes.
  */
