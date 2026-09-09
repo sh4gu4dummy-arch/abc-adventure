@@ -296,20 +296,19 @@ export function WordLessonModal({
             <div className="pointer-events-none absolute inset-x-0 bottom-8 z-[3] flex justify-center px-4">
               {caption === "word" && (
                 <div
-                  className="rounded-[var(--radius-lg)] bg-white/95 px-5 py-3 text-center shadow-lg"
+                  className="rounded-[var(--radius-lg)] bg-white px-5 py-3 text-center shadow-lg"
                   style={{ border: `3px solid ${accent}` }}
                 >
                   <p
-                    className="font-display text-4xl font-black tracking-wide sm:text-5xl"
-                    style={{ color: accent }}
+                    className="font-display text-4xl font-black tracking-wide text-on-light sm:text-5xl"
                   >
                     {lesson.word.toUpperCase()}
                   </p>
                 </div>
               )}
               {caption === "sentence" && (
-                <div className="rounded-[var(--radius-lg)] bg-white/95 px-5 py-3 text-center shadow-lg">
-                  <p className="font-display text-xl font-bold text-ink sm:text-2xl">
+                <div className="rounded-[var(--radius-lg)] bg-white px-5 py-3 text-center shadow-lg">
+                  <p className="font-display text-xl font-bold text-on-light sm:text-2xl">
                     {lesson.sentence}
                   </p>
                 </div>
@@ -338,7 +337,9 @@ export function WordLessonModal({
               >
                 <Play className="size-10 fill-white" />
               </span>
-              <span className="rounded-[var(--radius-pill)] bg-white/95 px-4 py-2 font-display text-lg font-bold text-ink shadow">
+              <span className="rounded-[var(--radius-pill)] bg-white px-4 py-2 font-display text-lg font-bold text-on-light shadow">
+                Tap to play story
+              </span>
                 Tap to play story
               </span>
             </button>
