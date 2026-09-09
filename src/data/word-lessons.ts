@@ -76,7 +76,7 @@ export const WORD_LESSONS: Record<string, WordLesson> = {
   "d-dinosaur": { ...lesson("D", "dinosaur", "Dinosaur", "The dinosaur stomps in the jungle."), durationSec: 10, loopVideo: true },
   "d-donut": { ...lesson("D", "donut", "Donut", "They put sprinkles on the donut."), durationSec: 10, loopVideo: false },
   "d-drum": { ...lesson("D", "drum", "Drum", "The drum goes boom on the stage."), durationSec: 10, loopVideo: true },
-  "d-door": { ...lesson("D", "door", "Door", "The door opens to a bright room."), durationSec: 10, loopVideo: false },
+  "d-door": { ...lesson("D", "door", "Door", "A kid opens the door."), durationSec: 10, loopVideo: false },
   // --- Letter E ---
   "e-elephant": lesson("E", "elephant", "Elephant", "The elephant walks on the savanna."),
   "e-egg": lesson("E", "egg", "Egg", "The egg rests in the soft nest."),

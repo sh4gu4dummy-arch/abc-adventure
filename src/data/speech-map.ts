@@ -992,6 +992,7 @@ export const SPEECH_MAP: Record<string, string> = {
   "They put sprinkles on the donut.": "643b206d8df33017.mp3",
   "The drum goes boom on the stage.": "10617029553dd285.mp3",
   "The door opens to a bright room.": "fe5e0e3d4803547c.mp3",
+  "A kid opens the door.": "f02a5af06a6edcbb.mp3",
   "A big smile lights up the room.": "3107424511ea3cc5.mp3",
   "Everything is quiet in the soft room.": "606f95cbe9cabf1c.mp3",
   "Friends visit the happy zoo.": "07e38348d407debc.mp3",
