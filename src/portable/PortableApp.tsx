@@ -237,6 +237,16 @@ function LetterView({ entry }: { entry: LetterEntry }) {
     }
   }
   const openLesson = openWord != null ? getWordLesson(entry.letter, openWord.slug) : null;
+  const lessonWords = entry.words.filter((w) => getWordLesson(entry.letter, w.slug));
+  const lessonIdx = openWord ? lessonWords.findIndex((w) => w.slug === openWord.slug) : -1;
+  const prevLessonWord =
+    lessonIdx >= 0 && lessonWords.length > 1
+      ? lessonWords[(lessonIdx - 1 + lessonWords.length) % lessonWords.length]
+      : undefined;
+  const nextLessonWord =
+    lessonIdx >= 0 && lessonWords.length > 1
+      ? lessonWords[(lessonIdx + 1) % lessonWords.length]
+      : undefined;
 
   const wordsSeen = useMemo(() => new Set(progress.wordsSeen), [progress.wordsSeen]);
 
@@ -431,6 +441,7 @@ function LetterView({ entry }: { entry: LetterEntry }) {
 
       {openWord && openLesson && (
         <WordLessonModal
+          key={`${entry.letter}-${openWord.slug}`}
           letter={entry.letter}
           accent={entry.accent}
           hue={entry.hue}
@@ -439,6 +450,10 @@ function LetterView({ entry }: { entry: LetterEntry }) {
           lesson={openLesson}
           alreadySeen={wordsSeen.has(`${entry.letter.toLowerCase()}-${openWord.slug}`)}
           onClose={() => setOpenWord(null)}
+          onPrev={prevLessonWord ? () => setOpenWord(prevLessonWord) : undefined}
+          onNext={nextLessonWord ? () => setOpenWord(nextLessonWord) : undefined}
+          prevLabel={prevLessonWord?.word}
+          nextLabel={nextLessonWord?.word}
         />
       )}
       {openWord && !openLesson && (

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Check, Play, X, Volume2 } from "lucide-react";
+import { Check, ChevronLeft, ChevronRight, Play, X, Volume2 } from "lucide-react";
 import type { WordEntry } from "@/data/alphabet";
 import type { WordLesson } from "@/data/word-lessons";
 import { LetterWord } from "./LetterWord";
@@ -54,6 +54,10 @@ export function WordLessonModal({
   alreadySeen,
   onClose,
   onUnlocked,
+  onPrev,
+  onNext,
+  prevLabel,
+  nextLabel,
 }: {
   letter: string;
   accent: string;
@@ -64,6 +68,10 @@ export function WordLessonModal({
   alreadySeen: boolean;
   onClose: () => void;
   onUnlocked?: () => void;
+  onPrev?: () => void;
+  onNext?: () => void;
+  prevLabel?: string;
+  nextLabel?: string;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const musicRef = useRef<HTMLAudioElement | null>(null);
@@ -80,10 +88,12 @@ export function WordLessonModal({
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") closeNow();
+      if (e.key === "ArrowLeft") onPrev?.();
+      if (e.key === "ArrowRight") onNext?.();
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [onClose]);
+  }, [onClose, onPrev, onNext]);
 
   useEffect(() => {
     return () => {
@@ -353,6 +363,33 @@ export function WordLessonModal({
           >
             {letter.toUpperCase()}
           </div>
+
+          {onPrev && (
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onPrev();
+              }}
+              className="absolute left-2 top-1/2 z-[5] flex size-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-on-light shadow-lg"
+              aria-label={prevLabel ? `Previous, ${prevLabel}` : "Previous video"}
+            >
+              <ChevronLeft className="size-7" />
+            </button>
+          )}
+          {onNext && (
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onNext();
+              }}
+              className="absolute right-2 top-1/2 z-[5] flex size-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-on-light shadow-lg"
+              aria-label={nextLabel ? `Next, ${nextLabel}` : "Next video"}
+            >
+              <ChevronRight className="size-7" />
+            </button>
+          )}
 
           {(phase === "playing" || phase === "done") && (
             <div className="pointer-events-none absolute inset-x-0 bottom-14 z-[3] flex justify-center px-4">
