@@ -1247,4 +1247,10 @@ export const SPEECH_MAP: Record<string, string> = {
   "Wes winds a watch.": "0580ae5938406a3f.mp3",
   "The worm wiggles.": "9a43296c217c0043.mp3",
   "Wes pulls a wagon.": "bc5d4de9c677e4d3.mp3",
+  "Max sees an x-ray.": "393a79716ff467fe.mp3",
+  "Max taps the xylophone.": "c5942019225450d9.mp3",
+  "Max stacks boxes.": "5331812e27df4ef8.mp3",
+  "Max spots a fox.": "ceebe8c9c24753a0.mp3",
+  "Max counts to six.": "44849c2d250cb91e.mp3",
+  "Max mixes pancake batter.": "232e8a9ddc4f918e.mp3",
 };
