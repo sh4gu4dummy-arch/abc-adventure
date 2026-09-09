@@ -82,6 +82,7 @@ export function WordLessonModal({
   const [videoFailed, setVideoFailed] = useState(false);
   const finishing = useRef(false);
   const skipRef = useRef(false);
+  const [seekReady, setSeekReady] = useState(false);
   const wantVideo = shouldPlayLessonVideo() && !videoFailed;
   const lite = getGfxSnapshot().resolved === "lite";
 
@@ -96,7 +97,14 @@ export function WordLessonModal({
   }, [onClose, onPrev, onNext]);
 
   useEffect(() => {
+    const t = window.setTimeout(() => setSeekReady(true), 450);
+    return () => window.clearTimeout(t);
+  }, []);
+
+  useEffect(() => {
     return () => {
+      skipRef.current = true;
+      finishing.current = true;
       stopSpeech();
       const v = videoRef.current;
       if (v) {
@@ -145,6 +153,7 @@ export function WordLessonModal({
     }
     playSfx(lesson.sfxSuccess, 0.4);
     onUnlocked?.();
+    if (skipRef.current) return;
     void speak("Great job!");
   }
 
@@ -421,7 +430,7 @@ export function WordLessonModal({
             </div>
           )}
 
-          {phase === "playing" && (
+          {phase === "playing" && seekReady && (
             <>
               <button
                 type="button"
