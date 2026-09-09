@@ -116,12 +116,12 @@ export const WORD_LESSONS: Record<string, WordLesson> = {
   "h-honey": { ...lesson("H", "honey", "Honey", "Hank has honey on his toast."), durationSec: 10, loopVideo: true },
   "h-helicopter": { ...lesson("H", "helicopter", "Helicopter", "The helicopter hovers high."), durationSec: 10, loopVideo: true },
   // --- Letter I ---
-  "i-ice-cream": lesson("I", "ice-cream", "Ice cream", "The ice cream cools on the summer table."),
-  "i-igloo": lesson("I", "igloo", "Igloo", "The igloo sits in the soft snow."),
-  "i-island": lesson("I", "island", "Island", "The island rests in the blue ocean."),
-  "i-insect": lesson("I", "insect", "Insect", "The insect crawls on a green leaf."),
-  "i-iron": lesson("I", "iron", "Iron", "The iron waits on the laundry table."),
-  "i-iguana": lesson("I", "iguana", "Iguana", "The iguana sits on a warm rock."),
+  "i-ice-cream": { ...lesson("I", "ice-cream", "Ice cream", "Isla licks her ice cream."), durationSec: 10, loopVideo: true },
+  "i-igloo": { ...lesson("I", "igloo", "Igloo", "Ivan builds an igloo."), durationSec: 10, loopVideo: false },
+  "i-island": { ...lesson("I", "island", "Island", "Isla plays on the island."), durationSec: 10, loopVideo: true },
+  "i-insect": { ...lesson("I", "insect", "Insect", "Ivy finds an insect."), durationSec: 10, loopVideo: false },
+  "i-iron": { ...lesson("I", "iron", "Iron", "Ivan irons a shirt."), durationSec: 10, loopVideo: true },
+  "i-iguana": { ...lesson("I", "iguana", "Iguana", "The iguana climbs the ivy."), durationSec: 10, loopVideo: true },
   // --- Letter J ---
   "j-juice": lesson("J", "juice", "Juice", "The juice cup sits on the kitchen table."),
   "j-jellyfish": lesson("J", "jellyfish", "Jellyfish", "The jellyfish floats in the ocean."),
