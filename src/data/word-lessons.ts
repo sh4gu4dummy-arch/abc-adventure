@@ -46,7 +46,7 @@ function lesson(
 /** Lessons that require watching the video to unlock. */
 export const WORD_LESSONS: Record<string, WordLesson> = {
   // --- Letter A ---
-  "a-apple": lesson("A", "apple", "Apple", "The red apple lands on the table."),
+  "a-apple": { ...lesson("A", "apple", "Apple", "The red apple lands on the table."), durationSec: 10 },
   "a-ant": lesson("A", "ant", "Ant", "The ant walks on the picnic blanket."),
   "a-airplane": lesson("A", "airplane", "Airplane", "The airplane flies through the clouds."),
   "a-alligator": lesson("A", "alligator", "Alligator", "The alligator smiles by the water."),
