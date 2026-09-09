@@ -71,6 +71,7 @@ Standing rules (also in `src/data/word-lessons.ts`):
 2. **If natural, not forced:** use the letter's sound **2–3 times** in the sentence. Never tongue-twister it. Prefer a named subject (a boy, a kid, Ben, the puppy) over lazy "they + singular body part".
 3. Word-card thumbnail = **frame 1** of the video.
 4. Action keeps going through the spoken line.
+5. Snappy, not creepy (see `AGENTS.project.md`). Append every new taste note there.
 
 Approve new letter sentences with the user before filming.
 
@@ -112,7 +113,7 @@ npm run build:apk      # only when asked
 
 ## Versioning & downloads
 
-- **Current version:** `0.059` (`v0.059`) — stored in `VERSION` and `src/lib/version.ts` (keep in sync).
+- **Current version:** `0.060` (`v0.060`) — stored in `VERSION` and `src/lib/version.ts` (keep in sync).
 
 ## GitHub + Grok Publish cadence
 
