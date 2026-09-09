@@ -64,6 +64,16 @@ Celebration: confetti + modal via `abc-letter-complete` event.
 9. ASL / themes / bilingual  
 10. Android APK packaging  
 
+## Word video lessons
+
+Standing rules (also in `src/data/word-lessons.ts`):
+1. Sentence matches the clip (scene + action). Write them together.
+2. **If natural, not forced:** use the letter's sound **2–3 times** in the sentence. Never tongue-twister it. Prefer a named subject (a boy, a kid, Ben, the puppy) over lazy "they + singular body part".
+3. Word-card thumbnail = **frame 1** of the video.
+4. Action keeps going through the spoken line.
+
+Approve new letter sentences with the user before filming.
+
 ## Commands
 
 ```bash
@@ -102,7 +112,7 @@ npm run build:apk      # only when asked
 
 ## Versioning & downloads
 
-- **Current version:** `0.052` (`v0.052`) — stored in `VERSION` and `src/lib/version.ts` (keep in sync).
+- **Current version:** `0.053` (`v0.053`) — stored in `VERSION` and `src/lib/version.ts` (keep in sync).
 
 ## GitHub + Grok Publish cadence
 
