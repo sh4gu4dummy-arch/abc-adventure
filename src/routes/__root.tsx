@@ -10,6 +10,7 @@ import { AuthProvider } from "@/lib/auth/provider";
 import { CreatedWithGrokBanner } from "@/components/created-with-grok-banner";
 import { CelebrateOverlay } from "@/components/alphabet/CelebrateOverlay";
 import { RequirePlayer } from "@/components/alphabet/ProfileGate";
+import { VersionCorner } from "@/components/alphabet/VersionBadge";
 import { initLayoutMode } from "@/lib/layout-mode";
 import { initGfxMode } from "@/lib/gfx-pref";
 import { initThemeMode } from "@/lib/theme-pref";
@@ -118,6 +119,7 @@ try{var tk='abc-theme-pref-v1';var tp=localStorage.getItem(tk)||'auto';var dark=
       <body>
         <AuthProvider>
           <PlayerAwareOutlet />
+          <VersionCorner />
           <CreatedWithGrokBanner />
         </AuthProvider>
         <Scripts />
