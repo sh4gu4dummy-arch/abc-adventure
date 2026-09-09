@@ -1194,4 +1194,10 @@ export const SPEECH_MAP: Record<string, string> = {
   "Nina writes in a notebook.": "5a3c90ba929e3620.mp3",
   "Nina slurps noodles.": "2e1d32aa9c0adb81.mp3",
   "Nina catches with a net.": "03bb2e917fbb809b.mp3",
+  "Otto peels an orange.": "5491c31e107b4f65.mp3",
+  "The owl hoots.": "7ed61710eb1d1356.mp3",
+  "Otto splashes in the ocean.": "40d063eaa078899b.mp3",
+  "The octopus juggles.": "4a3c234f61b16546.mp3",
+  "Otto peeks in the oven.": "610c9fb49a291f0f.mp3",
+  "The ostrich flaps.": "b2e34b7b3e76fb7a.mp3",
 };
