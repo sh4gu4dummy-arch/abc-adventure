@@ -63,12 +63,12 @@ export const WORD_LESSONS: Record<string, WordLesson> = {
   "b-boat": { ...lesson("B", "boat", "Boat", "The boat sails on the blue water."), durationSec: 10, loopVideo: true },
   "b-bird": { ...lesson("B", "bird", "Bird", "The bird flies up in the sky."), durationSec: 10, loopVideo: true },
   // --- Letter C ---
-  "c-cat": lesson("C", "cat", "Cat", "The cat naps by the sunny window."),
-  "c-cake": lesson("C", "cake", "Cake", "The cake is ready for the party."),
-  "c-car": lesson("C", "car", "Car", "The car drives down the road."),
-  "c-cloud": lesson("C", "cloud", "Cloud", "The soft cloud floats in the sky."),
-  "c-cookie": lesson("C", "cookie", "Cookie", "The cookie cools on the baking tray."),
-  "c-cup": lesson("C", "cup", "Cup", "The cup sits on the cozy table."),
+  "c-cat": { ...lesson("C", "cat", "Cat", "The cat naps by the sunny window."), durationSec: 10, loopVideo: true },
+  "c-cake": { ...lesson("C", "cake", "Cake", "The cake comes out of the oven."), durationSec: 10, loopVideo: false },
+  "c-car": { ...lesson("C", "car", "Car", "The car drives down the road."), durationSec: 10, loopVideo: true },
+  "c-cloud": { ...lesson("C", "cloud", "Cloud", "The soft cloud floats in the sky."), durationSec: 10, loopVideo: true },
+  "c-cookie": { ...lesson("C", "cookie", "Cookie", "They eat a cookie and drop crumbs."), durationSec: 10, loopVideo: true },
+  "c-cup": { ...lesson("C", "cup", "Cup", "They pour milk in the cup."), durationSec: 10, loopVideo: false },
   // --- Letter D ---
   "d-dog": lesson("D", "dog", "Dog", "The dog plays in the sunny yard."),
   "d-duck": lesson("D", "duck", "Duck", "The duck swims in the little pond."),
