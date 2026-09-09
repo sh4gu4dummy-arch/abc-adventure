@@ -24,11 +24,19 @@ in chat.
    Clouds are puffs, not tails. No movie-lookalikes (no McQueen car).
 8. Food is food. Do not put a face on something a kid then eats.
 9. Friendly, not scary: dinosaurs smile, no snarl/teeth; fires stay small.
-10. Archive old art; never overwrite originals. Use Imagine API download
+10. **Don’t repeat the same action across word videos.** Each clip needs its
+    own gag. Check the whole alphabet, not just the current letter.
+11. Archive old art; never overwrite originals. Use Imagine API download
     into `public/` (locker may fail). Copy stills into the repo immediately.
+
+## How to write rules
+
+Keep them **general**. Do not turn one incident into a hyper-specific law
+(“two animals both eating leaves”). The lesson is “don’t reuse the gag,”
+not the leaves.
 
 ## When they correct a video
 
 - Fix that clip.
-- Write a one-line rule here so the next letter does not repeat it.
+- Write a **general** one-line rule here (not a play-by-play of that one clip).
 - Bump version + git commit.
