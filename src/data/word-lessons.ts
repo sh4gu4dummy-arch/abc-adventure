@@ -51,7 +51,7 @@ export const WORD_LESSONS: Record<string, WordLesson> = {
   // --- Letter A ---
   "a-apple": { ...lesson("A", "apple", "Apple", "The red apple lands on the table."), durationSec: 10, loopVideo: false },
   "a-ant": { ...lesson("A", "ant", "Ant", "The ant walks on the picnic blanket."), durationSec: 10, loopVideo: true },
-  "a-airplane": lesson("A", "airplane", "Airplane", "The airplane flies through the clouds."),
+  "a-airplane": { ...lesson("A", "airplane", "Airplane", "The airplane flies through the clouds."), durationSec: 10, loopVideo: true },
   "a-alligator": lesson("A", "alligator", "Alligator", "The alligator smiles by the water."),
   "a-astronaut": lesson("A", "astronaut", "Astronaut", "The astronaut waves in outer space."),
   "a-anchor": lesson("A", "anchor", "Anchor", "The anchor stands by the blue water."),
