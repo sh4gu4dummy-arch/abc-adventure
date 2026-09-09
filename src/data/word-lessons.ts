@@ -1,11 +1,15 @@
 /**
  * Short video lessons for words.
  *
- * RULE: sentence must describe what is ON SCREEN in that word's video
- * (scene + action). Write sentence + scene together.
- * Word-card thumbnail MUST be frame 1 of that word's video (not the end).
- * Action must KEEP GOING through the sentence — do not freeze after a
- * 2-second gag. Unlock only after full lesson finishes.
+ * RULES (do not skip):
+ * 1. Sentence = what is ON SCREEN (scene + action). Write sentence + clip together.
+ * 2. If it still sounds like a kid would say it (never forced), pack that
+ *    letter's sound 2–3 times in the sentence. A: apple/lands/table is fine
+ *    if natural; "A happy apple angrily..." is not. Prefer a named subject
+ *    (a boy, a kid, Ben, the puppy) over lazy "they + body part".
+ * 3. Word-card thumbnail MUST be frame 1 of that word's video (not the end).
+ * 4. Action must KEEP GOING through the sentence — do not freeze after a
+ *    2-second gag. Unlock only after full lesson finishes.
  */
 
 export type WordLesson = {
