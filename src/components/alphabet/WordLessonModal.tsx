@@ -75,7 +75,7 @@ export function WordLessonModal({
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const musicRef = useRef<HTMLAudioElement | null>(null);
-  const [phase, setPhase] = useState<Phase>(alreadySeen ? "done" : "ready");
+  const [phase, setPhase] = useState<Phase>("ready");
   const [progress, setProgress] = useState(0);
   const [caption, setCaption] = useState<Caption>("none");
   const [showVideo, setShowVideo] = useState(false);
@@ -113,6 +113,12 @@ export function WordLessonModal({
         musicRef.current = null;
       }
     };
+  }, []);
+
+  useEffect(() => {
+    void playLesson();
+    // Open + prev/next remount (key=slug) should start the clip without a second tap.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function finishLesson() {
