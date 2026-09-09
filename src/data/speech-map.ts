@@ -1241,4 +1241,10 @@ export const SPEECH_MAP: Record<string, string> = {
   "Vin washes vegetables.": "869e77fe8f2a5afb.mp3",
   "Vin buttons a vest.": "ff81b4cca230fc73.mp3",
   "Vin vacuums.": "2d2bc3bc9f7c01a0.mp3",
+  "The whale blows a spray.": "bbde783e23f43b6e.mp3",
+  "Wes waters a plant.": "e70232046d69254b.mp3",
+  "Wes peeks out the window.": "9633c0cf787db5b8.mp3",
+  "Wes winds a watch.": "0580ae5938406a3f.mp3",
+  "The worm wiggles.": "9a43296c217c0043.mp3",
+  "Wes pulls a wagon.": "bc5d4de9c677e4d3.mp3",
 };
