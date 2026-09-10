@@ -12,7 +12,8 @@
  *    2-second gag. Unlock only after full lesson finishes.
  * 5. Snappy kid-cartoon, not creepy: fast beats (frog = ninja tongue, insta
  *    eat). Hatch = closed egg → poke → chick out. Fish fins are fins not
- *    hands. Clouds have no tails. Food has no face if it gets eaten. No
+ *    hands. Clouds have no tails. One tail, two arms, two legs — extra
+ *    ends = redo. Food has no face if it gets eaten. No
  *    movie-lookalikes. Friendly dinosaurs. Don't reuse the same action
  *    across words. An object stays that object — never morph into a person.
  *    Handheld props stay kid-scale, smaller than the child's head.
