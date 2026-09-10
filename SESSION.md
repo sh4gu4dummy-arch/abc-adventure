@@ -31,6 +31,12 @@ Color-in the letter, not a handwriting test. Crayon clips to the glyph. ~26% of 
 
 A–Z word videos exist. J–Z remade to locked sentences; A–I older unless later patched (G, H, fish, frog, etc.).
 
+## Lowercase plan (remind on ask)
+Saved 2026-09-10. If they ask, recap — don’t build until they say so.
+Page-level Big/little toggle. Home stays 26 big tiles. Meet little = second
+clip (“Hi I’m little a…”). Trace already has the switch; sync it to the page
+toggle. Words unchanged. Prototype little a/b/c first, not 26.
+
 ## Meet P–R (v0.126)
 Big-letter line. P purple, Q indigo, R coral. Face from frame 1.
 

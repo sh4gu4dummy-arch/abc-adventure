@@ -15,6 +15,25 @@ Meet clips from **J onward**: the letter says **“Hi I’m Big J, Big J, Big J�
 (that letter). Do not remake A–I to this line unless asked. Uppercase first;
 lowercase later.
 
+## Lowercase / small-letter plan (remind on ask)
+
+If they ask for the lowercase plan, **remind them of this — don’t start
+building unless they say to**. Saved 2026-09-10.
+
+- **Default:** one **Big / little toggle for the whole letter page**, not a
+  new switch on every tab. Home stays 26 uppercase tiles. Optional later: a
+  global “show little” that swaps the tile glyph (`a` not `A`) — still 26,
+  not 52.
+- **Don’t** put both mascots in the same Meet clip. Don’t 52-tile home.
+- **Meet:** little is a **second clip**, same recipe: “Hi I’m little a,
+  little a, little a.” Don’t morph the Big clip. Don’t overlay two voices.
+- **Trace:** already has Big / little. Wire it to the **page** toggle so
+  Trace and Meet stay in sync. Either case still counts as traced.
+- **Words / videos:** stay as they are (pizza is pizza). Optional later: a
+  tiny `P p` chip, not a second word-video set.
+- **Ship order:** prototype **little a / b / c** Meet + the page toggle.
+  Don’t dump 26 little Meets. Same as Big: a few, they watch, then more.
+
 ## Word videos
 
 1. Sentence = what is on screen. Write sentence + clip together. Approve
