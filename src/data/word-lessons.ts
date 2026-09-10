@@ -29,7 +29,7 @@
  *    Before shipping a remake: look at start/mid/end frames
  *    (`python3 scripts/qa-word-frames.py VIDEO`). If anything is
  *    obviously wrong, redo. Do not write a new one-incident law.
- *    Write general rules, not one-incident laws.
+ *    Letter-buddy face is on the front only; a turn shows a blank back.
  *    Full taste list: AGENTS.project.md.
  */
 

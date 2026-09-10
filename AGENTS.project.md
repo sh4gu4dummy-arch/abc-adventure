@@ -24,6 +24,8 @@ in chat.
    Clouds are puffs, not tails. No movie-lookalikes (no McQueen car).
    One of each limb — one tail, two arms, two legs. Extra ends = redo.
    Letter-buddy eyes sit ON the letter body, not in a hole or gap.
+   Letter-buddy face is on the **front only**. A turn shows a blank back —
+   never a second face.
    Letter-buddy stills must **fill the tile like the neighbors**: letter-color
    wash to the edges, character large. Never a small figure on white/gray
    studio. After any remake, compare fill vs D/H before shipping. Do not
