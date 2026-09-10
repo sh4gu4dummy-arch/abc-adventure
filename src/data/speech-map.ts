@@ -4,6 +4,7 @@ export const SPEECH_VOICE_MALE = "en-US-AndrewNeural" as const;
 /** @deprecated use SPEECH_VOICE_FEMALE */
 export const SPEECH_VOICE = SPEECH_VOICE_FEMALE;
 export const SPEECH_MAP: Record<string, string> = {
+  "A": "6dcd4ce23d88e2ee.mp3",
   "“Best day ever!” hummed the bear.": "b38fa5611e591673.mp3",
   "“Gorgeous!” giggled the giraffe.": "ff587fd38a298e51.mp3",
   "“Question?” she asked.": "120966a0e3f3ffaf.mp3",

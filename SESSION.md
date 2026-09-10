@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.102  
+**Version:** v0.103  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 **User tests in Grok live preview**, not APK, unless they ask.
 
@@ -28,7 +28,8 @@ Was missing on autoplay, present on Replay (tap). Fixed: shared `HTMLAudioElemen
 
 A–Z word videos exist. J–Z remade to locked sentences; A–I older unless later patched (G, H, fish, frog, etc.).
 
-## Pipeline
+## Meet A test (v0.103)
+6s 480×720 dance of letter mascot A. Overlay says A A A. Native bounce foley kept. Other letters still the old bounce puppets. Don’t batch 26 until they like A.
 `scripts/ship-letter-videos.py` PACKS → t2i → i2v (mouths closed + foley, no speech) → encode **keep audio** → `nativeAudio: true` → **5-frame QA** (`scripts/qa-word-frames.py`) → poster=frame1 → TTS append-only `speech-map.ts`.  
 Stop on Imagine fail; don’t kneejerk. Look at the clip. If it’s obviously wrong, redo — don’t write a crayon-tip law.
 

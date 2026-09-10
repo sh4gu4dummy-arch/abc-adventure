@@ -5,8 +5,12 @@ import {
   letterHeroPath,
   type LetterEntry,
 } from "@/data/alphabet";
-import { speak } from "@/lib/speak";
+import { speak, stopSpeech, primeAudioFromGesture } from "@/lib/speak";
+import { APP_VERSION } from "@/lib/version";
 import { cn } from "@/lib/utils";
+
+/** Meet A is a 6s dance test: overlay “A… A… A” + native bounce sound. */
+const MEET_HELLO_TEST = "A";
 
 /**
  * 10s 480p "meet the buddy" — tap to play. Original still stays as poster.
@@ -21,7 +25,10 @@ export function MeetBuddyButton({
   return (
     <button
       type="button"
-      onClick={onOpen}
+      onClick={() => {
+        primeAudioFromGesture(entry.letter);
+        onOpen();
+      }}
       className="pressable inline-flex min-h-11 items-center gap-2 rounded-[var(--radius-pill)] bg-white/95 px-4 py-2.5 text-sm font-bold shadow"
       style={{ color: entry.accent }}
     >
@@ -41,13 +48,15 @@ export function MeetBuddyModal({
   const [paused, setPaused] = useState(true);
   const [failed, setFailed] = useState(false);
   const poster = letterHeroPath(entry.letter);
-  const src = letterBuddyVideoPath(entry.letter);
+  const src = `${letterBuddyVideoPath(entry.letter)}?v=${APP_VERSION}`;
+  const helloTest = entry.letter.toUpperCase() === MEET_HELLO_TEST;
 
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
     v.src = src;
-    v.muted = true;
+    v.muted = !helloTest;
+    if (helloTest) v.volume = 0.55;
     const tryPlay = () => {
       void v.play().catch(() => {
         /* autoplay may wait for tap — keep the player visible */
@@ -55,8 +64,24 @@ export function MeetBuddyModal({
     };
     v.addEventListener("canplay", tryPlay, { once: true });
     tryPlay();
-    void speak(`The letter ${entry.letter}`);
+    if (helloTest) {
+      void (async () => {
+        await speak("A");
+        if (cancelled()) return;
+        await speak("A");
+        if (cancelled()) return;
+        await speak("A");
+      })();
+    } else {
+      void speak(`The letter ${entry.letter}`);
+    }
+    let gone = false;
+    function cancelled() {
+      return gone;
+    }
     return () => {
+      gone = true;
+      stopSpeech();
       v.removeEventListener("canplay", tryPlay);
       try {
         v.pause();
@@ -66,7 +91,7 @@ export function MeetBuddyModal({
         /* ignore */
       }
     };
-  }, [src, entry.letter]);
+  }, [src, entry.letter, helloTest]);
 
   return (
     <div
@@ -113,7 +138,7 @@ export function MeetBuddyModal({
             <video
               ref={videoRef}
               playsInline
-              muted
+              muted={!helloTest}
               autoPlay
               preload="auto"
               poster={poster}
@@ -127,7 +152,7 @@ export function MeetBuddyModal({
                 else v.pause();
               }}
               onEnded={() => {
-                void speak(entry.rhyme);
+                if (!helloTest) void speak(entry.rhyme);
               }}
             />
           )}
