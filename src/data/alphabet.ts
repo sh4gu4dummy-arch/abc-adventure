@@ -545,7 +545,7 @@ export function letterHeroPath(letter: string): string {
 }
 
 /** 10s local bounce, or Imagine clip when we have one. */
-const IMAGINE_BUDDY = new Set("abcdefghijtklmnopqr".split(""));
+const IMAGINE_BUDDY = new Set("abcdefghijklmnopqrstu".split(""));
 
 export function letterBuddyVideoPath(letter: string): string {
   const l = letter.toLowerCase();
