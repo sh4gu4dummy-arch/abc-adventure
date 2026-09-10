@@ -44,6 +44,7 @@ building unless they say to**. Saved 2026-09-10. **Started v0.131:** home
 Big/little toggle, 3+3 word split, trace follows the mode. Meet little
 **a** trial (v0.137). Rest of Meet little later.
 **v0.139:** Big ABC = all UI uppercase; little abc = all UI lowercase.
+**v0.142:** little abc font is Sniglet (single-story a). Big stays Fredoka.
 
 - **Default:** one **Big / little toggle for the whole letter page**, not a
   new switch on every tab. Home stays 26 uppercase tiles. Optional later: a
