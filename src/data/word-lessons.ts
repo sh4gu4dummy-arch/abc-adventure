@@ -19,6 +19,7 @@
  *    Handheld props stay kid-scale, smaller than the child's head.
  *    No talking mouths — narration is off-screen; closed-mouth smile
  *    unless the gag is eating, yawning, or blowing.
+ *    State-change gags are one-way (peel stays off). No ping-pong.
  *    Write general rules, not one-incident laws.
  *    Full taste list: AGENTS.project.md.
  */

@@ -41,6 +41,8 @@ in chat.
     unless the gag itself is eating, yawning, or blowing. Check mid-frames
     for lip-flap before shipping. I2V will invent talking if you don't
     forbid it — bake "mouth closed, not talking" into still + motion.
+    State-change gags are one-way: peel stays off, wrapper stays off,
+    lamp stays lit. No ping-pong reverse.
 12. Archive old art; never overwrite originals. Use Imagine API download
     into `public/` (locker may fail). Copy stills into the repo immediately.
 13. **GitHub:** after every commit, push. Do not ask.

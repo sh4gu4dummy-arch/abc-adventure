@@ -87,8 +87,8 @@ PACKS: dict[str, list[dict]] = {
     ],
     "O": [
         {"slug": "orange", "word": "Orange", "sentence": "Otto peels an orange.",
-         "still": "Cartoon boy about 5 peeling an orange. Orange is food, no face. Peel half off.",
-         "motion": "The boy PEELS the orange. Food has no face. FIRST whole. LAST more peeled. Camera locked. Simple kids animation, no morphing."},
+         "still": "Cartoon boy about 5 just starting to peel an orange. Closed-mouth smile. Orange is food, no face. One small peel corner lifted.",
+         "motion": "The boy PEELS the orange one way. Peel comes off and STAYS off. No reverse, orange does not become whole again. Food has no face. FIRST mostly whole. LAST more peeled."},
         {"slug": "owl", "word": "Owl", "sentence": "The owl hoots.",
          "still": "Friendly round owl with beak open mid-hoot on a branch at dusk. Not scary.",
          "motion": "The owl HOOTS, beak opening. Not scary. Camera locked. Simple kids animation, no morphing."},
