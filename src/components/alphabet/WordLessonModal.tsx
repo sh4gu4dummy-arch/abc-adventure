@@ -83,6 +83,7 @@ export function WordLessonModal({
   const finishing = useRef(false);
   const skipRef = useRef(false);
   const cancelledRef = useRef(false);
+  const playRun = useRef(0);
   const [seekReady, setSeekReady] = useState(false);
   const wantVideo = shouldPlayLessonVideo() && !videoFailed;
   const lite = getGfxSnapshot().resolved === "lite";
@@ -160,10 +161,11 @@ export function WordLessonModal({
   }
 
   async function playLesson() {
-    if (phase === "playing") return;
+    playRun.current += 1;
+    const run = playRun.current;
     setPhase("playing");
     setProgress(0);
-    setCaption("none");
+    setCaption("word");
     setShowVideo(false);
     finishing.current = false;
     skipRef.current = false;
@@ -236,26 +238,26 @@ export function WordLessonModal({
       playSfx(lesson.sfxSparkle, 0.28);
 
       for (let i = 0; i < 3; i++) {
-        if (skipRef.current || cancelledRef.current) {
+        if (skipRef.current || cancelledRef.current || playRun.current !== run) {
           stopTick();
           return;
         }
         await speak(lesson.word);
-        if (skipRef.current || cancelledRef.current) {
+        if (skipRef.current || cancelledRef.current || playRun.current !== run) {
           stopTick();
           return;
         }
         await new Promise((r) => setTimeout(r, 180));
       }
 
-      if (skipRef.current || cancelledRef.current) {
+      if (skipRef.current || cancelledRef.current || playRun.current !== run) {
         stopTick();
         return;
       }
       setCaption("sentence");
       playSfx(lesson.sfxSparkle, 0.22);
       await speak(lesson.sentence);
-      if (skipRef.current || cancelledRef.current) {
+      if (skipRef.current || cancelledRef.current || playRun.current !== run) {
         stopTick();
         return;
       }
@@ -425,7 +427,7 @@ export function WordLessonModal({
               type="button"
               onClick={(e) => {
                 e.stopPropagation();
-                primeAudioFromGesture();
+                primeAudioFromGesture(prevLabel);
                 onPrev();
               }}
               className="absolute left-2 top-1/2 z-[5] flex size-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-on-light shadow-lg"
@@ -439,7 +441,7 @@ export function WordLessonModal({
               type="button"
               onClick={(e) => {
                 e.stopPropagation();
-                primeAudioFromGesture();
+                primeAudioFromGesture(nextLabel);
                 onNext();
               }}
               className="absolute right-2 top-1/2 z-[5] flex size-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-on-light shadow-lg"

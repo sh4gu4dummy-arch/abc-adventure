@@ -131,7 +131,7 @@ function LetterPage() {
   function openWord(w: WordEntry) {
     const lesson = getWordLesson(entry!.letter, w.slug);
     if (lesson) {
-      primeAudioFromGesture();
+      primeAudioFromGesture(lesson.word);
       setLessonWord(w);
       return;
     }
@@ -389,8 +389,8 @@ function LetterPage() {
             alreadySeen={seenSet.has(key)}
             onClose={() => setLessonWord(null)}
             onUnlocked={() => tryCompleteLetter(entry.letter)}
-            onPrev={canHop && prevW ? () => { primeAudioFromGesture(); setLessonWord(prevW); } : undefined}
-            onNext={canHop && nextW ? () => { primeAudioFromGesture(); setLessonWord(nextW); } : undefined}
+            onPrev={canHop && prevW ? () => { primeAudioFromGesture(prevW.word); setLessonWord(prevW); } : undefined}
+            onNext={canHop && nextW ? () => { primeAudioFromGesture(nextW.word); setLessonWord(nextW); } : undefined}
             prevLabel={prevW?.word}
             nextLabel={nextW?.word}
           />

@@ -14,7 +14,8 @@
  *    eat). Hatch = closed egg → poke → chick out. Fish fins are fins not
  *    hands. Clouds have no tails. Food has no face if it gets eaten. No
  *    movie-lookalikes. Friendly dinosaurs. Don't reuse the same action
- *    across words. Write general rules, not one-incident laws.
+ *    across words. An object stays that object — never morph into a person.
+ *    Write general rules, not one-incident laws.
  *    Full taste list: AGENTS.project.md.
  */
 

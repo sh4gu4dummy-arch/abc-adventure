@@ -113,7 +113,7 @@ npm run build:apk      # only when asked
 
 ## Versioning & downloads
 
-- **Current version:** `0.090` (`v0.090`) — stored in `VERSION` and `src/lib/version.ts` (keep in sync).
+- **Current version:** `0.091` (`v0.091`) — stored in `VERSION` and `src/lib/version.ts` (keep in sync).
 
 ## GitHub + Grok Publish cadence
 

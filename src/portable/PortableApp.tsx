@@ -231,9 +231,10 @@ function LetterView({ entry }: { entry: LetterEntry }) {
     caseMode === "upper" ? entry.letter.toUpperCase() : entry.letter.toLowerCase();
 
   function openPoster(w: WordEntry) {
-    if (wordRequiresVideo(entry.letter, w.slug)) primeAudioFromGesture();
+    const lesson = getWordLesson(entry.letter, w.slug);
+    if (lesson) primeAudioFromGesture(lesson.word);
     setOpenWord(w);
-    if (!wordRequiresVideo(entry.letter, w.slug)) {
+    if (!lesson) {
       markWordSeen(entry.letter, w.slug);
     }
   }
@@ -451,8 +452,8 @@ function LetterView({ entry }: { entry: LetterEntry }) {
           lesson={openLesson}
           alreadySeen={wordsSeen.has(`${entry.letter.toLowerCase()}-${openWord.slug}`)}
           onClose={() => setOpenWord(null)}
-          onPrev={prevLessonWord ? () => { primeAudioFromGesture(); setOpenWord(prevLessonWord); } : undefined}
-          onNext={nextLessonWord ? () => { primeAudioFromGesture(); setOpenWord(nextLessonWord); } : undefined}
+          onPrev={prevLessonWord ? () => { primeAudioFromGesture(prevLessonWord.word); setOpenWord(prevLessonWord); } : undefined}
+          onNext={nextLessonWord ? () => { primeAudioFromGesture(nextLessonWord.word); setOpenWord(nextLessonWord); } : undefined}
           prevLabel={prevLessonWord?.word}
           nextLabel={nextLessonWord?.word}
         />

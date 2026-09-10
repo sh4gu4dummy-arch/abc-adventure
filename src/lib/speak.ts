@@ -19,7 +19,8 @@ const audioUrlCache = new Map<string, string>();
 const inflight = new Map<string, Promise<string | null>>();
 let runtimeTtsDisabled = false;
 
-/** Active HTMLAudioElement for the current speak generation. */
+/** One element for all lesson speech — WebViews only allow later play() on the same node that a tap unlocked. */
+let sharedAudio: HTMLAudioElement | null = null;
 let currentAudio: HTMLAudioElement | null = null;
 
 /**
@@ -36,42 +37,41 @@ function isActive(gen: number) {
   return gen === speakGeneration;
 }
 
+function getSharedAudio(): HTMLAudioElement | null {
+  if (typeof window === "undefined") return null;
+  if (!sharedAudio) {
+    sharedAudio = new Audio();
+    sharedAudio.preload = "auto";
+  }
+  return sharedAudio;
+}
+
+function pauseShared() {
+  const a = sharedAudio;
+  if (!a) return;
+  try {
+    a.onended = null;
+    a.onerror = null;
+    a.oncanplay = null;
+    a.pause();
+  } catch {
+    /* ignore */
+  }
+}
+
 export function stopSpeech() {
   // Invalidate every in-flight speak() so they cannot fall through to a second voice
   speakGeneration += 1;
-  if (currentAudio) {
-    try {
-      currentAudio.onended = null;
-      currentAudio.onerror = null;
-      currentAudio.oncanplay = null;
-      currentAudio.pause();
-      currentAudio.removeAttribute("src");
-      currentAudio.load();
-    } catch {
-      /* ignore */
-    }
-    currentAudio = null;
-  }
+  pauseShared();
+  currentAudio = sharedAudio;
   if (typeof window !== "undefined" && window.speechSynthesis) {
     window.speechSynthesis.cancel();
   }
 }
 
 function stopHardKeepGen() {
-  // Stop devices without bumping generation (used inside a single speak attempt)
-  if (currentAudio) {
-    try {
-      currentAudio.onended = null;
-      currentAudio.onerror = null;
-      currentAudio.oncanplay = null;
-      currentAudio.pause();
-      currentAudio.removeAttribute("src");
-      currentAudio.load();
-    } catch {
-      /* ignore */
-    }
-    currentAudio = null;
-  }
+  pauseShared();
+  currentAudio = sharedAudio;
   if (typeof window !== "undefined" && window.speechSynthesis) {
     window.speechSynthesis.cancel();
   }
@@ -87,6 +87,9 @@ function playClip(url: string, gen: number): Promise<"played" | "failed" | "canc
   if (!isActive(gen)) return Promise.resolve("cancelled");
 
   stopHardKeepGen();
+  const audio = getSharedAudio();
+  if (!audio) return Promise.resolve("failed");
+  currentAudio = audio;
 
   return new Promise((resolve) => {
     if (!isActive(gen)) {
@@ -94,15 +97,11 @@ function playClip(url: string, gen: number): Promise<"played" | "failed" | "canc
       return;
     }
 
-    const audio = new Audio();
-    currentAudio = audio;
     let settled = false;
 
     const finish = (result: "played" | "failed" | "cancelled") => {
       if (settled) return;
       settled = true;
-      if (currentAudio === audio) currentAudio = null;
-      // If we were superseded, always report cancelled
       if (!isActive(gen)) {
         resolve("cancelled");
         return;
@@ -110,17 +109,14 @@ function playClip(url: string, gen: number): Promise<"played" | "failed" | "canc
       resolve(result);
     };
 
-    audio.preload = "auto";
     audio.onended = () => finish(isActive(gen) ? "played" : "cancelled");
     audio.onerror = () => finish(isActive(gen) ? "failed" : "cancelled");
 
-    // Abort path: if generation flips while loading, bail
     const watch = window.setInterval(() => {
       if (!isActive(gen)) {
         window.clearInterval(watch);
         try {
           audio.pause();
-          audio.removeAttribute("src");
         } catch {
           /* ignore */
         }
@@ -130,26 +126,14 @@ function playClip(url: string, gen: number): Promise<"played" | "failed" | "canc
 
     const clearWatch = () => window.clearInterval(watch);
 
-    audio.addEventListener(
-      "ended",
-      () => {
-        clearWatch();
-      },
-      { once: true },
-    );
-    audio.addEventListener(
-      "error",
-      () => {
-        clearWatch();
-      },
-      { once: true },
-    );
+    audio.addEventListener("ended", () => clearWatch(), { once: true });
+    audio.addEventListener("error", () => clearWatch(), { once: true });
 
+    audio.volume = 1;
     audio.src = url;
     void audio
       .play()
       .then(() => {
-        // Playing — wait for ended/error. If already cancelled, stop.
         if (!isActive(gen)) {
           clearWatch();
           try {
@@ -318,14 +302,17 @@ export function speakWord(word: string) {
 }
 
 /** Call from a tap that opens a lesson so later autoplay speech is allowed. */
-export function primeAudioFromGesture() {
+export function primeAudioFromGesture(text?: string) {
   if (typeof window === "undefined") return;
+  const a = getSharedAudio();
+  if (!a) return;
   try {
-    // Near-silent wav during the tap so unmuted lesson speech can autoplay.
-    const a = new Audio(
-      "data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA",
-    );
-    a.volume = 0.01;
+    const pref = getVoicePref();
+    const url = text ? localClipUrl(normalize(text), pref) : null;
+    a.volume = url ? 1 : 0.01;
+    a.src =
+      url ??
+      "data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA";
     void a.play().catch(() => {});
   } catch {
     /* ignore */
