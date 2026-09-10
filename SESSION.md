@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.118  
+**Version:** v0.119  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 **User tests in Grok live preview**, not APK, unless they ask.
 
@@ -30,6 +30,9 @@ Color-in the letter, not a handwriting test. Crayon clips to the glyph. ~26% of 
 | H heart | Crayon with two points | One-tip crayon; look-at-the-clip QA (not a tip-count law) |
 
 A–Z word videos exist. J–Z remade to locked sentences; A–I older unless later patched (G, H, fish, frog, etc.).
+
+## Meet G remake (v0.119)
+Thumbnail + clip: face on the mint stroke, G hole empty (same as D).
 
 ## Meet G/H/I (v0.118)
 G mint, H yellow, I sky blue — match home tiles. Two eyes, empty holes/windows, one voice each. J–Z still puppets.
