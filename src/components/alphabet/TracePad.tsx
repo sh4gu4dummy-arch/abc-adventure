@@ -4,9 +4,31 @@ import { markSection } from "@/lib/progress";
 import { getGfxSnapshot } from "@/lib/gfx-pref";
 import { speak } from "@/lib/speak";
 
-/** Fraction of the letter body a kid must color. Close is enough. */
-const COVER_THRESHOLD = 0.26;
+/** Must color most of the glyph — a K spine alone must not pass. */
+const COVER_THRESHOLD = 0.5;
 const INK_WIDTH = 36;
+const GRID_COLS = 3;
+const GRID_ROWS = 3;
+const CELL_MIN_SHARE = 0.04;
+const CELL_COVER = 0.32;
+
+type GlyphBox = { x0: number; y0: number; x1: number; y1: number };
+
+function cellAt(x: number, y: number, box: GlyphBox): number {
+  const bw = Math.max(1, box.x1 - box.x0 + 1);
+  const bh = Math.max(1, box.y1 - box.y0 + 1);
+  const c = Math.min(GRID_COLS - 1, Math.max(0, Math.floor(((x - box.x0) / bw) * GRID_COLS)));
+  const r = Math.min(GRID_ROWS - 1, Math.max(0, Math.floor(((y - box.y0) / bh) * GRID_ROWS)));
+  return r * GRID_COLS + c;
+}
+
+function cellsReady(letterN: number, cellLetter: Uint32Array, cellInked: Uint32Array): boolean {
+  for (let i = 0; i < cellLetter.length; i++) {
+    if (cellLetter[i] / letterN < CELL_MIN_SHARE) continue;
+    if (cellInked[i] / cellLetter[i] < CELL_COVER) return false;
+  }
+  return true;
+}
 
 function letterFont(h: number, lower: boolean) {
   return `800 ${Math.floor(h * (lower ? 0.86 : 0.76))}px system-ui, Nunito, Fredoka, sans-serif`;
@@ -63,6 +85,9 @@ export function TracePad({
   const inkedBits = useRef<Uint8Array>(new Uint8Array(0));
   const letterCount = useRef(1);
   const inkedCount = useRef(0);
+  const boxRef = useRef<GlyphBox>({ x0: 0, y0: 0, x1: 1, y1: 1 });
+  const cellLetterRef = useRef(new Uint32Array(GRID_COLS * GRID_ROWS));
+  const cellInkedRef = useRef(new Uint32Array(GRID_COLS * GRID_ROWS));
   const pxW = useRef(0);
   const pxH = useRef(0);
   const dprRef = useRef(1);
@@ -173,6 +198,7 @@ export function TracePad({
         if (!bits[i] || inked[i]) continue;
         inked[i] = 1;
         inkedCount.current += 1;
+        cellInkedRef.current[cellAt(x, y, boxRef.current)] += 1;
       }
     }
   }, []);
@@ -199,7 +225,12 @@ export function TracePad({
       setCover((prev) => (Math.abs(prev - ratio) >= 0.01 ? ratio : prev));
       publishDebug(ratio, false);
     }
-    if (ratio >= COVER_THRESHOLD) finish();
+    if (
+      ratio >= COVER_THRESHOLD &&
+      cellsReady(letterCount.current, cellLetterRef.current, cellInkedRef.current)
+    ) {
+      finish();
+    }
   }, [finish, publishDebug]);
 
   const setupCanvas = useCallback(
@@ -257,12 +288,20 @@ export function TracePad({
       let topX = 0;
       let topY = ph;
       let topN = 0;
+      let x0 = pw;
+      let y0 = ph;
+      let x1 = 0;
+      let y1 = 0;
       for (let i = 0; i < pw * ph; i++) {
         if (img[i * 4 + 3] > 24) {
           bits[i] = 1;
           count += 1;
           const y = (i / pw) | 0;
           const x = i % pw;
+          if (x < x0) x0 = x;
+          if (y < y0) y0 = y;
+          if (x > x1) x1 = x;
+          if (y > y1) y1 = y;
           if (y < topY) {
             topY = y;
             topX = x;
@@ -273,10 +312,28 @@ export function TracePad({
           }
         }
       }
+      const box: GlyphBox = {
+        x0: Math.min(x0, x1),
+        y0: Math.min(y0, y1),
+        x1: Math.max(x0, x1),
+        y1: Math.max(y0, y1),
+      };
+      const cellLetter = new Uint32Array(GRID_COLS * GRID_ROWS);
+      if (count > 0) {
+        for (let i = 0; i < pw * ph; i++) {
+          if (!bits[i]) continue;
+          const y = (i / pw) | 0;
+          const x = i % pw;
+          cellLetter[cellAt(x, y, box)] += 1;
+        }
+      }
       letterBits.current = bits;
       inkedBits.current = new Uint8Array(pw * ph);
       letterCount.current = Math.max(count, 1);
       inkedCount.current = 0;
+      boxRef.current = box;
+      cellLetterRef.current = cellLetter;
+      cellInkedRef.current = new Uint32Array(GRID_COLS * GRID_ROWS);
       pxW.current = pw;
       pxH.current = ph;
       dprRef.current = dpr;
@@ -462,7 +519,7 @@ export function TracePad({
 
       <div className="space-y-1.5">
         <div className="flex items-center justify-between text-[11px] font-bold uppercase tracking-wide text-muted">
-          <span>{done ? "You did it" : "Color the letter"}</span>
+          <span>{done ? "You did it" : "Color the whole letter"}</span>
           <span>{shown}%</span>
         </div>
         <div
@@ -485,7 +542,7 @@ export function TracePad({
         <p className="text-sm font-semibold text-ink-soft">
           {done
             ? `You traced ${spokenName}! Tap the letter to try again.`
-            : `Start at the 1 and color in ${caseKind === "upper" ? "the big letter" : "the little letter"}.`}
+            : `Start at the 1 and color the whole letter — not just one line.`}
         </p>
       </div>
 

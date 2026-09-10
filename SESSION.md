@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.129  
+**Version:** v0.130  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 **User tests in Grok live preview**, not APK, unless they ask.
 
@@ -15,8 +15,10 @@ I2V **has** AAC audio. Old encode used ffmpeg `-an` (stripped it). New encode ke
 ## 3-word intro
 Was missing on autoplay, present on Replay (tap). Fixed: shared `HTMLAudioElement`, `primeAudioFromGesture(word)` on poster tap / prev / next, speak starts on that tap. User was on **preview**, not APK.
 
-## Tracing (v0.104)
-Color-in the letter, not a handwriting test. Crayon clips to the glyph. ~26% of the letter is enough — then the letter **snap-fills**, bar goes to 100%, “You traced A!”. No “keep filling”, no A-bar / connector grader. That’s why old traces felt broken at 80%.
+## Tracing (v0.130)
+Whole letter, not one line. ~50% of pixels **and** every chunk of the glyph
+(3×3 cells). A K spine alone must not pass. Snap-fill still happens when it
+really is done. Tap to play again (v0.129).
 
 ## Recent remakes
 | Clip | Issue | Fix |
@@ -30,6 +32,9 @@ Color-in the letter, not a handwriting test. Crayon clips to the glyph. ~26% of 
 | H heart | Crayon with two points | One-tip crayon; look-at-the-clip QA (not a tip-count law) |
 
 A–Z word videos exist. J–Z remade to locked sentences; A–I older unless later patched (G, H, fish, frog, etc.).
+
+## Trace coverage (v0.130)
+K spine-only was giving a check. Now 50% + every region of the letter.
 
 ## Trace again (v0.129)
 After the check, tap the letter to play again. Progress stays marked.

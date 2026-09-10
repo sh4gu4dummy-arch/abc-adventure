@@ -10,6 +10,8 @@ in chat.
 If they say **lmk** (let me know): **answer in chat only**. Do not edit,
 remake, commit, or ship until they ask. Info, not action.
 After every GitHub push, **tell them the version** in chat (v0.112, etc.).
+**Trace:** must cover the **whole letter**, not one stroke (K spine ≠ done).
+Do not drop the cover bar back to ~26%. Spatial cells + ~50% of the glyph.
 Letter **names** use USA pronunciation. H is **aitch** (AY-ch), never haitch / hey-ch.
 Meet clips from **J onward**: the letter says **“Hi I’m Big J, Big J, Big J”**
 (that letter). Do not remake A–I to this line unless asked. Uppercase first;
