@@ -360,6 +360,7 @@ export function TracePad({
     const canvas = canvasRef.current;
     if (!canvas) return;
     e.preventDefault();
+    if (finishedRef.current) setupCanvas("reset");
     drawing.current = true;
     try {
       canvas.setPointerCapture(e.pointerId);
@@ -368,11 +369,9 @@ export function TracePad({
     }
     const p = pos(e);
     lastPt.current = p;
-    if (!finishedRef.current) {
-      drawSegment(p, p);
-      redraw();
-      publishCover();
-    }
+    drawSegment(p, p);
+    redraw();
+    publishCover();
   }
 
   function pointerMove(e: React.PointerEvent<HTMLCanvasElement>) {
@@ -485,7 +484,7 @@ export function TracePad({
         </div>
         <p className="text-sm font-semibold text-ink-soft">
           {done
-            ? `You traced ${spokenName}!`
+            ? `You traced ${spokenName}! Tap the letter to try again.`
             : `Start at the 1 and color in ${caseKind === "upper" ? "the big letter" : "the little letter"}.`}
         </p>
       </div>

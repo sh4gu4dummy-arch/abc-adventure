@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.128  
+**Version:** v0.129  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 **User tests in Grok live preview**, not APK, unless they ask.
 
@@ -30,6 +30,9 @@ Color-in the letter, not a handwriting test. Crayon clips to the glyph. ~26% of 
 | H heart | Crayon with two points | One-tip crayon; look-at-the-clip QA (not a tip-count law) |
 
 A–Z word videos exist. J–Z remade to locked sentences; A–I older unless later patched (G, H, fish, frog, etc.).
+
+## Trace again (v0.129)
+After the check, tap the letter to play again. Progress stays marked.
 
 ## Meet V–Z (v0.128)
 Alphabet Meet clips complete. V magenta, W blue, X coral, Y yellow, Z mint.
