@@ -484,6 +484,10 @@ html[data-layout="desktop"] .letters-grid {
   pointer-events: none;
 }
 
+html[data-case="lower"] .letter-tile-art {
+  object-position: center;
+}
+
 .letter-tile-glyph {
   position: relative;
   font-family: var(--font-display);

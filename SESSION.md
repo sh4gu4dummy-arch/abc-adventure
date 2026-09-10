@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.133  
+**Version:** v0.134  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 **User tests in Grok live preview**, not APK, unless they ask.
 
@@ -36,8 +36,8 @@ A–Z word videos exist. J–Z remade to locked sentences; A–I older unless la
 ## Meet A slow Big (v0.133)
 A says “Big… A… Big… A…” with pauses. Still old short clips: B–I.
 
-## Little avatars a–c (v0.132)
-`letters/a-little.webp` etc. Home/letter hero in little mode. d–z still use Big pics.
+## Little avatars a–c (v0.132 / v0.134)
+`letters/a-little.webp` etc. Half stature vs Big (v0.134). d–z still Big pics.
 
 ## Big / little worlds (v0.131)
 Home toggle. First 3 words = Big, last 3 = little. Trace follows the toggle.
