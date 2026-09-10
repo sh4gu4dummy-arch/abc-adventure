@@ -39,7 +39,7 @@ of pixels.” Pixel % lies (K’s spine is a huge share of the ink).
 Do **not** retune the % again (26 vs 80 vs 50). If they pick, build that
 one. Default if they say “fix tracing” with no letter: **A**.
 Letter **names** use USA pronunciation. H is **aitch** (AY-ch), never haitch / hey-ch.
-Meet little **a–l** say the letter **name** (ay / bee / see / dee / ee / eff / jee / aitch / eye / jay / kay / ell), never the sound.
+Meet little **a–z** say the letter **name**, never the sound.
 Meet clips from **J onward**: the letter says **“Hi I’m Big J, Big J, Big J”**
 (that letter). **A** remade (v0.135): mouth **below** the crossbar, not on the bar.
 Slow: **“Big… A… Big… A…”**. Still missing that Big line: **B C D E F G H I**.
