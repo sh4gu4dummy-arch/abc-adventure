@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.110  
+**Version:** v0.111  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 **User tests in Grok live preview**, not APK, unless they ask.
 
@@ -30,6 +30,12 @@ Color-in the letter, not a handwriting test. Crayon clips to the glyph. ~26% of 
 | H heart | Crayon with two points | One-tip crayon; look-at-the-clip QA (not a tip-count law) |
 
 A–Z word videos exist. J–Z remade to locked sentences; A–I older unless later patched (G, H, fish, frog, etc.).
+
+## Chat
+**lmk** = info only, no edits/remakes.
+
+## Meet B color
+Home B is **blue**. I misread the still as orange and prompted the Meet clip orange. Don’t remake until they ask. B on home = blue 3D letter + blue tile wash. C is the orange buddy.
 
 ## Meet B (v0.110)
 Remade: first take went magenta with extra eyes in the B holes. New clip stays orange, two eyes, holes empty, one voice. Don’t ship a letter-buddy that recolors or grows extra eyes.

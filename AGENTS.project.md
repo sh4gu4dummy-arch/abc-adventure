@@ -5,6 +5,11 @@ When the user corrects a clip, **add the lesson here** (and in
 `src/data/word-lessons.ts` RULES) in the same change. Do not only remember it
 in chat.
 
+## Chat: “lmk”
+
+If they say **lmk** (let me know): **answer in chat only**. Do not edit,
+remake, commit, or ship until they ask. Info, not action.
+
 ## Word videos
 
 1. Sentence = what is on screen. Write sentence + clip together. Approve
@@ -25,8 +30,9 @@ in chat.
    One of each limb — one tail, two arms, two legs. Extra ends = redo.
    Letter-buddy eyes sit ON the letter body, not in a hole or gap.
    Letter-buddy face is on the **front only**. A turn shows a blank back —
-   never a second face. Letter-buddy **stays the still’s color**. Holes in
-   the letter are empty holes — not extra eyes.
+   never a second face. Letter-buddy **matches the home-tile color** — don’t
+   recolor (home B is blue, not orange). Holes in the letter are empty holes
+   — not extra eyes.
    Letter-buddy stills must **fill the tile like the neighbors**: letter-color
    wash to the edges, character large. Never a small figure on white/gray
    studio. After any remake, compare fill vs D/H before shipping. Do not
