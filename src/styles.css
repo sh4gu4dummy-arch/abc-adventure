@@ -511,6 +511,11 @@ html[data-layout="desktop"] .letters-grid {
 
 html[data-case="lower"] .letter-tile-art {
   object-position: center;
+  opacity: 1;
+}
+
+html[data-case="lower"] .letter-tile-glyph {
+  display: none;
 }
 
 .letter-tile-glyph {
