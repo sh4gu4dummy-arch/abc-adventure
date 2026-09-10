@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.116  
+**Version:** v0.117  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 **User tests in Grok live preview**, not APK, unless they ask.
 
@@ -31,11 +31,14 @@ Color-in the letter, not a handwriting test. Crayon clips to the glyph. ~26% of 
 
 A–Z word videos exist. J–Z remade to locked sentences; A–I older unless later patched (G, H, fish, frog, etc.).
 
+## Meet F (v0.117)
+Coral-pink like home F. Two eyes on the spine, gaps empty, one voice.
+
 ## Meet D remake (v0.116)
 Thumbnail + clip: face on the D spine, hole empty (no eyes/mouth in the hole). Green.
 
 ## Meet D / E (v0.115)
-Same as A–C: 6s, match home color (D green, E purple), two eyes, empty holes/gaps, one cartoon voice in the clip. F–Z still bounce puppets.
+Same as A–C: 6s, match home color (D green, E purple), two eyes, empty holes/gaps, one cartoon voice in the clip.
 
 ## Meet C (v0.114)
 Same as A/B: 6s, orange like home C, two eyes on the body (not in the C gap), one cartoon voice in the clip, teacher overlay off.
@@ -61,7 +64,7 @@ Old take `.mp4`s removed from `public/art-archive` so Publish doesn’t pack the
 Stills stay for Settings → Art archive. `public/review` not touched.
 
 ## Meet A / B (v0.107)
-6s dance. **One voice** — theirs, in the clip. Teacher overlay off. Don’t stack extra TTS. Face on the front only. F–Z still bounce puppets until named. Don’t batch 26.
+6s dance. **One voice** — theirs, in the clip. Teacher overlay off. Don’t stack extra TTS. Face on the front only. G–Z still bounce puppets until named. Don’t batch 26.
 `scripts/ship-letter-videos.py` PACKS → t2i → i2v (mouths closed + foley, no speech) → encode **keep audio** → `nativeAudio: true` → **5-frame QA** (`scripts/qa-word-frames.py`) → poster=frame1 → TTS append-only `speech-map.ts`.  
 Stop on Imagine fail; don’t kneejerk. Look at the clip. If it’s obviously wrong, redo — don’t write a crayon-tip law.
 
