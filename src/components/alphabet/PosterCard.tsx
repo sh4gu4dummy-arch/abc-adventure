@@ -78,7 +78,7 @@ export function PosterCard({
             >
               {displayGlyph(letter, caseKind)}
             </span>
-            <span className="text-center text-sm font-semibold text-ink-soft">{word.hint}</span>
+            <span className="text-center text-sm font-semibold text-ink-soft">{displayWord(word.word, caseKind)}</span>
           </div>
         )}
         <div
@@ -102,10 +102,14 @@ export function PosterCard({
           </div>
         )}
       </div>
-      <div className="flex items-start justify-between gap-2 p-3 sm:p-4">
-        <div className="min-w-0">
-          <LetterWord word={displayWord(word.word, caseKind)} accent={accent} size={compact ? "sm" : "md"} />
-          <p className="mt-1 truncate text-xs font-medium text-muted sm:text-sm">{word.hint}</p>
+      <div className="flex items-center justify-between gap-2 p-2.5 sm:p-3">
+        <div className="min-w-0 flex-1">
+          <LetterWord
+            word={displayWord(word.word, caseKind)}
+            accent={accent}
+            size={compact ? "sm" : "md"}
+            className="block leading-tight break-words"
+          />
         </div>
         <span
           role="button"
