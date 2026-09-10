@@ -10,6 +10,7 @@ in chat.
 If they say **lmk** (let me know): **answer in chat only**. Do not edit,
 remake, commit, or ship until they ask. Info, not action.
 After every GitHub push, **tell them the version** in chat (v0.112, etc.).
+Letter **names** use USA pronunciation. H is **aitch** (AY-ch), never haitch / hey-ch.
 
 ## Word videos
 

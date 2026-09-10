@@ -159,7 +159,7 @@ export const LETTERS: LetterEntry[] = [
   },
   {
     letter: "H",
-    name: "aych",
+    name: "aitch",
     hue: "#FFD43B",
     accent: "#F59F00",
     sound: "/h/",
