@@ -31,7 +31,7 @@ import {
   tryCompleteLetter,
   useProgress,
 } from "@/lib/progress";
-import { speak, speakLetter } from "@/lib/speak";
+import { speak, speakLetter, primeAudioFromGesture } from "@/lib/speak";
 import { cn } from "@/lib/utils";
 import { VersionBadge } from "@/components/alphabet/VersionBadge";
 
@@ -130,14 +130,8 @@ function LetterPage() {
 
   function openWord(w: WordEntry) {
     const lesson = getWordLesson(entry!.letter, w.slug);
-    const key = `${entry!.letter.toLowerCase()}-${w.slug}`;
-    const seen = seenSet.has(key);
-    if (lesson && !seen) {
-      setLessonWord(w);
-      return;
-    }
     if (lesson) {
-      // Already unlocked — open lesson modal for replay, or lightbox
+      primeAudioFromGesture();
       setLessonWord(w);
       return;
     }
@@ -395,8 +389,8 @@ function LetterPage() {
             alreadySeen={seenSet.has(key)}
             onClose={() => setLessonWord(null)}
             onUnlocked={() => tryCompleteLetter(entry.letter)}
-            onPrev={canHop && prevW ? () => setLessonWord(prevW) : undefined}
-            onNext={canHop && nextW ? () => setLessonWord(nextW) : undefined}
+            onPrev={canHop && prevW ? () => { primeAudioFromGesture(); setLessonWord(prevW); } : undefined}
+            onNext={canHop && nextW ? () => { primeAudioFromGesture(); setLessonWord(nextW); } : undefined}
             prevLabel={prevW?.word}
             nextLabel={nextW?.word}
           />

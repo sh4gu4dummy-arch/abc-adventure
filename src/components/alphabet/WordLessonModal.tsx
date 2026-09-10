@@ -5,7 +5,7 @@ import type { WordLesson } from "@/data/word-lessons";
 import { LetterWord } from "./LetterWord";
 import { VoiceToggle } from "./VoiceToggle";
 import { assetUrl } from "@/lib/assets";
-import { speak, stopSpeech } from "@/lib/speak";
+import { speak, stopSpeech, primeAudioFromGesture } from "@/lib/speak";
 import { markWordSeen } from "@/lib/progress";
 import { getGfxSnapshot, shouldPlayLessonVideo } from "@/lib/gfx-pref";
 import { cn } from "@/lib/utils";
@@ -183,7 +183,9 @@ export function WordLessonModal({
       }
     }
 
-    // Attach video src only when High and playing — never preload 156 clips
+    // Kick off video in the background. Never await it before the 3-word
+    // intro — first-open buffering delayed speech so autoplay skipped the
+    // words, while Replay (already buffered) still said them.
     if (wantVideo) {
       const video = videoRef.current;
       if (video) {
@@ -199,8 +201,15 @@ export function WordLessonModal({
           } catch {
             /* not seekable yet */
           }
-          await video.play();
-          setShowVideo(true);
+          void video
+            .play()
+            .then(() => {
+              if (!cancelledRef.current && !finishing.current) setShowVideo(true);
+            })
+            .catch(() => {
+              setVideoFailed(true);
+              setShowVideo(false);
+            });
         } catch {
           setVideoFailed(true);
           setShowVideo(false);
@@ -416,6 +425,7 @@ export function WordLessonModal({
               type="button"
               onClick={(e) => {
                 e.stopPropagation();
+                primeAudioFromGesture();
                 onPrev();
               }}
               className="absolute left-2 top-1/2 z-[5] flex size-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-on-light shadow-lg"
@@ -429,6 +439,7 @@ export function WordLessonModal({
               type="button"
               onClick={(e) => {
                 e.stopPropagation();
+                primeAudioFromGesture();
                 onNext();
               }}
               className="absolute right-2 top-1/2 z-[5] flex size-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-on-light shadow-lg"
