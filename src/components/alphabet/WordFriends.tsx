@@ -35,7 +35,7 @@ export function WordFriends({
               className="aspect-[3/4] w-full object-cover"
               loading="lazy"
             />
-            <figcaption className="truncate px-1 py-1 text-center text-[10px] font-bold text-ink">
+            <figcaption className="break-words px-1 py-1 text-center text-[10px] font-bold leading-tight text-ink">
               {w.word}
             </figcaption>
           </figure>

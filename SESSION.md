@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.156  
+**Version:** v0.157  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 **User tests in Grok live preview**, not APK, unless they ask.
 
@@ -33,8 +33,8 @@ really is done. Tap to play again (v0.129).
 
 A–Z word videos exist. J–Z remade to locked sentences; A–I older unless later patched (G, H, fish, frog, etc.).
 
-## Word cards (v0.156)
-No hint under the word. Title wraps instead of cropping.
+## Word cards (v0.156 / v0.157)
+Same for Big and little, all 26: word only, no hint, no crop.
 
 ## Little e (v0.155)
 Eyes on the top of the e, hole empty. Icon + Meet.

@@ -101,16 +101,6 @@ export function PosterCard({
             Seen
           </div>
         )}
-      </div>
-      <div className="flex items-center justify-between gap-2 p-2.5 sm:p-3">
-        <div className="min-w-0 flex-1">
-          <LetterWord
-            word={displayWord(word.word, caseKind)}
-            accent={accent}
-            size={compact ? "sm" : "md"}
-            className="block leading-tight break-words"
-          />
-        </div>
         <span
           role="button"
           tabIndex={0}
@@ -125,11 +115,19 @@ export function PosterCard({
               speakWord(word.word);
             }
           }}
-          className="flex size-10 shrink-0 items-center justify-center rounded-full border-2 border-border bg-surface-soft text-ink-soft hover:bg-sky/40"
+          className="absolute bottom-2 right-2 flex size-9 items-center justify-center rounded-full border-2 border-white/70 bg-surface/90 text-ink shadow-sm"
           aria-label={`Say ${word.word}`}
         >
           <Volume2 className="size-4" />
         </span>
+      </div>
+      <div className="px-2.5 py-2 sm:px-3 sm:py-2.5">
+        <LetterWord
+          word={displayWord(word.word, caseKind)}
+          accent={accent}
+          size={compact ? "sm" : "md"}
+          className="block w-full text-center leading-tight break-words"
+        />
       </div>
     </button>
   );
