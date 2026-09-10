@@ -58,9 +58,9 @@ in chat.
 12. Archive old art; never overwrite originals. Use Imagine API download
     into `public/` (locker may fail). Copy stills into the repo immediately.
     **Old video takes:** git history is the backup. Do not keep a second
-    `.mp4` copy in `public/art-archive` (Publish packs everything under
-    `public/`). Restore from GitHub if we change our mind. Stills for the
-    Settings art page can stay.
+    `.mp4` copy in `public/art-archive` or a `public/review` dump (Publish
+    packs everything under `public/`). Restore from GitHub if we change our
+    mind. Stills for the Settings art page can stay.
 13. **GitHub:** after every commit, push. Do not ask.
 14. **Ship QA — every remake, before replacing `public/videos`.** Look at
     the clip, not just the thumbnail (dump start / mid / end with

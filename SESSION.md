@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.108  
+**Version:** v0.109  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 **User tests in Grok live preview**, not APK, unless they ask.
 
@@ -30,6 +30,9 @@ Color-in the letter, not a handwriting test. Crayon clips to the glyph. ~26% of 
 | H heart | Crayon with two points | One-tip crayon; look-at-the-clip QA (not a tip-count law) |
 
 A–Z word videos exist. J–Z remade to locked sentences; A–I older unless later patched (G, H, fish, frog, etc.).
+
+## Review dump (v0.109)
+`public/review` removed from the app copy (QA scratch videos). Restore from GitHub commit `9519075` (v0.108).
 
 ## Archive videos (v0.108)
 Old take `.mp4`s removed from `public/art-archive` so Publish doesn’t pack them.

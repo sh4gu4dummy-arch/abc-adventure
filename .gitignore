@@ -55,3 +55,4 @@ screenshots/
 
 # Old take videos — GitHub history keeps them; do not ship in Publish
 public/art-archive/**/*.mp4
+public/review/

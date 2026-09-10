@@ -71,7 +71,6 @@ include_dirs = [
   "public/audio",
   "public/icons",
   "public/art-archive",
-  "public/review",
 ]
 skip_dir_names = {
   "node_modules", ".git", "portable", "screenshots", "artifacts",
