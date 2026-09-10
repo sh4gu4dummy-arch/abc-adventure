@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { Check, ChevronLeft, ChevronRight, Play, X, Volume2 } from "lucide-react";
 import type { WordEntry } from "@/data/alphabet";
 import type { WordLesson } from "@/data/word-lessons";
-import { LetterWord } from "./LetterWord";
 import { VoiceToggle } from "./VoiceToggle";
 import { assetUrl } from "@/lib/assets";
 import { speak, stopSpeech, primeAudioFromGesture } from "@/lib/speak";
@@ -403,7 +402,7 @@ export function WordLessonModal({
         className="relative flex h-full w-full max-w-lg flex-col overflow-hidden bg-surface shadow-[var(--shadow-float)] sm:h-auto sm:max-h-[min(94dvh,900px)] sm:rounded-[var(--radius-xl)] sm:border-2 sm:border-border"
         style={{ background: `linear-gradient(180deg, ${hue}33 0%, var(--color-surface) 42%)` }}
       >
-        <div className="flex items-center justify-between gap-2 p-3">
+        <div className="flex shrink-0 items-center justify-between gap-2 p-3">
           <VoiceToggle compact preview={phase !== "playing"} />
           <button
             type="button"
@@ -415,8 +414,8 @@ export function WordLessonModal({
           </button>
         </div>
 
-                <div
-          className="relative mx-3 aspect-[3/4] overflow-hidden rounded-[var(--radius-lg)] border-2 border-white/70 shadow-[var(--shadow-poster)] sm:mx-5"
+        <div
+          className="relative mx-3 min-h-0 flex-1 overflow-hidden rounded-[var(--radius-lg)] border-2 border-white/70 shadow-[var(--shadow-poster)] sm:mx-5 sm:flex-none sm:aspect-[3/4]"
           style={{
             background: `linear-gradient(160deg, ${hue}44, ${hue}11 55%, #1a1d2e)`,
           }}
@@ -502,30 +501,6 @@ export function WordLessonModal({
             </button>
           )}
 
-          {(phase === "playing" || phase === "done") && (
-            <div className="pointer-events-none absolute inset-x-0 bottom-14 z-[3] flex justify-center px-4">
-              {caption === "word" && (
-                <div
-                  className="rounded-[var(--radius-lg)] bg-white px-5 py-3 text-center shadow-lg"
-                  style={{ border: `3px solid ${accent}` }}
-                >
-                  <p
-                    className="font-display text-4xl font-black tracking-wide text-on-light sm:text-5xl"
-                  >
-                    {lesson.word.toUpperCase()}
-                  </p>
-                </div>
-              )}
-              {caption === "sentence" && (
-                <div className="rounded-[var(--radius-lg)] bg-white px-5 py-3 text-center shadow-lg">
-                  <p className="font-display text-xl font-bold text-on-light sm:text-2xl">
-                    {lesson.sentence}
-                  </p>
-                </div>
-              )}
-            </div>
-          )}
-
           {phase === "playing" && seekReady && (
             <>
               <button
@@ -597,9 +572,26 @@ export function WordLessonModal({
           )}
         </div>
 
-        <div className="space-y-3 p-4 sm:p-5">
-          <LetterWord word={word.word} accent={accent} size="xl" />
-          <p className="text-base font-semibold text-ink-soft">{lesson.sentence}</p>
+        <div className="mx-3 mt-3 min-h-16 sm:mx-5">
+          {caption === "sentence" ? (
+            <div className="rounded-[var(--radius-lg)] bg-white px-4 py-2.5 text-center shadow-md">
+              <p className="font-display text-lg font-bold text-on-light sm:text-xl">
+                {lesson.sentence}
+              </p>
+            </div>
+          ) : (
+            <div
+              className="rounded-[var(--radius-lg)] bg-white px-4 py-2.5 text-center shadow-md"
+              style={{ border: `3px solid ${accent}` }}
+            >
+              <p className="font-display text-3xl font-black tracking-wide text-on-light sm:text-4xl">
+                {lesson.word.toUpperCase()}
+              </p>
+            </div>
+          )}
+        </div>
+
+        <div className="shrink-0 space-y-3 p-4 sm:p-5">
           <p className="text-xs font-medium text-muted">
             {alreadySeen || phase === "done"
               ? lite

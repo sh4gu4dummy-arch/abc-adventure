@@ -1,12 +1,12 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.100  
+**Version:** v0.101  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 **User tests in Grok live preview**, not APK, unless they ask.
 
 ## App
 Kids alphabet. Word lessons: `public/videos/{letter}-{slug}.mp4` (10s, 540×720, h264).
-**Old clips:** no audio track. Hear sfx + looping music + TTS.
+Word overlay captions sit **under** the video (v0.101), not on top of the picture.
 **New remakes:** keep I2V foley. Player unmutes clip (~0.55) under overlay TTS (word ×3 + sentence). Overlap OK. Set `nativeAudio: true` so the generic music bed stays off. Do not batch-remake.
 
 ## Sound mix (v0.098)
