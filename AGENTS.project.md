@@ -37,7 +37,8 @@ lowercase later.
    Letter-buddy face is on the **front only**. A turn shows a blank back —
    never a second face. Letter-buddy **matches the home-tile color** — don’t
    recolor (home B is blue, not orange). Holes in the letter are empty holes
-   — not extra eyes.
+   — not extra eyes. The letter **must read as that letter** even in a small
+   square crop (K is two open legs, never an R-bowl).
    Letter-buddy stills must **fill the tile like the neighbors**: letter-color
    wash to the edges, character large. Never a small figure on white/gray
    studio. After any remake, compare fill vs D/H before shipping. Do not
