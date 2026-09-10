@@ -17,7 +17,6 @@ import {
   ProfileGate,
 } from "@/components/alphabet/ProfileGate";
 import { DailyPath } from "@/components/alphabet/DailyPath";
-import { LayoutToggle } from "@/components/alphabet/LayoutToggle";
 import { CaseToggle } from "@/components/alphabet/CaseToggle";
 import { useCaseMode } from "@/lib/case-mode";
 import { VersionBadge } from "@/components/alphabet/VersionBadge";
@@ -63,8 +62,6 @@ function Home() {
             </Link>
           </div>
         </div>
-
-        <LayoutToggle compact />
 
         <div className="min-w-0">
           <p className="inline-flex items-center gap-1.5 rounded-[var(--radius-pill)] bg-accent/15 px-3 py-1 text-xs font-bold uppercase tracking-wider text-accent">

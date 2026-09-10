@@ -132,7 +132,6 @@ function HomeView() {
           <div className="flex flex-wrap gap-2">
             <VoiceToggle compact />
             <ThemeToggle compact />
-            <LayoutToggle compact />
             <GfxToggle compact />
           </div>
           <StarBar />
@@ -205,7 +204,14 @@ function HomeView() {
         })}
       </div>
 
-      <footer className="mt-10 space-y-2 text-center text-sm text-muted">
+      <section className="card-surface mt-8 rounded-[var(--radius-lg)] p-3 sm:p-4">
+        <p className="mb-2 text-xs font-bold tracking-wide text-muted">
+          Portrait / Landscape
+        </p>
+        <LayoutToggle />
+      </section>
+
+      <footer className="mt-6 space-y-2 text-center text-sm text-muted">
         <p className="font-medium">
           Offline portable · Progress on this device · 156 posters + videos · AI voice · no internet
         </p>
@@ -274,7 +280,6 @@ function LetterView({ entry }: { entry: LetterEntry }) {
           <VersionBadge />
           <VoiceToggle compact />
           <ThemeToggle compact />
-          <LayoutToggle compact />
           <GfxToggle compact />
           <StarBar />
         </div>
