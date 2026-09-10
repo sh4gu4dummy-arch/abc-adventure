@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.161  
+**Version:** v0.162  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 **User tests in Grok live preview**, not APK, unless they ask.
 
@@ -32,6 +32,9 @@ really is done. Tap to play again (v0.129).
 | H heart | Crayon with two points | One-tip crayon; look-at-the-clip QA (not a tip-count law) |
 
 A–Z word videos exist. J–Z remade to locked sentences; A–I older unless later patched (G, H, fish, frog, etc.).
+
+## Meet little h i (v0.162)
+h = aitch, i = eye.
 
 ## Meet little g (v0.161)
 Says “jee”. Same character as the icon.
