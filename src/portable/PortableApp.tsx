@@ -185,7 +185,7 @@ function HomeView() {
             >
               {!failed && (
                 <img
-                  src={letterHeroPath(L.letter)}
+                  src={letterHeroPath(L.letter, caseKind)}
                   alt=""
                   className="absolute inset-0 h-full w-full object-cover opacity-35 mix-blend-overlay"
                   onError={() => setImgFail((s) => ({ ...s, [L.letter]: true }))}
@@ -287,7 +287,7 @@ function LetterView({ entry }: { entry: LetterEntry }) {
         }}
       >
         <img
-          src={letterHeroPath(entry.letter)}
+          src={letterHeroPath(entry.letter, caseKind)}
           alt=""
           className="pointer-events-none absolute -right-6 -top-6 h-40 w-40 rounded-3xl object-cover opacity-40 sm:h-52 sm:w-52"
           onError={(e) => {

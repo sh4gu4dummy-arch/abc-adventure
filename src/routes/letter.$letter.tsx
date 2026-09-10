@@ -192,7 +192,7 @@ function LetterPage() {
         <div className="relative flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-4">
             <img
-              src={letterHeroPath(entry.letter)}
+              src={letterHeroPath(entry.letter, caseKind)}
               alt=""
               className="size-[5.5rem] shrink-0 cursor-pointer rounded-[1.4rem] border-4 border-white/85 object-cover shadow-lg sm:size-28"
               decoding="async"

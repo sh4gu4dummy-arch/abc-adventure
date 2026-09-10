@@ -130,7 +130,7 @@ function Home() {
               >
                 {!imgFail[L.letter] && (
                   <img
-                    src={letterHeroPath(L.letter)}
+                    src={letterHeroPath(L.letter, caseKind)}
                     alt=""
                     className="letter-tile-art"
                     loading="lazy"

@@ -5,6 +5,7 @@ import {
   type LetterChecklist,
 } from "@/lib/progress";
 import { letterHeroPath } from "@/data/alphabet";
+import { useCaseMode } from "@/lib/case-mode";
 import { cn } from "@/lib/utils";
 
 const STICKER_EMOJI: Record<string, string> = {
@@ -48,6 +49,7 @@ export function LetterCompleteBanner({
   accent: string;
 }) {
   const progress = useProgress();
+  const { mode } = useCaseMode();
   const check = getLetterChecklist(letter, progress);
   const done = progress.completed.includes(letter.toUpperCase());
 
@@ -70,7 +72,7 @@ export function LetterCompleteBanner({
         </p>
         <span className="size-10 overflow-hidden rounded-xl border-2 border-white/70 shadow-sm" aria-hidden>
           <img
-            src={letterHeroPath(letter)}
+            src={letterHeroPath(letter, mode)}
             alt=""
             className="size-full object-cover"
           />

@@ -555,9 +555,16 @@ export function wordBuddyPath(letter: string, slug: string): string {
   return `${assetUrl(`posters/${sceneKey(letter, slug)}.webp`)}?v=${APP_VERSION}`;
 }
 
-/** Letter mascot (always a letter-buddy). */
-export function letterHeroPath(letter: string): string {
-  return `${assetUrl(`letters/${letter.toLowerCase()}.webp`)}?v=${APP_VERSION}`;
+/** Letter mascot. Little a–c have their own stills; other letters fall back to Big. */
+const LITTLE_HERO = new Set(["a", "b", "c"]);
+
+export function letterHeroPath(letter: string, kind: CaseKind = "upper"): string {
+  const l = letter.toLowerCase();
+  const v = `?v=${APP_VERSION}`;
+  if (kind === "lower" && LITTLE_HERO.has(l)) {
+    return assetUrl(`letters/${l}-little.webp`) + v;
+  }
+  return assetUrl(`letters/${l}.webp`) + v;
 }
 
 /** 10s local bounce, or Imagine clip when we have one. */
