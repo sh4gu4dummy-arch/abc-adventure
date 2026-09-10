@@ -186,23 +186,9 @@ function HomeView() {
                 <img
                   src={letterHeroPath(L.letter, caseKind)}
                   alt=""
-                  className={
-                    caseKind === "lower"
-                      ? "absolute inset-0 h-full w-full object-cover"
-                      : "absolute inset-0 h-full w-full object-cover opacity-35 mix-blend-overlay"
-                  }
+                  className="absolute inset-0 h-full w-full object-cover"
                   onError={() => setImgFail((s) => ({ ...s, [L.letter]: true }))}
                 />
-              )}
-              {caseKind === "upper" && (
-                <>
-                  <span className="relative font-display text-4xl font-bold drop-shadow-md sm:text-5xl">
-                    {displayGlyph(L.letter, caseKind)}
-                  </span>
-                  <span className="relative mt-0.5 text-[10px] font-bold uppercase tracking-wide opacity-90 sm:text-xs">
-                    {L.words[0].word}
-                  </span>
-                </>
               )}
               {seen && (
                 <span className="absolute right-1.5 top-1.5 size-2.5 rounded-full bg-star ring-2 ring-white/80" />

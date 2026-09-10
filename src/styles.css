@@ -505,33 +505,20 @@ html[data-layout="desktop"] .letters-grid {
   height: 100%;
   object-fit: cover;
   object-position: center 20%;
-  opacity: 0.72;
+  opacity: 1;
   pointer-events: none;
 }
 
 html[data-case="lower"] .letter-tile-art {
   object-position: center;
-  opacity: 1;
-}
-
-html[data-case="lower"] .letter-tile-glyph {
-  display: none;
 }
 
 .letter-tile-glyph {
-  position: relative;
-  font-family: var(--font-display);
-  font-size: 2.15rem;
-  font-weight: 900;
-  line-height: 1;
-  color: #fff;
-  text-shadow:
-    0 1px 0 rgb(43 45 66 / 0.35),
-    0 2px 8px rgb(43 45 66 / 0.45);
+  display: none;
 }
 
 html[data-layout="desktop"] .letter-tile-glyph {
-  font-size: 2.6rem;
+  display: none;
 }
 
 .letter-tile-badge {
