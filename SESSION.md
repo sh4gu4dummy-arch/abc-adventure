@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.107  
+**Version:** v0.108  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 **User tests in Grok live preview**, not APK, unless they ask.
 
@@ -30,6 +30,11 @@ Color-in the letter, not a handwriting test. Crayon clips to the glyph. ~26% of 
 | H heart | Crayon with two points | One-tip crayon; look-at-the-clip QA (not a tip-count law) |
 
 A–Z word videos exist. J–Z remade to locked sentences; A–I older unless later patched (G, H, fish, frog, etc.).
+
+## Archive videos (v0.108)
+Old take `.mp4`s removed from `public/art-archive` so Publish doesn’t pack them.
+**Restore from GitHub:** commit `685dc79` (v0.107) still has all 174 clips.
+Stills stay for Settings → Art archive. `public/review` not touched.
 
 ## Meet A / B (v0.107)
 6s dance. **One voice** — theirs, in the clip. Teacher overlay off. Don’t stack extra TTS. Face on the front only. C–Z still bounce puppets until named. Don’t batch 26.

@@ -1,6 +1,11 @@
-# Art archive — nothing was deleted
+# Art archive — stills only
 
-All original artwork still lives in the project.
+Old **videos** are not kept here anymore (Publish size). They still live
+in GitHub git history — last commit that had them: `685dc79` (v0.107).
+Example restore: `git show 685dc79:public/art-archive/h-horse-old-treadmill.mp4`
+
+All original **stills** still live in the project.
+
 
 | Path | What it is | Home in the app |
 |---|---|---|
