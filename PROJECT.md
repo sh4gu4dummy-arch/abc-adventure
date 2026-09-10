@@ -35,7 +35,7 @@ Kids alphabet learning app (ages ~3–6): 26 letters, cartoon posters, neural vo
 To **complete** a letter and earn a sticker:
 1. See all **6 word posters**
 2. **Sound** (hear the sound once)
-3. **Trace** (mark “I traced it!”)
+3. **Trace** (big and little letter; mark “I traced it!”)
 4. Finish **any game**: Match, Pairs (memory), I Spy, Story, or Aa hunt
 
 Celebration: confetti + modal via `abc-letter-complete` event.
@@ -113,7 +113,7 @@ npm run build:apk      # only when asked
 
 ## Versioning & downloads
 
-- **Current version:** `0.122` (`v0.122`) — stored in `VERSION` and `src/lib/version.ts` (keep in sync).
+- **Current version:** `0.123` (`v0.123`) — stored in `VERSION` and `src/lib/version.ts` (keep in sync).
 
 ## GitHub + Grok Publish cadence
 

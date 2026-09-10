@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.122  
+**Version:** v0.123  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 **User tests in Grok live preview**, not APK, unless they ask.
 
@@ -30,6 +30,9 @@ Color-in the letter, not a handwriting test. Crayon clips to the glyph. ~26% of 
 | H heart | Crayon with two points | One-tip crayon; look-at-the-clip QA (not a tip-count law) |
 
 A–Z word videos exist. J–Z remade to locked sentences; A–I older unless later patched (G, H, fish, frog, etc.).
+
+## Trace cases (v0.123)
+Trace pad has **Big / little** toggle. Either case counts as traced.
 
 ## Meet K–O (v0.122)
 Big-letter line. K coral, L lime, M cyan, N orange, O coral-red. O thumbnail remade: face on the ring, hole empty (same as D/G).

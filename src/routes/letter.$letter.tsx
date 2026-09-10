@@ -315,8 +315,9 @@ function LetterPage() {
         <section className="space-y-3">
           <h2 className="font-display text-xl font-bold text-ink">Trace {entry.letter}</h2>
           <p className="text-sm font-semibold text-ink-soft">
-            Color in the big letter with your finger. A little outside is OK.
-            When you’ve colored enough, the letter fills in — that counts.
+            Color the big letter or the little letter with your finger. A little
+            outside is OK. When you’ve colored enough, the letter fills in —
+            that counts.
           </p>
           <TracePad
             letter={entry.letter}

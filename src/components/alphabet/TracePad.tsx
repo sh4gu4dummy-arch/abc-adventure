@@ -8,12 +8,8 @@ import { speak } from "@/lib/speak";
 const COVER_THRESHOLD = 0.26;
 const INK_WIDTH = 36;
 
-function letterFont(h: number) {
-  return `800 ${Math.floor(h * 0.76)}px system-ui, Nunito, Fredoka, sans-serif`;
-}
-
-function glyphOrigin(w: number, h: number) {
-  return { x: w / 2, y: h / 2 + 4 };
+function letterFont(h: number, lower: boolean) {
+  return `800 ${Math.floor(h * (lower ? 0.86 : 0.76))}px system-ui, Nunito, Fredoka, sans-serif`;
 }
 
 function paintGlyph(
@@ -22,13 +18,15 @@ function paintGlyph(
   w: number,
   h: number,
   mode: "fill" | "stroke" | "both",
+  lower: boolean,
 ) {
-  const { x, y } = glyphOrigin(w, h);
-  ctx.font = letterFont(h);
+  ctx.font = letterFont(h, lower);
   ctx.textAlign = "center";
-  ctx.textBaseline = "middle";
+  ctx.textBaseline = "alphabetic";
   ctx.lineJoin = "round";
   ctx.lineCap = "round";
+  const x = w / 2;
+  const y = h * (lower ? 0.7 : 0.72);
   if (mode === "stroke" || mode === "both") ctx.strokeText(letter, x, y);
   if (mode === "fill" || mode === "both") ctx.fillText(letter, x, y);
 }
@@ -73,7 +71,12 @@ export function TracePad({
   const [cover, setCover] = useState(0);
   const [done, setDone] = useState(false);
   const [startPct, setStartPct] = useState({ x: 50, y: 18 });
-  const guideLetter = letter.toUpperCase();
+  const [caseKind, setCaseKind] = useState<"upper" | "lower">("upper");
+  const upper = letter.toUpperCase();
+  const lowerCh = letter.toLowerCase();
+  const guideLetter = caseKind === "upper" ? upper : lowerCh;
+  const isLower = caseKind === "lower";
+  const spokenName = caseKind === "upper" ? `big ${upper}` : `little ${lowerCh}`;
 
   const publishDebug = useCallback(
     (ratio: number, finished: boolean) => {
@@ -107,22 +110,22 @@ export function TracePad({
         ctx.strokeStyle = accent;
         ctx.lineWidth = 8;
         ctx.setLineDash([]);
-        paintGlyph(ctx, guideLetter, w, h, "both");
+        paintGlyph(ctx, guideLetter, w, h, "both", isLower);
         return;
       }
 
       ctx.fillStyle = accent;
       ctx.globalAlpha = 0.14;
-      paintGlyph(ctx, guideLetter, w, h, "fill");
+      paintGlyph(ctx, guideLetter, w, h, "fill", isLower);
       ctx.globalAlpha = 0.7;
       ctx.strokeStyle = accent;
       ctx.lineWidth = 6;
       ctx.setLineDash([12, 9]);
-      paintGlyph(ctx, guideLetter, w, h, "stroke");
+      paintGlyph(ctx, guideLetter, w, h, "stroke", isLower);
       ctx.setLineDash([]);
       ctx.globalAlpha = 1;
     },
-    [accent, guideLetter],
+    [accent, guideLetter, isLower],
   );
 
   const redraw = useCallback(() => {
@@ -187,8 +190,8 @@ export function TracePad({
     } catch {
       /* progress is optional */
     }
-    void speak(`You traced ${guideLetter}!`);
-  }, [guideLetter, letter, onDone, publishDebug, redraw]);
+    void speak(`You traced ${spokenName}!`);
+  }, [guideLetter, letter, onDone, publishDebug, redraw, spokenName]);
 
   const publishCover = useCallback(() => {
     const ratio = inkedCount.current / letterCount.current;
@@ -247,7 +250,7 @@ export function TracePad({
       if (!gctx) return;
       gctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       gctx.fillStyle = "#000";
-      paintGlyph(gctx, guideLetter, w, h, "fill");
+      paintGlyph(gctx, guideLetter, w, h, "fill", isLower);
       const img = gctx.getImageData(0, 0, pw, ph).data;
       const bits = new Uint8Array(pw * ph);
       let count = 0;
@@ -294,7 +297,7 @@ export function TracePad({
       vctx.fillStyle = "#fff";
       vctx.strokeStyle = "#fff";
       vctx.lineWidth = 26;
-      paintGlyph(vctx, guideLetter, w, h, "both");
+      paintGlyph(vctx, guideLetter, w, h, "both", isLower);
       maskVisRef.current = vis;
 
       const tmp = document.createElement("canvas");
@@ -308,7 +311,7 @@ export function TracePad({
       publishDebug(0, false);
       redraw();
     },
-    [guideLetter, publishDebug, redraw],
+    [guideLetter, isLower, publishDebug, redraw],
   );
 
   useEffect(() => {
@@ -397,6 +400,37 @@ export function TracePad({
 
   return (
     <div className="space-y-3">
+      <div className="flex gap-1.5" role="tablist" aria-label="Big or little letter">
+        <button
+          type="button"
+          role="tab"
+          aria-selected={caseKind === "upper"}
+          onClick={() => setCaseKind("upper")}
+          className="pressable min-h-11 flex-1 rounded-[var(--radius-pill)] border-2 border-border bg-surface px-3 text-sm font-bold text-ink"
+          style={
+            caseKind === "upper"
+              ? { borderColor: accent, color: accent, background: `${accent}18` }
+              : undefined
+          }
+        >
+          Big {upper}
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected={caseKind === "lower"}
+          onClick={() => setCaseKind("lower")}
+          className="pressable min-h-11 flex-1 rounded-[var(--radius-pill)] border-2 border-border bg-surface px-3 text-sm font-bold text-ink"
+          style={
+            caseKind === "lower"
+              ? { borderColor: accent, color: accent, background: `${accent}18` }
+              : undefined
+          }
+        >
+          little {lowerCh}
+        </button>
+      </div>
+
       <div
         className={`relative overflow-hidden rounded-[var(--radius-lg)] border-2 border-border shadow-[var(--shadow-card)] ${done ? "trace-pad-done" : ""}`}
       >
@@ -415,13 +449,13 @@ export function TracePad({
           onPointerMove={pointerMove}
           onPointerUp={pointerUp}
           onPointerCancel={pointerUp}
-          aria-label={`Trace the letter ${guideLetter}`}
+          aria-label={`Trace ${spokenName}`}
         />
         {done && (
           <div className="pointer-events-none absolute inset-x-0 top-0 flex justify-end p-3">
             <span className="trace-done-badge inline-flex items-center gap-1 rounded-[var(--radius-pill)] bg-[var(--color-success)] px-3 py-1.5 text-sm font-bold text-white shadow-[var(--shadow-card)]">
               <Check className="size-4" strokeWidth={3} />
-              You traced {guideLetter}!
+              You traced {spokenName}!
             </span>
           </div>
         )}
@@ -451,8 +485,8 @@ export function TracePad({
         </div>
         <p className="text-sm font-semibold text-ink-soft">
           {done
-            ? `You traced ${guideLetter}!`
-            : "Start at the 1 and color in the letter."}
+            ? `You traced ${spokenName}!`
+            : `Start at the 1 and color in ${caseKind === "upper" ? "the big letter" : "the little letter"}.`}
         </p>
       </div>
 
