@@ -12,6 +12,25 @@ remake, commit, or ship until they ask. Info, not action.
 After every GitHub push, **tell them the version** in chat (v0.112, etc.).
 **Trace:** must cover the **whole letter**, not one stroke (K spine ≠ done).
 Do not drop the cover bar back to ~26%. Spatial cells + ~50% of the glyph.
+
+## Trace rewrite plan (remind on ask)
+
+If they ask for the tracing plan, **remind them of this — don’t start
+building unless they say to**. Saved 2026-09-10.
+
+Why it keeps failing: we swing between a picky stroke-grader and “paint N%
+of pixels.” Pixel % lies (K’s spine is a huge share of the ink).
+
+- **A (recommended):** numbered workbook strokes. Dotted letter, 1–2–3.
+  Done when each stroke gets a pass. Snap-fill is the reward. Capitals
+  first; lowercase later.
+- **B:** keep coloring, but check letter *parts* (K = spine + upper leg +
+  lower leg). I = one stick. O = around the ring.
+- **C:** tiny gate — ink must exist on both sides (or top and bottom).
+  Would have caught spine-only K. Won’t catch every cheat.
+
+Do **not** retune the % again (26 vs 80 vs 50). If they pick, build that
+one. Default if they say “fix tracing” with no letter: **A**.
 Letter **names** use USA pronunciation. H is **aitch** (AY-ch), never haitch / hey-ch.
 Meet clips from **J onward**: the letter says **“Hi I’m Big J, Big J, Big J”**
 (that letter). Do not remake A–I to this line unless asked. Uppercase first;

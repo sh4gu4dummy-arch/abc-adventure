@@ -33,6 +33,12 @@ really is done. Tap to play again (v0.129).
 
 A–Z word videos exist. J–Z remade to locked sentences; A–I older unless later patched (G, H, fish, frog, etc.).
 
+## Trace rewrite plan (remind on ask)
+Saved 2026-09-10. Recap — don’t build until they say so.
+Pixel % lies (K spine). Don’t retune 26/80/50.
+**A (pick this):** numbered 1–2–3 strokes, capitals first.
+B: part-maps. C: left+right ink gate.
+
 ## Trace coverage (v0.130)
 K spine-only was giving a check. Now 50% + every region of the letter.
 
