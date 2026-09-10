@@ -560,7 +560,7 @@ export function wordBuddyPath(letter: string, slug: string): string {
 }
 
 /** Letter mascot. Little a–c have their own stills; other letters fall back to Big. */
-const LITTLE_HERO = new Set(["a", "b", "c"]);
+const LITTLE_HERO = new Set(["a", "b", "c", "d", "e", "f"]);
 
 export function letterHeroPath(letter: string, kind: CaseKind = "upper"): string {
   const l = letter.toLowerCase();
