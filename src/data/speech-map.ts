@@ -1265,4 +1265,5 @@ export const SPEECH_MAP: Record<string, string> = {
   "Zed writes a zero.": "90b51cb3fb7e2fb4.mp3",
   "Zed runs a zigzag.": "fc3b89f0a310970b.mp3",
   "Zed washes a zucchini.": "f628a9973c3e871b.mp3",
+  "Mia hikes up the mountain.": "c4b99c2c2e9569cd.mp3",
 };

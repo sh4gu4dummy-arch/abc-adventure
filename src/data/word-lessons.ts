@@ -150,7 +150,7 @@ export const WORD_LESSONS: Record<string, WordLesson> = {
   "m-moon": { ...lesson("M", "moon", "Moon", "Mia smiles at the moon."), durationSec: 10, loopVideo: true },
   "m-monkey": { ...lesson("M", "monkey", "Monkey", "The monkey hangs by its tail."), durationSec: 10, loopVideo: true },
   "m-mouse": { ...lesson("M", "mouse", "Mouse", "The mouse nibbles cheese."), durationSec: 10, loopVideo: true },
-  "m-mountain": { ...lesson("M", "mountain", "Mountain", "Mia hikes the mountain."), durationSec: 10, loopVideo: true },
+  "m-mountain": { ...lesson("M", "mountain", "Mountain", "Mia hikes up the mountain."), durationSec: 10, loopVideo: true },
   "m-milk": { ...lesson("M", "milk", "Milk", "Mia sips milk."), durationSec: 10, loopVideo: true },
   "m-mushroom": { ...lesson("M", "mushroom", "Mushroom", "A mushroom pops up."), durationSec: 10, loopVideo: false },
   // --- Letter N ---

@@ -49,7 +49,7 @@ PACKS: dict[str, list[dict]] = {
         {"slug": "mouse", "word": "Mouse", "sentence": "The mouse nibbles cheese.",
          "still": "Tiny cute mouse nibbling a wedge of yellow cheese. Cheese is food, no face. Not scary.",
          "motion": "The mouse NIBBLES the cheese. Cheese has no face. Camera locked. Simple kids animation, no morphing."},
-        {"slug": "mountain", "word": "Mountain", "sentence": "Mia hikes the mountain.",
+        {"slug": "mountain", "word": "Mountain", "sentence": "Mia hikes up the mountain.",
          "still": "Cartoon girl about 5 hiking up a sunny mountain trail with a small backpack.",
          "motion": "The girl HIKES up the mountain. Camera locked. Simple kids animation, no morphing."},
         {"slug": "milk", "word": "Milk", "sentence": "Mia sips milk.",
