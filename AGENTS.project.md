@@ -9,6 +9,13 @@ in chat.
 
 If they say **lmk** (let me know): **answer in chat only**. Do not edit,
 remake, commit, or ship until they ask. Info, not action.
+
+## Chat: pick before ship
+
+If you generate **2+ options** (stills, Meet clips, posters, anything
+visual): **show them and ask which to keep**. Do not pick a winner and
+ship it. Wait for their pick. Same if two takes look usable.
+
 After every GitHub push, **tell them the version** in chat (v0.112, etc.).
 **Trace:** must cover the **whole letter**, not one stroke (K spine ≠ done).
 Do not drop the cover bar back to ~26%. Spatial cells + ~50% of the glyph.
