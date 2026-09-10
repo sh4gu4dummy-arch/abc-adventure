@@ -35,6 +35,10 @@ export function getCaseMode(): CaseKind {
   return mode;
 }
 
+export function initCaseMode() {
+  init();
+}
+
 export function setCaseMode(next: CaseKind) {
   init();
   if (next === mode) return;

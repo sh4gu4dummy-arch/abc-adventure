@@ -102,6 +102,27 @@ html.theme-light {
   color-scheme: light;
 }
 
+/* Big ABC → all UI uppercase. little abc → all UI lowercase. */
+html[data-case="upper"] body {
+  text-transform: uppercase;
+}
+html[data-case="lower"] body {
+  text-transform: lowercase;
+}
+html[data-case="lower"] .uppercase,
+html[data-case="lower"] .letter-tile-badge {
+  text-transform: lowercase !important;
+}
+html[data-case="upper"] .lowercase,
+html[data-case="upper"] .normal-case {
+  text-transform: uppercase !important;
+}
+html[data-case] input,
+html[data-case] textarea,
+html[data-case] [data-case-lock] {
+  text-transform: none !important;
+}
+
 
 
 @layer base {
