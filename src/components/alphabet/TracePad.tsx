@@ -1,50 +1,49 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Eraser } from "lucide-react";
+import { Check, Eraser } from "lucide-react";
 import { markSection } from "@/lib/progress";
 import { getGfxSnapshot } from "@/lib/gfx-pref";
 import { speak } from "@/lib/speak";
 
-const COLS = 32;
-const ROWS = 26;
-/** Share of the visible letter that ink must touch. Tracing, not coloring in. */
-const COVER_THRESHOLD = 0.48;
-const INK_WIDTH = 18;
-const START_HINT: Record<string, { x: number; y: number }> = {
-  A: { x: 50, y: 22 },
-  B: { x: 32, y: 22 },
-  C: { x: 68, y: 28 },
-  D: { x: 32, y: 22 },
-  E: { x: 32, y: 22 },
-  F: { x: 32, y: 22 },
-  G: { x: 70, y: 30 },
-  H: { x: 30, y: 22 },
-  I: { x: 50, y: 20 },
-  J: { x: 58, y: 20 },
-  K: { x: 32, y: 22 },
-  L: { x: 34, y: 22 },
-  M: { x: 26, y: 78 },
-  N: { x: 30, y: 22 },
-  O: { x: 50, y: 20 },
-  P: { x: 32, y: 22 },
-  Q: { x: 50, y: 20 },
-  R: { x: 32, y: 22 },
-  S: { x: 66, y: 26 },
-  T: { x: 28, y: 22 },
-  U: { x: 30, y: 24 },
-  V: { x: 28, y: 24 },
-  W: { x: 24, y: 24 },
-  X: { x: 30, y: 24 },
-  Y: { x: 30, y: 24 },
-  Z: { x: 30, y: 24 },
-};
-
-function idx(c: number, r: number) {
-  return r * COLS + c;
-}
+/** Fraction of the letter body a kid must color. Close is enough. */
+const COVER_THRESHOLD = 0.26;
+const INK_WIDTH = 36;
 
 function letterFont(h: number) {
-  // System stack first so the coverage mask always paints, even before webfonts.
-  return `700 ${Math.floor(h * 0.62)}px system-ui, Nunito, Fredoka, sans-serif`;
+  return `800 ${Math.floor(h * 0.76)}px system-ui, Nunito, Fredoka, sans-serif`;
+}
+
+function glyphOrigin(w: number, h: number) {
+  return { x: w / 2, y: h / 2 + 4 };
+}
+
+function paintGlyph(
+  ctx: CanvasRenderingContext2D,
+  letter: string,
+  w: number,
+  h: number,
+  mode: "fill" | "stroke" | "both",
+) {
+  const { x, y } = glyphOrigin(w, h);
+  ctx.font = letterFont(h);
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.lineJoin = "round";
+  ctx.lineCap = "round";
+  if (mode === "stroke" || mode === "both") ctx.strokeText(letter, x, y);
+  if (mode === "fill" || mode === "both") ctx.fillText(letter, x, y);
+}
+
+type TraceDebug = {
+  cover: number;
+  done: boolean;
+  letter: string;
+  threshold: number;
+};
+
+declare global {
+  interface Window {
+    __tracePad?: TraceDebug;
+  }
 }
 
 export function TracePad({
@@ -57,259 +56,275 @@ export function TracePad({
   onDone?: () => void;
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const inkRef = useRef<HTMLCanvasElement | null>(null);
+  const maskVisRef = useRef<HTMLCanvasElement | null>(null);
+  const tmpRef = useRef<HTMLCanvasElement | null>(null);
   const drawing = useRef(false);
   const lastPt = useRef<{ x: number; y: number } | null>(null);
-  const letterMask = useRef<Uint8Array>(new Uint8Array(COLS * ROWS));
-  const coreMask = useRef<Uint8Array>(new Uint8Array(COLS * ROWS));
-  const inkMask = useRef<Uint8Array>(new Uint8Array(COLS * ROWS));
-  const letterCellCount = useRef(0);
+  const letterBits = useRef<Uint8Array>(new Uint8Array(0));
+  const inkedBits = useRef<Uint8Array>(new Uint8Array(0));
+  const letterCount = useRef(1);
+  const inkedCount = useRef(0);
+  const pxW = useRef(0);
+  const pxH = useRef(0);
+  const dprRef = useRef(1);
+  const cssRef = useRef({ w: 0, h: 0 });
   const finishedRef = useRef(false);
-  const sizeRef = useRef({ w: 0, h: 0 });
   const [cover, setCover] = useState(0);
   const [done, setDone] = useState(false);
+  const [startPct, setStartPct] = useState({ x: 50, y: 18 });
   const guideLetter = letter.toUpperCase();
 
-  const paintGuide = useCallback(
-    (ctx: CanvasRenderingContext2D, w: number, h: number) => {
-      ctx.clearRect(0, 0, w, h);
+  const publishDebug = useCallback(
+    (ratio: number, finished: boolean) => {
+      window.__tracePad = {
+        cover: ratio,
+        done: finished,
+        letter: guideLetter,
+        threshold: COVER_THRESHOLD,
+      };
+    },
+    [guideLetter],
+  );
+
+  const paintPaper = useCallback(
+    (ctx: CanvasRenderingContext2D, w: number, h: number, filled: boolean) => {
       const dark = document.documentElement.classList.contains("theme-dark");
       ctx.fillStyle = dark ? "#1e2030" : "#fffdf9";
       ctx.fillRect(0, 0, w, h);
-
       ctx.strokeStyle = dark ? "rgba(80, 84, 110, 0.9)" : "rgba(240, 217, 200, 0.9)";
       ctx.lineWidth = 1;
-      for (let y = h * 0.25; y < h; y += h * 0.2) {
+      for (let y = h * 0.2; y < h; y += h * 0.16) {
         ctx.beginPath();
         ctx.moveTo(16, y);
         ctx.lineTo(w - 16, y);
         ctx.stroke();
       }
 
-      ctx.font = letterFont(h);
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      const cx = w / 2;
-      const cy = h / 2 + 4;
+      if (filled) {
+        ctx.fillStyle = accent;
+        ctx.globalAlpha = 1;
+        ctx.strokeStyle = accent;
+        ctx.lineWidth = 8;
+        ctx.setLineDash([]);
+        paintGlyph(ctx, guideLetter, w, h, "both");
+        return;
+      }
 
-      // Soft body — the letter to color in
       ctx.fillStyle = accent;
-      ctx.globalAlpha = 0.16;
-      ctx.fillText(guideLetter, cx, cy);
-
-      // Still outline on the glyph rim (same font + origin as the fill)
-      ctx.globalAlpha = 0.5;
+      ctx.globalAlpha = 0.14;
+      paintGlyph(ctx, guideLetter, w, h, "fill");
+      ctx.globalAlpha = 0.7;
       ctx.strokeStyle = accent;
-      ctx.lineWidth = 4;
-      ctx.lineJoin = "round";
-      ctx.lineCap = "round";
+      ctx.lineWidth = 6;
+      ctx.setLineDash([12, 9]);
+      paintGlyph(ctx, guideLetter, w, h, "stroke");
       ctx.setLineDash([]);
-      ctx.strokeText(guideLetter, cx, cy);
       ctx.globalAlpha = 1;
     },
     [accent, guideLetter],
   );
 
-  const rebuildLetterMask = useCallback(
-    (w: number, h: number) => {
-      const off = document.createElement("canvas");
-      off.width = Math.max(8, Math.round(w));
-      off.height = Math.max(8, Math.round(h));
-      const octx = off.getContext("2d", { willReadFrequently: true });
-      if (!octx) return;
-      octx.clearRect(0, 0, off.width, off.height);
-      octx.fillStyle = "#000";
-      octx.font = letterFont(h);
-      octx.textAlign = "center";
-      octx.textBaseline = "middle";
-      octx.fillText(guideLetter, off.width / 2, off.height / 2 + 4);
-
-      const img = octx.getImageData(0, 0, off.width, off.height).data;
-      const raw = new Uint8Array(COLS * ROWS);
-      const cellW = off.width / COLS;
-      const cellH = off.height / ROWS;
-      let painted = 0;
-
-      for (let r = 0; r < ROWS; r++) {
-        for (let c = 0; c < COLS; c++) {
-          const x0 = Math.floor(c * cellW);
-          const y0 = Math.floor(r * cellH);
-          const x1 = Math.min(off.width, Math.ceil((c + 1) * cellW));
-          const y1 = Math.min(off.height, Math.ceil((r + 1) * cellH));
-          let hit = 0;
-          for (let y = y0; y < y1 && !hit; y += 2) {
-            for (let x = x0; x < x1 && !hit; x += 2) {
-              if (img[(y * off.width + x) * 4 + 3] > 8) hit = 1;
-            }
-          }
-          raw[idx(c, r)] = hit;
-          if (hit) painted += 1;
-        }
-      }
-
-      // If the glyph didn't rasterize, fall back to a fat A-shaped center band
-      if (painted < 10) {
-        for (let r = 3; r < ROWS - 3; r++) {
-          for (let c = 5; c < COLS - 5; c++) {
-            raw[idx(c, r)] = 1;
-          }
-        }
-      }
-
-      const dilated = new Uint8Array(COLS * ROWS);
-      let count = 0;
-      for (let r = 0; r < ROWS; r++) {
-        for (let c = 0; c < COLS; c++) {
-          const on = raw[idx(c, r)];
-          dilated[idx(c, r)] = on;
-          if (on) count += 1;
-        }
-      }
-      const core = new Uint8Array(COLS * ROWS);
-      let coreCount = 0;
-      for (let r = 1; r < ROWS - 1; r++) {
-        for (let c = 1; c < COLS - 1; c++) {
-          if (!dilated[idx(c, r)]) continue;
-          if (
-            dilated[idx(c - 1, r)] &&
-            dilated[idx(c + 1, r)] &&
-            dilated[idx(c, r - 1)] &&
-            dilated[idx(c, r + 1)]
-          ) {
-            core[idx(c, r)] = 1;
-            coreCount += 1;
-          }
-        }
-      }
-      letterMask.current = dilated;
-      coreMask.current = coreCount >= 12 ? core : dilated;
-      letterCellCount.current = Math.max(count, 1);
-    },
-    [guideLetter],
-  );
-
-  const setupCanvas = useCallback(() => {
+  const redraw = useCallback(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
-    const parent = canvas.parentElement;
-    if (!parent) return;
-    const w = parent.clientWidth;
-    if (w < 8) return;
-    const h = Math.min(Math.max(w * 0.85, 240), 420);
-    const cap = getGfxSnapshot().resolved === "lite" ? 1.25 : 2;
-    const dpr = Math.min(window.devicePixelRatio || 1, cap);
-    canvas.width = Math.floor(w * dpr);
-    canvas.height = Math.floor(h * dpr);
-    canvas.style.width = `${w}px`;
-    canvas.style.height = `${h}px`;
+    const ink = inkRef.current;
+    const mask = maskVisRef.current;
+    if (!canvas || !ink || !mask) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const { w, h } = cssRef.current;
+    if (w < 8) return;
+    paintPaper(ctx, w, h, finishedRef.current);
+    if (finishedRef.current) return;
+    const tmp = tmpRef.current;
+    if (!tmp) return;
+    const tctx = tmp.getContext("2d");
+    if (!tctx) return;
+    tctx.globalCompositeOperation = "copy";
+    tctx.drawImage(ink, 0, 0);
+    tctx.globalCompositeOperation = "destination-in";
+    tctx.drawImage(mask, 0, 0);
+    tctx.globalCompositeOperation = "source-over";
+    ctx.drawImage(tmp, 0, 0, w, h);
+  }, [paintPaper]);
 
-    const sizeChanged = sizeRef.current.w !== w || sizeRef.current.h !== h;
-    const hasInk = inkMask.current.some((v) => v === 1);
-    sizeRef.current = { w, h };
-    rebuildLetterMask(w, h);
-    if (sizeChanged || !hasInk) {
-      paintGuide(ctx, w, h);
+  const stamp = useCallback((cssX: number, cssY: number) => {
+    const dpr = dprRef.current;
+    const w = pxW.current;
+    const h = pxH.current;
+    const bits = letterBits.current;
+    const inked = inkedBits.current;
+    if (!w || bits.length !== w * h) return;
+    const cx = Math.round(cssX * dpr);
+    const cy = Math.round(cssY * dpr);
+    const rad = Math.max(10, Math.round((INK_WIDTH / 2) * dpr));
+    const r2 = rad * rad;
+    for (let dy = -rad; dy <= rad; dy++) {
+      const y = cy + dy;
+      if (y < 0 || y >= h) continue;
+      for (let dx = -rad; dx <= rad; dx++) {
+        if (dx * dx + dy * dy > r2) continue;
+        const x = cx + dx;
+        if (x < 0 || x >= w) continue;
+        const i = y * w + x;
+        if (!bits[i] || inked[i]) continue;
+        inked[i] = 1;
+        inkedCount.current += 1;
+      }
     }
-    if (sizeChanged) {
-      inkMask.current.fill(0);
+  }, []);
+
+  const finish = useCallback(() => {
+    if (finishedRef.current) return;
+    finishedRef.current = true;
+    setCover(1);
+    setDone(true);
+    publishDebug(1, true);
+    redraw();
+    try {
+      markSection(letter, "trace");
+      onDone?.();
+    } catch {
+      /* progress is optional */
+    }
+    void speak(`You traced ${guideLetter}!`);
+  }, [guideLetter, letter, onDone, publishDebug, redraw]);
+
+  const publishCover = useCallback(() => {
+    const ratio = inkedCount.current / letterCount.current;
+    if (!finishedRef.current) {
+      setCover((prev) => (Math.abs(prev - ratio) >= 0.01 ? ratio : prev));
+      publishDebug(ratio, false);
+    }
+    if (ratio >= COVER_THRESHOLD) finish();
+  }, [finish, publishDebug]);
+
+  const setupCanvas = useCallback(
+    (mode: "reset" | "resize" = "reset") => {
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+      const parent = canvas.parentElement;
+      if (!parent) return;
+      const w = parent.clientWidth;
+      if (w < 8) return;
+      const h = Math.min(Math.max(w * 0.88, 280), 460);
+      const cap = getGfxSnapshot().resolved === "lite" ? 1.25 : 2;
+      const dpr = Math.min(window.devicePixelRatio || 1, cap);
+      const pw = Math.max(8, Math.floor(w * dpr));
+      const ph = Math.max(8, Math.floor(h * dpr));
+
+      const sizeChanged = cssRef.current.w !== w || cssRef.current.h !== h;
+      if (
+        mode === "resize" &&
+        !sizeChanged &&
+        inkRef.current &&
+        (inkedCount.current > 0 || finishedRef.current)
+      ) {
+        redraw();
+        return;
+      }
+
+      canvas.width = pw;
+      canvas.height = ph;
+      canvas.style.width = `${w}px`;
+      canvas.style.height = `${h}px`;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      const ink = document.createElement("canvas");
+      ink.width = pw;
+      ink.height = ph;
+      const ictx = ink.getContext("2d");
+      if (!ictx) return;
+      ictx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      inkRef.current = ink;
+
+      const glyph = document.createElement("canvas");
+      glyph.width = pw;
+      glyph.height = ph;
+      const gctx = glyph.getContext("2d", { willReadFrequently: true });
+      if (!gctx) return;
+      gctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      gctx.fillStyle = "#000";
+      paintGlyph(gctx, guideLetter, w, h, "fill");
+      const img = gctx.getImageData(0, 0, pw, ph).data;
+      const bits = new Uint8Array(pw * ph);
+      let count = 0;
+      let topX = 0;
+      let topY = ph;
+      let topN = 0;
+      for (let i = 0; i < pw * ph; i++) {
+        if (img[i * 4 + 3] > 24) {
+          bits[i] = 1;
+          count += 1;
+          const y = (i / pw) | 0;
+          const x = i % pw;
+          if (y < topY) {
+            topY = y;
+            topX = x;
+            topN = 1;
+          } else if (y === topY) {
+            topX += x;
+            topN += 1;
+          }
+        }
+      }
+      letterBits.current = bits;
+      inkedBits.current = new Uint8Array(pw * ph);
+      letterCount.current = Math.max(count, 1);
+      inkedCount.current = 0;
+      pxW.current = pw;
+      pxH.current = ph;
+      dprRef.current = dpr;
+      cssRef.current = { w, h };
+      if (topN > 0) {
+        setStartPct({
+          x: ((topX / topN) / pw) * 100,
+          y: (topY / ph) * 100,
+        });
+      }
+
+      const vis = document.createElement("canvas");
+      vis.width = pw;
+      vis.height = ph;
+      const vctx = vis.getContext("2d");
+      if (!vctx) return;
+      vctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      vctx.fillStyle = "#fff";
+      vctx.strokeStyle = "#fff";
+      vctx.lineWidth = 26;
+      paintGlyph(vctx, guideLetter, w, h, "both");
+      maskVisRef.current = vis;
+
+      const tmp = document.createElement("canvas");
+      tmp.width = pw;
+      tmp.height = ph;
+      tmpRef.current = tmp;
+
       finishedRef.current = false;
       setCover(0);
       setDone(false);
-    }
-  }, [paintGuide, rebuildLetterMask]);
+      publishDebug(0, false);
+      redraw();
+    },
+    [guideLetter, publishDebug, redraw],
+  );
 
   useEffect(() => {
-    setupCanvas();
-    const onResize = () => setupCanvas();
+    setupCanvas("reset");
+    const onResize = () => setupCanvas("resize");
     window.addEventListener("resize", onResize);
     let cancelled = false;
     void document.fonts?.ready.then(() => {
-      if (!cancelled) setupCanvas();
+      if (!cancelled) setupCanvas("resize");
     });
     return () => {
       cancelled = true;
       window.removeEventListener("resize", onResize);
+      if (window.__tracePad?.letter === guideLetter) delete window.__tracePad;
     };
-  }, [setupCanvas]);
-
-  function stampInk(x: number, y: number, w: number, h: number) {
-    const c = Math.max(0, Math.min(COLS - 1, Math.floor((x / w) * COLS)));
-    const r = Math.max(0, Math.min(ROWS - 1, Math.floor((y / h) * ROWS)));
-    for (let dr = -1; dr <= 1; dr++) {
-      for (let dc = -1; dc <= 1; dc++) {
-        const rr = r + dr;
-        const cc = c + dc;
-        if (rr < 0 || rr >= ROWS || cc < 0 || cc >= COLS) continue;
-        inkMask.current[idx(cc, rr)] = 1;
-      }
-    }
-  }
-
-  function coverageRatio() {
-    const total = letterCellCount.current;
-    if (total <= 0) return 0;
-    let hit = 0;
-    const letterBits = letterMask.current;
-    const ink = inkMask.current;
-    for (let i = 0; i < letterBits.length; i++) {
-      if (letterBits[i] && ink[i]) hit += 1;
-    }
-    return hit / total;
-  }
-
-  /**
-   * The middle of the letter (A/H bar, B/R bowls, etc.).
-   * Side strokes must not count as the bar — only ink in the inner box.
-   */
-  function connectorComplete() {
-    const bits = letterMask.current;
-    const ink = inkMask.current;
-    let minC = COLS;
-    let maxC = -1;
-    let minR = ROWS;
-    let maxR = -1;
-    for (let r = 0; r < ROWS; r++) {
-      for (let c = 0; c < COLS; c++) {
-        if (!bits[idx(c, r)]) continue;
-        if (c < minC) minC = c;
-        if (c > maxC) maxC = c;
-        if (r < minR) minR = r;
-        if (r > maxR) maxR = r;
-      }
-    }
-    if (maxC < minC) return true;
-    const bw = maxC - minC + 1;
-    const bh = maxR - minR + 1;
-    const c0 = minC + Math.floor(bw * 0.36);
-    const c1 = minC + Math.floor(bw * 0.64);
-    const r0 = minR + Math.floor(bh * 0.32);
-    const r1 = minR + Math.floor(bh * 0.68);
-    let cells = 0;
-    let hit = 0;
-    for (let r = r0; r <= r1; r++) {
-      for (let c = c0; c <= c1; c++) {
-        if (!bits[idx(c, r)]) continue;
-        cells += 1;
-        if (ink[idx(c, r)]) hit += 1;
-      }
-    }
-    // Open letters (C, L) have no interior bar — skip.
-    if (cells < 6) return true;
-    return hit / cells >= 0.4;
-  }
-
-  function publishCover(ratio: number) {
-    setCover((prev) => (Math.abs(prev - ratio) >= 0.01 ? ratio : prev));
-    if (finishedRef.current) return;
-    if (ratio < COVER_THRESHOLD || !connectorComplete()) return;
-    finishedRef.current = true;
-    setDone(true);
-    markSection(letter, "trace");
-    onDone?.();
-    void speak(`Nice tracing! You can keep filling letter ${guideLetter} if you want.`);
-  }
+  }, [guideLetter, setupCanvas]);
 
   function pos(e: React.PointerEvent<HTMLCanvasElement>) {
     const canvas = canvasRef.current!;
@@ -317,77 +332,78 @@ export function TracePad({
     return { x: e.clientX - rect.left, y: e.clientY - rect.top };
   }
 
+  function drawSegment(from: { x: number; y: number }, to: { x: number; y: number }) {
+    const ink = inkRef.current;
+    const ictx = ink?.getContext("2d");
+    if (!ink || !ictx) return;
+    ictx.strokeStyle = accent;
+    ictx.lineWidth = INK_WIDTH;
+    ictx.lineCap = "round";
+    ictx.lineJoin = "round";
+    ictx.beginPath();
+    ictx.moveTo(from.x, from.y);
+    ictx.lineTo(to.x, to.y);
+    ictx.stroke();
+    const dx = to.x - from.x;
+    const dy = to.y - from.y;
+    const steps = Math.max(1, Math.ceil(Math.hypot(dx, dy) / 4));
+    for (let i = 0; i <= steps; i++) {
+      const t = i / steps;
+      stamp(from.x + dx * t, from.y + dy * t);
+    }
+  }
+
   function pointerDown(e: React.PointerEvent<HTMLCanvasElement>) {
     const canvas = canvasRef.current;
-    const ctx = canvas?.getContext("2d");
-    if (!canvas || !ctx) return;
+    if (!canvas) return;
     e.preventDefault();
     drawing.current = true;
-    canvas.setPointerCapture(e.pointerId);
+    try {
+      canvas.setPointerCapture(e.pointerId);
+    } catch {
+      /* synthetic / already captured */
+    }
     const p = pos(e);
     lastPt.current = p;
-    ctx.beginPath();
-    ctx.moveTo(p.x, p.y);
-    ctx.strokeStyle = accent;
-    ctx.lineWidth = INK_WIDTH;
-    ctx.lineCap = "round";
-    ctx.lineJoin = "round";
-    stampInk(p.x, p.y, canvas.clientWidth, canvas.clientHeight);
+    if (!finishedRef.current) {
+      drawSegment(p, p);
+      redraw();
+      publishCover();
+    }
   }
 
   function pointerMove(e: React.PointerEvent<HTMLCanvasElement>) {
-    if (!drawing.current) return;
-    const canvas = canvasRef.current;
-    const ctx = canvas?.getContext("2d");
-    if (!canvas || !ctx) return;
+    if (!drawing.current || finishedRef.current) return;
     const p = pos(e);
-    ctx.lineTo(p.x, p.y);
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.moveTo(p.x, p.y);
-
-    const w = canvas.clientWidth;
-    const h = canvas.clientHeight;
     const prev = lastPt.current ?? p;
-    const dx = p.x - prev.x;
-    const dy = p.y - prev.y;
-    const steps = Math.max(1, Math.ceil(Math.hypot(dx, dy) / 5));
-    for (let i = 1; i <= steps; i++) {
-      const t = i / steps;
-      stampInk(prev.x + dx * t, prev.y + dy * t, w, h);
-    }
+    drawSegment(prev, p);
     lastPt.current = p;
-    publishCover(coverageRatio());
+    redraw();
+    publishCover();
   }
 
   function pointerUp() {
-    if (!drawing.current) return;
     drawing.current = false;
     lastPt.current = null;
-    publishCover(coverageRatio());
+    if (!finishedRef.current) publishCover();
   }
 
   function clear() {
-    finishedRef.current = false;
-    inkMask.current.fill(0);
-    setCover(0);
-    setDone(false);
-    sizeRef.current = { w: 0, h: 0 };
-    setupCanvas();
+    setupCanvas("reset");
   }
 
   const shown = Math.min(100, Math.round(cover * 100));
-  const showGhost = cover < 0.06;
-  const start = START_HINT[guideLetter] ?? { x: 32, y: 22 };
-  const filled = cover >= 0.96;
+  const showGhost = !done && cover < 0.03;
 
   return (
     <div className="space-y-3">
-      <div className="relative overflow-hidden rounded-[var(--radius-lg)] border-2 border-border shadow-[var(--shadow-card)]">
+      <div
+        className={`relative overflow-hidden rounded-[var(--radius-lg)] border-2 border-border shadow-[var(--shadow-card)] ${done ? "trace-pad-done" : ""}`}
+      >
         {showGhost && (
           <span
             className="trace-start-dot"
-            style={{ left: `${start.x}%`, top: `${start.y}%`, background: accent }}
+            style={{ left: `${startPct.x}%`, top: `${startPct.y}%`, background: accent }}
           >
             1
           </span>
@@ -401,17 +417,19 @@ export function TracePad({
           onPointerCancel={pointerUp}
           aria-label={`Trace the letter ${guideLetter}`}
         />
+        {done && (
+          <div className="pointer-events-none absolute inset-x-0 top-0 flex justify-end p-3">
+            <span className="trace-done-badge inline-flex items-center gap-1 rounded-[var(--radius-pill)] bg-[var(--color-success)] px-3 py-1.5 text-sm font-bold text-white shadow-[var(--shadow-card)]">
+              <Check className="size-4" strokeWidth={3} />
+              You traced {guideLetter}!
+            </span>
+          </div>
+        )}
       </div>
 
       <div className="space-y-1.5">
         <div className="flex items-center justify-between text-[11px] font-bold uppercase tracking-wide text-muted">
-          <span>
-            {filled
-              ? "All filled"
-              : done
-                ? "Keep going if you want"
-                : "Keep tracing"}
-          </span>
+          <span>{done ? "You did it" : "Color the letter"}</span>
           <span>{shown}%</span>
         </div>
         <div
@@ -426,21 +444,15 @@ export function TracePad({
             className="h-full rounded-full"
             style={{
               width: `${shown}%`,
-              background: filled
-                ? "var(--color-success)"
-                : done
-                  ? "var(--color-success)"
-                  : accent,
+              background: done ? "var(--color-success)" : accent,
               transition: "width 160ms ease-out",
             }}
           />
         </div>
         <p className="text-sm font-semibold text-ink-soft">
-          {filled
-            ? `Beautiful! Letter ${guideLetter} is all filled in.`
-            : done
-              ? `Nice tracing! You can keep filling ${guideLetter} if you want.`
-              : "Start at the 1. Trace every part of the letter — bars, bowls, and stems."}
+          {done
+            ? `You traced ${guideLetter}!`
+            : "Start at the 1 and color in the letter."}
         </p>
       </div>
 

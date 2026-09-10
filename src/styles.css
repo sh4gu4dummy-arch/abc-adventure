@@ -208,6 +208,44 @@ html.theme-light {
     box-shadow: 0 3px 0 rgba(0, 0, 0, 0.1);
   }
 
+  .trace-pad-done {
+    animation: trace-pop 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .trace-done-badge {
+    animation: trace-badge-in 280ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  @keyframes trace-pop {
+    0% {
+      transform: scale(1);
+    }
+    40% {
+      transform: scale(1.03);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes trace-badge-in {
+    from {
+      opacity: 0;
+      transform: translateY(-8px) scale(0.92);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .trace-pad-done,
+    .trace-done-badge {
+      animation: none;
+    }
+  }
+
   .cv-auto {
     content-visibility: auto;
     contain-intrinsic-size: auto 220px;
