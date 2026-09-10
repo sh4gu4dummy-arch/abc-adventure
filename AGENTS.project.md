@@ -34,6 +34,8 @@ lowercase later.
    Clouds are puffs, not tails. No movie-lookalikes (no McQueen car).
    One of each limb — one tail, two arms, two legs. Extra ends = redo.
    Letter-buddy eyes sit ON the letter body, not in a hole or gap.
+   Letter-buddy has a **mouth** (eyes + smile). Face is complete in
+   **frame 1** — do not fade the eyes in later.
    Letter-buddy face is on the **front only**. A turn shows a blank back —
    never a second face. Letter-buddy **matches the home-tile color** — don’t
    recolor (home B is blue, not orange). Holes in the letter are empty holes
