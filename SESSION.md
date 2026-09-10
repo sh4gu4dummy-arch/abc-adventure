@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.132  
+**Version:** v0.133  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 **User tests in Grok live preview**, not APK, unless they ask.
 
@@ -32,6 +32,9 @@ really is done. Tap to play again (v0.129).
 | H heart | Crayon with two points | One-tip crayon; look-at-the-clip QA (not a tip-count law) |
 
 A–Z word videos exist. J–Z remade to locked sentences; A–I older unless later patched (G, H, fish, frog, etc.).
+
+## Meet A slow Big (v0.133)
+A says “Big… A… Big… A…” with pauses. Still old short clips: B–I.
 
 ## Little avatars a–c (v0.132)
 `letters/a-little.webp` etc. Home/letter hero in little mode. d–z still use Big pics.

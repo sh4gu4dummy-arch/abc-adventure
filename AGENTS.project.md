@@ -33,8 +33,9 @@ Do **not** retune the % again (26 vs 80 vs 50). If they pick, build that
 one. Default if they say “fix tracing” with no letter: **A**.
 Letter **names** use USA pronunciation. H is **aitch** (AY-ch), never haitch / hey-ch.
 Meet clips from **J onward**: the letter says **“Hi I’m Big J, Big J, Big J”**
-(that letter). Do not remake A–I to this line unless asked. Uppercase first;
-lowercase later.
+(that letter). **A** remade (v0.133) slow: **“Big… A… Big… A…”** — pauses,
+not BIGA. Still missing that Big line: **B C D E F G H I**. Do not remake
+those unless asked. Uppercase first; lowercase later.
 
 ## Lowercase / small-letter plan (remind on ask)
 
