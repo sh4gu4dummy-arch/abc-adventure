@@ -9,8 +9,8 @@ import { speak, stopSpeech, primeAudioFromGesture } from "@/lib/speak";
 import { APP_VERSION } from "@/lib/version";
 import { cn } from "@/lib/utils";
 
-/** Meet A–J: cartoon letter voice is in the clip. No teacher overlay. */
-const MEET_SELF_VOICE = new Set(["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]);
+/** Meet A–O: cartoon letter voice is in the clip. No teacher overlay. */
+const MEET_SELF_VOICE = new Set("ABCDEFGHIJKLMNO".split(""));
 
 /**
  * 10s 480p "meet the buddy" — tap to play. Original still stays as poster.
