@@ -158,7 +158,7 @@ export const WORD_LESSONS: Record<string, WordLesson> = {
   "n-night": { ...lesson("N", "night", "Night", "Nina snuggles at night."), durationSec: 10, loopVideo: true },
   "n-nose": { ...lesson("N", "nose", "Nose", "Nina wrinkles her nose."), durationSec: 10, loopVideo: true },
   "n-notebook": { ...lesson("N", "notebook", "Notebook", "Nina writes in a notebook."), durationSec: 10, loopVideo: true },
-  "n-noodle": { ...lesson("N", "noodle", "Noodle", "Nina slurps noodles."), durationSec: 10, loopVideo: true },
+  "n-noodle": { ...lesson("N", "noodle", "Noodles", "Nina slurps noodles."), durationSec: 10, loopVideo: true },
   "n-net": { ...lesson("N", "net", "Net", "Nina catches with a net."), durationSec: 10, loopVideo: true },
   // --- Letter O ---
   "o-orange": { ...lesson("O", "orange", "Orange", "Otto peels an orange."), durationSec: 10, loopVideo: false },

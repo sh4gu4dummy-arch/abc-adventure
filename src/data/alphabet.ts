@@ -284,7 +284,7 @@ export const LETTERS: LetterEntry[] = [
       { word: "Night", slug: "night", hint: "Stars come out" },
       { word: "Nose", slug: "nose", hint: "Sniff sniff" },
       { word: "Notebook", slug: "notebook", hint: "For doodles and words" },
-      { word: "Noodle", slug: "noodle", hint: "Twisty pasta" },
+      { word: "Noodles", slug: "noodle", hint: "Twisty pasta" },
       { word: "Net", slug: "net", hint: "Catches balls and fish" },
     ],
     rhyme: "N is for nest, high in a tree — a soft little home for a bird family!",

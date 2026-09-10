@@ -1266,4 +1266,9 @@ export const SPEECH_MAP: Record<string, string> = {
   "Zed runs a zigzag.": "fc3b89f0a310970b.mp3",
   "Zed washes a zucchini.": "f628a9973c3e871b.mp3",
   "Mia hikes up the mountain.": "c4b99c2c2e9569cd.mp3",
+  "Noodles": "e4e31003f54f41cb.mp3",
+  "Yes! Noodles starts with N!": "e00276058e8d6773.mp3",
+  "Yes! Noodles!": "f8072d8f8b639ab0.mp3",
+  "You found Noodles! Great eyes!": "8c73625c905ddf59.mp3",
+  "Noodles. Noodles. Noodles. Nina slurps noodles.": "575e9fa533f98135.mp3",
 };
