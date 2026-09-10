@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.112  
+**Version:** v0.113  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 **User tests in Grok live preview**, not APK, unless they ask.
 
@@ -35,7 +35,7 @@ A–Z word videos exist. J–Z remade to locked sentences; A–I older unless la
 Blue, matching home tile. Two eyes, empty holes, one voice. Previous orange take was a bad color read.
 
 ## Chat
-**lmk** = info only, no edits/remakes.
+**lmk** = info only, no edits/remakes. After every push, tell them the version.
 
 ## Meet B color
 Home B is **blue**. I misread the still as orange and prompted the Meet clip orange. Don’t remake until they ask. B on home = blue 3D letter + blue tile wash. C is the orange buddy.
