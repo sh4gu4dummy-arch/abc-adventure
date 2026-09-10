@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.117  
+**Version:** v0.118  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 **User tests in Grok live preview**, not APK, unless they ask.
 
@@ -30,6 +30,9 @@ Color-in the letter, not a handwriting test. Crayon clips to the glyph. ~26% of 
 | H heart | Crayon with two points | One-tip crayon; look-at-the-clip QA (not a tip-count law) |
 
 A–Z word videos exist. J–Z remade to locked sentences; A–I older unless later patched (G, H, fish, frog, etc.).
+
+## Meet G/H/I (v0.118)
+G mint, H yellow, I sky blue — match home tiles. Two eyes, empty holes/windows, one voice each. J–Z still puppets.
 
 ## Meet F (v0.117)
 Coral-pink like home F. Two eyes on the spine, gaps empty, one voice.
@@ -64,7 +67,7 @@ Old take `.mp4`s removed from `public/art-archive` so Publish doesn’t pack the
 Stills stay for Settings → Art archive. `public/review` not touched.
 
 ## Meet A / B (v0.107)
-6s dance. **One voice** — theirs, in the clip. Teacher overlay off. Don’t stack extra TTS. Face on the front only. G–Z still bounce puppets until named. Don’t batch 26.
+6s dance. **One voice** — theirs, in the clip. Teacher overlay off. Don’t stack extra TTS. Face on the front only. J–Z still bounce puppets until named. Don’t batch 26.
 `scripts/ship-letter-videos.py` PACKS → t2i → i2v (mouths closed + foley, no speech) → encode **keep audio** → `nativeAudio: true` → **5-frame QA** (`scripts/qa-word-frames.py`) → poster=frame1 → TTS append-only `speech-map.ts`.  
 Stop on Imagine fail; don’t kneejerk. Look at the clip. If it’s obviously wrong, redo — don’t write a crayon-tip law.
 
