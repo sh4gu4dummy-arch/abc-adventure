@@ -1,13 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
-  BookOpen,
   Clapperboard,
   Download,
-  Gamepad2,
   Settings2,
   Sparkles,
 } from "lucide-react";
-import { type ReactNode, useState } from "react";
+import { useState } from "react";
 import { LETTERS, letterHeroPath, displayGlyph } from "@/data/alphabet";
 import { StarBar } from "@/components/alphabet/StarBar";
 import { StickerShelf } from "@/components/alphabet/LetterCompleteBanner";
@@ -152,47 +150,7 @@ function Home() {
 
       <StickerShelf />
       <AchievementsPanel />
-
-      <section className="tips-grid mt-8 mb-2" aria-label="How to play">
-        <Tip
-          icon={<BookOpen className="size-5" />}
-          title="Watch & learn"
-          body="Open a letter, play the word videos, then try sound and trace."
-        />
-        <Tip
-          icon={<Gamepad2 className="size-5" />}
-          title="Play games"
-          body="Memory, story, and letter hunt live on each letter page."
-        />
-        <Tip
-          icon={<Sparkles className="size-5" />}
-          title="Earn stickers"
-          body="Finish the letter checklist to collect stars and stickers."
-        />
-      </section>
     </main>
-  );
-}
-
-function Tip({
-  icon,
-  title,
-  body,
-}: {
-  icon: ReactNode;
-  title: string;
-  body: string;
-}) {
-  return (
-    <div className="flex gap-3">
-      <div className="grid size-10 shrink-0 place-items-center rounded-full bg-primary/12 text-primary">
-        {icon}
-      </div>
-      <div>
-        <p className="font-display font-bold text-ink">{title}</p>
-        <p className="text-sm font-medium text-ink-soft">{body}</p>
-      </div>
-    </div>
   );
 }
 
