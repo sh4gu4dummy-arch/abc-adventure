@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.127  
+**Version:** v0.128  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 **User tests in Grok live preview**, not APK, unless they ask.
 
@@ -30,6 +30,9 @@ Color-in the letter, not a handwriting test. Crayon clips to the glyph. ~26% of 
 | H heart | Crayon with two points | One-tip crayon; look-at-the-clip QA (not a tip-count law) |
 
 A–Z word videos exist. J–Z remade to locked sentences; A–I older unless later patched (G, H, fish, frog, etc.).
+
+## Meet V–Z (v0.128)
+Alphabet Meet clips complete. V magenta, W blue, X coral, Y yellow, Z mint.
 
 ## Meet S–U (v0.127)
 Big-letter line. S yellow, T lime, U periwinkle. Face from frame 1.
@@ -100,7 +103,7 @@ Old take `.mp4`s removed from `public/art-archive` so Publish doesn’t pack the
 Stills stay for Settings → Art archive. `public/review` not touched.
 
 ## Meet A / B (v0.107)
-6s dance. **One voice** — theirs, in the clip. Teacher overlay off. Don’t stack extra TTS. Face on the front only. From **J** on: “Hi I’m Big X, Big X, Big X.” V–Z still bounce puppets until named. Don’t batch 26. Don’t remake A–I to the Big line unless asked.
+6s dance. **One voice** — theirs, in the clip. Teacher overlay off. Don’t stack extra TTS. Face on the front only. From **J** on: “Hi I’m Big X, Big X, Big X.” A–Z Meet clips exist. Don’t remake A–I to the Big line unless asked.
 `scripts/ship-letter-videos.py` PACKS → t2i → i2v (mouths closed + foley, no speech) → encode **keep audio** → `nativeAudio: true` → **5-frame QA** (`scripts/qa-word-frames.py`) → poster=frame1 → TTS append-only `speech-map.ts`.  
 Stop on Imagine fail; don’t kneejerk. Look at the clip. If it’s obviously wrong, redo — don’t write a crayon-tip law.
 
