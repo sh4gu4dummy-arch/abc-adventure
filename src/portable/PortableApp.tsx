@@ -247,7 +247,7 @@ function LetterView({ entry }: { entry: LetterEntry }) {
     }
   }
   const openLesson = openWord != null ? getWordLesson(entry.letter, openWord.slug) : null;
-  const lessonWords = entry.words.filter((w) => getWordLesson(entry.letter, w.slug));
+  const lessonWords = modeWords.filter((w) => getWordLesson(entry.letter, w.slug));
   const lessonIdx = openWord ? lessonWords.findIndex((w) => w.slug === openWord.slug) : -1;
   const prevLessonWord =
     lessonIdx >= 0 && lessonWords.length > 1
@@ -364,8 +364,9 @@ function LetterView({ entry }: { entry: LetterEntry }) {
               word={w}
               imageSrc={posterPath(entry.letter, w.slug)}
               requiresVideo={wordRequiresVideo(entry.letter, w.slug)}
-                onOpen={() => openPoster(w)}
+              onOpen={() => openPoster(w)}
               seen={wordsSeen.has(`${entry.letter.toLowerCase()}-${w.slug}`)}
+              caseKind={caseKind}
             />
           ))}
         </div>
@@ -453,6 +454,7 @@ function LetterView({ entry }: { entry: LetterEntry }) {
           onNext={nextLessonWord ? () => { primeAudioFromGesture(nextLessonWord.word); setOpenWord(nextLessonWord); } : undefined}
           prevLabel={prevLessonWord?.word}
           nextLabel={nextLessonWord?.word}
+          caseKind={caseKind}
         />
       )}
       {openWord && !openLesson && (

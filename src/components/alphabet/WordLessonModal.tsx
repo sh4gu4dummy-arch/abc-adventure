@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Check, ChevronLeft, ChevronRight, Play, X, Volume2 } from "lucide-react";
-import type { WordEntry } from "@/data/alphabet";
+import type { CaseKind, WordEntry } from "@/data/alphabet";
 import type { WordLesson } from "@/data/word-lessons";
 import { VoiceToggle } from "./VoiceToggle";
 import { assetUrl } from "@/lib/assets";
@@ -85,6 +85,7 @@ export function WordLessonModal({
   onNext,
   prevLabel,
   nextLabel,
+  caseKind = "upper",
 }: {
   letter: string;
   accent: string;
@@ -99,6 +100,7 @@ export function WordLessonModal({
   onNext?: () => void;
   prevLabel?: string;
   nextLabel?: string;
+  caseKind?: CaseKind;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const musicRef = useRef<HTMLAudioElement | null>(null);
@@ -585,7 +587,7 @@ export function WordLessonModal({
               style={{ border: `3px solid ${accent}` }}
             >
               <p className="font-display text-3xl font-black tracking-wide text-on-light sm:text-4xl">
-                {lesson.word.toUpperCase()}
+                {caseKind === "upper" ? lesson.word.toUpperCase() : lesson.word.toLowerCase()}
               </p>
             </div>
           )}

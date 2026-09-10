@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Play, Volume2 } from "lucide-react";
-import type { WordEntry } from "@/data/alphabet";
-import { wordBuddyPath } from "@/data/alphabet";
+import type { CaseKind, WordEntry } from "@/data/alphabet";
+import { displayGlyph, displayWord, wordBuddyPath } from "@/data/alphabet";
 import { LetterWord } from "./LetterWord";
 import { speakWord } from "@/lib/speak";
 import { cn } from "@/lib/utils";
@@ -16,6 +16,7 @@ export function PosterCard({
   seen,
   compact,
   requiresVideo,
+  caseKind = "upper",
 }: {
   letter: string;
   accent: string;
@@ -26,6 +27,7 @@ export function PosterCard({
   seen?: boolean;
   compact?: boolean;
   requiresVideo?: boolean;
+  caseKind?: CaseKind;
 }) {
   const fallback = wordBuddyPath(letter, word.slug);
   const [src, setSrc] = useState(imageSrc);
@@ -74,7 +76,7 @@ export function PosterCard({
               className="font-display text-6xl font-bold opacity-90"
               style={{ color: accent }}
             >
-              {letter.toUpperCase()}
+              {displayGlyph(letter, caseKind)}
             </span>
             <span className="text-center text-sm font-semibold text-ink-soft">{word.hint}</span>
           </div>
@@ -84,7 +86,7 @@ export function PosterCard({
           style={{ background: accent }}
           aria-hidden
         >
-          {letter.toUpperCase()}
+          {displayGlyph(letter, caseKind)}
         </div>
         {requiresVideo && !seen && (
           <div
@@ -102,7 +104,7 @@ export function PosterCard({
       </div>
       <div className="flex items-start justify-between gap-2 p-3 sm:p-4">
         <div className="min-w-0">
-          <LetterWord word={word.word} accent={accent} size={compact ? "sm" : "md"} />
+          <LetterWord word={displayWord(word.word, caseKind)} accent={accent} size={compact ? "sm" : "md"} />
           <p className="mt-1 truncate text-xs font-medium text-muted sm:text-sm">{word.hint}</p>
         </div>
         <span

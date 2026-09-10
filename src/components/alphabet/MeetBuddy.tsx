@@ -3,11 +3,14 @@ import { Play, X } from "lucide-react";
 import {
   letterBuddyVideoPath,
   letterHeroPath,
+  displayGlyph,
+  caseTitle,
   type LetterEntry,
 } from "@/data/alphabet";
 import { speak, stopSpeech, primeAudioFromGesture } from "@/lib/speak";
 import { APP_VERSION } from "@/lib/version";
 import { cn } from "@/lib/utils";
+import { useCaseMode } from "@/lib/case-mode";
 
 /** Meet A–Z: cartoon letter voice is in the clip. No teacher overlay. */
 const MEET_SELF_VOICE = new Set("ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""));
@@ -22,6 +25,8 @@ export function MeetBuddyButton({
   entry: LetterEntry;
   onOpen: () => void;
 }) {
+  const { mode } = useCaseMode();
+  const glyph = displayGlyph(entry.letter, mode);
   return (
     <button
       type="button"
@@ -32,7 +37,7 @@ export function MeetBuddyButton({
       className="pressable inline-flex min-h-11 items-center gap-2 rounded-[var(--radius-pill)] bg-white/95 px-4 py-2.5 text-sm font-bold shadow"
       style={{ color: entry.accent }}
     >
-      <Play className="size-4 fill-current" /> Meet {entry.letter}
+      <Play className="size-4 fill-current" /> Meet {glyph}
     </button>
   );
 }
@@ -44,11 +49,13 @@ export function MeetBuddyModal({
   entry: LetterEntry;
   onClose: () => void;
 }) {
+  const { mode } = useCaseMode();
   const videoRef = useRef<HTMLVideoElement>(null);
   const [paused, setPaused] = useState(true);
   const [failed, setFailed] = useState(false);
-  const poster = letterHeroPath(entry.letter);
-  const src = `${letterBuddyVideoPath(entry.letter)}?v=${APP_VERSION}`;
+  const title = caseTitle(entry.letter, mode);
+  const poster = letterHeroPath(entry.letter, mode);
+  const src = `${letterBuddyVideoPath(entry.letter, mode)}?v=${APP_VERSION}`;
   const selfVoice = MEET_SELF_VOICE.has(entry.letter.toUpperCase());
 
   useEffect(() => {
@@ -66,7 +73,7 @@ export function MeetBuddyModal({
     v.addEventListener("canplay", tryPlay, { once: true });
     tryPlay();
     if (!selfVoice) {
-      void speak(`The letter ${entry.letter}`);
+      void speak(`The letter ${title}`);
     }
     return () => {
       stopSpeech();
@@ -79,14 +86,14 @@ export function MeetBuddyModal({
         /* ignore */
       }
     };
-  }, [src, entry.letter, selfVoice]);
+  }, [src, title, selfVoice]);
 
   return (
     <div
       className="modal-scrim fixed inset-0 z-[80] flex items-center justify-center p-0 sm:p-4"
       role="dialog"
       aria-modal="true"
-      aria-label={`Meet letter ${entry.letter}`}
+      aria-label={`Meet ${title}`}
     >
       <div
         className="relative flex h-full w-full max-w-md flex-col overflow-hidden bg-surface shadow-[var(--shadow-float)] sm:h-auto sm:max-h-[min(94dvh,880px)] sm:rounded-[var(--radius-xl)] sm:border-2 sm:border-border"
@@ -95,8 +102,8 @@ export function MeetBuddyModal({
         }}
       >
         <div className="flex items-center justify-between gap-2 p-3">
-          <p className="px-2 text-sm font-bold uppercase tracking-wide text-muted">
-            Meet {entry.letter}
+          <p className="px-2 text-sm font-bold tracking-wide text-muted">
+            Meet {title}
           </p>
           <button
             type="button"

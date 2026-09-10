@@ -309,6 +309,7 @@ function LetterPage() {
                   imageSrc={posterPath(entry.letter, w.slug)}
                   seen={seen}
                   requiresVideo={needsVideo}
+                  caseKind={caseKind}
                   onOpen={() => openWord(w)}
                 />
               );
@@ -386,7 +387,7 @@ function LetterPage() {
         const lesson = getWordLesson(entry.letter, lessonWord.slug);
         if (!lesson) return null;
         const key = `${entry.letter.toLowerCase()}-${lessonWord.slug}`;
-        const lessonWords = entry.words.filter((w) => getWordLesson(entry.letter, w.slug));
+        const lessonWords = modeWords.filter((w) => getWordLesson(entry.letter, w.slug));
         const i = lessonWords.findIndex((w) => w.slug === lessonWord.slug);
         const prevW = i >= 0 ? lessonWords[(i - 1 + lessonWords.length) % lessonWords.length] : undefined;
         const nextW = i >= 0 ? lessonWords[(i + 1) % lessonWords.length] : undefined;
@@ -405,6 +406,7 @@ function LetterPage() {
             onUnlocked={() => tryCompleteLetter(entry.letter)}
             onPrev={canHop && prevW ? () => { primeAudioFromGesture(prevW.word); setLessonWord(prevW); } : undefined}
             onNext={canHop && nextW ? () => { primeAudioFromGesture(nextW.word); setLessonWord(nextW); } : undefined}
+            caseKind={caseKind}
             prevLabel={prevW?.word}
             nextLabel={nextW?.word}
           />

@@ -540,6 +540,10 @@ export function caseTitle(letter: string, kind: CaseKind): string {
   return kind === "upper" ? `Big ${g}` : `little ${g}`;
 }
 
+export function displayWord(word: string, kind: CaseKind): string {
+  return kind === "upper" ? word : word.toLowerCase();
+}
+
 /** Scene art for “what is this word?” (games + word grid). */
 export function posterPath(letter: string, slug: string): string {
   const key = sceneKey(letter, slug);
@@ -569,9 +573,13 @@ export function letterHeroPath(letter: string, kind: CaseKind = "upper"): string
 
 /** 10s local bounce, or Imagine clip when we have one. */
 const IMAGINE_BUDDY = new Set("abcdefghijklmnopqrstuvwxyz".split(""));
+const LITTLE_MEET = new Set(["a"]);
 
-export function letterBuddyVideoPath(letter: string): string {
+export function letterBuddyVideoPath(letter: string, kind: CaseKind = "upper"): string {
   const l = letter.toLowerCase();
+  if (kind === "lower" && LITTLE_MEET.has(l)) {
+    return assetUrl(`videos/imagine/${l}-little.mp4`);
+  }
   if (IMAGINE_BUDDY.has(l)) {
     return assetUrl(`videos/imagine/${l}.mp4`);
   }

@@ -41,7 +41,7 @@ Slow: **“Big… A… Big… A…”**. Still missing that Big line: **B C D E 
 If they ask for the lowercase plan, **remind them of this — don’t start
 building unless they say to**. Saved 2026-09-10. **Started v0.131:** home
 Big/little toggle, 3+3 word split, trace follows the mode. Meet little
-clips still later.
+**a** trial (v0.137). Rest of Meet little later.
 
 - **Default:** one **Big / little toggle for the whole letter page**, not a
   new switch on every tab. Home stays 26 uppercase tiles. Optional later: a
