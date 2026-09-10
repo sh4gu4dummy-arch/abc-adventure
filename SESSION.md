@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.111  
+**Version:** v0.112  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 **User tests in Grok live preview**, not APK, unless they ask.
 
@@ -30,6 +30,9 @@ Color-in the letter, not a handwriting test. Crayon clips to the glyph. ~26% of 
 | H heart | Crayon with two points | One-tip crayon; look-at-the-clip QA (not a tip-count law) |
 
 A–Z word videos exist. J–Z remade to locked sentences; A–I older unless later patched (G, H, fish, frog, etc.).
+
+## Meet B (v0.112)
+Blue, matching home tile. Two eyes, empty holes, one voice. Previous orange take was a bad color read.
 
 ## Chat
 **lmk** = info only, no edits/remakes.
