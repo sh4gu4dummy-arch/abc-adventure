@@ -316,3 +316,18 @@ export function speakLetter(letter: string) {
 export function speakWord(word: string) {
   void speak(word);
 }
+
+/** Call from a tap that opens a lesson so later autoplay speech is allowed. */
+export function primeAudioFromGesture() {
+  if (typeof window === "undefined") return;
+  try {
+    // Near-silent wav during the tap so unmuted lesson speech can autoplay.
+    const a = new Audio(
+      "data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA",
+    );
+    a.volume = 0.01;
+    void a.play().catch(() => {});
+  } catch {
+    /* ignore */
+  }
+}
