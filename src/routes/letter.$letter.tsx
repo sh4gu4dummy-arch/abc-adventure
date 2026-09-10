@@ -6,6 +6,9 @@ import {
   getLetter,
   letterHeroPath,
   posterPath,
+  wordsForCase,
+  displayGlyph,
+  caseTitle,
   type WordEntry,
 } from "@/data/alphabet";
 import { getWordLesson, wordRequiresVideo } from "@/data/word-lessons";
@@ -34,6 +37,8 @@ import {
 import { speak, speakLetter, primeAudioFromGesture } from "@/lib/speak";
 import { cn } from "@/lib/utils";
 import { VersionBadge } from "@/components/alphabet/VersionBadge";
+import { CaseToggle } from "@/components/alphabet/CaseToggle";
+import { useCaseMode } from "@/lib/case-mode";
 
 export const Route = createFileRoute("/letter/$letter")({
   component: LetterPage,
@@ -83,6 +88,7 @@ function LetterPage() {
   const [lightbox, setLightbox] = useState<WordEntry | null>(null);
   const [lessonWord, setLessonWord] = useState<WordEntry | null>(null);
   const [meetOpen, setMeetOpen] = useState(false);
+  const { mode: caseKind } = useCaseMode();
 
   useEffect(() => {
     if (
@@ -125,8 +131,13 @@ function LetterPage() {
 
   const check = getLetterChecklist(entry.letter, progress);
   const isToday = progress.daily.letter === entry.letter;
-  const displayLetter = entry.letter;
+  const displayLetter = displayGlyph(entry.letter, caseKind);
+  const modeTitle = caseTitle(entry.letter, caseKind);
+  const modeWords = wordsForCase(entry, caseKind);
   const seenSet = new Set(progress.wordsSeen);
+  const modeSeen = modeWords.filter((w) =>
+    seenSet.has(`${entry.letter.toLowerCase()}-${w.slug}`),
+  ).length;
 
   function openWord(w: WordEntry) {
     const lesson = getWordLesson(entry!.letter, w.slug);
@@ -189,7 +200,7 @@ function LetterPage() {
             />
             <div className="text-white">
               <p className="text-sm font-bold uppercase tracking-wider text-white/80">
-                Letter {entry.letter}
+                {caseKind === "upper" ? "Big letter" : "little letter"}
               </p>
               <h1 className="font-display text-3xl font-bold drop-shadow sm:text-4xl">
                 {displayLetter}
@@ -228,7 +239,7 @@ function LetterPage() {
                 params={{ letter: prev.letter.toLowerCase() }}
                 className="pressable inline-flex items-center gap-1 rounded-[var(--radius-pill)] bg-white/20 px-3 py-2.5 text-sm font-bold text-white"
               >
-                <ChevronLeft className="size-4" /> {prev.letter}
+                <ChevronLeft className="size-4" /> {displayGlyph(prev.letter, caseKind)}
               </Link>
             )}
             {next && (
@@ -237,7 +248,7 @@ function LetterPage() {
                 params={{ letter: next.letter.toLowerCase() }}
                 className="pressable inline-flex items-center gap-1 rounded-[var(--radius-pill)] bg-white/20 px-3 py-2.5 text-sm font-bold text-white"
               >
-                {next.letter} <ChevronRight className="size-4" />
+                {displayGlyph(next.letter, caseKind)} <ChevronRight className="size-4" />
               </Link>
             )}
           </div>
@@ -245,6 +256,7 @@ function LetterPage() {
       </section>
 
       <div className="mb-4">
+        <CaseToggle letter={entry.letter} accent={entry.accent} className="mb-3" />
         <LetterCompleteBanner letter={entry.letter} accent={entry.accent} />
       </div>
 
@@ -278,11 +290,12 @@ function LetterPage() {
       {tab === "words" && (
         <section aria-label="Word posters">
           <p className="mb-3 text-sm font-semibold text-ink-soft">
-            Tap a poster to watch its story video and unlock the word (
-            {check.words}/{check.wordsTotal}).
+            {modeTitle} words ({modeSeen}/{modeWords.length}). Tap a poster to
+            watch. Switch to {caseKind === "upper" ? "little" : "Big"} for 3
+            more ({check.words}/{check.wordsTotal} for the sticker).
           </p>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-            {entry.words.map((w) => {
+            {modeWords.map((w) => {
               const key = `${entry.letter.toLowerCase()}-${w.slug}`;
               const seen = seenSet.has(key);
               const needsVideo = wordRequiresVideo(entry.letter, w.slug);
@@ -301,27 +314,27 @@ function LetterPage() {
               );
             })}
           </div>
-          <WordFriends entry={entry} />
+          <WordFriends entry={entry} words={modeWords} />
         </section>
       )}
 
       {tab === "sound" && (
         <section className="card-surface space-y-4 rounded-[var(--radius-xl)] p-5">
-          <SoundLesson entry={entry} />
+          <SoundLesson entry={entry} caseKind={caseKind} />
         </section>
       )}
 
       {tab === "trace" && (
         <section className="space-y-3">
-          <h2 className="font-display text-xl font-bold text-ink">Trace {entry.letter}</h2>
+          <h2 className="font-display text-xl font-bold text-ink">Trace {modeTitle}</h2>
           <p className="text-sm font-semibold text-ink-soft">
-            Color the whole letter with your finger — not just one line.
-            A little outside is OK. When the letter is filled enough, it
-            colors in — that counts.
+            Color the whole {caseKind === "upper" ? "big" : "little"} letter
+            with your finger — not just one line. A little outside is OK.
           </p>
           <TracePad
             letter={entry.letter}
             accent={entry.accent}
+            caseKind={caseKind}
             onDone={() => tryCompleteLetter(entry.letter)}
           />
         </section>

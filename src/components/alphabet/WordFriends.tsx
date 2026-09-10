@@ -1,12 +1,19 @@
-import { wordBuddyPath, type LetterEntry } from "@/data/alphabet";
+import { wordBuddyPath, type LetterEntry, type WordEntry } from "@/data/alphabet";
 import { isBuddyWordPoster } from "@/data/art-roles";
 
 /**
  * Home for R–Z word-buddy posters (the letter IS the thing).
  * A–Q posters are already scenes, so this row stays hidden there.
  */
-export function WordFriends({ entry }: { entry: LetterEntry }) {
+export function WordFriends({
+  entry,
+  words,
+}: {
+  entry: LetterEntry;
+  words?: WordEntry[];
+}) {
   if (!isBuddyWordPoster(entry.letter)) return null;
+  const shown = words ?? entry.words;
 
   return (
     <section className="space-y-2" aria-label="Letter friends">
@@ -17,7 +24,7 @@ export function WordFriends({ entry }: { entry: LetterEntry }) {
         These letter-characters still live here — tap a word card above for the real thing.
       </p>
       <div className="flex gap-2 overflow-x-auto pb-1">
-        {entry.words.map((w) => (
+        {shown.map((w) => (
           <figure
             key={w.slug}
             className="w-[4.75rem] shrink-0 overflow-hidden rounded-[1rem] border-2 border-border bg-surface shadow-sm sm:w-20"

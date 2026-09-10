@@ -9,7 +9,8 @@ import {
   Sparkles,
   Star,
 } from "lucide-react";
-import { getLetter } from "@/data/alphabet";
+import { getLetter, displayGlyph } from "@/data/alphabet";
+import { useCaseMode } from "@/lib/case-mode";
 import { persistDailyIfNeeded, useDailyPath, useProgress } from "@/lib/progress";
 import { speak } from "@/lib/speak";
 import { cn } from "@/lib/utils";
@@ -52,12 +53,14 @@ const GOALS: {
 export function DailyPath() {
   const daily = useDailyPath();
   const { stars, completed } = useProgress();
+  const { mode: caseKind } = useCaseMode();
   const allLettersDone = completed.length >= 26;
   const entry = getLetter(daily.letter);
   const doneCount = GOALS.filter((g) => daily.goals[g.id]).length;
   const allDone = daily.completed;
   const hue = entry?.hue ?? "#FF6B6B";
   const accent = entry?.accent ?? "#FF8787";
+  const glyph = displayGlyph(daily.letter, caseKind);
 
   useEffect(() => {
     persistDailyIfNeeded();
@@ -84,8 +87,8 @@ export function DailyPath() {
               {allDone
                 ? "You finished today!"
                 : allLettersDone
-                  ? `Let's play ${daily.letter}`
-                  : `Next letter: ${daily.letter}`}
+                  ? `Let's play ${glyph}`
+                  : `Next letter: ${glyph}`}
             </h2>
             <p className="mt-1 max-w-md text-sm font-medium text-ink-soft">
               {allDone
@@ -136,10 +139,10 @@ export function DailyPath() {
             aria-label={`Open letter ${daily.letter} for today's adventure`}
           >
             <span className="font-display text-4xl font-black leading-none sm:text-5xl">
-              {daily.letter}
+              {glyph}
             </span>
             <span className="text-left text-xs font-bold uppercase tracking-wide text-white/90 sm:text-center">
-              Letter {daily.letter}
+              {caseKind === "upper" ? "Big" : "little"} {glyph}
             </span>
           </Link>
 

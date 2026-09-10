@@ -8,6 +8,8 @@ export type WordEntry = {
   hint: string;
 };
 
+export type CaseKind = "upper" | "lower";
+
 export type LetterEntry = {
   letter: string;
   name: string;
@@ -522,6 +524,20 @@ export const LETTERS: LetterEntry[] = [
 
 export function getLetter(letter: string): LetterEntry | undefined {
   return LETTERS.find((l) => l.letter.toLowerCase() === letter.toLowerCase());
+}
+
+/** First 3 words = Big; last 3 = little. */
+export function wordsForCase(entry: LetterEntry, kind: CaseKind): WordEntry[] {
+  return kind === "upper" ? entry.words.slice(0, 3) : entry.words.slice(3, 6);
+}
+
+export function displayGlyph(letter: string, kind: CaseKind): string {
+  return kind === "upper" ? letter.toUpperCase() : letter.toLowerCase();
+}
+
+export function caseTitle(letter: string, kind: CaseKind): string {
+  const g = displayGlyph(letter, kind);
+  return kind === "upper" ? `Big ${g}` : `little ${g}`;
 }
 
 /** Scene art for “what is this word?” (games + word grid). */

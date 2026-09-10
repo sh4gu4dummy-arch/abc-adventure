@@ -16,6 +16,8 @@ import {
   LETTERS,
   letterHeroPath,
   posterPath,
+  wordsForCase,
+  displayGlyph,
   type LetterEntry,
   type WordEntry,
 } from "@/data/alphabet";
@@ -32,6 +34,8 @@ import { ISpy } from "@/components/alphabet/ISpy";
 import { StoryMode } from "@/components/alphabet/StoryMode";
 import { CaseHunt } from "@/components/alphabet/CaseHunt";
 import { LayoutToggle } from "@/components/alphabet/LayoutToggle";
+import { CaseToggle } from "@/components/alphabet/CaseToggle";
+import { useCaseMode } from "@/lib/case-mode";
 import { GfxToggle } from "@/components/alphabet/GfxToggle";
 import { VersionBadge, VersionCorner } from "@/components/alphabet/VersionBadge";
 import { StarBar } from "@/components/alphabet/StarBar";
@@ -107,6 +111,7 @@ function HomeView() {
   const { visited, wordsSeen, stars } = useProgress();
   const [imgFail, setImgFail] = useState<Record<string, boolean>>({});
   const progressPct = Math.round((visited.length / 26) * 100);
+  const { mode: caseKind } = useCaseMode();
 
   return (
     <main className="mx-auto min-h-dvh w-full max-w-6xl px-4 pb-16 pt-4 sm:px-6 sm:pt-6">
@@ -149,8 +154,10 @@ function HomeView() {
         </div>
       </header>
 
-      <div className="mb-3 flex items-end justify-between gap-3">
-        <h2 className="font-display text-xl font-bold text-ink sm:text-2xl">Pick a letter</h2>
+      <div className="mb-3 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+        <h2 className="font-display text-xl font-bold text-ink sm:text-2xl">
+          {caseKind === "upper" ? "Pick a Big letter" : "Pick a little letter"}
+        </h2>
         <button
           type="button"
           onClick={() => speak("Let's learn the alphabet! Tap any letter to begin.")}
@@ -159,6 +166,7 @@ function HomeView() {
           <Volume2 className="size-3.5" /> Hear intro
         </button>
       </div>
+      <CaseToggle className="mb-3" />
 
       <div className="stagger grid grid-cols-3 gap-2.5 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-7 sm:gap-3">
         {LETTERS.map((L) => {
@@ -184,7 +192,7 @@ function HomeView() {
                 />
               )}
               <span className="relative font-display text-4xl font-bold drop-shadow-md sm:text-5xl">
-                {L.letter}
+                {displayGlyph(L.letter, caseKind)}
               </span>
               <span className="relative mt-0.5 text-[10px] font-bold uppercase tracking-wide opacity-90 sm:text-xs">
                 {L.words[0].word}
@@ -212,7 +220,7 @@ function HomeView() {
 function LetterView({ entry }: { entry: LetterEntry }) {
   const [tab, setTab] = useState<Tab>("words");
   const [openWord, setOpenWord] = useState<WordEntry | null>(null);
-  const [caseMode, setCaseMode] = useState<"upper" | "lower">("upper");
+  const { mode: caseKind } = useCaseMode();
   const progress = useProgress();
 
   useEffect(() => {
@@ -227,8 +235,8 @@ function LetterView({ entry }: { entry: LetterEntry }) {
   const idx = LETTERS.findIndex((l) => l.letter === entry.letter);
   const prev = LETTERS[(idx - 1 + LETTERS.length) % LETTERS.length]!;
   const next = LETTERS[(idx + 1) % LETTERS.length]!;
-  const displayLetter =
-    caseMode === "upper" ? entry.letter.toUpperCase() : entry.letter.toLowerCase();
+  const displayLetter = displayGlyph(entry.letter, caseKind);
+  const modeWords = wordsForCase(entry, caseKind);
 
   function openPoster(w: WordEntry) {
     const lesson = getWordLesson(entry.letter, w.slug);
@@ -295,8 +303,10 @@ function LetterView({ entry }: { entry: LetterEntry }) {
               {displayLetter}
             </div>
             <div className="text-white">
-              <p className="text-sm font-bold uppercase tracking-wider text-white/80">Letter</p>
-              <h1 className="font-display text-3xl font-bold sm:text-4xl">{entry.letter}</h1>
+              <p className="text-sm font-bold uppercase tracking-wider text-white/80">
+                {caseKind === "upper" ? "Big letter" : "little letter"}
+              </p>
+              <h1 className="font-display text-3xl font-bold sm:text-4xl">{displayLetter}</h1>
               <p className="mt-1 text-sm font-semibold text-white/90 sm:text-base">
                 Sound: {entry.sound} · {entry.soundCue}
               </p>
@@ -311,25 +321,10 @@ function LetterView({ entry }: { entry: LetterEntry }) {
             >
               <Volume2 className="size-4" /> Say letter
             </button>
-            <div className="inline-flex overflow-hidden rounded-[var(--radius-pill)] border-2 border-white/50 bg-white/15 text-sm font-bold text-white">
-              <button
-                type="button"
-                onClick={() => setCaseMode("upper")}
-                className={cn("px-3 py-2", caseMode === "upper" && "bg-white/25")}
-              >
-                Aa
-              </button>
-              <button
-                type="button"
-                onClick={() => setCaseMode("lower")}
-                className={cn("px-3 py-2", caseMode === "lower" && "bg-white/25")}
-              >
-                aa
-              </button>
-            </div>
           </div>
         </div>
       </section>
+      <CaseToggle letter={entry.letter} accent={entry.accent} className="mb-4" />
 
       <div className="mb-4 flex gap-1 overflow-x-auto pb-1">
         {TABS.map((t) => {
@@ -360,7 +355,7 @@ function LetterView({ entry }: { entry: LetterEntry }) {
 
       {tab === "words" && (
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-          {entry.words.map((w) => (
+          {modeWords.map((w) => (
             <PosterCard
               key={w.slug}
               letter={entry.letter}
@@ -403,7 +398,9 @@ function LetterView({ entry }: { entry: LetterEntry }) {
         </div>
       )}
 
-      {tab === "trace" && <TracePad letter={displayLetter} accent={entry.accent} />}
+      {tab === "trace" && (
+        <TracePad letter={entry.letter} accent={entry.accent} caseKind={caseKind} />
+      )}
       {tab === "match" && <MatchGame entry={entry} />}
       {tab === "memory" && <MemoryMatch entry={entry} />}
       {tab === "ispy" && <ISpy entry={entry} />}

@@ -8,7 +8,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { type ReactNode, useState } from "react";
-import { LETTERS, letterHeroPath } from "@/data/alphabet";
+import { LETTERS, letterHeroPath, displayGlyph } from "@/data/alphabet";
 import { StarBar } from "@/components/alphabet/StarBar";
 import { StickerShelf } from "@/components/alphabet/LetterCompleteBanner";
 import {
@@ -18,6 +18,8 @@ import {
 } from "@/components/alphabet/ProfileGate";
 import { DailyPath } from "@/components/alphabet/DailyPath";
 import { LayoutToggle } from "@/components/alphabet/LayoutToggle";
+import { CaseToggle } from "@/components/alphabet/CaseToggle";
+import { useCaseMode } from "@/lib/case-mode";
 import { VersionBadge } from "@/components/alphabet/VersionBadge";
 import {
   LETTER_BUDDIES_EPISODES,
@@ -32,6 +34,7 @@ function Home() {
   const [imgFail, setImgFail] = useState<Record<string, boolean>>({});
   const [switching, setSwitching] = useState(false);
   const completePct = Math.round((completed.length / 26) * 100);
+  const { mode: caseKind } = useCaseMode();
 
   return (
     <main className="app-shell">
@@ -72,7 +75,8 @@ function Home() {
             <VersionBadge />
           </h1>
           <p className="mt-1 max-w-lg text-sm font-medium text-ink-soft sm:text-base">
-            Pick a letter — posters, sounds, tracing, and games.
+            Pick a {caseKind === "upper" ? "Big" : "little"} letter — posters,
+            sounds, tracing, and games.
           </p>
         </div>
 
@@ -99,12 +103,15 @@ function Home() {
       <LetterBuddiesCard />
 
       <section className="mb-6" aria-label="Alphabet">
-        <div className="mb-3 flex items-end justify-between gap-2">
-          <h2 className="font-display text-lg font-bold text-ink">Pick a letter</h2>
+        <div className="mb-3 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+          <h2 className="font-display text-lg font-bold text-ink">
+            {caseKind === "upper" ? "Pick a Big letter" : "Pick a little letter"}
+          </h2>
           <p className="text-xs font-semibold text-muted">
             {visited.length > 0 ? `${visited.length}/26 visited` : "Tap any letter"}
           </p>
         </div>
+        <CaseToggle className="mb-3" />
         <div className="letters-grid">
           {LETTERS.map((L) => {
             const done = completed.includes(L.letter);
@@ -133,7 +140,7 @@ function Home() {
                     }
                   />
                 )}
-                <span className="letter-tile-glyph">{L.letter}</span>
+                <span className="letter-tile-glyph">{displayGlyph(L.letter, caseKind)}</span>
                 {today && <span className="letter-tile-badge">Today</span>}
                 {done && !today && (
                   <span className="letter-tile-star" aria-hidden>

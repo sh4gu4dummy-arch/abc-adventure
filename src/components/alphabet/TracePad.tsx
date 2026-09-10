@@ -70,10 +70,13 @@ export function TracePad({
   letter,
   accent,
   onDone,
+  caseKind: lockedCase,
 }: {
   letter: string;
   accent: string;
   onDone?: () => void;
+  /** When set, hide the inner Big/little switch (page already has one). */
+  caseKind?: "upper" | "lower";
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const inkRef = useRef<HTMLCanvasElement | null>(null);
@@ -96,7 +99,8 @@ export function TracePad({
   const [cover, setCover] = useState(0);
   const [done, setDone] = useState(false);
   const [startPct, setStartPct] = useState({ x: 50, y: 18 });
-  const [caseKind, setCaseKind] = useState<"upper" | "lower">("upper");
+  const [localCase, setLocalCase] = useState<"upper" | "lower">("upper");
+  const caseKind = lockedCase ?? localCase;
   const upper = letter.toUpperCase();
   const lowerCh = letter.toLowerCase();
   const guideLetter = caseKind === "upper" ? upper : lowerCh;
@@ -456,12 +460,13 @@ export function TracePad({
 
   return (
     <div className="space-y-3">
+      {!lockedCase && (
       <div className="flex gap-1.5" role="tablist" aria-label="Big or little letter">
         <button
           type="button"
           role="tab"
           aria-selected={caseKind === "upper"}
-          onClick={() => setCaseKind("upper")}
+          onClick={() => setLocalCase("upper")}
           className="pressable min-h-11 flex-1 rounded-[var(--radius-pill)] border-2 border-border bg-surface px-3 text-sm font-bold text-ink"
           style={
             caseKind === "upper"
@@ -475,7 +480,7 @@ export function TracePad({
           type="button"
           role="tab"
           aria-selected={caseKind === "lower"}
-          onClick={() => setCaseKind("lower")}
+          onClick={() => setLocalCase("lower")}
           className="pressable min-h-11 flex-1 rounded-[var(--radius-pill)] border-2 border-border bg-surface px-3 text-sm font-bold text-ink"
           style={
             caseKind === "lower"
@@ -486,6 +491,7 @@ export function TracePad({
           little {lowerCh}
         </button>
       </div>
+      )}
 
       <div
         className={`relative overflow-hidden rounded-[var(--radius-lg)] border-2 border-border shadow-[var(--shadow-card)] ${done ? "trace-pad-done" : ""}`}

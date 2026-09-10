@@ -39,7 +39,9 @@ lowercase later.
 ## Lowercase / small-letter plan (remind on ask)
 
 If they ask for the lowercase plan, **remind them of this — don’t start
-building unless they say to**. Saved 2026-09-10.
+building unless they say to**. Saved 2026-09-10. **Started v0.131:** home
+Big/little toggle, 3+3 word split, trace follows the mode. Meet little
+clips still later.
 
 - **Default:** one **Big / little toggle for the whole letter page**, not a
   new switch on every tab. Home stays 26 uppercase tiles. Optional later: a

@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { Check, Volume2 } from "lucide-react";
-import type { LetterEntry } from "@/data/alphabet";
-import { posterPath, wordBuddyPath } from "@/data/alphabet";
+import type { CaseKind, LetterEntry } from "@/data/alphabet";
+import { posterPath, wordBuddyPath, wordsForCase, displayGlyph, caseTitle } from "@/data/alphabet";
 import { markSection } from "@/lib/progress";
 import { speak, speakWord } from "@/lib/speak";
 import { cn } from "@/lib/utils";
@@ -12,7 +12,13 @@ type StepId = "name" | "sound" | "word";
  * Hear the name, the sound, then a sample word.
  * All three heard → sound section completes (no self-check).
  */
-export function SoundLesson({ entry }: { entry: LetterEntry }) {
+export function SoundLesson({
+  entry,
+  caseKind = "upper",
+}: {
+  entry: LetterEntry;
+  caseKind?: CaseKind;
+}) {
   const [heard, setHeard] = useState<Record<StepId, boolean>>({
     name: false,
     sound: false,
@@ -22,7 +28,9 @@ export function SoundLesson({ entry }: { entry: LetterEntry }) {
   heardRef.current = heard;
   const [playing, setPlaying] = useState<StepId | null>(null);
   const finished = useRef(false);
-  const sample = entry.words[0]!;
+  const glyph = displayGlyph(entry.letter, caseKind);
+  const title = caseTitle(entry.letter, caseKind);
+  const sample = wordsForCase(entry, caseKind)[0]!;
 
   const allHeard = heard.name && heard.sound && heard.word;
 
@@ -30,7 +38,7 @@ export function SoundLesson({ entry }: { entry: LetterEntry }) {
     if (playing) return;
     setPlaying(id);
     if (id === "name") {
-      await speak(`The letter ${entry.letter}`);
+      await speak(`The letter ${title}`);
     } else if (id === "sound") {
       await speak(entry.soundCue);
     } else {
@@ -48,7 +56,7 @@ export function SoundLesson({ entry }: { entry: LetterEntry }) {
   }
 
   const steps: { id: StepId; title: string; hint: string }[] = [
-    { id: "name", title: "Letter name", hint: `This is ${entry.letter}` },
+    { id: "name", title: "Letter name", hint: `This is ${title}` },
     { id: "sound", title: "Letter sound", hint: entry.sound },
     { id: "word", title: "A word", hint: "Listen, then look" },
   ];
@@ -94,7 +102,7 @@ export function SoundLesson({ entry }: { entry: LetterEntry }) {
                   className="font-display text-3xl font-black leading-none"
                   style={{ color: entry.accent }}
                 >
-                  {s.id === "name" ? entry.letter : entry.letter.toLowerCase()}
+                  {s.id === "name" ? glyph : entry.letter.toLowerCase()}
                 </span>
               )}
               <span className="inline-flex items-center gap-1 text-sm font-bold text-ink">

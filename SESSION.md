@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.130  
+**Version:** v0.131  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 **User tests in Grok live preview**, not APK, unless they ask.
 
@@ -32,6 +32,10 @@ really is done. Tap to play again (v0.129).
 | H heart | Crayon with two points | One-tip crayon; look-at-the-clip QA (not a tip-count law) |
 
 A–Z word videos exist. J–Z remade to locked sentences; A–I older unless later patched (G, H, fish, frog, etc.).
+
+## Big / little worlds (v0.131)
+Home toggle. First 3 words = Big, last 3 = little. Trace follows the toggle.
+Sticker still needs all 6 words. Meet stays Big until little clips exist.
 
 ## Trace rewrite plan (remind on ask)
 Saved 2026-09-10. Recap — don’t build until they say so.
