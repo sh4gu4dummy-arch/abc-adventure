@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.157  
+**Version:** v0.158  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 **User tests in Grok live preview**, not APK, unless they ask.
 
@@ -32,6 +32,9 @@ really is done. Tap to play again (v0.129).
 | H heart | Crayon with two points | One-tip crayon; look-at-the-clip QA (not a tip-count law) |
 
 A–Z word videos exist. J–Z remade to locked sentences; A–I older unless later patched (G, H, fish, frog, etc.).
+
+## Little q (v0.158)
+Longer descender tail.
 
 ## Word cards (v0.156 / v0.157)
 Same for Big and little, all 26: word only, no hint, no crop.
