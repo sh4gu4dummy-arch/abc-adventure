@@ -36,9 +36,14 @@ in chat.
     person. Check every frame, not just the thumbnail.
     Handheld props stay kid-scale: smaller than the child's head, not
     giant objects that dwarf them.
-11. Archive old art; never overwrite originals. Use Imagine API download
+11. **No talking mouths.** Word clips have off-screen narration + music
+    only. Characters do not lip-sync or mouth words. Closed-mouth smile
+    unless the gag itself is eating, yawning, or blowing. Check mid-frames
+    for lip-flap before shipping. I2V will invent talking if you don't
+    forbid it — bake "mouth closed, not talking" into still + motion.
+12. Archive old art; never overwrite originals. Use Imagine API download
     into `public/` (locker may fail). Copy stills into the repo immediately.
-12. **GitHub:** after every commit, push. Do not ask.
+13. **GitHub:** after every commit, push. Do not ask.
 
 ## How to write rules
 

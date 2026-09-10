@@ -14,7 +14,13 @@ from pathlib import Path
 ROOT = Path("/workspace")
 STYLE = (
     "Cute 3D vinyl toy kids illustration. Wholesome, friendly, not scary. "
-    "Portrait. "
+    "Portrait. Closed-mouth smile. Not talking. "
+)
+# I2V loves to lip-flap any face. Narration is off-screen — mouths stay shut
+# unless the gag itself is eating, yawning, or blowing.
+SILENT = (
+    " Mouth closed. Not talking. No lip-sync. No mouthing words. "
+    "Action is in the hands and body, not the lips. "
 )
 NO_FACE = "Food has NO face, NO eyes. "
 
@@ -333,7 +339,11 @@ def t2i(prompt: str, out: Path):
 
 
 def i2v(still: Path, prompt: str, out: Path):
-    run(["python3", "scripts/imagine-api-i2v.py", str(still), prompt, str(out), "--duration", "10", "--resolution", "480p"])
+    run([
+        "python3", "scripts/imagine-api-i2v.py", str(still),
+        prompt + SILENT,
+        str(out), "--duration", "10", "--resolution", "480p",
+    ])
 
 
 def encode(src: Path, dest: Path):

@@ -17,6 +17,8 @@
  *    movie-lookalikes. Friendly dinosaurs. Don't reuse the same action
  *    across words. An object stays that object — never morph into a person.
  *    Handheld props stay kid-scale, smaller than the child's head.
+ *    No talking mouths — narration is off-screen; closed-mouth smile
+ *    unless the gag is eating, yawning, or blowing.
  *    Write general rules, not one-incident laws.
  *    Full taste list: AGENTS.project.md.
  */
