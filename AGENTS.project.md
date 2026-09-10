@@ -49,6 +49,8 @@ in chat.
     Prompt for diegetic sound (whoosh, splash, footsteps, animal noise)
     and no speech. State-change gags are one-way: peel stays off, wrapper
     stays off, lamp stays lit. No ping-pong reverse.
+    **Locomotion must travel:** the body changes place in the frame. No
+    treadmill / running-in-place cycles. Travel clips do not loop.
 12. Archive old art; never overwrite originals. Use Imagine API download
     into `public/` (locker may fail). Copy stills into the repo immediately.
 13. **GitHub:** after every commit, push. Do not ask.

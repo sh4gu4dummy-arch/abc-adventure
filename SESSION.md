@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.098  
+**Version:** v0.099  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 **User tests in Grok live preview**, not APK, unless they ask.
 
@@ -23,7 +23,7 @@ Was missing on autoplay, present on Replay (tap). Fixed: shared `HTMLAudioElemen
 | M monkey | Two tails | One tail, rump → branch |
 | M mountain | “Mia hikes the mountain” | **Mia hikes up the mountain.** (same clip) |
 | N noodle | Label singular | **Noodles** (slug still `noodle`) |
-| O orange | Peel ping-ponged back on | One-way peel, stays off |
+| H horse | Treadmill gallop (legs pump, body stays) | Horse travels up the hill; no loop; nativeAudio |
 
 A–Z word videos exist. J–Z remade to locked sentences; A–I older unless later patched (G, H, fish, frog, etc.).
 

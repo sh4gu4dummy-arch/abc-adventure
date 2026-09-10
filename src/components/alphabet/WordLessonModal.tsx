@@ -8,6 +8,7 @@ import { assetUrl } from "@/lib/assets";
 import { speak, stopSpeech, primeAudioFromGesture } from "@/lib/speak";
 import { markWordSeen } from "@/lib/progress";
 import { getGfxSnapshot, shouldPlayLessonVideo } from "@/lib/gfx-pref";
+import { APP_VERSION } from "@/lib/version";
 import { cn } from "@/lib/utils";
 
 type Phase = "ready" | "playing" | "done";
@@ -232,7 +233,7 @@ export function WordLessonModal({
       const video = videoRef.current;
       if (video) {
         try {
-          const src = assetUrl(lesson.video);
+          const src = `${assetUrl(lesson.video)}?v=${APP_VERSION}`;
           if (video.getAttribute("src") !== src) {
             video.src = src;
           }
