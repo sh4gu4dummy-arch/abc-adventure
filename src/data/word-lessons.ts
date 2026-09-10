@@ -26,6 +26,10 @@
  *    State-change gags are one-way (peel stays off). No ping-pong.
  *    Locomotion must travel: the body changes place in the frame. No
  *    treadmill / running-in-place cycles. Travel clips do not loop.
+ *    A tool has one working end (one crayon tip, one brush, one handle).
+ *    Extra tips = redo. Count mid-frames, not just the thumbnail.
+ *    Before shipping a remake: dump 5 frames with
+ *    `python3 scripts/qa-word-frames.py VIDEO` and inspect all of them.
  *    Write general rules, not one-incident laws.
  *    Full taste list: AGENTS.project.md.
  */
@@ -129,7 +133,7 @@ export const WORD_LESSONS: Record<string, WordLesson> = {
   "h-hat": { ...lesson("H", "hat", "Hat", "Hugo puts on his hat."), durationSec: 10, loopVideo: false },
   "h-house": { ...lesson("H", "house", "House", "Hank hides in the house."), durationSec: 10, loopVideo: false },
   "h-horse": { ...lesson("H", "horse", "Horse", "The horse hurries up the hill."), durationSec: 10, loopVideo: false, nativeAudio: true },
-  "h-heart": { ...lesson("H", "heart", "Heart", "Holly draws a heart."), durationSec: 10, loopVideo: false },
+  "h-heart": { ...lesson("H", "heart", "Heart", "Holly draws a heart."), durationSec: 10, loopVideo: false, nativeAudio: true },
   "h-honey": { ...lesson("H", "honey", "Honey", "Hank has honey on his toast."), durationSec: 10, loopVideo: true },
   "h-helicopter": { ...lesson("H", "helicopter", "Helicopter", "The helicopter hovers high."), durationSec: 10, loopVideo: true },
   // --- Letter I ---

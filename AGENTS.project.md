@@ -54,6 +54,14 @@ in chat.
 12. Archive old art; never overwrite originals. Use Imagine API download
     into `public/` (locker may fail). Copy stills into the repo immediately.
 13. **GitHub:** after every commit, push. Do not ask.
+14. **Ship QA — every remake, before replacing `public/videos`.** Dump five
+    frames (`python3 scripts/qa-word-frames.py VIDEO.mp4`) at start / 25 /
+    mid / 75 / end and look at **all of them**. Do not ship on the
+    thumbnail alone. Redo if any frame has: extra limbs or extra animals;
+    a tool with two working ends (two crayon tips, two brush heads, two
+    handles); talking / lip-flap; the subject morphing; treadmill
+    locomotion; food with a face if it gets eaten; a handheld prop bigger
+    than the kid's head. A tool has **one working end**.
 
 ## How to write rules
 

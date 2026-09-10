@@ -474,6 +474,7 @@ def main():
         print("ENC", it["slug"], flush=True)
         encode(raw, vid)
         patch_native_audio(letter, it["slug"])
+        subprocess.run(["python3", "scripts/qa-word-frames.py", str(vid)], cwd=ROOT, check=False)
         poster(vid, ROOT / f"public/posters/{letter.lower()}-{it['slug']}.webp")
         (ROOT / f"public/review/word-videos/{letter.lower()}-{it['slug']}-ship.mp4").write_bytes(vid.read_bytes())
 
