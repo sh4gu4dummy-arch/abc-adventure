@@ -573,7 +573,7 @@ export function letterHeroPath(letter: string, kind: CaseKind = "upper"): string
 
 /** 10s local bounce, or Imagine clip when we have one. */
 const IMAGINE_BUDDY = new Set("abcdefghijklmnopqrstuvwxyz".split(""));
-const LITTLE_MEET = new Set(["a", "b", "c", "d", "e", "f"]);
+const LITTLE_MEET = new Set(["a", "b", "c", "d", "e", "f", "g"]);
 
 export function letterBuddyVideoPath(letter: string, kind: CaseKind = "upper"): string {
   const l = letter.toLowerCase();
