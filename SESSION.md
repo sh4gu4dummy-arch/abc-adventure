@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.105  
+**Version:** v0.106  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 **User tests in Grok live preview**, not APK, unless they ask.
 
@@ -31,8 +31,8 @@ Color-in the letter, not a handwriting test. Crayon clips to the glyph. ~26% of 
 
 A–Z word videos exist. J–Z remade to locked sentences; A–I older unless later patched (G, H, fish, frog, etc.).
 
-## Meet A (v0.105)
-6s dance. He says **A A A** in a cartoon kid voice **in the clip** — teacher overlay is off. Face on the front only; he doesn’t spin a second face onto his back. Other letters still bounce puppets. Don’t batch 26.
+## Meet A (v0.106)
+6s dance. **One voice** — his, in the clip. Teacher overlay off. Don’t stack extra TTS on native speech. Face on the front only. Other letters still bounce puppets. Don’t batch 26.
 `scripts/ship-letter-videos.py` PACKS → t2i → i2v (mouths closed + foley, no speech) → encode **keep audio** → `nativeAudio: true` → **5-frame QA** (`scripts/qa-word-frames.py`) → poster=frame1 → TTS append-only `speech-map.ts`.  
 Stop on Imagine fail; don’t kneejerk. Look at the clip. If it’s obviously wrong, redo — don’t write a crayon-tip law.
 

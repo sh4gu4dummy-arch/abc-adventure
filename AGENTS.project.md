@@ -45,6 +45,8 @@ in chat.
     don't forbid it — bake "mouth closed, not talking" into still + motion.
     **New remakes include native clip sound** (foley, ambient, cartoon SFX
     matching the gag). Do not bake the teacher voice or a song into the MP4.
+    Meet buddy remakes: **one voice** — the letter's. Do not stack extra TTS
+    on top of the clip's speech.
     The player mixes clip audio under the overlay voice; overlap is OK. Set
     `nativeAudio: true` on that lesson so the generic music bed stays off.
     Old silent clips keep the bed until remade — don't batch-remake.

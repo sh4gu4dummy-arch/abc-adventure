@@ -26,7 +26,7 @@ export function MeetBuddyButton({
     <button
       type="button"
       onClick={() => {
-        primeAudioFromGesture(entry.letter);
+        primeAudioFromGesture();
         onOpen();
       }}
       className="pressable inline-flex min-h-11 items-center gap-2 rounded-[var(--radius-pill)] bg-white/95 px-4 py-2.5 text-sm font-bold shadow"
@@ -54,6 +54,7 @@ export function MeetBuddyModal({
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
+    stopSpeech();
     v.src = src;
     v.muted = !selfVoice;
     if (selfVoice) v.volume = 1;
