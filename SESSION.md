@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.149  
+**Version:** v0.150  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 **User tests in Grok live preview**, not APK, unless they ask.
 
@@ -32,6 +32,9 @@ really is done. Tap to play again (v0.129).
 | H heart | Crayon with two points | One-tip crayon; look-at-the-clip QA (not a tip-count law) |
 
 A–Z word videos exist. J–Z remade to locked sentences; A–I older unless later patched (G, H, fish, frog, etc.).
+
+## Little icons a–z (v0.150)
+All 26 little avatars. No Meet videos for d–z yet.
 
 ## Tiles (v0.148 / v0.149)
 Home tiles: thumbnail only in Big and little. No letter overlay.
