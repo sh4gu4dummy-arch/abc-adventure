@@ -26,10 +26,9 @@
  *    State-change gags are one-way (peel stays off). No ping-pong.
  *    Locomotion must travel: the body changes place in the frame. No
  *    treadmill / running-in-place cycles. Travel clips do not loop.
- *    A tool has one working end (one crayon tip, one brush, one handle).
- *    Extra tips = redo. Count mid-frames, not just the thumbnail.
- *    Before shipping a remake: dump 5 frames with
- *    `python3 scripts/qa-word-frames.py VIDEO` and inspect all of them.
+ *    Before shipping a remake: look at start/mid/end frames
+ *    (`python3 scripts/qa-word-frames.py VIDEO`). If anything is
+ *    obviously wrong, redo. Do not write a new one-incident law.
  *    Write general rules, not one-incident laws.
  *    Full taste list: AGENTS.project.md.
  */

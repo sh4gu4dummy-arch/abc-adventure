@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
-"""Dump 5 timeline frames for visual word-video QA.
+"""Dump start / mid / end frames so a remake can be looked at.
 
   python3 scripts/qa-word-frames.py public/videos/h-heart.mp4
 
-Inspect EVERY frame before replacing public/videos. Fail and redo if any
-frame has extra limbs/animals, a prop with two working ends, lip-flap,
-morphing, treadmill locomotion, food-with-a-face, or a giant handheld prop.
-Thumbnail-only review is not QA.
+Watch the frames. If anything is obviously wrong for a kids clip, redo.
+Do not turn one miss into a new hyper-specific law. Thumbnail-only is not QA.
 """
 from __future__ import annotations
 
@@ -16,14 +14,7 @@ from pathlib import Path
 
 CHECKLIST = """
 QA {stem}  ({n} frames → {out})
-Look at each file. Fail the clip if ANY frame has:
-  [ ] extra limbs, extra animals, extra people
-  [ ] a tool with two working ends (two tips, two heads, two handles)
-  [ ] talking / lip-flap (unless eating, yawning, or blowing)
-  [ ] the subject morphing into something else
-  [ ] locomotion that does not travel (treadmill)
-  [ ] food with a face (if a kid eats it)
-  [ ] a handheld prop bigger than the kid's head
+Look at each frame. If anything is obviously wrong, redo.
 """
 
 
