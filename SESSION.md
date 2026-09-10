@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.137  
+**Version:** v0.138  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 **User tests in Grok live preview**, not APK, unless they ask.
 
@@ -33,8 +33,8 @@ really is done. Tap to play again (v0.129).
 
 A–Z word videos exist. J–Z remade to locked sentences; A–I older unless later patched (G, H, fish, frog, etc.).
 
-## Meet little a (v0.137)
-Little mode: lowercase names/badges/word overlay. Trial Meet **a** says “little… a…”. Rest still Big Meet.
+## Meet little a (v0.137 / v0.138)
+Says the letter **name** “ay” (hay), not the sound “ah”. Slow “little… AY…”
 
 ## Letter chrome (v0.136)
 Checklist chips are compact. Words/Sound/Trace/Games tabs are bigger tap targets.
