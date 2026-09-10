@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.142  
+**Version:** v0.143  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 **User tests in Grok live preview**, not APK, unless they ask.
 
@@ -32,6 +32,9 @@ really is done. Tap to play again (v0.129).
 | H heart | Crayon with two points | One-tip crayon; look-at-the-clip QA (not a tip-count law) |
 
 A–Z word videos exist. J–Z remade to locked sentences; A–I older unless later patched (G, H, fish, frog, etc.).
+
+## Little c eyes (v0.143)
+Equal-size eyes on little c still + Meet c.
 
 ## Little font (v0.142)
 little abc uses Sniglet (single-story a, no flag). Big ABC stays Fredoka.
