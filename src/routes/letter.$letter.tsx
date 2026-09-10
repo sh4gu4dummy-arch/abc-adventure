@@ -273,14 +273,14 @@ function LetterPage() {
               type="button"
               onClick={() => setTab(t.id)}
               className={cn(
-                "letter-tab pressable inline-flex flex-1 items-center justify-center gap-1.5 rounded-[var(--radius-pill)] border-2 px-3 py-2 text-sm font-bold sm:flex-none",
+                "letter-tab pressable inline-flex min-h-14 flex-1 items-center justify-center gap-2 rounded-[var(--radius-pill)] border-2 px-3 py-3 text-base font-bold sm:flex-none sm:px-5",
                 active
                   ? "border-transparent text-white"
                   : "border-border bg-surface text-ink-soft",
               )}
               style={active ? { background: entry.accent } : undefined}
             >
-              <Icon className="size-4" />
+              <Icon className="size-5" />
               {t.label}
             </button>
           );

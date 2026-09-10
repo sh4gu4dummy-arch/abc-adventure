@@ -1,4 +1,4 @@
-import { Check, Sparkles, Star } from "lucide-react";
+import { Check, Star } from "lucide-react";
 import {
   getLetterChecklist,
   useProgress,
@@ -56,21 +56,25 @@ export function LetterCompleteBanner({
   return (
     <div
       className={cn(
-        "rounded-[var(--radius-lg)] border-2 p-3 sm:p-4",
+        "rounded-[var(--radius-lg)] border px-2 py-1.5",
         done ? "border-success/40 bg-grass/30" : "border-border bg-surface-soft",
       )}
     >
-      <div className="mb-2 flex items-center justify-between gap-2">
-        <p className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-muted">
-          {done ? (
-            <>
-              <Sparkles className="size-3.5 text-star" /> Letter complete!
-            </>
-          ) : (
-            <>Finish letter checklist</>
-          )}
+      <div className="flex items-center gap-1.5">
+        <p className="hidden shrink-0 text-[10px] font-bold uppercase tracking-wide text-muted sm:block">
+          {done ? "Done" : "To do"}
         </p>
-        <span className="size-10 overflow-hidden rounded-xl border-2 border-white/70 shadow-sm" aria-hidden>
+        <div className="grid min-w-0 flex-1 grid-cols-4 gap-1">
+          <CheckItem
+            label={`${check.words}/${check.wordsTotal}`}
+            ok={check.words >= check.wordsTotal}
+            accent={accent}
+          />
+          <CheckItem label="Sound" ok={check.sound} accent={accent} />
+          <CheckItem label="Trace" ok={check.trace} accent={accent} />
+          <CheckItem label="Game" ok={check.game} accent={accent} />
+        </div>
+        <span className="size-7 shrink-0 overflow-hidden rounded-lg border border-white/70" aria-hidden>
           <img
             src={letterHeroPath(letter, mode)}
             alt=""
@@ -78,19 +82,9 @@ export function LetterCompleteBanner({
           />
         </span>
       </div>
-      <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-        <CheckItem
-          label={`Words ${check.words}/${check.wordsTotal}`}
-          ok={check.words >= check.wordsTotal}
-          accent={accent}
-        />
-        <CheckItem label="Sound" ok={check.sound} accent={accent} />
-        <CheckItem label="Trace" ok={check.trace} accent={accent} />
-        <CheckItem label="A game" ok={check.game} accent={accent} />
-      </div>
       {done && (
-        <p className="mt-2 flex items-center gap-1.5 text-sm font-bold text-ink">
-          <Star className="size-4 fill-star text-star" /> Sticker earned — nice work!
+        <p className="mt-1 flex items-center gap-1 text-[11px] font-bold text-ink">
+          <Star className="size-3 fill-star text-star" /> Sticker earned
         </p>
       )}
     </div>
@@ -109,12 +103,12 @@ function CheckItem({
   return (
     <div
       className={cn(
-        "flex min-h-10 items-center gap-1.5 rounded-xl border-2 px-2 py-1.5 text-xs font-bold",
+        "flex min-h-7 items-center justify-center gap-1 rounded-full border px-1.5 py-0.5 text-[10px] font-bold leading-none",
         ok ? "border-transparent text-white" : "border-border bg-surface text-ink-soft",
       )}
       style={ok ? { background: accent } : undefined}
     >
-      {ok ? <Check className="size-3.5 shrink-0" /> : <span className="size-3.5 shrink-0 rounded-full border-2 border-current opacity-40" />}
+      {ok ? <Check className="size-3 shrink-0" /> : <span className="size-2 shrink-0 rounded-full border border-current opacity-40" />}
       {label}
     </div>
   );
