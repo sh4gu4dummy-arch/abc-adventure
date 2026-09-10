@@ -1,14 +1,16 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.097 (`5315b60`)  
-**GitHub:** sh4gu4dummy-arch/abc-adventure `main` (pushed)  
+**Version:** v0.098  
+**GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 **User tests in Grok live preview**, not APK, unless they ask.
 
 ## App
-Kids alphabet. Word lessons: `public/videos/{letter}-{slug}.mp4` (10s, 540×720, h264, **no audio track**). Player mutes video. Hear: sfx + looping music + TTS (Teacher Ava / Buddy Andrew). Autoplay on open; 3-word intro then sentence.
+Kids alphabet. Word lessons: `public/videos/{letter}-{slug}.mp4` (10s, 540×720, h264).
+**Old clips:** no audio track. Hear sfx + looping music + TTS.
+**New remakes:** keep I2V foley. Player unmutes clip (~0.55) under overlay TTS (word ×3 + sentence). Overlap OK. Set `nativeAudio: true` so the generic music bed stays off. Do not batch-remake.
 
-## Sound verdict (user asked; do not “fix” unless they say)
-Imagine I2V **has** AAC audio. Encode uses ffmpeg `-an` so shipped clips are silent. Player `video.muted = true`. Mouth-flap ≠ hidden voice — model talking-head, we dump its soundtrack.
+## Sound mix (v0.098)
+I2V **has** AAC audio. Old encode used ffmpeg `-an` (stripped it). New encode keeps AAC (falls back to silent if the source has none). Overlay teacher/buddy voice still plays on top. No talking mouths in the picture. Do not bake narration into the MP4.
 
 ## 3-word intro
 Was missing on autoplay, present on Replay (tap). Fixed: shared `HTMLAudioElement`, `primeAudioFromGesture(word)` on poster tap / prev / next, speak starts on that tap. User was on **preview**, not APK.
@@ -26,17 +28,18 @@ Was missing on autoplay, present on Replay (tap). Fixed: shared `HTMLAudioElemen
 A–Z word videos exist. J–Z remade to locked sentences; A–I older unless later patched (G, H, fish, frog, etc.).
 
 ## Pipeline
-`scripts/ship-letter-videos.py` PACKS → t2i → i2v → encode `-an` → poster=frame1 → TTS append-only `speech-map.ts`.  
-STYLE includes closed-mouth. `SILENT` auto-appended to i2v. Stop on Imagine fail; don’t kneejerk.
+`scripts/ship-letter-videos.py` PACKS → t2i → i2v (mouths closed + foley, no speech) → encode **keep audio** → `nativeAudio: true` → poster=frame1 → TTS append-only `speech-map.ts`.  
+Stop on Imagine fail; don’t kneejerk.
 
 ## Taste rules (full list: AGENTS.project.md)
-Sentence = screen. Thumbnail = frame 1. Snappy not creepy. Real anatomy, one of each limb. Food no face. No gag reuse. Object stays object (never morph into a person). Props kid-scale. **No talking mouths** unless eating/yawn/blow. **State-change is one-way** (peel/unwrap/zip/light). Archive then overwrite. Push every commit. Version bump every change. Portable/APK only when asked.
+Sentence = screen. Thumbnail = frame 1. Snappy not creepy. Real anatomy, one of each limb. Food no face. No gag reuse. Object stays object (never morph into a person). Props kid-scale. **No talking mouths** unless eating/yawn/blow. **State-change is one-way** (peel/unwrap/zip/light). Remakes keep native clip sound under overlay voice. Archive then overwrite. Push every commit. Version bump every change. Portable/APK only when asked.
 
 ## Don’t
-- Don’t remake all lip-flap clips unless user names them
+- Don’t remake all clips unless user names them
 - Don’t rebuild APK unless asked
 - Don’t overwrite `speech-map.ts` wholesale — append
 - Don’t use GH token in remote URL after push
+- Don’t strip I2V audio on new remakes
 
 ## Open
-User may name more clips to remake. Chat delivery was dropping (“No response”) — keep replies short.
+User may name clips to remake (those get native sound). Chat delivery was dropping (“No response”) — keep replies short.

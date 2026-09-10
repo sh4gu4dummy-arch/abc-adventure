@@ -36,13 +36,19 @@ in chat.
     person. Check every frame, not just the thumbnail.
     Handheld props stay kid-scale: smaller than the child's head, not
     giant objects that dwarf them.
-11. **No talking mouths.** Word clips have off-screen narration + music
-    only. Characters do not lip-sync or mouth words. Closed-mouth smile
-    unless the gag itself is eating, yawning, or blowing. Check mid-frames
-    for lip-flap before shipping. I2V will invent talking if you don't
-    forbid it — bake "mouth closed, not talking" into still + motion.
-    State-change gags are one-way: peel stays off, wrapper stays off,
-    lamp stays lit. No ping-pong reverse.
+11. **No talking mouths.** Overlay narration still says the word (×3) then
+    the sentence. Characters do not lip-sync or mouth words. Closed-mouth
+    smile unless the gag itself is eating, yawning, or blowing. Check
+    mid-frames for lip-flap before shipping. I2V will invent talking if you
+    don't forbid it — bake "mouth closed, not talking" into still + motion.
+    **New remakes include native clip sound** (foley, ambient, cartoon SFX
+    matching the gag). Do not bake the teacher voice or a song into the MP4.
+    The player mixes clip audio under the overlay voice; overlap is OK. Set
+    `nativeAudio: true` on that lesson so the generic music bed stays off.
+    Old silent clips keep the bed until remade — don't batch-remake.
+    Prompt for diegetic sound (whoosh, splash, footsteps, animal noise)
+    and no speech. State-change gags are one-way: peel stays off, wrapper
+    stays off, lamp stays lit. No ping-pong reverse.
 12. Archive old art; never overwrite originals. Use Imagine API download
     into `public/` (locker may fail). Copy stills into the repo immediately.
 13. **GitHub:** after every commit, push. Do not ask.

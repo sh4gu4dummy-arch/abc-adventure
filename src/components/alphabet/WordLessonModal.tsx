@@ -13,6 +13,10 @@ import { cn } from "@/lib/utils";
 type Phase = "ready" | "playing" | "done";
 type Caption = "none" | "word" | "sentence";
 
+/** Native clip foley sits under overlay narration; overlap is OK. */
+const CLIP_VOLUME = 0.55;
+const MUSIC_VOLUME = 0.18;
+
 function playSfx(path: string | undefined, volume = 0.35): HTMLAudioElement | null {
   if (!path || typeof window === "undefined") return null;
   try {
@@ -23,6 +27,28 @@ function playSfx(path: string | undefined, volume = 0.35): HTMLAudioElement | nu
   } catch {
     return null;
   }
+}
+
+function clipHasAudio(video: HTMLVideoElement): boolean | null {
+  const v = video as HTMLVideoElement & {
+    mozHasAudio?: boolean;
+    webkitAudioDecodedByteCount?: number;
+    audioTracks?: { length: number };
+  };
+  if (typeof v.mozHasAudio === "boolean") return v.mozHasAudio;
+  if (v.audioTracks && typeof v.audioTracks.length === "number") {
+    return v.audioTracks.length > 0;
+  }
+  if (typeof v.webkitAudioDecodedByteCount === "number" && v.webkitAudioDecodedByteCount > 0) {
+    return true;
+  }
+  return null;
+}
+
+function unmuteClip(video: HTMLVideoElement | null) {
+  if (!video) return;
+  video.muted = false;
+  video.volume = CLIP_VOLUME;
 }
 
 /** Freeze on the last painted frame — never snap back to t=0. */
@@ -41,7 +67,8 @@ function holdLastFrame(video: HTMLVideoElement | null) {
 
 /**
  * Fullscreen word lesson:
- * - High: story MP4 + soft music (src attached only on play)
+ * - High: story MP4 + native clip sound (or soft bed if the file is silent)
+ * - Overlay narration always says the word + sentence on top
  * - Lite: sharp poster cinema (no video decode — better look, far less GPU)
  */
 export function WordLessonModal({
@@ -132,6 +159,39 @@ export function WordLessonModal({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  function fadeOutMusic() {
+    const m = musicRef.current;
+    if (!m) return;
+    const step = () => {
+      if (!musicRef.current) return;
+      m.volume = Math.max(0, m.volume - 0.05);
+      if (m.volume > 0.02) requestAnimationFrame(step);
+      else {
+        m.pause();
+        musicRef.current = null;
+      }
+    };
+    requestAnimationFrame(step);
+  }
+
+  function startBedMusic() {
+    if (lite || !lesson.music || musicRef.current || lesson.nativeAudio) return;
+    try {
+      const m = new Audio(assetUrl(lesson.music));
+      m.loop = true;
+      m.volume = MUSIC_VOLUME;
+      musicRef.current = m;
+      void m.play().catch(() => {});
+    } catch {
+      /* optional */
+    }
+  }
+
+  function dropBedIfClipHasSound(video: HTMLVideoElement | null) {
+    if (!video || !musicRef.current) return;
+    if (lesson.nativeAudio || clipHasAudio(video) === true) fadeOutMusic();
+  }
+
   async function finishLesson() {
     if (cancelledRef.current || finishing.current) return;
     finishing.current = true;
@@ -141,19 +201,7 @@ export function WordLessonModal({
     setPhase("done");
     setProgress(1);
     setCaption("sentence");
-    if (musicRef.current) {
-      const m = musicRef.current;
-      const step = () => {
-        if (!m) return;
-        m.volume = Math.max(0, m.volume - 0.05);
-        if (m.volume > 0.02) requestAnimationFrame(step);
-        else {
-          m.pause();
-          musicRef.current = null;
-        }
-      };
-      requestAnimationFrame(step);
-    }
+    fadeOutMusic();
     playSfx(lesson.sfxSuccess, 0.4);
     onUnlocked?.();
     if (cancelledRef.current) return;
@@ -173,17 +221,9 @@ export function WordLessonModal({
 
     playSfx(lesson.sfxPop, 0.3);
 
-    if (lesson.music && !lite) {
-      try {
-        const m = new Audio(assetUrl(lesson.music));
-        m.loop = true;
-        m.volume = 0.18;
-        musicRef.current = m;
-        void m.play().catch(() => {});
-      } catch {
-        /* optional */
-      }
-    }
+    // Silent library clips still get the soft bed. Remakes with nativeAudio
+    // (or a detected soundtrack) skip it so foley + voice can mix.
+    if (!lesson.nativeAudio) startBedMusic();
 
     // Kick off video in the background. Never await it before the 3-word
     // intro — first-open buffering delayed speech so autoplay skipped the
@@ -196,17 +236,24 @@ export function WordLessonModal({
           if (video.getAttribute("src") !== src) {
             video.src = src;
           }
+          // Start muted so autoplay is allowed, then unmute clip foley.
           video.muted = true;
+          video.volume = CLIP_VOLUME;
           video.loop = lesson.loopVideo === true;
           try {
             video.currentTime = 0;
           } catch {
             /* not seekable yet */
           }
+          const onMeta = () => dropBedIfClipHasSound(video);
+          video.addEventListener("loadedmetadata", onMeta, { once: true });
           void video
             .play()
             .then(() => {
-              if (!cancelledRef.current && !finishing.current) setShowVideo(true);
+              if (cancelledRef.current || finishing.current) return;
+              unmuteClip(video);
+              dropBedIfClipHasSound(video);
+              setShowVideo(true);
             })
             .catch(() => {
               setVideoFailed(true);
@@ -294,6 +341,8 @@ export function WordLessonModal({
   function applySeek(frac: number) {
     if (phase !== "playing" || finishing.current || cancelledRef.current) return;
     const v = videoRef.current;
+    unmuteClip(v);
+    dropBedIfClipHasSound(v);
     if (v && v.duration && Number.isFinite(v.duration) && v.duration > 0) {
       v.currentTime = frac * v.duration;
       setProgress(frac);
@@ -331,6 +380,8 @@ export function WordLessonModal({
 
   function skipAhead() {
     if (phase !== "playing" || finishing.current) return;
+    unmuteClip(videoRef.current);
+    dropBedIfClipHasSound(videoRef.current);
     const v = videoRef.current;
     if (v && v.duration && Number.isFinite(v.duration) && v.duration > 0) {
       const jump = Math.max(2, v.duration * 0.2);
@@ -387,7 +438,6 @@ export function WordLessonModal({
             <video
               ref={videoRef}
               playsInline
-              muted
               preload="none"
               poster={imageSrc}
               loop={lesson.loopVideo === true}
@@ -553,7 +603,7 @@ export function WordLessonModal({
             {alreadySeen || phase === "done"
               ? lite
                 ? "Replay anytime — sharp poster story."
-                : "Replay anytime. Soft music + story video."
+                : "Replay anytime. Story sounds + teacher voice."
               : "Watch the little story all the way through to unlock this word."}
           </p>
 

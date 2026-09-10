@@ -24,7 +24,7 @@ Kids alphabet learning app (ages ~3–6): 26 letters, cartoon posters, neural vo
 
 - Preference: `localStorage` (`abc-gfx-pref-v1`): `auto` | `high` | `lite`
 - Resolved mode: `html.gfx-high` / `html.gfx-lite` + `data-gfx`
-- **High**: story MP4 on play (src attached only when playing), soft music, richer shadows/shine
+- **High**: story MP4 on play (src attached only when playing), native clip sound when the remake has it (soft music bed for older silent clips), richer shadows/shine
 - **Lite**: sharp poster “cinema” motion (no video decode), fewer particles, flat background, lower canvas DPR
 - **Auto**: device hints (RAM, cores, Save-Data, reduced-motion/data, 3g) + short FPS watchdog that can demote high→lite for the session
 - Expensive effects removed: `backdrop-filter`, multi-layer body gradients, CSS filters on posters
@@ -113,7 +113,7 @@ npm run build:apk      # only when asked
 
 ## Versioning & downloads
 
-- **Current version:** `0.097` (`v0.097`) — stored in `VERSION` and `src/lib/version.ts` (keep in sync).
+- **Current version:** `0.098` (`v0.098`) — stored in `VERSION` and `src/lib/version.ts` (keep in sync).
 
 ## GitHub + Grok Publish cadence
 

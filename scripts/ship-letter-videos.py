@@ -16,12 +16,19 @@ STYLE = (
     "Cute 3D vinyl toy kids illustration. Wholesome, friendly, not scary. "
     "Portrait. Closed-mouth smile. Not talking. "
 )
-# I2V loves to lip-flap any face. Narration is off-screen — mouths stay shut
-# unless the gag itself is eating, yawning, or blowing.
-SILENT = (
+# I2V loves to lip-flap any face. Overlay narration is off-screen — mouths stay
+# shut unless the gag itself is eating, yawning, or blowing. Keep I2V foley;
+# the player mixes it under the teacher voice.
+MOUTH = (
     " Mouth closed. Not talking. No lip-sync. No mouthing words. "
     "Action is in the hands and body, not the lips. "
 )
+FOLEY = (
+    " Cartoon foley and ambient sound matching the action. "
+    "No speech, no singing, no narrator. "
+)
+SILENT = MOUTH  # mouths only — not a mute flag
+
 NO_FACE = "Food has NO face, NO eyes. "
 
 PACKS: dict[str, list[dict]] = {
@@ -341,19 +348,47 @@ def t2i(prompt: str, out: Path):
 def i2v(still: Path, prompt: str, out: Path):
     run([
         "python3", "scripts/imagine-api-i2v.py", str(still),
-        prompt + SILENT,
+        prompt + MOUTH + FOLEY,
         str(out), "--duration", "10", "--resolution", "480p",
     ])
 
 
 def encode(src: Path, dest: Path):
+    """Scale to 540×720. Keep I2V foley when present; fall back to silent."""
     dest.parent.mkdir(parents=True, exist_ok=True)
-    run([
+    vf = "scale=540:720:force_original_aspect_ratio=increase,crop=540:720,setsar=1"
+    video = [
         "ffmpeg", "-y", "-i", str(src),
-        "-vf", "scale=540:720:force_original_aspect_ratio=increase,crop=540:720,setsar=1",
+        "-vf", vf,
         "-c:v", "libx264", "-pix_fmt", "yuv420p", "-profile:v", "main",
-        "-crf", "23", "-r", "24", "-an", "-movflags", "+faststart", str(dest),
-    ], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        "-crf", "23", "-r", "24",
+        "-movflags", "+faststart",
+    ]
+    with_audio = video[:-2] + [
+        "-c:a", "aac", "-b:a", "96k", "-ac", "1", "-ar", "44100",
+        "-movflags", "+faststart", str(dest),
+    ]
+    p = subprocess.run(with_audio, cwd=ROOT, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    if p.returncode == 0:
+        return
+    run(video + ["-an", str(dest)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+
+def patch_native_audio(letter: str, slug: str):
+    """Mark this remake so the player skips the generic music bed."""
+    p = ROOT / "src/data/word-lessons.ts"
+    text = p.read_text()
+    key = f'"{letter.lower()}-{slug}"'
+    start = text.find(key)
+    if start < 0:
+        return
+    end = text.find("},", start)
+    if end < 0:
+        return
+    chunk = text[start:end]
+    if "nativeAudio" in chunk:
+        return
+    p.write_text(text[:end] + " nativeAudio: true," + text[end:])
 
 
 def poster(vid: Path, dest: Path):
@@ -438,6 +473,7 @@ def main():
         vid = ROOT / f"public/videos/{letter.lower()}-{it['slug']}.mp4"
         print("ENC", it["slug"], flush=True)
         encode(raw, vid)
+        patch_native_audio(letter, it["slug"])
         poster(vid, ROOT / f"public/posters/{letter.lower()}-{it['slug']}.webp")
         (ROOT / f"public/review/word-videos/{letter.lower()}-{it['slug']}-ship.mp4").write_bytes(vid.read_bytes())
 

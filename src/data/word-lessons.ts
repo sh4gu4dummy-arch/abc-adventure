@@ -17,8 +17,12 @@
  *    movie-lookalikes. Friendly dinosaurs. Don't reuse the same action
  *    across words. An object stays that object — never morph into a person.
  *    Handheld props stay kid-scale, smaller than the child's head.
- *    No talking mouths — narration is off-screen; closed-mouth smile
- *    unless the gag is eating, yawning, or blowing.
+ *    No talking mouths — overlay narration is off-screen (word ×3, then
+ *    sentence). Closed-mouth smile unless the gag is eating, yawning, or
+ *    blowing. Remakes include native clip sound (foley / ambient / cartoon
+ *    SFX). Do not bake the teacher voice or a song into the MP4. The player
+ *    mixes clip audio under the voice; overlap is OK. Set nativeAudio: true
+ *    so the generic music bed stays off. Old silent clips keep the bed.
  *    State-change gags are one-way (peel stays off). No ping-pong.
  *    Write general rules, not one-incident laws.
  *    Full taste list: AGENTS.project.md.
@@ -37,6 +41,11 @@ export type WordLesson = {
   durationSec?: number;
   /** Walk cycles can loop. Landings should not, so the last frame stays put. */
   loopVideo?: boolean;
+  /**
+   * Remake has diegetic clip audio. Skip the generic music bed and play
+   * the MP4 unmuted under overlay narration.
+   */
+  nativeAudio?: boolean;
 };
 
 const SFX = {
