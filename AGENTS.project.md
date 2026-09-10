@@ -33,6 +33,8 @@ in chat.
     own gag. Check the whole alphabet, not just the current letter.
     An object stays that object for the whole clip — never morph into a
     person. Check every frame, not just the thumbnail.
+    Handheld props stay kid-scale: smaller than the child's head, not
+    giant objects that dwarf them.
 11. Archive old art; never overwrite originals. Use Imagine API download
     into `public/` (locker may fail). Copy stills into the repo immediately.
 12. **GitHub:** after every commit, push. Do not ask.

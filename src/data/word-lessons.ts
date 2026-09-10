@@ -15,6 +15,7 @@
  *    hands. Clouds have no tails. Food has no face if it gets eaten. No
  *    movie-lookalikes. Friendly dinosaurs. Don't reuse the same action
  *    across words. An object stays that object — never morph into a person.
+ *    Handheld props stay kid-scale, smaller than the child's head.
  *    Write general rules, not one-incident laws.
  *    Full taste list: AGENTS.project.md.
  */
