@@ -407,43 +407,40 @@ export function AchievementsPanel() {
   const unlocked = new Set(achievements ?? []);
   return (
     <section
-      className="card-surface rounded-[var(--radius-xl)] p-4 sm:p-5"
+      className="card-surface rounded-[var(--radius-lg)] p-2 sm:p-2.5"
       aria-label="Achievements"
     >
-      <div className="mb-3 flex items-center justify-between gap-2">
-        <h2 className="font-display text-lg font-bold text-ink sm:text-xl">
+      <div className="mb-1.5 flex items-center justify-between gap-2">
+        <h2 className="font-display text-sm font-bold text-ink">
           Achievements
         </h2>
-        <span className="text-xs font-bold uppercase tracking-wide text-muted">
+        <span className="text-[10px] font-bold uppercase tracking-wide text-muted">
           {unlocked.size}/{ACHIEVEMENTS.length}
         </span>
       </div>
-      <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-5">
+      <div className="grid grid-cols-3 gap-1 sm:grid-cols-4 md:grid-cols-6">
         {ACHIEVEMENTS.map((a) => {
           const on = unlocked.has(a.id);
           return (
             <div
               key={a.id}
+              title={a.hint}
               className={cn(
-                "rounded-[var(--radius-md)] border-2 px-2.5 py-2.5",
+                "flex items-center gap-1 rounded-lg border px-1.5 py-1",
                 on
                   ? "border-star/40 bg-star/10"
                   : "border-border/60 bg-surface-soft/60 opacity-70",
               )}
             >
-              <div className="flex items-center gap-1.5">
-                <Award
-                  className={cn(
-                    "size-4 shrink-0",
-                    on ? "text-star" : "text-muted",
-                  )}
-                />
-                <p className="truncate text-xs font-bold text-ink">{a.title}</p>
-              </div>
-              <p className="mt-1 text-[10px] font-medium leading-snug text-ink-soft">
-                {a.hint}
+              <Award
+                className={cn(
+                  "size-3 shrink-0",
+                  on ? "text-star" : "text-muted",
+                )}
+              />
+              <p className="truncate text-[10px] font-bold leading-tight text-ink">
+                {a.title}
               </p>
-              <p className="mt-1 text-[10px] font-bold text-muted">+{a.stars}★</p>
             </div>
           );
         })}
