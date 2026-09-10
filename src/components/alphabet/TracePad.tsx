@@ -31,7 +31,8 @@ function cellsReady(letterN: number, cellLetter: Uint32Array, cellInked: Uint32A
 }
 
 function letterFont(h: number, lower: boolean) {
-  return `800 ${Math.floor(h * (lower ? 0.86 : 0.76))}px system-ui, Nunito, Fredoka, sans-serif`;
+  const size = Math.floor(h * (lower ? 0.86 : 0.76));
+  return `700 ${size}px "Fredoka", "Nunito", sans-serif`;
 }
 
 function paintGlyph(
@@ -380,7 +381,11 @@ export function TracePad({
     const onResize = () => setupCanvas("resize");
     window.addEventListener("resize", onResize);
     let cancelled = false;
-    void document.fonts?.ready.then(() => {
+    void Promise.all([
+      document.fonts?.load('700 80px "Fredoka"'),
+      document.fonts?.load('800 80px "Nunito"'),
+      document.fonts?.ready,
+    ]).then(() => {
       if (!cancelled) setupCanvas("resize");
     });
     return () => {
