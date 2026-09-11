@@ -301,9 +301,12 @@ function LetterView({ entry }: { entry: LetterEntry }) {
             >
               {displayLetter}
             </div>
-            <div className="text-white">
-              <h1 className="font-display text-3xl font-bold sm:text-4xl">
-                {caseKind === "upper" ? `Big ${displayLetter}` : `small ${displayLetter}`}
+            <div className="min-w-[4.5rem] text-center text-white">
+              <h1 className="font-display font-bold leading-[0.95]">
+                <span className="block text-lg font-bold opacity-95 sm:text-xl">
+                  {caseKind === "upper" ? "Big" : "small"}
+                </span>
+                <span className="block text-5xl sm:text-6xl">{displayLetter}</span>
               </h1>
             </div>
           </div>

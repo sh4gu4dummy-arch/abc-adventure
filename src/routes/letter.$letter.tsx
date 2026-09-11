@@ -191,16 +191,21 @@ function LetterPage() {
       >
         <div className="relative flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-4">
-            <img
-              src={letterHeroPath(entry.letter, caseKind)}
-              alt=""
-              className="size-[5.5rem] shrink-0 cursor-pointer rounded-[1.4rem] border-4 border-white/85 object-cover shadow-lg sm:size-28"
-              decoding="async"
-              onClick={() => setMeetOpen(true)}
-            />
-            <div className="text-white">
-              <h1 className="font-display text-3xl font-bold drop-shadow sm:text-4xl">
-                {caseKind === "upper" ? `Big ${displayLetter}` : `small ${displayLetter}`}
+            <div className="size-[5.5rem] shrink-0 overflow-hidden rounded-[1.4rem] border-4 border-white/85 shadow-lg sm:size-28">
+              <img
+                src={letterHeroPath(entry.letter, caseKind)}
+                alt=""
+                className={`size-full cursor-pointer object-cover object-center ${caseKind === "lower" ? "scale-[1.7]" : ""}`}
+                decoding="async"
+                onClick={() => setMeetOpen(true)}
+              />
+            </div>
+            <div className="min-w-[4.5rem] text-center text-white">
+              <h1 className="font-display font-bold leading-[0.95] drop-shadow">
+                <span className="block text-lg font-bold opacity-95 sm:text-xl">
+                  {caseKind === "upper" ? "Big" : "small"}
+                </span>
+                <span className="block text-5xl sm:text-6xl">{displayLetter}</span>
               </h1>
             </div>
           </div>
