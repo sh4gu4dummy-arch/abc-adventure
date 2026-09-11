@@ -30,9 +30,17 @@
 }
 
 @font-face {
-  font-family: "Sniglet";
-  src: url("/fonts/Sniglet-ExtraBold.ttf") format("truetype");
-  font-weight: 400 800;
+  font-family: "Comic Neue";
+  src: url("/fonts/ComicNeue-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: optional;
+}
+
+@font-face {
+  font-family: "Comic Neue";
+  src: url("/fonts/ComicNeue-Bold.ttf") format("truetype");
+  font-weight: 700;
   font-style: normal;
   font-display: optional;
 }
@@ -107,8 +115,8 @@ html[data-case="upper"] body {
   text-transform: uppercase;
 }
 html[data-case="lower"] {
-  --font-display: "Sniglet", "Fredoka", sans-serif;
-  --font-body: "Sniglet", "Nunito", sans-serif;
+  --font-display: "Comic Neue", "Fredoka", sans-serif;
+  --font-body: "Comic Neue", "Nunito", sans-serif;
 }
 html[data-case="lower"] body {
   text-transform: lowercase;

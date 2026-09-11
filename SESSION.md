@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.171  
+**Version:** v0.172  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 **User tests in Grok live preview**, not APK, unless they ask.
 
@@ -32,6 +32,9 @@ really is done. Tap to play again (v0.129).
 | H heart | Crayon with two points | One-tip crayon; look-at-the-clip QA (not a tip-count law) |
 
 A–Z word videos exist. J–Z remade to locked sentences; A–I older unless later patched (G, H, fish, frog, etc.).
+
+## Little abc font (v0.172)
+Comic Neue instead of Sniglet ExtraBold — same single-story a, easier to read.
 
 ## Meet q (v0.171)
 No extra left limb. Glyph only.
