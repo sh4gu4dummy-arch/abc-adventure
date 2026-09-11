@@ -80,8 +80,6 @@ function pointAlong(
   };
 }
 
-}
-
 function catmullPoint(
   a: { x: number; y: number },
   b: { x: number; y: number },
