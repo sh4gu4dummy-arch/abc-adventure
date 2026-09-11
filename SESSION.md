@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.192  
+**Version:** v0.193  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 **User tests in Grok live preview**, not APK, unless they ask.
 
@@ -32,6 +32,9 @@ really is done. Tap to play again (v0.129).
 | H heart | Crayon with two points | One-tip crayon; look-at-the-clip QA (not a tip-count law) |
 
 A–Z word videos exist. J–Z remade to locked sentences; A–I older unless later patched (G, H, fish, frog, etc.).
+
+## Big A thumb (v0.193)
+Hole is the same peach as the background (opaque). Extra black ovals by the eyes gone.
 
 ## Big A thumb (v0.192)
 Real cut-out hole (transparent), not a darker red triangle.
