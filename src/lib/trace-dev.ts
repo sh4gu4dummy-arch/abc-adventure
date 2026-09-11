@@ -8,7 +8,7 @@ const DRAFT_KEY = "abc-trace-dev-drafts-v1";
 const EVENT = "abc-trace-dev";
 
 export type DevStroke = { pts: TraceStroke; numT: number };
-export type TraceDevTool = "select" | "line" | "freehand";
+export type TraceDevTool = "select" | "line" | "curve" | "freehand";
 
 let on = false;
 let initialized = false;

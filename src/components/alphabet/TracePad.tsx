@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Check, Eraser, MousePointer2, Minus, Pencil, Trash2, Copy } from "lucide-react";
+import { Check, Eraser, MousePointer2, Minus, Pencil, Spline, Trash2, Copy, Waves } from "lucide-react";
 import { markSection } from "@/lib/progress";
 import { getGfxSnapshot } from "@/lib/gfx-pref";
 import { speak } from "@/lib/speak";
@@ -118,6 +118,19 @@ function unmapGuide(
     Math.min(1, Math.max(0, nx)),
     Math.min(1, Math.max(0, ny)),
   ];
+}
+
+function chaikin(pts: TracePt[]): TracePt[] {
+  if (pts.length < 3) return pts;
+  const out: TracePt[] = [pts[0]!];
+  for (let i = 0; i < pts.length - 1; i++) {
+    const a = pts[i]!;
+    const b = pts[i + 1]!;
+    out.push([a[0] * 0.75 + b[0] * 0.25, a[1] * 0.75 + b[1] * 0.25]);
+    out.push([a[0] * 0.25 + b[0] * 0.75, a[1] * 0.25 + b[1] * 0.75]);
+  }
+  out.push(pts[pts.length - 1]!);
+  return out;
 }
 
 function distToSeg(
@@ -312,6 +325,16 @@ function drawTraceArrows(
         ctx.fill();
         ctx.stroke();
       }
+      const bulge = pointAlong(pts, 0.5);
+      ctx.beginPath();
+      ctx.moveTo(bulge.x, bulge.y - 8);
+      ctx.lineTo(bulge.x + 8, bulge.y);
+      ctx.lineTo(bulge.x, bulge.y + 8);
+      ctx.lineTo(bulge.x - 8, bulge.y);
+      ctx.closePath();
+      ctx.fillStyle = "#fff";
+      ctx.fill();
+      ctx.stroke();
     }
   });
   ctx.restore();
@@ -403,14 +426,16 @@ export function TracePad({
   const devToolRef = useRef<TraceDevTool>("select");
   const devDragRef = useRef<
     | {
-        kind: "move" | "start" | "end" | "number" | "draw";
+        kind: "move" | "start" | "end" | "number" | "draw" | "mid";
         index: number;
         ox: number;
         oy: number;
         origin: TracePt[];
+        vertex?: number;
       }
     | null
   >(null);
+  const curveActiveRef = useRef(-1);
   const [devTool, setDevTool] = useState<TraceDevTool>("select");
   const [devSel, setDevSel] = useState(-1);
   const [devMsg, setDevMsg] = useState<string | null>(null);
@@ -769,7 +794,7 @@ export function TracePad({
 
   function hitDev(p: { x: number; y: number }): {
     index: number;
-    kind: "number" | "start" | "end" | "body";
+    kind: "number" | "start" | "end" | "mid" | "body";
   } | null {
     const box = boxRef.current;
     const dpr = dprRef.current;
@@ -784,6 +809,10 @@ export function TracePad({
       const b = mapped[mapped.length - 1]!;
       if (Math.hypot(p.x - a.x, p.y - a.y) <= 12) return { index: i, kind: "start" };
       if (Math.hypot(p.x - b.x, p.y - b.y) <= 12) return { index: i, kind: "end" };
+      if (devSelRef.current === i) {
+        const bulge = pointAlong(mapped, 0.5);
+        if (Math.hypot(p.x - bulge.x, p.y - bulge.y) <= 14) return { index: i, kind: "mid" };
+      }
     }
     for (let i = strokes.length - 1; i >= 0; i--) {
       const s = strokes[i]!;
@@ -814,7 +843,23 @@ export function TracePad({
       const box = boxRef.current;
       const dpr = dprRef.current;
       const n = unmapGuide(p.x, p.y, box, dpr);
+      if (tool === "curve") {
+        let index = curveActiveRef.current;
+        if (index < 0 || !devStrokesRef.current[index]) {
+          const stroke: DevStroke = { pts: [n], numT: 0.16 };
+          devStrokesRef.current = [...devStrokesRef.current, stroke];
+          index = devStrokesRef.current.length - 1;
+          curveActiveRef.current = index;
+        } else {
+          devStrokesRef.current[index]!.pts.push(n);
+        }
+        setDevSel(index);
+        persistDev();
+        redraw();
+        return;
+      }
       if (tool === "line" || tool === "freehand") {
+        curveActiveRef.current = -1;
         const stroke: DevStroke = { pts: [n, n], numT: 0.16 };
         devStrokesRef.current = [...devStrokesRef.current, stroke];
         const index = devStrokesRef.current.length - 1;
@@ -846,8 +891,31 @@ export function TracePad({
             ? "start"
             : hit.kind === "end"
               ? "end"
-              : "move";
-      devDragRef.current = { kind, index: hit.index, ox: p.x, oy: p.y, origin };
+              : hit.kind === "mid"
+                ? "mid"
+                : "move";
+      let vertex: number | undefined;
+      if (kind === "mid") {
+        const s = devStrokesRef.current[hit.index]!;
+        if (s.pts.length === 2) {
+          const mid = unmapGuide(p.x, p.y, box, dpr);
+          s.pts = [s.pts[0]!, mid, s.pts[1]!];
+          vertex = 1;
+        } else {
+          let best = 1;
+          let bestD = 1e9;
+          for (let i = 1; i < s.pts.length - 1; i++) {
+            const q = mapGuide(s.pts[i]![0], s.pts[i]![1], box, dpr);
+            const d = Math.hypot(p.x - q.x, p.y - q.y);
+            if (d < bestD) {
+              bestD = d;
+              best = i;
+            }
+          }
+          vertex = best;
+        }
+      }
+      devDragRef.current = { kind, index: hit.index, ox: p.x, oy: p.y, origin, vertex };
       drawing.current = true;
       redraw();
       return;
@@ -888,6 +956,9 @@ export function TracePad({
           Math.min(1, Math.max(0, pt[0] + dx)),
           Math.min(1, Math.max(0, pt[1] + dy)),
         ]);
+      } else if (drag.kind === "mid") {
+        const vi = drag.vertex ?? 1;
+        if (s.pts[vi]) s.pts[vi] = n;
       } else if (drag.kind === "number") {
         const mapped = smoothStroke(s.pts.map((pt) => mapGuide(pt[0], pt[1], box, dpr)));
         let bestT = s.numT;
@@ -920,6 +991,9 @@ export function TracePad({
       const drag = devDragRef.current;
       if (drag) {
         const s = devStrokesRef.current[drag.index];
+        if (s && drag.kind === "draw" && devToolRef.current === "freehand" && s.pts.length > 4) {
+          s.pts = chaikin(s.pts);
+        }
         if (s && s.pts.length >= 2) {
           const a = s.pts[0]!;
           const b = s.pts[s.pts.length - 1]!;
@@ -987,13 +1061,24 @@ export function TracePad({
             [
               ["select", MousePointer2, "Select"],
               ["line", Minus, "Line"],
+              ["curve", Spline, "Curve"],
               ["freehand", Pencil, "Freehand"],
             ] as const
           ).map(([id, Icon, label]) => (
             <button
               key={id}
               type="button"
-              onClick={() => setDevTool(id)}
+              onClick={() => {
+                if (id !== "curve") curveActiveRef.current = -1;
+                setDevTool(id);
+                setDevMsg(
+                  id === "curve"
+                    ? "Curve: tap along the round. Switch tool when done."
+                    : id === "select"
+                      ? "Drag the diamond in the middle to round a line."
+                      : null,
+                );
+              }}
               className="pressable inline-flex min-h-11 items-center gap-1 rounded-[var(--radius-pill)] border-2 px-3 text-sm font-bold"
               style={
                 devTool === id
@@ -1016,6 +1101,23 @@ export function TracePad({
             className="pressable inline-flex min-h-11 items-center gap-1 rounded-[var(--radius-pill)] border-2 border-border bg-surface px-3 text-sm font-bold text-ink"
           >
             <Trash2 className="size-4" /> Delete
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              if (devSel < 0) return;
+              const s = devStrokesRef.current[devSel];
+              if (!s || s.pts.length < 3) {
+                setDevMsg("Need a line with a bend first — pull the diamond.");
+                return;
+              }
+              s.pts = chaikin(s.pts);
+              persistDev();
+              redraw();
+            }}
+            className="pressable inline-flex min-h-11 items-center gap-1 rounded-[var(--radius-pill)] border-2 border-border bg-surface px-3 text-sm font-bold text-ink"
+          >
+            <Waves className="size-4" /> Smooth
           </button>
           <button
             type="button"
@@ -1051,7 +1153,7 @@ export function TracePad({
       {traceDev && (
         <p className="text-xs font-semibold text-ink-soft">
           {devMsg ??
-            "Dev: draw or drag lines and numbers. Confirm copies the path for Grok."}
+            "Dev: Curve = tap along the round. Select = pull the diamond to bulge."}
         </p>
       )}
       {traceDev && devExport && (
