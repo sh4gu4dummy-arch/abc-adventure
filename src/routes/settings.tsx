@@ -9,8 +9,36 @@ import { PlayerChip, ProfileGate } from "@/components/alphabet/ProfileGate";
 import { clearActiveProfile, exportJourneysJson, importJourneysJson } from "@/lib/profiles";
 import { APP_VERSION_LABEL } from "@/lib/version";
 import { VersionBadge } from "@/components/alphabet/VersionBadge";
+import { setTraceDev, useTraceDev } from "@/lib/trace-dev";
 
 export const Route = createFileRoute("/settings")({ component: SettingsPage });
+
+function TraceDevToggle() {
+  const on = useTraceDev();
+  return (
+    <div>
+      <p className="mb-2 text-xs font-bold uppercase tracking-wide text-muted">
+        Trace guides
+      </p>
+      <button
+        type="button"
+        onClick={() => setTraceDev(!on)}
+        className="pressable rounded-[var(--radius-pill)] border-2 px-3 py-2 text-sm font-bold"
+        style={
+          on
+            ? { borderColor: "var(--color-accent)", color: "var(--color-accent)" }
+            : undefined
+        }
+      >
+        {on ? "Dev mode on" : "Dev mode off"}
+      </button>
+      <p className="mt-2 text-xs font-medium text-ink-soft">
+        Edit the dotted arrows on Trace. Confirm copies the path so Grok can
+        save it in the app.
+      </p>
+    </div>
+  );
+}
 
 function SettingsPage() {
   const [switching, setSwitching] = useState(false);
@@ -150,6 +178,7 @@ function SettingsPage() {
             </p>
             <GfxToggle />
           </div>
+          <TraceDevToggle />
         </div>
       </section>
 

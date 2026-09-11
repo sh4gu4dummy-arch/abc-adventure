@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.200  
+**Version:** v0.201  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 **User tests in Grok live preview**, not APK, unless they ask.
 
@@ -32,6 +32,10 @@ really is done. Tap to play again (v0.129).
 | H heart | Crayon with two points | One-tip crayon; look-at-the-clip QA (not a tip-count law) |
 
 A–Z word videos exist. J–Z remade to locked sentences; A–I older unless later patched (G, H, fish, frog, etc.).
+
+## Trace dev (v0.201)
+Settings → Trace guides → Dev mode. Select / line / freehand, drag numbers,
+Confirm copies JSON for Grok to make permanent.
 
 ## Trace W (v0.200)
 Middle peak of W goes up near the top.

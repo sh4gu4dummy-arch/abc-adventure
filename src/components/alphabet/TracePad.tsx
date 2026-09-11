@@ -1,9 +1,18 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Check, Eraser } from "lucide-react";
+import { Check, Eraser, MousePointer2, Minus, Pencil, Trash2, Copy } from "lucide-react";
 import { markSection } from "@/lib/progress";
 import { getGfxSnapshot } from "@/lib/gfx-pref";
 import { speak } from "@/lib/speak";
-import { traceStrokes, type TracePt } from "@/data/trace-guides";
+import { traceStrokes, type TracePt, type TraceStroke } from "@/data/trace-guides";
+import {
+  useTraceDev,
+  loadDevStrokes,
+  saveDevStrokes,
+  clearDevStrokes,
+  copyDevPayload,
+  type DevStroke,
+  type TraceDevTool,
+} from "@/lib/trace-dev";
 
 /** Must color most of the glyph — a K spine alone must not pass. */
 const COVER_THRESHOLD = 0.5;
@@ -93,6 +102,37 @@ function mapGuide(
     x: (box.x0 + nx * (box.x1 - box.x0 + 1)) / dpr,
     y: (box.y0 + ny * (box.y1 - box.y0 + 1)) / dpr,
   };
+}
+
+function unmapGuide(
+  x: number,
+  y: number,
+  box: GlyphBox,
+  dpr: number,
+): TracePt {
+  const bw = box.x1 - box.x0 + 1;
+  const bh = box.y1 - box.y0 + 1;
+  const nx = (x * dpr - box.x0) / bw;
+  const ny = (y * dpr - box.y0) / bh;
+  return [
+    Math.min(1, Math.max(0, nx)),
+    Math.min(1, Math.max(0, ny)),
+  ];
+}
+
+function distToSeg(
+  px: number,
+  py: number,
+  ax: number,
+  ay: number,
+  bx: number,
+  by: number,
+): number {
+  const dx = bx - ax;
+  const dy = by - ay;
+  const len2 = dx * dx + dy * dy || 1;
+  const t = Math.min(1, Math.max(0, ((px - ax) * dx + (py - ay) * dy) / len2));
+  return Math.hypot(px - (ax + dx * t), py - (ay + dy * t));
 }
 
 function strokeLen(pts: { x: number; y: number }[]): number {
@@ -205,49 +245,53 @@ function drawChevron(
 
 function drawTraceArrows(
   ctx: CanvasRenderingContext2D,
-  letter: string,
+  strokes: TraceStroke[] | null,
   box: GlyphBox,
   dpr: number,
   color: string,
+  opts?: { numTs?: number[]; selected?: number; handles?: boolean },
 ) {
-  const strokes = traceStrokes(letter);
-  if (!strokes || box.x1 <= box.x0) return;
+  if (!strokes?.length || box.x1 <= box.x0) return;
   const mapped = strokes.map((stroke) =>
     smoothStroke(stroke.map((p: TracePt) => mapGuide(p[0], p[1], box, dpr))),
   );
   ctx.save();
   ctx.lineCap = "round";
   ctx.lineJoin = "round";
-  mapped.forEach((pts) => {
+  mapped.forEach((pts, i) => {
     if (pts.length < 2) return;
-    ctx.strokeStyle = color;
-    ctx.globalAlpha = 0.55;
-    ctx.lineWidth = 5;
+    const picked = opts?.selected === i;
+    ctx.strokeStyle = picked ? "#f59f00" : color;
+    ctx.globalAlpha = picked ? 0.9 : 0.55;
+    ctx.lineWidth = picked ? 7 : 5;
     ctx.beginPath();
     ctx.moveTo(pts[0]!.x, pts[0]!.y);
-    for (let i = 1; i < pts.length; i++) ctx.lineTo(pts[i]!.x, pts[i]!.y);
+    for (let k = 1; k < pts.length; k++) ctx.lineTo(pts[k]!.x, pts[k]!.y);
     ctx.stroke();
     const mid = pointAlong(pts, 0.72);
     ctx.globalAlpha = 0.95;
-    drawChevron(ctx, mid.x, mid.y, mid.ang, 11, color);
+    drawChevron(ctx, mid.x, mid.y, mid.ang, 11, picked ? "#f59f00" : color);
   });
   const placed: { x: number; y: number }[] = [];
   mapped.forEach((pts, i) => {
     if (pts.length < 2) return;
     ctx.globalAlpha = 1;
-    let p = pointAlong(pts, 0.16);
-    const minPx = 22;
-    const start = pts[0]!;
-    const dist0 = Math.hypot(p.x - start.x, p.y - start.y);
-    if (dist0 < minPx) p = pointAlong(pts, Math.min(0.42, minPx / Math.max(1, strokeLen(pts))));
-    for (const q of placed) {
-      if (Math.hypot(p.x - q.x, p.y - q.y) < 26) {
-        p = pointAlong(pts, 0.32);
-        break;
+    const t = opts?.numTs?.[i] ?? 0.16;
+    let p = pointAlong(pts, t);
+    if (!opts?.handles) {
+      const minPx = 22;
+      const start = pts[0]!;
+      const dist0 = Math.hypot(p.x - start.x, p.y - start.y);
+      if (dist0 < minPx) p = pointAlong(pts, Math.min(0.42, minPx / Math.max(1, strokeLen(pts))));
+      for (const q of placed) {
+        if (Math.hypot(p.x - q.x, p.y - q.y) < 26) {
+          p = pointAlong(pts, Math.min(0.5, t + 0.16));
+          break;
+        }
       }
     }
     placed.push({ x: p.x, y: p.y });
-    ctx.fillStyle = color;
+    ctx.fillStyle = opts?.selected === i ? "#f59f00" : color;
     ctx.beginPath();
     ctx.arc(p.x, p.y, 11, 0, Math.PI * 2);
     ctx.fill();
@@ -256,6 +300,19 @@ function drawTraceArrows(
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillText(String(i + 1), p.x, p.y + 0.5);
+    if (opts?.handles) {
+      const a = pts[0]!;
+      const b = pts[pts.length - 1]!;
+      ctx.fillStyle = "#fff";
+      ctx.strokeStyle = "#2b2d42";
+      ctx.lineWidth = 2;
+      for (const h of [a, b]) {
+        ctx.beginPath();
+        ctx.rect(h.x - 6, h.y - 6, 12, 12);
+        ctx.fill();
+        ctx.stroke();
+      }
+    }
   });
   ctx.restore();
 }
@@ -340,6 +397,26 @@ export function TracePad({
   const guideLetter = caseKind === "upper" ? upper : lowerCh;
   const isLower = caseKind === "lower";
   const spokenName = caseKind === "upper" ? `big ${upper}` : `little ${lowerCh}`;
+  const traceDev = useTraceDev();
+  const devStrokesRef = useRef<DevStroke[]>([]);
+  const devSelRef = useRef(-1);
+  const devToolRef = useRef<TraceDevTool>("select");
+  const devDragRef = useRef<
+    | {
+        kind: "move" | "start" | "end" | "number" | "draw";
+        index: number;
+        ox: number;
+        oy: number;
+        origin: TracePt[];
+      }
+    | null
+  >(null);
+  const [devTool, setDevTool] = useState<TraceDevTool>("select");
+  const [devSel, setDevSel] = useState(-1);
+  const [devMsg, setDevMsg] = useState<string | null>(null);
+  const devOn = traceDev;
+  devToolRef.current = devTool;
+  devSelRef.current = devSel;
 
   const publishDebug = useCallback(
     (ratio: number, finished: boolean) => {
@@ -387,9 +464,24 @@ export function TracePad({
       paintGlyph(ctx, guideLetter, w, h, "stroke", isLower);
       ctx.setLineDash([]);
       ctx.globalAlpha = 1;
-      drawTraceArrows(ctx, guideLetter, boxRef.current, dprRef.current, accent);
+      drawTraceArrows(
+        ctx,
+        (devOn && devStrokesRef.current.length
+          ? devStrokesRef.current.map((s) => s.pts)
+          : traceStrokes(guideLetter)),
+        boxRef.current,
+        dprRef.current,
+        accent,
+        devOn
+          ? {
+              numTs: devStrokesRef.current.map((s) => s.numT),
+              selected: devSelRef.current,
+              handles: true,
+            }
+          : undefined,
+      );
     },
-    [accent, guideLetter, isLower],
+    [accent, guideLetter, isLower, traceDev],
   );
 
   const redraw = useCallback(() => {
@@ -414,6 +506,12 @@ export function TracePad({
     tctx.globalCompositeOperation = "source-over";
     ctx.drawImage(tmp, 0, 0, w, h);
   }, [paintPaper]);
+
+  useEffect(() => {
+    devStrokesRef.current = loadDevStrokes(guideLetter);
+    setDevSel(-1);
+    redraw();
+  }, [guideLetter, traceDev, redraw]);
 
   const stamp = useCallback((cssX: number, cssY: number) => {
     const dpr = dprRef.current;
@@ -664,27 +762,149 @@ export function TracePad({
     }
   }
 
+  function persistDev() {
+    saveDevStrokes(guideLetter, devStrokesRef.current);
+  }
+
+  function hitDev(p: { x: number; y: number }): {
+    index: number;
+    kind: "number" | "start" | "end" | "body";
+  } | null {
+    const box = boxRef.current;
+    const dpr = dprRef.current;
+    const strokes = devStrokesRef.current;
+    for (let i = strokes.length - 1; i >= 0; i--) {
+      const s = strokes[i]!;
+      if (s.pts.length < 2) continue;
+      const mapped = smoothStroke(s.pts.map((pt) => mapGuide(pt[0], pt[1], box, dpr)));
+      const num = pointAlong(mapped, s.numT);
+      if (Math.hypot(p.x - num.x, p.y - num.y) <= 16) return { index: i, kind: "number" };
+      const a = mapped[0]!;
+      const b = mapped[mapped.length - 1]!;
+      if (Math.hypot(p.x - a.x, p.y - a.y) <= 12) return { index: i, kind: "start" };
+      if (Math.hypot(p.x - b.x, p.y - b.y) <= 12) return { index: i, kind: "end" };
+    }
+    for (let i = strokes.length - 1; i >= 0; i--) {
+      const s = strokes[i]!;
+      if (s.pts.length < 2) continue;
+      const mapped = s.pts.map((pt) => mapGuide(pt[0], pt[1], box, dpr));
+      for (let k = 1; k < mapped.length; k++) {
+        const a = mapped[k - 1]!;
+        const b = mapped[k]!;
+        if (distToSeg(p.x, p.y, a.x, a.y, b.x, b.y) <= 10) return { index: i, kind: "body" };
+      }
+    }
+    return null;
+  }
+
   function pointerDown(e: React.PointerEvent<HTMLCanvasElement>) {
     const canvas = canvasRef.current;
     if (!canvas) return;
     e.preventDefault();
-    if (finishedRef.current) setupCanvas("reset");
-    drawing.current = true;
     try {
       canvas.setPointerCapture(e.pointerId);
     } catch {
-      /* synthetic / already captured */
+      /* already captured */
     }
     const p = pos(e);
     lastPt.current = p;
+    if (traceDev) {
+      const tool = devToolRef.current;
+      const box = boxRef.current;
+      const dpr = dprRef.current;
+      const n = unmapGuide(p.x, p.y, box, dpr);
+      if (tool === "line" || tool === "freehand") {
+        const stroke: DevStroke = { pts: [n, n], numT: 0.16 };
+        devStrokesRef.current = [...devStrokesRef.current, stroke];
+        const index = devStrokesRef.current.length - 1;
+        setDevSel(index);
+        devDragRef.current = {
+          kind: "draw",
+          index,
+          ox: p.x,
+          oy: p.y,
+          origin: [[n[0], n[1]]],
+        };
+        drawing.current = true;
+        redraw();
+        return;
+      }
+      const hit = hitDev(p);
+      if (!hit) {
+        setDevSel(-1);
+        devDragRef.current = null;
+        redraw();
+        return;
+      }
+      setDevSel(hit.index);
+      const origin = devStrokesRef.current[hit.index]!.pts.map((pt) => [pt[0], pt[1]] as TracePt);
+      const kind =
+        hit.kind === "number"
+          ? "number"
+          : hit.kind === "start"
+            ? "start"
+            : hit.kind === "end"
+              ? "end"
+              : "move";
+      devDragRef.current = { kind, index: hit.index, ox: p.x, oy: p.y, origin };
+      drawing.current = true;
+      redraw();
+      return;
+    }
+    if (finishedRef.current) setupCanvas("reset");
+    drawing.current = true;
     drawSegment(p, p);
     redraw();
     publishCover();
   }
 
   function pointerMove(e: React.PointerEvent<HTMLCanvasElement>) {
-    if (!drawing.current || finishedRef.current) return;
     const p = pos(e);
+    if (traceDev) {
+      const drag = devDragRef.current;
+      if (!drag || !drawing.current) return;
+      const box = boxRef.current;
+      const dpr = dprRef.current;
+      const n = unmapGuide(p.x, p.y, box, dpr);
+      const s = devStrokesRef.current[drag.index];
+      if (!s) return;
+      if (drag.kind === "draw") {
+        if (devToolRef.current === "line") {
+          s.pts = [drag.origin[0]!, n];
+        } else {
+          const last = s.pts[s.pts.length - 1]!;
+          if (Math.hypot(n[0] - last[0], n[1] - last[1]) > 0.018) s.pts.push(n);
+        }
+      } else if (drag.kind === "start") {
+        s.pts[0] = n;
+      } else if (drag.kind === "end") {
+        s.pts[s.pts.length - 1] = n;
+      } else if (drag.kind === "move") {
+        const o = unmapGuide(drag.ox, drag.oy, box, dpr);
+        const dx = n[0] - o[0];
+        const dy = n[1] - o[1];
+        s.pts = drag.origin.map((pt) => [
+          Math.min(1, Math.max(0, pt[0] + dx)),
+          Math.min(1, Math.max(0, pt[1] + dy)),
+        ]);
+      } else if (drag.kind === "number") {
+        const mapped = smoothStroke(s.pts.map((pt) => mapGuide(pt[0], pt[1], box, dpr)));
+        let bestT = s.numT;
+        let bestD = 1e9;
+        for (let t = 0; t <= 1; t += 0.02) {
+          const q = pointAlong(mapped, t);
+          const d = Math.hypot(p.x - q.x, p.y - q.y);
+          if (d < bestD) {
+            bestD = d;
+            bestT = t;
+          }
+        }
+        s.numT = bestT;
+      }
+      redraw();
+      return;
+    }
+    if (!drawing.current || finishedRef.current) return;
     const prev = lastPt.current ?? p;
     drawSegment(prev, p);
     lastPt.current = p;
@@ -693,6 +913,26 @@ export function TracePad({
   }
 
   function pointerUp() {
+    if (traceDev) {
+      drawing.current = false;
+      lastPt.current = null;
+      const drag = devDragRef.current;
+      if (drag) {
+        const s = devStrokesRef.current[drag.index];
+        if (s && s.pts.length >= 2) {
+          const a = s.pts[0]!;
+          const b = s.pts[s.pts.length - 1]!;
+          if (Math.hypot(a[0] - b[0], a[1] - b[1]) < 0.02 && s.pts.length === 2) {
+            devStrokesRef.current = devStrokesRef.current.filter((_, i) => i !== drag.index);
+            setDevSel(-1);
+          }
+        }
+        persistDev();
+      }
+      devDragRef.current = null;
+      redraw();
+      return;
+    }
     drawing.current = false;
     lastPt.current = null;
     if (!finishedRef.current) publishCover();
@@ -738,6 +978,77 @@ export function TracePad({
           little {lowerCh}
         </button>
       </div>
+      )}
+
+      {traceDev && (
+        <div className="flex flex-wrap gap-1.5">
+          {(
+            [
+              ["select", MousePointer2, "Select"],
+              ["line", Minus, "Line"],
+              ["freehand", Pencil, "Freehand"],
+            ] as const
+          ).map(([id, Icon, label]) => (
+            <button
+              key={id}
+              type="button"
+              onClick={() => setDevTool(id)}
+              className="pressable inline-flex min-h-11 items-center gap-1 rounded-[var(--radius-pill)] border-2 px-3 text-sm font-bold"
+              style={
+                devTool === id
+                  ? { borderColor: accent, color: accent, background: `${accent}18` }
+                  : undefined
+              }
+            >
+              <Icon className="size-4" /> {label}
+            </button>
+          ))}
+          <button
+            type="button"
+            onClick={() => {
+              if (devSel < 0) return;
+              devStrokesRef.current = devStrokesRef.current.filter((_, i) => i !== devSel);
+              setDevSel(-1);
+              persistDev();
+              redraw();
+            }}
+            className="pressable inline-flex min-h-11 items-center gap-1 rounded-[var(--radius-pill)] border-2 border-border bg-surface px-3 text-sm font-bold text-ink"
+          >
+            <Trash2 className="size-4" /> Delete
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              clearDevStrokes(guideLetter);
+              devStrokesRef.current = loadDevStrokes(guideLetter);
+              setDevSel(-1);
+              setDevMsg("Reset to app default.");
+              redraw();
+            }}
+            className="pressable inline-flex min-h-11 items-center gap-1 rounded-[var(--radius-pill)] border-2 border-border bg-surface px-3 text-sm font-bold text-ink"
+          >
+            Reset
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              persistDev();
+              void copyDevPayload(guideLetter, devStrokesRef.current).then((text) => {
+                setDevMsg("Copied. Paste that in chat so I can make it permanent.");
+                console.info(text);
+              });
+            }}
+            className="pressable inline-flex min-h-11 items-center gap-1 rounded-[var(--radius-pill)] bg-ink px-3 text-sm font-bold text-white"
+          >
+            <Copy className="size-4" /> Confirm
+          </button>
+        </div>
+      )}
+      {traceDev && (
+        <p className="text-xs font-semibold text-ink-soft">
+          {devMsg ??
+            "Dev: draw or drag lines and numbers. Confirm copies the path for Grok."}
+        </p>
       )}
 
       <div
