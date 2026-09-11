@@ -43,6 +43,8 @@ Meet little **a–z** say the letter **name**, never the sound.
 Meet clips from **J onward**: the letter says **“Hi I’m Big J, Big J, Big J”**
 (that letter). **A** remade (v0.135): mouth **below** the crossbar, not on the bar.
 Slow: **“Big… A… Big… A…”**. Still missing that Big line: **B C D E F G H I**.
+Meet letters are **the glyph only** — no extra arms, legs, or stubs. q has **one**
+tail on the right, nothing growing off the left of the bowl.
 
 ## Lowercase / small-letter plan (remind on ask)
 
