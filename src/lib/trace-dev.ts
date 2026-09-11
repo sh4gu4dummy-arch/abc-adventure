@@ -127,12 +127,33 @@ export function exportDevPayload(letter: string, strokes: DevStroke[]) {
   return { payload, text };
 }
 
-export async function copyDevPayload(letter: string, strokes: DevStroke[]) {
+export function copyDevPayload(letter: string, strokes: DevStroke[]): {
+  text: string;
+  copied: boolean;
+} {
   const { text } = exportDevPayload(letter, strokes);
+  let copied = false;
   try {
-    await navigator.clipboard.writeText(text);
-    return text;
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    ta.setAttribute("readonly", "");
+    ta.style.position = "fixed";
+    ta.style.top = "0";
+    ta.style.left = "0";
+    ta.style.width = "1px";
+    ta.style.height = "1px";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    ta.setSelectionRange(0, text.length);
+    copied = document.execCommand("copy");
+    document.body.removeChild(ta);
   } catch {
-    return text;
+    copied = false;
   }
+  if (!copied && navigator.clipboard?.writeText) {
+    void navigator.clipboard.writeText(text).catch(() => {});
+  }
+  return { text, copied };
 }

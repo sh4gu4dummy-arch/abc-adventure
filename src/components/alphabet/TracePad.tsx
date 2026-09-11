@@ -414,6 +414,7 @@ export function TracePad({
   const [devTool, setDevTool] = useState<TraceDevTool>("select");
   const [devSel, setDevSel] = useState(-1);
   const [devMsg, setDevMsg] = useState<string | null>(null);
+  const [devExport, setDevExport] = useState<string | null>(null);
   const devOn = traceDev;
   devToolRef.current = devTool;
   devSelRef.current = devSel;
@@ -1033,10 +1034,13 @@ export function TracePad({
             type="button"
             onClick={() => {
               persistDev();
-              void copyDevPayload(guideLetter, devStrokesRef.current).then((text) => {
-                setDevMsg("Copied. Paste that in chat so I can make it permanent.");
-                console.info(text);
-              });
+              const { text, copied } = copyDevPayload(guideLetter, devStrokesRef.current);
+              setDevExport(text);
+              setDevMsg(
+                copied
+                  ? "Copied. Paste it in chat so I can make it permanent."
+                  : "Clipboard blocked here — select the box below and copy.",
+              );
             }}
             className="pressable inline-flex min-h-11 items-center gap-1 rounded-[var(--radius-pill)] bg-ink px-3 text-sm font-bold text-white"
           >
@@ -1049,6 +1053,18 @@ export function TracePad({
           {devMsg ??
             "Dev: draw or drag lines and numbers. Confirm copies the path for Grok."}
         </p>
+      )}
+      {traceDev && devExport && (
+        <textarea
+          readOnly
+          value={devExport}
+          ref={(el) => {
+            el?.focus();
+            el?.select();
+          }}
+          onFocus={(e) => e.currentTarget.select()}
+          className="h-28 w-full rounded-[var(--radius-md)] border-2 border-border bg-surface p-2 font-mono text-[11px] text-ink"
+        />
       )}
 
       <div
