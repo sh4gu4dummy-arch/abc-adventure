@@ -302,13 +302,9 @@ function LetterView({ entry }: { entry: LetterEntry }) {
               {displayLetter}
             </div>
             <div className="text-white">
-              <p className="text-sm font-bold uppercase tracking-wider text-white/80">
-                {caseKind === "upper" ? "Big letter" : "little letter"}
-              </p>
-              <h1 className="font-display text-3xl font-bold sm:text-4xl">{displayLetter}</h1>
-              <p className="mt-1 text-sm font-semibold text-white/90 sm:text-base">
-                Sound: {entry.sound} · {entry.soundCue}
-              </p>
+              <h1 className="font-display text-3xl font-bold sm:text-4xl">
+                {caseKind === "upper" ? `Big ${displayLetter}` : `small ${displayLetter}`}
+              </h1>
             </div>
           </div>
           <div className="flex flex-wrap gap-2">

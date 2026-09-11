@@ -199,18 +199,9 @@ function LetterPage() {
               onClick={() => setMeetOpen(true)}
             />
             <div className="text-white">
-              <p className="text-sm font-bold uppercase tracking-wider text-white/80">
-                {caseKind === "upper" ? "Big letter" : "little letter"}
-              </p>
               <h1 className="font-display text-3xl font-bold drop-shadow sm:text-4xl">
-                {displayLetter}
-                <span className="ml-2 text-2xl font-bold opacity-90 sm:text-3xl">
-                  {entry.name}
-                </span>
+                {caseKind === "upper" ? `Big ${displayLetter}` : `small ${displayLetter}`}
               </h1>
-              <p className="mt-1 max-w-md text-sm font-semibold text-white/90 sm:text-base">
-                {entry.soundCue}
-              </p>
             </div>
           </div>
           <div className="flex flex-wrap gap-2">
