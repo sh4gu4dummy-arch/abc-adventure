@@ -80,6 +80,57 @@ function pointAlong(
   };
 }
 
+}
+
+function catmullPoint(
+  a: { x: number; y: number },
+  b: { x: number; y: number },
+  c: { x: number; y: number },
+  d: { x: number; y: number },
+  t: number,
+): { x: number; y: number } {
+  const t2 = t * t;
+  const t3 = t2 * t;
+  return {
+    x:
+      0.5 *
+      (2 * b.x +
+        (-a.x + c.x) * t +
+        (2 * a.x - 5 * b.x + 4 * c.x - d.x) * t2 +
+        (-a.x + 3 * b.x - 3 * c.x + d.x) * t3),
+    y:
+      0.5 *
+      (2 * b.y +
+        (-a.y + c.y) * t +
+        (2 * a.y - 5 * b.y + 4 * c.y - d.y) * t2 +
+        (-a.y + 3 * b.y - 3 * c.y + d.y) * t3),
+  };
+}
+
+/** Dense curve from control points. 2-point strokes stay a straight line. */
+function smoothStroke(pts: { x: number; y: number }[]): { x: number; y: number }[] {
+  if (pts.length < 3) return pts;
+  const first = pts[0]!;
+  const last = pts[pts.length - 1]!;
+  const closed = Math.hypot(first.x - last.x, first.y - last.y) < 10;
+  const src = closed ? pts.slice(0, -1) : pts;
+  const n = src.length;
+  if (n < 3) return pts;
+  const out: { x: number; y: number }[] = [];
+  const seg = 10;
+  const at = (i: number) => src[(i + n) % n]!;
+  const lastI = closed ? n : n - 1;
+  for (let i = 0; i < lastI; i++) {
+    const a = closed ? at(i - 1) : i === 0 ? src[0]! : src[i - 1]!;
+    const b = src[i]!;
+    const c = closed ? at(i + 1) : src[Math.min(i + 1, n - 1)]!;
+    const d = closed ? at(i + 2) : src[Math.min(i + 2, n - 1)]!;
+    for (let s = 0; s < seg; s++) out.push(catmullPoint(a, b, c, d, s / seg));
+  }
+  out.push(closed ? first : last);
+  return out;
+}
+
 function drawChevron(
   ctx: CanvasRenderingContext2D,
   x: number,
@@ -112,7 +163,7 @@ function drawTraceArrows(
   const strokes = traceStrokes(letter);
   if (!strokes || box.x1 <= box.x0) return;
   const mapped = strokes.map((stroke) =>
-    stroke.map((p: TracePt) => mapGuide(p[0], p[1], box, dpr)),
+    smoothStroke(stroke.map((p: TracePt) => mapGuide(p[0], p[1], box, dpr))),
   );
   ctx.save();
   ctx.lineCap = "round";
