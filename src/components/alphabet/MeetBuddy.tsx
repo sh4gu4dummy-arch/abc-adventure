@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { Play, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, Play, X } from "lucide-react";
 import {
+  LETTERS,
   letterBuddyVideoPath,
   letterHeroPath,
   displayGlyph,
@@ -14,6 +15,13 @@ import { useCaseMode } from "@/lib/case-mode";
 
 /** Meet A–Z: cartoon letter voice is in the clip. No teacher overlay. */
 const MEET_SELF_VOICE = new Set("ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""));
+
+function letterIndex(letter: string) {
+  const i = LETTERS.findIndex(
+    (l) => l.letter.toUpperCase() === letter.toUpperCase(),
+  );
+  return i < 0 ? 0 : i;
+}
 
 /**
  * 10s 480p "meet the buddy" — tap to play. Original still stays as poster.
@@ -51,12 +59,46 @@ export function MeetBuddyModal({
 }) {
   const { mode } = useCaseMode();
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [idx, setIdx] = useState(() => letterIndex(entry.letter));
   const [paused, setPaused] = useState(true);
   const [failed, setFailed] = useState(false);
-  const title = caseTitle(entry.letter, mode);
-  const poster = letterHeroPath(entry.letter, mode);
-  const src = `${letterBuddyVideoPath(entry.letter, mode)}?v=${APP_VERSION}`;
-  const selfVoice = MEET_SELF_VOICE.has(entry.letter.toUpperCase());
+
+  useEffect(() => {
+    setIdx(letterIndex(entry.letter));
+  }, [entry.letter]);
+
+  const current = LETTERS[idx]!;
+  const prev = LETTERS[(idx - 1 + LETTERS.length) % LETTERS.length]!;
+  const next = LETTERS[(idx + 1) % LETTERS.length]!;
+  const title = caseTitle(current.letter, mode);
+  const prevGlyph = displayGlyph(prev.letter, mode);
+  const nextGlyph = displayGlyph(next.letter, mode);
+  const poster = letterHeroPath(current.letter, mode);
+  const src = `${letterBuddyVideoPath(current.letter, mode)}?v=${APP_VERSION}`;
+  const selfVoice = MEET_SELF_VOICE.has(current.letter.toUpperCase());
+
+  const go = (to: number) => {
+    primeAudioFromGesture();
+    setFailed(false);
+    setPaused(true);
+    setIdx(to);
+  };
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        go((idx - 1 + LETTERS.length) % LETTERS.length);
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        go((idx + 1) % LETTERS.length);
+      } else if (e.key === "Escape") {
+        onClose();
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [idx, onClose]);
 
   useEffect(() => {
     const v = videoRef.current;
@@ -98,7 +140,7 @@ export function MeetBuddyModal({
       <div
         className="relative flex h-full w-full max-w-md flex-col overflow-hidden bg-surface shadow-[var(--shadow-float)] sm:h-auto sm:max-h-[min(94dvh,880px)] sm:rounded-[var(--radius-xl)] sm:border-2 sm:border-border"
         style={{
-          background: `linear-gradient(180deg, ${entry.hue}33 0%, var(--color-surface) 46%)`,
+          background: `linear-gradient(180deg, ${current.hue}33 0%, var(--color-surface) 46%)`,
         }}
       >
         <div className="flex items-center justify-between gap-2 p-3">
@@ -118,7 +160,7 @@ export function MeetBuddyModal({
         <div
           className="relative mx-3 aspect-[2/3] overflow-hidden rounded-[var(--radius-lg)] border-2 border-white/70 shadow-[var(--shadow-poster)] sm:mx-5"
           style={{
-            background: `linear-gradient(160deg, ${entry.hue}55, ${entry.hue}18)`,
+            background: `linear-gradient(160deg, ${current.hue}55, ${current.hue}18)`,
           }}
         >
           <img
@@ -131,6 +173,7 @@ export function MeetBuddyModal({
           />
           {!failed && (
             <video
+              key={src}
               ref={videoRef}
               playsInline
               muted={!selfVoice}
@@ -147,7 +190,7 @@ export function MeetBuddyModal({
                 else v.pause();
               }}
               onEnded={() => {
-                if (!selfVoice) void speak(entry.rhyme);
+                if (!selfVoice) void speak(current.rhyme);
               }}
             />
           )}
@@ -163,10 +206,32 @@ export function MeetBuddyModal({
               </span>
             </button>
           )}
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              go((idx - 1 + LETTERS.length) % LETTERS.length);
+            }}
+            className="absolute left-2 top-1/2 z-[5] flex size-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-on-light shadow-lg"
+            aria-label={`Previous, meet ${prevGlyph}`}
+          >
+            <ChevronLeft className="size-7" />
+          </button>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              go((idx + 1) % LETTERS.length);
+            }}
+            className="absolute right-2 top-1/2 z-[5] flex size-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-on-light shadow-lg"
+            aria-label={`Next, meet ${nextGlyph}`}
+          >
+            <ChevronRight className="size-7" />
+          </button>
         </div>
 
         <p className="px-5 py-4 text-center text-sm font-semibold text-ink-soft">
-          {entry.soundCue}
+          {current.soundCue}
         </p>
       </div>
     </div>
