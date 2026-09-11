@@ -12,6 +12,8 @@ const GRID_COLS = 3;
 const GRID_ROWS = 3;
 const CELL_MIN_SHARE = 0.04;
 const CELL_COVER = 0.32;
+/** Each guide stroke must be followed (Q tail, K arms, A bar…). */
+const STROKE_COVER = 0.4;
 
 type GlyphBox = { x0: number; y0: number; x1: number; y1: number };
 
@@ -27,6 +29,56 @@ function cellsReady(letterN: number, cellLetter: Uint32Array, cellInked: Uint32A
   for (let i = 0; i < cellLetter.length; i++) {
     if (cellLetter[i] / letterN < CELL_MIN_SHARE) continue;
     if (cellInked[i] / cellLetter[i] < CELL_COVER) return false;
+  }
+  return true;
+}
+
+function inkNear(
+  inked: Uint8Array,
+  w: number,
+  h: number,
+  x: number,
+  y: number,
+  rad: number,
+): boolean {
+  const r2 = rad * rad;
+  for (let dy = -rad; dy <= rad; dy++) {
+    const yy = y + dy;
+    if (yy < 0 || yy >= h) continue;
+    for (let dx = -rad; dx <= rad; dx++) {
+      if (dx * dx + dy * dy > r2) continue;
+      const xx = x + dx;
+      if (xx < 0 || xx >= w) continue;
+      if (inked[yy * w + xx]) return true;
+    }
+  }
+  return false;
+}
+
+function strokesReady(
+  letter: string,
+  box: GlyphBox,
+  dpr: number,
+  inked: Uint8Array,
+  w: number,
+  h: number,
+): boolean {
+  const strokes = traceStrokes(letter);
+  if (!strokes || strokes.length === 0) return true;
+  const rad = Math.max(8, Math.round((INK_WIDTH / 2.4) * dpr));
+  for (const stroke of strokes) {
+    if (stroke.length < 2) continue;
+    const pts = smoothStroke(stroke.map((p: TracePt) => mapGuide(p[0], p[1], box, dpr)));
+    let hit = 0;
+    let n = 0;
+    for (let t = 0.12; t <= 0.92; t += 0.08) {
+      const p = pointAlong(pts, t);
+      n += 1;
+      const x = Math.round(p.x * dpr);
+      const y = Math.round(p.y * dpr);
+      if (inkNear(inked, w, h, x, y, rad)) hit += 1;
+    }
+    if (n > 0 && hit / n < STROKE_COVER) return false;
   }
   return true;
 }
@@ -414,11 +466,19 @@ export function TracePad({
     }
     if (
       ratio >= COVER_THRESHOLD &&
-      cellsReady(letterCount.current, cellLetterRef.current, cellInkedRef.current)
+      cellsReady(letterCount.current, cellLetterRef.current, cellInkedRef.current) &&
+      strokesReady(
+        guideLetter,
+        boxRef.current,
+        dprRef.current,
+        inkedBits.current,
+        pxW.current,
+        pxH.current,
+      )
     ) {
       finish();
     }
-  }, [finish, publishDebug]);
+  }, [finish, guideLetter, publishDebug]);
 
   const setupCanvas = useCallback(
     (mode: "reset" | "resize" = "reset") => {

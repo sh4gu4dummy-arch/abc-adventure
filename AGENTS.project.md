@@ -36,8 +36,8 @@ of pixels.” Pixel % lies (K’s spine is a huge share of the ink).
 - **C:** tiny gate — ink must exist on both sides (or top and bottom).
   Would have caught spine-only K. Won’t catch every cheat.
 
-Do **not** retune the % again (26 vs 80 vs 50). If they pick, build that
-one. Default if they say “fix tracing” with no letter: **A**.
+Do **not** retune the % again (26 vs 80 vs 50). Each **guide stroke** must
+be inked (v0.199) — Q is not done from the O, K not from the spine.
 Letter **names** use USA pronunciation. H is **aitch** (AY-ch), never haitch / hey-ch.
 Meet little **a** says **A** (rhymes with day/hay). Never **I/eye** or **why**.
 Meet I2V spoken line is only **“little X”** (or **“Big X”**). Never paste
