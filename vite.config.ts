@@ -1,11 +1,25 @@
+import { readdirSync, createReadStream, existsSync, statSync } from "node:fs";
+import { basename, extname, join } from "node:path";
 import type { Plugin } from "vite";
 import { defineConfig } from "vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { nitro } from "nitro/vite";
-import { createReadStream, existsSync, statSync } from "node:fs";
-import { basename, extname, join } from "node:path";
+// @ts-expect-error JS plugin alongside the TS vite config
+import { grokPwaPlugin } from "./scripts/grok-pwa-plugin.mjs";
+// @ts-expect-error JS plugin alongside the TS vite config
+import { appEnvPlugin } from "./scripts/app-env-plugin.mjs";
+import { isMigrationFile } from "./scripts/migration-plan.mjs";
+
+/** The files `src/lib/db.ts` globs — same directory, same non-recursive scope. */
+function hasGlobbedMigrations(root: string): boolean {
+  try {
+    return readdirSync(join(root, "migrations")).some(isMigrationFile);
+  } catch {
+    return false;
+  }
+}
 
 /**
  * Serve versioned zip/apk from public/portable/.
@@ -65,10 +79,7 @@ function portableDownloadPlugin(): Plugin {
     res.setHeader("cache-control", "no-store");
     res.setHeader("x-content-type-options", "nosniff");
     if (ext !== ".json") {
-      res.setHeader(
-        "content-disposition",
-        `attachment; filename="${basename(file)}"`,
-      );
+      res.setHeader("content-disposition", `attachment; filename="${basename(file)}"`);
     }
     if ((req.method ?? "GET").toUpperCase() === "HEAD") {
       res.end();
@@ -92,12 +103,17 @@ function portableDownloadPlugin(): Plugin {
  * Finish PGLite bootstrap during dev-server setup (before traffic). Vite awaits
  * async `configureServer` hooks. Production: `src/lib/db` kicks `ensureDbReady`
  * on import.
+ *
+ * Vite awaiting the hook puts this on time-to-first-render, so an app with no
+ * migrations — no schema to apply — skips it entirely rather than paying for a
+ * PGLite instance it never queries.
  */
 function pgliteBootstrapPlugin(): Plugin {
   return {
     name: "app-builder:pglite-bootstrap",
     apply: "serve",
     async configureServer(server) {
+      if (!hasGlobbedMigrations(server.config.root)) return;
       try {
         const mod = (await server.ssrLoadModule("/src/lib/db.ts")) as {
           ensureDbReady?: () => Promise<void>;
@@ -146,7 +162,9 @@ function authPopupPlugin(): Plugin {
             return;
           }
 
-          const host = String(req.headers["x-forwarded-host"] ?? req.headers.host ?? "localhost:8080");
+          const host = String(
+            req.headers["x-forwarded-host"] ?? req.headers.host ?? "localhost:8080",
+          );
           const proto = String(
             req.headers["x-forwarded-proto"] ??
               ((req.socket as { encrypted?: boolean } | undefined)?.encrypted ? "https" : "http"),
@@ -203,26 +221,32 @@ function authPopupPlugin(): Plugin {
 }
 
 // `0.0.0.0:8080` is the live-preview contract — don't change host/port.
-// Keep `nitro` gated to `build` (the Vercel deploy target): enabled in dev it
-// opens a second dev-server port, which breaks the single-port preview.
 // The dev server starts once `src/router.tsx` and `src/routes/` exist — see
 // AGENTS.md § "First scaffold".
-export default defineConfig(({ command }) => ({
+export default defineConfig(({ command, isPreview }) => ({
   server: {
     host: "0.0.0.0",
     port: 8080,
     strictPort: true,
-    // Android SDK / JDK trees are huge — never watch them (ENOSPC).
     watch: {
       ignored: [
         "**/.android-sdk/**",
         "**/.jdk-21/**",
         "**/android/**",
         "**/public/portable/**",
+        "**/public/videos/**",
+        "**/public/art-archive/**",
+        "**/public/review/**",
+        "**/artifacts/**",
         "**/node_modules/**",
         "**/.git/**",
       ],
     },
+  },
+  preview: {
+    host: "127.0.0.1",
+    port: 8081,
+    strictPort: true,
   },
   resolve: { tsconfigPaths: true },
   plugins: [
@@ -230,9 +254,23 @@ export default defineConfig(({ command }) => ({
     pgliteBootstrapPlugin(),
     // Before tanstackStart so /auth/popup never falls through to the SPA.
     authPopupPlugin(),
+    // Dev-only /__app-env, read by scripts/check-auth-invariant.mjs.
+    appEnvPlugin(),
+    // PWA head + ?install=1 tutorial page; runs before Start/Nitro.
+    grokPwaPlugin(),
     tailwindcss(),
     tanstackStart(),
-    ...(command === "build" ? [nitro({ preset: "vercel" })] : []),
+    ...(command === "build" || isPreview
+      ? [
+          nitro({
+            preset: "vercel",
+            // Auto-registers server/middleware/* (the PWA install page +
+            // manifest + head-tag middleware). Nitro v3 defaults serverDir to
+            // false, so removing this silently unwires /?install=1 on deploys.
+            serverDir: "./server",
+          }),
+        ]
+      : []),
     viteReact(),
   ],
 }));
