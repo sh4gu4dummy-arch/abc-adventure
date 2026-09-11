@@ -45,7 +45,8 @@ phonetic spellings (ELL, AY, KAY, CUE) or sound-cues (“says lll like lion”)
 into the prompt as dialogue — the model reads them out (lell, yay, why).
 Meet little **l** has a small tail curling **right** at the bottom.
 **A** still: the triangle hole is the **same color as the background** (opaque,
-not transparent — transparent reads as a black hole). No extra black ovals
+not transparent — transparent reads as a black hole). Never scanline-fill
+across the glyph (that painted a scribble on the face). No extra black ovals
 on the inner rim. Mouth on the crossbar.
 Meet clips from **J onward**: the letter says **“Hi I’m Big J, Big J, Big J”**
 (that letter). Slow: **“Big… A… Big… A…”**. Still missing that Big line: **B C D E F G H I**.
