@@ -40,6 +40,7 @@ Do **not** retune the % again (26 vs 80 vs 50). If they pick, build that
 one. Default if they say “fix tracing” with no letter: **A**.
 Letter **names** use USA pronunciation. H is **aitch** (AY-ch), never haitch / hey-ch.
 Meet little **a** says **A** (rhymes with day/hay). Never **I/eye** or **why**.
+Meet little **k** says **K** (kay). Never **yay**.
 Meet clips from **J onward**: the letter says **“Hi I’m Big J, Big J, Big J”**
 (that letter). **A** remade (v0.135): mouth **below** the crossbar, not on the bar.
 Slow: **“Big… A… Big… A…”**. Still missing that Big line: **B C D E F G H I**.
