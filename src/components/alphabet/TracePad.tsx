@@ -130,10 +130,22 @@ function drawTraceArrows(
     ctx.globalAlpha = 0.95;
     drawChevron(ctx, mid.x, mid.y, mid.ang, 11, color);
   });
+  const placed: { x: number; y: number }[] = [];
   mapped.forEach((pts, i) => {
-    const p = pts[0];
-    if (!p) return;
+    if (pts.length < 2) return;
     ctx.globalAlpha = 1;
+    let p = pointAlong(pts, 0.16);
+    const minPx = 22;
+    const start = pts[0]!;
+    const dist0 = Math.hypot(p.x - start.x, p.y - start.y);
+    if (dist0 < minPx) p = pointAlong(pts, Math.min(0.42, minPx / Math.max(1, strokeLen(pts))));
+    for (const q of placed) {
+      if (Math.hypot(p.x - q.x, p.y - q.y) < 26) {
+        p = pointAlong(pts, 0.32);
+        break;
+      }
+    }
+    placed.push({ x: p.x, y: p.y });
     ctx.fillStyle = color;
     ctx.beginPath();
     ctx.arc(p.x, p.y, 11, 0, Math.PI * 2);
