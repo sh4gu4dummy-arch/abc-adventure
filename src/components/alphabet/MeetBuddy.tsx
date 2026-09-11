@@ -42,7 +42,7 @@ export function MeetBuddyButton({
         primeAudioFromGesture();
         onOpen();
       }}
-      className="pressable inline-flex min-h-11 items-center gap-2 rounded-[var(--radius-pill)] bg-white/95 px-4 py-2.5 text-sm font-bold shadow"
+      className="pressable inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-[var(--radius-pill)] bg-white/95 px-4 py-2.5 text-sm font-bold shadow"
       style={{ color: entry.accent }}
     >
       <Play className="size-4 fill-current" /> Meet {glyph}

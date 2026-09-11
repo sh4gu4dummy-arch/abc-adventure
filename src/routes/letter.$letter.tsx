@@ -204,13 +204,13 @@ function LetterPage() {
               </h1>
             </div>
           </div>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex w-full flex-col gap-2 sm:w-auto sm:min-w-[12.5rem]">
             <button
               type="button"
               onClick={() => {
                 void speakLetter(entry.letter);
               }}
-              className="pressable inline-flex items-center gap-2 rounded-[var(--radius-pill)] bg-white/95 px-4 py-2.5 text-sm font-bold shadow"
+              className="pressable inline-flex items-center justify-center gap-2 rounded-[var(--radius-pill)] bg-white/95 px-4 py-2.5 text-sm font-bold shadow"
               style={{ color: entry.accent }}
             >
               <Volume2 className="size-4" /> Hear letter
@@ -219,29 +219,35 @@ function LetterPage() {
             {episodesForLetter(entry.letter).length > 0 && (
               <Link
                 to="/buddies"
-                className="pressable inline-flex items-center gap-2 rounded-[var(--radius-pill)] bg-white/20 px-4 py-2.5 text-sm font-bold text-white"
+                className="pressable inline-flex items-center justify-center gap-2 rounded-[var(--radius-pill)] bg-white/20 px-4 py-2.5 text-sm font-bold text-white"
               >
                 <Clapperboard className="size-4" /> Letter Buddies
               </Link>
             )}
-            {prev && (
-              <Link
-                to="/letter/$letter"
-                params={{ letter: prev.letter.toLowerCase() }}
-                className="pressable inline-flex items-center gap-1 rounded-[var(--radius-pill)] bg-white/20 px-3 py-2.5 text-sm font-bold text-white"
-              >
-                <ChevronLeft className="size-4" /> {displayGlyph(prev.letter, caseKind)}
-              </Link>
-            )}
-            {next && (
-              <Link
-                to="/letter/$letter"
-                params={{ letter: next.letter.toLowerCase() }}
-                className="pressable inline-flex items-center gap-1 rounded-[var(--radius-pill)] bg-white/20 px-3 py-2.5 text-sm font-bold text-white"
-              >
-                {displayGlyph(next.letter, caseKind)} <ChevronRight className="size-4" />
-              </Link>
-            )}
+            <div className="flex gap-2">
+              {prev ? (
+                <Link
+                  to="/letter/$letter"
+                  params={{ letter: prev.letter.toLowerCase() }}
+                  className="pressable inline-flex min-h-11 flex-1 items-center justify-center gap-1 rounded-[var(--radius-pill)] bg-white/20 px-3 py-2.5 text-sm font-bold text-white"
+                >
+                  <ChevronLeft className="size-4" /> {displayGlyph(prev.letter, caseKind)}
+                </Link>
+              ) : (
+                <span className="flex-1" />
+              )}
+              {next ? (
+                <Link
+                  to="/letter/$letter"
+                  params={{ letter: next.letter.toLowerCase() }}
+                  className="pressable inline-flex min-h-11 flex-1 items-center justify-center gap-1 rounded-[var(--radius-pill)] bg-white/20 px-3 py-2.5 text-sm font-bold text-white"
+                >
+                  {displayGlyph(next.letter, caseKind)} <ChevronRight className="size-4" />
+                </Link>
+              ) : (
+                <span className="flex-1" />
+              )}
+            </div>
           </div>
         </div>
       </section>
