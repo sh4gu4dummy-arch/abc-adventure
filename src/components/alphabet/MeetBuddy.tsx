@@ -229,10 +229,6 @@ export function MeetBuddyModal({
             <ChevronRight className="size-7" />
           </button>
         </div>
-
-        <p className="px-5 py-4 text-center text-sm font-semibold text-ink-soft">
-          {current.soundCue}
-        </p>
       </div>
     </div>
   );
