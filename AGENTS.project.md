@@ -44,9 +44,9 @@ Meet I2V spoken line is only **“little X”** (or **“Big X”**). Never past
 phonetic spellings (ELL, AY, KAY, CUE) or sound-cues (“says lll like lion”)
 into the prompt as dialogue — the model reads them out (lell, yay, why).
 Meet little **l** has a small tail curling **right** at the bottom.
+**A** still: empty triangle hole. Mouth sits **on the crossbar**, not in the hole.
 Meet clips from **J onward**: the letter says **“Hi I’m Big J, Big J, Big J”**
-(that letter). **A** remade (v0.135): mouth **below** the crossbar, not on the bar.
-Slow: **“Big… A… Big… A…”**. Still missing that Big line: **B C D E F G H I**.
+(that letter). Slow: **“Big… A… Big… A…”**. Still missing that Big line: **B C D E F G H I**.
 Meet letters are **the glyph only** — no extra arms, legs, or stubs. q has **one**
 tail on the right, nothing growing off the left of the bowl.
 
