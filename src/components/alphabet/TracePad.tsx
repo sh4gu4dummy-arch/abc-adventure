@@ -33,7 +33,7 @@ function cellsReady(letterN: number, cellLetter: Uint32Array, cellInked: Uint32A
 function letterFont(h: number, lower: boolean) {
   const size = Math.floor(h * (lower ? 0.86 : 0.76));
   if (lower) {
-    return `700 ${size}px "Comic Neue", "Fredoka", sans-serif`;
+    return `650 ${size}px "Fredoka", "Nunito", sans-serif`;
   }
   return `700 ${size}px "Fredoka", "Nunito", sans-serif`;
 }
@@ -387,7 +387,6 @@ export function TracePad({
     void Promise.all([
       document.fonts?.load('700 80px "Fredoka"'),
       document.fonts?.load('800 80px "Nunito"'),
-      document.fonts?.load('700 80px "Comic Neue"'),
       document.fonts?.ready,
     ]).then(() => {
       if (!cancelled) setupCanvas("resize");
