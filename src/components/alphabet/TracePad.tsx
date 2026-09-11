@@ -3,6 +3,7 @@ import { Check, Eraser } from "lucide-react";
 import { markSection } from "@/lib/progress";
 import { getGfxSnapshot } from "@/lib/gfx-pref";
 import { speak } from "@/lib/speak";
+import { traceStrokes, type TracePt } from "@/data/trace-guides";
 
 /** Must color most of the glyph — a K spine alone must not pass. */
 const COVER_THRESHOLD = 0.5;
@@ -28,6 +29,122 @@ function cellsReady(letterN: number, cellLetter: Uint32Array, cellInked: Uint32A
     if (cellInked[i] / cellLetter[i] < CELL_COVER) return false;
   }
   return true;
+}
+
+function mapGuide(
+  nx: number,
+  ny: number,
+  box: GlyphBox,
+  dpr: number,
+): { x: number; y: number } {
+  return {
+    x: (box.x0 + nx * (box.x1 - box.x0 + 1)) / dpr,
+    y: (box.y0 + ny * (box.y1 - box.y0 + 1)) / dpr,
+  };
+}
+
+function strokeLen(pts: { x: number; y: number }[]): number {
+  let n = 0;
+  for (let i = 1; i < pts.length; i++) {
+    n += Math.hypot(pts[i]!.x - pts[i - 1]!.x, pts[i]!.y - pts[i - 1]!.y);
+  }
+  return n;
+}
+
+function pointAlong(
+  pts: { x: number; y: number }[],
+  t: number,
+): { x: number; y: number; ang: number } {
+  const total = Math.max(1, strokeLen(pts));
+  let remain = Math.min(1, Math.max(0, t)) * total;
+  for (let i = 1; i < pts.length; i++) {
+    const a = pts[i - 1]!;
+    const b = pts[i]!;
+    const seg = Math.hypot(b.x - a.x, b.y - a.y) || 0.001;
+    if (remain <= seg) {
+      const u = remain / seg;
+      return {
+        x: a.x + (b.x - a.x) * u,
+        y: a.y + (b.y - a.y) * u,
+        ang: Math.atan2(b.y - a.y, b.x - a.x),
+      };
+    }
+    remain -= seg;
+  }
+  const last = pts[pts.length - 1]!;
+  const prev = pts[pts.length - 2] ?? last;
+  return {
+    x: last.x,
+    y: last.y,
+    ang: Math.atan2(last.y - prev.y, last.x - prev.x),
+  };
+}
+
+function drawChevron(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  ang: number,
+  size: number,
+  fill: string,
+) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.rotate(ang);
+  ctx.fillStyle = fill;
+  ctx.beginPath();
+  ctx.moveTo(size, 0);
+  ctx.lineTo(-size * 0.55, size * 0.72);
+  ctx.lineTo(-size * 0.18, 0);
+  ctx.lineTo(-size * 0.55, -size * 0.72);
+  ctx.closePath();
+  ctx.fill();
+  ctx.restore();
+}
+
+function drawTraceArrows(
+  ctx: CanvasRenderingContext2D,
+  letter: string,
+  box: GlyphBox,
+  dpr: number,
+  color: string,
+) {
+  const strokes = traceStrokes(letter);
+  if (!strokes || box.x1 <= box.x0) return;
+  const mapped = strokes.map((stroke) =>
+    stroke.map((p: TracePt) => mapGuide(p[0], p[1], box, dpr)),
+  );
+  ctx.save();
+  ctx.lineCap = "round";
+  ctx.lineJoin = "round";
+  mapped.forEach((pts) => {
+    if (pts.length < 2) return;
+    ctx.strokeStyle = color;
+    ctx.globalAlpha = 0.55;
+    ctx.lineWidth = 5;
+    ctx.beginPath();
+    ctx.moveTo(pts[0]!.x, pts[0]!.y);
+    for (let i = 1; i < pts.length; i++) ctx.lineTo(pts[i]!.x, pts[i]!.y);
+    ctx.stroke();
+    const mid = pointAlong(pts, 0.72);
+    ctx.globalAlpha = 0.95;
+    drawChevron(ctx, mid.x, mid.y, mid.ang, 11, color);
+  });
+  mapped.forEach((pts, i) => {
+    const p = pts[0];
+    if (!p) return;
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 11, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = "#fff";
+    ctx.font = '700 13px "Fredoka", sans-serif';
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(String(i + 1), p.x, p.y + 0.5);
+  });
+  ctx.restore();
 }
 
 function letterFont(h: number, lower: boolean) {
@@ -157,6 +274,7 @@ export function TracePad({
       paintGlyph(ctx, guideLetter, w, h, "stroke", isLower);
       ctx.setLineDash([]);
       ctx.globalAlpha = 1;
+      drawTraceArrows(ctx, guideLetter, boxRef.current, dprRef.current, accent);
     },
     [accent, guideLetter, isLower],
   );
@@ -504,7 +622,7 @@ export function TracePad({
       <div
         className={`relative overflow-hidden rounded-[var(--radius-lg)] border-2 border-border shadow-[var(--shadow-card)] ${done ? "trace-pad-done" : ""}`}
       >
-        {showGhost && (
+        {showGhost && !traceStrokes(guideLetter) && (
           <span
             className="trace-start-dot"
             style={{ left: `${startPct.x}%`, top: `${startPct.y}%`, background: accent }}
@@ -556,7 +674,7 @@ export function TracePad({
         <p className="text-sm font-semibold text-ink-soft">
           {done
             ? `You traced ${spokenName}! Tap the letter to try again.`
-            : `Start at the 1 and color the whole letter — not just one line.`}
+            : `Follow the arrows. Start at 1 and color the whole letter.`}
         </p>
       </div>
 
