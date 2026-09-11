@@ -71,8 +71,9 @@ function readDrafts(): DraftFile {
 
 export function loadDevStrokes(letter: string): DevStroke[] {
   const drafts = readDrafts();
-  const saved = drafts[draftKey(letter)];
-  if (saved?.length) {
+  const key = draftKey(letter);
+  if (Object.prototype.hasOwnProperty.call(drafts, key)) {
+    const saved = drafts[key] ?? [];
     return saved.map((s) => ({
       pts: (s.pts ?? []).map((p) => [p[0], p[1]] as TracePt),
       numT: typeof s.numT === "number" ? s.numT : 0.16,

@@ -492,7 +492,7 @@ export function TracePad({
       ctx.globalAlpha = 1;
       drawTraceArrows(
         ctx,
-        (devOn && devStrokesRef.current.length
+        (devOn
           ? devStrokesRef.current.map((s) => s.pts)
           : traceStrokes(guideLetter)),
         boxRef.current,
@@ -536,8 +536,8 @@ export function TracePad({
   useEffect(() => {
     devStrokesRef.current = loadDevStrokes(guideLetter);
     setDevSel(-1);
-    redraw();
-  }, [guideLetter, traceDev, redraw]);
+    curveActiveRef.current = -1;
+  }, [guideLetter, traceDev]);
 
   const stamp = useCallback((cssX: number, cssY: number) => {
     const dpr = dprRef.current;
@@ -1092,9 +1092,15 @@ export function TracePad({
           <button
             type="button"
             onClick={() => {
-              if (devSel < 0) return;
-              devStrokesRef.current = devStrokesRef.current.filter((_, i) => i !== devSel);
-              setDevSel(-1);
+              const list = devStrokesRef.current;
+              const idx = devSel >= 0 ? devSel : list.length === 1 ? 0 : -1;
+              if (idx < 0) {
+                setDevMsg("Tap a line first, then Delete.");
+                return;
+              }
+              const next = list.filter((_, i) => i !== idx);
+              devStrokesRef.current = next;
+              setDevSel(next.length ? Math.min(idx, next.length - 1) : -1);
               persistDev();
               redraw();
             }}
