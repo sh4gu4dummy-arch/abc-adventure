@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.189  
+**Version:** v0.190  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 **User tests in Grok live preview**, not APK, unless they ask.
 
@@ -32,6 +32,9 @@ really is done. Tap to play again (v0.129).
 | H heart | Crayon with two points | One-tip crayon; look-at-the-clip QA (not a tip-count law) |
 
 A–Z word videos exist. J–Z remade to locked sentences; A–I older unless later patched (G, H, fish, frog, etc.).
+
+## Home tiles (v0.190)
+Square thumbs, fill the tile. No extra padding/letterbox.
 
 ## Big Z thumb (v0.189)
 Clean 3-stroke Z. Removed the extra knob on the top-left bar.
