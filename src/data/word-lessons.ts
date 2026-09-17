@@ -33,6 +33,8 @@
  *    State-change gags are one-way (peel stays off). No ping-pong.
  *    Locomotion must travel: the body changes place in the frame. No
  *    treadmill / running-in-place cycles. Travel clips do not loop.
+ *    On a path / zigzag: feet stay on the path in all 5 QA frames. Off
+ *    the path = redo, even if he moved.
  *    Before shipping a remake: look at start/mid/end frames
  *    (`python3 scripts/qa-word-frames.py VIDEO`). If anything is
  *    obviously wrong, redo. Do not write a new one-incident law.
