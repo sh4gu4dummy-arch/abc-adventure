@@ -79,6 +79,13 @@ tail on the right, nothing growing off the left of the bowl.
 background color, don’t smear. **Never mask-cut a letter onto a new field** —
 that made little z a broken 3-shape. Generate a new still.
 
+## Meet A play-with-words plan (remind on ask)
+
+If they ask for the Meet-play / “A plays with apple” plan, **remind them
+from `docs/meet-a-play-plan.md` — don’t shoot until they say go.**
+Intro Meet stays. New play clips (two 10s per case, 3 words each). Files
+stay split; Meet modal auto-chains intro → play-1 → play-2. Trial A only.
+
 ## Lowercase / small-letter plan (remind on ask)
 
 If they ask for the lowercase plan, **remind them of this — don’t start

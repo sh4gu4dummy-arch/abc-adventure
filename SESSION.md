@@ -1,6 +1,13 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.295  
+**Version:** v0.295
+
+## Meet A play plan (saved, not shot)
+
+`docs/meet-a-play-plan.md` — extra Meet clips: A runs around and plays
+with apple/ant/airplane then alligator/astronaut/anchor. Intro Meet stays.
+Wait for go.
+  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 Always **commit + push** ABC updates the same turn. Tell them the version.
 **Never** push Grok sandbox internals (`.grok/`, attachments, skill dumps).  
