@@ -544,13 +544,16 @@ export function displayWord(word: string, kind: CaseKind): string {
   return kind === "upper" ? word : word.toLowerCase();
 }
 
-/** Match-game cue names the picture that is actually on screen. */
+/** Match-game cue names the picture on screen, and says the letter NAME (Ay, Bee…). */
 export function soundCueForWord(entry: LetterEntry, word: string): string {
   const like = word.toLowerCase();
+  const who = entry.name.charAt(0).toUpperCase() + entry.name.slice(1);
   if (entry.letter.toUpperCase() === "X") {
-    return `X says ks, like ${like}!`;
+    return `${who} says ks, like ${like}!`;
   }
-  return entry.soundCue.replace(/like [^.!]+!?/, `like ${like}!`);
+  const m = entry.soundCue.match(/says (.+), like /i);
+  const sound = m?.[1] ?? "its sound";
+  return `${who} says ${sound}, like ${like}!`;
 }
 
 /** Scene art for “what is this word?” (games + word grid). */
