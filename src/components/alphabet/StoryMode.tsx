@@ -245,7 +245,13 @@ export function StoryMode({ entry }: { entry: LetterEntry }) {
         style={{ borderColor: `${entry.accent}55` }}
       >
         <p className="font-display text-lg font-bold leading-snug text-ink sm:text-xl">
-          {highlightWords(beat.text, beat.words, entry.accent, entry.animal)}
+          {highlightWords(
+            beat.text,
+            beat.words,
+            entry.accent,
+            entry.animal,
+            entry.letter,
+          )}
         </p>
 
         <div className="mt-3 flex flex-wrap gap-1.5">
@@ -353,37 +359,56 @@ function highlightWords(
   words: { word: string }[],
   accent: string,
   extra?: string,
+  letter?: string,
 ) {
-  // Build a case-insensitive highlighter for cast words
-  const sorted = [...words.map((w) => w.word), extra]
+  const skip = new Set([
+    "a",
+    "an",
+    "and",
+    "at",
+    "as",
+    "am",
+    "are",
+    "i",
+    "in",
+    "is",
+    "it",
+    "if",
+    "of",
+    "on",
+    "or",
+    "by",
+    "be",
+    "but",
+    "the",
+    "to",
+    "too",
+  ]);
+  const L = (letter ?? "").toLowerCase();
+  const listed = [...words.map((w) => w.word), extra]
     .filter((w): w is string => Boolean(w && w.trim()))
-    .sort((a, b) => b.length - a.length);
-  if (!sorted.length) return text;
+    .map((w) => w.toLowerCase());
 
-  const pattern = new RegExp(
-    `(${sorted.map((w) => escapeReg(w)).join("|")})`,
-    "gi",
-  );
-  const parts = text.split(pattern);
+  const parts = text.split(/([A-Za-z][A-Za-z'-]*)/);
   return parts.map((part, i) => {
-    const hit = sorted.some((w) => w.toLowerCase() === part.toLowerCase());
-    if (hit) {
-      return (
-        <span
-          key={i}
-          className="rounded-md px-0.5 font-extrabold underline decoration-[0.12em] underline-offset-2"
-          style={{ color: accent }}
-        >
-          {part}
-        </span>
-      );
-    }
-    return <span key={i}>{part}</span>;
+    if (!/^[A-Za-z]/.test(part)) return <span key={i}>{part}</span>;
+    const w = part.toLowerCase();
+    const hit =
+      !skip.has(w) &&
+      (listed.some((lw) => lw === w || w.startsWith(lw) || lw.startsWith(w)) ||
+        (L && w.startsWith(L)) ||
+        (L === "x" && w.endsWith("x")));
+    if (!hit) return <span key={i}>{part}</span>;
+    return (
+      <span
+        key={i}
+        className="rounded-md px-0.5 font-extrabold underline decoration-[0.12em] underline-offset-2"
+        style={{ color: accent }}
+      >
+        {part}
+      </span>
+    );
   });
-}
-
-function escapeReg(s: string) {
-  return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
 function wait(ms: number) {

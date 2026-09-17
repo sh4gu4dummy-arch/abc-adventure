@@ -151,7 +151,7 @@ const STORY_BEATS: Record<string, StoryBeat[]> = {
       text: "A fish splashed near the ferry.",
       action: "splash",
       scene: "ocean",
-      cast: ["fish"],
+      cast: ["fish", "ferry"],
     },
     {
       text: "A fox sat by the flower.",
