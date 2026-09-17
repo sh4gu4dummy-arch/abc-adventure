@@ -1586,4 +1586,10 @@ export const SPEECH_MAP: Record<string, string> = {
   "A helicopter landed by the house.": "cce644f58c0d567a.mp3",
   "A horse put on a hat.": "9b0f50665e25357f.mp3",
   "The horse ate honey.": "f7e15d25bdb93b8c.mp3",
+  "An iguana carried ice cream on an island.": "239ede4b111ea625.mp3",
+  "The ice cream started melting.": "6ba579a246d3a34a.mp3",
+  "The iguana ran into an igloo.": "bcb38c2dd5c2a849.mp3",
+  "A jaguar packed juice.": "aa7b64c64a33d81e.mp3",
+  "The jaguar put on a jacket.": "30ea0e6dda98c546.mp3",
+  "The jaguar took the juice on a jet.": "199b369176520cee.mp3",
 };

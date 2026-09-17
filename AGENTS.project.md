@@ -129,6 +129,11 @@ Do not ship a clip that fails any of these. Not “looks mostly ok.”
 
 ## Story lines (remind on ask)
 
+**Continuity is a plot, not a mascot.** Same character doing three jobs is
+not a story. One thing carries through (the egg, the guitar, the ice
+cream, the juice). Beat 2 is a problem/turn; beat 3 is the payoff.
+Characters act. Objects don’t zip/pour/sit themselves.
+
 Three beats. One verb each. A story that **follows**, not a word dump
 and not a slogan last line. Toddler-safe (no smash, no scary). Logical
 (no flying cars).
