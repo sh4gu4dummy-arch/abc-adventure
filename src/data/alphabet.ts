@@ -598,6 +598,18 @@ export function letterBuddyVideoPath(letter: string, kind: CaseKind = "upper"): 
   return assetUrl(`videos/buddies/${l}.mp4`);
 }
 
+/** Extra Meet play clips after the intro. Only files that exist. */
+const MEET_PLAY_UPPER: Partial<Record<string, string[]>> = {
+  a: ["videos/imagine/a-play-1.mp4"],
+};
+
+export function letterMeetPlaylist(letter: string, kind: CaseKind = "upper"): string[] {
+  const intro = letterBuddyVideoPath(letter, kind);
+  const extras =
+    kind === "upper" ? MEET_PLAY_UPPER[letter.toLowerCase()] ?? [] : [];
+  return [intro, ...extras.map((p) => assetUrl(p))];
+}
+
 export { isBuddyWordPoster } from "@/data/art-roles";
 
 

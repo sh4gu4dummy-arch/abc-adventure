@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, Play, X } from "lucide-react";
 import {
   LETTERS,
-  letterBuddyVideoPath,
+  letterMeetPlaylist,
   letterHeroPath,
   displayGlyph,
   caseTitle,
@@ -60,11 +60,13 @@ export function MeetBuddyModal({
   const { mode } = useCaseMode();
   const videoRef = useRef<HTMLVideoElement>(null);
   const [idx, setIdx] = useState(() => letterIndex(entry.letter));
+  const [clipIdx, setClipIdx] = useState(0);
   const [paused, setPaused] = useState(true);
   const [failed, setFailed] = useState(false);
 
   useEffect(() => {
     setIdx(letterIndex(entry.letter));
+    setClipIdx(0);
   }, [entry.letter]);
 
   const current = LETTERS[idx]!;
@@ -74,13 +76,16 @@ export function MeetBuddyModal({
   const prevGlyph = displayGlyph(prev.letter, mode);
   const nextGlyph = displayGlyph(next.letter, mode);
   const poster = letterHeroPath(current.letter, mode);
-  const src = `${letterBuddyVideoPath(current.letter, mode)}?v=${APP_VERSION}`;
+  const playlist = letterMeetPlaylist(current.letter, mode);
+  const clip = Math.min(clipIdx, Math.max(0, playlist.length - 1));
+  const src = `${playlist[clip]}?v=${APP_VERSION}`;
   const selfVoice = MEET_SELF_VOICE.has(current.letter.toUpperCase());
 
   const go = (to: number) => {
     primeAudioFromGesture();
     setFailed(false);
     setPaused(true);
+    setClipIdx(0);
     setIdx(to);
   };
 
@@ -190,7 +195,7 @@ export function MeetBuddyModal({
                 else v.pause();
               }}
               onEnded={() => {
-                if (!selfVoice) void speak(current.rhyme);
+                setClipIdx((i) => (i + 1) % playlist.length);
               }}
             />
           )}

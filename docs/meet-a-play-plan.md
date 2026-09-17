@@ -1,7 +1,6 @@
 # Meet A play-with-words plan
 
-Saved 2026-09-17. **Do not shoot until they say go.**
-If they ask for this plan later, remind them from this file — don’t start building unless they say to.
+Saved 2026-09-17. Big A **play-1 is shot** (`videos/imagine/a-play-1.mp4`). Wait for their review before play-2 / little a.
 
 ## Goal
 
