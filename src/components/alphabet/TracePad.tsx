@@ -166,6 +166,67 @@ function fitCurve(pts: TracePt[]): TracePt[] {
   return out.length >= 2 ? out : raw;
 }
 
+type ScaleCorner = "nw" | "ne" | "sw" | "se";
+
+function ptsBBox(pts: TracePt[]): { x0: number; y0: number; x1: number; y1: number } {
+  let x0 = 1;
+  let y0 = 1;
+  let x1 = 0;
+  let y1 = 0;
+  for (const [x, y] of pts) {
+    x0 = Math.min(x0, x);
+    y0 = Math.min(y0, y);
+    x1 = Math.max(x1, x);
+    y1 = Math.max(y1, y);
+  }
+  if (x1 - x0 < 0.05) {
+    const m = (x0 + x1) / 2;
+    x0 = m - 0.025;
+    x1 = m + 0.025;
+  }
+  if (y1 - y0 < 0.05) {
+    const m = (y0 + y1) / 2;
+    y0 = m - 0.025;
+    y1 = m + 0.025;
+  }
+  return { x0, y0, x1, y1 };
+}
+
+function bboxCorner(
+  b: { x0: number; y0: number; x1: number; y1: number },
+  c: ScaleCorner,
+): TracePt {
+  if (c === "nw") return [b.x0, b.y0];
+  if (c === "ne") return [b.x1, b.y0];
+  if (c === "sw") return [b.x0, b.y1];
+  return [b.x1, b.y1];
+}
+
+function bboxAnchor(c: ScaleCorner): ScaleCorner {
+  if (c === "nw") return "se";
+  if (c === "ne") return "sw";
+  if (c === "sw") return "ne";
+  return "nw";
+}
+
+function scalePts(origin: TracePt[], corner: ScaleCorner, grab: TracePt): TracePt[] {
+  const b = ptsBBox(origin);
+  const [ax, ay] = bboxCorner(b, bboxAnchor(corner));
+  const [cx, cy] = bboxCorner(b, corner);
+  const dx0 = cx - ax || 0.001;
+  const dy0 = cy - ay || 0.001;
+  let sx = (grab[0] - ax) / dx0;
+  let sy = (grab[1] - ay) / dy0;
+  if (sx >= 0) sx = Math.max(0.12, sx);
+  else sx = Math.min(-0.12, sx);
+  if (sy >= 0) sy = Math.max(0.12, sy);
+  else sy = Math.min(-0.12, sy);
+  return origin.map(([x, y]) => [
+    Math.min(1, Math.max(0, ax + (x - ax) * sx)),
+    Math.min(1, Math.max(0, ay + (y - ay) * sy)),
+  ]);
+}
+
 function distToSeg(
   px: number,
   py: number,
@@ -372,6 +433,29 @@ function drawTraceArrows(
         ctx.fill();
         ctx.stroke();
       }
+      if (picked) {
+        const bb = ptsBBox(raw);
+        const nw = mapGuide(bb.x0, bb.y0, box, dpr);
+        const se = mapGuide(bb.x1, bb.y1, box, dpr);
+        ctx.setLineDash([4, 4]);
+        ctx.strokeStyle = "#2b2d42";
+        ctx.lineWidth = 1.5;
+        ctx.globalAlpha = 0.7;
+        ctx.strokeRect(nw.x, nw.y, se.x - nw.x, se.y - nw.y);
+        ctx.setLineDash([]);
+        ctx.globalAlpha = 1;
+        ctx.fillStyle = "#fff";
+        ctx.strokeStyle = "#2b2d42";
+        ctx.lineWidth = 2;
+        for (const c of ["nw", "ne", "sw", "se"] as ScaleCorner[]) {
+          const [nx, ny] = bboxCorner(bb, c);
+          const h = mapGuide(nx, ny, box, dpr);
+          ctx.beginPath();
+          ctx.rect(h.x - 6, h.y - 6, 12, 12);
+          ctx.fill();
+          ctx.stroke();
+        }
+      }
     }
   });
   ctx.restore();
@@ -471,12 +555,13 @@ export function TracePad({
   const devToolRef = useRef<TraceDevTool>("select");
   const devDragRef = useRef<
     | {
-        kind: "move" | "start" | "end" | "number" | "draw" | "mid" | "vertex";
+        kind: "move" | "start" | "end" | "number" | "draw" | "mid" | "vertex" | "scale";
         index: number;
         ox: number;
         oy: number;
         origin: TracePt[];
         vertex?: number;
+        corner?: ScaleCorner;
       }
     | null
   >(null);
@@ -864,12 +949,24 @@ export function TracePad({
 
   function hitDev(p: { x: number; y: number }): {
     index: number;
-    kind: "number" | "start" | "end" | "mid" | "body" | "vertex";
+    kind: "number" | "start" | "end" | "mid" | "body" | "vertex" | "scale";
     vertex?: number;
+    corner?: ScaleCorner;
   } | null {
     const box = boxRef.current;
     const dpr = dprRef.current;
     const strokes = devStrokesRef.current;
+    const sel = devSelRef.current;
+    if (sel >= 0 && strokes[sel] && strokes[sel]!.pts.length >= 2) {
+      const bb = ptsBBox(strokes[sel]!.pts);
+      for (const c of ["nw", "ne", "sw", "se"] as ScaleCorner[]) {
+        const [nx, ny] = bboxCorner(bb, c);
+        const q = mapGuide(nx, ny, box, dpr);
+        if (Math.hypot(p.x - q.x, p.y - q.y) <= 16) {
+          return { index: sel, kind: "scale", corner: c };
+        }
+      }
+    }
     for (let i = strokes.length - 1; i >= 0; i--) {
       const s = strokes[i]!;
       if (s.pts.length < 2) continue;
@@ -953,15 +1050,19 @@ export function TracePad({
         | "number"
         | "draw"
         | "mid"
-        | "vertex" =
+        | "vertex"
+        | "scale" =
         hit.kind === "number"
           ? "number"
           : hit.kind === "vertex"
             ? "vertex"
-            : hit.kind === "mid"
-              ? "mid"
-              : "move";
+            : hit.kind === "scale"
+              ? "scale"
+              : hit.kind === "mid"
+                ? "mid"
+                : "move";
       let vertex: number | undefined = hit.vertex;
+      const corner = hit.corner;
       if (kind === "mid") {
         const s = devStrokesRef.current[hit.index]!;
         if (s.pts.length === 2) {
@@ -972,7 +1073,7 @@ export function TracePad({
         }
       }
       const origin = devStrokesRef.current[hit.index]!.pts.map((pt) => [pt[0], pt[1]] as TracePt);
-      devDragRef.current = { kind, index: hit.index, ox: p.x, oy: p.y, origin, vertex };
+      devDragRef.current = { kind, index: hit.index, ox: p.x, oy: p.y, origin, vertex, corner };
       drawing.current = true;
       redraw();
       return;
@@ -1033,7 +1134,9 @@ export function TracePad({
               Math.min(1, Math.max(0, pt[1] + dy * w)),
             ];
           });
-        } else if (drag.kind === "number") {
+        } else if (drag.kind === "scale" && drag.corner) {
+        s.pts = scalePts(drag.origin, drag.corner, n);
+      } else if (drag.kind === "number") {
         const mapped = smoothStroke(s.pts.map((pt) => mapGuide(pt[0], pt[1], box, dpr)));
         let bestT = s.numT;
         let bestD = 1e9;
@@ -1153,7 +1256,7 @@ export function TracePad({
                   id === "curve"
                     ? "Curve: draw the round in one stroke. Dots appear when you let go."
                     : id === "select"
-                      ? "Select: drag a white dot. Ends move alone. Delete key removes the line."
+                      ? "Select: drag dots, drag the line to move, corner squares to resize. Delete key removes it."
                       : id === "line"
                         ? "Line: drag start to end."
                         : "Freehand: scribble, then Smooth if you want.",

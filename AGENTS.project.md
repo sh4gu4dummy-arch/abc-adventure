@@ -18,14 +18,15 @@ ship it. Wait for their pick. Same if two takes look usable.
 
 After every GitHub push, **tell them the version** in chat (v0.112, etc.).
 
-## Preview: they refresh
+## Preview: they refresh. Git/version: always.
 
 They hunt bugs in the live preview. **Do not restart vite / the preview
-server.** **Do not bump `APP_VERSION` mid-hunt** (that cache-busts every
-video and reloads the app). `vite.config.ts` has `server.hmr: false` so
-edits do not auto-reload. They refresh when they want. If a clip must
-show up, replace the file; tell them to refresh. Resume version bumps
-when they are done hunting or they ask.
+server.** `server.hmr: false` and `src` is not watched — edits must not
+auto-reload. They refresh when they want.
+
+**Do still bump `APP_VERSION` and `git push origin main`** on every
+product change. Version in chat after the push. Preview refresh ≠ skip
+GitHub.
 
 ## GitHub: always push
 
