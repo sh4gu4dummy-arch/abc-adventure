@@ -274,7 +274,7 @@ export const WORD_LESSONS: Record<string, WordLesson> = {
   "z-zoo": { ...lesson("Z", "zoo", "Zoo", "Zed visits the zoo."), durationSec: 10, loopVideo: true },
   "z-zipper": { ...lesson("Z", "zipper", "Zipper", "Zed zips the zipper."), durationSec: 6, loopVideo: false, nativeAudio: true },
   "z-zero": { ...lesson("Z", "zero", "Zero", "Zed writes a zero."), durationSec: 10, loopVideo: false, nativeAudio: true },
-  "z-zigzag": { ...lesson("Z", "zigzag", "Zigzag", "Zed runs a zigzag."), durationSec: 10, loopVideo: true },
+  "z-zigzag": { ...lesson("Z", "zigzag", "Zigzag", "Zed runs a zigzag."), durationSec: 10, loopVideo: false, nativeAudio: true },
   "z-zucchini": { ...lesson("Z", "zucchini", "Zucchini", "Zed washes a zucchini."), durationSec: 10, loopVideo: true },
 };
 
