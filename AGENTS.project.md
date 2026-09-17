@@ -89,6 +89,29 @@ single-story a, not Comic Neue (too thin/tall) and not Sniglet ExtraBold.
 - **Ship order:** prototype **little a / b / c** Meet + the page toggle.
   Don’t dump 26 little Meets. Same as Big: a few, they watch, then more.
 
+## Video QA plan (remind on ask)
+
+If they ask for the video QA / quality plan, **remind them of this**. Saved
+2026-09-17 after A-story scene 2 flew the plane backward.
+
+Do not ship a clip that fails any of these. Not “looks mostly ok.”
+
+1. **Dump 5 frames** (start / 25 / mid / 75 / end) and **look at all five**.
+   Thumbnail-only QA is how reverse motion ships.
+2. **Motion vs prompt.** If it should fly/walk/roll one way, compare start
+   vs end. Backward, moonwalk, or a snap-reverse at the end = redo. Plane
+   going left-to-right must still face and travel that way in the last
+   frames.
+3. **Clearly wrong** (user’s bar, not crayon-point nitpicks): extra limbs,
+   faces on the back, hole that isn’t a hole, not the letter, morphing,
+   creepy faces on food. One of those in any frame = redo.
+4. **Sound for “Video sound” mode.** Native Imagine foley is often thin
+   ambience. Mix kid SFX on export (whoosh, pop, sparkle, waves, chime)
+   so the clip is not boring. Don’t ship near-silent as the video-sound
+   option. Narration mode still mutes the clip.
+5. **New story/word clips** go in a folder the preview actually serves
+   (`public/story-clips/`, not a *new* file under ignored `public/videos/`).
+
 ## Word videos
 
 1. Sentence = what is on screen. Write sentence + clip together. Approve
