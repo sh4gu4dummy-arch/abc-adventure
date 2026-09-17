@@ -225,19 +225,19 @@ const STORY_BEATS: Record<string, StoryBeat[]> = {
       text: "A jaguar packed juice.",
       action: "share",
       scene: "home",
-      cast: ["juice"],
+      cast: ["jaguar", "juice"],
     },
     {
       text: "The jaguar put on a jacket.",
       action: "wave",
       scene: "home",
-      cast: ["jacket"],
+      cast: ["jaguar", "jacket"],
     },
     {
       text: "The jaguar took the juice on a jet.",
       action: "fly",
       scene: "sky",
-      cast: ["juice", "jet"],
+      cast: ["jaguar", "juice", "jet"],
     },
   ],
   K: [
@@ -305,7 +305,7 @@ const STORY_BEATS: Record<string, StoryBeat[]> = {
       text: "A newt sniffed a nest.",
       action: "find",
       scene: "forest",
-      cast: ["nest"],
+      cast: ["newt", "nest"],
     },
     {
       text: "No one was in the nest.",
@@ -317,7 +317,7 @@ const STORY_BEATS: Record<string, StoryBeat[]> = {
       text: "The newt nodded off in the nest.",
       action: "share",
       scene: "forest",
-      cast: ["nest"],
+      cast: ["newt", "nest"],
     },
   ],
   O: [
@@ -561,7 +561,19 @@ function resolveCast(entry: LetterEntry, slugs: string[]): WordEntry[] {
   const out: WordEntry[] = [];
   for (const s of slugs) {
     const w = bySlug.get(s);
-    if (w) out.push(w);
+    if (w) {
+      out.push(w);
+      continue;
+    }
+    // Story actors that aren't on the letter word list (jaguar, newt, …)
+    out.push({
+      word: s
+        .split("-")
+        .map((p) => p.charAt(0).toUpperCase() + p.slice(1))
+        .join(" "),
+      slug: s,
+      hint: "",
+    });
   }
   return out.length ? out : entry.words.slice(0, 3);
 }

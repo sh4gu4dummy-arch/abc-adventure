@@ -245,7 +245,7 @@ export function StoryMode({ entry }: { entry: LetterEntry }) {
         style={{ borderColor: `${entry.accent}55` }}
       >
         <p className="font-display text-lg font-bold leading-snug text-ink sm:text-xl">
-          {highlightWords(beat.text, beat.words, entry.accent)}
+          {highlightWords(beat.text, beat.words, entry.accent, entry.animal)}
         </p>
 
         <div className="mt-3 flex flex-wrap gap-1.5">
@@ -352,18 +352,21 @@ function highlightWords(
   text: string,
   words: { word: string }[],
   accent: string,
+  extra?: string,
 ) {
   // Build a case-insensitive highlighter for cast words
-  const sorted = [...words].sort((a, b) => b.word.length - a.word.length);
+  const sorted = [...words.map((w) => w.word), extra]
+    .filter((w): w is string => Boolean(w && w.trim()))
+    .sort((a, b) => b.length - a.length);
   if (!sorted.length) return text;
 
   const pattern = new RegExp(
-    `(${sorted.map((w) => escapeReg(w.word)).join("|")})`,
+    `(${sorted.map((w) => escapeReg(w)).join("|")})`,
     "gi",
   );
   const parts = text.split(pattern);
   return parts.map((part, i) => {
-    const hit = sorted.some((w) => w.word.toLowerCase() === part.toLowerCase());
+    const hit = sorted.some((w) => w.toLowerCase() === part.toLowerCase());
     if (hit) {
       return (
         <span
