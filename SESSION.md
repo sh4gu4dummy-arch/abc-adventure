@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.211  
+**Version:** v0.212  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 Always **commit + push** ABC updates the same turn. Tell them the version.
 **Never** push Grok sandbox internals (`.grok/`, attachments, skill dumps).  
@@ -37,6 +37,10 @@ really is done. Tap to play again (v0.129).
 | H heart | Crayon with two points | One-tip crayon; look-at-the-clip QA (not a tip-count law) |
 
 A–Z word videos exist. J–Z remade to locked sentences; A–I older unless later patched (G, H, fish, frog, etc.).
+
+## Word thumbs (v0.212)
+All 156 word-card thumbs are video frame 1. A–Q overwrite `posters/`. R–Z go in
+`posters-scene/` so buddy posters stay. No videos rewritten.
 
 ## Sound toggle (v0.210–0.211)
 One speaker icon. Exclusive: Narration mutes the clip; Video sound mutes overlay.

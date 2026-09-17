@@ -13,7 +13,7 @@
  *  - public/letters/*.webp          letter mascots (buddy) — all 26 characters
  *  - public/art-archive/letter-tiles-objects/  original A–P object tiles
  *  - public/posters/{l}-{slug}.webp A–Q = scenes, R–Z = word-buddies
- *  - public/posters-scene/          new scene fills for R–Z holes only
+ *  - public/posters-scene/          word-card thumbs = frame 1 of each R–Z video
  */
 
 const R_TO_Z = new Set(["r", "s", "t", "u", "v", "w", "x", "y", "z"]);
@@ -31,9 +31,15 @@ export function sceneKey(letter: string, slug: string): string {
 export const SCENE_FILL_KEYS = new Set([
   "r-rabbit",
   "r-rain",
+  "r-rainbow",
+  "r-robot",
+  "r-rocket",
   "r-rose",
+  "s-ship",
   "s-smile",
+  "s-snake",
   "s-sock",
+  "s-star",
   "s-sun",
   "t-tiger",
   "t-tomato",
@@ -41,15 +47,23 @@ export const SCENE_FILL_KEYS = new Set([
   "t-train",
   "t-tree",
   "t-turtle",
+  "u-ukulele",
+  "u-umbrella",
+  "u-under",
   "u-unicorn",
+  "u-uniform",
   "u-up",
   "v-vacuum",
   "v-van",
+  "v-vegetable",
+  "v-vest",
+  "v-violin",
   "v-volcano",
   "w-wagon",
   "w-watch",
   "w-water",
   "w-whale",
+  "w-window",
   "w-worm",
   "x-box",
   "x-fox-x",
@@ -57,10 +71,13 @@ export const SCENE_FILL_KEYS = new Set([
   "x-six",
   "x-xray",
   "x-xylophone",
+  "y-yacht",
   "y-yak",
   "y-yarn",
   "y-yellow",
   "y-yogurt",
+  "y-yoyo",
+  "z-zebra",
   "z-zero",
   "z-zigzag",
   "z-zipper",
