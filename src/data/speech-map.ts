@@ -1580,4 +1580,10 @@ export const SPEECH_MAP: Record<string, string> = {
   "A frog hopped to a flower.": "9d77b32df349513f.mp3",
   "A fish splashed near the ferry.": "28e6c32f474ab672.mp3",
   "A fox sat by the flower.": "9f8218649d7f6e00.mp3",
+  "A goat opened a gift.": "f4ad7d85e3ae3d40.mp3",
+  "A guitar popped out.": "897cebb803790a81.mp3",
+  "A giraffe strummed the guitar.": "bbc39ffce2dd5acc.mp3",
+  "A helicopter landed by the house.": "cce644f58c0d567a.mp3",
+  "A horse put on a hat.": "9b0f50665e25357f.mp3",
+  "The horse ate honey.": "f7e15d25bdb93b8c.mp3",
 };
