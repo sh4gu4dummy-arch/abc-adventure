@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Volume2 } from "lucide-react";
-import { LETTERS, soundCueForWord, type LetterEntry } from "@/data/alphabet";
+import { LETTERS, displayWord, soundCueForWord, type CaseKind, type LetterEntry } from "@/data/alphabet";
 import { markSection } from "@/lib/progress";
 import { speak } from "@/lib/speak";
 import { cn } from "@/lib/utils";
@@ -25,7 +25,13 @@ function pickChoices(entry: LetterEntry, used: string[]) {
   return options;
 }
 
-export function MatchGame({ entry }: { entry: LetterEntry }) {
+export function MatchGame({
+  entry,
+  caseKind = "upper",
+}: {
+  entry: LetterEntry;
+  caseKind?: CaseKind;
+}) {
   const [round, setRound] = useState(0);
   const [wins, setWins] = useState(0);
   const [used, setUsed] = useState<string[]>([]);
@@ -74,9 +80,6 @@ export function MatchGame({ entry }: { entry: LetterEntry }) {
         <p className="font-display text-xl font-bold text-ink sm:text-2xl">
           Hear the sound. Tap the picture.
         </p>
-        <p className="mt-1 text-sm font-medium text-muted">
-          No reading — just listen · {Math.min(wins, ROUNDS_TO_WIN)}/{ROUNDS_TO_WIN}
-        </p>
         <button
           type="button"
           onClick={() => void speak(cue)}
@@ -103,21 +106,23 @@ export function MatchGame({ entry }: { entry: LetterEntry }) {
                 showWrong && "border-primary ring-4 ring-primary/20",
                 !showCorrect && !showWrong && "border-border",
               )}
-              aria-label={showCorrect ? opt.word : "Picture"}
+              aria-label={opt.word}
             >
               <div className="aspect-square overflow-hidden bg-surface-soft">
                 <GamePicture
                   letter={opt.letter}
                   slug={opt.slug}
                   word={opt.word}
-                  revealWord={showCorrect}
                 />
               </div>
-              {showCorrect && (
-                <div className="p-2 text-center">
-                  <LetterWord word={opt.word} letter={entry.letter} accent={entry.accent} size="sm" />
-                </div>
-              )}
+              <div className="p-2 text-center">
+                <LetterWord
+                  word={displayWord(opt.word, caseKind)}
+                  letter={entry.letter}
+                  accent={entry.accent}
+                  size="sm"
+                />
+              </div>
             </button>
           );
         })}

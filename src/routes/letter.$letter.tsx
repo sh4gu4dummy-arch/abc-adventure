@@ -366,7 +366,7 @@ function LetterPage() {
           <p className="text-sm font-semibold text-ink-soft">
             {GAMES.find((g) => g.id === game)?.blurb}
           </p>
-          {game === "match" && <MatchGame entry={entry} />}
+          {game === "match" && <MatchGame entry={entry} caseKind={caseKind} />}
           {game === "memory" && <MemoryMatch entry={entry} caseKind={caseKind} />}
           {game === "ispy" && <ISpy entry={entry} />}
           {game === "story" && <StoryMode entry={entry} />}
