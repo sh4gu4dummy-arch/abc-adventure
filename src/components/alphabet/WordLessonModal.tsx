@@ -280,7 +280,8 @@ export function WordLessonModal({
     }
 
     const start = Date.now();
-    const estMs = Math.max((lesson.durationSec ?? 10) * 1000, 9000);
+    const clipMs = (lesson.durationSec ?? 10) * 1000;
+    const estMs = clipSound ? clipMs : Math.max(clipMs, 9000);
     const tick = window.setInterval(() => {
       if (cancelledRef.current || finishing.current) return;
       const v = videoRef.current;
@@ -298,12 +299,37 @@ export function WordLessonModal({
       if (!clipSound) playSfx(lesson.sfxSparkle, 0.28);
 
       if (clipSound) {
-        await new Promise((r) => setTimeout(r, 2200));
+        await new Promise((r) => setTimeout(r, 900));
         if (skipRef.current || cancelledRef.current || playRun.current !== run) {
           stopTick();
           return;
         }
         setCaption("sentence");
+        const cap = clipMs + 800;
+        await new Promise<void>((resolve) => {
+          const t0 = Date.now();
+          const iv = window.setInterval(() => {
+            if (
+              cancelledRef.current ||
+              finishing.current ||
+              playRun.current !== run ||
+              Date.now() - t0 > cap
+            ) {
+              window.clearInterval(iv);
+              resolve();
+              return;
+            }
+            const vid = videoRef.current;
+            if (vid && vid.duration && vid.currentTime >= vid.duration - 0.12) {
+              window.clearInterval(iv);
+              resolve();
+            }
+          }, 80);
+        });
+        if (skipRef.current || cancelledRef.current || playRun.current !== run) {
+          stopTick();
+          return;
+        }
       } else {
         for (let i = 0; i < 3; i++) {
           if (skipRef.current || cancelledRef.current || playRun.current !== run) {
