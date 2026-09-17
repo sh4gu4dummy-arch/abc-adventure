@@ -1628,4 +1628,10 @@ export const SPEECH_MAP: Record<string, string> = {
   "A vulture put on a vest.": "b424dadfca2f45fd.mp3",
   "The vulture vacuumed.": "41e21c5bd93bf733.mp3",
   "The vulture got in the van.": "be1f06a877e69b69.mp3",
+  "A worm found a wagon.": "2d02c7d843814c67.mp3",
+  "The worm poured water in the wagon.": "37ba19d6ac8beda0.mp3",
+  "The worm washed a window.": "7861c0bc8f374ad7.mp3",
+  "A fox found a box.": "17b8db996f5cbc04.mp3",
+  "The fox pulled a xylophone from the box.": "1f8add35e5b3c9c6.mp3",
+  "The fox played the xylophone.": "4f6d8c3e1ad7a0f4.mp3",
 };
