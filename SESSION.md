@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.210  
+**Version:** v0.211  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 Always **commit + push** ABC updates the same turn. Tell them the version.
 **Never** push Grok sandbox internals (`.grok/`, attachments, skill dumps).  
@@ -38,8 +38,8 @@ really is done. Tap to play again (v0.129).
 
 A–Z word videos exist. J–Z remade to locked sentences; A–I older unless later patched (G, H, fish, frog, etc.).
 
-## Sound toggle (v0.210)
-One Volume icon; Voice / Video labels only.
+## Sound toggle (v0.210–0.211)
+One speaker icon. Exclusive: Narration mutes the clip; Video sound mutes overlay.
 
 ## Yo-yo TTS (v0.209)
 Hyphen made Ava say “yo-oh”. Overlay now speaks “yo yo”; caption still Yo-yo.

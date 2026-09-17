@@ -128,10 +128,8 @@ single-story a, not Comic Neue (too thin/tall) and not Sniglet ExtraBold.
     Handheld props stay kid-scale: smaller than the child's head, not
     giant objects that dwarf them.
 11. **Word-video sound:** Settings / lesson toggle **Narration** vs
-    **Video sound**. Narration = overlay TTS (word ×3 + sentence). Video
-    sound = MP4 audio, no overlay. Mouth motion is OK — we are not
-    remaking clips just for lip-flap. Always generate remakes WITH sound
-    in the file. Overlay stays available via the toggle.
+    **Video sound**. Narration = overlay TTS only (clip muted). Video
+    sound = MP4 audio only (no overlay). Never mix both. Mouth motion is OK.
     **Always generate remakes WITH sound** (I2V foley / ambient / cartoon
     SFX). Overlay narration still plays on top for now. Keep the clip
     audio in the MP4 so we can use it later. Do not strip with ffmpeg

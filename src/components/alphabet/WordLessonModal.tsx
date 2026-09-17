@@ -15,8 +15,7 @@ import { cn } from "@/lib/utils";
 type Phase = "ready" | "playing" | "done";
 type Caption = "none" | "word" | "sentence";
 
-/** Native clip foley sits under overlay narration; overlap is OK. */
-const CLIP_VOLUME = 0.55;
+/** Clip foley only in Video sound mode. Narration = overlay voice, clip muted. */
 const MUSIC_VOLUME = 0.18;
 
 function playSfx(path: string | undefined, volume = 0.35): HTMLAudioElement | null {
@@ -47,10 +46,15 @@ function clipHasAudio(video: HTMLVideoElement): boolean | null {
   return null;
 }
 
-function unmuteClip(video: HTMLVideoElement | null, volume = CLIP_VOLUME) {
+function applyClipAudio(video: HTMLVideoElement | null, clipSound: boolean) {
   if (!video) return;
-  video.muted = false;
-  video.volume = volume;
+  if (clipSound) {
+    video.muted = false;
+    video.volume = 1;
+  } else {
+    video.muted = true;
+    video.volume = 0;
+  }
 }
 
 /** Freeze on the last painted frame — never snap back to t=0. */
@@ -70,7 +74,7 @@ function holdLastFrame(video: HTMLVideoElement | null) {
 /**
  * Fullscreen word lesson:
  * - High: story MP4 + native clip sound (or soft bed if the file is silent)
- * - Overlay narration OR the clip's own sound (Settings / in-player toggle)
+ * - Overlay narration OR the clip's own sound — never both at once
  * - Lite: sharp poster cinema (no video decode — better look, far less GPU)
  */
 export function WordLessonModal({
@@ -120,7 +124,6 @@ export function WordLessonModal({
   const lite = getGfxSnapshot().resolved === "lite";
   const { mode: soundMode } = useLessonSound();
   const clipSound = soundMode === "clip";
-  const clipVol = clipSound ? 1 : CLIP_VOLUME;
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -251,7 +254,7 @@ export function WordLessonModal({
           }
           // Start muted so autoplay is allowed, then unmute clip foley.
           video.muted = true;
-          video.volume = clipVol;
+          applyClipAudio(video, clipSound);
           video.loop = lesson.loopVideo === true;
           try {
             video.currentTime = 0;
@@ -264,7 +267,7 @@ export function WordLessonModal({
             .play()
             .then(() => {
               if (cancelledRef.current || finishing.current) return;
-              unmuteClip(video, clipVol);
+              applyClipAudio(video, clipSound);
               dropBedIfClipHasSound(video);
               setShowVideo(true);
             })
@@ -389,7 +392,7 @@ export function WordLessonModal({
   function applySeek(frac: number) {
     if (phase !== "playing" || finishing.current || cancelledRef.current) return;
     const v = videoRef.current;
-    unmuteClip(v, clipVol);
+    applyClipAudio(v, clipSound);
     dropBedIfClipHasSound(v);
     if (v && v.duration && Number.isFinite(v.duration) && v.duration > 0) {
       v.currentTime = frac * v.duration;
@@ -428,7 +431,7 @@ export function WordLessonModal({
 
   function skipAhead() {
     if (phase !== "playing" || finishing.current) return;
-    unmuteClip(videoRef.current, clipVol);
+    applyClipAudio(videoRef.current, clipSound);
     dropBedIfClipHasSound(videoRef.current);
     const v = videoRef.current;
     if (v && v.duration && Number.isFinite(v.duration) && v.duration > 0) {
