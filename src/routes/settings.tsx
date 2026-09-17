@@ -5,6 +5,7 @@ import { LayoutToggle } from "@/components/alphabet/LayoutToggle";
 import { GfxToggle } from "@/components/alphabet/GfxToggle";
 import { ThemeToggle } from "@/components/alphabet/ThemeToggle";
 import { VoiceToggle } from "@/components/alphabet/VoiceToggle";
+import { LessonSoundToggle } from "@/components/alphabet/LessonSoundToggle";
 import { PlayerChip, ProfileGate } from "@/components/alphabet/ProfileGate";
 import { clearActiveProfile, exportJourneysJson, importJourneysJson } from "@/lib/profiles";
 import { APP_VERSION_LABEL } from "@/lib/version";
@@ -150,6 +151,16 @@ function SettingsPage() {
       <section className="card-surface mb-4 space-y-4 rounded-[var(--radius-xl)] p-4 sm:p-5">
         <h2 className="font-display text-lg font-bold text-ink">Sound & voice</h2>
         <VoiceToggle />
+        <div>
+          <p className="mb-2 text-xs font-bold uppercase tracking-wide text-muted">
+            Word videos
+          </p>
+          <LessonSoundToggle />
+          <p className="mt-2 text-xs font-medium text-ink-soft">
+            Narration = teacher or buddy says the word. Video sound = the
+            clip’s own audio (most old clips are still silent).
+          </p>
+        </div>
       </section>
 
       <section className="card-surface mb-4 space-y-4 rounded-[var(--radius-xl)] p-4 sm:p-5">

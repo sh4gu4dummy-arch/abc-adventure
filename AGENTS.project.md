@@ -126,11 +126,11 @@ single-story a, not Comic Neue (too thin/tall) and not Sniglet ExtraBold.
     person. Check every frame, not just the thumbnail.
     Handheld props stay kid-scale: smaller than the child's head, not
     giant objects that dwarf them.
-11. **No talking mouths.** Overlay narration still says the word (×3) then
-    the sentence. Characters do not lip-sync or mouth words. Closed-mouth
-    smile unless the gag itself is eating, yawning, or blowing. Check
-    mid-frames for lip-flap before shipping. I2V will invent talking if you
-    don't forbid it — bake "mouth closed, not talking" into still + motion.
+11. **Word-video sound:** Settings / lesson toggle **Narration** vs
+    **Video sound**. Narration = overlay TTS (word ×3 + sentence). Video
+    sound = MP4 audio, no overlay. Mouth motion is OK — we are not
+    remaking clips just for lip-flap. Always generate remakes WITH sound
+    in the file. Overlay stays available via the toggle.
     **Always generate remakes WITH sound** (I2V foley / ambient / cartoon
     SFX). Overlay narration still plays on top for now. Keep the clip
     audio in the MP4 so we can use it later. Do not strip with ffmpeg
