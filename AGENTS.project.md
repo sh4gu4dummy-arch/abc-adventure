@@ -147,10 +147,10 @@ single-story a, not Comic Neue (too thin/tall) and not Sniglet ExtraBold.
     batch-reencode old clips.
 12. Archive old art; never overwrite originals. Use Imagine API download
     into `public/` (locker may fail). Copy stills into the repo immediately.
-    **Old video takes:** git history is the backup. Do not keep a second
-    `.mp4` copy in `public/art-archive` or a `public/review` dump (Publish
-    packs everything under `public/`). Restore from GitHub if we change our
-    mind. Stills for the Settings art page can stay.
+    **Videos are not in git.** They live on disk (`public/videos`) and in
+    the user's backup. Do not `git add` `*.mp4`. Do not rewrite history
+    to put them back. Restore from the user's backup if a file is missing.
+    Stills for the Settings art page can stay in git.
 13. **GitHub:** after every commit, **push origin main**. Do not ask. Do
     not leave app updates uncommitted. Tell them the version after.
     **Never** push Grok sandbox internals (`.grok/`, attachments, skill

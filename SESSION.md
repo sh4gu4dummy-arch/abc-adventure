@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.223  
+**Version:** v0.224  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 Always **commit + push** ABC updates the same turn. Tell them the version.
 **Never** push Grok sandbox internals (`.grok/`, attachments, skill dumps).  
@@ -44,6 +44,10 @@ All 156 word-card thumbs are video frame 1. A–Q overwrite `posters/`. R–Z go
 
 ## Sound toggle (v0.210–0.211)
 One speaker icon. Exclusive: Narration mutes the clip; Video sound mutes overlay.
+
+## Videos out of git (v0.224)
+`*.mp4` gitignored. History rewritten to drop all mp4 blobs. Files stay on
+disk. User has the backup — git is not the video archive anymore.
 
 ## Media pack (v0.223)
 Rebuilt media-only ZIP from current on-disk art (no old replaced mp4s).

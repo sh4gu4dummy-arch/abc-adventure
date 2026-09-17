@@ -64,6 +64,6 @@ attachments/
 public/__grok/
 abc-adventure-tracing.txt
 
-# Old take videos — GitHub history keeps them; do not ship in Publish
-public/art-archive/**/*.mp4
+# Videos stay on disk for the app. Not in git — user keeps the backup.
+*.mp4
 public/review/
