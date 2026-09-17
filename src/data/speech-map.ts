@@ -1610,4 +1610,10 @@ export const SPEECH_MAP: Record<string, string> = {
   "A pig made a pizza.": "19e526cb6fe35334.mp3",
   "The pig placed the pizza on the plate.": "ca1d7bc89c4bc0f6.mp3",
   "The penguin ate the pizza.": "4f838a83ca2434b6.mp3",
+  "The queen sewed a quilt.": "5aa34903bc22eebf.mp3",
+  "A quail shivered by the quilt.": "f6190397434d2172.mp3",
+  "The queen tucked the quail in the quilt.": "8cea64a75e67c571.mp3",
+  "A rabbit planted a rose.": "bd7e431472bb5bc4.mp3",
+  "Rain fell on the rose.": "177235ed6e1dcd7f.mp3",
+  "The rabbit sniffed the rose.": "37aa48c101774385.mp3",
 };
