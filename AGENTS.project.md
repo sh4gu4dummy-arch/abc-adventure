@@ -146,6 +146,9 @@ Do not ship a clip that fails any of these. Not “looks mostly ok.”
    mode mutes the clip; Video-sound mode plays this native mix.
 5. **New story/word clips** go in a folder the preview actually serves
    (`public/story-clips/`, not a *new* file under ignored `public/videos/`).
+   **Word-card thumb = frame 1 → `public/posters-scene/{letter}-{slug}.webp`.**
+   That is what `posterPath` serves. Also write `public/posters/…`. Skipping
+   `posters-scene` ships the old thumb (zero’s double crayon).
 
 ## Story lines (remind on ask)
 

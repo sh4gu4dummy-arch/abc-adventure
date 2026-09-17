@@ -8,6 +8,9 @@
  *    if natural; "A happy apple angrily..." is not. Prefer a named subject
  *    (a boy, a kid, Ben, the puppy) over lazy "they + body part".
  * 3. Word-card thumbnail MUST be frame 1 of that word's video (not the end).
+ *    The grid uses **public/posters-scene/{letter}-{slug}.webp** (posterPath).
+ *    Also write public/posters/{letter}-{slug}.webp. Updating only `posters/`
+ *    leaves the old thumb on the word card (zero double-crayon).
  * 4. Action must KEEP GOING through the sentence — do not freeze after a
  *    2-second gag. Unlock only after full lesson finishes.
  * 5. Snappy kid-cartoon, not creepy: fast beats (frog = ninja tongue, insta
