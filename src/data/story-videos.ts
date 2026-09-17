@@ -8,8 +8,14 @@ const STORY_VIDEOS: Record<string, (StoryClipSrc | null)[]> = {
       video: "story-clips/a-1.mp4",
       poster: "posters-scene/story-a-1.webp",
     },
-    null,
-    null,
+    {
+      video: "story-clips/a-2.mp4",
+      poster: "posters-scene/story-a-2.webp",
+    },
+    {
+      video: "story-clips/a-3.mp4",
+      poster: "posters-scene/story-a-3.webp",
+    },
   ],
 };
 

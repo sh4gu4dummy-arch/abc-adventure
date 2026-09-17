@@ -54,10 +54,10 @@ const STORY_BEATS: Record<string, StoryBeat[]> = {
       cast: ["airplane", "alligator", "astronaut"],
     },
     {
-      text: "What an amazing A adventure!",
-      action: "celebrate",
-      scene: "party",
-      cast: ["apple", "ant", "airplane", "alligator", "astronaut", "anchor"],
+      text: "The airplane landed by the anchor. The astronaut shared the apple with the ant, and the alligator waved goodbye.",
+      action: "share",
+      scene: "beach",
+      cast: ["airplane", "anchor", "astronaut", "apple", "ant", "alligator"],
     },
   ],
   B: [
