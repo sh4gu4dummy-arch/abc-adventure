@@ -218,9 +218,9 @@ export const WORD_LESSONS: Record<string, WordLesson> = {
   "s-smile": { ...lesson("S", "smile", "Smile", "Sam smiles."), durationSec: 10, loopVideo: true },
   "s-sock": { ...lesson("S", "sock", "Sock", "Sam tosses a sock."), durationSec: 10, loopVideo: true },
   // --- Letter T ---
-  "t-tree": { ...lesson("T", "tree", "Tree", "Tess hugs a tree."), durationSec: 10, loopVideo: true },
+  "t-tree": { ...lesson("T", "tree", "Tree", "The tree sways."), durationSec: 10, loopVideo: true, nativeAudio: true },
   "t-tiger": { ...lesson("T", "tiger", "Tiger", "The tiger yawns."), durationSec: 10, loopVideo: true },
-  "t-train": { ...lesson("T", "train", "Train", "The train toots."), durationSec: 10, loopVideo: true },
+  "t-train": { ...lesson("T", "train", "Train", "The train toots."), durationSec: 10, loopVideo: true, saySentence: "The train goes toot toot." },
   "t-turtle": { ...lesson("T", "turtle", "Turtle", "The turtle tucks in."), durationSec: 10, loopVideo: false },
   "t-tomato": { ...lesson("T", "tomato", "Tomato", "Tess picks a tomato."), durationSec: 10, loopVideo: false },
   "t-tooth": { ...lesson("T", "tooth", "Tooth", "Tess wiggles a tooth."), durationSec: 10, loopVideo: true },

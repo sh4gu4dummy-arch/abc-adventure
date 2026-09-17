@@ -193,9 +193,9 @@ PACKS: dict[str, list[dict]] = {
          "motion": "The boy TOSSES the sock. Camera locked. Simple kids animation, no morphing."},
     ],
     "T": [
-        {"slug": "tree", "word": "Tree", "sentence": "Tess hugs a tree.",
-         "still": "Cartoon girl about 5 hugging a friendly tree trunk, smiling.",
-         "motion": "The girl HUGS the tree. Camera locked. Simple kids animation, no morphing."},
+        {"slug": "tree", "word": "Tree", "sentence": "The tree sways.",
+         "still": "Normal park tree, no face, nobody hugging it.",
+         "motion": "Leaves sway. Tree has no face. Camera locked. Simple kids animation, no morphing."},
         {"slug": "tiger", "word": "Tiger", "sentence": "The tiger yawns.",
          "still": "Friendly chubby cartoon tiger yawning, no snarl, tiny teeth ok. Not scary.",
          "motion": "The tiger YAWNS. Not scary. Camera locked. Simple kids animation, no morphing."},

@@ -117,6 +117,7 @@ export function WordLessonModal({
   const [videoFailed, setVideoFailed] = useState(false);
   const finishing = useRef(false);
   const skipRef = useRef(false);
+  const speechAbort = useRef(false);
   const cancelledRef = useRef(false);
   const playRun = useRef(0);
   const [seekReady, setSeekReady] = useState(false);
@@ -234,6 +235,7 @@ export function WordLessonModal({
     setShowVideo(false);
     finishing.current = false;
     skipRef.current = false;
+    speechAbort.current = false;
     cancelledRef.current = false;
 
     playSfx(lesson.sfxPop, 0.3);
@@ -297,83 +299,81 @@ export function WordLessonModal({
 
     const stopTick = () => window.clearInterval(tick);
 
+    const dead = () =>
+      cancelledRef.current || finishing.current || playRun.current !== run;
+
     try {
       setCaption("word");
       if (!clipSound) playSfx(lesson.sfxSparkle, 0.28);
 
       if (clipSound) {
         await new Promise((r) => setTimeout(r, 900));
-        if (skipRef.current || cancelledRef.current || playRun.current !== run) {
+        if (dead() || skipRef.current) {
           stopTick();
           return;
         }
-        setCaption("sentence");
-        const cap = clipMs + 800;
-        await new Promise<void>((resolve) => {
-          const t0 = Date.now();
-          const iv = window.setInterval(() => {
-            if (
-              cancelledRef.current ||
-              finishing.current ||
-              playRun.current !== run ||
-              Date.now() - t0 > cap
-            ) {
+        if (!speechAbort.current) setCaption("sentence");
+      } else {
+        for (let i = 0; i < 3; i++) {
+          if (dead() || skipRef.current) {
+            stopTick();
+            return;
+          }
+          if (speechAbort.current) break;
+          await speak(lesson.sayWord ?? lesson.word);
+          if (dead() || skipRef.current) {
+            stopTick();
+            return;
+          }
+          if (speechAbort.current) break;
+          await new Promise((r) => setTimeout(r, 180));
+        }
+
+        if (dead() || skipRef.current) {
+          stopTick();
+          return;
+        }
+        if (!speechAbort.current) {
+          setCaption("sentence");
+          playSfx(lesson.sfxSparkle, 0.22);
+          await speak(lesson.saySentence ?? lesson.sentence);
+        }
+        if (dead() || skipRef.current) {
+          stopTick();
+          return;
+        }
+      }
+
+      // Follow the video clock so a seek doesn't leave leftover TTS waiting.
+      await new Promise<void>((resolve) => {
+        let lastT = videoRef.current?.currentTime ?? 0;
+        const iv = window.setInterval(() => {
+          if (dead() || skipRef.current) {
+            window.clearInterval(iv);
+            resolve();
+            return;
+          }
+          const vid = videoRef.current;
+          if (vid && vid.duration && Number.isFinite(vid.duration) && vid.duration > 0) {
+            if (vid.currentTime + 0.4 < lastT) {
               window.clearInterval(iv);
               resolve();
               return;
             }
-            const vid = videoRef.current;
-            if (vid && vid.duration && vid.currentTime >= vid.duration - 0.12) {
+            lastT = vid.currentTime;
+            if (vid.currentTime >= vid.duration - 0.12) {
               window.clearInterval(iv);
               resolve();
+              return;
             }
-          }, 80);
-        });
-        if (skipRef.current || cancelledRef.current || playRun.current !== run) {
-          stopTick();
-          return;
-        }
-      } else {
-        for (let i = 0; i < 3; i++) {
-          if (skipRef.current || cancelledRef.current || playRun.current !== run) {
-            stopTick();
             return;
           }
-          await speak(lesson.sayWord ?? lesson.word);
-          if (skipRef.current || cancelledRef.current || playRun.current !== run) {
-            stopTick();
-            return;
+          if (Date.now() - start >= estMs) {
+            window.clearInterval(iv);
+            resolve();
           }
-          await new Promise((r) => setTimeout(r, 180));
-        }
-
-        if (skipRef.current || cancelledRef.current || playRun.current !== run) {
-          stopTick();
-          return;
-        }
-        setCaption("sentence");
-        playSfx(lesson.sfxSparkle, 0.22);
-        await speak(lesson.saySentence ?? lesson.sentence);
-        if (skipRef.current || cancelledRef.current || playRun.current !== run) {
-          stopTick();
-          return;
-        }
-      }
-
-      const left = estMs - (Date.now() - start);
-      if (left > 200) {
-        await new Promise<void>((resolve) => {
-          const t = window.setTimeout(() => resolve(), left);
-          const iv = window.setInterval(() => {
-            if (cancelledRef.current || finishing.current) {
-              window.clearTimeout(t);
-              window.clearInterval(iv);
-              resolve();
-            }
-          }, 120);
-          window.setTimeout(() => window.clearInterval(iv), left + 50);
-        });
-      }
+        }, 80);
+      });
     } finally {
       stopTick();
     }
@@ -394,14 +394,14 @@ export function WordLessonModal({
     const v = videoRef.current;
     applyClipAudio(v, clipSound);
     dropBedIfClipHasSound(v);
+    stopSpeech();
+    speechAbort.current = true;
     if (v && v.duration && Number.isFinite(v.duration) && v.duration > 0) {
       v.currentTime = frac * v.duration;
       setProgress(frac);
       if (frac < 0.45) setCaption("word");
       else setCaption("sentence");
-      // Only landing (non-loop) clips complete when you scrub to the end.
       if (lesson.loopVideo !== true && frac >= 0.92) {
-        stopSpeech();
         skipRef.current = true;
         void finishLesson();
       }
