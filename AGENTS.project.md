@@ -76,7 +76,8 @@ Meet letters are **the glyph only** — no extra arms, legs, or stubs. q has **o
 tail on the right, nothing growing off the left of the bowl.
 **Never paint-out / clone-stamp extras on a letter thumb.** That leaves a ghost
 (little z). Remake the still. Same for holes: punch the real counter in
-background color, don’t smear.
+background color, don’t smear. **Never mask-cut a letter onto a new field** —
+that made little z a broken 3-shape. Generate a new still.
 
 ## Lowercase / small-letter plan (remind on ask)
 
