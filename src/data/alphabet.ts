@@ -544,6 +544,15 @@ export function displayWord(word: string, kind: CaseKind): string {
   return kind === "upper" ? word : word.toLowerCase();
 }
 
+/** Match-game cue names the picture that is actually on screen. */
+export function soundCueForWord(entry: LetterEntry, word: string): string {
+  const like = word.toLowerCase();
+  if (entry.letter.toUpperCase() === "X") {
+    return `X says ks, like ${like}!`;
+  }
+  return entry.soundCue.replace(/like [^.!]+!?/, `like ${like}!`);
+}
+
 /** Scene art for “what is this word?” (games + word grid). */
 export function posterPath(letter: string, slug: string): string {
   const key = sceneKey(letter, slug);

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Volume2 } from "lucide-react";
-import { LETTERS, type LetterEntry } from "@/data/alphabet";
+import { LETTERS, soundCueForWord, type LetterEntry } from "@/data/alphabet";
 import { markSection } from "@/lib/progress";
 import { speak } from "@/lib/speak";
 import { cn } from "@/lib/utils";
@@ -30,6 +30,8 @@ export function MatchGame({ entry }: { entry: LetterEntry }) {
   const [wins, setWins] = useState(0);
   const [used, setUsed] = useState<string[]>([]);
   const options = useMemo(() => pickChoices(entry, used), [entry, round]);
+  const target = options.find((o) => o.correct) ?? options[0]!;
+  const cue = soundCueForWord(entry, target.word);
   const [picked, setPicked] = useState<string | null>(null);
   const [wonRound, setWonRound] = useState(false);
 
@@ -37,8 +39,8 @@ export function MatchGame({ entry }: { entry: LetterEntry }) {
 
   useEffect(() => {
     if (finished) return;
-    void speak(entry.soundCue);
-  }, [entry.letter, round, finished]);
+    void speak(cue);
+  }, [cue, round, finished]);
 
   function choose(slug: string, correct: boolean, word: string) {
     if (picked || finished) return;
@@ -77,7 +79,7 @@ export function MatchGame({ entry }: { entry: LetterEntry }) {
         </p>
         <button
           type="button"
-          onClick={() => void speak(entry.soundCue)}
+          onClick={() => void speak(cue)}
           className="pressable mt-2 inline-flex min-h-11 items-center gap-2 rounded-[var(--radius-pill)] px-4 text-sm font-bold text-white"
           style={{ background: entry.accent }}
         >
