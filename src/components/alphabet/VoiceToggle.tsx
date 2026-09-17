@@ -63,7 +63,7 @@ export function VoiceToggle({
               }}
               className={cn(
                 "pressable inline-flex min-h-10 items-center justify-center gap-1.5 rounded-[var(--radius-pill)] px-2.5 text-xs font-bold transition-colors sm:px-3 sm:text-sm",
-                active ? "bg-ink text-white" : "text-ink-soft hover:bg-surface-soft",
+                active ? "bg-on-light text-white" : "text-ink hover:bg-surface-soft",
               )}
               aria-pressed={active}
               title={
