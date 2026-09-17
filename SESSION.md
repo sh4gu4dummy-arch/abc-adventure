@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.299
+**Version:** v0.300
 
 ## Agent desk (GitHub)
 
