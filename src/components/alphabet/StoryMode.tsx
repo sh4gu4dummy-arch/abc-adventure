@@ -8,38 +8,59 @@ import { LetterWord } from "./LetterWord";
 import { StoryStage } from "./StoryStage";
 import { markSection } from "@/lib/progress";
 import { speak } from "@/lib/speak";
-import { cn } from "@/lib/utils";
+import { APP_VERSION } from "@/lib/version";
 
 function StoryClip({
-  src,
+  video,
+  poster,
   restartKey,
   accent,
 }: {
-  src: string;
+  video: string;
+  poster: string;
   restartKey: string;
   accent: string;
 }) {
   const ref = useRef<HTMLVideoElement>(null);
+  const posterSrc = `${assetUrl(poster)}?v=${APP_VERSION}`;
+  const videoSrc = `${assetUrl(video)}?v=${APP_VERSION}`;
+
   useEffect(() => {
     const v = ref.current;
     if (!v) return;
-    v.currentTime = 0;
+    try {
+      v.currentTime = 0;
+    } catch {
+      /* ignore */
+    }
     void v.play().catch(() => {});
-  }, [src, restartKey]);
+  }, [videoSrc, restartKey]);
 
   return (
     <div className="story-stage relative overflow-hidden rounded-[var(--radius-lg)] border-2 border-border bg-ink shadow-[var(--shadow-card)]">
+      <img
+        src={posterSrc}
+        alt=""
+        className="absolute inset-0 h-full w-full object-cover"
+        draggable={false}
+      />
       <video
         ref={ref}
-        src={assetUrl(src)}
-        className="h-full w-full object-cover"
+        src={videoSrc}
+        poster={posterSrc}
+        className="absolute inset-0 z-[1] h-full w-full object-cover"
         muted
         playsInline
         loop
         autoPlay
+        preload="auto"
+        onClick={(e) => {
+          const v = e.currentTarget;
+          if (v.paused) void v.play().catch(() => {});
+        }}
       />
       <span
-        className="absolute left-3 top-3 rounded-[var(--radius-pill)] px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-wide text-white shadow-sm"
+        className="absolute left-3 top-3 z-10 rounded-[var(--radius-pill)] px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-wide text-white shadow-sm"
         style={{ background: accent }}
       >
         Scene
@@ -111,7 +132,12 @@ export function StoryMode({ entry }: { entry: LetterEntry }) {
 
       {/* Live stage — real clip when we have one, else bouncing thumbs */}
       {clip ? (
-        <StoryClip src={clip} restartKey={stageKey} accent={entry.accent} />
+        <StoryClip
+          video={clip.video}
+          poster={clip.poster}
+          restartKey={stageKey}
+          accent={entry.accent}
+        />
       ) : (
         <StoryStage
           letter={entry.letter}

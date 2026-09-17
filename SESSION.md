@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.228  
+**Version:** v0.229  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 Always **commit + push** ABC updates the same turn. Tell them the version.
 **Never** push Grok sandbox internals (`.grok/`, attachments, skill dumps).  
@@ -44,6 +44,9 @@ All 156 word-card thumbs are video frame 1. A–Q overwrite `posters/`. R–Z go
 
 ## Sound toggle (v0.210–0.211)
 One speaker icon. Exclusive: Narration mutes the clip; Video sound mutes overlay.
+
+## Story clip fill (v0.229)
+A scene 1 uses a poster + absolutely-filled video so the stage is never blank.
 
 ## Story video trial (v0.228)
 A story scene 1 is a real clip (ant finds apple by anchor). Beats 2–3 still
