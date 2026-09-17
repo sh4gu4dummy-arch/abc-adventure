@@ -92,7 +92,12 @@ single-story a, not Comic Neue (too thin/tall) and not Sniglet ExtraBold.
 ## Video QA plan (remind on ask)
 
 If they ask for the video QA / quality plan, **remind them of this**. Saved
-2026-09-17 after A-story scene 2 flew the plane backward.
+2026-09-17 after A-story scene 2 flew the plane backward. Broadened the
+same day: not motion-only — **think**.
+
+**Bar:** cartoon is fine (talking letters, waving alligators). **Stupid is
+not.** If a grown-up or a kid would immediately go “that’s dumb,” do not
+ship. Pause and ask: is this *logical* in this cartoon world?
 
 Do not ship a clip that fails any of these. Not “looks mostly ok.”
 
@@ -102,9 +107,17 @@ Do not ship a clip that fails any of these. Not “looks mostly ok.”
    vs end. Backward, moonwalk, or a snap-reverse at the end = redo. Plane
    going left-to-right must still face and travel that way in the last
    frames.
-3. **Clearly wrong** (user’s bar, not crayon-point nitpicks): extra limbs,
-   faces on the back, hole that isn’t a hole, not the letter, morphing,
-   creepy faces on food. One of those in any frame = redo.
+3. **Logic / realism pass** (the one they keep having to ask for). Think
+   before ship, don’t wait for them:
+   - Direction and physics in-world: planes don’t fly backward; horses
+     don’t run in place; mouths stay on the body; holes are holes.
+   - The thing is the thing: a sun has rays, a volcano is a cone, a Q has
+     a tail, an x-ray is not a bedroom skeleton of a teddy.
+   - Scale and place: props kid-sized; actions happen where they belong.
+   - One of each limb. Face on the front only. No extra crayon tips, extra
+     legs, faces on food a kid then eats.
+   Glaring and obvious only — not nitpicks. **You** catch it. Shipping
+   junk for them to find is the failure.
 4. **Sound for “Video sound” mode.** Native Imagine foley is often thin
    ambience. Mix kid SFX on export (whoosh, pop, sparkle, waves, chime)
    so the clip is not boring. Don’t ship near-silent as the video-sound
