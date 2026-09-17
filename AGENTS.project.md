@@ -142,6 +142,9 @@ single-story a, not Comic Neue (too thin/tall) and not Sniglet ExtraBold.
     stays off, lamp stays lit. No ping-pong reverse.
     **Locomotion must travel:** the body changes place in the frame. No
     treadmill / running-in-place cycles. Travel clips do not loop.
+    **Video resolution going forward: 480p.** Generate I2V at 480p. Encode
+    word clips 540×720. Do not generate 720p/1080p unless they ask. Do not
+    batch-reencode old clips.
 12. Archive old art; never overwrite originals. Use Imagine API download
     into `public/` (locker may fail). Copy stills into the repo immediately.
     **Old video takes:** git history is the backup. Do not keep a second
