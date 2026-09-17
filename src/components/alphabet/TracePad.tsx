@@ -275,12 +275,14 @@ function drawTraceArrows(
     if (pts.length < 2) return;
     const picked = opts?.selected === i;
     ctx.strokeStyle = picked ? "#f59f00" : color;
-    ctx.globalAlpha = picked ? 0.9 : 0.55;
-    ctx.lineWidth = picked ? 7 : 5;
+    ctx.globalAlpha = picked ? 0.95 : 0.75;
+    ctx.lineWidth = picked ? 8 : 6;
+    ctx.setLineDash([7, 9]);
     ctx.beginPath();
     ctx.moveTo(pts[0]!.x, pts[0]!.y);
     for (let k = 1; k < pts.length; k++) ctx.lineTo(pts[k]!.x, pts[k]!.y);
     ctx.stroke();
+    ctx.setLineDash([]);
     const mid = pointAlong(pts, 0.72);
     ctx.globalAlpha = 0.95;
     drawChevron(ctx, mid.x, mid.y, mid.ang, 11, picked ? "#f59f00" : color);
@@ -343,9 +345,9 @@ function drawTraceArrows(
 function letterFont(h: number, lower: boolean) {
   const size = Math.floor(h * (lower ? 0.86 : 0.76));
   if (lower) {
-    return `650 ${size}px "Fredoka", "Nunito", sans-serif`;
+    return `700 ${size}px "Comic Neue", "Comic Sans MS", "Fredoka", sans-serif`;
   }
-  return `700 ${size}px "Fredoka", "Nunito", sans-serif`;
+  return `700 ${size}px "Fredoka", "Comic Neue", sans-serif`;
 }
 
 function paintGlyph(
@@ -483,12 +485,11 @@ export function TracePad({
       ctx.fillStyle = accent;
       ctx.globalAlpha = 0.14;
       paintGlyph(ctx, guideLetter, w, h, "fill", isLower);
-      ctx.globalAlpha = 0.7;
+      ctx.globalAlpha = 0.85;
       ctx.strokeStyle = accent;
-      ctx.lineWidth = 6;
-      ctx.setLineDash([12, 9]);
-      paintGlyph(ctx, guideLetter, w, h, "stroke", isLower);
+      ctx.lineWidth = 7;
       ctx.setLineDash([]);
+      paintGlyph(ctx, guideLetter, w, h, "stroke", isLower);
       ctx.globalAlpha = 1;
       drawTraceArrows(
         ctx,
@@ -749,7 +750,7 @@ export function TracePad({
     let cancelled = false;
     void Promise.all([
       document.fonts?.load('700 80px "Fredoka"'),
-      document.fonts?.load('800 80px "Nunito"'),
+      document.fonts?.load('700 80px "Comic Neue"'),
       document.fonts?.ready,
     ]).then(() => {
       if (!cancelled) setupCanvas("resize");

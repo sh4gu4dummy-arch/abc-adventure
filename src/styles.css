@@ -46,8 +46,8 @@
 }
 
 @theme {
-  --font-display: "Fredoka", "Nunito", system-ui, sans-serif;
-  --font-body: "Nunito", system-ui, sans-serif;
+  --font-display: "Fredoka", "Comic Neue", "Comic Sans MS", system-ui, sans-serif;
+  --font-body: "Fredoka", "Comic Neue", "Comic Sans MS", system-ui, sans-serif;
 
   --color-bg: #fff8f0;
   --color-bg-deep: #ffe8d6;
@@ -115,8 +115,8 @@ html[data-case="upper"] body {
   text-transform: uppercase;
 }
 html[data-case="lower"] {
-  --font-display: "Fredoka", "Nunito", sans-serif;
-  --font-body: "Fredoka", "Nunito", sans-serif;
+  --font-display: "Comic Neue", "Comic Sans MS", "Fredoka", sans-serif;
+  --font-body: "Comic Neue", "Comic Sans MS", "Fredoka", sans-serif;
 }
 html[data-case="lower"] body {
   text-transform: lowercase;

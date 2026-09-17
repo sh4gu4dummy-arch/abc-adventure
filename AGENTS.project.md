@@ -72,8 +72,7 @@ building unless they say to**. Saved 2026-09-10. **Started v0.131:** home
 Big/little toggle, 3+3 word split, trace follows the mode. Meet little
 **a** trial (v0.137). Rest of Meet little later.
 **v0.139:** Big ABC = all UI uppercase; little abc = all UI lowercase.
-**v0.174:** little abc uses **Fredoka** (same as Big, lowercase glyphs). Round
-single-story a, not Comic Neue (too thin/tall) and not Sniglet ExtraBold.
+**v0.266:** little abc UI + lowercase trace use **Comic Neue** (Comic Sans–style single-story a). Never Nunito/system fonts that draw a **tailed/double-story a**. Trace **guide strokes are dotted**; the letter **outline is solid**.
 
 - **Default:** one **Big / little toggle for the whole letter page**, not a
   new switch on every tab. Home stays 26 uppercase tiles. Optional later: a
