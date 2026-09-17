@@ -1574,4 +1574,10 @@ export const SPEECH_MAP: Record<string, string> = {
   "A dog knocked on the door.": "c81105185b49d53b.mp3",
   "A duck brought a donut.": "edfb0d0acd9eceb6.mp3",
   "The dinosaur played the drum.": "23a44b4d59aa5758.mp3",
+  "An elf found an egg.": "1ad4e8c6edc3c8b3.mp3",
+  "An elephant kept the egg safe.": "3989714f8ba14a34.mp3",
+  "A baby eagle hatched from the egg.": "0078b21a1b0d2116.mp3",
+  "A frog hopped to a flower.": "9d77b32df349513f.mp3",
+  "A fish splashed near the ferry.": "28e6c32f474ab672.mp3",
+  "A fox sat by the flower.": "9f8218649d7f6e00.mp3",
 };
