@@ -532,7 +532,7 @@ export function WordLessonModal({
               type="button"
               onClick={(e) => {
                 e.stopPropagation();
-                primeAudioFromGesture(prevLabel);
+                primeAudioFromGesture();
                 onPrev();
               }}
               className="absolute left-2 top-1/2 z-[5] flex size-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-on-light shadow-lg"
@@ -546,7 +546,7 @@ export function WordLessonModal({
               type="button"
               onClick={(e) => {
                 e.stopPropagation();
-                primeAudioFromGesture(nextLabel);
+                primeAudioFromGesture();
                 onNext();
               }}
               className="absolute right-2 top-1/2 z-[5] flex size-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-on-light shadow-lg"

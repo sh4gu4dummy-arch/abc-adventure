@@ -28,6 +28,10 @@ let currentAudio: HTMLAudioElement | null = null;
  * must exit without starting another voice.
  */
 let speakGeneration = 0;
+/** Bumped every time the shared element is given a new src. Stale play()
+ *  callbacks must not pause — they were killing the next word and falling
+ *  through to a male browser voice. */
+let playToken = 0;
 
 function normalize(text: string) {
   return text.trim().replace(/\s+/g, " ");
@@ -90,38 +94,35 @@ function playClip(url: string, gen: number): Promise<"played" | "failed" | "canc
   const audio = getSharedAudio();
   if (!audio) return Promise.resolve("failed");
   currentAudio = audio;
+  const token = ++playToken;
 
   return new Promise((resolve) => {
-    if (!isActive(gen)) {
+    if (!isActive(gen) || token !== playToken) {
       resolve("cancelled");
       return;
     }
 
     let settled = false;
 
+    const stillMine = () => isActive(gen) && token === playToken;
+
     const finish = (result: "played" | "failed" | "cancelled") => {
       if (settled) return;
       settled = true;
-      if (!isActive(gen)) {
+      if (!stillMine()) {
         resolve("cancelled");
         return;
       }
       resolve(result);
     };
 
-    audio.onended = () => finish(isActive(gen) ? "played" : "cancelled");
-    audio.onerror = () => finish(isActive(gen) ? "failed" : "cancelled");
+    audio.onended = () => finish(stillMine() ? "played" : "cancelled");
+    audio.onerror = () => finish(stillMine() ? "failed" : "cancelled");
 
     const watch = window.setInterval(() => {
-      if (!isActive(gen)) {
-        window.clearInterval(watch);
-        try {
-          audio.pause();
-        } catch {
-          /* ignore */
-        }
-        finish("cancelled");
-      }
+      if (stillMine()) return;
+      window.clearInterval(watch);
+      finish("cancelled");
     }, 50);
 
     const clearWatch = () => window.clearInterval(watch);
@@ -134,19 +135,14 @@ function playClip(url: string, gen: number): Promise<"played" | "failed" | "canc
     void audio
       .play()
       .then(() => {
-        if (!isActive(gen)) {
+        if (!stillMine()) {
           clearWatch();
-          try {
-            audio.pause();
-          } catch {
-            /* ignore */
-          }
           finish("cancelled");
         }
       })
       .catch(() => {
         clearWatch();
-        finish(isActive(gen) ? "failed" : "cancelled");
+        finish(stillMine() ? "failed" : "cancelled");
       });
   });
 }
@@ -260,9 +256,11 @@ export async function speak(
   // 1) Preferred offline neural clip
   const primary = localClipUrl(key, pref);
   if (primary) {
-    const result = await playClip(primary, gen);
+    let result = await playClip(primary, gen);
+    if (result === "failed" && isActive(gen)) {
+      result = await playClip(primary, gen);
+    }
     if (result === "played" || result === "cancelled") return;
-    // failed → try fallbacks below (only if still active)
   }
 
   if (!isActive(gen)) return;
