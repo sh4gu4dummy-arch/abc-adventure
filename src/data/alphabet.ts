@@ -112,9 +112,9 @@ export const LETTERS: LetterEntry[] = [
     funFact: "E is the most-used letter in English books and stories!",
     words: [
       { word: "Elephant", slug: "elephant", hint: "Biggest land animal" },
-      { word: "Egg", slug: "egg", hint: "Breakfast oval" },
-      { word: "Eagle", slug: "eagle", hint: "Soars above mountains" },
       { word: "Earth", slug: "earth", hint: "Our blue-green home" },
+      { word: "Eagle", slug: "eagle", hint: "Soars above mountains" },
+      { word: "Egg", slug: "egg", hint: "Breakfast oval" },
       { word: "Elbow", slug: "elbow", hint: "The bend in your arm" },
       { word: "Elf", slug: "elf", hint: "A tiny magical helper" },
     ],
