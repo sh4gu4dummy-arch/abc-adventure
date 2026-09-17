@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.208  
+**Version:** v0.209  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 Always **commit + push** ABC updates the same turn. Tell them the version.
 **Never** push Grok sandbox internals (`.grok/`, attachments, skill dumps).  
@@ -37,6 +37,9 @@ really is done. Tap to play again (v0.129).
 | H heart | Crayon with two points | One-tip crayon; look-at-the-clip QA (not a tip-count law) |
 
 A–Z word videos exist. J–Z remade to locked sentences; A–I older unless later patched (G, H, fish, frog, etc.).
+
+## Yo-yo TTS (v0.209)
+Hyphen made Ava say “yo-oh”. Overlay now speaks “yo yo”; caption still Yo-yo.
 
 ## Zipper remake (v0.207–0.208)
 Zed zips closed with foley. v0.208 sped 10s→~6s; Video-sound mode ends when the clip ends (no 9s pad).

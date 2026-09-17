@@ -336,7 +336,7 @@ export function WordLessonModal({
             stopTick();
             return;
           }
-          await speak(lesson.word);
+          await speak(lesson.sayWord ?? lesson.word);
           if (skipRef.current || cancelledRef.current || playRun.current !== run) {
             stopTick();
             return;
@@ -350,7 +350,7 @@ export function WordLessonModal({
         }
         setCaption("sentence");
         playSfx(lesson.sfxSparkle, 0.22);
-        await speak(lesson.sentence);
+        await speak(lesson.saySentence ?? lesson.sentence);
         if (skipRef.current || cancelledRef.current || playRun.current !== run) {
           stopTick();
           return;

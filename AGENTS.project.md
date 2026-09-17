@@ -50,6 +50,7 @@ of pixels.” Pixel % lies (K’s spine is a huge share of the ink).
 Do **not** retune the % again (26 vs 80 vs 50). Each **guide stroke** must
 be inked (v0.199) — Q is not done from the O, K not from the spine.
 Letter **names** use USA pronunciation. H is **aitch** (AY-ch), never haitch / hey-ch.
+Hyphenated words (Yo-yo): use `sayWord` so TTS is not “yo-oh”.
 Meet little **a** says **A** (rhymes with day/hay). Never **I/eye** or **why**.
 Meet I2V spoken line is only **“little X”** (or **“Big X”**). Never paste
 phonetic spellings (ELL, AY, KAY, CUE) or sound-cues (“says lll like lion”)

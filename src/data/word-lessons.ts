@@ -53,6 +53,9 @@ export type WordLesson = {
    * the MP4 unmuted under overlay narration.
    */
   nativeAudio?: boolean;
+  /** TTS text when the on-screen word would be misread (Yo-yo → yo yo). */
+  sayWord?: string;
+  saySentence?: string;
 };
 
 const SFX = {
@@ -250,7 +253,13 @@ export const WORD_LESSONS: Record<string, WordLesson> = {
   "x-six": { ...lesson("X", "six", "Six", "Max counts to six."), durationSec: 10, loopVideo: true },
   "x-mix": { ...lesson("X", "mix", "Mix", "Max mixes pancake batter."), durationSec: 10, loopVideo: true },
   // --- Letter Y ---
-  "y-yoyo": { ...lesson("Y", "yoyo", "Yo-yo", "The yo-yo goes down and up."), durationSec: 10, loopVideo: true },
+  "y-yoyo": {
+    ...lesson("Y", "yoyo", "Yo-yo", "The yo-yo goes down and up."),
+    durationSec: 10,
+    loopVideo: true,
+    sayWord: "yo yo",
+    saySentence: "The yo yo goes down and up.",
+  },
   "y-yellow": { ...lesson("Y", "yellow", "Yellow", "Yasmin paints with yellow."), durationSec: 10, loopVideo: true },
   "y-yak": { ...lesson("Y", "yak", "Yak", "The yak yawns."), durationSec: 10, loopVideo: true },
   "y-yarn": { ...lesson("Y", "yarn", "Yarn", "Yasmin winds yarn."), durationSec: 10, loopVideo: true },
@@ -282,8 +291,12 @@ export function allWordLessonPhrases(): string[] {
   for (const lesson of Object.values(WORD_LESSONS)) {
     out.add(lesson.word);
     out.add(lesson.sentence);
+    if (lesson.sayWord) out.add(lesson.sayWord);
+    if (lesson.saySentence) out.add(lesson.saySentence);
+    const w = lesson.sayWord ?? lesson.word;
+    const s = lesson.saySentence ?? lesson.sentence;
     out.add("Great job!");
-    out.add(`${lesson.word}. ${lesson.word}. ${lesson.word}. ${lesson.sentence}`);
+    out.add(`${w}. ${w}. ${w}. ${s}`);
   }
   return [...out];
 }
