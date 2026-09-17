@@ -2,7 +2,7 @@ import { useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState,
 import { BookOpen, ChevronLeft, ChevronRight, Play, RotateCcw, Volume2 } from "lucide-react";
 import type { LetterEntry } from "@/data/alphabet";
 import { getStoryBeats } from "@/data/stories";
-import { storyBeatVideo } from "@/data/story-videos";
+import { storyBeatVideo, type StoryClipSrc } from "@/data/story-videos";
 import { assetUrl } from "@/lib/assets";
 import { LetterWord } from "./LetterWord";
 import { StoryStage } from "./StoryStage";
@@ -14,56 +14,135 @@ import { walkStoryHighlights } from "@/lib/story-highlight";
 import { cn } from "@/lib/utils";
 import { LessonSoundToggle } from "./LessonSoundToggle";
 
-type StoryClipHandle = { playVideo: () => void };
+type StoryReelHandle = { start: (from?: number) => void };
 
-const StoryClip = forwardRef<
-  StoryClipHandle,
-  { video: string; poster: string; accent: string; line: string; clipSound: boolean }
->(function StoryClip({ video, poster, accent, line, clipSound }, handle) {
+/** One video element. Files stay split on disk; playback chains 1→2→3. */
+const StoryReel = forwardRef<
+  StoryReelHandle,
+  {
+    clips: StoryClipSrc[];
+    lines: string[];
+    accent: string;
+    beatIdx: number;
+    clipSound: boolean;
+    onBeat: (i: number) => void;
+    onRunning: (on: boolean) => void;
+    onFinished: () => void;
+  }
+>(function StoryReel(
+  { clips, lines, accent, beatIdx, clipSound, onBeat, onRunning, onFinished },
+  handle,
+) {
   const ref = useRef<HTMLVideoElement>(null);
+  const idxRef = useRef(beatIdx);
+  const runRef = useRef(false);
   const [live, setLive] = useState(false);
   const [ended, setEnded] = useState(false);
-  const posterSrc = `${assetUrl(poster)}?v=${APP_VERSION}`;
-  const videoSrc = `${assetUrl(video)}?v=${APP_VERSION}`;
+
+  useEffect(() => {
+    idxRef.current = beatIdx;
+  }, [beatIdx]);
 
   useEffect(() => {
     const v = ref.current;
     if (!v) return;
     v.muted = !clipSound;
     v.volume = clipSound ? 0.7 : 0;
-    if (!clipSound) v.muted = true;
   }, [clipSound]);
 
-  const playVideo = useCallback(() => {
+  const srcAt = useCallback(
+    (i: number) => `${assetUrl(clips[i]!.video)}?v=${APP_VERSION}`,
+    [clips],
+  );
+  const posterAt = useCallback(
+    (i: number) => `${assetUrl(clips[i]!.poster)}?v=${APP_VERSION}`,
+    [clips],
+  );
+
+  const applySound = useCallback(() => {
     const v = ref.current;
     if (!v) return;
-    const clipSound = getLessonSound() === "clip";
-    v.muted = !clipSound;
-    v.volume = clipSound ? 0.7 : 0;
-    v.playsInline = true;
-    v.loop = false;
-    if (v.getAttribute("src") !== videoSrc) v.src = videoSrc;
-    try {
-      v.currentTime = 0;
-    } catch {
-      /* ignore */
+    const clip = getLessonSound() === "clip";
+    v.muted = !clip;
+    v.volume = clip ? 0.7 : 0;
+  }, []);
+
+  const speakLine = useCallback((i: number) => {
+    if (getLessonSound() === "clip") {
+      stopSpeech();
+      return;
     }
-    setEnded(false);
-    void v
-      .play()
-      .then(() => setLive(true))
-      .catch(() => setLive(false));
-  }, [videoSrc]);
+    const line = lines[i];
+    if (!line) return;
+    stopSpeech();
+    void speak(line);
+  }, [lines]);
 
-  useImperativeHandle(handle, () => ({ playVideo }), [playVideo]);
+  const playIndex = useCallback(
+    (i: number) => {
+      const v = ref.current;
+      const clip = clips[i];
+      if (!v || !clip) return;
+      applySound();
+      v.playsInline = true;
+      v.loop = false;
+      v.src = srcAt(i);
+      try {
+        v.currentTime = 0;
+      } catch {
+        /* ignore */
+      }
+      setEnded(false);
+      void v
+        .play()
+        .then(() => setLive(true))
+        .catch(() => setLive(false));
+      speakLine(i);
+    },
+    [applySound, clips, speakLine, srcAt],
+  );
 
-  function playScene() {
-    const clipSound = getLessonSound() === "clip";
-    if (clipSound) stopSpeech();
-    else primeAudioFromGesture(line);
-    playVideo();
-    if (!clipSound) void speak(line);
+  const start = useCallback(
+    (from = 0) => {
+      const i = Math.max(0, Math.min(clips.length - 1, from));
+      const clip = getLessonSound() === "clip";
+      if (clip) stopSpeech();
+      else primeAudioFromGesture(lines[i]);
+      runRef.current = true;
+      idxRef.current = i;
+      onBeat(i);
+      onRunning(true);
+      setEnded(false);
+      playIndex(i);
+    },
+    [clips.length, lines, onBeat, onRunning, playIndex],
+  );
+
+  useImperativeHandle(handle, () => ({ start }), [start]);
+
+  function onClipEnded() {
+    if (!runRef.current) {
+      setEnded(true);
+      setLive(false);
+      return;
+    }
+    const next = idxRef.current + 1;
+    if (next < clips.length) {
+      idxRef.current = next;
+      onBeat(next);
+      playIndex(next);
+      return;
+    }
+    runRef.current = false;
+    setEnded(true);
+    setLive(false);
+    onRunning(false);
+    onFinished();
   }
+
+  const idle = !live || ended;
+  const posterSrc = posterAt(beatIdx);
+  const nextClip = clips[beatIdx + 1];
 
   return (
     <div className="story-stage relative overflow-hidden rounded-[var(--radius-lg)] border-2 border-border bg-ink shadow-[var(--shadow-card)]">
@@ -72,13 +151,13 @@ const StoryClip = forwardRef<
         alt=""
         className={cn(
           "absolute inset-0 h-full w-full object-cover transition-opacity",
-          live && "opacity-0",
+          live && !ended && "opacity-0",
         )}
         draggable={false}
       />
       <video
         ref={ref}
-        src={videoSrc}
+        src={srcAt(beatIdx)}
         poster={posterSrc}
         className="absolute inset-0 z-[1] h-full w-full object-cover"
         playsInline
@@ -88,15 +167,25 @@ const StoryClip = forwardRef<
           setLive(true);
           setEnded(false);
         }}
-        onEnded={() => setEnded(true)}
+        onEnded={onClipEnded}
         onError={() => setLive(false)}
       />
-      {(!live || ended) && (
+      {nextClip && (
+        <video
+          className="pointer-events-none invisible absolute h-0 w-0"
+          src={srcAt(beatIdx + 1)}
+          preload="auto"
+          muted
+          playsInline
+          aria-hidden
+        />
+      )}
+      {idle && (
         <button
           type="button"
-          onClick={playScene}
+          onClick={() => start(ended && beatIdx >= clips.length - 1 ? 0 : beatIdx)}
           className="absolute inset-0 z-20 flex items-center justify-center bg-ink/20"
-          aria-label={ended ? "Play scene again" : "Play scene"}
+          aria-label={ended ? "Play story again" : "Play story"}
         >
           <span
             className="flex size-16 items-center justify-center rounded-full text-white shadow-lg"
@@ -110,7 +199,7 @@ const StoryClip = forwardRef<
         className="pointer-events-none absolute left-3 top-3 z-10 rounded-[var(--radius-pill)] px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-wide text-white shadow-sm"
         style={{ background: accent }}
       >
-        Scene
+        {beatIdx + 1}/{clips.length}
       </span>
     </div>
   );
@@ -118,90 +207,66 @@ const StoryClip = forwardRef<
 
 export function StoryMode({ entry }: { entry: LetterEntry }) {
   const beats = useMemo(() => getStoryBeats(entry), [entry]);
+  const clips = useMemo(() => {
+    const out: StoryClipSrc[] = [];
+    for (let i = 0; i < beats.length; i++) {
+      const c = storyBeatVideo(entry.letter, i);
+      if (c) out.push(c);
+    }
+    return out;
+  }, [beats.length, entry.letter]);
+  const lines = useMemo(() => beats.map((b) => b.text), [beats]);
+
   const [beatIdx, setBeatIdx] = useState(0);
   const [playing, setPlaying] = useState(false);
   const [finished, setFinished] = useState(false);
   const [playToken, setPlayToken] = useState(0);
-  const clipRef = useRef<StoryClipHandle>(null);
+  const reelRef = useRef<StoryReelHandle>(null);
 
   useEffect(() => {
     setBeatIdx(0);
     setPlaying(false);
     setFinished(false);
     setPlayToken((t) => t + 1);
+    stopSpeech();
   }, [entry.letter]);
 
   const { mode: soundMode } = useLessonSound();
   const clipSound = soundMode === "clip";
   const beat = beats[beatIdx] ?? beats[0]!;
-  const clip = storyBeatVideo(entry.letter, beatIdx);
   const stageKey = `${entry.letter}-${beatIdx}-${playToken}`;
+  const hasClips = clips.length > 0;
 
-  function kickClip() {
-    clipRef.current?.playVideo();
+  function startStory(from = 0) {
+    markSection(entry.letter, "story");
+    setFinished(false);
+    if (hasClips) {
+      reelRef.current?.start(from);
+      return;
+    }
+    void playBeatsFallback(from);
   }
 
-  async function playAll() {
+  async function playBeatsFallback(from: number) {
     if (playing) return;
-    const useClip = getLessonSound() === "clip";
-    if (useClip) stopSpeech();
-    else primeAudioFromGesture(beats[0]?.text);
-    setBeatIdx(0);
+    primeAudioFromGesture(beats[from]?.text);
     setPlaying(true);
     setFinished(false);
     markSection(entry.letter, "story");
-    for (let i = 0; i < beats.length; i++) {
+    for (let i = from; i < beats.length; i++) {
       setBeatIdx(i);
       setPlayToken((t) => t + 1);
-      kickClip();
-      if (getLessonSound() === "clip") {
-        const start = Date.now();
-        while (Date.now() - start < 10000) {
-          if (getLessonSound() !== "clip") {
-            await speak(beats[i]!.text);
-            break;
-          }
-          await wait(200);
-        }
-      } else {
-        await speak(beats[i]!.text);
-        await wait(320);
-      }
+      await speak(beats[i]!.text);
+      await new Promise((r) => setTimeout(r, 280));
     }
     setFinished(true);
     setPlaying(false);
-    setBeatIdx(0);
-    setPlayToken((t) => t + 1);
-    if (getLessonSound() !== "clip") void speak("The end! Great listening!");
-  }
-
-  async function playBeat(i: number) {
-    if (playing) return;
-    const useClip = getLessonSound() === "clip";
-    if (useClip) stopSpeech();
-    else primeAudioFromGesture(beats[i]?.text);
-    setBeatIdx(i);
-    setPlayToken((t) => t + 1);
-    kickClip();
-    setPlaying(true);
-    if (!useClip) await speak(beats[i]!.text);
-    else await wait(400);
-    setPlaying(false);
-    if (i === beats.length - 1) {
-      markSection(entry.letter, "story");
-      setFinished(true);
-    }
   }
 
   function go(delta: number) {
     if (playing) return;
-    setBeatIdx((i) => {
-      const next = Math.max(0, Math.min(beats.length - 1, i + delta));
-      setPlayToken((t) => t + 1);
-      return next;
-    });
+    setBeatIdx((i) => Math.max(0, Math.min(beats.length - 1, i + delta)));
     setFinished(false);
-    kickClip();
   }
 
   return (
@@ -211,9 +276,9 @@ export function StoryMode({ entry }: { entry: LetterEntry }) {
           <BookOpen className="size-5" /> {entry.letter} story theater
         </p>
         <p className="mt-1 text-sm font-medium text-muted">
-          Watch the words act out each moment — tap a scene or press play
+          Press play — the three scenes play as one story
         </p>
-        {clip && (
+        {hasClips && (
           <div className="mt-3 flex justify-center">
             <LessonSoundToggle
               compact
@@ -227,16 +292,22 @@ export function StoryMode({ entry }: { entry: LetterEntry }) {
         )}
       </div>
 
-      {/* Live stage — real clip when we have one, else bouncing thumbs */}
-      {clip ? (
-        <StoryClip
-          key={clip.video}
-          ref={clipRef}
-          video={clip.video}
-          poster={clip.poster}
+      {hasClips ? (
+        <StoryReel
+          key={entry.letter}
+          ref={reelRef}
+          clips={clips}
+          lines={lines}
           accent={entry.accent}
-          line={beat.text}
+          beatIdx={beatIdx}
           clipSound={clipSound}
+          onBeat={setBeatIdx}
+          onRunning={setPlaying}
+          onFinished={() => {
+            setPlaying(false);
+            setFinished(true);
+            markSection(entry.letter, "story");
+          }}
         />
       ) : (
         <StoryStage
@@ -249,7 +320,6 @@ export function StoryMode({ entry }: { entry: LetterEntry }) {
         />
       )}
 
-      {/* Scene script */}
       <div
         className="rounded-[var(--radius-lg)] border-2 border-border bg-surface p-4 shadow-sm"
         style={{ borderColor: `${entry.accent}55` }}
@@ -276,7 +346,6 @@ export function StoryMode({ entry }: { entry: LetterEntry }) {
         </div>
       </div>
 
-      {/* Beat picker */}
       <div className="flex items-center justify-center gap-2">
         <button
           type="button"
@@ -293,7 +362,11 @@ export function StoryMode({ entry }: { entry: LetterEntry }) {
             <button
               key={i}
               type="button"
-              onClick={() => void playBeat(i)}
+              onClick={() => {
+                if (playing) return;
+                setBeatIdx(i);
+                setFinished(false);
+              }}
               disabled={playing}
               className={cn(
                 "pressable h-3 rounded-full transition-all",
@@ -316,13 +389,15 @@ export function StoryMode({ entry }: { entry: LetterEntry }) {
         </button>
       </div>
 
-      {/* Scene list (compact) */}
       <div className="space-y-1.5">
         {beats.map((b, i) => (
           <button
             key={i}
             type="button"
-            onClick={() => void playBeat(i)}
+            onClick={() => {
+              if (playing) return;
+              startStory(i);
+            }}
             disabled={playing}
             className="pressable w-full rounded-xl border-2 px-3 py-2.5 text-left transition-colors disabled:opacity-60"
             style={{
@@ -330,7 +405,8 @@ export function StoryMode({ entry }: { entry: LetterEntry }) {
               background: i === beatIdx ? `${entry.hue}33` : "var(--color-surface)",
             }}
           >
-            <span className="mr-2 inline-flex size-6 items-center justify-center rounded-full text-xs font-bold text-white"
+            <span
+              className="mr-2 inline-flex size-6 items-center justify-center rounded-full text-xs font-bold text-white"
               style={{ background: entry.accent }}
             >
               {i + 1}
@@ -351,13 +427,13 @@ export function StoryMode({ entry }: { entry: LetterEntry }) {
       <div className="flex flex-wrap justify-center gap-2">
         <button
           type="button"
-          onClick={() => void playAll()}
+          onClick={() => startStory(0)}
           disabled={playing}
           className="pressable inline-flex min-h-12 items-center gap-2 rounded-[var(--radius-pill)] px-5 py-3 font-bold text-white disabled:opacity-70"
           style={{ background: entry.accent }}
         >
           <Volume2 className="size-5" />
-          {playing ? "Playing…" : "Play full story"}
+          {playing ? "Playing…" : "Play story"}
         </button>
       </div>
 
@@ -392,8 +468,4 @@ function highlightWords(
       </span>
     );
   });
-}
-
-function wait(ms: number) {
-  return new Promise((r) => setTimeout(r, ms));
 }

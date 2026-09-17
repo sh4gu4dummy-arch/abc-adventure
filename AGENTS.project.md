@@ -167,6 +167,9 @@ room/props, same through-line object. Extract the last frame, then
 I2V (or a tiny I2I then I2V) from that still — don’t generate three
 unrelated hero stills. If I2V clones extra animals/objects mid-clip,
 **redo**. Do not ship a 3-second trim as the story beat.
+Keep the **three files** on disk (`story-clips/{l}-1/2/3.mp4`). In the
+app they **play as one**: scene 2 starts when scene 1 ends, no extra
+Play tap. Do not concat into a single mp4.
 
 **Lost means gone.** If a kitten “lost a key,” the key is not sitting
 in front of its face. It slides out of reach (under a cabinet). Animals
