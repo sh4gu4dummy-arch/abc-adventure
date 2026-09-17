@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState, forwardRef } from "react";
-import { BookOpen, ChevronLeft, ChevronRight, Play, Volume2 } from "lucide-react";
+import { BookOpen, ChevronLeft, ChevronRight, Play, RotateCcw, Volume2 } from "lucide-react";
 import type { LetterEntry } from "@/data/alphabet";
 import { getStoryBeats } from "@/data/stories";
 import { storyBeatVideo } from "@/data/story-videos";
@@ -21,6 +21,7 @@ const StoryClip = forwardRef<
 >(function StoryClip({ video, poster, accent, line, clipSound }, handle) {
   const ref = useRef<HTMLVideoElement>(null);
   const [live, setLive] = useState(false);
+  const [ended, setEnded] = useState(false);
   const posterSrc = `${assetUrl(poster)}?v=${APP_VERSION}`;
   const videoSrc = `${assetUrl(video)}?v=${APP_VERSION}`;
 
@@ -46,6 +47,7 @@ const StoryClip = forwardRef<
     } catch {
       /* ignore */
     }
+    setEnded(false);
     void v
       .play()
       .then(() => setLive(true))
@@ -81,21 +83,25 @@ const StoryClip = forwardRef<
         playsInline
         loop={false}
         preload="auto"
-        onPlaying={() => setLive(true)}
+        onPlaying={() => {
+          setLive(true);
+          setEnded(false);
+        }}
+        onEnded={() => setEnded(true)}
         onError={() => setLive(false)}
       />
-      {!live && (
+      {(!live || ended) && (
         <button
           type="button"
           onClick={playScene}
           className="absolute inset-0 z-20 flex items-center justify-center bg-ink/20"
-          aria-label="Play scene"
+          aria-label={ended ? "Play scene again" : "Play scene"}
         >
           <span
             className="flex size-16 items-center justify-center rounded-full text-white shadow-lg"
             style={{ background: accent }}
           >
-            <Play className="size-8 fill-white" />
+            {ended ? <RotateCcw className="size-8" /> : <Play className="size-8 fill-white" />}
           </span>
         </button>
       )}
@@ -214,6 +220,7 @@ export function StoryMode({ entry }: { entry: LetterEntry }) {
       {/* Live stage — real clip when we have one, else bouncing thumbs */}
       {clip ? (
         <StoryClip
+          key={clip.video}
           ref={clipRef}
           video={clip.video}
           poster={clip.poster}

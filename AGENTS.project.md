@@ -139,7 +139,15 @@ Beat 3 starts from beat 2’s last frame. Same character model, same
 room/props, same through-line object. Extract the last frame, then
 I2V (or a tiny I2I then I2V) from that still — don’t generate three
 unrelated hero stills. If I2V clones extra animals/objects mid-clip,
-trim before the clone or redo — don’t ship the extra.
+**redo**. Do not ship a 3-second trim as the story beat.
+
+**Lost means gone.** If a kitten “lost a key,” the key is not sitting
+in front of its face. It slides out of reach (under a cabinet). Animals
+**hold** the through-line object — they do not eat it. One object: if
+the key is in the lock, there is not a second key hanging off the door.
+
+Look at all 5 QA frames and ask those questions out loud. Shipping the
+K clip where the kangaroo ate the key was the failure.
 
 Three beats. One verb each. A story that **follows**, not a word dump
 and not a slogan last line. Toddler-safe (no smash, no scary). Logical
