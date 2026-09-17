@@ -233,8 +233,8 @@ export const WORD_LESSONS: Record<string, WordLesson> = {
   "u-ukulele": { ...lesson("U", "ukulele", "Ukulele", "Uma plucks the ukulele."), durationSec: 10, loopVideo: true },
   // --- Letter V ---
   "v-violin": { ...lesson("V", "violin", "Violin", "Vin bows the violin."), durationSec: 10, loopVideo: true },
-  "v-volcano": { ...lesson("V", "volcano", "Volcano", "The volcano puffs smoke."), durationSec: 10, loopVideo: true },
-  "v-van": { ...lesson("V", "van", "Van", "Vin's van beeps."), durationSec: 10, loopVideo: true },
+  "v-volcano": { ...lesson("V", "volcano", "Volcano", "The volcano puffs smoke."), durationSec: 10, loopVideo: true, nativeAudio: true },
+  "v-van": { ...lesson("V", "van", "Van", "Vin's van jumps."), durationSec: 10, loopVideo: true, nativeAudio: true },
   "v-vegetable": { ...lesson("V", "vegetable", "Vegetable", "Vin washes vegetables."), durationSec: 10, loopVideo: true },
   "v-vest": { ...lesson("V", "vest", "Vest", "Vin buttons a vest."), durationSec: 10, loopVideo: false },
   "v-vacuum": { ...lesson("V", "vacuum", "Vacuum", "Vin vacuums."), durationSec: 10, loopVideo: true },

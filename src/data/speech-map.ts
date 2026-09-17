@@ -1241,6 +1241,7 @@ export const SPEECH_MAP: Record<string, string> = {
   "Vin bows the violin.": "eca37b4d7c37c449.mp3",
   "The volcano puffs smoke.": "898d6cbaba790dcd.mp3",
   "Vin's van beeps.": "7e8277ba9b6f6841.mp3",
+  "Vin's van jumps.": "30fbd90ba636ee6c.mp3",
   "Vin washes vegetables.": "869e77fe8f2a5afb.mp3",
   "Vin buttons a vest.": "ff81b4cca230fc73.mp3",
   "Vin vacuums.": "2d2bc3bc9f7c01a0.mp3",
