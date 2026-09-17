@@ -45,28 +45,32 @@ export const Route = createFileRoute("/letter/$letter")({
   validateSearch: (s: Record<string, unknown>) => {
     const raw = String(s.tab ?? "");
     const tab =
-      raw === "words" || raw === "sound" || raw === "trace" || raw === "games"
+      raw === "words" ||
+      raw === "sound" ||
+      raw === "trace" ||
+      raw === "games" ||
+      raw === "story"
         ? raw
         : undefined;
     return tab ? { tab } : {};
   },
 });
 
-type TabId = "words" | "sound" | "trace" | "games";
-type GameId = "match" | "memory" | "ispy" | "story" | "cases";
+type TabId = "words" | "sound" | "trace" | "games" | "story";
+type GameId = "match" | "memory" | "ispy" | "cases";
 
 const TABS: { id: TabId; label: string; icon: typeof BookOpen }[] = [
   { id: "words", label: "Words", icon: BookOpen },
   { id: "sound", label: "Sound", icon: Volume2 },
   { id: "trace", label: "Trace", icon: Pencil },
   { id: "games", label: "Games", icon: Gamepad2 },
+  { id: "story", label: "Story", icon: Clapperboard },
 ];
 
 const GAMES: { id: GameId; label: string; blurb: string }[] = [
   { id: "match", label: "Match", blurb: "Hear the sound — tap the picture" },
   { id: "memory", label: "Pairs", blurb: "Find two pictures that match. Tap to hear the word." },
   { id: "ispy", label: "I Hear", blurb: "Listen, then tap that picture" },
-  { id: "story", label: "Story", blurb: "Watch the words in action" },
   { id: "cases", label: "Aa sort", blurb: "Sort big and little letters" },
 ];
 
@@ -79,7 +83,8 @@ function LetterPage() {
     search.tab === "words" ||
     search.tab === "sound" ||
     search.tab === "trace" ||
-    search.tab === "games"
+    search.tab === "games" ||
+    search.tab === "story"
       ? search.tab
       : "words";
   const [tab, setTab] = useState<TabId>(initialTab);
@@ -369,8 +374,13 @@ function LetterPage() {
           {game === "match" && <MatchGame entry={entry} caseKind={caseKind} />}
           {game === "memory" && <MemoryMatch entry={entry} caseKind={caseKind} />}
           {game === "ispy" && <ISpy entry={entry} />}
-          {game === "story" && <StoryMode entry={entry} />}
           {game === "cases" && <CaseHunt entry={entry} />}
+        </section>
+      )}
+
+      {tab === "story" && (
+        <section aria-label="Story theater">
+          <StoryMode entry={entry} />
         </section>
       )}
 
