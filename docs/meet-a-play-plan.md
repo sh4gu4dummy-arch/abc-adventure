@@ -85,6 +85,10 @@ Sunny kid-yard. A runs (real distance).
 
 ## QA before ship (every take)
 
+**QA agent** looks at the 5-frame dump before anything replaces a public
+file. Builder does not self-pass and ship. Fail = redo, don’t argue taste
+nitpicks. Two usable takes: show the user, don’t pick.
+
 Dump start / mid / end (`python3 scripts/qa-word-frames.py VIDEO.mp4`). Redo if any of this is true:
 
 - Hole in A is black / scribbled / missing

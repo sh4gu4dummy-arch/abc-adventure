@@ -2,6 +2,11 @@
 
 **Version:** v0.295
 
+## START HERE
+
+`docs/START-HERE.md` — onboarding for builder + QA agent. Keep it current
+when taste/QA lessons land. Involve QA before shipping videos/thumbs.
+
 ## Meet A play plan (saved, not shot)
 
 `docs/meet-a-play-plan.md` — extra Meet clips: A runs around and plays

@@ -1,9 +1,22 @@
 # ABC Adventure — project rules (user taste)
 
+**Start here:** `docs/START-HERE.md` (builder + QA agent). Then this file.
+When the user corrects a clip, thumb, or workflow: add the lesson **here**
+and a short line in `docs/START-HERE.md` so a future QA agent still catches it.
+
 Read this every turn before making word videos, posters, or sentences.
 When the user corrects a clip, **add the lesson here** (and in
 `src/data/word-lessons.ts` RULES) in the same change. Do not only remember it
 in chat.
+
+## QA agent
+
+**Involve a QA agent before ship** on new/remade videos, letter thumbs,
+Meet clips, story beats, and word posters. Builder dumps 5 frames
+(`python3 scripts/qa-word-frames.py VIDEO.mp4`). QA looks at the frames
+(not the prompt), pass/fail with why. QA does not generate a replacement
+unless asked. QA does not pick a winner when there are 2+ options — show
+the user. Do not ship if QA fails.
 
 ## Chat: “lmk”
 

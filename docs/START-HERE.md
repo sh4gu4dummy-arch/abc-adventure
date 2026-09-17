@@ -1,0 +1,111 @@
+# START HERE — ABC Adventure
+
+Kids alphabet app (ages ~3–6). **Read this first** if you are the builder
+or the **QA agent**. Then `AGENTS.project.md` for the full taste list.
+
+**Keep this file current.** When the user corrects a clip, thumb, or
+workflow, add the lesson here (short) *and* in `AGENTS.project.md`. A QA
+agent who only reads this file should still catch the last failure.
+
+## Who does what
+
+| Role | Job |
+|---|---|
+| **Builder** | Makes stills / I2V / app code. Does not ship until QA passes. |
+| **QA agent** | Looks at the actual frames (not the prompt). Pass / fail with *why*. Does not generate replacements unless asked. Does not pick a winner when there are 2+ options — show the user. |
+| **User** | Final taste. If they say **lmk**, answer in chat only — no edits. |
+
+**Involve the QA agent before ship** on: new/remade videos, letter thumbs,
+Meet clips, story beats, word posters. Builder dumps 5 frames, QA looks,
+then builder ships or redos.
+
+## Never
+
+- Restart the preview / vite. They refresh when they want.
+- Paint-out / clone-stamp / mask-cut a letter thumb. **Remake the still.**
+- Restore a rejected thumb from git history, chat, or an old path.
+- Concat story/Meet files into one mp4. Files stay split; the app chains them.
+- Batch B–Z (or 26 Meet plays) until they approve the trial.
+- Push `.grok/`, `attachments/`, platform `AGENTS.md`. GitHub is the kids app.
+- Invent a hyper-specific law from one miss. General lesson only.
+
+## Always
+
+- `lmk` = talk only.
+- 2+ usable takes = show them, ask which to keep.
+- Product change → bump `VERSION` + `src/lib/version.ts` + `package.json`, commit, `git push origin main`, tell them the version.
+- Videos **are in git**. Restore old takes with git. No local `art-archive`.
+- New videos **480p**, native diegetic sound in the MP4 (no teacher baked in).
+
+## How QA a video
+
+```
+python3 scripts/qa-word-frames.py VIDEO.mp4
+```
+
+Look at **all 5** (start / 25 / mid / 75 / end). Fail if any frame is
+obviously stupid. Cartoon is fine. Dumb is not.
+
+Checklist (glaring only):
+
+- Motion matches the beat (plane **forward**, not reverse; feet **travel**, not treadmill; zigzag **on the path**)
+- The thing is the thing (sun has rays, Q has a tail + hole, cloud is a puff not a ball)
+- Count: ONE of each prop/limb. Extra crayon tip, extra banana, extra gator = fail
+- Letter: hole = **background color** (not black); face on **front only**; eyes on the body, not in a hole; glyph still reads as that letter in a small crop
+- little letters: Comic-sans **single-story a** (no upper tail); smaller stature; q = one right stem, no extra lumps
+- Food has no face if a kid eats it. State-change is one-way (peel stays off)
+- Thumb for a word card = **frame 1** written to `public/posters-scene/{letter}-{slug}.webp` *and* `public/posters/`
+
+**Pass:** “ship” + one line why. **Fail:** what’s wrong + which frame. Do not
+nitpick. Do not ship junk for the user to find.
+
+## How QA a letter thumb
+
+Compare to a neighbor that already looks right (P/O for Q, D/H for fill).
+
+Fail: extra lumps, huge googly eyes vs tiny black dots, missing hole, hole
+not matching the bg, little z / q “surgery” ghosts, letter cut off, extra
+blocky background unlike the set.
+
+## Meet A play (not shot until they say go)
+
+Plan: `docs/meet-a-play-plan.md`
+
+Intro Meet stays (`videos/imagine/a.mp4`, `a-little.mp4`). New play clips:
+A runs around and plays with page words. Two 10s per case.
+
+1. apple, ant, airplane  
+2. alligator, astronaut, anchor  
+
+QA that plan’s shot list + the video checklist above. Trial Big A play-1
+first.
+
+## Plans (remind, don’t start unless they say)
+
+| Ask | File / section |
+|---|---|
+| Meet A plays with words | `docs/meet-a-play-plan.md` |
+| Lowercase / little letters | `AGENTS.project.md` → Lowercase plan |
+| Tracing rewrite | `AGENTS.project.md` → Trace rewrite plan |
+| Story / video quality | `AGENTS.project.md` → Video QA + Story lines |
+
+## Product map (short)
+
+- Home: Big / little toggle. Tiles = letter thumbs only.
+- Letter page: Words, Sound, Trace, Games, Story, Meet.
+- Words: 3 Big + 3 little per letter (same clips).
+- Story: 3 files, auto-play as one.
+- Meet: letter speaks in the clip (no teacher stack). J+ “Hi I’m Big J…”. Slow “Big… A…”.
+- Trace: whole letter, dotted guides, solid outline. Comic Neue for little.
+- Sound toggle: Narration **or** Video sound, never both.
+
+## Key paths
+
+| What | Where |
+|---|---|
+| Letter thumbs | `public/letters/{a}.webp`, `{a}-little.webp` |
+| Word clips | `public/videos/{a}-{slug}.mp4` |
+| Meet | `public/videos/imagine/{a}.mp4`, `{a}-little.mp4` |
+| Story | `public/story-clips/{a}-1.mp4` … `-3.mp4` |
+| Word thumbs | `public/posters-scene/` + `public/posters/` |
+| Taste | `AGENTS.project.md`, `src/data/word-lessons.ts` RULES |

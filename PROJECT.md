@@ -2,6 +2,8 @@
 
 Kids alphabet learning app (ages ~3–6): 26 letters, cartoon posters, neural voice, games, offline portable package.
 
+**Agents start at** `docs/START-HERE.md`. Taste: `AGENTS.project.md`.
+
 ## Product surfaces
 
 | Surface | Status | Notes |
