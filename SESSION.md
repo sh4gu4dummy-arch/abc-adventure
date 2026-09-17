@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.295
+**Version:** v0.296
 
 ## START HERE
 
@@ -12,6 +12,10 @@ when taste/QA lessons land. Involve QA before shipping videos/thumbs.
 `docs/meet-a-play-plan.md` — extra Meet clips: A runs around and plays
 with apple/ant/airplane then alligator/astronaut/anchor. Intro Meet stays.
 Wait for go.
+
+## Meet A play plan QA (v0.296)
+
+Plan look must match shipped Meet intro (nub feet OK). Clips 480×720. Astronaut = toy. Ant must read. Partial playlist OK.
   
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 Always **commit + push** ABC updates the same turn. Tell them the version.

@@ -78,7 +78,7 @@ A runs around and plays with page words. Two 10s per case.
 2. alligator, astronaut, anchor  
 
 QA that plan’s shot list + the video checklist above. Trial Big A play-1
-first.
+first. Match shipped Meet A look (nub feet OK); clips are **480×720**.
 
 ## Plans (remind, don’t start unless they say)
 
