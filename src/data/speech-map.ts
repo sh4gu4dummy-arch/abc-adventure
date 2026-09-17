@@ -1604,4 +1604,10 @@ export const SPEECH_MAP: Record<string, string> = {
   "A newt sniffed a nest.": "b8bfbd1650c920ee.mp3",
   "No one was in the nest.": "73e557ff38a16ff0.mp3",
   "The newt nodded off in the nest.": "56fe2d34d0fc64fb.mp3",
+  "An owl picked an orange.": "b6901f40276d3847.mp3",
+  "The owl flew over the ocean.": "50f01435ac16cb18.mp3",
+  "An octopus caught the orange.": "083bea9de8136c70.mp3",
+  "A pig made a pizza.": "19e526cb6fe35334.mp3",
+  "The pig placed the pizza on the plate.": "ca1d7bc89c4bc0f6.mp3",
+  "The penguin ate the pizza.": "4f838a83ca2434b6.mp3",
 };
