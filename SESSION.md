@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.212  
+**Version:** v0.213  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 Always **commit + push** ABC updates the same turn. Tell them the version.
 **Never** push Grok sandbox internals (`.grok/`, attachments, skill dumps).  
@@ -45,8 +45,8 @@ All 156 word-card thumbs are video frame 1. A–Q overwrite `posters/`. R–Z go
 ## Sound toggle (v0.210–0.211)
 One speaker icon. Exclusive: Narration mutes the clip; Video sound mutes overlay.
 
-## Yo-yo TTS (v0.209)
-Hyphen made Ava say “yo-oh”. Overlay now speaks “yo yo”; caption still Yo-yo.
+## Yo-yo TTS (v0.209–0.213)
+3× word is **YO yo** (stress on first). Sentence unchanged.
 
 ## Zipper remake (v0.207–0.208)
 Zed zips closed with foley. v0.208 sped 10s→~6s; Video-sound mode ends when the clip ends (no 9s pad).

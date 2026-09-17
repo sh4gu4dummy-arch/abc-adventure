@@ -757,6 +757,7 @@ export const SPEECH_MAP: Record<string, string> = {
   "Yes! Zucchini starts with Z!": "025edab021f94c3e.mp3",
   "Yes! Zucchini!": "233ac4c45a9a6e37.mp3",
   "Yo-yo": "5090f4325d695a94.mp3",
+  "YO yo": "15d79e7f95b7397f.mp3",
   "yo yo": "0fbd35ffd7ec40cb.mp3",
   "Yogurt": "2fbc6155c29379fd.mp3",
   "You found Airplane! Great eyes!": "167bbbc24687b657.mp3",

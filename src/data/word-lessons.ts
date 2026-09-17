@@ -257,7 +257,7 @@ export const WORD_LESSONS: Record<string, WordLesson> = {
     ...lesson("Y", "yoyo", "Yo-yo", "The yo-yo goes down and up."),
     durationSec: 10,
     loopVideo: true,
-    sayWord: "yo yo",
+    sayWord: "YO yo",
     saySentence: "The yo yo goes down and up.",
   },
   "y-yellow": { ...lesson("Y", "yellow", "Yellow", "Yasmin paints with yellow."), durationSec: 10, loopVideo: true },
