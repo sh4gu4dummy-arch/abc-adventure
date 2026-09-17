@@ -73,7 +73,7 @@ export function PosterLightbox({
           </div>
         </div>
         <div className="space-y-3 p-5">
-          <LetterWord word={word.word} accent={accent} size="xl" />
+          <LetterWord word={word.word} letter={letter} accent={accent} size="xl" />
           <button
             type="button"
             onClick={() => speakWord(word.word)}

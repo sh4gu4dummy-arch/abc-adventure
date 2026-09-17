@@ -246,7 +246,7 @@ export const WORD_LESSONS: Record<string, WordLesson> = {
   "w-worm": { ...lesson("W", "worm", "Worm", "The worm wiggles."), durationSec: 10, loopVideo: true },
   "w-wagon": { ...lesson("W", "wagon", "Wagon", "Wes pulls a wagon."), durationSec: 10, loopVideo: true },
   // --- Letter X ---
-  "x-xray": { ...lesson("X", "xray", "X-ray", "Max sees an x-ray."), durationSec: 10, loopVideo: true },
+  "x-xray": { ...lesson("X", "xray", "X-ray", "Max sees an x-ray."), durationSec: 10, loopVideo: true, nativeAudio: true },
   "x-xylophone": { ...lesson("X", "xylophone", "Xylophone", "Max taps the xylophone."), durationSec: 10, loopVideo: true },
   "x-box": { ...lesson("X", "box", "Box", "Max stacks boxes."), durationSec: 10, loopVideo: true },
   "x-fox-x": { ...lesson("X", "fox-x", "Fox", "Max spots a fox."), durationSec: 10, loopVideo: true },

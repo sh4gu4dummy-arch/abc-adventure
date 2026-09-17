@@ -113,7 +113,7 @@ export function MatchGame({ entry }: { entry: LetterEntry }) {
               </div>
               {showCorrect && (
                 <div className="p-2 text-center">
-                  <LetterWord word={opt.word} accent={entry.accent} size="sm" />
+                  <LetterWord word={opt.word} letter={entry.letter} accent={entry.accent} size="sm" />
                 </div>
               )}
             </button>

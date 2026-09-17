@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.213  
+**Version:** v0.214  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 Always **commit + push** ABC updates the same turn. Tell them the version.
 **Never** push Grok sandbox internals (`.grok/`, attachments, skill dumps).  
@@ -44,6 +44,10 @@ All 156 word-card thumbs are video frame 1. A–Q overwrite `posters/`. R–Z go
 
 ## Sound toggle (v0.210–0.211)
 One speaker icon. Exclusive: Narration mutes the clip; Video sound mutes overlay.
+
+## X highlight + x-ray (v0.214)
+LetterWord highlights the *lesson* letter (Box → x). X-ray clip is a teddy-bear
+film, not a human skeleton. nativeAudio. Scene thumb from frame 1.
 
 ## Yo-yo TTS (v0.209–0.213)
 3× word is **YO yo** (stress on first). Sentence unchanged.

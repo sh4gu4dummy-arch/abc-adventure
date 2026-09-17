@@ -92,7 +92,7 @@ export function StoryMode({ entry }: { entry: LetterEntry }) {
               key={w.slug}
               className="inline-flex items-center rounded-[var(--radius-pill)] border border-border bg-surface-soft px-2.5 py-1"
             >
-              <LetterWord word={w.word} accent={entry.accent} size="sm" />
+              <LetterWord word={w.word} letter={entry.letter} accent={entry.accent} size="sm" />
             </span>
           ))}
         </div>

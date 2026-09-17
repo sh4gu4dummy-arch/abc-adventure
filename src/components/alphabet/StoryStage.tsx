@@ -238,7 +238,7 @@ export function StoryStage({
               />
             </div>
             <div className="story-actor-label">
-              <LetterWord word={w.word} accent={accent} size="sm" />
+              <LetterWord word={w.word} letter={letter} accent={accent} size="sm" />
             </div>
           </div>
         ))}

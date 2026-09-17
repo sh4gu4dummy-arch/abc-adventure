@@ -124,6 +124,7 @@ export function PosterCard({
       <div className="px-2.5 py-2 sm:px-3 sm:py-2.5">
         <LetterWord
           word={displayWord(word.word, caseKind)}
+          letter={letter}
           accent={accent}
           size={compact ? "sm" : "md"}
           className="block w-full text-center leading-tight break-words"

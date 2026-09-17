@@ -72,7 +72,7 @@ export function ISpy({ entry }: { entry: LetterEntry }) {
         </button>
         {found && (
           <p className="mt-3">
-            <LetterWord word={target.word} accent={entry.accent} size="md" />
+            <LetterWord word={target.word} letter={entry.letter} accent={entry.accent} size="md" />
           </p>
         )}
       </div>
