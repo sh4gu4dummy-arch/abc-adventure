@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.206  
+**Version:** v0.207  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 Always **commit + push** ABC updates the same turn. Tell them the version.
 **Never** push Grok sandbox internals (`.grok/`, attachments, skill dumps).  
@@ -37,6 +37,9 @@ really is done. Tap to play again (v0.129).
 | H heart | Crayon with two points | One-tip crayon; look-at-the-clip QA (not a tip-count law) |
 
 A–Z word videos exist. J–Z remade to locked sentences; A–I older unless later patched (G, H, fish, frog, etc.).
+
+## Zipper remake (v0.207)
+Zed zips closed (pull travels up). Clip has AAC foley. nativeAudio. Toggle test.
 
 ## Lesson sound (v0.206)
 Narration vs Video sound toggle (Settings + on the word clip). Clip mode
