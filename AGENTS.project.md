@@ -131,13 +131,11 @@ single-story a, not Comic Neue (too thin/tall) and not Sniglet ExtraBold.
     **Video sound**. Narration = overlay TTS only (clip muted). Video
     sound = MP4 audio only (no overlay). Never mix both. Mouth motion is OK.
     **Always generate remakes WITH sound** (I2V foley / ambient / cartoon
-    SFX). Overlay narration still plays on top for now. Keep the clip
-    audio in the MP4 so we can use it later. Do not strip with ffmpeg
+    SFX) so Video sound has something to play. Do not strip with ffmpeg
     `-an`. Do not bake the teacher voice or a song into the file.
     Meet buddy remakes: **one voice** — the letter's. Do not stack extra TTS
     on top of the clip's speech.
-    The player mixes clip audio under the overlay voice; overlap is OK. Set
-    `nativeAudio: true` on that lesson so the generic music bed stays off.
+    Set `nativeAudio: true` on remakes so the generic music bed stays off.
     Old silent clips keep the bed until remade — don't batch-remake.
     Prompt for diegetic sound (whoosh, splash, footsteps, animal noise)
     and no speech. State-change gags are one-way: peel stays off, wrapper
