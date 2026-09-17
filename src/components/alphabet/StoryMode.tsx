@@ -397,15 +397,21 @@ function highlightWords(
   const listed = [...words.map((w) => w.word), extra]
     .filter((w): w is string => Boolean(w && w.trim()))
     .map((w) => w.toLowerCase());
-
-  const parts = text.split(/([A-Za-z][A-Za-z'-]*)/);
+  const phrases = [...new Set(listed.filter((w) => /\s/.test(w)))].sort(
+    (a, b) => b.length - a.length,
+  );
+  const token = phrases.length
+    ? `(${phrases.map(escapeReg).join("|")}|[A-Za-z][A-Za-z'-]*)`
+    : `([A-Za-z][A-Za-z'-]*)`;
+  const parts = text.split(new RegExp(token, "gi"));
   return parts.map((part, i) => {
     if (!/^[A-Za-z]/.test(part)) return <span key={i}>{part}</span>;
     const w = part.toLowerCase();
     const hit =
       !skip.has(w) &&
       (listed.some((lw) => lw === w || w.startsWith(lw) || lw.startsWith(w)) ||
-        (L && w.startsWith(L)) ||
+        phrases.includes(w) ||
+        (L && !/\s/.test(w) && w.startsWith(L)) ||
         (L === "x" && w.endsWith("x")));
     if (!hit) return <span key={i}>{part}</span>;
     return (
@@ -418,6 +424,10 @@ function highlightWords(
       </span>
     );
   });
+}
+
+function escapeReg(s: string) {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
 function wait(ms: number) {
