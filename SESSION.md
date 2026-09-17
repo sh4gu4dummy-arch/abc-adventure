@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.218  
+**Version:** v0.219  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 Always **commit + push** ABC updates the same turn. Tell them the version.
 **Never** push Grok sandbox internals (`.grok/`, attachments, skill dumps).  
@@ -44,6 +44,9 @@ All 156 word-card thumbs are video frame 1. A–Q overwrite `posters/`. R–Z go
 
 ## Sound toggle (v0.210–0.211)
 One speaker icon. Exclusive: Narration mutes the clip; Video sound mutes overlay.
+
+## Big U (v0.216–0.219)
+Even-width U, then shortened so it is not a tall skinny horseshoe.
 
 ## Sun + Big U (v0.218)
 Sun has rays + a face and rises. Big U is even-width with a lower smaller face.
