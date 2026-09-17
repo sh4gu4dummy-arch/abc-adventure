@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import { BookOpen, ChevronLeft, ChevronRight, Volume2 } from "lucide-react";
+import { useCallback, useImperativeHandle, useMemo, useRef, useState, forwardRef } from "react";
+import { BookOpen, ChevronLeft, ChevronRight, Play, Volume2 } from "lucide-react";
 import type { LetterEntry } from "@/data/alphabet";
 import { getStoryBeats } from "@/data/stories";
 import { storyBeatVideo } from "@/data/story-videos";
@@ -11,38 +11,46 @@ import { speak } from "@/lib/speak";
 import { APP_VERSION } from "@/lib/version";
 import { cn } from "@/lib/utils";
 
-function StoryClip({
-  video,
-  poster,
-  restartKey,
-  accent,
-}: {
-  video: string;
-  poster: string;
-  restartKey: string;
-  accent: string;
-}) {
+type StoryClipHandle = { play: () => void };
+
+const StoryClip = forwardRef<
+  StoryClipHandle,
+  { video: string; poster: string; accent: string }
+>(function StoryClip({ video, poster, accent }, handle) {
   const ref = useRef<HTMLVideoElement>(null);
+  const [live, setLive] = useState(false);
   const posterSrc = `${assetUrl(poster)}?v=${APP_VERSION}`;
   const videoSrc = `${assetUrl(video)}?v=${APP_VERSION}`;
 
-  useEffect(() => {
+  const play = useCallback(() => {
     const v = ref.current;
     if (!v) return;
+    v.muted = true;
+    v.playsInline = true;
+    v.loop = true;
+    if (v.getAttribute("src") !== videoSrc) v.src = videoSrc;
     try {
       v.currentTime = 0;
     } catch {
       /* ignore */
     }
-    void v.play().catch(() => {});
-  }, [videoSrc, restartKey]);
+    void v
+      .play()
+      .then(() => setLive(true))
+      .catch(() => setLive(false));
+  }, [videoSrc]);
+
+  useImperativeHandle(handle, () => ({ play }), [play]);
 
   return (
     <div className="story-stage relative overflow-hidden rounded-[var(--radius-lg)] border-2 border-border bg-ink shadow-[var(--shadow-card)]">
       <img
         src={posterSrc}
         alt=""
-        className="absolute inset-0 h-full w-full object-cover"
+        className={cn(
+          "absolute inset-0 h-full w-full object-cover transition-opacity",
+          live && "opacity-0",
+        )}
         draggable={false}
       />
       <video
@@ -53,22 +61,34 @@ function StoryClip({
         muted
         playsInline
         loop
-        autoPlay
         preload="auto"
-        onClick={(e) => {
-          const v = e.currentTarget;
-          if (v.paused) void v.play().catch(() => {});
-        }}
+        onPlaying={() => setLive(true)}
+        onError={() => setLive(false)}
       />
+      {!live && (
+        <button
+          type="button"
+          onClick={play}
+          className="absolute inset-0 z-20 flex items-center justify-center bg-ink/20"
+          aria-label="Play scene"
+        >
+          <span
+            className="flex size-16 items-center justify-center rounded-full text-white shadow-lg"
+            style={{ background: accent }}
+          >
+            <Play className="size-8 fill-white" />
+          </span>
+        </button>
+      )}
       <span
-        className="absolute left-3 top-3 z-10 rounded-[var(--radius-pill)] px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-wide text-white shadow-sm"
+        className="pointer-events-none absolute left-3 top-3 z-10 rounded-[var(--radius-pill)] px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-wide text-white shadow-sm"
         style={{ background: accent }}
       >
         Scene
       </span>
     </div>
   );
-}
+});
 
 export function StoryMode({ entry }: { entry: LetterEntry }) {
   const beats = useMemo(() => getStoryBeats(entry), [entry]);
@@ -76,13 +96,19 @@ export function StoryMode({ entry }: { entry: LetterEntry }) {
   const [playing, setPlaying] = useState(false);
   const [finished, setFinished] = useState(false);
   const [playToken, setPlayToken] = useState(0);
+  const clipRef = useRef<StoryClipHandle>(null);
 
   const beat = beats[beatIdx] ?? beats[0]!;
   const clip = storyBeatVideo(entry.letter, beatIdx);
   const stageKey = `${entry.letter}-${beatIdx}-${playToken}`;
 
+  function kickClip() {
+    clipRef.current?.play();
+  }
+
   async function playAll() {
     if (playing) return;
+    kickClip();
     setPlaying(true);
     setFinished(false);
     markSection(entry.letter, "story");
@@ -101,6 +127,7 @@ export function StoryMode({ entry }: { entry: LetterEntry }) {
     if (playing) return;
     setBeatIdx(i);
     setPlayToken((t) => t + 1);
+    kickClip();
     setPlaying(true);
     await speak(beats[i]!.text);
     setPlaying(false);
@@ -118,6 +145,7 @@ export function StoryMode({ entry }: { entry: LetterEntry }) {
       return next;
     });
     setFinished(false);
+    kickClip();
   }
 
   return (
@@ -134,9 +162,9 @@ export function StoryMode({ entry }: { entry: LetterEntry }) {
       {/* Live stage — real clip when we have one, else bouncing thumbs */}
       {clip ? (
         <StoryClip
+          ref={clipRef}
           video={clip.video}
           poster={clip.poster}
-          restartKey={stageKey}
           accent={entry.accent}
         />
       ) : (
