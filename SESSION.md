@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.225  
+**Version:** v0.226  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 Always **commit + push** ABC updates the same turn. Tell them the version.
 **Never** push Grok sandbox internals (`.grok/`, attachments, skill dumps).  
@@ -44,6 +44,9 @@ All 156 word-card thumbs are video frame 1. A–Q overwrite `posters/`. R–Z go
 
 ## Sound toggle (v0.210–0.211)
 One speaker icon. Exclusive: Narration mutes the clip; Video sound mutes overlay.
+
+## Pairs match fx (v0.226)
+Match a pair → little star + green check + soft chime.
 
 ## Match same-letter (v0.225)
 Match only uses this letter’s words (Big 3 / little 3). No other-letter decoys.

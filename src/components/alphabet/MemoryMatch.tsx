@@ -1,10 +1,11 @@
 import { useMemo, useState } from "react";
-import { Shuffle } from "lucide-react";
+import { Check, Shuffle, Star } from "lucide-react";
 import {
   displayWord,
   type CaseKind,
   type LetterEntry,
 } from "@/data/alphabet";
+import { assetUrl } from "@/lib/assets";
 import { markSection } from "@/lib/progress";
 import { speak } from "@/lib/speak";
 import { cn } from "@/lib/utils";
@@ -18,7 +19,16 @@ type Card = {
   slug: string;
 };
 
-function buildDeck(entry: LetterEntry): Card[] {
+function playChime() {
+  if (typeof window === "undefined") return;
+  try {
+    const a = new Audio(assetUrl("audio/sfx/chime.mp3"));
+    a.volume = 0.45;
+    void a.play().catch(() => {});
+  } catch {
+    /* ignore */
+  }
+}
   const picks = [...entry.words].sort(() => Math.random() - 0.5).slice(0, 3);
   const cards: Card[] = [];
   for (const w of picks) {
@@ -75,6 +85,7 @@ export function MemoryMatch({
       setLock(true);
 
       if (first.pair === card.pair && first.id !== card.id) {
+        playChime();
         setTimeout(() => {
           setMatched((m) => {
             const next = [...m, first.pair];
@@ -152,6 +163,15 @@ export function MemoryMatch({
                       className="block w-full text-center leading-tight"
                     />
                   </div>
+                  {isMatch && (
+                    <span
+                      className="pop-in pointer-events-none absolute right-1.5 top-1.5 z-10 flex size-8 items-center justify-center"
+                      aria-hidden
+                    >
+                      <Star className="size-8 fill-star text-star drop-shadow" />
+                      <Check className="absolute size-3.5 stroke-[3] text-success" />
+                    </span>
+                  )}
                 </>
               ) : (
                 <div className="flex h-full w-full items-center justify-center bg-ink text-3xl font-bold text-white">
