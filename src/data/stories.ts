@@ -254,7 +254,7 @@ const STORY_BEATS: Record<string, StoryBeat[]> = {
       cast: ["kangaroo", "key"],
     },
     {
-      text: "The key opened the kitchen.",
+      text: "The key opened the fridge in the kitchen.",
       action: "share",
       scene: "kitchen",
       cast: ["key", "kitchen"],

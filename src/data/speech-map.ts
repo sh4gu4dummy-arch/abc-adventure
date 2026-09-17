@@ -1634,4 +1634,5 @@ export const SPEECH_MAP: Record<string, string> = {
   "A fox found a box.": "17b8db996f5cbc04.mp3",
   "The fox pulled a xylophone from the box.": "1f8add35e5b3c9c6.mp3",
   "The fox played the xylophone.": "4f6d8c3e1ad7a0f4.mp3",
+  "The key opened the fridge in the kitchen.": "597bbb8a059410cd.mp3",
 };
