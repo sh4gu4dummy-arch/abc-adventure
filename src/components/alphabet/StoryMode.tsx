@@ -1,12 +1,52 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { BookOpen, ChevronLeft, ChevronRight, Volume2 } from "lucide-react";
 import type { LetterEntry } from "@/data/alphabet";
 import { getStoryBeats } from "@/data/stories";
+import { storyBeatVideo } from "@/data/story-videos";
+import { assetUrl } from "@/lib/assets";
 import { LetterWord } from "./LetterWord";
 import { StoryStage } from "./StoryStage";
 import { markSection } from "@/lib/progress";
 import { speak } from "@/lib/speak";
 import { cn } from "@/lib/utils";
+
+function StoryClip({
+  src,
+  restartKey,
+  accent,
+}: {
+  src: string;
+  restartKey: string;
+  accent: string;
+}) {
+  const ref = useRef<HTMLVideoElement>(null);
+  useEffect(() => {
+    const v = ref.current;
+    if (!v) return;
+    v.currentTime = 0;
+    void v.play().catch(() => {});
+  }, [src, restartKey]);
+
+  return (
+    <div className="story-stage relative overflow-hidden rounded-[var(--radius-lg)] border-2 border-border bg-ink shadow-[var(--shadow-card)]">
+      <video
+        ref={ref}
+        src={assetUrl(src)}
+        className="h-full w-full object-cover"
+        muted
+        playsInline
+        loop
+        autoPlay
+      />
+      <span
+        className="absolute left-3 top-3 rounded-[var(--radius-pill)] px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-wide text-white shadow-sm"
+        style={{ background: accent }}
+      >
+        Scene
+      </span>
+    </div>
+  );
+}
 
 export function StoryMode({ entry }: { entry: LetterEntry }) {
   const beats = useMemo(() => getStoryBeats(entry), [entry]);
@@ -16,6 +56,8 @@ export function StoryMode({ entry }: { entry: LetterEntry }) {
   const [playToken, setPlayToken] = useState(0);
 
   const beat = beats[beatIdx] ?? beats[0]!;
+  const clip = storyBeatVideo(entry.letter, beatIdx);
+  const stageKey = `${entry.letter}-${beatIdx}-${playToken}`;
 
   async function playAll() {
     if (playing) return;
@@ -67,15 +109,19 @@ export function StoryMode({ entry }: { entry: LetterEntry }) {
         </p>
       </div>
 
-      {/* Live stage */}
-      <StoryStage
-        letter={entry.letter}
-        accent={entry.accent}
-        action={beat.action}
-        scene={beat.scene}
-        words={beat.words}
-        stageKey={`${entry.letter}-${beatIdx}-${playToken}`}
-      />
+      {/* Live stage — real clip when we have one, else bouncing thumbs */}
+      {clip ? (
+        <StoryClip src={clip} restartKey={stageKey} accent={entry.accent} />
+      ) : (
+        <StoryStage
+          letter={entry.letter}
+          accent={entry.accent}
+          action={beat.action}
+          scene={beat.scene}
+          words={beat.words}
+          stageKey={stageKey}
+        />
+      )}
 
       {/* Scene script */}
       <div
