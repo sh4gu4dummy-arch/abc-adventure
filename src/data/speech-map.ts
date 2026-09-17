@@ -1622,4 +1622,10 @@ export const SPEECH_MAP: Record<string, string> = {
   "A tiger waited for a train.": "f3f07d6c72f51b67.mp3",
   "The tiger ran to the track.": "4ddb4079f91d4262.mp3",
   "The tiger boarded the train.": "93c78a69ecc96dcb.mp3",
+  "A unicorn dropped a ukulele under the chair.": "d1841ce8eac4205d.mp3",
+  "The unicorn picked the ukulele up and played it.": "0b6511d52b09550a.mp3",
+  "The unicorn gave the ukulele to a kid in a uniform.": "e0577e9800e078a0.mp3",
+  "A vulture put on a vest.": "b424dadfca2f45fd.mp3",
+  "The vulture vacuumed.": "41e21c5bd93bf733.mp3",
+  "The vulture got in the van.": "be1f06a877e69b69.mp3",
 };
