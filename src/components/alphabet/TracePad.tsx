@@ -342,8 +342,16 @@ function drawTraceArrows(
   ctx.restore();
 }
 
-function letterFont(h: number, lower: boolean) {
-  const size = Math.floor(h * (lower ? 0.86 : 0.76));
+function glyphMetrics(h: number, lower: boolean, ch: string) {
+  if (!lower) return { size: Math.floor(h * 0.76), y: h * 0.72 };
+  const c = ch.toLowerCase();
+  if (c === "p") return { size: Math.floor(h * 0.7), y: h * 0.84 };
+  if (c === "h") return { size: Math.floor(h * 0.78), y: h * 0.78 };
+  return { size: Math.floor(h * 0.86), y: h * 0.7 };
+}
+
+function letterFont(h: number, lower: boolean, ch: string) {
+  const { size } = glyphMetrics(h, lower, ch);
   if (lower) {
     return `700 ${size}px "Comic Neue", "Comic Sans MS", "Fredoka", sans-serif`;
   }
@@ -358,13 +366,13 @@ function paintGlyph(
   mode: "fill" | "stroke" | "both",
   lower: boolean,
 ) {
-  ctx.font = letterFont(h, lower);
+  ctx.font = letterFont(h, lower, letter);
   ctx.textAlign = "center";
   ctx.textBaseline = "alphabetic";
   ctx.lineJoin = "round";
   ctx.lineCap = "round";
   const x = w / 2;
-  const y = h * (lower ? 0.7 : 0.72);
+  const y = glyphMetrics(h, lower, letter).y;
   if (mode === "stroke" || mode === "both") ctx.strokeText(letter, x, y);
   if (mode === "fill" || mode === "both") ctx.fillText(letter, x, y);
 }
