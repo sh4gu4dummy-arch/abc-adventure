@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Volume2 } from "lucide-react";
-import { LETTERS, displayWord, soundCueForWord, type CaseKind, type LetterEntry } from "@/data/alphabet";
+import { displayWord, soundCueForWord, wordsForCase, type CaseKind, type LetterEntry } from "@/data/alphabet";
 import { markSection } from "@/lib/progress";
 import { speak } from "@/lib/speak";
 import { cn } from "@/lib/utils";
@@ -9,20 +9,17 @@ import { LetterWord } from "./LetterWord";
 
 const ROUNDS_TO_WIN = 3;
 
-function pickChoices(entry: LetterEntry, used: string[]) {
-  const pool = entry.words.filter((w) => !used.includes(w.slug));
-  const correct = (pool.length ? pool : entry.words)[
-    Math.floor(Math.random() * (pool.length || entry.words.length))
+function pickChoices(entry: LetterEntry, used: string[], caseKind: CaseKind) {
+  const words = wordsForCase(entry, caseKind);
+  const pool = words.filter((w) => !used.includes(w.slug));
+  const correct = (pool.length ? pool : words)[
+    Math.floor(Math.random() * (pool.length || words.length))
   ]!;
-  const others = LETTERS.filter((l) => l.letter !== entry.letter)
-    .flatMap((l) => l.words.map((w) => ({ ...w, letter: l.letter })))
-    .sort(() => Math.random() - 0.5)
-    .slice(0, 2);
-  const options = [
+  const others = words.filter((w) => w.slug !== correct.slug);
+  return [
     { ...correct, letter: entry.letter, correct: true },
-    ...others.map((o) => ({ ...o, correct: false })),
+    ...others.map((o) => ({ ...o, letter: entry.letter, correct: false })),
   ].sort(() => Math.random() - 0.5);
-  return options;
 }
 
 export function MatchGame({
@@ -35,7 +32,10 @@ export function MatchGame({
   const [round, setRound] = useState(0);
   const [wins, setWins] = useState(0);
   const [used, setUsed] = useState<string[]>([]);
-  const options = useMemo(() => pickChoices(entry, used), [entry, round]);
+  const options = useMemo(
+    () => pickChoices(entry, used, caseKind),
+    [entry, round, caseKind],
+  );
   const target = options.find((o) => o.correct) ?? options[0]!;
   const cue = soundCueForWord(entry, target.word);
   const [picked, setPicked] = useState<string | null>(null);
