@@ -100,7 +100,8 @@ function LetterPage() {
       search.tab === "words" ||
       search.tab === "sound" ||
       search.tab === "trace" ||
-      search.tab === "games"
+      search.tab === "games" ||
+      search.tab === "story"
     ) {
       setTab(search.tab);
     }
