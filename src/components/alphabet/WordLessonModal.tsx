@@ -629,7 +629,7 @@ export function WordLessonModal({
         <div className="mx-3 mt-3 min-h-16 sm:mx-5">
           {caption === "sentence" ? (
             <div className="rounded-[var(--radius-lg)] bg-white px-4 py-2.5 text-center shadow-md">
-              <p className="font-display text-lg font-bold text-on-light sm:text-xl">
+              <p className="font-display text-lg font-bold text-on-light sm:text-xl" data-case-lock>
                 {lesson.sentence}
               </p>
             </div>

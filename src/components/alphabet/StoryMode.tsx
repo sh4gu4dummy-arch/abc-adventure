@@ -335,7 +335,7 @@ export function StoryMode({ entry }: { entry: LetterEntry }) {
             >
               {i + 1}
             </span>
-            <span className="font-display text-sm font-bold text-ink sm:text-base">
+            <span className="font-display text-sm font-bold text-ink sm:text-base" data-case-lock>
               {highlightWords(
                 b.text,
                 b.words,

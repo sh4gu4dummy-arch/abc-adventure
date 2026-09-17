@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.275  
+**Version:** v0.276  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 Always **commit + push** ABC updates the same turn. Tell them the version.
 **Never** push Grok sandbox internals (`.grok/`, attachments, skill dumps).  
