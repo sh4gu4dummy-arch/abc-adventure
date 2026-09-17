@@ -53,11 +53,13 @@ Letter arrows still go A↔B (whole playlist), not scene-by-scene.
 
 ## Look (match shipped Meet intro — do not invent a new A)
 
-Lock the hero from `public/videos/imagine/a.mp4` / `a-little.mp4` and `public/letters/a.webp` / `a-little.webp`. Playlist must not jump to a different mascot.
+Lock the hero from the **Meet intro clips** (`public/videos/imagine/a.mp4` / `a-little.mp4`). Playlist must not jump to a different mascot.
 
-**Big A (as shipped Meet):** glossy red/coral 3D clay A. Triangle **hole = background color** (not black, not a scribble). Face on the **crossbar** (eyes + smile). Face on the **front only** (a turn shows a blank back). **Nub feet OK** (intro already has them) — no full human arms/legs, no extra limbs. Do **not** swap to a “tiny black-dot / no feet” redesign unless they remake the intro first.
+Do **not** I2V play clips from the home tiles (`letters/a.webp`). Those stills are a flatter, smaller-eye set. Play follows the **moving** Meet A.
 
-**little a:** Comic-sans / Fredoka **single-story a** (no upper tail). About **half** the stature of Big A. Lots of empty matching background. Match `a-little.mp4` face style. Same play plot, smaller world.
+**Big A (as shipped Meet `a.mp4`):** glossy red/coral 3D clay A. Triangle **hole = background color**. **Oval toy eyes on the two legs** (below the hole), smile in the **fork**. The **crossbar is blank** — do not move the mouth up onto the bar for play clips (that was an old taste note; the intro does not do it). Face on the **front only** (a turn shows a blank back). **Nub feet OK on A only** (the intro stands on the two legs). No full human arms. No extra limbs. Do **not** swap to tiny black-dot eyes unless they remake the intro first.
+
+**little a:** Comic-sans / Fredoka **single-story a** (no upper tail). About **half** the stature of Big A. Lots of empty matching background. Match `a-little.mp4` (oval eyes on the bowl, not a tiny **A**). Same play plot, smaller world.
 
 ## Shot lists
 
@@ -118,17 +120,17 @@ If two takes look usable: **show both, ask which to keep.** Do not pick and ship
 5. App chain: only append a play file once it exists. After play-1 ships, Meet = intro → play-1 (loop). After play-2 ships, Meet = intro → play-1 → play-2. Do not wire a missing URL.
 6. **Do not** batch B–Z.
 
-## Beat timing (each 10s clip)
+## Beat order (each 10s clip)
 
-Rough thirds so props don’t smear together:
+Three beats in order so props don’t smear. **Not a stopwatch.** Imagine will not cut at 3.5s. Prompt the order; fail only if two props share a beat or one morphs into the next.
 
-| Seconds | Play-1 | Play-2 |
+| Order | Play-1 | Play-2 |
 |---|---|---|
-| 0–3.5 | apple | alligator |
-| 3.5–7 | ant | astronaut toy |
-| 7–10 | airplane | anchor |
+| 1 | apple | alligator |
+| 2 | ant | astronaut toy |
+| 3 | airplane | anchor |
 
-One clear prop per third. Hard cut or obvious handoff OK. Don’t morph apple→ant.
+One clear prop per beat. Hard cut or obvious handoff OK. Don’t morph apple→ant. Do **not** fail a take because airplane starts at 6s instead of 7s.
 
 ## Still → video
 
@@ -140,14 +142,21 @@ One clear prop per third. Hard cut or obvious handoff OK. Don’t morph apple→
 
 Mistakes found before the edits above:
 
-1. **Look fought the shipped intro.** Plan said tiny black-dot eyes and “glyph only, no legs.” Meet `a.mp4` already uses crossbar face + **nub feet** and bigger toy eyes. A playlist that swaps mascots will look broken.
+1. **Look fought the shipped intro.** Plan said tiny black-dot eyes and “glyph only, no legs.” Meet `a.mp4` already uses **oval toy eyes + nub feet**. A playlist that swaps mascots will look broken. (Builder agrees. **Disagree:** the intro face is **not** on the crossbar — eyes on the legs, smile in the fork, bar blank.)
 2. **“480p” was vague.** Meet intros are **480×720**. Landscape 480p would break the Meet player.
 3. **Astronaut “kid or toy”** invited a second human hero. Locked to **toy only**.
 4. **Tiny ant** would vanish at 480×720 mid-shot. Ant must read in a still.
 5. **Wiring “when first clip exists”** needed an explicit partial playlist (don’t 404 play-2).
-6. **No beat clock** for 3 words in 10s — morph risk. Added thirds.
+6. **No beat clock** for 3 words in 10s — morph risk. Added **order**, not a 3.5s stopwatch (Imagine won’t hit exact times).
 
 Still good: intro stays; files split; no teacher voice in play; apple no face; plane forward; anchor one-way; trial Big play-1 first; no B–Z batch; QA before ship; 2 takes → show user.
+
+## Builder counter-notes (2026-09-17)
+
+- **Agree:** match intro, 480×720, toy astronaut, readable ant, partial playlist, one-prop-per-beat.
+- **Disagree:** “face on the crossbar” and locking play stills to `letters/a.webp`. Intro ≠ home tile. Play follows the **video**.
+- **Disagree:** exact 0–3.5 / 3.5–7 / 7–10 fail gates. Order only.
+- **Scope:** nub feet are **A’s intro**, not a new law for every letter.
 
 ## Not this plan
 

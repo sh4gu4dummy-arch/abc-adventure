@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.296
+**Version:** v0.297
 
 ## START HERE
 
@@ -13,9 +13,10 @@ when taste/QA lessons land. Involve QA before shipping videos/thumbs.
 with apple/ant/airplane then alligator/astronaut/anchor. Intro Meet stays.
 Wait for go.
 
-## Meet A play plan QA (v0.296)
+## Meet A play plan QA (v0.296–v0.297)
 
-Plan look must match shipped Meet intro (nub feet OK). Clips 480×720. Astronaut = toy. Ant must read. Partial playlist OK.
+QA: match shipped Meet intro, 480×720, toy astronaut, readable ant, partial playlist.
+Builder: agree except (1) intro face is on the **legs/fork**, not the crossbar (2) don’t lock play to home tiles (3) beat **order**, not a 3.5s clock. Nub feet = A only.
   
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 Always **commit + push** ABC updates the same turn. Tell them the version.
