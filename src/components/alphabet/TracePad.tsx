@@ -1334,7 +1334,7 @@ export function TracePad({
                   : "Clipboard blocked here — select the box below and copy.",
               );
             }}
-            className="pressable inline-flex min-h-11 items-center gap-1 rounded-[var(--radius-pill)] bg-ink px-3 text-sm font-bold text-white"
+            className="pressable inline-flex min-h-11 items-center gap-1 rounded-[var(--radius-pill)] bg-on-light px-3 text-sm font-bold text-white"
           >
             <Copy className="size-4" /> Confirm
           </button>
