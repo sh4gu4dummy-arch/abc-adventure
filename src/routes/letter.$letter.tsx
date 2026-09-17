@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { ArrowLeft, BookOpen, ChevronLeft, ChevronRight, Clapperboard, Flame, Gamepad2, Pencil, Settings2, Volume2 } from "lucide-react";
 import {
@@ -11,7 +11,8 @@ import {
   caseTitle,
   type WordEntry,
 } from "@/data/alphabet";
-import { getWordLesson, wordRequiresVideo } from "@/data/word-lessons";
+import { getWordLesson, wordRequiresVideo, neighborWordLesson } from "@/data/word-lessons";
+import { speak, speakLetter, primeAudioFromGesture, stopSpeech } from "@/lib/speak";
 import { CaseHunt } from "@/components/alphabet/CaseHunt";
 import { ISpy } from "@/components/alphabet/ISpy";
 import { LetterCompleteBanner } from "@/components/alphabet/LetterCompleteBanner";
@@ -34,7 +35,6 @@ import {
   tryCompleteLetter,
   useProgress,
 } from "@/lib/progress";
-import { speak, speakLetter, primeAudioFromGesture } from "@/lib/speak";
 import { cn } from "@/lib/utils";
 import { VersionBadge } from "@/components/alphabet/VersionBadge";
 import { CaseToggle } from "@/components/alphabet/CaseToggle";
@@ -52,7 +52,12 @@ export const Route = createFileRoute("/letter/$letter")({
       raw === "story"
         ? raw
         : undefined;
-    return tab ? { tab } : {};
+    const wordRaw = String(s.word ?? "").toLowerCase();
+    const word = /^[a-z0-9-]{1,32}$/.test(wordRaw) ? wordRaw : undefined;
+    return {
+      ...(tab ? { tab } : {}),
+      ...(word ? { word } : {}),
+    };
   },
 });
 
@@ -77,6 +82,7 @@ const GAMES: { id: GameId; label: string; blurb: string }[] = [
 function LetterPage() {
   const { letter: raw } = Route.useParams();
   const search = Route.useSearch();
+  const navigate = useNavigate({ from: "/letter/$letter" });
   const entry = getLetter(raw);
   const progress = useProgress();
   const initialTab: TabId =
@@ -106,6 +112,14 @@ function LetterPage() {
       setTab(search.tab);
     }
   }, [search.tab]);
+
+  useEffect(() => {
+    if (!entry || !search.word) return;
+    const w =
+      wordsForCase(entry, caseKind).find((x) => x.slug === search.word) ??
+      entry.words.find((x) => x.slug === search.word);
+    if (w && getWordLesson(entry.letter, w.slug)) setLessonWord(w);
+  }, [search.word, entry?.letter, caseKind]);
 
   useEffect(() => {
     if (!entry) return;
@@ -148,11 +162,34 @@ function LetterPage() {
   function openWord(w: WordEntry) {
     const lesson = getWordLesson(entry!.letter, w.slug);
     if (lesson) {
-      primeAudioFromGesture(lesson.word);
+      primeAudioFromGesture();
       setLessonWord(w);
+      void navigate({
+        search: (prev) => ({ ...prev, tab: "words", word: w.slug }),
+      });
       return;
     }
     setLightbox(w);
+  }
+
+  function hopLesson(dir: 1 | -1) {
+    if (!lessonWord || !entry) return;
+    const hop = neighborWordLesson(entry.letter, lessonWord.slug, caseKind, dir);
+    if (!hop) return;
+    primeAudioFromGesture();
+    stopSpeech();
+    if (hop.letter === entry.letter) {
+      setLessonWord(hop.word);
+      void navigate({
+        search: (prev) => ({ ...prev, tab: "words", word: hop.word.slug }),
+      });
+      return;
+    }
+    void navigate({
+      to: "/letter/$letter",
+      params: { letter: hop.letter.toLowerCase() },
+      search: { tab: "words", word: hop.word.slug },
+    });
   }
 
   return (
@@ -400,11 +437,8 @@ function LetterPage() {
         const lesson = getWordLesson(entry.letter, lessonWord.slug);
         if (!lesson) return null;
         const key = `${entry.letter.toLowerCase()}-${lessonWord.slug}`;
-        const lessonWords = modeWords.filter((w) => getWordLesson(entry.letter, w.slug));
-        const i = lessonWords.findIndex((w) => w.slug === lessonWord.slug);
-        const prevW = i >= 0 ? lessonWords[(i - 1 + lessonWords.length) % lessonWords.length] : undefined;
-        const nextW = i >= 0 ? lessonWords[(i + 1) % lessonWords.length] : undefined;
-        const canHop = lessonWords.length > 1;
+        const prevHop = neighborWordLesson(entry.letter, lessonWord.slug, caseKind, -1);
+        const nextHop = neighborWordLesson(entry.letter, lessonWord.slug, caseKind, 1);
         return (
           <WordLessonModal
             key={`${entry.letter}-${lessonWord.slug}`}
@@ -415,13 +449,34 @@ function LetterPage() {
             imageSrc={posterPath(entry.letter, lessonWord.slug)}
             lesson={lesson}
             alreadySeen={seenSet.has(key)}
-            onClose={() => setLessonWord(null)}
+            onClose={() => {
+              setLessonWord(null);
+              void navigate({
+                search: (prev) => {
+                  const next = { ...prev };
+                  delete next.word;
+                  return next;
+                },
+              });
+            }}
             onUnlocked={() => tryCompleteLetter(entry.letter)}
-            onPrev={canHop && prevW ? () => { primeAudioFromGesture(prevW.word); setLessonWord(prevW); } : undefined}
-            onNext={canHop && nextW ? () => { primeAudioFromGesture(nextW.word); setLessonWord(nextW); } : undefined}
+            onPrev={prevHop ? () => hopLesson(-1) : undefined}
+            onNext={nextHop ? () => hopLesson(1) : undefined}
             caseKind={caseKind}
-            prevLabel={prevW?.word}
-            nextLabel={nextW?.word}
+            prevLabel={
+              prevHop
+                ? prevHop.letter === entry.letter
+                  ? prevHop.word.word
+                  : `${displayGlyph(prevHop.letter, caseKind)} ${prevHop.word.word}`
+                : undefined
+            }
+            nextLabel={
+              nextHop
+                ? nextHop.letter === entry.letter
+                  ? nextHop.word.word
+                  : `${displayGlyph(nextHop.letter, caseKind)} ${nextHop.word.word}`
+                : undefined
+            }
           />
         );
       })()}

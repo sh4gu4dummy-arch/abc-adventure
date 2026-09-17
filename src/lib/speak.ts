@@ -302,16 +302,16 @@ export function speakWord(word: string) {
 }
 
 /** Call from a tap that opens a lesson so later autoplay speech is allowed. */
-export function primeAudioFromGesture(text?: string) {
+export function primeAudioFromGesture(_text?: string) {
   if (typeof window === "undefined") return;
+  // Unlock only. Never play the next word here — that leaked as the first
+  // of the 3× repeats when hopping videos fast.
+  stopSpeech();
   const a = getSharedAudio();
   if (!a) return;
   try {
-    const pref = getVoicePref();
-    const url = text ? localClipUrl(normalize(text), pref) : null;
-    a.volume = url ? 1 : 0.01;
+    a.volume = 0.01;
     a.src =
-      url ??
       "data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA";
     void a.play().catch(() => {});
   } catch {

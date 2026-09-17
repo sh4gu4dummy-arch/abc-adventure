@@ -227,6 +227,7 @@ export function WordLessonModal({
   }
 
   async function playLesson() {
+    stopSpeech();
     playRun.current += 1;
     const run = playRun.current;
     setPhase("playing");

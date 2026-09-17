@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   ArrowLeft,
   BookOpen,
@@ -26,7 +26,8 @@ import { PosterLightbox } from "@/components/alphabet/PosterLightbox";
 import { WordLessonModal } from "@/components/alphabet/WordLessonModal";
 import { VoiceToggle } from "@/components/alphabet/VoiceToggle";
 import { ThemeToggle } from "@/components/alphabet/ThemeToggle";
-import { getWordLesson, wordRequiresVideo } from "@/data/word-lessons";
+import { getWordLesson, wordRequiresVideo, neighborWordLesson } from "@/data/word-lessons";
+import { speak, speakLetter, primeAudioFromGesture, stopSpeech } from "@/lib/speak";
 import { TracePad } from "@/components/alphabet/TracePad";
 import { MatchGame } from "@/components/alphabet/MatchGame";
 import { MemoryMatch } from "@/components/alphabet/MemoryMatch";
@@ -40,7 +41,6 @@ import { GfxToggle } from "@/components/alphabet/GfxToggle";
 import { VersionBadge, VersionCorner } from "@/components/alphabet/VersionBadge";
 import { StarBar } from "@/components/alphabet/StarBar";
 import { markSection, markVisited, markWordSeen, useProgress } from "@/lib/progress";
-import { speak, speakLetter, primeAudioFromGesture } from "@/lib/speak";
 import { cn } from "@/lib/utils";
 
 type Tab =
@@ -222,6 +222,7 @@ function LetterView({ entry }: { entry: LetterEntry }) {
   const [openWord, setOpenWord] = useState<WordEntry | null>(null);
   const { mode: caseKind } = useCaseMode();
   const progress = useProgress();
+  const pendingSlug = useRef<string | null>(null);
 
   useEffect(() => {
     markVisited(entry.letter);
@@ -229,7 +230,14 @@ function LetterView({ entry }: { entry: LetterEntry }) {
 
   useEffect(() => {
     setTab("words");
-    setOpenWord(null);
+    const slug = pendingSlug.current;
+    pendingSlug.current = null;
+    if (slug) {
+      const w = wordsForCase(entry, caseKind).find((x) => x.slug === slug);
+      setOpenWord(w ?? null);
+    } else {
+      setOpenWord(null);
+    }
   }, [entry.letter]);
 
   const idx = LETTERS.findIndex((l) => l.letter === entry.letter);
@@ -240,23 +248,34 @@ function LetterView({ entry }: { entry: LetterEntry }) {
 
   function openPoster(w: WordEntry) {
     const lesson = getWordLesson(entry.letter, w.slug);
-    if (lesson) primeAudioFromGesture(lesson.word);
+    if (lesson) primeAudioFromGesture();
     setOpenWord(w);
     if (!lesson) {
       markWordSeen(entry.letter, w.slug);
     }
   }
+
+  function hopLesson(dir: 1 | -1) {
+    if (!openWord) return;
+    const hop = neighborWordLesson(entry.letter, openWord.slug, caseKind, dir);
+    if (!hop) return;
+    primeAudioFromGesture();
+    stopSpeech();
+    if (hop.letter === entry.letter) {
+      setOpenWord(hop.word);
+      return;
+    }
+    pendingSlug.current = hop.word.slug;
+    navigate(`/letter/${hop.letter.toLowerCase()}`);
+  }
+
   const openLesson = openWord != null ? getWordLesson(entry.letter, openWord.slug) : null;
-  const lessonWords = modeWords.filter((w) => getWordLesson(entry.letter, w.slug));
-  const lessonIdx = openWord ? lessonWords.findIndex((w) => w.slug === openWord.slug) : -1;
-  const prevLessonWord =
-    lessonIdx >= 0 && lessonWords.length > 1
-      ? lessonWords[(lessonIdx - 1 + lessonWords.length) % lessonWords.length]
-      : undefined;
-  const nextLessonWord =
-    lessonIdx >= 0 && lessonWords.length > 1
-      ? lessonWords[(lessonIdx + 1) % lessonWords.length]
-      : undefined;
+  const prevHop = openWord
+    ? neighborWordLesson(entry.letter, openWord.slug, caseKind, -1)
+    : null;
+  const nextHop = openWord
+    ? neighborWordLesson(entry.letter, openWord.slug, caseKind, 1)
+    : null;
 
   const wordsSeen = useMemo(() => new Set(progress.wordsSeen), [progress.wordsSeen]);
 
@@ -450,10 +469,22 @@ function LetterView({ entry }: { entry: LetterEntry }) {
           lesson={openLesson}
           alreadySeen={wordsSeen.has(`${entry.letter.toLowerCase()}-${openWord.slug}`)}
           onClose={() => setOpenWord(null)}
-          onPrev={prevLessonWord ? () => { primeAudioFromGesture(prevLessonWord.word); setOpenWord(prevLessonWord); } : undefined}
-          onNext={nextLessonWord ? () => { primeAudioFromGesture(nextLessonWord.word); setOpenWord(nextLessonWord); } : undefined}
-          prevLabel={prevLessonWord?.word}
-          nextLabel={nextLessonWord?.word}
+          onPrev={prevHop ? () => hopLesson(-1) : undefined}
+          onNext={nextHop ? () => hopLesson(1) : undefined}
+          prevLabel={
+            prevHop
+              ? prevHop.letter === entry.letter
+                ? prevHop.word.word
+                : `${displayGlyph(prevHop.letter, caseKind)} ${prevHop.word.word}`
+              : undefined
+          }
+          nextLabel={
+            nextHop
+              ? nextHop.letter === entry.letter
+                ? nextHop.word.word
+                : `${displayGlyph(nextHop.letter, caseKind)} ${nextHop.word.word}`
+              : undefined
+          }
           caseKind={caseKind}
         />
       )}

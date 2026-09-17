@@ -39,6 +39,8 @@
  *    Full taste list: AGENTS.project.md.
  */
 
+import { LETTERS, wordsForCase, type CaseKind, type WordEntry } from "@/data/alphabet";
+
 export type WordLesson = {
   letter: string;
   slug: string;
@@ -106,7 +108,7 @@ export const WORD_LESSONS: Record<string, WordLesson> = {
   "c-cat": { ...lesson("C", "cat", "Cat", "The cat naps by the sunny window."), durationSec: 10, loopVideo: true },
   "c-cake": { ...lesson("C", "cake", "Cake", "The cake comes out of the oven."), durationSec: 10, loopVideo: false },
   "c-car": { ...lesson("C", "car", "Car", "The car drives down the road."), durationSec: 10, loopVideo: true },
-  "c-cloud": { ...lesson("C", "cloud", "Cloud", "The soft cloud floats in the sky."), durationSec: 10, loopVideo: true },
+  "c-cloud": { ...lesson("C", "cloud", "Cloud", "The soft cloud floats in the sky."), durationSec: 10, loopVideo: true, nativeAudio: true },
   "c-cookie": { ...lesson("C", "cookie", "Cookie", "A boy eats a cookie and drops crumbs."), durationSec: 10, loopVideo: true },
   "c-cup": { ...lesson("C", "cup", "Cup", "They pour milk in the cup."), durationSec: 10, loopVideo: false },
   // --- Letter D ---
@@ -284,6 +286,35 @@ export function wordLessonKey(letter: string, slug: string) {
 
 export function getWordLesson(letter: string, slug: string): WordLesson | null {
   return WORD_LESSONS[wordLessonKey(letter, slug)] ?? null;
+}
+
+export function neighborWordLesson(
+  letter: string,
+  slug: string,
+  kind: CaseKind,
+  dir: 1 | -1,
+): { letter: string; word: WordEntry } | null {
+  const n = LETTERS.length;
+  const start = LETTERS.findIndex((L) => L.letter === letter.toUpperCase());
+  if (start < 0) return null;
+  const listAt = (i: number) =>
+    wordsForCase(LETTERS[i]!, kind).filter((w) => getWordLesson(LETTERS[i]!.letter, w.slug));
+  const here = listAt(start);
+  const idx = here.findIndex((w) => w.slug === slug);
+  const step = idx + dir;
+  if (idx >= 0 && step >= 0 && step < here.length) {
+    return { letter: LETTERS[start]!.letter, word: here[step]! };
+  }
+  for (let k = 1; k <= n; k++) {
+    const i = (start + dir * k + n * 8) % n;
+    const ws = listAt(i);
+    if (!ws.length) continue;
+    return {
+      letter: LETTERS[i]!.letter,
+      word: dir === 1 ? ws[0]! : ws[ws.length - 1]!,
+    };
+  }
+  return null;
 }
 
 export function wordRequiresVideo(letter: string, slug: string): boolean {
