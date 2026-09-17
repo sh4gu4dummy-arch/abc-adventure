@@ -1592,4 +1592,10 @@ export const SPEECH_MAP: Record<string, string> = {
   "A jaguar packed juice.": "aa7b64c64a33d81e.mp3",
   "The jaguar put on a jacket.": "30ea0e6dda98c546.mp3",
   "The jaguar took the juice on a jet.": "199b369176520cee.mp3",
+  "A kitten lost a key.": "0d8127fd708bb3ba.mp3",
+  "A kangaroo found the key.": "bdfe4198d6a23b7f.mp3",
+  "The key opened the kitchen.": "2a7530efed38905d.mp3",
+  "A lion bit a lemon.": "8d21c65ecfd7dfe9.mp3",
+  "The lemon was sour.": "996bce48f591522e.mp3",
+  "The lion licked a lollipop.": "438a57b783ef3ca4.mp3",
 };

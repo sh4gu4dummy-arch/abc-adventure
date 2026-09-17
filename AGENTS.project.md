@@ -134,6 +134,12 @@ not a story. One thing carries through (the egg, the guitar, the ice
 cream, the juice). Beat 2 is a problem/turn; beat 3 is the payoff.
 Characters act. Objects don’t zip/pour/sit themselves.
 
+**Chain the clips.** Beat 2’s first frame **is** beat 1’s last frame.
+Beat 3 starts from beat 2’s last frame. Same character model, same
+room/props, same through-line object. Extract the last frame, then
+I2V (or a tiny I2I then I2V) from that still — don’t generate three
+unrelated hero stills.
+
 Three beats. One verb each. A story that **follows**, not a word dump
 and not a slogan last line. Toddler-safe (no smash, no scary). Logical
 (no flying cars).
