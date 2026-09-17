@@ -53,6 +53,17 @@ public/portable/abc-adventure-*-portable/
 public/portable/meta.json
 screenshots/
 
+# Grok sandbox internals — never push to the kids-app GitHub
+.grok/app-env.json
+.grok/brand-refs/
+.grok/references/
+.grok/*.jpg
+attachments/
+.project_id
+**/__pycache__/
+public/__grok/
+abc-adventure-tracing.txt
+
 # Old take videos — GitHub history keeps them; do not ship in Publish
 public/art-archive/**/*.mp4
 public/review/

@@ -2,7 +2,8 @@
 
 **Version:** v0.205  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
-Always **commit + push** ABC updates the same turn. Tell them the version.  
+Always **commit + push** ABC updates the same turn. Tell them the version.
+**Never** push Grok sandbox internals (`.grok/`, attachments, skill dumps).  
 **User tests in Grok live preview**, not APK, unless they ask.
 
 ## App
