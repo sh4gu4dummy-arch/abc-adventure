@@ -115,7 +115,8 @@ Do not ship a clip that fails any of these. Not “looks mostly ok.”
      a tail, an x-ray is not a bedroom skeleton of a teddy.
    - Scale and place: props kid-sized; actions happen where they belong.
    - One of each limb. Face on the front only. No extra crayon tips, extra
-     legs, faces on food a kid then eats.
+     legs, faces on food a kid then eats. Peeling/opening a thing does
+     **not** clone it (one banana stays one banana).
    Glaring and obvious only — not nitpicks. **You** catch it. Shipping
    junk for them to find is the failure.
 4. **Sound.** Prompt Imagine for a **full diegetic mix as if there will be
@@ -125,6 +126,17 @@ Do not ship a clip that fails any of these. Not “looks mostly ok.”
    mode mutes the clip; Video-sound mode plays this native mix.
 5. **New story/word clips** go in a folder the preview actually serves
    (`public/story-clips/`, not a *new* file under ignored `public/videos/`).
+
+## Story lines (remind on ask)
+
+Three beats. One verb each. A story that **follows**, not a word dump
+and not a slogan last line. Toddler-safe (no smash, no scary). Logical
+(no flying cars).
+
+**Two letter-words when it’s obvious.** If a second same-letter word
+fits the beat without stretching, use it (elf found an **egg**; fish
+splashed near the **fairy**). Don’t force leftovers (no firetruck in a
+pond story).
 
 ## Word videos
 

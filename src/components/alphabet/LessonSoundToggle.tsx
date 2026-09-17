@@ -11,9 +11,11 @@ const OPTIONS: { id: LessonSound; label: string; short: string }[] = [
 export function LessonSoundToggle({
   compact,
   className,
+  onMode,
 }: {
   compact?: boolean;
   className?: string;
+  onMode?: (mode: LessonSound) => void;
 }) {
   const live = useLessonSound();
 
@@ -32,8 +34,9 @@ export function LessonSoundToggle({
               key={opt.id}
               type="button"
               onClick={() => {
-                stopSpeech();
+                if (opt.id === "clip") stopSpeech();
                 live.setMode(opt.id);
+                onMode?.(opt.id);
               }}
               className={cn(
                 "pressable inline-flex min-h-10 items-center justify-center rounded-[var(--radius-pill)] px-2.5 text-xs font-bold transition-colors sm:px-3 sm:text-sm",

@@ -140,15 +140,23 @@ export function StoryMode({ entry }: { entry: LetterEntry }) {
       setBeatIdx(i);
       setPlayToken((t) => t + 1);
       kickClip();
-      if (useClip) await wait(10000);
-      else {
+      if (getLessonSound() === "clip") {
+        const start = Date.now();
+        while (Date.now() - start < 10000) {
+          if (getLessonSound() !== "clip") {
+            await speak(beats[i]!.text);
+            break;
+          }
+          await wait(200);
+        }
+      } else {
         await speak(beats[i]!.text);
         await wait(320);
       }
     }
     setFinished(true);
     setPlaying(false);
-    if (!useClip) void speak("The end! Great listening!");
+    if (getLessonSound() !== "clip") void speak("The end! Great listening!");
   }
 
   async function playBeat(i: number) {
@@ -191,7 +199,14 @@ export function StoryMode({ entry }: { entry: LetterEntry }) {
         </p>
         {clip && (
           <div className="mt-3 flex justify-center">
-            <LessonSoundToggle compact />
+            <LessonSoundToggle
+              compact
+              onMode={(mode) => {
+                if (mode !== "narration") return;
+                primeAudioFromGesture(beat.text);
+                void speak(beat.text);
+              }}
+            />
           </div>
         )}
       </div>
