@@ -316,27 +316,29 @@ function drawTraceArrows(
     ctx.textBaseline = "middle";
     ctx.fillText(String(i + 1), p.x, p.y + 0.5);
     if (opts?.handles) {
-      const a = pts[0]!;
-      const b = pts[pts.length - 1]!;
       ctx.fillStyle = "#fff";
       ctx.strokeStyle = "#2b2d42";
       ctx.lineWidth = 2;
-      for (const h of [a, b]) {
+      const raw = strokes[i]!;
+      for (let k = 0; k < raw.length; k++) {
+        const h = mapGuide(raw[k]![0], raw[k]![1], box, dpr);
         ctx.beginPath();
-        ctx.rect(h.x - 6, h.y - 6, 12, 12);
+        ctx.arc(h.x, h.y, k === 0 || k === raw.length - 1 ? 7 : 6, 0, Math.PI * 2);
         ctx.fill();
         ctx.stroke();
       }
-      const bulge = pointAlong(pts, 0.5);
-      ctx.beginPath();
-      ctx.moveTo(bulge.x, bulge.y - 8);
-      ctx.lineTo(bulge.x + 8, bulge.y);
-      ctx.lineTo(bulge.x, bulge.y + 8);
-      ctx.lineTo(bulge.x - 8, bulge.y);
-      ctx.closePath();
-      ctx.fillStyle = "#fff";
-      ctx.fill();
-      ctx.stroke();
+      if (raw.length === 2) {
+        const bulge = pointAlong(pts, 0.5);
+        ctx.beginPath();
+        ctx.moveTo(bulge.x, bulge.y - 8);
+        ctx.lineTo(bulge.x + 8, bulge.y);
+        ctx.lineTo(bulge.x, bulge.y + 8);
+        ctx.lineTo(bulge.x - 8, bulge.y);
+        ctx.closePath();
+        ctx.fillStyle = "#fff";
+        ctx.fill();
+        ctx.stroke();
+      }
     }
   });
   ctx.restore();
@@ -436,7 +438,7 @@ export function TracePad({
   const devToolRef = useRef<TraceDevTool>("select");
   const devDragRef = useRef<
     | {
-        kind: "move" | "start" | "end" | "number" | "draw" | "mid";
+        kind: "move" | "start" | "end" | "number" | "draw" | "mid" | "vertex";
         index: number;
         ox: number;
         oy: number;
@@ -803,7 +805,8 @@ export function TracePad({
 
   function hitDev(p: { x: number; y: number }): {
     index: number;
-    kind: "number" | "start" | "end" | "mid" | "body";
+    kind: "number" | "start" | "end" | "mid" | "body" | "vertex";
+    vertex?: number;
   } | null {
     const box = boxRef.current;
     const dpr = dprRef.current;
@@ -811,14 +814,20 @@ export function TracePad({
     for (let i = strokes.length - 1; i >= 0; i--) {
       const s = strokes[i]!;
       if (s.pts.length < 2) continue;
+      for (let k = 0; k < s.pts.length; k++) {
+        const q = mapGuide(s.pts[k]![0], s.pts[k]![1], box, dpr);
+        if (Math.hypot(p.x - q.x, p.y - q.y) <= 14) {
+          return { index: i, kind: "vertex", vertex: k };
+        }
+      }
+    }
+    for (let i = strokes.length - 1; i >= 0; i--) {
+      const s = strokes[i]!;
+      if (s.pts.length < 2) continue;
       const mapped = smoothStroke(s.pts.map((pt) => mapGuide(pt[0], pt[1], box, dpr)));
       const num = pointAlong(mapped, s.numT);
       if (Math.hypot(p.x - num.x, p.y - num.y) <= 16) return { index: i, kind: "number" };
-      const a = mapped[0]!;
-      const b = mapped[mapped.length - 1]!;
-      if (Math.hypot(p.x - a.x, p.y - a.y) <= 12) return { index: i, kind: "start" };
-      if (Math.hypot(p.x - b.x, p.y - b.y) <= 12) return { index: i, kind: "end" };
-      if (devSelRef.current === i) {
+      if (s.pts.length === 2 && devSelRef.current === i) {
         const bulge = pointAlong(mapped, 0.5);
         if (Math.hypot(p.x - bulge.x, p.y - bulge.y) <= 14) return { index: i, kind: "mid" };
       }
@@ -892,38 +901,32 @@ export function TracePad({
         return;
       }
       setDevSel(hit.index);
-      const origin = devStrokesRef.current[hit.index]!.pts.map((pt) => [pt[0], pt[1]] as TracePt);
-      const kind =
+      let kind:
+        | "move"
+        | "start"
+        | "end"
+        | "number"
+        | "draw"
+        | "mid"
+        | "vertex" =
         hit.kind === "number"
           ? "number"
-          : hit.kind === "start"
-            ? "start"
-            : hit.kind === "end"
-              ? "end"
-              : hit.kind === "mid"
-                ? "mid"
-                : "move";
-      let vertex: number | undefined;
+          : hit.kind === "vertex"
+            ? "vertex"
+            : hit.kind === "mid"
+              ? "mid"
+              : "move";
+      let vertex: number | undefined = hit.vertex;
       if (kind === "mid") {
         const s = devStrokesRef.current[hit.index]!;
         if (s.pts.length === 2) {
           const mid = unmapGuide(p.x, p.y, box, dpr);
           s.pts = [s.pts[0]!, mid, s.pts[1]!];
           vertex = 1;
-        } else {
-          let best = 1;
-          let bestD = 1e9;
-          for (let i = 1; i < s.pts.length - 1; i++) {
-            const q = mapGuide(s.pts[i]![0], s.pts[i]![1], box, dpr);
-            const d = Math.hypot(p.x - q.x, p.y - q.y);
-            if (d < bestD) {
-              bestD = d;
-              best = i;
-            }
-          }
-          vertex = best;
+          kind = "vertex";
         }
       }
+      const origin = devStrokesRef.current[hit.index]!.pts.map((pt) => [pt[0], pt[1]] as TracePt);
       devDragRef.current = { kind, index: hit.index, ox: p.x, oy: p.y, origin, vertex };
       drawing.current = true;
       redraw();
@@ -968,6 +971,19 @@ export function TracePad({
       } else if (drag.kind === "mid") {
         const vi = drag.vertex ?? 1;
         if (s.pts[vi]) s.pts[vi] = n;
+      } else if (drag.kind === "vertex") {
+        const vi = drag.vertex ?? 0;
+        const o = drag.origin[vi];
+        if (!o) return;
+        const dx = n[0] - o[0];
+        const dy = n[1] - o[1];
+        s.pts = drag.origin.map((pt, j) => {
+          const w = Math.exp(-((j - vi) ** 2) / (2 * 0.85 ** 2));
+          return [
+            Math.min(1, Math.max(0, pt[0] + dx * w)),
+            Math.min(1, Math.max(0, pt[1] + dy * w)),
+          ];
+        });
       } else if (drag.kind === "number") {
         const mapped = smoothStroke(s.pts.map((pt) => mapGuide(pt[0], pt[1], box, dpr)));
         let bestT = s.numT;
@@ -1084,7 +1100,7 @@ export function TracePad({
                   id === "curve"
                     ? "Curve: tap along the round. Switch tool when done."
                     : id === "select"
-                      ? "Drag the diamond in the middle to round a line."
+                      ? "Drag a white dot. Neighbors follow. Drag the line to move all."
                       : null,
                 );
               }}
