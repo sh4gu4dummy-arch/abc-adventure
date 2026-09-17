@@ -39,7 +39,7 @@ const StoryClip = forwardRef<
     v.muted = !clipSound;
     v.volume = clipSound ? 0.7 : 0;
     v.playsInline = true;
-    v.loop = true;
+    v.loop = false;
     if (v.getAttribute("src") !== videoSrc) v.src = videoSrc;
     try {
       v.currentTime = 0;
@@ -79,7 +79,7 @@ const StoryClip = forwardRef<
         poster={posterSrc}
         className="absolute inset-0 z-[1] h-full w-full object-cover"
         playsInline
-        loop
+        loop={false}
         preload="auto"
         onPlaying={() => setLive(true)}
         onError={() => setLive(false)}

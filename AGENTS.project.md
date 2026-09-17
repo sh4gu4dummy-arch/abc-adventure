@@ -118,10 +118,11 @@ Do not ship a clip that fails any of these. Not “looks mostly ok.”
      legs, faces on food a kid then eats.
    Glaring and obvious only — not nitpicks. **You** catch it. Shipping
    junk for them to find is the failure.
-4. **Sound for “Video sound” mode.** Native Imagine foley is often thin
-   ambience. Mix kid SFX on export (whoosh, pop, sparkle, waves, chime)
-   so the clip is not boring. Don’t ship near-silent as the video-sound
-   option. Narration mode still mutes the clip.
+4. **Sound.** Prompt Imagine for a **full diegetic mix as if there will be
+   no narration**: engines, splashes, animal noises, wind — whatever that
+   scene would actually sound like. Do not skimp because a voiceover exists.
+   Do **not** overlay random beeps/pings/UI blips after the fact. Narration
+   mode mutes the clip; Video-sound mode plays this native mix.
 5. **New story/word clips** go in a folder the preview actually serves
    (`public/story-clips/`, not a *new* file under ignored `public/videos/`).
 
