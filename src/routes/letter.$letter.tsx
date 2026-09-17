@@ -64,7 +64,7 @@ const TABS: { id: TabId; label: string; icon: typeof BookOpen }[] = [
 
 const GAMES: { id: GameId; label: string; blurb: string }[] = [
   { id: "match", label: "Match", blurb: "Hear the sound — tap the picture" },
-  { id: "memory", label: "Pairs", blurb: "Find two pictures that match" },
+  { id: "memory", label: "Pairs", blurb: "Find two pictures that match. Tap to hear the word." },
   { id: "ispy", label: "I Hear", blurb: "Listen, then tap that picture" },
   { id: "story", label: "Story", blurb: "Watch the words in action" },
   { id: "cases", label: "Aa sort", blurb: "Sort big and little letters" },
@@ -367,7 +367,7 @@ function LetterPage() {
             {GAMES.find((g) => g.id === game)?.blurb}
           </p>
           {game === "match" && <MatchGame entry={entry} />}
-          {game === "memory" && <MemoryMatch entry={entry} />}
+          {game === "memory" && <MemoryMatch entry={entry} caseKind={caseKind} />}
           {game === "ispy" && <ISpy entry={entry} />}
           {game === "story" && <StoryMode entry={entry} />}
           {game === "cases" && <CaseHunt entry={entry} />}

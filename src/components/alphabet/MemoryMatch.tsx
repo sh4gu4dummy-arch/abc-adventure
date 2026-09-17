@@ -1,10 +1,15 @@
 import { useMemo, useState } from "react";
 import { Shuffle } from "lucide-react";
-import type { LetterEntry } from "@/data/alphabet";
+import {
+  displayWord,
+  type CaseKind,
+  type LetterEntry,
+} from "@/data/alphabet";
 import { markSection } from "@/lib/progress";
 import { speak } from "@/lib/speak";
 import { cn } from "@/lib/utils";
 import { GamePicture } from "./GamePicture";
+import { LetterWord } from "./LetterWord";
 
 type Card = {
   id: string;
@@ -23,8 +28,14 @@ function buildDeck(entry: LetterEntry): Card[] {
   return cards.sort(() => Math.random() - 0.5);
 }
 
-/** Picture ↔ picture memory. Print appears only after a match. */
-export function MemoryMatch({ entry }: { entry: LetterEntry }) {
+/** Picture ↔ picture memory. Tap says and shows the word. */
+export function MemoryMatch({
+  entry,
+  caseKind = "upper",
+}: {
+  entry: LetterEntry;
+  caseKind?: CaseKind;
+}) {
   const [round, setRound] = useState(0);
   const deck = useMemo(() => buildDeck(entry), [entry, round]);
   const [flipped, setFlipped] = useState<string[]>([]);
@@ -34,16 +45,23 @@ export function MemoryMatch({ entry }: { entry: LetterEntry }) {
 
   const won = matched.length === 3;
 
+  function sayCard(card: Card) {
+    void speak(card.word);
+  }
+
   function flip(id: string) {
-    if (
-      lock ||
-      flipped.includes(id) ||
-      matched.some((p) => deck.find((c) => c.id === id)?.pair === p)
-    ) {
-      return;
-    }
     const card = deck.find((c) => c.id === id);
     if (!card) return;
+
+    const alreadyUp =
+      flipped.includes(id) || matched.includes(card.pair);
+    if (alreadyUp) {
+      sayCard(card);
+      return;
+    }
+    if (lock) return;
+
+    sayCard(card);
 
     if (flipped.length === 0) {
       setFlipped([id]);
@@ -62,9 +80,9 @@ export function MemoryMatch({ entry }: { entry: LetterEntry }) {
             const next = [...m, first.pair];
             if (next.length >= 3) {
               markSection(entry.letter, "memory");
-              void speak("You matched them all! Super memory!");
-            } else {
-              void speak(`Yes! ${card.word}!`);
+              window.setTimeout(() => {
+                void speak("You matched them all! Super memory!");
+              }, 900);
             }
             return next;
           });
@@ -75,7 +93,7 @@ export function MemoryMatch({ entry }: { entry: LetterEntry }) {
         setTimeout(() => {
           setFlipped([]);
           setLock(false);
-        }, 750);
+        }, 900);
       }
     }
   }
@@ -95,7 +113,7 @@ export function MemoryMatch({ entry }: { entry: LetterEntry }) {
           Find the matching pictures
         </p>
         <p className="mt-1 text-sm font-medium text-muted">
-          Same picture twice · Moves: {moves}
+          Tap to hear the word · Moves: {moves}
         </p>
       </div>
 
@@ -103,6 +121,7 @@ export function MemoryMatch({ entry }: { entry: LetterEntry }) {
         {deck.map((card) => {
           const isUp = flipped.includes(card.id) || matched.includes(card.pair);
           const isMatch = matched.includes(card.pair);
+          const shown = displayWord(card.word, caseKind);
           return (
             <button
               key={`${round}-${card.id}`}
@@ -110,18 +129,30 @@ export function MemoryMatch({ entry }: { entry: LetterEntry }) {
               onClick={() => flip(card.id)}
               disabled={lock && !isUp}
               className={cn(
-                "pressable relative aspect-[3/4] overflow-hidden rounded-[var(--radius-md)] border-2 shadow-[var(--shadow-card)]",
+                "pressable relative flex aspect-[3/4] flex-col overflow-hidden rounded-[var(--radius-md)] border-2 shadow-[var(--shadow-card)]",
                 isMatch ? "border-success ring-2 ring-success/30" : "border-border",
               )}
               aria-label={isUp ? card.word : "Hidden card"}
             >
               {isUp ? (
-                <GamePicture
-                  letter={entry.letter}
-                  slug={card.slug}
-                  word={card.word}
-                  revealWord={isMatch}
-                />
+                <>
+                  <div className="min-h-0 flex-1 overflow-hidden">
+                    <GamePicture
+                      letter={entry.letter}
+                      slug={card.slug}
+                      word={card.word}
+                    />
+                  </div>
+                  <div className="shrink-0 bg-surface px-1 py-1">
+                    <LetterWord
+                      word={shown}
+                      letter={entry.letter}
+                      accent={entry.accent}
+                      size="sm"
+                      className="block w-full text-center leading-tight"
+                    />
+                  </div>
+                </>
               ) : (
                 <div className="flex h-full w-full items-center justify-center bg-ink text-3xl font-bold text-white">
                   ?

@@ -401,7 +401,7 @@ function LetterView({ entry }: { entry: LetterEntry }) {
         <TracePad letter={entry.letter} accent={entry.accent} caseKind={caseKind} />
       )}
       {tab === "match" && <MatchGame entry={entry} />}
-      {tab === "memory" && <MemoryMatch entry={entry} />}
+      {tab === "memory" && <MemoryMatch entry={entry} caseKind={caseKind} />}
       {tab === "ispy" && <ISpy entry={entry} />}
       {tab === "story" && <StoryMode entry={entry} />}
       {tab === "cases" && <CaseHunt entry={entry} />}
