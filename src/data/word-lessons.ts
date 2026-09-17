@@ -211,7 +211,7 @@ export const WORD_LESSONS: Record<string, WordLesson> = {
   "r-rose": { ...lesson("R", "rose", "Rose", "Rita smells a rose."), durationSec: 10, loopVideo: true },
   "r-rain": { ...lesson("R", "rain", "Rain", "Rain drips on Rita."), durationSec: 10, loopVideo: true },
   // --- Letter S ---
-  "s-sun": { ...lesson("S", "sun", "Sun", "The sun rises."), durationSec: 10, loopVideo: false },
+  "s-sun": { ...lesson("S", "sun", "Sun", "The sun rises."), durationSec: 10, loopVideo: false, nativeAudio: true },
   "s-star": { ...lesson("S", "star", "Star", "Sam spots a star."), durationSec: 10, loopVideo: true },
   "s-snake": { ...lesson("S", "snake", "Snake", "The snake slithers."), durationSec: 10, loopVideo: true },
   "s-ship": { ...lesson("S", "ship", "Ship", "Sam steers the ship."), durationSec: 10, loopVideo: true },

@@ -174,8 +174,8 @@ PACKS: dict[str, list[dict]] = {
     ],
     "S": [
         {"slug": "sun", "word": "Sun", "sentence": "The sun rises.",
-         "still": "A round yellow toy sun with a tiny friendly smile, just peeking over green hills at dawn. Soft pink sky. Simple toy, not a person.",
-         "motion": "The yellow toy sun slowly goes up over the green hills. Camera locked. Simple kids animation, no morphing. Wholesome."},
+         "still": "Classic cartoon sun with triangular rays, eyes and smile, rising over hills. Not a blank yellow ball.",
+         "motion": "The sun RISES. Rays stay. Camera locked. Simple kids animation, no morphing."},
         {"slug": "star", "word": "Star", "sentence": "Sam spots a star.",
          "still": "Cartoon boy about 5 pointing at a bright star in the night sky.",
          "motion": "The boy SPOTS the star, pointing. Camera locked. Simple kids animation, no morphing."},
