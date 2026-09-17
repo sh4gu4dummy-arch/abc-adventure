@@ -9,7 +9,10 @@ Always **commit + push** ABC updates the same turn. Tell them the version.
 ## App
 Kids alphabet. Word lessons: `public/videos/{letter}-{slug}.mp4` (10s, 540×720, h264).
 Word overlay captions sit **under** the video (v0.101), not on top of the picture.
-**New remakes:** keep I2V foley. Player unmutes clip (~0.55) under overlay TTS (word ×3 + sentence). Overlap OK. Set `nativeAudio: true` so the generic music bed stays off. Do not batch-remake.
+**New remakes:** always generate **with sound** in the MP4 (foley). Overlay
+narration still on top for now — keep clip audio so we can use it later.
+Do not ffmpeg `-an`. `nativeAudio: true`. Don't batch-remake. Zipper mouth:
+waiting; don't remake yet.
 
 ## Sound mix (v0.098)
 I2V **has** AAC audio. Old encode used ffmpeg `-an` (stripped it). New encode keeps AAC (falls back to silent if the source has none). Overlay teacher/buddy voice still plays on top. No talking mouths in the picture. Do not bake narration into the MP4.

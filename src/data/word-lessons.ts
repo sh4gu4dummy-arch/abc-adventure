@@ -22,7 +22,9 @@
  *    blowing. Remakes include native clip sound (foley / ambient / cartoon
  *    SFX). Do not bake the teacher voice or a song into the MP4. The player
  *    mixes clip audio under the voice; overlap is OK. Set nativeAudio: true
- *    so the generic music bed stays off. Old silent clips keep the bed.
+ *    so the generic music bed stays off. Always generate remakes WITH
+ *    sound in the MP4 (keep it for later) even while overlay narration
+ *    stays on. Do not ffmpeg -an. Old silent clips keep the bed.
  *    State-change gags are one-way (peel stays off). No ping-pong.
  *    Locomotion must travel: the body changes place in the frame. No
  *    treadmill / running-in-place cycles. Travel clips do not loop.

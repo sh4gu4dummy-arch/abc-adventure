@@ -131,8 +131,10 @@ single-story a, not Comic Neue (too thin/tall) and not Sniglet ExtraBold.
     smile unless the gag itself is eating, yawning, or blowing. Check
     mid-frames for lip-flap before shipping. I2V will invent talking if you
     don't forbid it — bake "mouth closed, not talking" into still + motion.
-    **New remakes include native clip sound** (foley, ambient, cartoon SFX
-    matching the gag). Do not bake the teacher voice or a song into the MP4.
+    **Always generate remakes WITH sound** (I2V foley / ambient / cartoon
+    SFX). Overlay narration still plays on top for now. Keep the clip
+    audio in the MP4 so we can use it later. Do not strip with ffmpeg
+    `-an`. Do not bake the teacher voice or a song into the file.
     Meet buddy remakes: **one voice** — the letter's. Do not stack extra TTS
     on top of the clip's speech.
     The player mixes clip audio under the overlay voice; overlap is OK. Set
