@@ -17,6 +17,7 @@
  *    movie-lookalikes. Friendly dinosaurs. Don't reuse the same action
  *    across words. An object stays that object — never morph into a person.
  *    Handheld props stay kid-scale, smaller than the child's head.
+    A crayon is ONE stick with ONE wax tip. Double-ended / two tips = redo.
  *    No talking mouths — overlay narration is off-screen (word ×3, then
  *    sentence). Closed-mouth smile unless the gag is eating, yawning, or
  *    blowing. Remakes include native clip sound (foley / ambient / cartoon
@@ -269,7 +270,7 @@ export const WORD_LESSONS: Record<string, WordLesson> = {
   "z-zebra": { ...lesson("Z", "zebra", "Zebra", "The zebra zigzags."), durationSec: 10, loopVideo: true },
   "z-zoo": { ...lesson("Z", "zoo", "Zoo", "Zed visits the zoo."), durationSec: 10, loopVideo: true },
   "z-zipper": { ...lesson("Z", "zipper", "Zipper", "Zed zips the zipper."), durationSec: 6, loopVideo: false, nativeAudio: true },
-  "z-zero": { ...lesson("Z", "zero", "Zero", "Zed writes a zero."), durationSec: 10, loopVideo: true },
+  "z-zero": { ...lesson("Z", "zero", "Zero", "Zed writes a zero."), durationSec: 10, loopVideo: false, nativeAudio: true },
   "z-zigzag": { ...lesson("Z", "zigzag", "Zigzag", "Zed runs a zigzag."), durationSec: 10, loopVideo: true },
   "z-zucchini": { ...lesson("Z", "zucchini", "Zucchini", "Zed washes a zucchini."), durationSec: 10, loopVideo: true },
 };

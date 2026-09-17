@@ -18,6 +18,15 @@ ship it. Wait for their pick. Same if two takes look usable.
 
 After every GitHub push, **tell them the version** in chat (v0.112, etc.).
 
+## Preview: they refresh
+
+They hunt bugs in the live preview. **Do not restart vite / the preview
+server.** **Do not bump `APP_VERSION` mid-hunt** (that cache-busts every
+video and reloads the app). `vite.config.ts` has `server.hmr: false` so
+edits do not auto-reload. They refresh when they want. If a clip must
+show up, replace the file; tell them to refresh. Resume version bumps
+when they are done hunting or they ask.
+
 ## GitHub: always push
 
 Every product change this turn: **commit and `git push origin main`**. Do
@@ -122,9 +131,11 @@ Do not ship a clip that fails any of these. Not “looks mostly ok.”
    - The thing is the thing: a sun has rays, a volcano is a cone, a Q has
      a tail, an x-ray is not a bedroom skeleton of a teddy.
    - Scale and place: props kid-sized; actions happen where they belong.
-   - One of each limb. Face on the front only. No extra crayon tips, extra
-     legs, faces on food a kid then eats. Peeling/opening a thing does
-     **not** clone it (one banana stays one banana).
+   - One of each limb. Face on the front only. No extra crayon tips (a
+     crayon is one stick, one tip — Holly’s heart and Zed’s zero failed
+     this twice). No extra legs, faces on food a kid then eats.
+     Peeling/opening a thing does **not** clone it (one banana stays one
+     banana).
    Glaring and obvious only — not nitpicks. **You** catch it. Shipping
    junk for them to find is the failure.
 4. **Sound.** Prompt Imagine for a **full diegetic mix as if there will be

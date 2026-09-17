@@ -228,6 +228,7 @@ export default defineConfig(({ command, isPreview }) => ({
     host: "0.0.0.0",
     port: 8080,
     strictPort: true,
+    hmr: false,
     watch: {
       ignored: [
         "**/.android-sdk/**",
