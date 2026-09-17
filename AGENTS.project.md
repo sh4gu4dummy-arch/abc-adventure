@@ -102,12 +102,14 @@ ship. Pause and ask: is this *logical* in this cartoon world?
 Do not ship a clip that fails any of these. Not “looks mostly ok.”
 
 0. **QA the prompt before you generate.** The 5-frame dump is audit #2.
-   Audit #1 is the prompt. Write the *bans* into Imagine, not only into
-   this file: “ONE key, in the paw, mouth closed, never in a mouth, never
-   a second key hanging on a knob.” Then read the prompt back: if the
-   last failure (eat, clone, reverse, extra limb) isn’t forbidden in
-   those words, don’t hit generate. Self-audit. Don’t hope the model
-   infers “lost” or “hold.”
+   Audit #1 is the prompt. Write the *bans that match this beat* into
+   Imagine: count (“ONE key”), place (“in the paw, not in a mouth”),
+   extras (“never a second key on a knob”). Read it back. If the last
+   failure mode isn’t named, don’t generate. Don’t hope the model infers
+   “lost” or “hold.”
+   I2V prompt = **motion + camera + sound + bans**. Do not re-describe
+   the still (that drifts the subject). One action. Locked camera unless
+   the shot needs a move. Mouths may move; only ban *eating the prop*.
 1. **Dump 5 frames** (start / 25 / mid / 75 / end) and **look at all five**.
    Thumbnail-only QA is how reverse motion ships.
 2. **Motion vs prompt.** If it should fly/walk/roll one way, compare start
@@ -152,6 +154,8 @@ unrelated hero stills. If I2V clones extra animals/objects mid-clip,
 in front of its face. It slides out of reach (under a cabinet). Animals
 **hold** the through-line object — they do not eat it. One object: if
 the key is in the lock, there is not a second key hanging off the door.
+Do **not** freeze every mouth shut. Closed-mouth is only for “don’t eat
+the prop.” Licking, talking, surprise still need a mouth that moves.
 
 Look at all 5 QA frames and ask those questions out loud. Shipping the
 K clip where the kangaroo ate the key was the failure.
