@@ -1,4 +1,4 @@
-import { useCallback, useImperativeHandle, useMemo, useRef, useState, forwardRef } from "react";
+import { useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState, forwardRef } from "react";
 import { BookOpen, ChevronLeft, ChevronRight, Play, Volume2 } from "lucide-react";
 import type { LetterEntry } from "@/data/alphabet";
 import { getStoryBeats } from "@/data/stories";
@@ -7,26 +7,37 @@ import { assetUrl } from "@/lib/assets";
 import { LetterWord } from "./LetterWord";
 import { StoryStage } from "./StoryStage";
 import { markSection } from "@/lib/progress";
-import { speak, primeAudioFromGesture } from "@/lib/speak";
+import { getLessonSound, useLessonSound } from "@/lib/lesson-sound";
+import { speak, primeAudioFromGesture, stopSpeech } from "@/lib/speak";
 import { APP_VERSION } from "@/lib/version";
 import { cn } from "@/lib/utils";
+import { LessonSoundToggle } from "./LessonSoundToggle";
 
 type StoryClipHandle = { playVideo: () => void };
 
 const StoryClip = forwardRef<
   StoryClipHandle,
-  { video: string; poster: string; accent: string; line: string }
->(function StoryClip({ video, poster, accent, line }, handle) {
+  { video: string; poster: string; accent: string; line: string; clipSound: boolean }
+>(function StoryClip({ video, poster, accent, line, clipSound }, handle) {
   const ref = useRef<HTMLVideoElement>(null);
   const [live, setLive] = useState(false);
   const posterSrc = `${assetUrl(poster)}?v=${APP_VERSION}`;
   const videoSrc = `${assetUrl(video)}?v=${APP_VERSION}`;
 
+  useEffect(() => {
+    const v = ref.current;
+    if (!v) return;
+    v.muted = !clipSound;
+    v.volume = clipSound ? 0.7 : 0;
+    if (!clipSound) v.muted = true;
+  }, [clipSound]);
+
   const playVideo = useCallback(() => {
     const v = ref.current;
     if (!v) return;
-    v.muted = false;
-    v.volume = 0.5;
+    const clipSound = getLessonSound() === "clip";
+    v.muted = !clipSound;
+    v.volume = clipSound ? 0.7 : 0;
     v.playsInline = true;
     v.loop = true;
     if (v.getAttribute("src") !== videoSrc) v.src = videoSrc;
@@ -44,9 +55,11 @@ const StoryClip = forwardRef<
   useImperativeHandle(handle, () => ({ playVideo }), [playVideo]);
 
   function playScene() {
-    primeAudioFromGesture(line);
+    const clipSound = getLessonSound() === "clip";
+    if (clipSound) stopSpeech();
+    else primeAudioFromGesture(line);
     playVideo();
-    void speak(line);
+    if (!clipSound) void speak(line);
   }
 
   return (
@@ -104,6 +117,8 @@ export function StoryMode({ entry }: { entry: LetterEntry }) {
   const [playToken, setPlayToken] = useState(0);
   const clipRef = useRef<StoryClipHandle>(null);
 
+  const { mode: soundMode } = useLessonSound();
+  const clipSound = soundMode === "clip";
   const beat = beats[beatIdx] ?? beats[0]!;
   const clip = storyBeatVideo(entry.letter, beatIdx);
   const stageKey = `${entry.letter}-${beatIdx}-${playToken}`;
@@ -114,7 +129,9 @@ export function StoryMode({ entry }: { entry: LetterEntry }) {
 
   async function playAll() {
     if (playing) return;
-    primeAudioFromGesture(beats[0]?.text);
+    const useClip = getLessonSound() === "clip";
+    if (useClip) stopSpeech();
+    else primeAudioFromGesture(beats[0]?.text);
     kickClip();
     setPlaying(true);
     setFinished(false);
@@ -122,22 +139,29 @@ export function StoryMode({ entry }: { entry: LetterEntry }) {
     for (let i = 0; i < beats.length; i++) {
       setBeatIdx(i);
       setPlayToken((t) => t + 1);
-      await speak(beats[i]!.text);
-      await wait(320);
+      kickClip();
+      if (useClip) await wait(10000);
+      else {
+        await speak(beats[i]!.text);
+        await wait(320);
+      }
     }
     setFinished(true);
     setPlaying(false);
-    void speak("The end! Great listening!");
+    if (!useClip) void speak("The end! Great listening!");
   }
 
   async function playBeat(i: number) {
     if (playing) return;
-    primeAudioFromGesture(beats[i]?.text);
+    const useClip = getLessonSound() === "clip";
+    if (useClip) stopSpeech();
+    else primeAudioFromGesture(beats[i]?.text);
     setBeatIdx(i);
     setPlayToken((t) => t + 1);
     kickClip();
     setPlaying(true);
-    await speak(beats[i]!.text);
+    if (!useClip) await speak(beats[i]!.text);
+    else await wait(400);
     setPlaying(false);
     if (i === beats.length - 1) {
       markSection(entry.letter, "story");
@@ -165,6 +189,11 @@ export function StoryMode({ entry }: { entry: LetterEntry }) {
         <p className="mt-1 text-sm font-medium text-muted">
           Watch the words act out each moment — tap a scene or press play
         </p>
+        {clip && (
+          <div className="mt-3 flex justify-center">
+            <LessonSoundToggle compact />
+          </div>
+        )}
       </div>
 
       {/* Live stage — real clip when we have one, else bouncing thumbs */}
@@ -175,6 +204,7 @@ export function StoryMode({ entry }: { entry: LetterEntry }) {
           poster={clip.poster}
           accent={entry.accent}
           line={beat.text}
+          clipSound={clipSound}
         />
       ) : (
         <StoryStage
