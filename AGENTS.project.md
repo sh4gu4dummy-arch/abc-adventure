@@ -138,7 +138,8 @@ Characters act. Objects don’t zip/pour/sit themselves.
 Beat 3 starts from beat 2’s last frame. Same character model, same
 room/props, same through-line object. Extract the last frame, then
 I2V (or a tiny I2I then I2V) from that still — don’t generate three
-unrelated hero stills.
+unrelated hero stills. If I2V clones extra animals/objects mid-clip,
+trim before the clone or redo — don’t ship the extra.
 
 Three beats. One verb each. A story that **follows**, not a word dump
 and not a slogan last line. Toddler-safe (no smash, no scary). Logical

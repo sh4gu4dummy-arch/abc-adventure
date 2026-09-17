@@ -1598,4 +1598,10 @@ export const SPEECH_MAP: Record<string, string> = {
   "A lion bit a lemon.": "8d21c65ecfd7dfe9.mp3",
   "The lemon was sour.": "996bce48f591522e.mp3",
   "The lion licked a lollipop.": "438a57b783ef3ca4.mp3",
+  "A mouse hid under a mushroom.": "49b35b67f3a7d8f8.mp3",
+  "A monkey squeezed under the mushroom.": "7cf855492b9b2bd4.mp3",
+  "The monkey mixed the milkshake.": "5a62e56ba033c3a8.mp3",
+  "A newt sniffed a nest.": "b8bfbd1650c920ee.mp3",
+  "No one was in the nest.": "73e557ff38a16ff0.mp3",
+  "The newt nodded off in the nest.": "56fe2d34d0fc64fb.mp3",
 };
