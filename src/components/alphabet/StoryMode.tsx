@@ -9,6 +9,7 @@ import { StoryStage } from "./StoryStage";
 import { markSection } from "@/lib/progress";
 import { speak } from "@/lib/speak";
 import { APP_VERSION } from "@/lib/version";
+import { cn } from "@/lib/utils";
 
 function StoryClip({
   video,
