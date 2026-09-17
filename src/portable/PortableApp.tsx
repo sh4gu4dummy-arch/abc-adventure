@@ -403,7 +403,7 @@ function LetterView({ entry }: { entry: LetterEntry }) {
       {tab === "match" && <MatchGame entry={entry} caseKind={caseKind} />}
       {tab === "memory" && <MemoryMatch entry={entry} caseKind={caseKind} />}
       {tab === "ispy" && <ISpy entry={entry} />}
-      {tab === "story" && <StoryMode entry={entry} />}
+      {tab === "story" && <StoryMode key={entry.letter} entry={entry} />}
       {tab === "cases" && <CaseHunt entry={entry} />}
 
       {tab === "facts" && (

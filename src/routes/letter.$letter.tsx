@@ -381,7 +381,7 @@ function LetterPage() {
 
       {tab === "story" && (
         <section aria-label="Story theater">
-          <StoryMode entry={entry} />
+          <StoryMode key={entry.letter} entry={entry} />
         </section>
       )}
 

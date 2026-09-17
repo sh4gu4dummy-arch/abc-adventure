@@ -123,6 +123,13 @@ export function StoryMode({ entry }: { entry: LetterEntry }) {
   const [playToken, setPlayToken] = useState(0);
   const clipRef = useRef<StoryClipHandle>(null);
 
+  useEffect(() => {
+    setBeatIdx(0);
+    setPlaying(false);
+    setFinished(false);
+    setPlayToken((t) => t + 1);
+  }, [entry.letter]);
+
   const { mode: soundMode } = useLessonSound();
   const clipSound = soundMode === "clip";
   const beat = beats[beatIdx] ?? beats[0]!;
@@ -138,7 +145,7 @@ export function StoryMode({ entry }: { entry: LetterEntry }) {
     const useClip = getLessonSound() === "clip";
     if (useClip) stopSpeech();
     else primeAudioFromGesture(beats[0]?.text);
-    kickClip();
+    setBeatIdx(0);
     setPlaying(true);
     setFinished(false);
     markSection(entry.letter, "story");
@@ -162,6 +169,8 @@ export function StoryMode({ entry }: { entry: LetterEntry }) {
     }
     setFinished(true);
     setPlaying(false);
+    setBeatIdx(0);
+    setPlayToken((t) => t + 1);
     if (getLessonSound() !== "clip") void speak("The end! Great listening!");
   }
 
