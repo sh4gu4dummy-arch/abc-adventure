@@ -74,6 +74,9 @@ Meet clips from **J onward**: the letter says **“Hi I’m Big J, Big J, Big J�
 (that letter). Slow: **“Big… A… Big… A…”**. Still missing that Big line: **B C D E F G H I**.
 Meet letters are **the glyph only** — no extra arms, legs, or stubs. q has **one**
 tail on the right, nothing growing off the left of the bowl.
+**Never paint-out / clone-stamp extras on a letter thumb.** That leaves a ghost
+(little z). Remake the still. Same for holes: punch the real counter in
+background color, don’t smear.
 
 ## Lowercase / small-letter plan (remind on ask)
 
