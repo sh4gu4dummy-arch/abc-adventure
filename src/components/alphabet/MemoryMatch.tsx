@@ -5,8 +5,8 @@ import {
   type CaseKind,
   type LetterEntry,
 } from "@/data/alphabet";
-import { assetUrl } from "@/lib/assets";
 import { markSection } from "@/lib/progress";
+import { playChime } from "@/lib/sfx";
 import { speak } from "@/lib/speak";
 import { cn } from "@/lib/utils";
 import { GamePicture } from "./GamePicture";
@@ -19,16 +19,7 @@ type Card = {
   slug: string;
 };
 
-function playChime() {
-  if (typeof window === "undefined") return;
-  try {
-    const a = new Audio(assetUrl("audio/sfx/chime.mp3"));
-    a.volume = 0.45;
-    void a.play().catch(() => {});
-  } catch {
-    /* ignore */
-  }
-}
+function buildDeck(entry: LetterEntry): Card[] {
   const picks = [...entry.words].sort(() => Math.random() - 0.5).slice(0, 3);
   const cards: Card[] = [];
   for (const w of picks) {

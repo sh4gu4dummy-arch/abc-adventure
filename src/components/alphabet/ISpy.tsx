@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
-import { Ear } from "lucide-react";
+import { Check, Ear, Star } from "lucide-react";
 import { LETTERS, type LetterEntry } from "@/data/alphabet";
 import { markSection } from "@/lib/progress";
+import { playChime } from "@/lib/sfx";
 import { speak } from "@/lib/speak";
 import { cn } from "@/lib/utils";
 import { GamePicture } from "./GamePicture";
@@ -39,6 +40,7 @@ export function ISpy({ entry }: { entry: LetterEntry }) {
       setFound(true);
       setWrong(null);
       markSection(entry.letter, "ispy");
+      playChime();
       void speak(`You found ${target.word}! Great eyes!`);
     } else {
       setWrong(slug);
@@ -88,7 +90,7 @@ export function ISpy({ entry }: { entry: LetterEntry }) {
               type="button"
               onClick={() => pick(w.slug)}
               className={cn(
-                "pressable overflow-hidden rounded-[var(--radius-lg)] border-2 bg-surface shadow-[var(--shadow-card)]",
+                "pressable relative overflow-hidden rounded-[var(--radius-lg)] border-2 bg-surface shadow-[var(--shadow-card)]",
                 showWin && "border-success ring-4 ring-success/30",
                 showMiss && "border-primary ring-4 ring-primary/25",
                 !showWin && !showMiss && "border-border",
@@ -103,6 +105,15 @@ export function ISpy({ entry }: { entry: LetterEntry }) {
                   revealWord={showWin}
                 />
               </div>
+              {showWin && (
+                <span
+                  className="pop-in pointer-events-none absolute right-1.5 top-1.5 z-10 flex size-8 items-center justify-center"
+                  aria-hidden
+                >
+                  <Star className="size-8 fill-star text-star drop-shadow" />
+                  <Check className="absolute size-3.5 stroke-[3] text-success" />
+                </span>
+              )}
             </button>
           );
         })}
