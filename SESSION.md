@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.293  
+**Version:** v0.294  
 **GitHub:** sh4gu4dummy-arch/abc-adventure `main`  
 Always **commit + push** ABC updates the same turn. Tell them the version.
 **Never** push Grok sandbox internals (`.grok/`, attachments, skill dumps).  
@@ -65,8 +65,7 @@ Match a pair → little star + green check + soft chime.
 Match only uses this letter’s words (Big 3 / little 3). No other-letter decoys.
 
 ## Videos out of git (v0.224)
-`*.mp4` gitignored. History rewritten to drop all mp4 blobs. Files stay on
-disk. User has the backup — git is not the video archive anymore.
+Videos are in git (`public/videos`, `public/story-clips`). Restore old takes from history. No local `art-archive`.
 
 ## Media pack (v0.223)
 Rebuilt media-only ZIP from current on-disk art (no old replaced mp4s).
@@ -413,10 +412,10 @@ Stills stay for Settings → Art archive. `public/review` not touched.
 ## Meet A / B (v0.107)
 6s dance. **One voice** — theirs, in the clip. Teacher overlay off. Don’t stack extra TTS. Face on the front only. From **J** on: “Hi I’m Big X, Big X, Big X.” A–Z Meet clips exist. Don’t remake A–I to the Big line unless asked.
 `scripts/ship-letter-videos.py` PACKS → t2i → i2v (mouths closed + foley, no speech) → encode **keep audio** → `nativeAudio: true` → **5-frame QA** (`scripts/qa-word-frames.py`) → poster=frame1 → TTS append-only `speech-map.ts`.  
-Stop on Imagine fail; don’t kneejerk. Look at the clip. If it’s obviously wrong, redo — don’t write a crayon-tip law.
+Stop on Imagine fail; don’t kneejerk. Look at the clip. If it’s obviously wrong, redo — don’t write a crayon-tip law. Git is the backup (videos in git). No local art-archive.
 
 ## Taste rules (full list: AGENTS.project.md)
-Sentence = screen. Thumbnail = frame 1. Snappy not creepy. Real anatomy, one of each limb. Food no face. No gag reuse. Object stays object (never morph into a person). Props kid-scale. **No talking mouths** unless eating/yawn/blow. **State-change is one-way** (peel/unwrap/zip/light). Remakes keep native clip sound under overlay voice. Archive then overwrite. Push every commit. Version bump every change. Portable/APK only when asked.
+Sentence = screen. Thumbnail = frame 1. Snappy not creepy. Real anatomy, one of each limb. Food no face. No gag reuse. Object stays object (never morph into a person). Props kid-scale. **No talking mouths** unless eating/yawn/blow. **State-change is one-way** (peel/unwrap/zip/light). Remakes keep native clip sound under overlay voice. Git is the backup. Push every commit. Version bump every change. Portable/APK only when asked.
 
 ## Don’t
 - Don’t remake all clips unless user names them

@@ -10,7 +10,6 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ArtRouteImport } from './routes/art'
 import { Route as BuddiesRouteImport } from './routes/buddies'
 import { Route as DownloadsRouteImport } from './routes/downloads'
 import { Route as LoginRouteImport } from './routes/login'
@@ -23,11 +22,6 @@ import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ArtRoute = ArtRouteImport.update({
-  id: '/art',
-  path: '/art',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BuddiesRoute = BuddiesRouteImport.update({
@@ -73,7 +67,6 @@ const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/art': typeof ArtRoute
   '/buddies': typeof BuddiesRoute
   '/downloads': typeof DownloadsRoute
   '/login': typeof LoginRoute
@@ -85,7 +78,6 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/art': typeof ArtRoute
   '/buddies': typeof BuddiesRoute
   '/downloads': typeof DownloadsRoute
   '/login': typeof LoginRoute
@@ -98,7 +90,6 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/art': typeof ArtRoute
   '/buddies': typeof BuddiesRoute
   '/downloads': typeof DownloadsRoute
   '/login': typeof LoginRoute
@@ -112,7 +103,6 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/art'
     | '/buddies'
     | '/downloads'
     | '/login'
@@ -124,7 +114,6 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/art'
     | '/buddies'
     | '/downloads'
     | '/login'
@@ -136,7 +125,6 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/art'
     | '/buddies'
     | '/downloads'
     | '/login'
@@ -149,7 +137,6 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  ArtRoute: typeof ArtRoute
   BuddiesRoute: typeof BuddiesRoute
   DownloadsRoute: typeof DownloadsRoute
   LoginRoute: typeof LoginRoute
@@ -167,13 +154,6 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/art': {
-      id: '/art'
-      path: '/art'
-      fullPath: '/art'
-      preLoaderRoute: typeof ArtRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/buddies': {
@@ -237,7 +217,6 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  ArtRoute: ArtRoute,
   BuddiesRoute: BuddiesRoute,
   DownloadsRoute: DownloadsRoute,
   LoginRoute: LoginRoute,

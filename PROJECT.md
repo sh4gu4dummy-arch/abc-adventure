@@ -90,7 +90,7 @@ npm run build:portable   # rebuild offline ZIP
 
 - **Buddies** (letter is the character): `public/letters/` + R–Z files in `public/posters/` → home tiles, letter hero, stickers, story actors, letter-friends row.
 - **Scenes** (the real thing in a world): A–Q in `public/posters/` + fills in `public/posters-scene/` → word cards and listening games.
-- Originals are never overwritten. See `public/art-archive/README.md`.
+- Git is the backup (videos + stills). No local `art-archive`. Restore old files from git history.
 
 ## Git checkpoints
 
@@ -113,7 +113,7 @@ npm run build:apk      # only when asked
 
 ## Versioning & downloads
 
-- **Current version:** `0.293` (`v0.293`) — stored in `VERSION` and `src/lib/version.ts` (keep in sync).
+- **Current version:** `0.294` (`v0.294`) — stored in `VERSION` and `src/lib/version.ts` (keep in sync).
 
 ## GitHub + Grok Publish cadence
 

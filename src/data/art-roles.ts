@@ -9,9 +9,8 @@
  *              Used for home tiles, letter hero, stickers, celebration,
  *              story actors, and the "letter friends" row.
  *
- * Originals are never overwritten:
+ * Originals live in git history (not a local art-archive folder):
  *  - public/letters/*.webp          letter mascots (buddy) — all 26 characters
- *  - public/art-archive/letter-tiles-objects/  original A–P object tiles
  *  - public/posters/{l}-{slug}.webp A–Q = scenes, R–Z = word-buddies
  *  - public/posters-scene/          word-card thumbs = frame 1 of each R–Z video
  */

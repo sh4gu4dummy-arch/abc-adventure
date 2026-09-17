@@ -70,7 +70,6 @@ include_dirs = [
   "public/videos",
   "public/audio",
   "public/icons",
-  "public/art-archive",
 ]
 skip_dir_names = {
   "node_modules", ".git", "portable", "screenshots", "artifacts",
@@ -110,8 +109,6 @@ Pictures, videos, and voice — no app source.
   videos/         Word clips, meet-the-buddy, series
   audio/          Letter and word voice
   icons/          App icons
-  art-archive/    Old tiles we kept
-  review/         Letter Buddies review clips
 
 Version: {version}
 """)

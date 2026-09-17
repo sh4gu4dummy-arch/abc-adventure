@@ -243,12 +243,12 @@ pond story).
     **Video resolution going forward: 480p.** Generate I2V at 480p. Encode
     word clips 540×720. Do not generate 720p/1080p unless they ask. Do not
     batch-reencode old clips.
-12. Archive old art; never overwrite originals. Use Imagine API download
-    into `public/` (locker may fail). Copy stills into the repo immediately.
-    **Videos are not in git.** They live on disk (`public/videos`) and in
-    the user's backup. Do not `git add` `*.mp4`. Do not rewrite history
-    to put them back. Restore from the user's backup if a file is missing.
-    Stills for the Settings art page can stay in git.
+12. **Git is the backup.** Word / Meet / story videos (`public/videos/**/*.mp4`,
+    `public/story-clips/`) **are in git**. Restore old takes with git.
+    There is **no** `public/art-archive`. Do not keep a parallel stills dump.
+    Do not restore a rejected thumb from an old path or chat screenshot.
+    Copy new stills into `public/` and commit them.
+    Use Imagine API download into `public/` (locker may fail).
 13. **GitHub:** after every commit, **push origin main**. Do not ask. Do
     not leave app updates uncommitted. Tell them the version after.
     **Never** push Grok sandbox internals (`.grok/`, attachments, skill
