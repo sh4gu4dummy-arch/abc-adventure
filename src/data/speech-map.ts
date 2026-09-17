@@ -1566,4 +1566,6 @@ export const SPEECH_MAP: Record<string, string> = {
   "Zee says zzz, like zigzag!": "44c5c4a1f4a94e5c.mp3",
   "Zee says zzz, like zucchini!": "f8b924dd33083b07.mp3",
   "The airplane landed by the anchor. The astronaut shared the apple with the ant, and the alligator waved goodbye.": "cf84757e5b34ee55.mp3",
+  "A bird and a butterfly flew over and grabbed the ball.": "5cfade1445544891.mp3",
+  "The bird dropped the ball in the boat. The bear peeled a banana, and they all sat together.": "59d077778f40ffca.mp3",
 };

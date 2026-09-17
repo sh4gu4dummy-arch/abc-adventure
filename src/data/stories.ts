@@ -68,16 +68,16 @@ const STORY_BEATS: Record<string, StoryBeat[]> = {
       cast: ["bear", "ball", "banana", "boat"],
     },
     {
-      text: "A butterfly and a bird landed softly.",
+      text: "A bird and a butterfly flew over and grabbed the ball.",
       action: "fly",
-      scene: "garden",
-      cast: ["butterfly", "bird"],
+      scene: "ocean",
+      cast: ["bird", "butterfly", "ball"],
     },
     {
-      text: "“Best day ever!” hummed the bear.",
-      action: "wave",
-      scene: "party",
-      cast: ["bear", "ball", "bird"],
+      text: "The bird dropped the ball in the boat. The bear peeled a banana, and they all sat together.",
+      action: "share",
+      scene: "ocean",
+      cast: ["bird", "ball", "boat", "bear", "banana", "butterfly"],
     },
   ],
   C: [
