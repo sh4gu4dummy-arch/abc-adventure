@@ -1616,4 +1616,10 @@ export const SPEECH_MAP: Record<string, string> = {
   "A rabbit planted a rose.": "bd7e431472bb5bc4.mp3",
   "Rain fell on the rose.": "177235ed6e1dcd7f.mp3",
   "The rabbit sniffed the rose.": "37aa48c101774385.mp3",
+  "A snake found a soda.": "b335d1e9507464e2.mp3",
+  "The snake sipped the soda.": "87b1e39e85c42b3f.mp3",
+  "The silly snake smiled.": "7342c4d85d592665.mp3",
+  "A tiger waited for a train.": "f3f07d6c72f51b67.mp3",
+  "The tiger ran to the track.": "4ddb4079f91d4262.mp3",
+  "The tiger boarded the train.": "93c78a69ecc96dcb.mp3",
 };

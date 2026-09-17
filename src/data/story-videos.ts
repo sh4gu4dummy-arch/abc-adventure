@@ -255,6 +255,34 @@ const STORY_VIDEOS: Record<string, (StoryClipSrc | null)[]> = {
       poster: "posters-scene/story-r-3.webp",
     },
   ],
+  S: [
+    {
+      video: "story-clips/s-1.mp4",
+      poster: "posters-scene/story-s-1.webp",
+    },
+    {
+      video: "story-clips/s-2.mp4",
+      poster: "posters-scene/story-s-2.webp",
+    },
+    {
+      video: "story-clips/s-3.mp4",
+      poster: "posters-scene/story-s-3.webp",
+    },
+  ],
+  T: [
+    {
+      video: "story-clips/t-1.mp4",
+      poster: "posters-scene/story-t-1.webp",
+    },
+    {
+      video: "story-clips/t-2.mp4",
+      poster: "posters-scene/story-t-2.webp",
+    },
+    {
+      video: "story-clips/t-3.mp4",
+      poster: "posters-scene/story-t-3.webp",
+    },
+  ],
 };
 
 export function storyBeatVideo(
