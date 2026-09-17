@@ -133,6 +133,39 @@ function chaikin(pts: TracePt[]): TracePt[] {
   return out;
 }
 
+function rdpSimplify(pts: TracePt[], eps: number): TracePt[] {
+  if (pts.length < 3) return pts;
+  const a = pts[0]!;
+  const b = pts[pts.length - 1]!;
+  let maxD = 0;
+  let idx = 0;
+  for (let i = 1; i < pts.length - 1; i++) {
+    const d = distToSeg(pts[i]![0], pts[i]![1], a[0], a[1], b[0], b[1]);
+    if (d > maxD) {
+      maxD = d;
+      idx = i;
+    }
+  }
+  if (maxD > eps) {
+    const left = rdpSimplify(pts.slice(0, idx + 1), eps);
+    const right = rdpSimplify(pts.slice(idx), eps);
+    return [...left.slice(0, -1), ...right];
+  }
+  return [a, b];
+}
+
+function fitCurve(pts: TracePt[]): TracePt[] {
+  const raw = pts.filter((p, i, a) => {
+    if (i === 0 || i === a.length - 1) return true;
+    const q = a[i - 1]!;
+    return Math.hypot(p[0] - q[0], p[1] - q[1]) > 0.008;
+  });
+  let out = rdpSimplify(raw, 0.02);
+  if (out.length >= 3) out = rdpSimplify(chaikin(out), 0.016);
+  if (out.length > 10) out = rdpSimplify(out, 0.028);
+  return out.length >= 2 ? out : raw;
+}
+
 function distToSeg(
   px: number,
   py: number,
@@ -323,7 +356,7 @@ function drawTraceArrows(
       for (let k = 0; k < raw.length; k++) {
         const h = mapGuide(raw[k]![0], raw[k]![1], box, dpr);
         ctx.beginPath();
-        ctx.arc(h.x, h.y, k === 0 || k === raw.length - 1 ? 7 : 6, 0, Math.PI * 2);
+        ctx.arc(h.x, h.y, k === 0 || k === raw.length - 1 ? 8 : 5.5, 0, Math.PI * 2);
         ctx.fill();
         ctx.stroke();
       }
@@ -549,6 +582,32 @@ export function TracePad({
     setDevSel(-1);
     curveActiveRef.current = -1;
   }, [guideLetter, traceDev]);
+
+  useEffect(() => {
+    if (!traceDev) return;
+    function onKey(e: KeyboardEvent) {
+      if (e.key !== "Delete" && e.key !== "Backspace") return;
+      const el = e.target as HTMLElement | null;
+      if (el && (el.tagName === "INPUT" || el.tagName === "TEXTAREA" || el.isContentEditable)) {
+        return;
+      }
+      if (devToolRef.current !== "select") return;
+      e.preventDefault();
+      const list = devStrokesRef.current;
+      const idx = devSelRef.current >= 0 ? devSelRef.current : list.length === 1 ? 0 : -1;
+      if (idx < 0) {
+        setDevMsg("Tap a line first, then Delete.");
+        return;
+      }
+      const next = list.filter((_, i) => i !== idx);
+      devStrokesRef.current = next;
+      setDevSel(next.length ? Math.min(idx, next.length - 1) : -1);
+      persistDev();
+      redraw();
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [traceDev, redraw]);
 
   const stamp = useCallback((cssX: number, cssY: number) => {
     const dpr = dprRef.current;
@@ -816,7 +875,8 @@ export function TracePad({
       if (s.pts.length < 2) continue;
       for (let k = 0; k < s.pts.length; k++) {
         const q = mapGuide(s.pts[k]![0], s.pts[k]![1], box, dpr);
-        if (Math.hypot(p.x - q.x, p.y - q.y) <= 14) {
+        const end = k === 0 || k === s.pts.length - 1;
+        if (Math.hypot(p.x - q.x, p.y - q.y) <= (end ? 18 : 13)) {
           return { index: i, kind: "vertex", vertex: k };
         }
       }
@@ -861,22 +921,7 @@ export function TracePad({
       const box = boxRef.current;
       const dpr = dprRef.current;
       const n = unmapGuide(p.x, p.y, box, dpr);
-      if (tool === "curve") {
-        let index = curveActiveRef.current;
-        if (index < 0 || !devStrokesRef.current[index]) {
-          const stroke: DevStroke = { pts: [n], numT: 0.16 };
-          devStrokesRef.current = [...devStrokesRef.current, stroke];
-          index = devStrokesRef.current.length - 1;
-          curveActiveRef.current = index;
-        } else {
-          devStrokesRef.current[index]!.pts.push(n);
-        }
-        setDevSel(index);
-        persistDev();
-        redraw();
-        return;
-      }
-      if (tool === "line" || tool === "freehand") {
+      if (tool === "line" || tool === "freehand" || tool === "curve") {
         curveActiveRef.current = -1;
         const stroke: DevStroke = { pts: [n, n], numT: 0.16 };
         devStrokesRef.current = [...devStrokesRef.current, stroke];
@@ -973,18 +1018,22 @@ export function TracePad({
         if (s.pts[vi]) s.pts[vi] = n;
       } else if (drag.kind === "vertex") {
         const vi = drag.vertex ?? 0;
-        const o = drag.origin[vi];
-        if (!o) return;
-        const dx = n[0] - o[0];
-        const dy = n[1] - o[1];
-        s.pts = drag.origin.map((pt, j) => {
-          const w = Math.exp(-((j - vi) ** 2) / (2 * 0.85 ** 2));
-          return [
-            Math.min(1, Math.max(0, pt[0] + dx * w)),
-            Math.min(1, Math.max(0, pt[1] + dy * w)),
-          ];
-        });
-      } else if (drag.kind === "number") {
+        const lastI = drag.origin.length - 1;
+        if (vi === 0 || vi === lastI) {
+          s.pts = drag.origin.map((pt, j) => (j === vi ? n : [pt[0], pt[1]] as TracePt));
+        } else {
+          const o = drag.origin[vi];
+          if (!o) return;
+          const dx = n[0] - o[0];
+          const dy = n[1] - o[1];
+          s.pts = drag.origin.map((pt, j) => {
+            const w = Math.exp(-((j - vi) ** 2) / (2 * 0.85 ** 2));
+            return [
+              Math.min(1, Math.max(0, pt[0] + dx * w)),
+              Math.min(1, Math.max(0, pt[1] + dy * w)),
+            ];
+          });
+        } else if (drag.kind === "number") {
         const mapped = smoothStroke(s.pts.map((pt) => mapGuide(pt[0], pt[1], box, dpr)));
         let bestT = s.numT;
         let bestD = 1e9;
@@ -1016,8 +1065,12 @@ export function TracePad({
       const drag = devDragRef.current;
       if (drag) {
         const s = devStrokesRef.current[drag.index];
-        if (s && drag.kind === "draw" && devToolRef.current === "freehand" && s.pts.length > 4) {
-          s.pts = chaikin(s.pts);
+        if (s && drag.kind === "draw" && (devToolRef.current === "freehand" || devToolRef.current === "curve") && s.pts.length > 4) {
+          s.pts = devToolRef.current === "curve" ? fitCurve(s.pts) : chaikin(s.pts);
+          if (devToolRef.current === "curve") {
+            setDevTool("select");
+            setDevMsg("Curve set. Drag an end — only that end moves. Inner dots pull neighbors.");
+          }
         }
         if (s && s.pts.length >= 2) {
           const a = s.pts[0]!;
@@ -1098,10 +1151,12 @@ export function TracePad({
                 setDevTool(id);
                 setDevMsg(
                   id === "curve"
-                    ? "Curve: tap along the round. Switch tool when done."
+                    ? "Curve: draw the round in one stroke. Dots appear when you let go."
                     : id === "select"
-                      ? "Drag a white dot. Neighbors follow. Drag the line to move all."
-                      : null,
+                      ? "Select: drag a white dot. Ends move alone. Delete key removes the line."
+                      : id === "line"
+                        ? "Line: drag start to end."
+                        : "Freehand: scribble, then Smooth if you want.",
                 );
               }}
               className="pressable inline-flex min-h-11 items-center gap-1 rounded-[var(--radius-pill)] border-2 px-3 text-sm font-bold"
@@ -1184,7 +1239,7 @@ export function TracePad({
       {traceDev && (
         <p className="text-xs font-semibold text-ink-soft">
           {devMsg ??
-            "Dev: Curve = tap along the round. Select = pull the diamond to bulge."}
+            "Dev: Curve = draw the round in one stroke. Select a line + Delete key to remove it."}
         </p>
       )}
       {traceDev && devExport && (
