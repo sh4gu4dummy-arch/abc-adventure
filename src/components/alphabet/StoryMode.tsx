@@ -10,6 +10,7 @@ import { markSection } from "@/lib/progress";
 import { getLessonSound, useLessonSound } from "@/lib/lesson-sound";
 import { speak, primeAudioFromGesture, stopSpeech } from "@/lib/speak";
 import { APP_VERSION } from "@/lib/version";
+import { walkStoryHighlights } from "@/lib/story-highlight";
 import { cn } from "@/lib/utils";
 import { LessonSoundToggle } from "./LessonSoundToggle";
 
@@ -335,7 +336,13 @@ export function StoryMode({ entry }: { entry: LetterEntry }) {
               {i + 1}
             </span>
             <span className="font-display text-sm font-bold text-ink sm:text-base">
-              {b.text}
+              {highlightWords(
+                b.text,
+                b.words,
+                entry.accent,
+                entry.animal,
+                entry.letter,
+              )}
             </span>
           </button>
         ))}
@@ -370,64 +377,21 @@ function highlightWords(
   extra?: string,
   letter?: string,
 ) {
-  const skip = new Set([
-    "a",
-    "an",
-    "and",
-    "at",
-    "as",
-    "am",
-    "are",
-    "i",
-    "in",
-    "is",
-    "it",
-    "if",
-    "of",
-    "on",
-    "or",
-    "by",
-    "be",
-    "but",
-    "the",
-    "to",
-    "too",
-  ]);
-  const L = (letter ?? "").toLowerCase();
-  const listed = [...words.map((w) => w.word), extra]
-    .filter((w): w is string => Boolean(w && w.trim()))
-    .map((w) => w.toLowerCase());
-  const phrases = [...new Set(listed.filter((w) => /\s/.test(w)))].sort(
-    (a, b) => b.length - a.length,
+  const listed = [...words.map((w) => w.word), extra].filter(
+    (w): w is string => Boolean(w && w.trim()),
   );
-  const token = phrases.length
-    ? `(${phrases.map(escapeReg).join("|")}|[A-Za-z][A-Za-z'-]*)`
-    : `([A-Za-z][A-Za-z'-]*)`;
-  const parts = text.split(new RegExp(token, "gi"));
-  return parts.map((part, i) => {
-    if (!/^[A-Za-z]/.test(part)) return <span key={i}>{part}</span>;
-    const w = part.toLowerCase();
-    const hit =
-      !skip.has(w) &&
-      (listed.some((lw) => lw === w || w.startsWith(lw) || lw.startsWith(w)) ||
-        phrases.includes(w) ||
-        (L && !/\s/.test(w) && w.startsWith(L)) ||
-        (L === "x" && w.endsWith("x")));
-    if (!hit) return <span key={i}>{part}</span>;
+  return walkStoryHighlights(text, letter ?? "", listed).map((part, i) => {
+    if (!part.hit) return <span key={i}>{part.text}</span>;
     return (
       <span
         key={i}
         className="rounded-md px-0.5 font-extrabold underline decoration-[0.12em] underline-offset-2"
         style={{ color: accent }}
       >
-        {part}
+        {part.text}
       </span>
     );
   });
-}
-
-function escapeReg(s: string) {
-  return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
 function wait(ms: number) {

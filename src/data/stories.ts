@@ -317,7 +317,7 @@ const STORY_BEATS: Record<string, StoryBeat[]> = {
       text: "The newt nodded off in the nest.",
       action: "share",
       scene: "forest",
-      cast: ["newt", "nest"],
+      cast: ["newt", "nodded", "nest"],
     },
   ],
   O: [
