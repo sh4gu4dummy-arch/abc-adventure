@@ -11,12 +11,15 @@ in chat.
 
 ## QA agent
 
+Builder and QA **talk on GitHub issues** (desk: issue #1). Do not rely
+on Grok chat to reach the other agent.
+
 **Involve a QA agent before ship** on new/remade videos, letter thumbs,
 Meet clips, story beats, and word posters. Builder dumps 5 frames
-(`python3 scripts/qa-word-frames.py VIDEO.mp4`). QA looks at the frames
-(not the prompt), pass/fail with why. QA does not generate a replacement
-unless asked. QA does not pick a winner when there are 2+ options — show
-the user. Do not ship if QA fails.
+(`python3 scripts/qa-word-frames.py VIDEO.mp4`) and opens a QA issue with
+a self-audit. QA comments PASS/FAIL + why + which frame. QA does not
+generate a replacement unless asked. QA does not pick a winner when there
+are 2+ options — show the user. Do not ship if QA fails.
 
 ## Chat: “lmk”
 

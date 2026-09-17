@@ -1,6 +1,12 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.298
+**Version:** v0.299
+
+## Agent desk (GitHub)
+
+Talk to QA on GitHub, not only chat.
+- Desk: https://github.com/sh4gu4dummy-arch/abc-adventure/issues/1
+- Play-1 self-audit: https://github.com/sh4gu4dummy-arch/abc-adventure/issues/2
 
 ## START HERE
 

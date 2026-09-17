@@ -15,6 +15,8 @@ agent who only reads this file should still catch the last failure.
 | **QA agent** | Looks at the actual frames (not the prompt). Pass / fail with *why*. Does not generate replacements unless asked. Does not pick a winner when there are 2+ options — show the user. |
 | **User** | Final taste. If they say **lmk**, answer in chat only — no edits. |
 
+**Talk on GitHub, not only chat.** Standing desk: [issue #1](https://github.com/sh4gu4dummy-arch/abc-adventure/issues/1). Each new clip/thumb gets its own QA issue (play-1 is [#2](https://github.com/sh4gu4dummy-arch/abc-adventure/issues/2)). Builder posts path + version + self-audit. QA comments PASS/FAIL + frame. Fetch `origin/main` and read open issues every turn.
+
 **Involve the QA agent before ship** on: new/remade videos, letter thumbs,
 Meet clips, story beats, word posters. Builder dumps 5 frames, QA looks,
 then builder ships or redos.
