@@ -10,6 +10,7 @@ import {
   saveDevStrokes,
   clearDevStrokes,
   copyDevPayload,
+  copyAllDevPayloads,
   type DevStroke,
   type TraceDevTool,
 } from "@/lib/trace-dev";
@@ -913,6 +914,7 @@ export function TracePad({
       cancelled = true;
       window.removeEventListener("resize", onResize);
       if (window.__tracePad?.letter === guideLetter) delete window.__tracePad;
+      saveDevStrokes(guideLetter, devStrokesRef.current);
     };
   }, [guideLetter, setupCanvas]);
 
@@ -1338,12 +1340,31 @@ export function TracePad({
           >
             <Copy className="size-4" /> Confirm
           </button>
+          <button
+            type="button"
+            onClick={() => {
+              persistDev();
+              const { text, copied, count } = copyAllDevPayloads(
+                guideLetter,
+                devStrokesRef.current,
+              );
+              setDevExport(text);
+              setDevMsg(
+                copied
+                  ? `Copied ${count} letter${count === 1 ? "" : "s"}. Paste in chat once.`
+                  : "Clipboard blocked — select the box below and copy.",
+              );
+            }}
+            className="pressable inline-flex min-h-11 items-center gap-1 rounded-[var(--radius-pill)] bg-on-light px-3 text-sm font-bold text-white"
+          >
+            <Copy className="size-4" /> Copy all
+          </button>
         </div>
       )}
       {traceDev && (
         <p className="text-xs font-semibold text-ink-soft">
           {devMsg ??
-            "Dev: Curve = draw the round in one stroke. Select a line + Delete key to remove it."}
+            "Dev: drafts auto-save as you edit. Copy all when you're done, then paste once in chat."}
         </p>
       )}
       {traceDev && devExport && (

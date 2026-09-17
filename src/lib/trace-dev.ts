@@ -102,6 +102,33 @@ function roundPt(p: TracePt): TracePt {
   return [Math.round(p[0] * 1000) / 1000, Math.round(p[1] * 1000) / 1000];
 }
 
+function copyText(text: string): boolean {
+  let copied = false;
+  try {
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    ta.setAttribute("readonly", "");
+    ta.style.position = "fixed";
+    ta.style.top = "0";
+    ta.style.left = "0";
+    ta.style.width = "1px";
+    ta.style.height = "1px";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    ta.setSelectionRange(0, text.length);
+    copied = document.execCommand("copy");
+    document.body.removeChild(ta);
+  } catch {
+    copied = false;
+  }
+  if (!copied && navigator.clipboard?.writeText) {
+    void navigator.clipboard.writeText(text).catch(() => {});
+  }
+  return copied;
+}
+
 export function exportDevPayload(letter: string, strokes: DevStroke[]) {
   const packed = strokes
     .filter((s) => s.pts.length >= 2)
@@ -133,28 +160,37 @@ export function copyDevPayload(letter: string, strokes: DevStroke[]): {
   copied: boolean;
 } {
   const { text } = exportDevPayload(letter, strokes);
-  let copied = false;
-  try {
-    const ta = document.createElement("textarea");
-    ta.value = text;
-    ta.setAttribute("readonly", "");
-    ta.style.position = "fixed";
-    ta.style.top = "0";
-    ta.style.left = "0";
-    ta.style.width = "1px";
-    ta.style.height = "1px";
-    ta.style.opacity = "0";
-    document.body.appendChild(ta);
-    ta.focus();
-    ta.select();
-    ta.setSelectionRange(0, text.length);
-    copied = document.execCommand("copy");
-    document.body.removeChild(ta);
-  } catch {
-    copied = false;
+  return { text, copied: copyText(text) };
+}
+
+function draftLetterOrder(a: string, b: string) {
+  const au = a === a.toUpperCase() ? 0 : 1;
+  const bu = b === b.toUpperCase() ? 0 : 1;
+  if (au !== bu) return au - bu;
+  return a.localeCompare(b);
+}
+
+export function copyAllDevPayloads(
+  currentLetter: string,
+  currentStrokes: DevStroke[],
+): { text: string; copied: boolean; count: number } {
+  saveDevStrokes(currentLetter, currentStrokes);
+  const drafts = readDrafts();
+  const keys = Object.keys(drafts)
+    .filter((k) => (drafts[k] ?? []).some((s) => (s.pts?.length ?? 0) >= 2))
+    .sort(draftLetterOrder);
+  const blocks: string[] = [];
+  const batch: Record<string, { strokes: TraceStroke[]; numT: number[] }> = {};
+  for (const letter of keys) {
+    const { payload, text } = exportDevPayload(letter, drafts[letter] ?? []);
+    batch[letter] = { strokes: payload.strokes, numT: payload.numT };
+    blocks.push(text);
   }
-  if (!copied && navigator.clipboard?.writeText) {
-    void navigator.clipboard.writeText(text).catch(() => {});
-  }
-  return { text, copied };
+  const text = [
+    `TRACE DEV ALL ${keys.join(" ")}`,
+    JSON.stringify(batch),
+    "",
+    ...blocks,
+  ].join("\n\n");
+  return { text, copied: copyText(text), count: keys.length };
 }
