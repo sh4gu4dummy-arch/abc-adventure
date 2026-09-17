@@ -263,8 +263,8 @@ function LetterPage() {
         </div>
       </section>
 
-      <div className="mb-4">
-        <CaseToggle letter={entry.letter} accent={entry.accent} className="mb-3" />
+      <div className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1.5">
+        <CaseToggle letter={entry.letter} accent={entry.accent} compact />
         <LetterCompleteBanner letter={entry.letter} accent={entry.accent} />
       </div>
 

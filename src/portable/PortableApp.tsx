@@ -322,7 +322,9 @@ function LetterView({ entry }: { entry: LetterEntry }) {
           </div>
         </div>
       </section>
-      <CaseToggle letter={entry.letter} accent={entry.accent} className="mb-4" />
+      <div className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1.5">
+        <CaseToggle letter={entry.letter} accent={entry.accent} compact />
+      </div>
 
       <div className="mb-4 flex gap-1 overflow-x-auto pb-1">
         {TABS.map((t) => {

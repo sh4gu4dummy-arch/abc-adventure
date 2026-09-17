@@ -5,10 +5,12 @@ export function CaseToggle({
   letter,
   accent,
   className,
+  compact,
 }: {
   letter?: string;
   accent?: string;
   className?: string;
+  compact?: boolean;
 }) {
   const { mode, setMode } = useCaseMode();
   const L = letter?.toUpperCase() ?? "ABC";
@@ -21,7 +23,7 @@ export function CaseToggle({
 
   return (
     <div
-      className={cn("flex gap-1.5", className)}
+      className={cn("flex gap-1", compact ? "w-auto shrink-0" : "gap-1.5", className)}
       role="tablist"
       aria-label="Big or little letters"
     >
@@ -35,7 +37,10 @@ export function CaseToggle({
             aria-selected={on}
             onClick={() => setMode(opt.id)}
             className={cn(
-              "pressable min-h-11 flex-1 rounded-[var(--radius-pill)] border-2 px-3 text-sm font-bold",
+              "pressable rounded-[var(--radius-pill)] border-2 font-bold",
+              compact
+                ? "min-h-8 px-2.5 text-[11px]"
+                : "min-h-11 flex-1 px-3 text-sm",
               on
                 ? "border-transparent text-white"
                 : "border-border bg-surface text-ink",
