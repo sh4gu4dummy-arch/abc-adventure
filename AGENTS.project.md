@@ -17,6 +17,15 @@ visual): **show them and ask which to keep**. Do not pick a winner and
 ship it. Wait for their pick. Same if two takes look usable.
 
 After every GitHub push, **tell them the version** in chat (v0.112, etc.).
+
+## GitHub: always push
+
+Every product change this turn: **commit and `git push origin main`**. Do
+not leave ABC updates only in the sandbox. Do not ask. Same as before, but
+**all** app updates, not “when we remember.” Version in the chat after.
+
+Do **not** dump Grok sandbox internals (`.grok/skills`, `__pycache__`,
+`attachments/`) unless they are the actual app.
 **Trace:** must cover the **whole letter**, not one stroke (K spine ≠ done).
 Do not drop the cover bar back to ~26%. Spatial cells + ~50% of the glyph.
 
@@ -138,7 +147,8 @@ single-story a, not Comic Neue (too thin/tall) and not Sniglet ExtraBold.
     `.mp4` copy in `public/art-archive` or a `public/review` dump (Publish
     packs everything under `public/`). Restore from GitHub if we change our
     mind. Stills for the Settings art page can stay.
-13. **GitHub:** after every commit, push. Do not ask.
+13. **GitHub:** after every commit, **push origin main**. Do not ask. Do
+    not leave app updates uncommitted. Tell them the version after.
 14. **Ship QA — every remake, before replacing `public/videos`.** Look at
     the clip, not just the thumbnail (dump start / mid / end with
     `python3 scripts/qa-word-frames.py VIDEO.mp4`). If anything is
