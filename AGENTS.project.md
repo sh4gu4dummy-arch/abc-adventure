@@ -101,6 +101,13 @@ ship. Pause and ask: is this *logical* in this cartoon world?
 
 Do not ship a clip that fails any of these. Not “looks mostly ok.”
 
+0. **QA the prompt before you generate.** The 5-frame dump is audit #2.
+   Audit #1 is the prompt. Write the *bans* into Imagine, not only into
+   this file: “ONE key, in the paw, mouth closed, never in a mouth, never
+   a second key hanging on a knob.” Then read the prompt back: if the
+   last failure (eat, clone, reverse, extra limb) isn’t forbidden in
+   those words, don’t hit generate. Self-audit. Don’t hope the model
+   infers “lost” or “hold.”
 1. **Dump 5 frames** (start / 25 / mid / 75 / end) and **look at all five**.
    Thumbnail-only QA is how reverse motion ships.
 2. **Motion vs prompt.** If it should fly/walk/roll one way, compare start
