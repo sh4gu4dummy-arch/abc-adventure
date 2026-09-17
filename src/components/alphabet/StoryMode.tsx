@@ -7,25 +7,26 @@ import { assetUrl } from "@/lib/assets";
 import { LetterWord } from "./LetterWord";
 import { StoryStage } from "./StoryStage";
 import { markSection } from "@/lib/progress";
-import { speak } from "@/lib/speak";
+import { speak, primeAudioFromGesture } from "@/lib/speak";
 import { APP_VERSION } from "@/lib/version";
 import { cn } from "@/lib/utils";
 
-type StoryClipHandle = { play: () => void };
+type StoryClipHandle = { playVideo: () => void };
 
 const StoryClip = forwardRef<
   StoryClipHandle,
-  { video: string; poster: string; accent: string }
->(function StoryClip({ video, poster, accent }, handle) {
+  { video: string; poster: string; accent: string; line: string }
+>(function StoryClip({ video, poster, accent, line }, handle) {
   const ref = useRef<HTMLVideoElement>(null);
   const [live, setLive] = useState(false);
   const posterSrc = `${assetUrl(poster)}?v=${APP_VERSION}`;
   const videoSrc = `${assetUrl(video)}?v=${APP_VERSION}`;
 
-  const play = useCallback(() => {
+  const playVideo = useCallback(() => {
     const v = ref.current;
     if (!v) return;
-    v.muted = true;
+    v.muted = false;
+    v.volume = 0.5;
     v.playsInline = true;
     v.loop = true;
     if (v.getAttribute("src") !== videoSrc) v.src = videoSrc;
@@ -40,7 +41,13 @@ const StoryClip = forwardRef<
       .catch(() => setLive(false));
   }, [videoSrc]);
 
-  useImperativeHandle(handle, () => ({ play }), [play]);
+  useImperativeHandle(handle, () => ({ playVideo }), [playVideo]);
+
+  function playScene() {
+    primeAudioFromGesture(line);
+    playVideo();
+    void speak(line);
+  }
 
   return (
     <div className="story-stage relative overflow-hidden rounded-[var(--radius-lg)] border-2 border-border bg-ink shadow-[var(--shadow-card)]">
@@ -58,7 +65,6 @@ const StoryClip = forwardRef<
         src={videoSrc}
         poster={posterSrc}
         className="absolute inset-0 z-[1] h-full w-full object-cover"
-        muted
         playsInline
         loop
         preload="auto"
@@ -68,7 +74,7 @@ const StoryClip = forwardRef<
       {!live && (
         <button
           type="button"
-          onClick={play}
+          onClick={playScene}
           className="absolute inset-0 z-20 flex items-center justify-center bg-ink/20"
           aria-label="Play scene"
         >
@@ -103,11 +109,12 @@ export function StoryMode({ entry }: { entry: LetterEntry }) {
   const stageKey = `${entry.letter}-${beatIdx}-${playToken}`;
 
   function kickClip() {
-    clipRef.current?.play();
+    clipRef.current?.playVideo();
   }
 
   async function playAll() {
     if (playing) return;
+    primeAudioFromGesture(beats[0]?.text);
     kickClip();
     setPlaying(true);
     setFinished(false);
@@ -125,6 +132,7 @@ export function StoryMode({ entry }: { entry: LetterEntry }) {
 
   async function playBeat(i: number) {
     if (playing) return;
+    primeAudioFromGesture(beats[i]?.text);
     setBeatIdx(i);
     setPlayToken((t) => t + 1);
     kickClip();
@@ -166,6 +174,7 @@ export function StoryMode({ entry }: { entry: LetterEntry }) {
           video={clip.video}
           poster={clip.poster}
           accent={entry.accent}
+          line={beat.text}
         />
       ) : (
         <StoryStage
