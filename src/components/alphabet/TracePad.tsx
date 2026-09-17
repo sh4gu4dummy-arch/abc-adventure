@@ -433,7 +433,7 @@ function drawTraceArrows(
         ctx.fill();
         ctx.stroke();
       }
-      if (picked) {
+      if (opts?.selected === i) {
         const bb = ptsBBox(raw);
         const nw = mapGuide(bb.x0, bb.y0, box, dpr);
         const se = mapGuide(bb.x1, bb.y1, box, dpr);
@@ -1134,7 +1134,8 @@ export function TracePad({
               Math.min(1, Math.max(0, pt[1] + dy * w)),
             ];
           });
-        } else if (drag.kind === "scale" && drag.corner) {
+        }
+      } else if (drag.kind === "scale" && drag.corner) {
         s.pts = scalePts(drag.origin, drag.corner, n);
       } else if (drag.kind === "number") {
         const mapped = smoothStroke(s.pts.map((pt) => mapGuide(pt[0], pt[1], box, dpr)));
