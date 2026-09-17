@@ -1568,4 +1568,10 @@ export const SPEECH_MAP: Record<string, string> = {
   "The airplane landed by the anchor. The astronaut shared the apple with the ant, and the alligator waved goodbye.": "cf84757e5b34ee55.mp3",
   "A bird and a butterfly flew over and grabbed the ball.": "5cfade1445544891.mp3",
   "The bird dropped the ball in the boat. The bear peeled a banana, and they all sat together.": "59d077778f40ffca.mp3",
+  "A cat baked a cake.": "f230bf08daf822e9.mp3",
+  "The cat drove the car under a cloud.": "969339a1051e0061.mp3",
+  "The cat dunked a cookie in a cup.": "5293656514d2f786.mp3",
+  "A dog knocked on the door.": "c81105185b49d53b.mp3",
+  "A duck brought a donut.": "edfb0d0acd9eceb6.mp3",
+  "The dinosaur played the drum.": "23a44b4d59aa5758.mp3",
 };

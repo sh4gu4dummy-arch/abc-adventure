@@ -82,42 +82,42 @@ const STORY_BEATS: Record<string, StoryBeat[]> = {
   ],
   C: [
     {
-      text: "A cat baked a cake in a little car under a fluffy cloud.",
+      text: "A cat baked a cake.",
       action: "share",
       scene: "kitchen",
-      cast: ["cat", "cake", "car", "cloud"],
+      cast: ["cat", "cake"],
     },
     {
-      text: "Then it shared a cookie from a cup.",
+      text: "The cat drove the car under a cloud.",
+      action: "zoom",
+      scene: "sky",
+      cast: ["cat", "car", "cloud"],
+    },
+    {
+      text: "The cat dunked a cookie in a cup.",
       action: "share",
       scene: "kitchen",
       cast: ["cat", "cookie", "cup"],
     },
-    {
-      text: "Cozy and clever!",
-      action: "celebrate",
-      scene: "party",
-      cast: ["cat", "cake", "cookie", "cup"],
-    },
   ],
   D: [
     {
-      text: "A dog and a duck met a gentle dinosaur.",
+      text: "A dog knocked on the door.",
       action: "wave",
-      scene: "garden",
-      cast: ["dog", "duck", "dinosaur"],
+      scene: "home",
+      cast: ["dog", "door"],
     },
     {
-      text: "They shared a donut, danced to a drum, and opened a bright door.",
+      text: "A duck brought a donut.",
+      action: "share",
+      scene: "home",
+      cast: ["duck", "donut"],
+    },
+    {
+      text: "The dinosaur played the drum.",
       action: "dance",
       scene: "home",
-      cast: ["donut", "drum", "door", "dog"],
-    },
-    {
-      text: "Delightful day!",
-      action: "celebrate",
-      scene: "party",
-      cast: ["dog", "duck", "dinosaur", "donut", "drum", "door"],
+      cast: ["dinosaur", "drum"],
     },
   ],
   E: [
