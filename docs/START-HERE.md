@@ -76,7 +76,8 @@ obviously stupid. Cartoon is fine. Dumb is not.
 
 Checklist (glaring only):
 
-- **Talking mouth:** any friend with a line needs a **visible toy mouth on the source still**. Inanimate + no face = FAIL still (astronaut said “I'm Anchor” because the anchor was blank).
+- - **Eat poster → Friends:** drop human eater; add toy mouth on the food. Blank food + line = FAIL still (cookie boy / cake oven arms are word-card props, not Friends cast).
+**Talking mouth:** any friend with a line needs a **visible toy mouth on the source still**. Inanimate + no face = FAIL still (astronaut said “I'm Anchor” because the anchor was blank).
 - **Color lock:** letter same hue in 01 and 05. Darkening over the video = fail.
 - **Cast lock (Friends):** letter + each named friend **identifiable** in all 5 frames (silhouette OK). Missing at **05-end** = fail. Hide-then-clone = fail. Count every still. Plane majority-in-frame. Apple smile OK, **no limbs**. Method B: cast-lock source still + each clip end before concat.
 - Motion matches the beat (plane **forward**, not reverse; feet **travel**, not treadmill; zigzag **on the path**)
@@ -126,7 +127,7 @@ B I2V prompts: `docs/b-i2v-prompts.md`. B stills #5. C stills #6.
 - **Big B** `docs/audit/b-play-2/` — still **PASS (soft scarf)**. Film pending Ash go. `#5`
 - **little b** `docs/audit/b-little-play-1/` — still **PASS (soft feet)**. Film pending Ash go. `#5`
 - **Big C** `docs/audit/c-play-1/` — still **FAIL** cake/car look-lock vs posters. Rebuild I2I. `#6`
-- **little c** `docs/audit/c-little-play-1/` — still **FAIL** (live human). Rebuild letter+cloud+cookie+cup only. `#6`
+- **little c** `docs/audit/c-little-play-1/` — still **FAIL** (live human). Rebuild letter+cloud+cookie+cup only; cookie from `c-cookie.webp` **without boy** + **toy smile**. `#6`
 
 No I2V on FAILs. Builder owns C remakes; QA again when one-path stills land.
 

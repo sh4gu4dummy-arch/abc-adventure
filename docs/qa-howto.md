@@ -19,6 +19,18 @@ Builder posts the **source still** on the issue. You PASS/FAIL the still
 - Cast-name match alone is **not** a PASS. **Glyph/crease-only PASS is banned.**
 - Pipeline: I2I/edit from product images first.
 
+### Eat posters → Friends stills (hard)
+
+Word-lesson **eat** posters may show a **human eater** + **face-blank food**.
+
+Friends I2I from those posters:
+1. **Drop the human** — not Friends cast (same class as cake-poster oven-mitt arms).
+2. **Add a toy face/mouth on the food** so it can speak.
+
+Face-blank food + spoken line = **FAIL still** (same class as blank Anchor).
+Product-scene people/arms are props for the word card, not Friends cast.
+
+
 ### Evidence (required in STILL-QA / README)
 
 Paste the Meet/letter path + each friend poster path that was opened. Checklist

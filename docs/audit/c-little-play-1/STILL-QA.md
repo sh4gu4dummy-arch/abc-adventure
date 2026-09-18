@@ -23,3 +23,12 @@ Trio = last-3: Cloud / Cookie / Cup.
 | little c brown hair-fluff vs Meet | soft on remake |
 
 Do **not** I2V. Rebuild: letter + cloud + cookie + cup **only** (no humans). One confirmed path.
+
+## Remake notes (locked)
+
+Rebuild = letter + **cloud + cookie + cup** only (no humans).
+
+- Cookie: I2I from `public/posters/c-cookie.webp` — **exclude the eater**; cookie **must have a toy smile** for dialogue.
+- Cloud / cup: toy mouths as needed for their lines.
+- Face-blank cookie + spoken line = FAIL still (Anchor class).
+

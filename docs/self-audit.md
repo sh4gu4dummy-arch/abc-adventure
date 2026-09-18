@@ -12,6 +12,11 @@ a nicety.
 
 ## Friends still procedure (every letter)
 
+**Eat posters → Friends:** If the word card shows a human eating face-blank food,
+I2I **drops the human** and **adds a toy smile** on the food. Blank food + line = FAIL still.
+Oven-mitt arms / cookie eater = product-scene only, not Friends cast.
+
+
 Do this **before** I2V. Skipping it is how we shipped a random orange ball.
 
 1. Trio = `wordsForCase` (Big first-3 / little last-3).
