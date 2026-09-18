@@ -36,6 +36,7 @@ then builder ships or redos.
 - Batch B–Z (or 26 Meet plays) until they approve the trial.
 - Push `.grok/`, `attachments/`, platform `AGENTS.md`. GitHub is the kids app.
 - Invent a hyper-specific law from one miss. General lesson only.
+- Drop **new** playable mp4s in `public/videos/**`. Vite `watch.ignored` that glob, so **new files 404** until a restart we must not do. Stories → `public/story-clips/`. Friends → `public/friends-clips/`. After write: `curl -sI` that URL; not 200 = not shipped.
 
 ## Always
 

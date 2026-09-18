@@ -49,9 +49,14 @@ home tile.
 7. If you found a new miss: add a **general** gate to START-HERE + this
    file + qa-howto. Do not invent a one-off law from one pixel.
 
-Encode: concat four 6s → ~24s, 480×720, AAC. Put the file in
-`public/friends-clips/` (not `public/videos/`). Preview 404s new files
-under `videos/**` until a restart we must not do.
+8. **HTTP 200** on the URL the app will request (from this sandbox):
+   `curl -sI --max-time 5 http://127.0.0.1:8080/<path>`. SPA HTML 404 =
+   file is on disk but **not served**. Move it to `public/friends-clips/`
+   or `public/story-clips/`. Do **not** restart vite. Do **not** tell the
+   teacher it plays.
+
+Encode: concat four 6s → ~24s, 480×720, AAC. Friends files:
+`public/friends-clips/` (not `public/videos/`).
 
 Do not overwrite the only copy. Do not claim PASS because QA hasn’t
 replied yet.
