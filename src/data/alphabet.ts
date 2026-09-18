@@ -614,6 +614,7 @@ const FRIENDS_UPPER: Partial<Record<string, string[]>> = {
   k: ["friends-clips/k-play-1.mp4"],
   l: ["friends-clips/l-play-1.mp4"],
   m: ["friends-clips/m-play-1.mp4"],
+  n: ["friends-clips/n-play-1.mp4"],
 };
 const FRIENDS_LOWER: Partial<Record<string, string[]>> = {
   a: ["friends-clips/a-little-play-2.mp4"],
@@ -628,6 +629,8 @@ const FRIENDS_LOWER: Partial<Record<string, string[]>> = {
   j: ["friends-clips/j-little-play-1.mp4"],
   k: ["friends-clips/k-little-play-1.mp4"],
   l: ["friends-clips/l-little-play-1.mp4"],
+  m: ["friends-clips/m-little-play-1.mp4"],
+  n: ["friends-clips/n-little-play-1.mp4"],
 };
 
 export function letterMeetPlaylist(letter: string, kind: CaseKind = "upper"): string[] {

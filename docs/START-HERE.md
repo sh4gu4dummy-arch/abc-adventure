@@ -188,6 +188,8 @@ Quality + creativity > rigid adherence (**all projects**, v0.347): if a rule hur
 ### Meet-asset debt · queued
 Little Meets that are Big-shaped (product bug — Friends cannot lock a lying Meet glyph): **p, s, v, w, x, z** (and review). See [`docs/meet-asset-debt.md`](meet-asset-debt.md). Queued Meet remakes — not shoot-now.
 
+**v0.355** H–N Friends films complete (little m, N, n). O–Z PASS still remaining (skip V + little s).
+
 **v0.354** Also filmed L, l, M.
 
 **v0.353** Also filmed little j, K, k.
