@@ -168,7 +168,7 @@ Plan ref: `docs/hn-friends-stills.md`.
 - Remakes postponed unless Ash goes.
 - **No I2V on FAILs.**
 
-B films still FAIL (voices + prior tug). E/F/f/G/g + remade C/D/e/b stills PASS — film only on go.
+**v0.343** little c + Big D films for listen. Remade little-k / little-l stills. Pushed O–Z stills. Purged blob Big Z (home tile + Meet clip). E–N films next. B remakes next.
 
 ## Plans (remind, don’t start unless they say)
 
