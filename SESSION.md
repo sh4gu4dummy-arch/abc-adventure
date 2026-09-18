@@ -1,11 +1,12 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.313
+**Version:** v0.314
 
 
 ## A Meets Friends take 2
 
 Teacher **PASS for now**. Seek/scrubber on Meet + Friends. Issue #3.
+Next: little a plan `docs/a-meets-friends-little-a-plan.md` (cast lock, more foley). No shoot until go.
 
 Meet A = intro only. **A MEETS FRIENDS** = play-1 (apple/ant/plane), own button on Big A.
 Play-1 audio loudnormed (−55 dB → mean −17.8 / max −1.0). Picture unchanged.

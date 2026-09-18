@@ -54,6 +54,7 @@ obviously stupid. Cartoon is fine. Dumb is not.
 
 Checklist (glaring only):
 
+- **Cast lock (Friends):** letter + each named friend **visible in all 5 frames**. Missing at **05-end** = fail. Hide-then-clone (apple behind A, then a new apple) = fail.
 - Motion matches the beat (plane **forward**, not reverse; feet **travel**, not treadmill; zigzag **on the path**)
 - The thing is the thing (sun has rays, Q has a tail + hole, cloud is a puff not a ball)
 - Count: ONE of each prop/limb. Extra crayon tip, extra banana, extra gator = fail
@@ -75,13 +76,18 @@ blocky background unlike the set.
 
 ## Meet A play / Friends
 
-Take 2 **PASS for now** (teacher). `a-play-1.mp4` ~24s, method B.  
-Meet/Friends have a **seek bar** (scrubber) like word videos. Issue #3.
+Big A take 2 **PASS for now** (teacher). Keep scenery; next rounds: **cast lock**
+(everyone on screen the whole time, no vanish-end, no eclipse-clone apple),
+**more exciting foley**. Seek bar shipped.
+
+**Next plan (QA, no shoot):** little **a meets friends** —
+`docs/a-meets-friends-little-a-plan.md`
 
 ## Plans (remind, don’t start unless they say)
 
 | Ask | File / section |
 |---|---|
+| little a meets friends | `docs/a-meets-friends-little-a-plan.md` |
 | A Meets Friends take 2 (speech) | `docs/a-meets-friends-play-1-take2-plan.md` |
 | A Meets Friends play-1 remake | `docs/a-meets-friends-play-1-remake.md` |
 | Meet A plays with words (old) | `docs/meet-a-play-plan.md` |

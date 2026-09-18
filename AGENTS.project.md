@@ -9,13 +9,18 @@ When the user corrects a clip, **add the lesson here** (and in
 `src/data/word-lessons.ts` RULES) in the same change. Do not only remember it
 in chat.
 
-## Friends clips: true nature
+## Friends clips: true nature + cast lock
 
-Every letter and word in **Meets Friends** (and later word play) must
-show a **true job** of that thing: ant **crawls**, airplane **flies
-forward**, apple is **fruit** that rolls, anchor **sinks and stays**,
-etc. Cartoon style OK. Wrong physics / morph / extra limbs = fail.
-Plan: `docs/a-meets-friends-play-1-remake.md`.
+Every letter and word in **Meets Friends** must show a **true job**
+(ant crawls, plane flies forward, apple rolls).
+
+**Cast lock (Ash, after Big A take 2):** the letter and every named
+friend stay **visible the whole clip**. 05-end still has the hero.
+Do not cover a prop completely then spawn a second one (apple behind A
+→ new apple). Scenery quality was good — keep it. Sound: more exciting
+play foley, not beeps.
+
+Little a plan: `docs/a-meets-friends-little-a-plan.md`.
 
 ## QA agent
 
