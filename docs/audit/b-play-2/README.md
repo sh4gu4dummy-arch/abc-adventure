@@ -1,12 +1,7 @@
-# Big B Friends — confirmed still (one)
+# Big B Friends take 2 — for listen (not a PASS)
 
-**Path:** `docs/audit/b-play-2/00-source-still.jpg`
+`public/friends-clips/b-play-2.mp4` · ~24s · 480×720 · HTTP 200  
+mean **−20.7** / max **−3.2**
 
-Refs opened:
-- Meet: `docs/audit/b-play-2/meet-b-01.jpg` (not orange home tile)
-- `public/posters/b-ball.webp`
-- `public/posters/b-bear.webp`
-- `public/posters/b-butterfly.webp`
-
-Builder: red/white/blue ball, scarf bear, rainbow butterfly, wide, count 1.
-No I2V until QA PASS + go.
+Product still lock. Wide camera. One ball. Scarf bear. Hero in 05-end.
+Must listen: I'm Big B / I'm Ball / I'm Bear / I'm Butterfly.

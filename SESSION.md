@@ -1,14 +1,13 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.336
+**Version:** v0.337
 
 ## A Meets Friends
 
 Big A take 2 PASS-for-now. **little a take 1 FAIL** (inventory kept).
 **Take 2** listen: anchor line failed (no face). Keep take 2; do not remake A.
-Notes: Friend look lock. Locations vary. Chat: image in thread, not repo
-links. little b boat still. C stills. B I2V prompts `docs/b-i2v-prompts.md`.
-No film. Issue #5 / C stills.
+Notes: Big B take 2 + little b boat **in app** for listen. C stills remade
+(no film). Issues #5 / #6.
 
 Meet A = intro only. **A MEETS FRIENDS** = play-1 (apple/ant/plane), own button on Big A.
 

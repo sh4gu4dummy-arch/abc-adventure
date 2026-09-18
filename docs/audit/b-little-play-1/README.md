@@ -1,12 +1,7 @@
-# little b Friends — confirmed still (one)
+# little b Friends take 1 — boat — for listen (not a PASS)
 
-**Path:** `docs/audit/b-little-play-1/00-source-still.jpg`
+`public/friends-clips/b-little-play-1.mp4` · ~24s · 480×720 · HTTP 200  
+mean **−20.7** / max **−3.2**
 
-Refs opened:
-- Meet: `docs/audit/b-little-play-1/meet-little-b-01.jpg`
-- `public/posters/b-banana.webp`
-- `public/posters/b-boat.webp`
-- `public/posters/b-bird.webp`
-
-Builder: lowercase b, yellow banana+face, red tugboat+face, blue bird.
-Wide. Count 1. No I2V until QA PASS + go.
+Cast on the tugboat. Wide. One boat/banana/bird/b.
+Must listen: I'm little b / I'm Banana / I'm Boat / I'm Bird.

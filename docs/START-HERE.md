@@ -114,12 +114,13 @@ street, picnic, etc. Match the friends.
 **Chat stills:** Grok blocks repo file links. The image in the thread is
 what Ash sees. Also print the git path as plain text for QA.
 
-**Confirmed stills (no I2V until QA + go)**
-- Big B: `docs/audit/b-play-2/00-source-still.jpg` (Ash: right characters)
-- little b: `docs/audit/b-little-play-1/00-source-still.jpg` (boat on water)
-- Big C: `docs/audit/c-play-1/00-source-still.jpg` (street)
-- little c: `docs/audit/c-little-play-1/00-source-still.jpg` (picnic)
-B I2V prompts: `docs/b-i2v-prompts.md`. B stills #5. C stills #6.
+**Big B Friends take 2 in app** (`friends-clips/b-play-2.mp4`) — listen not passed.
+**little b Friends take 1 in app** (`friends-clips/b-little-play-1.mp4`) — boat; listen not passed.
+Take 1 crease inventory kept (`b-play-1.mp4`).
+
+**C stills remade** (no I2V): cake/car look-lock; little c no human, toy-mouth cookie.
+`docs/audit/c-play-1/00-source-still.jpg` · `docs/audit/c-little-play-1/00-source-still.jpg`
+Issue #5 / #6.
 
 
 ## Friends stills status (v0.335)

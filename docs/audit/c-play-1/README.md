@@ -1,6 +1,5 @@
-# Big C Friends — confirmed still (one)
+# Big C Friends — remake still (QA)
 
-**Path:** `docs/audit/c-play-1/00-source-still.jpg`
-
-Street (not empty grass). Meet C + `c-cat.webp` / `c-cake.webp` / `c-car.webp`.
-No I2V until QA PASS + go.
+`docs/audit/c-play-1/00-source-still.jpg`  
+Sky-blue Beetle, chocolate cake+face, tabby, street, **no people**.
+No I2V until PASS.
