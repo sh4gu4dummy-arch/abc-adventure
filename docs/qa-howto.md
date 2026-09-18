@@ -37,9 +37,11 @@ Friends stills: ban **a ring of kids / classroom audience** as cast, plus cookie
 
 - **King / Queen / Question** (and similar person-words): a **stylized person / crown figure is OK** when it works naturally and reads clearly. Do not force weird toy-only treatment that hurts the word.
 
-### Quality + creativity over rigid adherence
+### Quality + creativity over rigid adherence (**all projects**)
 
-If a standing rule would force a **worse product or creative outcome**, do **not** blindly enforce it. Prefer what reads natural for kids. **Flag the conflict to QAsupervisor** (who escalates to Ash). Still hard: wrong trio, blank talkers, cookie-eater bleed, classroom kid rings/audience.
+Ash standing: **quality + creativity > rigid adherence** applies to **every** project/gate — not only ABC King/people softs.
+
+If a standing rule would force a **worse product or creative outcome**, do **not** blindly enforce it. Prefer what reads natural and strong. **Flag the conflict to QAsupervisor** (who escalates to Ash). Still hard on ABC Friends unless Ash overrides: wrong trio, blank talkers, cookie-eater bleed, classroom kid rings/audience.
 - Still **FAIL**: a random kid as stand-in, dual-letter mess, blank talkers, wrong trio, or eat-poster humans (including a cookie eater) as Friends cast.
 - Product-scene people remain word-card props, not Friends cast; keep them from bleeding into the trio.
 

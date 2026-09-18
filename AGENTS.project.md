@@ -328,3 +328,7 @@ not the leaves.
 - Fix that clip.
 - Write a **general** one-line rule here (not a play-by-play of that one clip).
 - Bump version + git commit.
+
+## Quality + creativity > rigid adherence (all projects)
+
+If a standing rule would force a worse product or creative outcome, do not blindly enforce it. Flag the conflict to QAsupervisor (escalates to Ash). Applies beyond ABC Friends King/people softs.
