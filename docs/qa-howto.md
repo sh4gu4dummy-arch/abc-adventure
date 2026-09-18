@@ -31,13 +31,13 @@ Face-blank food + spoken line = **FAIL still** (same class as blank Anchor).
 Product-scene people/arms are props for the word card, not Friends cast.
 
 
-### Standing ban — kids audience / live royalty (hard)
+### Standing ban — kids audience / person-word flexibility (hard)
 
-Friends stills: **no ring of kids / classroom audience / live royalty** as cast.
+Friends stills: ban **a ring of kids / classroom audience** as cast, plus cookie-eater bleed from an eat poster into Friends.
 
-- **King / Queen / Question** (and similar royal or “person” word friends) = **toys only**.
-- Poster humans (eat-poster class, kid rings, live kings/queens) **≠ Friends cast** — drop humans; productize as toy talkers.
-- Same class as eat-poster: human eater / audience kids fail the still even if the trio props are present.
+- **King / Queen / Question** (and similar person-words): a **stylized person / crown figure is OK** when it works naturally and reads clearly. Do not force weird toy-only treatment that hurts the word.
+- Still **FAIL**: a random kid as stand-in, dual-letter mess, blank talkers, wrong trio, or eat-poster humans (including a cookie eater) as Friends cast.
+- Product-scene people remain word-card props, not Friends cast; keep them from bleeding into the trio.
 
 
 
@@ -160,7 +160,7 @@ ABC-flavored (also see START-HERE):
 - **Method B:** source still cast-locks before I2V; each clip **05-end**
   cast+count==1 before concat (no frame-lock poison).
 - Beat / virtue readable by **mid** still when the plan says so — not only at the end.
-- No humans, silhouettes, crowds, readable letters, logos (unless the plan allows a specific prop).
+- No incidental humans, silhouettes, or crowds; no ring of kids / classroom audience. A natural, readable stylized person / crown figure is allowed when it is the named person-word Friend. No readable letters or logos unless the plan allows a specific prop.
 - Face readable through the last second; hero does not exit / crop out.
 - Motion: travel not treadmill; plane **forward**; state-change one-way.
 - Size: Meet clips **480×720** unless the plan says otherwise.

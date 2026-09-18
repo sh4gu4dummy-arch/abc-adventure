@@ -1,6 +1,14 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.344
+**Version:** v0.345
+
+## v0.345 — QA follow-up (ABC-Adventure-Bot1)
+
+Docs only. No I2V. No Ash messaging.
+- Softened the Friends rule: ban ring-of-kids / classroom audiences and cookie-eater bleed, not all person-shaped friends.
+- King/Queen/Question may be a natural, readable stylized person / crown figure; do not force toy-only.
+- little-k remains **FAIL** for the current human-boy-as-King; rebuild notes allow stylized King and reject random kid / dual-letter mess.
+- Issues #8 and #9 commented with the softened rule.
 
 ## v0.344 — QA ship (ABC-Adventure-Bot1)
 

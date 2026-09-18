@@ -17,9 +17,12 @@ I2I **drops the human** and **adds a toy smile** on the food. Blank food + line 
 Oven-mitt arms / cookie eater = product-scene only, not Friends cast.
 
 
-**Standing ban — kids audience / live royalty:** no ring of kids / classroom
-audience / live royalty on Friends stills. **King / Queen / Question** (and
-similar) = **toys only**. Poster humans ≠ Friends cast (eat-poster class).
+**Standing ban — kids audience / person-word flexibility:** no ring of kids /
+classroom audience on Friends stills, and no cookie-eater bleed into Friends.
+**King / Queen / Question** (and similar person-words) may use a **stylized
+person / crown figure** when natural and readable; do not force weird toy-only
+treatment. Still FAIL a random kid as stand-in, dual-letter mess, blank talkers,
+wrong trio, or eat-poster humans as Friends cast.
 
 
 

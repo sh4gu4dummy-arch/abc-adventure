@@ -121,7 +121,7 @@ Take 1 crease inventory kept (`b-play-1.mp4`).
 **D–G + H–N Friends stills (no I2V):** tables in Friends status below · [#7](https://github.com/sh4gu4dummy-arch/abc-adventure/issues/7) · [#8](https://github.com/sh4gu4dummy-arch/abc-adventure/issues/8).
 
 
-## Friends stills / film status (v0.344)
+## Friends stills / film status (v0.345)
 
 ### B · `#5`
 - **Big B take 2 film** — still **FAIL** attribution+cast (`docs/audit/b-play-2/QA.md`).
@@ -171,10 +171,10 @@ Plan: `docs/oz-friends-stills.md`.
 | **PASS / PASS soft** | o, o-little (soft), p, p-little (soft), q-little (soft), r, r-little (soft), t, t-little, w, w-little (soft), x (soft), x-little (soft), z (soft) |
 | **FAIL** (rebuild queued) | q, s, s-little, u, u-little, v, v-little, y, y-little, z-little |
 
-Standing ban (v0.344): no ring of kids / classroom audience / live royalty on Friends stills. King/Queen/Question = toys only; poster humans ≠ Friends cast.
+Standing ban (v0.345): no ring of kids / classroom audience on Friends stills, and no cookie-eater bleed into Friends. King/Queen/Question may be a stylized person / crown figure when natural and readable; do not force toy-only. Random kid stand-ins, dual-letter mess, blank talkers, wrong trio, and eat-poster humans as Friends cast still FAIL.
 
 ### Rebuild inventory **QUEUED** (not shoot-now)
-- **little-k still** — toy/crown King only (no live human)
+- **little-k still** — rebuild may use a stylized king-person / crown figure when natural and readable; FAIL random kid stand-in or dual-letter mess (current human-boy-as-King remains FAIL)
 - **O–Z hard FAILs** — q / s / s-little / u / u-little / v / v-little / y / y-little / z-little
 - **Film HOLDs (later):** little-c (loudness + attribution); Big D (attribution); also little-d attribution
 - Remakes postponed unless Ash goes.
@@ -183,7 +183,7 @@ Standing ban (v0.344): no ring of kids / classroom audience / live royalty on Fr
 ### Meet-asset debt · queued
 Little Meets that are Big-shaped (product bug — Friends cannot lock a lying Meet glyph): **p, s, v, w, x, z** (and review). See [`docs/meet-asset-debt.md`](meet-asset-debt.md). Queued Meet remakes — not shoot-now.
 
-**v0.344** QA ship: O–Z stills; little-l PASS; little-k FAIL; film HOLDs little-c + Big D; Meet debt + kids-audience ban. Docs only. No I2V. No Ash.
+**v0.345** QA follow-up: soften the King/person-word rule; ban is kid rings/classroom audience, not all person-shaped Friends. Little-k remains FAIL pending rebuild. Docs only. No I2V. No Ash.
 
 ## Plans (remind, don’t start unless they say)
 
