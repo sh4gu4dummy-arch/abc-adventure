@@ -1,10 +1,10 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.303
+**Version:** v0.304
 
 ## Play-1 debate closure
 
-`docs/audit/a-play-1/QA-REPLY.md` — FAIL (brief) / PASS (anatomy). No play-2 until teacher go. Loudness standing −32…−20; &lt;−40 hard quiet.
+`docs/audit/a-play-1/QA-REPLY.md` — FAIL (brief) / PASS (anatomy). Teacher tied: keep as trial inventory; no remake campaign now. No play-2 until go. Next shoots must clear action + loudness. Loudness standing −32…−20; &lt;−40 hard quiet.
 
 ## QA playbook + play-1 audit
 

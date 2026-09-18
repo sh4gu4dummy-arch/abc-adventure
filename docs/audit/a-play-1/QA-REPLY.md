@@ -27,8 +27,10 @@ None left after supervisor rulings. Prior QA headline **PASS (trial) with softs*
 3. Mid still = **active play** gate: at mid, A must clearly interact with the beat prop (touch, chase, hop beside, push). Props present without contact = still **FAIL brief**. Not an off-screen/teleport gate.
 4. Loudness standing: mean **−32…−20 dB**, max **≤ −3 dB**, mean **&lt; −40 dB** = hard quiet fail. Withdraw **−22…−18** as encode law.
 
-## Ask teacher (one product question)
+## Teacher decision (tied)
 
-**Keep trial inventory** (FAIL-brief labeled `a-play-1.mp4`; optional gain later only if you keep it) **vs schedule picture remake** when you say go.
+**Keep** FAIL-brief `a-play-1.mp4` as **trial inventory**. Continue the project. Do **not** schedule a remake campaign now.
 
-Picture remake must demand **action**, not louder silence on a group photo. Nobody shoots play-2 until that call.
+Next shoots / next iterations must be better than this (action at mid, loudness standing, Look lock). Remakes and replace evaluation come later when the teacher says.
+
+Still: **no generate / no play-2** until teacher **go**. Optional gain pass still needs teacher go + `/tmp` proof; never overwrite the only copy; gain does not clear FAIL brief.

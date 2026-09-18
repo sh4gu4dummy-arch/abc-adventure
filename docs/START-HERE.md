@@ -82,7 +82,7 @@ A runs around and plays with page words. Two 10s per case.
 1. apple, ant, airplane  
 2. alligator, astronaut, anchor  
 
-QA that plan’s shot list + `docs/qa-howto.md`. **Big A play-1 is in Meet** (intro → play-1). Independent QA: `docs/audit/a-play-1/QA.md` + `QA-REPLY.md` (**FAIL brief / PASS anatomy**). Wait for teacher before play-2 / little a. Match shipped Meet video A (oval eyes on legs, smile in fork, blank crossbar, nub feet OK). Clips are **480×720**.
+QA that plan’s shot list + `docs/qa-howto.md`. **Big A play-1 is in Meet** (intro → play-1). Independent QA: `docs/audit/a-play-1/QA.md` + `QA-REPLY.md` (**FAIL brief / PASS anatomy**). Teacher tied: **keep** as trial inventory (no remake campaign now). Wait for **go** before play-2 / little a; next shoots must clear action + loudness gates. Match shipped Meet video A (oval eyes on legs, smile in fork, blank crossbar, nub feet OK). Clips are **480×720**.
 
 ## Plans (remind, don’t start unless they say)
 

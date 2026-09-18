@@ -1,6 +1,6 @@
 # Meet A play-with-words plan
 
-Saved 2026-09-17. Big A **play-1 is shot** (`videos/imagine/a-play-1.mp4`). Wait for their review before play-2 / little a.
+Saved 2026-09-17. Big A **play-1 is shot** (`videos/imagine/a-play-1.mp4`) — **FAIL brief / PASS anatomy**, kept as **trial inventory** (no remake campaign now). Wait for teacher **go** before play-2 / little a. Next takes must clear mid-still action + loudness standing.
 
 ## Goal
 
