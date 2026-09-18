@@ -1,7 +1,7 @@
-# Still QA — Big S Friends
+# Still QA — Big S Friends (remake)
 
 **Still:** `docs/audit/s-play-1/00-source-still.jpg`  
-**Issue:** #9 · **v0.344**
+**Issue:** #9 · **v0.350**
 
 ## Paths opened (required)
 
@@ -12,15 +12,14 @@ Star:        public/posters/s-star.webp
 Snake:       public/posters/s-snake.webp
 ```
 
-Trio = first-3: Sun / Star / Snake. Sunny hill.
+Trio = first-3: Sun / Star / Snake.
 
-## Verdict: **FAIL**
+## Verdict: **PASS**
 
 | Check | Gate |
 |---|---|
-| Trio Sun/Star/Snake present | yes |
-| **Humans-as-cast** | **FAIL** — **six human children** ring the hill |
+| Trio Sun/Star/Snake mouthed | **PASS** |
+| Big S | **PASS** |
+| Humans / kid ring | **PASS** — **no kids** |
 
-## Rebuild (queued — not shoot-now)
-
-Rebuild without kids / classroom audience / ring of kids. Do **not** I2V.
+Do **not** I2V until teacher **go**. Prior FAIL: `FAIL-kids.jpg`.

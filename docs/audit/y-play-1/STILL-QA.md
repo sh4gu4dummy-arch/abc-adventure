@@ -1,7 +1,7 @@
-# Still QA — Big Y Friends
+# Still QA — Big Y Friends (remake)
 
 **Still:** `docs/audit/y-play-1/00-source-still.jpg`  
-**Issue:** #9 · **v0.344**
+**Issue:** #9 · **v0.350**
 
 ## Paths opened (required)
 
@@ -12,15 +12,14 @@ Yellow:      public/posters/y-yellow.webp
 Yak:         public/posters/y-yak.webp
 ```
 
-Trio = first-3: Yo-yo / Yellow / Yak. Mountain meadow.
+Trio = first-3: Yo-yo / Yellow / Yak.
 
-## Verdict: **FAIL**
+## Verdict: **PASS**
 
 | Check | Gate |
 |---|---|
-| Yo-yo + Yak present | yes |
-| **Yellow** | **FAIL** — missing as cast (only yellow paint splat on yak); poster strip shows Yellow as paint/sun product |
+| Yo-yo | **PASS** — mouthed |
+| **Yellow** | **PASS** — yellow goo cast mouthed (prior miss cleared) |
+| Yak | **PASS** |
 
-## Rebuild (queued — not shoot-now)
-
-Yo-yo / mouthed **Yellow** friend / Yak. Do **not** I2V.
+Do **not** I2V until teacher **go**. Prior FAIL: `FAIL-no-yellow.jpg`.

@@ -26,14 +26,18 @@ person / crown figure** when natural and readable; do not force weird toy-only
 treatment. Still FAIL a random kid as stand-in, dual-letter mess, blank talkers,
 wrong trio, or eat-poster humans as Friends cast.
 
+**Real-language signs (soft):** prefer no English shop/street signs on Friends
+stills (Ash cinema). Soft only — do not FAIL King for “KIM'S KITCHEN”; flag soft.
+
 
 
 Do this **before** I2V. Skipping it is how we shipped a random orange ball.
 
 1. Trio = `wordsForCase` (Big first-3 / little last-3).
-2. Glyph of record = **home tile** `public/letters/{l}.webp` (or `-little`).
+2. Glyph of record = **home tile** `public/letters/{l}.webp` (or `-little`) — **hard**.
    Then Meet 01 of this case. **If Meet ≠ home tile, remake Meet first.**
-   Do not I2I Friends from a stale Meet (fat-U / lump-Z came back that way).
+   Friends I2I locks **home** when Meet drifted — do not I2I from a stale Meet
+   (fat-U / lump-Z / hole-Q came back that way).
    Then the **three product posters**
    `public/posters/{l}-{slug}.webp` (or `posters-scene/` if that is the word
    card — document which set).

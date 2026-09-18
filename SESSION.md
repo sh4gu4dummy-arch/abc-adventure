@@ -1,6 +1,15 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.349
+**Version:** v0.350
+
+## v0.350 — QA ship (ABC-Adventure-Bot1)
+
+Docs only. No I2V. No Ash messaging.
+- Remake stills **PASS**: k-little (soft adult King; Kitchen English soft), q, s, u (+home-tile even-width), u-little, v-little, y, y-little, z-little.
+- **FAIL** rebuild queued: v-play blank Violin; s-little Sun≠Smile.
+- Big E film **HOLD/FAIL cast** (E gone end; Earth gone mid; tech+listen PASS). Frames in `docs/audit/e-play-1/`.
+- SOP: home tile = glyph of record hard; real-language signs soft.
+- Issues #7 #8 #9 commented.
 
 ## v0.342 — QA ship (ABC-Adventure-Bot1)
 

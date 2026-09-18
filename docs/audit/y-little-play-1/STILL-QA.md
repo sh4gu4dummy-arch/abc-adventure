@@ -1,7 +1,7 @@
-# Still QA — little y Friends
+# Still QA — little y Friends (remake)
 
 **Still:** `docs/audit/y-little-play-1/00-source-still.jpg`  
-**Issue:** #9 · **v0.344**
+**Issue:** #9 · **v0.350**
 
 ## Paths opened (required)
 
@@ -12,15 +12,14 @@ Yacht:       public/posters/y-yacht.webp
 Yogurt:      public/posters/y-yogurt.webp
 ```
 
-Trio = last-3: Yarn / Yacht / Yogurt. Harbor table.
+Trio = last-3: Yarn / Yacht / Yogurt.
 
-## Verdict: **FAIL**
+## Verdict: **PASS**
 
 | Check | Gate |
 |---|---|
-| Yarn/Yacht/Yogurt mouthed | OK |
-| **Wrong-case vs Meet** | **FAIL** — Meet-little-y is **lowercase y** (descender); still hero is **uppercase Y** |
+| Glyph vs Meet | **PASS** — little-**y** with descender locks Meet |
+| Yarn / Yacht / Yogurt | **PASS** — all mouthed |
+| Humans | **PASS** — none |
 
-## Rebuild (queued — not shoot-now)
-
-Lock glyph to Meet little-y (descender) + Yarn/Yacht/Yogurt. Do **not** I2V.
+Do **not** I2V until teacher **go**. Prior FAIL: `FAIL-capital-Y.jpg`.

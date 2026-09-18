@@ -1,7 +1,7 @@
-# Still QA — Big Q Friends
+# Still QA — Big Q Friends (remake)
 
 **Still:** `docs/audit/q-play-1/00-source-still.jpg`  
-**Issue:** #9 · **v0.344**
+**Issue:** #9 · **v0.350**
 
 ## Paths opened (required)
 
@@ -12,17 +12,16 @@ Quilt:       public/posters/q-quilt.webp
 Question:    public/posters/q-question.webp
 ```
 
-Trio = first-3: Queen / Quilt / Question. Castle bedroom.
+Trio = first-3: Queen / Quilt / Question.
 
-## Verdict: **FAIL**
+## Verdict: **PASS**
 
 | Check | Gate |
 |---|---|
-| Humans-as-cast | **FAIL** — princess + 2 boys |
-| Hero Q face | **FAIL** — Q face-blank vs Meet-q (bead eyes + smile) |
-| Quilt | face on fabric only |
-| Question | boy holding “?” — not toy talker |
+| Humans-as-cast | **PASS** — no humans |
+| Hero Q face | **PASS** — Meet-Q bead face on letter |
+| Queen | **PASS** — stylized doll/crown figure (OK under King soft) |
+| Quilt | **PASS** — face on fabric |
+| Question | **PASS** — question-mark toy mouthed |
 
-## Rebuild (queued — not shoot-now)
-
-Meet Big-Q face + Queen/Quilt/Question as **toy talkers**, no humans. King/Queen/Question class = toys only. Do **not** I2V.
+Do **not** I2V until teacher **go**. Prior FAIL: `FAIL-humans.jpg`.

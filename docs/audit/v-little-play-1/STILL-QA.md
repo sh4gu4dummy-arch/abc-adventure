@@ -1,7 +1,7 @@
-# Still QA — little v Friends
+# Still QA — little v Friends (remake)
 
 **Still:** `docs/audit/v-little-play-1/00-source-still.jpg`  
-**Issue:** #9 · **v0.344**
+**Issue:** #9 · **v0.350**
 
 ## Paths opened (required)
 
@@ -12,16 +12,16 @@ Vest:        public/posters/v-vest.webp
 Vacuum:      public/posters/v-vacuum.webp
 ```
 
-Trio = last-3: Vegetable / Vest / Vacuum. Laundry.
+Trio = last-3: Vegetable / Vest / Vacuum.
 
-## Verdict: **FAIL**
+## Verdict: **PASS**
 
 | Check | Gate |
 |---|---|
-| Vegetables (carrot+broccoli) + Vacuum | OK-ish |
-| **Vest** | **FAIL** — **human boy wearing vest** (humans-as-cast / Vest not toy) |
-| Glyph | Big-V matches Meet-little-v (Meet itself Big-V-shaped) |
+| Vegetable | **PASS** — carrot veg mouthed |
+| Vest | **PASS** — toy Vest (no boy) |
+| Vacuum | **PASS** |
+| Humans-as-cast | **PASS** — **no boy** |
+| Glyph | soft — Big-V-ish vs Meet (Meet debt soft) |
 
-## Rebuild (queued — not shoot-now)
-
-Vegetable / toy Vest / Vacuum; no human. Meet-asset debt on little-v. Do **not** I2V.
+Do **not** I2V until teacher **go**. Prior FAIL: `FAIL-vest-boy.jpg`.

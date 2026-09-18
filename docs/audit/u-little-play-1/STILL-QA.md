@@ -1,7 +1,7 @@
-# Still QA — little u Friends
+# Still QA — little u Friends (remake)
 
 **Still:** `docs/audit/u-little-play-1/00-source-still.jpg`  
-**Issue:** #9 · **v0.344**
+**Issue:** #9 · **v0.350**
 
 ## Paths opened (required)
 
@@ -12,16 +12,15 @@ Up:          public/posters/u-up.webp
 Ukulele:     public/posters/u-ukulele.webp
 ```
 
-Trio = last-3: Uniform / Up / Ukulele. Gym/sky.
+Trio = last-3: Uniform / Up / Ukulele.
 
-## Verdict: **FAIL**
+## Verdict: **PASS**
 
 | Check | Gate |
 |---|---|
-| Up arrow mouthed | OK |
-| Uniform | soft — shirt≈Uniform |
-| **Ukulele** | **FAIL** — **face-blank** (talker without mouth) |
+| Uniform | **PASS** — polo mouthed |
+| Up | **PASS** — faced balloon |
+| **Ukulele** | **PASS** — **open mouth** (prior blank cleared) |
+| little-u glyph | **PASS** — even-width |
 
-## Rebuild (queued — not shoot-now)
-
-Uniform / Up / Ukulele with toy mouths (esp. ukulele). Do **not** I2V.
+Do **not** I2V until teacher **go**. Prior FAIL: `FAIL-ukulele-blank.jpg`.

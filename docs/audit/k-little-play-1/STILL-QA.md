@@ -1,7 +1,7 @@
 # Still QA — little k Friends (remake)
 
 **Still:** `docs/audit/k-little-play-1/00-source-still.jpg`  
-**Issue:** #8 · **v0.345**
+**Issue:** #8 · **v0.350**
 
 ## Paths opened (required)
 
@@ -12,20 +12,18 @@ Kitchen:     public/posters/k-kitchen.webp
 Kitten:      public/posters/k-kitten.webp
 ```
 
-Trio = last-3: King / Kitchen / Kitten. Kitchen place (stove face; no girl).
+Trio = last-3: King / Kitchen / Kitten.
 
-## Verdict: **FAIL**
+## Verdict: **PASS soft**
 
 | Check | Gate |
 |---|---|
 | Meet little-k lock | **PASS** |
-| Kitchen / stove face | **PASS** |
+| **King** | **PASS** — **adult bearded King** (crown + red robe); not random kid |
 | Kitten | **PASS** |
-| little-k glyph count | **PASS** — one glyph (dual-K cleared) |
-| **King** | **FAIL** — **human boy + crown** remains (humans-as-cast) |
+| little-k glyph count | **PASS** — one glyph |
+| Kitchen | **soft** — place/stove; sign “KIM'S KITCHEN” (real-language soft only; do not fail); stove not mouthed |
 
-Remake ≠ prior FAIL bytes, but the current human-boy-as-King remains FAIL. A rebuild may use a stylized king-person / crown figure when natural and readable; do not force toy-only.
+Adult King remake goal met. Soft Kitchen-mouth / English sign — flag QAsupervisor if product wants mouthed stove talker or no signs. Do **not** I2V until teacher **go**.
 
-## Rebuild (queued — not shoot-now)
-
-**Stylized king-person / crown figure is OK** when natural and readable + stove + kitten + one little-k. Strip only a random kid stand-in or dual-letter mess; the current human-boy-as-King remains FAIL. Poster humans ≠ Friends cast. Do **not** I2V.
+Prior FAIL evidence kept: `FAIL-human-king.jpg` · `FAIL-kid-king-2.jpg`.

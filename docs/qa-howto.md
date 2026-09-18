@@ -14,12 +14,15 @@ Builder posts the **source still** on the issue. You PASS/FAIL the still
 - Friends: `public/posters/{letter}-{slug}.webp`. If `posters-scene/` exists for
   that slug and is what the word card shows (`posterPath`), lock **that** and
   paste which set you used in the audit.
-- Letter: **home tile first** (`public/letters/…`) then Meet intro of **that case**.
-  If Meet glyph ≠ home tile, FAIL the still (stale Meet) and do not I2V.
-  Killed shapes that must not return: fat-base U, lump Z, hole-less Q.
+- **Home tile = glyph of record (hard).** Open `public/letters/{l}.webp` (or `-little`)
+  **first**, then Meet intro of **that case**. If Meet ≠ home tile, remake Meet first;
+  FAIL the Friends still if it locked a stale Meet. Do not I2V until Meet matches home.
+  Friends I2I must lock the **home tile** when Meet has drifted (fat-U / lump-Z / hole-Q
+  came back from Meet-locked I2I). Killed shapes that must not return: fat-base U,
+  lump Z, hole-less Q.
 - Fail if same *word* but wrong *character* (generic teddy ≠ product bear).
 - Cast-name match alone is **not** a PASS. **Glyph/crease-only PASS is banned.**
-- Pipeline: I2I/edit from product images first.
+- Pipeline: I2I/edit from product images first (home tile + posters).
 
 ### Eat posters → Friends stills (hard)
 
@@ -38,6 +41,12 @@ Product-scene people/arms are props for the word card, not Friends cast.
 Friends stills: ban **a ring of kids / classroom audience** as cast, plus cookie-eater bleed from an eat poster into Friends.
 
 - **King / Queen / Question** (and similar person-words): a **stylized person / crown figure is OK** when it works naturally and reads clearly. Do not force weird toy-only treatment that hurts the word.
+
+### Real-language signs on Friends stills (soft)
+
+Prefer **no real-language shop/street signs** on Friends stills (Ash cinema taste).
+**Soft only** — do **not** FAIL a still for a readable English sign (e.g. little-k
+“KIM'S KITCHEN”). Flag soft to QAsupervisor if product wants signs stripped.
 
 ### Quality + creativity over rigid adherence (**all projects**)
 

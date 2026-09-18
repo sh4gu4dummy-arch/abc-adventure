@@ -65,7 +65,8 @@ SOP fold: I2I/edit from product posters first (every letter); one confirmed stil
 - Videos **are in git**. Restore old takes with git. No local `art-archive`.
 - New Meet / play videos **480×720**, native diegetic sound in the MP4 (no teacher baked in).
 - After a miss: patch **START-HERE + self-audit + qa-howto + the plan** the same turn.
-- **Home tile is the glyph of record.** `public/letters/{l}.webp` (or `-little`). Before any Friends I2I, open home tile **and** Meet 01. If they disagree, remake Meet from the home tile first. Never lock a killed shape (fat-base U, lump Z, hole-less Q).
+- **Home tile is the glyph of record (hard).** `public/letters/{l}.webp` (or `-little`). Before any Friends I2I, open home tile **and** Meet 01. If they disagree, remake Meet from the home tile first; Friends I2I locks home when Meet drifted. Never lock a killed shape (fat-base U, lump Z, hole-less Q).
+- **Real-language signs (soft):** prefer no English shop signs on Friends stills. Soft only — do not FAIL King for “KIM'S KITCHEN”.
 
 ## How QA a video
 
@@ -123,7 +124,7 @@ Take 1 crease inventory kept (`b-play-1.mp4`).
 **D–G + H–N Friends stills (no I2V):** tables in Friends status below · [#7](https://github.com/sh4gu4dummy-arch/abc-adventure/issues/7) · [#8](https://github.com/sh4gu4dummy-arch/abc-adventure/issues/8).
 
 
-## Friends stills / film status (v0.345)
+## Friends stills / film status (v0.350)
 
 ### B · `#5`
 - **Big B take 2 film** — still **FAIL** attribution+cast (`docs/audit/b-play-2/QA.md`).
@@ -143,7 +144,8 @@ Take 1 crease inventory kept (`b-play-1.mp4`).
 | **Big D film** | **HOLD/FAIL attribution** (cast 1 duck OK; tech PASS) | `docs/audit/d-play-1/QA.md` |
 | little d still | **PASS soft** donut/drum/door | `docs/audit/d-little-play-1/STILL-QA.md` |
 | **little d film** | **FAIL/HOLD attribution** | `docs/audit/d-little-play-1/QA.md` |
-| Big E | **PASS soft** | `docs/audit/e-play-1/STILL-QA.md` |
+| Big E still | **PASS soft** | `docs/audit/e-play-1/STILL-QA.md` |
+| **Big E film** | **HOLD/FAIL cast** (E gone end; Earth gone mid; tech+listen PASS) | `docs/audit/e-play-1/QA.md` |
 | little e still remake | **PASS** toy elbow | `docs/audit/e-little-play-1/STILL-QA.md` |
 | Big F / little f / Big G / little g | **PASS soft** | matching `STILL-QA.md` |
 
@@ -155,7 +157,7 @@ Take 1 crease inventory kept (`b-play-1.mp4`).
 | Big J | **PASS** | `j-play-1` |
 | little j | **PASS soft jungle** | `j-little-play-1` |
 | Big K | **PASS** | `k-play-1` |
-| **little k remake** | **FAIL** human King remains (dual-K cleared) | `k-little-play-1` |
+| **little k remake** | **PASS soft** adult King; Kitchen English soft | `k-little-play-1` |
 | Big L | **PASS** | `l-play-1` |
 | **little l remake** | **PASS** lamp 1 face / lollipop / ladder mouth | `l-little-play-1` |
 | Big M | **PASS** | `m-play-1` |
@@ -170,26 +172,29 @@ Plan: `docs/oz-friends-stills.md`.
 
 | Verdict | Cases |
 |---|---|
-| **PASS / PASS soft** | o, o-little (soft), p, p-little (soft), q-little (soft), r, r-little (soft), t, t-little, w, w-little (soft), x (soft), x-little (soft), z (soft) |
-| **FAIL** (rebuild queued) | q, s, s-little, u, u-little, v, v-little, y, y-little, z-little |
+| **PASS / PASS soft** | o, o-little (soft), p, p-little (soft), **q**, q-little (soft), r, r-little (soft), **s**, t, t-little, **u** (home-tile lock), **u-little**, **v-little**, w, w-little (soft), x (soft), x-little (soft), **y**, **y-little**, z (soft), **z-little** |
+| **FAIL** (rebuild queued) | **v-play** (blank Violin); **s-little** (Sun≠Smile) |
 
 Quality + creativity > rigid adherence (**all projects**, v0.347): if a rule hurts the product, flag QAsupervisor — do not blind-enforce. Not limited to King/people softs. Standing ban (v0.345): no ring of kids / classroom audience on Friends stills, and no cookie-eater bleed into Friends. King/Queen/Question may be a stylized person / crown figure when natural and readable; do not force toy-only. Random kid stand-ins, dual-letter mess, blank talkers, wrong trio, and eat-poster humans as Friends cast still FAIL.
 
 ### Rebuild inventory **QUEUED** (not shoot-now)
-- **little-k still** — rebuild may use a stylized king-person / crown figure when natural and readable; FAIL random kid stand-in or dual-letter mess (current human-boy-as-King remains FAIL)
-- **O–Z hard FAILs** — q / s / s-little / u / u-little / v / v-little / y / y-little / z-little
-- **Film HOLDs (later):** little-c (loudness + attribution); Big D (attribution); also little-d attribution
+- **v-play-1 still** — mouthed toy Violin (blank-talker FAIL) + Volcano + Van; no human
+- **s-little-play-1 still** — Ship / **Smile** / Sock (no Sun); flag Meet-little-s debt when remaking
+- **E film cast remake later** — letter E missing end; Earth missing mid; keep still; clean letter intro mouths
+- **Film HOLDs (unchanged):** little-c (loudness + attribution); Big D / little-d attribution; B films still FAIL
 - Remakes postponed unless Ash goes.
 - **No I2V on FAILs.**
 
 ### Meet-asset debt · queued
 Little Meets that are Big-shaped (product bug — Friends cannot lock a lying Meet glyph): **p, s, v, w, x, z** (and review). See [`docs/meet-asset-debt.md`](meet-asset-debt.md). Queued Meet remakes — not shoot-now.
 
+**v0.350** QA ship (docs only): remake stills **PASS** — k-little (soft adult King), q, s, u (+home-tile), u-little, v-little, y, y-little, z-little. **FAIL** — v-play blank Violin; s-little Sun≠Smile. Big E film **HOLD/FAIL cast**. SOP: home-tile glyph lock hard; real-language signs soft. No I2V. No Ash.
+
 **v0.349** Fat-base Big U was still in Meet `u.mp4` (Sep 10) after home tile was fixed (v0.219). Friends I2I from Meet → killed glyph came back. Purged Meet U + remade Friends still from home tile. SOP: home tile = glyph of record.
 
 **v0.348** Ash start: remade O–Z FAIL stills (q/s/s-little/u/u-little/v/v-little/y/y-little/z-little) + little-k stylized king. Filmed Big E (`friends-clips/e-play-1.mp4`). Re-QA those stills. Next F–N films + B remakes + film HOLDs.
 
-**v0.347** quality>rigid = all projects. **v0.346** quality>rigid flag-to-QAsup. **v0.345** QA follow-up: soften the King/person-word rule; ban is kid rings/classroom audience, not all person-shaped Friends. Little-k remains FAIL pending rebuild. Docs only. No I2V. No Ash.
+**v0.347** quality>rigid = all projects. **v0.346** quality>rigid flag-to-QAsup. **v0.345** QA follow-up: soften the King/person-word rule; ban is kid rings/classroom audience, not all person-shaped Friends.
 
 ## Plans (remind, don’t start unless they say)
 
