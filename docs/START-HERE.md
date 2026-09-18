@@ -57,7 +57,7 @@ obviously stupid. Cartoon is fine. Dumb is not.
 
 Checklist (glaring only):
 
-- **Cast lock (Friends):** letter + each named friend **visible in all 5 frames**. Missing at **05-end** = fail. Hide-then-clone (apple behind A, then a new apple) = fail.
+- **Cast lock (Friends):** letter + each named friend **identifiable** in all 5 frames (silhouette OK). Missing at **05-end** = fail. Hide-then-clone = fail. Count every still. Plane majority-in-frame. Apple smile OK, **no limbs**. Method B: cast-lock source still + each clip end before concat.
 - Motion matches the beat (plane **forward**, not reverse; feet **travel**, not treadmill; zigzag **on the path**)
 - The thing is the thing (sun has rays, Q has a tail + hole, cloud is a puff not a ball)
 - Count: ONE of each prop/limb. Extra crayon tip, extra banana, extra gator = fail
@@ -84,7 +84,7 @@ Big A take 2 **PASS for now** (teacher). Keep scenery; next rounds: **cast lock*
 **more exciting foley**. Seek bar shipped.
 
 **Next plan (QA, no shoot):** little **a meets friends** —
-`docs/a-meets-friends-little-a-plan.md`
+`docs/a-meets-friends-little-a-plan.md` (QA amend **v0.316**)
 
 ## Plans (remind, don’t start unless they say)
 

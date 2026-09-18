@@ -8,6 +8,8 @@ Big A take 2 is **PASS for now**. Do not remake Big A this round.
 Target file: `public/videos/imagine/a-little-play-1.mp4`  
 Button: **a meets friends** (little abc mode). Wire `FRIENDS_LOWER` only after a listen-sane take.
 
+QA amendments **v0.316** (supervisor-aligned): identifiable cast, per-clip end gate, source-still cast lock, apple no limbs, plane majority-in-frame.
+
 ---
 
 ## Ash / User feedback (copy to QA — do not paraphrase away)
@@ -25,7 +27,7 @@ Meaning:
 3. **Minor misses to hard-fail next time:**
    - Letter **gone at the end** (05-end must still show the hero).
    - Apple **hidden behind A**, then a **second apple** pops in. Eclipse-then-clone.
-4. **Cast lock:** little a, apple, ant, airplane — **all four visible in every still** (start / 25 / mid / 75 / end) and throughout. Overlap is ok if you can still tell they are there. Covering one completely, then spawning a replacement = **FAIL**.
+4. **Cast lock:** little a, apple, ant, airplane — **all four identifiable in every still** (start / 25 / mid / 75 / end) and throughout. Overlap / silhouette OK if you can still tell they are there. Covering one completely, then spawning a replacement = **FAIL**.
 5. Subsequent rounds should **improve**, not drift.
 
 ---
@@ -34,14 +36,15 @@ Meaning:
 
 | Gate | Fail if |
 |---|---|
-| **Cast lock** | Any named friend missing from a 5-frame dump |
-| **No clone** | Count of a prop changes (1 apple → 0 → 2) |
+| **Cast lock** | Any named friend **not identifiable** in a 5-frame dump (silhouette OK; complete cover = fail) |
+| **No clone** | Count of a prop changes (1 apple → 0 → 2) — count letter/apple/ant/plane in **every** still |
 | **No vanish-end** | Hero cropped out / gone on **05-end** |
-| **Speech** | Wrong speaker, missing line, A narrating everyone’s line |
-| **True job** | Ant flies, plane reverse, apple grows a body |
-| **Sound** | Silent / mean < −40 dB, or beep-spam instead of play foley |
+| **Plane in frame** | Flying plane leaves so only a tip remains — **majority of plane** must stay in 480×720 |
+| **Speech** | Wrong speaker, missing line, a narrating everyone’s line; bury-speech |
+| **True job** | Ant flies, plane reverse, apple grows a body / limbs |
+| **Sound** | Silent / mean < −40 dB, or beep-spam instead of play foley; voices must stay **on top** of music |
 
-Keep scenery as good as Big A take 2. Raise the mix: foley **under** voices, but **interesting**.
+Keep scenery as good as Big A take 2. Raise the mix: foley **interesting** and under voices (bury-speech = hard fail).
 
 ---
 
@@ -49,6 +52,8 @@ Keep scenery as good as Big A take 2. Raise the mix: foley **under** voices, but
 
 **B:** four **6s** I2V clips, **one line each**, concat → one 480×720 file.  
 Each clip starts from the **previous clip’s last frame** (frame lock).
+
+**Hard before concat:** each clip’s **05-end** must pass cast lock + count==1 for letter/apple/ant/plane. If not, **re-shoot that clip** — do not chain a broken end into the next I2V.
 
 **C** (open-mouth stills) only if B still mushy after teacher listen.
 
@@ -76,7 +81,11 @@ Match **Meet little a** (`public/videos/imagine/a-little.mp4`), **not** `letters
 
 Yard can match Big A’s sunny kid-yard (scenery was the good part) — just a **smaller** a.
 
-Source still: generate **one** little-a-in-yard still when they say go. Show Ash if two options. Do **not** I2V from the home tile.
+### Source still (before any I2V)
+
+Generate **one** little-a-in-yard still when they say go. Show Ash if two options. Do **not** I2V from the home tile.
+
+**Cast lock on the source still:** Ash OK + little a, apple, ant, plane all present and **count == 1** each. Fail the still before shooting if cast fails.
 
 ---
 
@@ -85,13 +94,13 @@ Source still: generate **one** little-a-in-yard still when they say go. Show Ash
 Same jobs as Big A, scaled down:
 
 1. little a hops toward camera: **I'm little a!**
-2. Nub-foot / body bump from the **side** (never stand on the apple). Apple rolls, **stays in view**: **I'm Apple!**
+2. Nub-foot / body bump from the **side** (never stand on the apple). Apple rolls, **stays identifiable**: **I'm Apple!**
 3. Ant crawls: **I'm Ant!** a hops **beside**
-4. Plane taxis, flies **forward**: **I'm Airplane!** a hops beside
+4. Plane taxis, flies **forward** with **majority still in frame**: **I'm Airplane!** a hops beside
 
-**Framing:** pull the camera back enough that a, apple, ant, **and** plane stay inside the 480×720 the whole 24s. Do not chase so tight that a walks off the right edge at the end.
+**Framing:** pull the camera back enough that a, apple, ant, **and** plane stay identifiable inside the 480×720 the whole ~24s. Do not chase so tight that a walks off the right edge at the end. Plane may fly up/forward but must not leave only a tip in-shot.
 
-**Apple:** keep it in a **gap** (left of a, or in front). Never fully behind the bowl, never a second apple.
+**Apple:** keep it in a **gap** (left of a, or in front). Never fully covered by the bowl, never a second apple. Tiny toy smile OK; **no feet / legs / arms** on the apple.
 
 ---
 
@@ -106,15 +115,15 @@ slow USA cartoon kid: "I'm little a!" Mouth on the bowl moves.
 Nobody else talks. Apple, ant, plane: closed smiles, no lip flap.
 
 Same sunny yard as the still. One small single-story a (half-size, no upper
-tail, no arms). One apple, one ant, one toy plane. ALL FOUR stay fully
-visible the whole clip — none walk off, none hide, none duplicate.
-a hops toward camera on nub feet.
+tail, no arms). One apple, one ant, one toy plane. ALL FOUR stay identifiable
+the whole clip (silhouette OK) — none walk off, none hide completely, none
+duplicate. a hops toward camera on nub feet.
 
-Foley louder than take-1 quiet beds: grass hops, light happy music under
-the voice (voice still on top). No beeps. No captions.
+Foley interesting under the voice (hops, play sounds); voice stays on top.
+No beeps. No captions.
 ```
 
-Short negatives only: no arms, no extra a/apple/ant/plane, plane never backward, apple never behind the letter completely, hero in frame at the last frame.
+Short negatives only: no arms on a; no feet/legs/arms on apple; no extra a/apple/ant/plane; plane never backward; apple never completely behind the letter; hero + all friends identifiable at the last frame; majority of plane stays in frame when flying.
 
 ---
 
@@ -129,8 +138,10 @@ Seek bar already works on Friends.
 
 ## QA dump
 
-`python3 scripts/qa-word-frames.py` on the **concat**. Also glance each clip’s 05-end before chaining.
+1. Per clip: check **05-end** cast + counts **before** concat.
+2. `python3 scripts/qa-word-frames.py` on the **concat** → `docs/audit/<id>/`.
+3. In **every** still (01–05 and per-clip ends): count **letter, apple, ant, plane** (must be 1 each and identifiable).
 
-Fail the concat if **any** of 01–05 is missing a, apple, ant, or plane, or if apple count ≠ 1.
+Fail the concat if any named friend is missing/unidentifiable, hero gone at end, apple count ≠ 1, or eclipse-clone.
 
 Do **not** generate until teacher **go**.

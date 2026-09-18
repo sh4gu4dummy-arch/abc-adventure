@@ -1,12 +1,12 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.315
+**Version:** v0.316
 
 
 ## A Meets Friends take 2
 
 Teacher **PASS for now**. Seek/scrubber on Meet + Friends. Issue #3.
-SOPs: `docs/self-audit.md` + qa-howto recursive improve (Ash v0.315).
+SOPs: `docs/self-audit.md` + qa-howto recursive improve (Ash v0.316).
 
 Meet A = intro only. **A MEETS FRIENDS** = play-1 (apple/ant/plane), own button on Big A.
 Play-1 audio loudnormed (−55 dB → mean −17.8 / max −1.0). Picture unchanged.

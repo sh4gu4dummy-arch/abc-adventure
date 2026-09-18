@@ -11,17 +11,28 @@ a nicety.
 
 Keep these even when scenery looks pretty:
 
-1. **Cast lock** — letter + every named friend **visible in all 5 frames**.
+1. **Cast lock** — letter + every named friend **identifiable** in all 5 frames
+   (silhouette / majority-visible OK). Complete cover = fail. Not the same as
+   “zero overlap.”
 2. **05-end** still has the hero (no walk-off, no crop-out).
 3. **Count** — ONE of each. Hide behind the letter then spawn a replacement
-   (apple eclipsed → new apple) = fail.
-4. **Speech** — the **right mouth** says the **right line**. Same kid voice
-   on everyone / A mouths `I'm Apple!` = fail. Words-on-the-track is not enough.
-5. **True job** — ant crawls, plane flies **forward**, apple is fruit that rolls.
-6. **Sound** — interesting play foley (hops, roll, crawl, whoosh). Not silent,
-   not beep-spam. Voices on top of music.
-7. **Keep scenery quality** Ash already liked. Don’t cheapen the yard to
+   (apple eclipsed → new apple) = fail. Count letter/apple/ant/plane in **every** still.
+4. **Flying friend** — if a plane (etc.) flies, **majority stays in 480×720**
+   (not only a tip exiting the frame).
+5. **Speech** — the **right mouth** says the **right line**. Same kid voice
+   on everyone / letter mouths `I'm Apple!` = fail. Words-on-the-track is not enough.
+6. **True job** — ant crawls, plane flies **forward**, apple is fruit that rolls.
+   Apple: tiny toy smile OK; **no feet / legs / arms**.
+7. **Sound** — interesting play foley (hops, roll, crawl, whoosh). Not silent,
+   not beep-spam. Voices on top of music (bury-speech = fail).
+8. **Keep scenery quality** Ash already liked. Don’t cheapen the yard to
    “fix” a miss.
+
+### Method B (multi-clip concat)
+
+- **Source still** must pass cast lock + count==1 **before** any I2V (Ash OK).
+- **Each clip’s 05-end** must pass cast + count==1 **before** you chain the
+  next I2V or concat. Broken end → re-shoot that clip (frame-lock poison).
 
 Little letters: half stature, single-story **a**, match Meet intro not the
 home tile.

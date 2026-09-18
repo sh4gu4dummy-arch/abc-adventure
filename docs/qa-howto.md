@@ -76,9 +76,13 @@ ABC-flavored (also see START-HERE):
 - Exactly **one** hero letter. No twin A, extra arms, extra legs beyond nub feet.
 - Props are the thing. Friends speech: **tiny toy smile OK** on apple so it
   can talk; human body / extra apple = fail. Word-lesson eat clips: no face.
-- **Cast lock:** named letter + friends visible in **01 through 05**.
-  Hero gone at **05-end** = fail. Eclipse then clone (apple behind A, then a
-  new apple) = fail. Count each prop in every still.
+- **Cast lock:** named letter + friends **identifiable** in **01 through 05**
+  (silhouette / majority-visible OK; complete cover = fail). Hero gone at
+  **05-end** = fail. Eclipse then clone (apple behind A, then a new apple) =
+  fail. Count letter + each friend in **every** still. Flying friend (plane):
+  **majority stays in frame**. Apple: tiny smile OK; **no limbs**.
+- **Method B:** source still cast-locks before I2V; each clip **05-end**
+  cast+count==1 before concat (no frame-lock poison).
 - Beat / virtue readable by **mid** still when the plan says so — not only at the end.
 - No humans, silhouettes, crowds, readable letters, logos (unless the plan allows a specific prop).
 - Face readable through the last second; hero does not exit / crop out.
@@ -121,7 +125,7 @@ Every miss becomes a hard gate, a trap note, or a prompt phrase in the plan file
 - Filename claims lose to pixels.
 - Soft fails matter; ignored softs become the next hard fails.
 - Common traps: second body / ghost twin; **eclipse-clone**; **hero gone at
-  end**; crowd bleed; late virtue; exit crop; portrait≠stage; hot or quiet
+  end**; frame-lock poison; plane tip-only exit; apple limbs; crowd bleed; late virtue; exit crop; portrait≠stage; hot or quiet
   audio; same-voice narrator on A; letters/logos; morph; rubber-stamp AUDIT.
 - After a miss: **upgrade the checklist** here. Do not only scold the take.
 - Disagree with file + pixels. Yield to evidence. Escalate to teacher if stuck — do not silently win.
