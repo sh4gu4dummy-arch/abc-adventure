@@ -17,6 +17,12 @@ I2I **drops the human** and **adds a toy smile** on the food. Blank food + line 
 Oven-mitt arms / cookie eater = product-scene only, not Friends cast.
 
 
+**Standing ban — kids audience / live royalty:** no ring of kids / classroom
+audience / live royalty on Friends stills. **King / Queen / Question** (and
+similar) = **toys only**. Poster humans ≠ Friends cast (eat-poster class).
+
+
+
 Do this **before** I2V. Skipping it is how we shipped a random orange ball.
 
 1. Trio = `wordsForCase` (Big first-3 / little last-3).

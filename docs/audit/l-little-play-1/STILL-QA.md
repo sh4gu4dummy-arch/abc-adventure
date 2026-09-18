@@ -1,7 +1,7 @@
-# Still QA — little l Friends
+# Still QA — little l Friends (remake)
 
 **Still:** `docs/audit/l-little-play-1/00-source-still.jpg`  
-**Issue:** #8 · **v0.342**
+**Issue:** #8 · **v0.344**
 
 ## Paths opened (required)
 
@@ -14,15 +14,16 @@ Ladder:      public/posters/l-ladder.webp
 
 Trio = last-3: Lamp / Lollipop / Ladder. Bedroom place.
 
-## Verdict: **FAIL**
+## Verdict: **PASS**
 
 | Check | Gate |
 |---|---|
-| little-l glyph | yes |
-| **Lollipop** | **FAIL** — **missing** |
-| **Ladder talking mouth** | **FAIL** — ladder blank (no toy mouth) |
-| **Lamp** | **FAIL soft/hard** — **dual faces** (base + shade) |
+| little-l glyph vs Meet | **PASS** — matches Meet |
+| **Lamp** | **PASS** — **one face** (base) |
+| **Lollipop** | **PASS** — pink spiral + face present |
+| **Ladder talking mouth** | **PASS** — mouth on rail |
+| Humans / cast count | **PASS** — none; one each |
 
-## Rebuild (queued — not shoot-now)
+Remake cleared prior missing-lollipop / dual-lamp / blank-ladder FAIL.
 
-Lamp (one face) + **lollipop** + ladder **with toy mouth** + little-l. Do **not** I2V.
+Do **not** I2V until teacher **go**.

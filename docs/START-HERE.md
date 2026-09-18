@@ -121,7 +121,7 @@ Take 1 crease inventory kept (`b-play-1.mp4`).
 **D–G + H–N Friends stills (no I2V):** tables in Friends status below · [#7](https://github.com/sh4gu4dummy-arch/abc-adventure/issues/7) · [#8](https://github.com/sh4gu4dummy-arch/abc-adventure/issues/8).
 
 
-## Friends stills / film status (v0.342)
+## Friends stills / film status (v0.344)
 
 ### B · `#5`
 - **Big B take 2 film** — still **FAIL** attribution+cast (`docs/audit/b-play-2/QA.md`).
@@ -131,14 +131,16 @@ Take 1 crease inventory kept (`b-play-1.mp4`).
 ### C · `#6`
 - **Big C still** — **PASS soft location** · `docs/audit/c-play-1/STILL-QA.md`.
 - **little c still remake** — **PASS** glyph+cookie+cup+cloud, no boy · `docs/audit/c-little-play-1/STILL-QA.md`.
-- **Big C film** (`friends-clips/c-play-1.mp4`) — **PASS soft** · `docs/audit/c-play-1/QA.md` (tech −20.9/−3.3; listen Cat/Cake/Car; soft letter mouth on cat beat).
+- **Big C film** (`friends-clips/c-play-1.mp4`) — **PASS soft** · `docs/audit/c-play-1/QA.md`.
+- **little c film** (`friends-clips/c-little-play-1.mp4`) — **HOLD/FAIL** max −2.9 + attribution · `docs/audit/c-little-play-1/QA.md`.
 
 ### D–G · `#7`
 | Case | Verdict | Path |
 |---|---|---|
 | Big D still remake | **PASS** 1 duck, no ball | `docs/audit/d-play-1/STILL-QA.md` |
+| **Big D film** | **HOLD/FAIL attribution** (cast 1 duck OK; tech PASS) | `docs/audit/d-play-1/QA.md` |
 | little d still | **PASS soft** donut/drum/door | `docs/audit/d-little-play-1/STILL-QA.md` |
-| **little d film** | **FAIL/HOLD attribution** (letter open on friend lines; tech PASS) | `docs/audit/d-little-play-1/QA.md` |
+| **little d film** | **FAIL/HOLD attribution** | `docs/audit/d-little-play-1/QA.md` |
 | Big E | **PASS soft** | `docs/audit/e-play-1/STILL-QA.md` |
 | little e still remake | **PASS** toy elbow | `docs/audit/e-little-play-1/STILL-QA.md` |
 | Big F / little f / Big G / little g | **PASS soft** | matching `STILL-QA.md` |
@@ -151,9 +153,9 @@ Take 1 crease inventory kept (`b-play-1.mp4`).
 | Big J | **PASS** | `j-play-1` |
 | little j | **PASS soft jungle** | `j-little-play-1` |
 | Big K | **PASS** | `k-play-1` |
-| **little k** | **FAIL** human King + dual K | `k-little-play-1` |
+| **little k remake** | **FAIL** human King remains (dual-K cleared) | `k-little-play-1` |
 | Big L | **PASS** | `l-play-1` |
-| **little l** | **FAIL** missing lollipop / ladder mouth / dual lamp | `l-little-play-1` |
+| **little l remake** | **PASS** lamp 1 face / lollipop / ladder mouth | `l-little-play-1` |
 | Big M | **PASS** | `m-play-1` |
 | little m | **PASS soft dual milk** | `m-little-play-1` |
 | Big N | **PASS soft nose/bubble** | `n-play-1` |
@@ -161,14 +163,27 @@ Take 1 crease inventory kept (`b-play-1.mp4`).
 
 Plan ref: `docs/hn-friends-stills.md`.
 
+### O–Z stills · `#9`
+Plan: `docs/oz-friends-stills.md`.
+
+| Verdict | Cases |
+|---|---|
+| **PASS / PASS soft** | o, o-little (soft), p, p-little (soft), q-little (soft), r, r-little (soft), t, t-little, w, w-little (soft), x (soft), x-little (soft), z (soft) |
+| **FAIL** (rebuild queued) | q, s, s-little, u, u-little, v, v-little, y, y-little, z-little |
+
+Standing ban (v0.344): no ring of kids / classroom audience / live royalty on Friends stills. King/Queen/Question = toys only; poster humans ≠ Friends cast.
+
 ### Rebuild inventory **QUEUED** (not shoot-now)
-- **little-k still** (toy King, one K)
-- **little-l still** (lollipop + ladder mouth + one lamp face)
-- **little-d film** when filming resumes (attribution)
+- **little-k still** — toy/crown King only (no live human)
+- **O–Z hard FAILs** — q / s / s-little / u / u-little / v / v-little / y / y-little / z-little
+- **Film HOLDs (later):** little-c (loudness + attribution); Big D (attribution); also little-d attribution
 - Remakes postponed unless Ash goes.
 - **No I2V on FAILs.**
 
-**v0.343** little c + Big D films for listen. Remade little-k / little-l stills. Pushed O–Z stills. Purged blob Big Z (home tile + Meet clip). E–N films next. B remakes next.
+### Meet-asset debt · queued
+Little Meets that are Big-shaped (product bug — Friends cannot lock a lying Meet glyph): **p, s, v, w, x, z** (and review). See [`docs/meet-asset-debt.md`](meet-asset-debt.md). Queued Meet remakes — not shoot-now.
+
+**v0.344** QA ship: O–Z stills; little-l PASS; little-k FAIL; film HOLDs little-c + Big D; Meet debt + kids-audience ban. Docs only. No I2V. No Ash.
 
 ## Plans (remind, don’t start unless they say)
 

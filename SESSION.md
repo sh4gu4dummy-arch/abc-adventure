@@ -1,6 +1,16 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.343
+**Version:** v0.344
+
+## v0.344 — QA ship (ABC-Adventure-Bot1)
+
+Docs only. No I2V. No Ash messaging.
+- Remake stills: **little-l PASS**; **little-k FAIL** (human King remains).
+- O–Z stills: PASS/soft o/p/q-little/r/t/w/x/z (+ softs); FAIL q/s/s-little/u/u-little/v/v-little/y/y-little/z-little.
+- Films: little-c **HOLD/FAIL** (max −2.9 + attribution); Big D **HOLD/FAIL attribution** (cast OK).
+- SOP: kids-audience / live-royalty ban; King/Queen/Question = toys only.
+- Meet-asset debt queued (`docs/meet-asset-debt.md`). Rebuild inventory queued (not shoot-now).
+- Issues #6 #7 #8 #9 commented.
 
 ## v0.342 — QA ship (ABC-Adventure-Bot1)
 

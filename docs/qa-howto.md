@@ -31,6 +31,16 @@ Face-blank food + spoken line = **FAIL still** (same class as blank Anchor).
 Product-scene people/arms are props for the word card, not Friends cast.
 
 
+### Standing ban — kids audience / live royalty (hard)
+
+Friends stills: **no ring of kids / classroom audience / live royalty** as cast.
+
+- **King / Queen / Question** (and similar royal or “person” word friends) = **toys only**.
+- Poster humans (eat-poster class, kid rings, live kings/queens) **≠ Friends cast** — drop humans; productize as toy talkers.
+- Same class as eat-poster: human eater / audience kids fail the still even if the trio props are present.
+
+
+
 ### Evidence (required in STILL-QA / README)
 
 Paste the Meet/letter path + each friend poster path that was opened. Checklist
