@@ -3,6 +3,12 @@
 Teacher playbook adapted for **ABC Adventure** (`sh4gu4dummy-arch/abc-adventure`).
 If it is not in this repo, the other bot never saw it.
 
+**QA the source still for mouths.** If an inanimate talker has no face,
+fail the still — do not wait for listen. Little-a take 2: blank anchor →
+astronaut said “I'm Anchor.” That was foreseeable.
+
+**Color:** 01 vs 05 letter hue. Drift darker = fail.
+
 **Ash product fails go on the issue quoted, then into START-HERE + the plan
 the same turn.** Do not wait for a supervisor paraphrase. Little-a take 1
 (wrong glyph / same friends as Big) was that class of miss.

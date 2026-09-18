@@ -21,8 +21,10 @@ Before any Friends **plan LOCK** (and again before I2V):
    (first 3 = Big, last 3 = little). Example A: Big = apple/ant/airplane;
    little = alligator/astronaut/anchor.
 3. Big and little **never share the same three friends**.
-4. Cast-lock / eclipse SOP does **not** replace this check. Skipping it is a
-   process FAIL (little-a take 1 copied Big’s friends).
+5. **Talking mouth on the source still.** If a friend will say a line, it
+   has a toy mouth **before** I2V. Blank anchor/ball/boat = process FAIL.
+   That miss is obvious; Ash should not catch it on listen.
+6. **Color lock.** Compare letter paint 01 vs 05. Darker / muddier = fail.
 
 ## Ash requirements that keep biting us (Friends)
 

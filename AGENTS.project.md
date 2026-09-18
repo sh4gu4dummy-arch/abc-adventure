@@ -24,6 +24,12 @@ play foley, not beeps.
 A split: Big = apple, ant, airplane. little = alligator, astronaut, anchor.
 Look lock little a to **Meet `a-little.mp4`**, not a melted cousin.
 
+**Talking mouth:** inanimate Friends get a tiny toy smile **on the still**
+or they steal someone else’s line (blank anchor → astronaut said I'm Anchor).
+**Color lock:** letter does not darken over the clip.
+
+B plans: `docs/b-meets-friends-plan.md`.
+
 ## QA agent
 
 Builder and QA **talk on GitHub issues** (desk: issue #1). Do not rely
