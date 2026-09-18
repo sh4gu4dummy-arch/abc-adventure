@@ -16,12 +16,15 @@ Do this **before** I2V. Skipping it is how we shipped a random orange ball.
 
 1. Trio = `wordsForCase` (Big first-3 / little last-3).
 2. Pull **Meet 01** of this case + the **three product posters**
-   `public/posters/{l}-{slug}.webp`.
+   `public/posters/{l}-{slug}.webp` (or `posters-scene/` if that is the word
+   card — document which set).
 3. Make a ref board (Meet + 3 posters) if you need more than 3 image inputs.
 4. **I2I / reference-edit** from those files. Prompt: same characters as the
    refs, wide shot, air between, toy mouths if they talk.
 5. Side-by-side vs posters. Fail if the ball/bear/etc. is a generic cousin
-   (orange ball vs red-white-blue product ball = fail).
+   (orange ball vs product ball = fail).
+5b. Paste Meet/letter + each poster path in the audit README / STILL-QA.
+   No paths pasted = you did not still-QA.
 6. Save **one** keeper: `docs/audit/<id>/00-source-still.jpg`.
    Tell Ash that path. Extra takes: `still-REJECT-reason.jpg`. Do not
    present two stills in chat unless they are both keepers and you **ask

@@ -38,6 +38,13 @@ same butterfly — every letter, every future still.
 
 **Stills before I2V.** Post that one still on GitHub. QA PASS before film.
 
+## Ash — product friends stills (exact)
+
+> you need to use i2i or edit image first using our product character/friends images already in the product make sure it's the same bear, same butterfly, same ball etc, not only for this letter but for every future still. make the updated plan, SOP, procedure, etc make sure this doesn't happen again. and next time send me the one confirmed still or lmk where I can find it, confusing to send 2 idk which one you plan on using. do better next time.
+
+SOP fold: I2I/edit from product posters first (every letter); one confirmed still path; QA+supervisor open posters|still before PASS (glyph-only PASS banned). Prefer `public/posters/`; if `posters-scene/` is what the word card shows, lock that and document which set.
+
+
 ## Never
 
 - Restart the preview / vite. They refresh when they want.

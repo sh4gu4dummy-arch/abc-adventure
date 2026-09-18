@@ -8,20 +8,51 @@ If it is not in this repo, the other bot never saw it.
 Builder posts the **source still** on the issue. You PASS/FAIL the still
 **before** they film.
 
-Fail the still if: wrong glyph, **friends aren’t the product posters**
-(generic cousin ball/bear = fail), talker with no mouth, wrong trio,
-letter already darker than Meet, extra friends, photoreal kid in a helmet.
+### Product-art look-lock (hard)
 
-Builder sends **one** still + path. If they dump two unlabeled, fail the
-process and ask which is the candidate.
+- Open **product** art side-by-side with the candidate **before** any PASS.
+- Friends: `public/posters/{letter}-{slug}.webp`. If `posters-scene/` exists for
+  that slug and is what the word card shows (`posterPath`), lock **that** and
+  paste which set you used in the audit.
+- Letter: Meet intro of **that case** + `public/letters/…` as needed.
+- Fail if same *word* but wrong *character* (generic teddy ≠ product bear).
+- Cast-name match alone is **not** a PASS. **Glyph/crease-only PASS is banned.**
+- Pipeline: I2I/edit from product images first.
 
-**Color:** 01 vs 05 letter hue. Drift darker = fail.
+### Evidence (required in STILL-QA / README)
+
+Paste the Meet/letter path + each friend poster path that was opened. Checklist
+without paths = incomplete audit.
+
+### Checklist before still PASS
+
+```
+[ ] Meet/letter side-by-side
+[ ] Friend1 poster | still
+[ ] Friend2 poster | still
+[ ] Friend3 poster | still
+[ ] Paths pasted in audit
+[ ] One confirmed path named
+[ ] Mouths / glyph / cast count / color (existing)
+```
+
+### One-still rule
+
+Builder sends **one** still + path. Two unlabeled = process FAIL.
+
+### Supervisor + QA gate
+
+After Builder posts the confirmed still: **both** re-open posters | still crops
+before PASS. Soft rubber-stamp = process miss.
+
+Fail the still also if: talker with no mouth, wrong trio, letter already darker
+than Meet, extra friends, photoreal kid in a helmet.
 
 **Ash product fails go on the issue quoted, then into START-HERE + the plan
-the same turn.** Do not wait for a supervisor paraphrase. Little-a take 1
-(wrong glyph / same friends as Big) was that class of miss.
+the same turn.** Do not wait for a supervisor paraphrase.
 
 Builder self-audit SOP: [`docs/self-audit.md`](self-audit.md).
+
 
 ## 1. Roles
 

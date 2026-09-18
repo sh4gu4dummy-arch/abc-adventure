@@ -1,30 +1,48 @@
 # Big B Friends — take 2 plan (still + I2V prompts)
 
-**Do not I2V.** Current stills are **invalid** (wrong friend designs).
+**Do not I2V** until a **new** product-locked still PASSes + teacher go.
 
-Ash (quoted, later):
+## Ash (exact — do not paraphrase away)
 
-> you need to use i2i or edit image first using our product character/friends images already in the product make sure it's the same bear, same butterfly, same ball etc, not only for this letter but for every future still. … next time send me the one confirmed still or lmk where I can find it, confusing to send 2
+> you need to use i2i or edit image first using our product character/friends images already in the product make sure it's the same bear, same butterfly, same ball etc, not only for this letter but for every future still. make the updated plan, SOP, procedure, etc make sure this doesn't happen again. and next time send me the one confirmed still or lmk where I can find it, confusing to send 2 idk which one you plan on using. do better next time.
 
-Take 1 FAIL: crease B, zoomed, B jumps into camera, 2 balls at end.
-Take 2 stills FAIL: invented cousins, not product toys.
-- `docs/audit/b-play-2/00-source-still.jpg` — orange ball, no-scarf bear
-- `still-B-REJECT-two-balls.jpg` — extra ball; also not product art
+SOP fold: (1) I2I/edit from product art first — same friends, every letter. (2) Update plan/SOP so it cannot recur. (3) One confirmed still path to Ash (two unlabeled = process FAIL).
 
-Product lock (must I2I from these):
+## VOID — prior still
 
-| Friend | File |
+`docs/audit/b-play-2/00-source-still.jpg` (v0.330 PASS) is **VOID** — product-art look-lock FAIL. See `docs/audit/b-play-2/STILL-QA.md`. Do not film from it.
+
+Take 1 FAIL inventory: `friends-clips/b-play-1.mp4` (crease).  
+Reject: `still-B-REJECT-two-balls.jpg`.
+
+## Product lock (I2I / edit-image FIRST)
+
+Primary = shipped word-card posters. Cutouts secondary only if they match posters; **poster wins** if drift.
+
+| Role | Path |
 |---|---|
-| Letter | Meet `b.mp4` 01 / `docs/audit/b-play-2/meet-b-01.jpg` |
-| Ball | `public/posters/b-ball.webp` (red/white/blue, face) |
-| Bear | `public/posters/b-bear.webp` (teddy + scarf) |
+| Letter / Meet | `public/videos/imagine/b.mp4` + `public/letters/b.webp` (+ `docs/audit/b-play-2/meet-b-01.jpg`) |
+| Ball | `public/posters/b-ball.webp` |
+| Bear | `public/posters/b-bear.webp` |
 | Butterfly | `public/posters/b-butterfly.webp` |
 
-Next still: one file `docs/audit/b-play-2/00-source-still.jpg` (overwrite the
-orange one only when the new still exists). Chat = that path only.
+No `posters-scene/b-*` — lock **`public/posters/`** for B.
 
-Keep take-1 video as inventory. Wide camera / play-in-yard / one-ball I2V
-prompts below still apply **after** the product-locked still PASSES.
+### Builder steps
+1. I2I/edit each friend (+ letter buddy) from the files above — do not invent “a” bear/ball/butterfly.
+2. Composite one **wide** yard still (air; B not filling frame).
+3. Side-by-side: each poster | still crop + Meet | letter.
+4. Set **one** path below. Extra takes → `*REJECT*`. Do not send Ash two unlabeled stills.
+
+```
+CONFIRMED_STILL=docs/audit/b-play-2/00-source-still.jpg
+```
+
+*(Builder: only fill/overwrite when the new product-locked still exists. Chat = that path only.)*
+
+5. Audit STILL-QA must **paste the four paths opened**. Checklist without paths = incomplete.
+6. QA + QAsupervisor re-open posters | still before PASS. Glyph-only PASS banned.
+7. After still PASS + teacher go → I2V prompts below → `friends-clips/b-play-2.mp4` (not clobber take 1).
 
 ---
 
@@ -108,9 +126,17 @@ Foley: wing flutter. Voice on top. No beeps.
 - After film: color proof Meet 01 | Friends 01 | Friends 05 side-by-side in `docs/audit/b-play-2/`.
 - Ball color may vary (orange / beach) if count == 1 and it reads as a ball.
 
-## Still QA
 
-**PASS (soft arms)** — `docs/audit/b-play-2/STILL-QA.md` (v0.330).
+## Encode / gates (standing)
+
+- mean **−32…−18 dB**, max **≤ −3**; exciting foley; voices on top (bury-speech = fail).
+- **Per-clip 05-end:** cast + count (ball == 1) before concat — re-shoot that clip if not.
+- After film: color proof Meet 01 | Friends 01 | Friends 05 side-by-side in `docs/audit/b-play-2/`.
+- Friends must stay **product** looks through the concat (not drift into cousins).
+
+## Still QA status
+
+**VOID / FAIL product-art** — `docs/audit/b-play-2/STILL-QA.md` (v0.331). Waiting on new I2I still.
 
 Target after PASS film: `public/friends-clips/b-play-2.mp4` (not overwrite take 1).
 
