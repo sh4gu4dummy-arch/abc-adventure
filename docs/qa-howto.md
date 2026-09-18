@@ -3,6 +3,13 @@
 Teacher playbook adapted for **ABC Adventure** (`sh4gu4dummy-arch/abc-adventure`).
 If it is not in this repo, the other bot never saw it.
 
+**Recursively improve.** After every real miss (teacher or pixels), patch
+**this file + START-HERE + `docs/self-audit.md` + the round plan** the
+same turn. A playbook that only grows in chat is dead. Ash asked both
+bots to get better on purpose, not wait to be told twice.
+
+Builder self-audit SOP: [`docs/self-audit.md`](self-audit.md).
+
 ## 1. Roles
 
 | Role | Job |
@@ -67,7 +74,11 @@ ABC-flavored (also see START-HERE):
 
 - Correct letter / face lock vs Meet intro (or the plan’s locked look).
 - Exactly **one** hero letter. No twin A, extra arms, extra legs beyond nub feet.
-- Props are the thing (apple has **no face**; one ant; one plane; etc.).
+- Props are the thing. Friends speech: **tiny toy smile OK** on apple so it
+  can talk; human body / extra apple = fail. Word-lesson eat clips: no face.
+- **Cast lock:** named letter + friends visible in **01 through 05**.
+  Hero gone at **05-end** = fail. Eclipse then clone (apple behind A, then a
+  new apple) = fail. Count each prop in every still.
 - Beat / virtue readable by **mid** still when the plan says so — not only at the end.
 - No humans, silhouettes, crowds, readable letters, logos (unless the plan allows a specific prop).
 - Face readable through the last second; hero does not exit / crop out.
@@ -109,9 +120,27 @@ Every miss becomes a hard gate, a trap note, or a prompt phrase in the plan file
 - Assume self-QA is optimistic. Your job is to find the miss.
 - Filename claims lose to pixels.
 - Soft fails matter; ignored softs become the next hard fails.
-- Common traps: second body / ghost twin; crowd bleed; late virtue; exit crop; portrait≠stage; hot or quiet audio; letters/logos; morph into scenery; rubber-stamp AUDIT.
+- Common traps: second body / ghost twin; **eclipse-clone**; **hero gone at
+  end**; crowd bleed; late virtue; exit crop; portrait≠stage; hot or quiet
+  audio; same-voice narrator on A; letters/logos; morph; rubber-stamp AUDIT.
+- After a miss: **upgrade the checklist** here. Do not only scold the take.
 - Disagree with file + pixels. Yield to evidence. Escalate to teacher if stuck — do not silently win.
 - Batch OK while clean; after twin/human/exit fail, one-id until fixed.
+
+## 5b. What the builder needs from QA (do these)
+
+Do not only say FAIL. The other agent cannot see your head.
+
+1. **Frame + count.** “05-end, A gone” or “03-mid, apple count 0 then 2.”
+2. **Listen vs pixels** as separate columns. Clear words + wrong mouth = FAIL.
+3. **One next-plan gate** per miss (general, not a 40-word ban).
+4. **Patch the SOP** (this file / START-HERE / self-audit) when the miss is
+   new. Recursive. Ash asked you to get better too.
+5. Debate on the issue. Do not rubber-stamp builder README. Do not silently
+   rewrite the product. Teacher breaks ties.
+
+Builder will pull `main` and **start** (shoot if they agree). If your
+amendment is only in Grok chat, they never saw it.
 
 ## 6. Working practices (short)
 

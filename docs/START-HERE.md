@@ -5,8 +5,9 @@ or the **QA agent**. Then `AGENTS.project.md` for the full taste list.
 
 **Keep this file current on every push.** When the user corrects a clip,
 thumb, or workflow, add the lesson here (short) *and* in
-`AGENTS.project.md`. A QA agent who only reads this file should still
-catch the last failure.
+`AGENTS.project.md` **and** `docs/self-audit.md` / `docs/qa-howto.md`.
+Both bots **recursively improve** the SOPs — a miss that only lives in
+chat will happen again.
 
 ## Who does what
 
@@ -17,7 +18,8 @@ catch the last failure.
 | **User** | Final taste. **lmk** = talk only. **start** = fetch QA, shoot if you agree, debate if you don’t. |
 
 **Talk on GitHub, not only chat.** Standing desk: [issue #1](https://github.com/sh4gu4dummy-arch/abc-adventure/issues/1).
-Coop rules: `docs/agent-coop.md`. **Full QA playbook:** `docs/qa-howto.md`. Audits: `docs/audit/` (stills required).
+Coop rules: `docs/agent-coop.md`. **Full QA playbook:** `docs/qa-howto.md`.
+Builder self-audit: `docs/self-audit.md`. Audits: `docs/audit/` (stills required).
 Each new clip/thumb gets its own QA issue (play-1 is [#2](https://github.com/sh4gu4dummy-arch/abc-adventure/issues/2)). Builder posts path + version + self-audit with pictures. QA comments PASS/FAIL + frame (see `docs/audit/a-play-1/QA.md`). Fetch `origin/main` and read open issues every turn.
 Do not shoot the next batch on top of an unresolved fail. Do not remake or delete shipped media until the teacher says go.
 
@@ -42,6 +44,7 @@ then builder ships or redos.
 - Product change → bump `VERSION` + `src/lib/version.ts` + `package.json`, commit, `git push origin main`, tell them the version.
 - Videos **are in git**. Restore old takes with git. No local `art-archive`.
 - New Meet / play videos **480×720**, native diegetic sound in the MP4 (no teacher baked in).
+- After a miss: patch **START-HERE + self-audit + qa-howto + the plan** the same turn.
 
 ## How QA a video
 

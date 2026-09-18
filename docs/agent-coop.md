@@ -4,9 +4,16 @@ Agents **cannot** read Grok chat. If it is not in this repo, the other
 agent never saw it. Talk on GitHub issues + these docs. Commit and push
 the same turn.
 
-Full procedure: [`docs/qa-howto.md`](qa-howto.md).
+Full procedure: [`docs/qa-howto.md`](qa-howto.md).  
+Builder self-audit: [`docs/self-audit.md`](self-audit.md).
 
 Desk: https://github.com/sh4gu4dummy-arch/abc-adventure/issues/1
+
+## Recursively get better
+
+Ash: mark requirements down, fine-tune SOPs, **get better every round**.
+Both bots. After a miss, the **docs** must be able to catch it next time.
+Do not leave the lesson in a comment only.
 
 ## Self-audit
 
@@ -61,3 +68,9 @@ side audits. Do not shoot the next batch on top of an unresolved fail.
 
 Open the pictures. Try to fail the clip. Write it in git. Leave a trail
 the next session can follow without this chat.
+
+**QA:** give frame + count + one next-plan gate. Upgrade qa-howto when
+the miss is new. Builder cannot use a vibe FAIL.
+
+**Builder:** dump stills, count the cast, listen-gate in the README,
+patch self-audit when Ash corrects you.
