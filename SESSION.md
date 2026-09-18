@@ -1,8 +1,11 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.302
+**Version:** v0.305
 
-## QA playbook + play-1 audit
+## Meet vs Friends
+
+Meet A = intro only. **A MEETS FRIENDS** = play-1 (apple/ant/plane), own button on Big A.
+Play-1 audio loudnormed (−55 dB → mean −17.8 / max −1.0). Picture unchanged.
 
 `docs/qa-howto.md`. Play-1 QA: `docs/audit/a-play-1/QA.md` (PASS trial + softs).
 Builder debate: `docs/audit/a-play-1/BUILDER-REPLY.md` — not yielding on PASS label, crossbar face, off-screen props, −22 dB gate. Wait for teacher.

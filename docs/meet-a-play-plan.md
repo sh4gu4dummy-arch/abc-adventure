@@ -40,15 +40,9 @@ Later B–Z: same pattern, only after they approve A.
 
 ## How it plays in the app
 
-Meet modal becomes a **short playlist** (files stay split):
+**Meet A** = intro only (`a.mp4` / `a-little.mp4`).
 
-1. Intro Meet  
-2. Play-1  
-3. Play-2  
-
-One Play tap. Next clip starts when the last ends. No extra tap between. After play-2, replay from intro.
-
-Letter arrows still go A↔B (whole playlist), not scene-by-scene.
+**A MEETS FRIENDS** (little: **a meets friends**) = play clips, separate button. Only shows when that letter has a play file. Big A play-1 is live. Files stay split; later play-2 chains after play-1 inside Friends, not Meet.
 
 ## Look (match shipped Meet intro — do not invent a new A)
 

@@ -72,17 +72,13 @@ Fail: extra lumps, huge googly eyes vs tiny black dots, missing hole, hole
 not matching the bg, little z / q “surgery” ghosts, letter cut off, extra
 blocky background unlike the set.
 
-## Meet A play (not shot until they say go)
+## Meet A play
 
 Plan: `docs/meet-a-play-plan.md`
 
-Intro Meet stays (`videos/imagine/a.mp4`, `a-little.mp4`). New play clips:
-A runs around and plays with page words. Two 10s per case.
-
-1. apple, ant, airplane  
-2. alligator, astronaut, anchor  
-
-QA that plan’s shot list + `docs/qa-howto.md`. **Big A play-1 is in Meet** (intro → play-1). Independent QA: `docs/audit/a-play-1/QA.md` (**PASS trial + softs**). Wait for teacher before play-2 / little a. Match shipped Meet video A (crossbar face, nub feet OK). Clips are **480×720**.
+**Meet A** = intro only. **A MEETS FRIENDS** (Big A page button) = play-1
+(`videos/imagine/a-play-1.mp4`, apple/ant/plane). Play-2 / little-a not shot.
+Audio on play-1 was boosted (was −55 dB mean). Picture unchanged. 480×720.
 
 ## Plans (remind, don’t start unless they say)
 

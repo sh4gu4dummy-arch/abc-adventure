@@ -1,8 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight, Play, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, Play, Users, X } from "lucide-react";
 import {
   LETTERS,
   letterMeetPlaylist,
+  letterFriendsPlaylist,
+  letterHasFriends,
+  friendsHeading,
   letterHeroPath,
   displayGlyph,
   caseTitle,
@@ -15,6 +18,8 @@ import { useCaseMode } from "@/lib/case-mode";
 
 /** Meet A–Z: cartoon letter voice is in the clip. No teacher overlay. */
 const MEET_SELF_VOICE = new Set("ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""));
+
+export type ClipKind = "meet" | "friends";
 
 function letterIndex(letter: string) {
   const i = LETTERS.findIndex(
@@ -50,12 +55,38 @@ export function MeetBuddyButton({
   );
 }
 
+export function FriendsBuddyButton({
+  entry,
+  onOpen,
+}: {
+  entry: LetterEntry;
+  onOpen: () => void;
+}) {
+  const { mode } = useCaseMode();
+  if (!letterHasFriends(entry.letter, mode)) return null;
+  return (
+    <button
+      type="button"
+      onClick={() => {
+        primeAudioFromGesture();
+        onOpen();
+      }}
+      className="pressable inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-[var(--radius-pill)] bg-white/95 px-4 py-2.5 text-sm font-bold shadow"
+      style={{ color: entry.accent }}
+    >
+      <Users className="size-4" /> {friendsHeading(entry.letter, mode)}
+    </button>
+  );
+}
+
 export function MeetBuddyModal({
   entry,
   onClose,
+  kind = "meet",
 }: {
   entry: LetterEntry;
   onClose: () => void;
+  kind?: ClipKind;
 }) {
   const { mode } = useCaseMode();
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -67,51 +98,71 @@ export function MeetBuddyModal({
   useEffect(() => {
     setIdx(letterIndex(entry.letter));
     setClipIdx(0);
-  }, [entry.letter]);
+  }, [entry.letter, kind]);
 
   const current = LETTERS[idx]!;
+  const playlist =
+    kind === "friends"
+      ? letterFriendsPlaylist(current.letter, mode)
+      : letterMeetPlaylist(current.letter, mode);
+  const friendCount = LETTERS.filter((l) =>
+    letterHasFriends(l.letter, mode),
+  ).length;
+  const showArrows = kind === "meet" || friendCount > 1;
   const prev = LETTERS[(idx - 1 + LETTERS.length) % LETTERS.length]!;
   const next = LETTERS[(idx + 1) % LETTERS.length]!;
   const title = caseTitle(current.letter, mode);
+  const heading =
+    kind === "friends" ? friendsHeading(current.letter, mode) : `Meet ${title}`;
   const prevGlyph = displayGlyph(prev.letter, mode);
   const nextGlyph = displayGlyph(next.letter, mode);
   const poster = letterHeroPath(current.letter, mode);
-  const playlist = letterMeetPlaylist(current.letter, mode);
   const clip = Math.min(clipIdx, Math.max(0, playlist.length - 1));
-  const src = `${playlist[clip]}?v=${APP_VERSION}`;
-  const selfVoice = MEET_SELF_VOICE.has(current.letter.toUpperCase());
+  const src = playlist.length
+    ? `${playlist[clip]}?v=${APP_VERSION}`
+    : "";
+  const selfVoice =
+    kind === "meet" && MEET_SELF_VOICE.has(current.letter.toUpperCase());
+  const playUnmuted = kind === "friends" || selfVoice;
 
-  const go = (to: number) => {
+  const stepLetter = (dir: 1 | -1) => {
     primeAudioFromGesture();
     setFailed(false);
     setPaused(true);
     setClipIdx(0);
-    setIdx(to);
+    let i = idx;
+    for (let n = 0; n < LETTERS.length; n++) {
+      i = (i + dir + LETTERS.length) % LETTERS.length;
+      if (kind === "meet" || letterHasFriends(LETTERS[i]!.letter, mode)) {
+        setIdx(i);
+        return;
+      }
+    }
   };
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "ArrowLeft") {
+      if (e.key === "ArrowLeft" && showArrows) {
         e.preventDefault();
-        go((idx - 1 + LETTERS.length) % LETTERS.length);
-      } else if (e.key === "ArrowRight") {
+        stepLetter(-1);
+      } else if (e.key === "ArrowRight" && showArrows) {
         e.preventDefault();
-        go((idx + 1) % LETTERS.length);
+        stepLetter(1);
       } else if (e.key === "Escape") {
         onClose();
       }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [idx, onClose]);
+  });
 
   useEffect(() => {
     const v = videoRef.current;
-    if (!v) return;
+    if (!v || !src) return;
     stopSpeech();
     v.src = src;
-    v.muted = !selfVoice;
-    if (selfVoice) v.volume = 1;
+    v.muted = !playUnmuted;
+    v.volume = 1;
     const tryPlay = () => {
       void v.play().catch(() => {
         /* autoplay may wait for tap — keep the player visible */
@@ -119,7 +170,7 @@ export function MeetBuddyModal({
     };
     v.addEventListener("canplay", tryPlay, { once: true });
     tryPlay();
-    if (!selfVoice) {
+    if (kind === "meet" && !selfVoice) {
       void speak(`The letter ${title}`);
     }
     return () => {
@@ -133,14 +184,14 @@ export function MeetBuddyModal({
         /* ignore */
       }
     };
-  }, [src, title, selfVoice]);
+  }, [src, title, selfVoice, kind, playUnmuted]);
 
   return (
     <div
       className="modal-scrim fixed inset-0 z-[80] flex items-center justify-center p-0 sm:p-4"
       role="dialog"
       aria-modal="true"
-      aria-label={`Meet ${title}`}
+      aria-label={heading}
     >
       <div
         className="relative flex h-full w-full max-w-md flex-col overflow-hidden bg-surface shadow-[var(--shadow-float)] sm:h-auto sm:max-h-[min(94dvh,880px)] sm:rounded-[var(--radius-xl)] sm:border-2 sm:border-border"
@@ -150,7 +201,7 @@ export function MeetBuddyModal({
       >
         <div className="flex items-center justify-between gap-2 p-3">
           <p className="px-2 text-sm font-bold tracking-wide text-muted">
-            Meet {title}
+            {heading}
           </p>
           <button
             type="button"
@@ -173,15 +224,15 @@ export function MeetBuddyModal({
             alt=""
             className={cn(
               "absolute inset-0 h-full w-full object-cover",
-              !failed && "opacity-0",
+              !failed && src && "opacity-0",
             )}
           />
-          {!failed && (
+          {src && !failed && (
             <video
               key={src}
               ref={videoRef}
               playsInline
-              muted={!selfVoice}
+              muted={!playUnmuted}
               autoPlay
               preload="auto"
               poster={poster}
@@ -195,11 +246,15 @@ export function MeetBuddyModal({
                 else v.pause();
               }}
               onEnded={() => {
-                setClipIdx((i) => (i + 1) % playlist.length);
+                if (playlist.length > 1) {
+                  setClipIdx((i) => (i + 1) % playlist.length);
+                } else {
+                  setPaused(true);
+                }
               }}
             />
           )}
-          {paused && !failed && (
+          {paused && !failed && src && (
             <button
               type="button"
               className="absolute inset-0 z-[2] grid place-items-center"
@@ -211,28 +266,32 @@ export function MeetBuddyModal({
               </span>
             </button>
           )}
-          <button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              go((idx - 1 + LETTERS.length) % LETTERS.length);
-            }}
-            className="absolute left-2 top-1/2 z-[5] flex size-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-on-light shadow-lg"
-            aria-label={`Previous, meet ${prevGlyph}`}
-          >
-            <ChevronLeft className="size-7" />
-          </button>
-          <button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              go((idx + 1) % LETTERS.length);
-            }}
-            className="absolute right-2 top-1/2 z-[5] flex size-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-on-light shadow-lg"
-            aria-label={`Next, meet ${nextGlyph}`}
-          >
-            <ChevronRight className="size-7" />
-          </button>
+          {showArrows && (
+            <>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  stepLetter(-1);
+                }}
+                className="absolute left-2 top-1/2 z-[5] flex size-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-on-light shadow-lg"
+                aria-label={`Previous, ${prevGlyph}`}
+              >
+                <ChevronLeft className="size-7" />
+              </button>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  stepLetter(1);
+                }}
+                className="absolute right-2 top-1/2 z-[5] flex size-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-on-light shadow-lg"
+                aria-label={`Next, ${nextGlyph}`}
+              >
+                <ChevronRight className="size-7" />
+              </button>
+            </>
+          )}
         </div>
       </div>
     </div>

@@ -25,7 +25,7 @@ import { StarBar } from "@/components/alphabet/StarBar";
 import { StoryMode } from "@/components/alphabet/StoryMode";
 import { SoundLesson } from "@/components/alphabet/SoundLesson";
 import { TracePad } from "@/components/alphabet/TracePad";
-import { MeetBuddyButton, MeetBuddyModal } from "@/components/alphabet/MeetBuddy";
+import { MeetBuddyButton, MeetBuddyModal, FriendsBuddyButton } from "@/components/alphabet/MeetBuddy";
 import { WordFriends } from "@/components/alphabet/WordFriends";
 import { episodesForLetter } from "@/data/letter-buddies";
 import { WordLessonModal } from "@/components/alphabet/WordLessonModal";
@@ -99,6 +99,7 @@ function LetterPage() {
   const [lightbox, setLightbox] = useState<WordEntry | null>(null);
   const [lessonWord, setLessonWord] = useState<WordEntry | null>(null);
   const [meetOpen, setMeetOpen] = useState(false);
+  const [friendsOpen, setFriendsOpen] = useState(false);
   const { mode: caseKind } = useCaseMode();
 
   useEffect(() => {
@@ -264,6 +265,10 @@ function LetterPage() {
               <Volume2 className="size-4" /> Hear letter
             </button>
             <MeetBuddyButton entry={entry} onOpen={() => setMeetOpen(true)} />
+            <FriendsBuddyButton
+              entry={entry}
+              onOpen={() => setFriendsOpen(true)}
+            />
             {episodesForLetter(entry.letter).length > 0 && (
               <Link
                 to="/buddies"
@@ -483,6 +488,13 @@ function LetterPage() {
 
       {meetOpen && (
         <MeetBuddyModal entry={entry} onClose={() => setMeetOpen(false)} />
+      )}
+      {friendsOpen && (
+        <MeetBuddyModal
+          entry={entry}
+          kind="friends"
+          onClose={() => setFriendsOpen(false)}
+        />
       )}
     </main>
   );

@@ -598,16 +598,30 @@ export function letterBuddyVideoPath(letter: string, kind: CaseKind = "upper"): 
   return assetUrl(`videos/buddies/${l}.mp4`);
 }
 
-/** Extra Meet play clips after the intro. Only files that exist. */
-const MEET_PLAY_UPPER: Partial<Record<string, string[]>> = {
+/** Play-with-words clips. Separate from Meet intro. */
+const FRIENDS_UPPER: Partial<Record<string, string[]>> = {
   a: ["videos/imagine/a-play-1.mp4"],
 };
 
 export function letterMeetPlaylist(letter: string, kind: CaseKind = "upper"): string[] {
-  const intro = letterBuddyVideoPath(letter, kind);
-  const extras =
-    kind === "upper" ? MEET_PLAY_UPPER[letter.toLowerCase()] ?? [] : [];
-  return [intro, ...extras.map((p) => assetUrl(p))];
+  return [letterBuddyVideoPath(letter, kind)];
+}
+
+export function letterFriendsPlaylist(
+  letter: string,
+  kind: CaseKind = "upper",
+): string[] {
+  const files = kind === "upper" ? FRIENDS_UPPER[letter.toLowerCase()] ?? [] : [];
+  return files.map((p) => assetUrl(p));
+}
+
+export function letterHasFriends(letter: string, kind: CaseKind = "upper"): boolean {
+  return letterFriendsPlaylist(letter, kind).length > 0;
+}
+
+export function friendsHeading(letter: string, kind: CaseKind): string {
+  const g = displayGlyph(letter, kind);
+  return kind === "upper" ? `${g} MEETS FRIENDS` : `${g} meets friends`;
 }
 
 export { isBuddyWordPoster } from "@/data/art-roles";

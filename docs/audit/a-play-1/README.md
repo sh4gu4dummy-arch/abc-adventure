@@ -7,7 +7,15 @@ QA issue: https://github.com/sh4gu4dummy-arch/abc-adventure/issues/2
 
 Do not shoot play-2 / little a until QA comments and the teacher says go.
 
-## Numbers
+## Numbers (v0.303 gain pass)
+
+| Check | Before | After |
+|---|---|---|
+| Picture | same | same |
+| mean_volume | −55.2 dB | **−17.8 dB** |
+| max_volume | −30.8 dB | **−1.0 dB** |
+
+Teacher could not hear it. Audio-only loudnorm. Do not treat this as a picture remake.
 
 | Check | Value |
 |---|---|
