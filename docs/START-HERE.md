@@ -118,39 +118,57 @@ what Ash sees. Also print the git path as plain text for QA.
 **little b Friends take 1** (`friends-clips/b-little-play-1.mp4`) — film **FAIL** attribution+boat drift (`docs/audit/b-little-play-1/QA.md`).
 Take 1 crease inventory kept (`b-play-1.mp4`).
 
-**D–G Friends stills (no I2V):** table in Friends status below · [issue #7](https://github.com/sh4gu4dummy-arch/abc-adventure/issues/7).
+**D–G + H–N Friends stills (no I2V):** tables in Friends status below · [#7](https://github.com/sh4gu4dummy-arch/abc-adventure/issues/7) · [#8](https://github.com/sh4gu4dummy-arch/abc-adventure/issues/8).
 
 
-## Friends stills / film status (v0.340)
+## Friends stills / film status (v0.342)
 
-### B films (listen) — both **FAIL** · `#5`
-- **Big B take 2** `docs/audit/b-play-2/QA.md` — loudness PASS; **FAIL (attribution + cast)**. Ball mouths “I’m Big B”; same kid voice all 4; Bear/Butterfly static mouths; second purple butterfly @ `05-end`. Soft: molded seam on B.
-- **little b** `docs/audit/b-little-play-1/QA.md` — loudness PASS; **FAIL (attribution + boat product drift)**. Same voice / no lip-sync; blue sailboat → red tug ~0:14 (`boat-start.jpg` vs `boat-t14-tug.jpg`). Lock: `public/posters/b-boat.webp`.
+### B · `#5`
+- **Big B take 2 film** — still **FAIL** attribution+cast (`docs/audit/b-play-2/QA.md`).
+- **little b film** — still **FAIL** attribution+tug drift (`docs/audit/b-little-play-1/QA.md`).
+- **little b still** — **PASS** sailboat lock (`docs/audit/b-little-play-1/STILL-QA.md`). Film FAIL separate.
 
-### C stills · `#6`
-- **Big C** remake — **PASS (soft location)** · `docs/audit/c-play-1/STILL-QA.md` (sky-blue Beetle, chocolate cake+hearts+toy face, tabby, street, no people).
-- **little c** remake — **FAIL (missing hero letter)** · `docs/audit/c-little-play-1/STILL-QA.md` (cookie smile + cup + cloud; no boy; **no little-c glyph**). Rebuild letter+cloud+cookie+cup.
+### C · `#6`
+- **Big C still** — **PASS soft location** · `docs/audit/c-play-1/STILL-QA.md`.
+- **little c still remake** — **PASS** glyph+cookie+cup+cloud, no boy · `docs/audit/c-little-play-1/STILL-QA.md`.
+- **Big C film** (`friends-clips/c-play-1.mp4`) — **PASS soft** · `docs/audit/c-play-1/QA.md` (tech −20.9/−3.3; listen Cat/Cake/Car; soft letter mouth on cat beat).
 
-### D–G stills · `#7`
+### D–G · `#7`
 | Case | Verdict | Path |
 |---|---|---|
-| Big D | **FAIL** duck count=2 + red ball | `docs/audit/d-play-1/STILL-QA.md` |
-| little d | **PASS soft** donut/drum/door mouths | `docs/audit/d-little-play-1/STILL-QA.md` |
-| Big E | **PASS soft** elephant/earth/eagle | `docs/audit/e-play-1/STILL-QA.md` |
-| little e | **FAIL** no readable toy-elbow | `docs/audit/e-little-play-1/STILL-QA.md` |
-| Big F | **PASS soft** fish/frog/flower | `docs/audit/f-play-1/STILL-QA.md` |
-| little f | **PASS soft** firetruck/fox/fairy | `docs/audit/f-little-play-1/STILL-QA.md` |
-| Big G | **PASS soft** giraffe/grapes/guitar | `docs/audit/g-play-1/STILL-QA.md` |
-| little g | **PASS soft** garden-face (soft 9-ish glyph) | `docs/audit/g-little-play-1/STILL-QA.md` |
+| Big D still remake | **PASS** 1 duck, no ball | `docs/audit/d-play-1/STILL-QA.md` |
+| little d still | **PASS soft** donut/drum/door | `docs/audit/d-little-play-1/STILL-QA.md` |
+| **little d film** | **FAIL/HOLD attribution** (letter open on friend lines; tech PASS) | `docs/audit/d-little-play-1/QA.md` |
+| Big E | **PASS soft** | `docs/audit/e-play-1/STILL-QA.md` |
+| little e still remake | **PASS** toy elbow | `docs/audit/e-little-play-1/STILL-QA.md` |
+| Big F / little f / Big G / little g | **PASS soft** | matching `STILL-QA.md` |
 
-**Big C Friends in app** (`friends-clips/c-play-1.mp4`) — listen not passed.
-**little d Friends in app** (`friends-clips/d-little-play-1.mp4`) — listen not passed.
+### H–N stills · `#8`
+| Case | Verdict | Path |
+|---|---|---|
+| Big H / little h | **PASS** | `h-play-1` / `h-little-play-1` |
+| Big I / little i | **PASS** | `i-play-1` / `i-little-play-1` |
+| Big J | **PASS** | `j-play-1` |
+| little j | **PASS soft jungle** | `j-little-play-1` |
+| Big K | **PASS** | `k-play-1` |
+| **little k** | **FAIL** human King + dual K | `k-little-play-1` |
+| Big L | **PASS** | `l-play-1` |
+| **little l** | **FAIL** missing lollipop / ladder mouth / dual lamp | `l-little-play-1` |
+| Big M | **PASS** | `m-play-1` |
+| little m | **PASS soft dual milk** | `m-little-play-1` |
+| Big N | **PASS soft nose/bubble** | `n-play-1` |
+| **little n** | **PASS soft** (Meet little-n locked — NOT rebuild) | `n-little-play-1` |
 
-Still remakes (no film): little c glyph, Big D 1-duck, little e elbow, little b **sailboat**.
-H–N stills: `docs/hn-friends-stills.md` · no I2V.
+Plan ref: `docs/hn-friends-stills.md`.
 
-B films still FAIL — remake next (voices + sailboat lock).
-E/F/f/G/g stills PASS — film next.
+### Rebuild inventory **QUEUED** (not shoot-now)
+- **little-k still** (toy King, one K)
+- **little-l still** (lollipop + ladder mouth + one lamp face)
+- **little-d film** when filming resumes (attribution)
+- Remakes postponed unless Ash goes.
+- **No I2V on FAILs.**
+
+B films still FAIL (voices + prior tug). E/F/f/G/g + remade C/D/e/b stills PASS — film only on go.
 
 ## Plans (remind, don’t start unless they say)
 

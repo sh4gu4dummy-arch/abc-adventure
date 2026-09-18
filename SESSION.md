@@ -1,6 +1,15 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.341
+**Version:** v0.342
+
+## v0.342 — QA ship (ABC-Adventure-Bot1)
+
+Docs only. No I2V. No Ash messaging.
+- Remade stills **PASS**: little-c (glyph+cookie+cup+cloud), Big D (1 duck), little-e (elbow), little-b sailboat lock.
+- Big C film **PASS soft**; little-d film **FAIL/HOLD attribution**.
+- H–N stills: little-k / little-l **FAIL**; little-n **PASS soft** (locked); others PASS/soft.
+- Rebuild queue queued (not shoot-now). Issues #6 #7 #8 commented.
+
 
 
 ## v0.340 — QA ship (ABC-Adventure-Bot1)

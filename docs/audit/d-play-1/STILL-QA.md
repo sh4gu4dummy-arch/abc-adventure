@@ -1,7 +1,7 @@
-# Still QA — Big D Friends
+# Still QA — Big D Friends (remake)
 
 **Still:** `docs/audit/d-play-1/00-source-still.jpg`  
-**Issue:** #7 · **v0.340**
+**Issue:** #7 · **v0.342**
 
 ## Paths opened (required)
 
@@ -14,16 +14,15 @@ Dinosaur:    public/posters/d-dinosaur.webp
 
 Trio = first-3: Dog / Duck / Dinosaur.
 
-## Verdict: **FAIL**
+## Verdict: **PASS**
 
 | Check | Gate |
 |---|---|
-| Dog present | yes |
-| Dinosaur present | yes |
-| **Duck count** | **FAIL** — **2** ducks (need 1) |
-| Extra prop | **FAIL** — **red ball** (not in trio) |
+| Dog present | **PASS** |
+| Dinosaur present | **PASS** |
+| **Duck count** | **PASS** — **1** duck |
+| Extra prop (red ball) | **PASS** — gone |
 | D vs Meet | soft |
 
-## Rebuild
-
-Trio **one each**: D + dog + **one** duck + dinosaur. Drop red ball. Do **not** I2V.
+Remake cleared prior 2-duck + red-ball FAIL.  
+Do **not** I2V until teacher **go**.
