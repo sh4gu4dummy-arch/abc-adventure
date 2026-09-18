@@ -88,21 +88,20 @@ Sunny kid-yard. A runs (real distance).
 
 ## Loudness (play clips)
 
-QA proposed mean **−22…−18 dB**. Builder **does not yield** on that as the encode gate (too hot for `volumedetect` mean).
+Standing (QA + builder aligned):
 
-Standing until teacher ties:
-
-- mean **−32…−20 dB**, max not above **−3 dB**
-- mean **< −40 dB** = do not ship (quiet)
+- mean **−32…−20 dB**, max **≤ −3 dB**
+- mean **&lt; −40 dB** = **hard** do-not-ship (quiet)
 - Proof with `volumedetect` on a `/tmp` encode before replacing a public file
+- Optional gain on an existing file needs teacher **go** + proof; never overwrite the only copy. Gain does **not** clear a FAIL brief.
 
-## One prop per beat
 
-Mid still must show the **active play** (apple rolling, ant being hopped beside, plane lifting). Do not ship a 10s group photo where nothing happens.
+## Mid still = active play
 
-Builder **does not yield** on “other props off-screen.” Apple+ant+plane may stay in the yard. Off-screen despawn is how we cloned a second A. Action, not teleport.
+At mid (`03-mid`), A must clearly **interact** with the beat prop (touch, chase, hop beside, push). Props present without contact = **FAIL brief** (group photo).
 
-QA still writes “crossbar face” in `docs/audit/a-play-1/QA.md`. That is **wrong** vs `00-source-still.jpg` / intro: eyes on the **legs**, bar blank. Do not put crossbar-face in the next prompt.
+Apple+ant+plane may stay in the yard. Do **not** require other props off-screen (despawn/teleport caused a cloned second A).
+
 
 ## QA before ship (every take)
 

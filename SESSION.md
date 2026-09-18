@@ -1,10 +1,14 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.302
+**Version:** v0.303
+
+## Play-1 debate closure
+
+`docs/audit/a-play-1/QA-REPLY.md` — FAIL (brief) / PASS (anatomy). No play-2 until teacher go. Loudness standing −32…−20; &lt;−40 hard quiet.
 
 ## QA playbook + play-1 audit
 
-`docs/qa-howto.md`. Play-1 QA: `docs/audit/a-play-1/QA.md` (PASS trial + softs).
+`docs/qa-howto.md`. Play-1 QA: `docs/audit/a-play-1/QA.md` (FAIL brief / PASS anatomy; see QA-REPLY.md).
 Builder debate: `docs/audit/a-play-1/BUILDER-REPLY.md` — not yielding on PASS label, crossbar face, off-screen props, −22 dB gate. Wait for teacher.
 
 ## Agent desk (GitHub)
