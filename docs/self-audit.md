@@ -25,10 +25,10 @@ Do this **before** I2V. Skipping it is how we shipped a random orange ball.
    (orange ball vs product ball = fail).
 5b. Paste Meet/letter + each poster path in the audit README / STILL-QA.
    No paths pasted = you did not still-QA.
-6. Save **one** keeper: `docs/audit/<id>/00-source-still.jpg`.
-   Tell Ash that path. Extra takes: `still-REJECT-reason.jpg`. Do not
-   present two stills in chat unless they are both keepers and you **ask
-   which**.
+8. **Place, not a default lawn.** Vary the set (water, street, table, sky).
+   Empty grass every letter = lazy.
+9. **One still in chat.** Repo markdown links are blocked for Ash. The
+   generated image in the thread + a plain git path.
 
 **Stills before I2V.** Glyph + friend look lock + mouths + count. Film
 cannot fix a wrong toy.

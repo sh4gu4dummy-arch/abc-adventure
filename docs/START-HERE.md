@@ -107,11 +107,18 @@ Big A take 2 **PASS for now** (color-drift noted — don’t darken next rounds)
 astronaut said “I'm Anchor”). Keep take 2 in the player; **do not remake A**
 this round (take 2 FAIL talking-mouth — blank anchor). Notes: color drift + talking-mouth rule. B plans: `docs/b-meets-friends-plan.md` (#5).
 
-**Next:** little b Friends plan still waiting (banana / boat / bird). No shoot until go.
+**Locations vary.** Friends stills are not always a grass field. Boat/lake,
+street, picnic, etc. Match the friends.
 
-**Confirmed stills (one each, no I2V until QA PASS + go).** Issue #5.
-- Big B: `docs/audit/b-play-2/00-source-still.jpg` (poster-locked ball/bear/butterfly)
-- little b: `docs/audit/b-little-play-1/00-source-still.jpg` (banana/boat/bird)
+**Chat stills:** Grok blocks repo file links. The image in the thread is
+what Ash sees. Also print the git path as plain text for QA.
+
+**Confirmed stills (no I2V until QA + go)**
+- Big B: `docs/audit/b-play-2/00-source-still.jpg` (Ash: right characters)
+- little b: `docs/audit/b-little-play-1/00-source-still.jpg` (boat on water)
+- Big C: `docs/audit/c-play-1/00-source-still.jpg` (street)
+- little c: `docs/audit/c-little-play-1/00-source-still.jpg` (picnic)
+B I2V prompts: `docs/b-i2v-prompts.md`. B stills #5. C stills #6.
 
 ## Plans (remind, don’t start unless they say)
 
