@@ -79,12 +79,11 @@ blocky background unlike the set.
 
 ## Meet A play / Friends
 
-Big A take 2 **PASS for now** (teacher). Keep scenery; next rounds: **cast lock**
-(everyone on screen the whole time, no vanish-end, no eclipse-clone apple),
-**more exciting foley**. Seek bar shipped.
+Big A take 2 **PASS for now**. Seek bar shipped.
 
-**Next plan (QA, no shoot):** little **a meets friends** —
-`docs/a-meets-friends-little-a-plan.md` (QA amend **v0.316**)
+**little a meets friends take 1** is in little-abc Friends (`a-little-play-1.mp4`,
+~24s, method B). Audit: `docs/audit/a-little-play-1/`. Issue #4.
+Cast lock on stills looks OK (hero in 05-end). Listen not passed.
 
 ## Plans (remind, don’t start unless they say)
 

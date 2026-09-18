@@ -602,6 +602,9 @@ export function letterBuddyVideoPath(letter: string, kind: CaseKind = "upper"): 
 const FRIENDS_UPPER: Partial<Record<string, string[]>> = {
   a: ["videos/imagine/a-play-1.mp4"],
 };
+const FRIENDS_LOWER: Partial<Record<string, string[]>> = {
+  a: ["videos/imagine/a-little-play-1.mp4"],
+};
 
 export function letterMeetPlaylist(letter: string, kind: CaseKind = "upper"): string[] {
   return [letterBuddyVideoPath(letter, kind)];
@@ -611,7 +614,8 @@ export function letterFriendsPlaylist(
   letter: string,
   kind: CaseKind = "upper",
 ): string[] {
-  const files = kind === "upper" ? FRIENDS_UPPER[letter.toLowerCase()] ?? [] : [];
+  const table = kind === "upper" ? FRIENDS_UPPER : FRIENDS_LOWER;
+  const files = table[letter.toLowerCase()] ?? [];
   return files.map((p) => assetUrl(p));
 }
 

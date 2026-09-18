@@ -1,12 +1,13 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.316
+**Version:** v0.317
 
 
-## A Meets Friends take 2
+## A Meets Friends
 
-Teacher **PASS for now**. Seek/scrubber on Meet + Friends. Issue #3.
-SOPs: `docs/self-audit.md` + qa-howto recursive improve (Ash v0.316).
+Big A take 2 PASS-for-now. **little a take 1** in little-abc Friends
+(`a-little-play-1.mp4`). Audit `docs/audit/a-little-play-1/`. Issue #4.
+Listen not passed. **start** = check QA, shoot if agree.
 
 Meet A = intro only. **A MEETS FRIENDS** = play-1 (apple/ant/plane), own button on Big A.
 Play-1 audio loudnormed (−55 dB → mean −17.8 / max −1.0). Picture unchanged.
