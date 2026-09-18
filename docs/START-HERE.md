@@ -74,11 +74,10 @@ blocky background unlike the set.
 
 ## Meet A play / Friends
 
-**Remake plan (QA this, no shoot):** `docs/a-meets-friends-play-1-remake.md` (supervisor gates **v0.308**)
+**Remake take 1 is in Friends** (`a-play-1.mp4`, 15s). Self-audit:
+`docs/audit/a-play-1-remake/` — not a listen PASS yet. QA issue #3. (supervisor gates **v0.308**)
 
-**Meet A** = intro only. **A MEETS FRIENDS** = play-1 trial
-(`videos/imagine/a-play-1.mp4`). Teacher: art OK; next take A + apple/ant/plane
-say their names and act like the real things. 480×720.
+**Meet A** = intro only. **A MEETS FRIENDS** plays the 15s remake take 1.
 
 ## Plans (remind, don’t start unless they say)
 
