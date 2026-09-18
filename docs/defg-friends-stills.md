@@ -12,7 +12,7 @@ No film until PASS + go.
 | Big F | fish frog flower | lily pond | `docs/audit/f-play-1/00-source-still.jpg` |
 | little f | firetruck fox fairy | fire station | `docs/audit/f-little-play-1/00-source-still.jpg` |
 | Big G | giraffe grapes guitar | savanna | `docs/audit/g-play-1/00-source-still.jpg` |
-| little g | garden gift goat | flower garden (no girl) | `docs/audit/g-little-play-1/00-source-still.jpg` |
+| little g | garden gift goat | flower garden (smiling garden-bed, no girl) | `docs/audit/g-little-play-1/00-source-still.jpg` |
 
 Inanimates have toy mouths (donut, drum, door, grapes, guitar, gift, firetruck).
 Eat-poster humans dropped (garden girl). Elf/fairy = product words, not extra kids.

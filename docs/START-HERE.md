@@ -118,7 +118,7 @@ what Ash sees. Also print the git path as plain text for QA.
 **little b Friends take 1 in app** (`friends-clips/b-little-play-1.mp4`) — boat; listen not passed.
 Take 1 crease inventory kept (`b-play-1.mp4`).
 
-**D–G Friends stills (no I2V):** `docs/defg-friends-stills.md` · [issue #7](https://github.com/sh4gu4dummy-arch/abc-adventure/issues/7).
+**D–G Friends stills (no I2V):** `docs/defg-friends-stills.md` · [issue #7](https://github.com/sh4gu4dummy-arch/abc-adventure/issues/7). Builder self-audit remade little g (garden needed a face).
 
 
 ## Friends stills status (v0.335)
