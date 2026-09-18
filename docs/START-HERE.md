@@ -91,7 +91,7 @@ Big A take 2 **PASS for now** (color-drift noted — don’t darken next rounds)
 **little a take 1 FAIL** (inventory kept).
 **little a take 2** listen: **anchor line failed** (no face on the anchor →
 astronaut said “I'm Anchor”). Keep take 2 in the player; **do not remake A**
-this round. Notes: color drift + talking-mouth rule.
+this round (take 2 FAIL talking-mouth — blank anchor). Notes: color drift + talking-mouth rule. B plans: `docs/b-meets-friends-plan.md` (#5).
 
 **Next plans (no shoot):** Big B + little b Friends —
 `docs/b-meets-friends-plan.md`

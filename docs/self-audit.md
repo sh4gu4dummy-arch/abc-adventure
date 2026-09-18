@@ -44,9 +44,10 @@ Keep these even when scenery looks pretty:
    Toy smiles OK; no human bodies on props unless the plan allows.
 7. **Sound** — interesting play foley (hops, roll, crawl, whoosh). Not silent,
    not beep-spam. Voices on top of music (bury-speech = fail).
-9. **Look lock** — still + every frame must match the **Meet intro** of that
+9. **Helmet / clear-face props** — photoreal kid face through a clear helmet = fail the still (toy face / opaque visor).
+10. **Look lock** — still + every frame must match the **Meet intro** of that
    case (Meet little a, not a lumpy cousin, not the home tile).
-10. **Big Friends ≠ little Friends.** Do not copy the other case’s three
+11. **Big Friends ≠ little Friends.** Do not copy the other case’s three
     words. A: Big = apple/ant/airplane; little = alligator/astronaut/anchor.
 
 ### Method B (multi-clip concat)
