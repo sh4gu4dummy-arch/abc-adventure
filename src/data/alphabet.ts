@@ -598,12 +598,13 @@ export function letterBuddyVideoPath(letter: string, kind: CaseKind = "upper"): 
   return assetUrl(`videos/buddies/${l}.mp4`);
 }
 
-/** Play-with-words clips. Separate from Meet intro. */
+/** Play-with-words clips. Files live in `public/friends-clips/` (not
+ *  `public/videos/`) because the preview server ignores new files under videos/. */
 const FRIENDS_UPPER: Partial<Record<string, string[]>> = {
-  a: ["videos/imagine/a-play-1.mp4"],
+  a: ["friends-clips/a-play-1.mp4"],
 };
 const FRIENDS_LOWER: Partial<Record<string, string[]>> = {
-  a: ["videos/imagine/a-little-play-1.mp4"],
+  a: ["friends-clips/a-little-play-1.mp4"],
 };
 
 export function letterMeetPlaylist(letter: string, kind: CaseKind = "upper"): string[] {

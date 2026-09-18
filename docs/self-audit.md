@@ -49,6 +49,10 @@ home tile.
 7. If you found a new miss: add a **general** gate to START-HERE + this
    file + qa-howto. Do not invent a one-off law from one pixel.
 
+Encode: concat four 6s → ~24s, 480×720, AAC. Put the file in
+`public/friends-clips/` (not `public/videos/`). Preview 404s new files
+under `videos/**` until a restart we must not do.
+
 Do not overwrite the only copy. Do not claim PASS because QA hasn’t
 replied yet.
 

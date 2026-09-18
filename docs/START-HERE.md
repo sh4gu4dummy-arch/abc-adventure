@@ -81,9 +81,12 @@ blocky background unlike the set.
 
 Big A take 2 **PASS for now**. Seek bar shipped.
 
-**little a meets friends take 1** is in little-abc Friends (`a-little-play-1.mp4`,
+**little a meets friends take 1** is in little-abc Friends (`friends-clips/a-little-play-1.mp4`,
 ~24s, method B). Audit: `docs/audit/a-little-play-1/`. Issue #4.
 Cast lock on stills looks OK (hero in 05-end). Listen not passed.
+
+v0.317 404: preview **ignores new files in `public/videos/**`**. Friends clips live in
+`public/friends-clips/` (same reason stories use `story-clips/`).
 
 ## Plans (remind, don’t start unless they say)
 
