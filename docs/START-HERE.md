@@ -87,11 +87,11 @@ blocky background unlike the set.
 
 Big A take 2 **PASS for now**. Seek bar shipped.
 
-**little a take 1 FAIL** (teacher / supervisor). Wrong glyph. Copied Big A friends.
-Little uses last-3 A words: alligator, astronaut, anchor. Inventory kept.
+**little a take 1 FAIL** (wrong glyph + copied Big friends). Inventory kept.
 
-Plans (no shoot): `docs/a-meets-friends-little-a-take2-plan.md` ·
-`docs/a-meets-friends-little-a-plan.md` (QA FAIL). Issue #4.
+**little a take 2 in Friends now** (`friends-clips/a-little-play-2.mp4`) —
+Meet look + alligator / astronaut / anchor. curl 200. Audit:
+`docs/audit/a-little-play-2/`. Issue #4. Listen not passed.
 
 Standing: **Big Friends ≠ little Friends.** Split the 6 words.
 

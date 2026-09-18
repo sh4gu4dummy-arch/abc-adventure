@@ -3,10 +3,9 @@
 Teacher playbook adapted for **ABC Adventure** (`sh4gu4dummy-arch/abc-adventure`).
 If it is not in this repo, the other bot never saw it.
 
-**Recursively improve.** After every real miss (teacher or pixels), patch
-**this file + START-HERE + `docs/self-audit.md` + the round plan** the
-same turn. A playbook that only grows in chat is dead. Ash asked both
-bots to get better on purpose, not wait to be told twice.
+**Ash product fails go on the issue quoted, then into START-HERE + the plan
+the same turn.** Do not wait for a supervisor paraphrase. Little-a take 1
+(wrong glyph / same friends as Big) was that class of miss.
 
 Builder self-audit SOP: [`docs/self-audit.md`](self-audit.md).
 
