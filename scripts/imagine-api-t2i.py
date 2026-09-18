@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""Text-to-image via official xAI Imagine API + session OIDC JWT.
+"""Text-to-image via official xAI Imagine API.
 
-Downloads the temp imgen.x.ai URL immediately. Does not use the artifacts locker.
+Auth: XAI_API_KEY → $HOME/.grok/auth.json → /root/.grok/auth.json
+(see scripts/imagine_auth.py). Downloads imgen URL immediately.
 
   python3 scripts/imagine-api-t2i.py "prompt" /tmp/out.jpg --aspect 2:3
 """
@@ -10,31 +11,24 @@ from __future__ import annotations
 import argparse
 import json
 import ssl
-import sys
+import subprocess
 import urllib.error
 import urllib.request
 from pathlib import Path
 
-AUTH = Path("/root/.grok/auth.json")
+from imagine_auth import bearer_token
+
 API = "https://api.x.ai/v1"
 
 
-def session_jwt() -> str:
-    rec = next(iter(json.loads(AUTH.read_text()).values()))
-    key = rec["key"]
-    if not str(key).startswith("eyJ"):
-        raise SystemExit("auth.json key is not an OIDC JWT")
-    return key
-
-
-def req(method: str, url: str, jwt: str, body=None, timeout=120):
+def req(method: str, url: str, token: str, body=None, timeout=120):
     data = None if body is None else json.dumps(body).encode()
     r = urllib.request.Request(
         url,
         data=data,
         method=method,
         headers={
-            "Authorization": f"Bearer {jwt}",
+            "Authorization": f"Bearer {token}",
             "Accept": "application/json",
             "Content-Type": "application/json",
         },
@@ -57,11 +51,7 @@ def download(url: str, dest: Path) -> None:
             return
     except Exception:
         pass
-    import subprocess
-
-    subprocess.check_call(
-        ["curl", "-fL", "--retry", "3", url, "-o", str(dest)]
-    )
+    subprocess.check_call(["curl", "-fL", "--retry", "3", url, "-o", str(dest)])
 
 
 def main() -> None:
@@ -71,11 +61,11 @@ def main() -> None:
     ap.add_argument("--aspect", default="2:3")
     ap.add_argument("--model", default="grok-imagine-image")
     args = ap.parse_args()
-    jwt = session_jwt()
+    token = bearer_token()
     created = req(
         "POST",
         f"{API}/images/generations",
-        jwt,
+        token,
         {
             "model": args.model,
             "prompt": args.prompt,

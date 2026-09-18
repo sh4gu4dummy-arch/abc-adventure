@@ -27,6 +27,8 @@ Do not shoot the next batch on top of an unresolved fail. Do not remake or delet
 Meet glyph, right Friends trio, not a copy of the other case. If those are
 wrong, it is a **builder fail** even if QA never spoke.
 
+**QA-box Imagine:** stills/I2V need env `XAI_API_KEY` (installed via QAsupervisor secret — **never paste in chat**). JWT `/root/.grok/auth.json` remains the Builder-machine path. See `scripts/README-imagine.md` + `scripts/imagine_auth.py`.
+
 **Friend look lock.** Friends stills are I2I/edit from **product art**, not
 invented cousins. Letter = that case’s Meet frame. Each friend =
 `public/posters/{letter}-{slug}.webp` (the word card). Same ball, same bear,

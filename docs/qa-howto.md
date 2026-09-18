@@ -8,6 +8,8 @@ If it is not in this repo, the other bot never saw it.
 Builder posts the **source still** on the issue. You PASS/FAIL the still
 **before** they film.
 
+**QA-box Imagine:** stills/I2V need env `XAI_API_KEY` (installed via QAsupervisor secret — **never paste in chat**). JWT `/root/.grok/auth.json` remains the Builder-machine path. See `scripts/README-imagine.md` + `scripts/imagine_auth.py`.
+
 ### Product-art look-lock (hard)
 
 - Open **product** art side-by-side with the candidate **before** any PASS.

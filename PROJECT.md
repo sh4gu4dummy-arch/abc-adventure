@@ -100,7 +100,7 @@ Local git is enabled so we can restore after mistakes.
 
 - Branch: `main`
 - **Commit after every change.** Don't wait to ask.
-- **Bump version on every change** (`VERSION` + `src/lib/version.ts`, 0.002, 0.003, …).
+- **Bump version on every change** (`VERSION` + `src/lib/version.ts`, 0.357, 0.357, …).
 - **Refresh the code-only ZIP** every change (`npm run build:code` → `abc-adventure-vX.YYY-code.zip`).
 - **Do not rebuild portable ZIP, full codebase ZIP, or APK** unless the user asks.
 - Not a cloud backup — lives with this workspace session
@@ -115,7 +115,7 @@ npm run build:apk      # only when asked
 
 ## Versioning & downloads
 
-- **Current version:** `0.356` (`v0.356`) — stored in `VERSION` and `src/lib/version.ts` (keep in sync).
+- **Current version:** `0.357` (`v0.356`) — stored in `VERSION` and `src/lib/version.ts` (keep in sync).
 
 ## GitHub + Grok Publish cadence
 
