@@ -78,7 +78,9 @@ Plan: `docs/meet-a-play-plan.md`
 
 **Meet A** = intro only. **A MEETS FRIENDS** (Big A page button) = play-1
 (`videos/imagine/a-play-1.mp4`, apple/ant/plane). Play-2 / little-a not shot.
-Audio on play-1 was boosted (was −55 dB mean). Picture unchanged. 480×720.
+Audio on play-1 was boosted (was −55 dB mean → −17.8). Picture unchanged. 480×720.
+QA: FAIL brief / PASS anatomy; teacher kept as trial inventory. Next picture
+shoots still need real play action.
 
 ## Plans (remind, don’t start unless they say)
 
@@ -92,7 +94,7 @@ Audio on play-1 was boosted (was −55 dB mean). Picture unchanged. 480×720.
 ## Product map (short)
 
 - Home: Big / little toggle. Tiles = letter thumbs only.
-- Letter page: Words, Sound, Trace, Games, Story, Meet.
+- Letter page: Words, Sound, Trace, Games, Story, Meet, Friends (when a play clip exists).
 - Words: 3 Big + 3 little per letter (same clips).
 - Story: 3 files, auto-play as one.
 - Meet: letter speaks in the clip (no teacher stack). J+ “Hi I’m Big J…”. Slow “Big… A…”.

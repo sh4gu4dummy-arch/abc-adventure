@@ -5,9 +5,13 @@
 **Issue:** https://github.com/sh4gu4dummy-arch/abc-adventure/issues/2  
 **Plan:** `docs/meet-a-play-plan.md`  
 **Procedure:** `docs/qa-howto.md`  
-**Date:** 2026-09-18 · repo **v0.301**
+**Date:** 2026-09-18 · patched **v0.303** (supervisor debate closure)
 
-Tried to fail. Opened all stills. Re-probed loudness. Did **not** rubber-stamp builder self-audit.
+Tried to fail. Opened all stills. Re-probed loudness. Did **not** rubber-stamp builder self-audit. Debate reply: `QA-REPLY.md`.
+
+## Verdict
+
+**FAIL (brief) / PASS (anatomy)** — this file is not play-1 evidence for ship.
 
 ## A. Tech
 
@@ -17,54 +21,37 @@ Tried to fail. Opened all stills. Re-probed loudness. Did **not** rubber-stamp b
 | Size | **480×720** | pass |
 | fps | 24 | OK |
 | Audio | AAC stereo | pass (track present) |
-| mean_volume | **−55.2 dB** | **soft** — board-quiet for a play clip; kid may hear almost nothing |
-| max_volume | **−30.8 dB** | OK (not hot) |
+| mean_volume | **−55.2 dB** | **hard quiet** — standing mean &lt; −40 dB = do not ship |
+| max_volume | **−30.8 dB** | OK (≤ −3) |
 
 ## B–C. Visual (try to fail)
 
 | Check | Verdict | Evidence |
 |---|---|---|
-| Hero = shipped Meet A (red clay, crossbar face, nub feet) | **pass** | 00–05 |
+| Hero = shipped Meet A (oval eyes on legs, smile in fork, blank crossbar, nub feet) | **pass** | 00–05 |
 | Twin / second A | **pass** | 00–05 |
 | Extra human arms | **pass** | 00–05 |
 | Apple has a face | **pass** | 01, 05 |
 | Ant readable | **pass** | ant visible on path in 01–05 |
 | Plane reverse | **pass** | plane lifts / sits forward-ish (04–05) |
 | Humans / crowds | **pass** | yard only |
-| Hero left frame | **soft** | **05-end:** A heavily cropped on the right (mostly one eye + one foot) |
-| Beat timing (thirds) | **soft** | Plan wants apple→ant→plane by thirds. **01–04:** all three props on screen together; no clear handoff. **03-mid** is not an “ant beat.” |
-| Play with props | **soft** | Agree with builder: apple barely plays; ant not clearly played-with; more “group photo” than chase/hop/run-alongside |
-| Travel vs treadmill | **soft** | Some pose shift by 05, but mostly hop-in-place in the same yard patch |
-| Quiet mix | **soft** | mean −55.2 dB |
+| End crop (composition) | **soft** | **05-end:** A cropped on the right but still in shot — not “hero left frame” |
+| Active play at mid | **fail (brief)** | **03-mid:** props present without clear contact/chase/hop/push — group photo |
+| Play with props | **fail (brief)** | apple barely plays; ant not clearly played-with |
+| Travel vs treadmill | **soft** | mostly hop-in-place in the same yard patch |
 
 ## D. Vs plan
 
-- Look lock: **honored** (not a tiny-dot redesign).
+- Look lock: **honored** (intro video lock, not home tile).
 - 480×720: **honored**.
-- Sequential playground beats: **not honored** (props stacked).
-- Audible foley: **weak**.
+- Active play at mid: **failed**.
+- Audible foley: **failed** (hard quiet).
 
-## E. Verdict
+## F. Next plan gates (standing)
 
-**PASS (trial) with softs — do not treat as a clean ship.**
+1. Mid still = **active play** (contact/chase/hop/push). Props without contact = FAIL brief. Stacked toys in yard OK.
+2. Loudness: mean **−32…−20 dB**, max **≤ −3 dB**, mean **&lt; −40 dB** = hard do-not-ship.
+3. Look lock language only — no “crossbar face.”
+4. Soft column required (builder did this right).
 
-No hard twin / apple-face / wrong-size fail. Soft column is real: quiet audio, stacked props, weak play beats, end crop.
-
-**Do not shoot play-2 / little-a** until the teacher says go after this review.
-
-## F. Executor mistakes → next plan / remake gates
-
-Add to `docs/meet-a-play-plan.md` if remaking play-1 or shooting play-2:
-
-1. **One hero prop large in mid still** for the active beat; other props off-screen or tiny background — not a three-prop group photo.
-2. **Proof loudness** before READY: mean should sit in a hearable band (target roughly **−22…−18 dB** unless teacher sets another number). mean &lt; **−40 dB** = soft fail minimum; do not ship “silent play.”
-3. **End still:** full letter in frame (both feet / full glyph), not a half crop.
-4. Keep builder’s honesty rule: soft column required (they did this right).
-
-## Vs builder self-audit
-
-| Builder claim | QA |
-|---|---|
-| Soft: apple/ant play, treadmill, quiet | **Agree** |
-| Hard-fail proposals | **Agree** (extra A/arms/apple face/plane reverse/wrong size/no audio) |
-| Shipped as trial, not “all pass” | **Agree — good process** |
+**Do not shoot play-2 / little-a** until the teacher says go.
