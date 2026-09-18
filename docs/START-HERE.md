@@ -96,14 +96,15 @@ this round (take 2 FAIL talking-mouth — blank anchor). Notes: color drift + ta
 
 **Next:** little b Friends plan still waiting (banana / boat / bird). No shoot until go.
 
-**Big B Friends take 1 FAIL** — crease through the middle of B (stacked blobs,
-not a letter). Inventory kept. **Stills go to QA before I2V** from now.
+**Big B take 2 still for QA** (no I2V yet): `docs/audit/b-play-2/00-source-still.jpg`
++ prompts `docs/b-meets-friends-take2-plan.md`. Wide camera, play in yard,
+one ball, B does not jump into lens. Issue #5.
 
 ## Plans (remind, don’t start unless they say)
 
 | Ask | File / section |
 |---|---|
-| Big B + little b Friends | `docs/b-meets-friends-plan.md` |
+| Big B Friends take 2 (still + prompts) | `docs/b-meets-friends-take2-plan.md` |
 | little a meets friends take 2 | `docs/a-meets-friends-little-a-take2-plan.md` |
 | little a take 1 FAIL | `docs/a-meets-friends-little-a-plan.md` |
 | A Meets Friends take 2 (speech) | `docs/a-meets-friends-play-1-take2-plan.md` |

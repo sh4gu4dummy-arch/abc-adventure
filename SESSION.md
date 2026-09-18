@@ -1,14 +1,13 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.328
+**Version:** v0.329
 
 ## A Meets Friends
 
 Big A take 2 PASS-for-now. **little a take 1 FAIL** (inventory kept).
 **Take 2** listen: anchor line failed (no face). Keep take 2; do not remake A.
-Notes: color drift; talking-mouth on stills. **Big B Friends take 1 FAIL**
-(crease / not a letter B). Stills must QA before I2V. Issue #5. Little b
-still plan-only.
+Notes: color drift; talking-mouth on stills. **Big B take 1 FAIL.** Take 2
+still for QA (`docs/audit/b-play-2/`). No I2V until still PASS. Issue #5.
 
 Meet A = intro only. **A MEETS FRIENDS** = play-1 (apple/ant/plane), own button on Big A.
 
