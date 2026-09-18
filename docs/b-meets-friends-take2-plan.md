@@ -124,7 +124,7 @@ Foley: wing flutter. Voice on top. No beeps.
 - mean **−32…−18 dB**, max **≤ −3**; exciting foley; voices on top (bury-speech = fail).
 - **Per-clip 05-end:** cast + count (ball == 1) before concat — re-shoot that clip if not.
 - After film: color proof Meet 01 | Friends 01 | Friends 05 side-by-side in `docs/audit/b-play-2/`.
-- Ball color may vary (orange / beach) if count == 1 and it reads as a ball.
+- Ball look locked to `public/posters/b-ball.webp` (product identity). Count == 1 alone is not enough.
 
 
 ## Encode / gates (standing)

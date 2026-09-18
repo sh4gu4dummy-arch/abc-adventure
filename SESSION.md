@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.331
+**Version:** v0.332
 
 ## A Meets Friends
 
