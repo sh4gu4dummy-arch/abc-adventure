@@ -28,7 +28,9 @@ Look lock little a to **Meet `a-little.mp4`**, not a melted cousin.
 or they steal someone else’s line (blank anchor → astronaut said I'm Anchor).
 **Color lock:** letter does not darken over the clip.
 
-B plans: `docs/b-meets-friends-plan.md`.
+**Friend look lock:** I2I from Meet frame + `public/posters/{l}-{slug}.webp`.
+Same toys as the word cards, not generic cousins.
+**One still to Ash:** one path. Rejects named `*REJECT*`.
 
 ## QA agent
 

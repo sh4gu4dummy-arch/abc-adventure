@@ -1,24 +1,30 @@
 # Big B Friends — take 2 plan (still + I2V prompts)
 
-**STILL FOR QA. Do not I2V until the still PASSES on issue #5.**
+**Do not I2V.** Current stills are **invalid** (wrong friend designs).
+
+Ash (quoted, later):
+
+> you need to use i2i or edit image first using our product character/friends images already in the product make sure it's the same bear, same butterfly, same ball etc, not only for this letter but for every future still. … next time send me the one confirmed still or lmk where I can find it, confusing to send 2
 
 Take 1 FAIL: crease B, zoomed, B jumps into camera, 2 balls at end.
-Inventory: `friends-clips/b-play-1.mp4`. Do not clobber until PASS.
+Take 2 stills FAIL: invented cousins, not product toys.
+- `docs/audit/b-play-2/00-source-still.jpg` — orange ball, no-scarf bear
+- `still-B-REJECT-two-balls.jpg` — extra ball; also not product art
 
-Ash (quoted):
+Product lock (must I2I from these):
 
-> I don't want B jumping to beginning of camera every time it blocks the screen. And why are they not playing or doing more in the environment. And wtf at the end we have 2 balls. Give them more space not so zoomed in I think that will keep them from merging or eclipsing each other. re make the prompt for video and the first still prepare for QA.
+| Friend | File |
+|---|---|
+| Letter | Meet `b.mp4` 01 / `docs/audit/b-play-2/meet-b-01.jpg` |
+| Ball | `public/posters/b-ball.webp` (red/white/blue, face) |
+| Bear | `public/posters/b-bear.webp` (teddy + scarf) |
+| Butterfly | `public/posters/b-butterfly.webp` |
 
----
+Next still: one file `docs/audit/b-play-2/00-source-still.jpg` (overwrite the
+orange one only when the new still exists). Chat = that path only.
 
-## Candidate still
-
-`docs/audit/b-play-2/00-source-still.jpg` (wide yard, one ball, mouths, more air).
-
-Rejected: `still-B-REJECT-two-balls.jpg` (extra yellow ball).
-
-QA the still for: **glyph** (straight left stem, not stacked blobs), **one ball**,
-**mouths**, **space**, **sky-blue not navy**, trio = ball/bear/butterfly.
+Keep take-1 video as inventory. Wide camera / play-in-yard / one-ball I2V
+prompts below still apply **after** the product-locked still PASSES.
 
 ---
 

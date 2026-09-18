@@ -27,10 +27,16 @@ Do not shoot the next batch on top of an unresolved fail. Do not remake or delet
 Meet glyph, right Friends trio, not a copy of the other case. If those are
 wrong, it is a **builder fail** even if QA never spoke.
 
-**Stills before I2V.** Post the source still on the GitHub issue. QA (and
-builder) must **PASS the still** before any clip is filmed. Glyph, mouths,
-trio, color vs Meet. A crease that splits a B into stacked blobs = fail
-the still. Do not I2V junk and hope the video fixes the letter.
+**Friend look lock.** Friends stills are I2I/edit from **product art**, not
+invented cousins. Letter = that case’s Meet frame. Each friend =
+`public/posters/{letter}-{slug}.webp` (the word card). Same ball, same bear,
+same butterfly — every letter, every future still.
+
+**One still to Ash.** After you pick, send **one** still + the exact path
+(`docs/audit/<id>/00-source-still.jpg`). Rejects stay in the folder as
+`*REJECT*`. Do not drop two unlabeled images in chat.
+
+**Stills before I2V.** Post that one still on GitHub. QA PASS before film.
 
 ## Never
 
@@ -96,9 +102,9 @@ this round (take 2 FAIL talking-mouth — blank anchor). Notes: color drift + ta
 
 **Next:** little b Friends plan still waiting (banana / boat / bird). No shoot until go.
 
-**Big B take 2 still for QA** (no I2V yet): `docs/audit/b-play-2/00-source-still.jpg`
-+ prompts `docs/b-meets-friends-take2-plan.md`. Wide camera, play in yard,
-one ball, B does not jump into lens. Issue #5.
+**Big B take 2 stills FAIL** (generic friends, not product posters). Rebuild
+from `public/posters/b-ball.webp` + bear + butterfly + Meet B. One still,
+one path. No I2V. Issue #5. SOP: friend look lock.
 
 ## Plans (remind, don’t start unless they say)
 

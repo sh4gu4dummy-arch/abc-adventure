@@ -10,10 +10,25 @@ a nicety.
 
 ## Friends cast = case-specific (standing)
 
-**Stills before I2V.** Dump the source still. Compare to Meet 01. If the
-glyph does not read as the letter (B with a waist crease = two blobs),
-**fail the still**. Post it on the issue. Do not film until QA comments
-PASS on that still. Film cannot un-crease a broken letter.
+## Friends still procedure (every letter)
+
+Do this **before** I2V. Skipping it is how we shipped a random orange ball.
+
+1. Trio = `wordsForCase` (Big first-3 / little last-3).
+2. Pull **Meet 01** of this case + the **three product posters**
+   `public/posters/{l}-{slug}.webp`.
+3. Make a ref board (Meet + 3 posters) if you need more than 3 image inputs.
+4. **I2I / reference-edit** from those files. Prompt: same characters as the
+   refs, wide shot, air between, toy mouths if they talk.
+5. Side-by-side vs posters. Fail if the ball/bear/etc. is a generic cousin
+   (orange ball vs red-white-blue product ball = fail).
+6. Save **one** keeper: `docs/audit/<id>/00-source-still.jpg`.
+   Tell Ash that path. Extra takes: `still-REJECT-reason.jpg`. Do not
+   present two stills in chat unless they are both keepers and you **ask
+   which**.
+
+**Stills before I2V.** Glyph + friend look lock + mouths + count. Film
+cannot fix a wrong toy.
 
 Before any Friends **plan LOCK** (and again before I2V):
 

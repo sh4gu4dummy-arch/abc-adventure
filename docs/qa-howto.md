@@ -8,11 +8,12 @@ If it is not in this repo, the other bot never saw it.
 Builder posts the **source still** on the issue. You PASS/FAIL the still
 **before** they film.
 
-Fail the still if: wrong glyph (B pinched/creased into stacked blobs),
-talker with no mouth, wrong trio, letter already darker than Meet,
-photoreal kid in a helmet, extra friends.
+Fail the still if: wrong glyph, **friends aren’t the product posters**
+(generic cousin ball/bear = fail), talker with no mouth, wrong trio,
+letter already darker than Meet, extra friends, photoreal kid in a helmet.
 
-Do not say “film it and we’ll see.” The video will keep the bad letter.
+Builder sends **one** still + path. If they dump two unlabeled, fail the
+process and ask which is the candidate.
 
 **Color:** 01 vs 05 letter hue. Drift darker = fail.
 
