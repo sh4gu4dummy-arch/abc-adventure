@@ -76,6 +76,10 @@ ABC-flavored (also see START-HERE):
 - Exactly **one** hero letter. No twin A, extra arms, extra legs beyond nub feet.
 - Props are the thing. Friends speech: **tiny toy smile OK** on apple so it
   can talk; human body / extra apple = fail. Word-lesson eat clips: no face.
+
+- **Case word trio (Friends):** before LOCK, verify Meet path + friends list
+  from `wordsForCase` / `alphabet.ts` (first 3 Big, last 3 little). Big and
+  little never share the same three. Cast-lock does not replace this.
 - **Cast lock:** named letter + friends **identifiable** in **01 through 05**
   (silhouette / majority-visible OK; complete cover = fail). Hero gone at
   **05-end** = fail. Eclipse then clone (apple behind A, then a new apple) =

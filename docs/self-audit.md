@@ -7,6 +7,19 @@ After every teacher miss: **patch this file, START-HERE, qa-howto, and
 the current plan** the same turn. Recursive improvement is the job, not
 a nicety.
 
+
+## Friends cast = case-specific (standing)
+
+Before any Friends **plan LOCK** (supervisor/QA):
+
+1. Paste/verify **Meet path** for that case (`…/a.mp4` vs `…/a-little.mp4`).
+2. Paste/verify **word trio** from product: `wordsForCase` / `alphabet.ts`
+   (first 3 = Big, last 3 = little). Example A: Big = apple/ant/airplane;
+   little = alligator/astronaut/anchor.
+3. Big and little **never share the same three friends**.
+4. Cast-lock / eclipse SOP does **not** replace this check. Skipping it is a
+   process FAIL (little-a take 1 copied Big’s friends).
+
 ## Ash requirements that keep biting us (Friends)
 
 Keep these even when scenery looks pretty:

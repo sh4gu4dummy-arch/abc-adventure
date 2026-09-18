@@ -1,6 +1,11 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.319
+**Version:** v0.320
+
+## Little a Friends take 1
+
+**FAIL (product)** — wrong font + apple/ant/plane (Big trio). Remake = alligator/astronaut/anchor. Inventory kept. Plan v0.320.
+
 
 
 ## A Meets Friends
