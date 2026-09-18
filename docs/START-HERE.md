@@ -93,9 +93,10 @@ Big A take 2 **PASS for now** (color-drift noted — don’t darken next rounds)
 astronaut said “I'm Anchor”). Keep take 2 in the player; **do not remake A**
 this round (take 2 FAIL talking-mouth — blank anchor). Notes: color drift + talking-mouth rule. B plans: `docs/b-meets-friends-plan.md` (#5).
 
-**Next plans (no shoot):** Big B + little b Friends —
-`docs/b-meets-friends-plan.md`
-Big = ball / bear / butterfly. little = banana / boat / bird.
+**Next:** little b Friends plan still waiting (banana / boat / bird). No shoot until go.
+
+**Big B Friends take 1** in the app (`friends-clips/b-play-1.mp4`) — ball / bear /
+butterfly. Color proof in `docs/audit/b-play-1/`. Issue #5. Listen not passed.
 
 ## Plans (remind, don’t start unless they say)
 

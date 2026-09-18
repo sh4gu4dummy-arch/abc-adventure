@@ -1,13 +1,13 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.326
+**Version:** v0.327
 
 ## A Meets Friends
 
 Big A take 2 PASS-for-now. **little a take 1 FAIL** (inventory kept).
 **Take 2** listen: anchor line failed (no face). Keep take 2; do not remake A.
-Notes: color drift; talking-mouth on stills. **B Friends plans:**
-`docs/b-meets-friends-plan.md`. No shoot until go.
+Notes: color drift; talking-mouth on stills. **Big B Friends take 1** in
+app (`b-play-1.mp4`). Little b still plan-only. Issue #5.
 
 Meet A = intro only. **A MEETS FRIENDS** = play-1 (apple/ant/plane), own button on Big A.
 
