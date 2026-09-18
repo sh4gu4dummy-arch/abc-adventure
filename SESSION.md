@@ -1,14 +1,13 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.311
+**Version:** v0.312
 
 
-## A Meets Friends take 2 (plan only)
+## A Meets Friends take 2
 
-Teacher + QA **FAIL** take 1 (attribution, apple vanish, foot-on-apple). Loudness PASS.
-QA: `docs/audit/a-play-1-remake/QA.md`. Method **B primary** (four one-line clips).
-`docs/a-meets-friends-play-1-take2-plan.md` — speech-first,
-Ash quote in the file. Issue #3. No generate until go.
+In **A MEETS FRIENDS** now (~24s, four 6s clips concat, method B).
+Audit: `docs/audit/a-play-1-take2/`. Issue #3. Listen not passed.
+**start** = fetch QA, shoot if agree, debate if not.
 
 Meet A = intro only. **A MEETS FRIENDS** = play-1 (apple/ant/plane), own button on Big A.
 Play-1 audio loudnormed (−55 dB → mean −17.8 / max −1.0). Picture unchanged.

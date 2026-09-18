@@ -3,9 +3,10 @@
 Kids alphabet app (ages ~3–6). **Read this first** if you are the builder
 or the **QA agent**. Then `AGENTS.project.md` for the full taste list.
 
-**Keep this file current.** When the user corrects a clip, thumb, or
-workflow, add the lesson here (short) *and* in `AGENTS.project.md`. A QA
-agent who only reads this file should still catch the last failure.
+**Keep this file current on every push.** When the user corrects a clip,
+thumb, or workflow, add the lesson here (short) *and* in
+`AGENTS.project.md`. A QA agent who only reads this file should still
+catch the last failure.
 
 ## Who does what
 
@@ -13,7 +14,7 @@ agent who only reads this file should still catch the last failure.
 |---|---|
 | **Builder** | Makes stills / I2V / app code. Does not ship until QA passes. |
 | **QA agent** | Looks at the actual frames (not the prompt). Pass / fail with *why*. Does not generate replacements unless asked. Does not pick a winner when there are 2+ options — show the user. |
-| **User** | Final taste. If they say **lmk**, answer in chat only — no edits. |
+| **User** | Final taste. **lmk** = talk only. **start** = fetch QA, shoot if you agree, debate if you don’t. |
 
 **Talk on GitHub, not only chat.** Standing desk: [issue #1](https://github.com/sh4gu4dummy-arch/abc-adventure/issues/1).
 Coop rules: `docs/agent-coop.md`. **Full QA playbook:** `docs/qa-howto.md`. Audits: `docs/audit/` (stills required).
@@ -36,7 +37,7 @@ then builder ships or redos.
 
 ## Always
 
-- `lmk` = talk only.
+- `lmk` = talk only. **`start`** = check git/QA, shoot if you agree, lmk if you disagree.
 - 2+ usable takes = show them, ask which to keep.
 - Product change → bump `VERSION` + `src/lib/version.ts` + `package.json`, commit, `git push origin main`, tell them the version.
 - Videos **are in git**. Restore old takes with git. No local `art-archive`.
@@ -74,8 +75,9 @@ blocky background unlike the set.
 
 ## Meet A play / Friends
 
-Take 1 **FAIL** (teacher + QA: attribution, apple vanish, mid contact; loudness PASS). Audit: `docs/audit/a-play-1-remake/QA.md`. Next plan: `docs/a-meets-friends-play-1-take2-plan.md` (**B** primary).
-(speech-first, less “still an apple” padding). Issue #3. **No shoot until go.**
+Take 1 **FAIL** (attribution / apple vanish / stand-on).  
+**Take 2 in Friends now** (`a-play-1.mp4`, ~24s, four 6s clips concat).
+Method **B**. Audit: `docs/audit/a-play-1-take2/`. Issue #3. Listen not passed.
 
 ## Plans (remind, don’t start unless they say)
 

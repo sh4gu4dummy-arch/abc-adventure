@@ -29,6 +29,13 @@ a self-audit. QA comments PASS/FAIL + why + which frame. QA does not
 generate a replacement unless asked. QA does not pick a winner when there
 are 2+ options — show the user. Do not ship if QA fails.
 
+## Chat: “start”
+
+If they say **start**: fetch GitHub + `origin/main`, read QA on the open
+plan/issue, **shoot if you agree**, **lmk and debate** if you disagree
+(another round). Do not skip their QA. Same as “check QA, shoot if
+agree.”
+
 ## Chat: “lmk”
 
 If they say **lmk** (let me know): **answer in chat only**. Do not edit,
