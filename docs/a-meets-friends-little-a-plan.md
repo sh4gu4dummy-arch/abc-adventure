@@ -2,6 +2,8 @@
 
 **PLAN ONLY. Do not generate until the teacher says go.**
 
+**Shoot doc for take 2:** [`docs/a-meets-friends-little-a-take2-plan.md`](a-meets-friends-little-a-take2-plan.md) (QA-amended). This file keeps the FAIL product brief + inventory note.
+
 QA: https://github.com/sh4gu4dummy-arch/abc-adventure/issues/4  
 Take 1 = **FAIL (product)** — see `docs/audit/a-little-play-1/QA.md`. Keep bad take as inventory; do not overwrite until Ash says.
 

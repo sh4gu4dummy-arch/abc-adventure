@@ -32,4 +32,4 @@ Supervisor + QA audited cast-lock / eclipse / SOP and never asked “which three
 
 ## Next
 
-Remake under rewritten plan. Method B. Correct look + alligator/astronaut/anchor. No generate until teacher **go**.
+Shoot doc: [`docs/a-meets-friends-little-a-take2-plan.md`](../../a-meets-friends-little-a-take2-plan.md). Remake under that plan. Method B. Correct look + alligator/astronaut/anchor. No generate until teacher **go**.

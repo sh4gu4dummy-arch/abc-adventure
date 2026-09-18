@@ -1,8 +1,10 @@
 # little a meets friends — take 2 plan
 
-**PLAN ONLY. Do not generate until the teacher says go.**
+**PLAN ONLY. Do not generate until the teacher says go.**  
+**This is the shoot doc** for take 2. Take 1 FAIL inventory: `docs/audit/a-little-play-1/QA.md`.
 
-Take 1 (`friends-clips/a-little-play-1.mp4`) is a **FAIL**. Do not defend it.
+Take 1 (`friends-clips/a-little-play-1.mp4`) is a **FAIL**. Do not defend it.  
+**Artifacts-first:** new take lands in artifacts / a new filename until teacher + QA PASS. Do **not** clobber FAIL inventory until PASS.
 
 Issue: https://github.com/sh4gu4dummy-arch/abc-adventure/issues/4
 
@@ -28,13 +30,34 @@ Issue: https://github.com/sh4gu4dummy-arch/abc-adventure/issues/4
 
 Standing rule for every letter: **Big Friends ≠ little Friends.** Split the 6 words: first three Big, last three little — unless the teacher names a different split.
 
-Astronaut: **toy space-suit figure** (true job: floats / walks in boots). Not a photoreal child. Tiny toy smile OK. No extra humans.
+Product check before LOCK / before I2V: Meet path `public/videos/imagine/a-little.mp4` + last-3 trio from `wordsForCase`.
 
 ---
 
-## Method B (same as Big A take 2)
+## Look lock (hard)
 
-Four **6s** clips, one line each, frame-lock, concat → `public/friends-clips/a-little-play-1.mp4` (overwrite only after go + listen). curl 200 before claiming it plays.
+Match Meet little a. Before go: **source still side-by-side** vs `docs/audit/a-little-play-1/meet-a-little-01.jpg` (or first Meet frame). Fail the still if the glyph isn’t our little a.
+
+---
+
+## True nature (must / must not)
+
+| Thing | Must | Must not |
+|---|---|---|
+| little a | Meet single-story look; hops; talks from bowl | double-story; lumpy cousin; tiny capital A; home-tile I2V |
+| Alligator | friendly swim/snap/crawl by water | eat a; scary gore; walk like a person |
+| Astronaut | **one kid-scale toy** in a suit; float or boot-walk | live / photoreal kid; a inside the suit; extra humans |
+| Anchor | heavy; **drops and stays down** (one-way) | floats away; clones |
+
+Tiny toy smiles OK on friends that talk. Cast lock = **identifiable** a + alligator + astronaut + anchor in every still (silhouette OK; cover-then-spawn = fail). Count those four in **every** still.
+
+---
+
+## Method B
+
+Four **6s** clips, one line each, frame-lock, concat → ~24s · 480×720 → `public/friends-clips/a-little-play-1.mp4` only after PASS. curl 200 before claiming it plays.
+
+**Hard before concat:** each clip’s **05-end** must pass cast + count==1 for a/alligator/astronaut/anchor. Else re-shoot that clip (no frame-lock poison).
 
 ### Dialogue
 
@@ -45,16 +68,28 @@ Four **6s** clips, one line each, frame-lock, concat → `public/friends-clips/a
 
 Only that mouth moves. Different voices. No teacher. No captions.
 
-True jobs: alligator **snaps/swims-crawls** (not smash-scary), astronaut **floats or boot-walks**, anchor **drops and stays**.
+### Beats (sketch)
 
-Cast lock + 05-end + no eclipse-clone still apply to **this** cast.
-
-Source still: generate from Meet little a look + new friends. Show Ash if 2 options. **Fail the still** if the glyph isn’t our little a.
+1. little a hops: **I'm little a!**
+2. Alligator by water, friendly: **I'm Alligator!** a beside (not eaten)
+3. Astronaut toy: **I'm Astronaut!** a hops beside
+4. Anchor drops, stays: **I'm Anchor!** a hops beside
 
 ---
 
-## QA
+## Encode / sound
 
-Fail if: glyph ≠ Meet little a; any of apple/ant/plane as the three friends; Big/little same cast.
+mean **−32…−18 dB**, max **≤ −3**. Exciting play foley (splash, boot, chain/drop, hops) under voices; **voices on top** (bury-speech = fail). No beep-spam.
+
+---
+
+## QA fail if
+
+- glyph ≠ Meet little a
+- any of apple/ant/plane as the three friends
+- Big/little same cast
+- true-nature must-nots
+- cast missing on any still / 05-end / per-clip end
+- loudness / bury-speech fail
 
 Do **not** generate until **go**.

@@ -33,13 +33,13 @@ Keep these even when scenery looks pretty:
    “zero overlap.”
 2. **05-end** still has the hero (no walk-off, no crop-out).
 3. **Count** — ONE of each. Hide behind the letter then spawn a replacement
-   (apple eclipsed → new apple) = fail. Count letter/apple/ant/plane in **every** still.
+   (apple eclipsed → new apple) = fail. Count the **named friends for this case** (and the letter) in **every** still — e.g. little a: a/alligator/astronaut/anchor; Big A: A/apple/ant/airplane.
 4. **Flying friend** — if a plane (etc.) flies, **majority stays in 480×720**
    (not only a tip exiting the frame).
 5. **Speech** — the **right mouth** says the **right line**. Same kid voice
    on everyone / letter mouths `I'm Apple!` = fail. Words-on-the-track is not enough.
-6. **True job** — ant crawls, plane flies **forward**, apple is fruit that rolls.
-   Apple: tiny toy smile OK; **no feet / legs / arms**.
+6. **True job** — each friend does its real job (see the round plan table).
+   Toy smiles OK; no human bodies on props unless the plan allows.
 7. **Sound** — interesting play foley (hops, roll, crawl, whoosh). Not silent,
    not beep-spam. Voices on top of music (bury-speech = fail).
 9. **Look lock** — still + every frame must match the **Meet intro** of that
