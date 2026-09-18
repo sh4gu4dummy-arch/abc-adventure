@@ -143,9 +143,14 @@ Take 1 crease inventory kept (`b-play-1.mp4`).
 | Big G | **PASS soft** giraffe/grapes/guitar | `docs/audit/g-play-1/STILL-QA.md` |
 | little g | **PASS soft** garden-face (soft 9-ish glyph) | `docs/audit/g-little-play-1/STILL-QA.md` |
 
-### Builder ball
-Remake **B films** (attribution + cast + boat lock) + **little c / Big D / little e** stills.  
-**Ash film go** only on soft-PASS letters not blocked. **No I2V on FAILs.**
+**Big C Friends in app** (`friends-clips/c-play-1.mp4`) — listen not passed.
+**little d Friends in app** (`friends-clips/d-little-play-1.mp4`) — listen not passed.
+
+Still remakes (no film): little c glyph, Big D 1-duck, little e elbow, little b **sailboat**.
+H–N stills: `docs/hn-friends-stills.md` · no I2V.
+
+B films still FAIL — remake next (voices + sailboat lock).
+E/F/f/G/g stills PASS — film next.
 
 ## Plans (remind, don’t start unless they say)
 

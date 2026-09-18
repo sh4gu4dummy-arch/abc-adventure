@@ -603,10 +603,12 @@ export function letterBuddyVideoPath(letter: string, kind: CaseKind = "upper"): 
 const FRIENDS_UPPER: Partial<Record<string, string[]>> = {
   a: ["friends-clips/a-play-1.mp4"],
   b: ["friends-clips/b-play-2.mp4"],
+  c: ["friends-clips/c-play-1.mp4"],
 };
 const FRIENDS_LOWER: Partial<Record<string, string[]>> = {
   a: ["friends-clips/a-little-play-2.mp4"],
   b: ["friends-clips/b-little-play-1.mp4"],
+  d: ["friends-clips/d-little-play-1.mp4"],
 };
 
 export function letterMeetPlaylist(letter: string, kind: CaseKind = "upper"): string[] {
