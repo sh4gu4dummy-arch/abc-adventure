@@ -114,21 +114,38 @@ street, picnic, etc. Match the friends.
 **Chat stills:** Grok blocks repo file links. The image in the thread is
 what Ash sees. Also print the git path as plain text for QA.
 
-**Big B Friends take 2 in app** (`friends-clips/b-play-2.mp4`) — listen not passed.
-**little b Friends take 1 in app** (`friends-clips/b-little-play-1.mp4`) — boat; listen not passed.
+**Big B Friends take 2** (`friends-clips/b-play-2.mp4`) — film **FAIL** attribution+cast (`docs/audit/b-play-2/QA.md`).
+**little b Friends take 1** (`friends-clips/b-little-play-1.mp4`) — film **FAIL** attribution+boat drift (`docs/audit/b-little-play-1/QA.md`).
 Take 1 crease inventory kept (`b-play-1.mp4`).
 
-**D–G Friends stills (no I2V):** `docs/defg-friends-stills.md` · [issue #7](https://github.com/sh4gu4dummy-arch/abc-adventure/issues/7). Builder self-audit remade little g (garden needed a face).
+**D–G Friends stills (no I2V):** table in Friends status below · [issue #7](https://github.com/sh4gu4dummy-arch/abc-adventure/issues/7).
 
 
-## Friends stills status (v0.335)
+## Friends stills / film status (v0.340)
 
-- **Big B** `docs/audit/b-play-2/` — still **PASS (soft scarf)**. Film pending Ash go. `#5`
-- **little b** `docs/audit/b-little-play-1/` — still **PASS (soft feet)**. Film pending Ash go. `#5`
-- **Big C** `docs/audit/c-play-1/` — still **FAIL** cake/car look-lock vs posters. Rebuild I2I. `#6`
-- **little c** `docs/audit/c-little-play-1/` — still **FAIL** (live human). Rebuild letter+cloud+cookie+cup only; cookie from `c-cookie.webp` **without boy** + **toy smile**. `#6`
+### B films (listen) — both **FAIL** · `#5`
+- **Big B take 2** `docs/audit/b-play-2/QA.md` — loudness PASS; **FAIL (attribution + cast)**. Ball mouths “I’m Big B”; same kid voice all 4; Bear/Butterfly static mouths; second purple butterfly @ `05-end`. Soft: molded seam on B.
+- **little b** `docs/audit/b-little-play-1/QA.md` — loudness PASS; **FAIL (attribution + boat product drift)**. Same voice / no lip-sync; blue sailboat → red tug ~0:14 (`boat-start.jpg` vs `boat-t14-tug.jpg`). Lock: `public/posters/b-boat.webp`.
 
-No I2V on FAILs. Builder owns C remakes; QA again when one-path stills land.
+### C stills · `#6`
+- **Big C** remake — **PASS (soft location)** · `docs/audit/c-play-1/STILL-QA.md` (sky-blue Beetle, chocolate cake+hearts+toy face, tabby, street, no people).
+- **little c** remake — **FAIL (missing hero letter)** · `docs/audit/c-little-play-1/STILL-QA.md` (cookie smile + cup + cloud; no boy; **no little-c glyph**). Rebuild letter+cloud+cookie+cup.
+
+### D–G stills · `#7`
+| Case | Verdict | Path |
+|---|---|---|
+| Big D | **FAIL** duck count=2 + red ball | `docs/audit/d-play-1/STILL-QA.md` |
+| little d | **PASS soft** donut/drum/door mouths | `docs/audit/d-little-play-1/STILL-QA.md` |
+| Big E | **PASS soft** elephant/earth/eagle | `docs/audit/e-play-1/STILL-QA.md` |
+| little e | **FAIL** no readable toy-elbow | `docs/audit/e-little-play-1/STILL-QA.md` |
+| Big F | **PASS soft** fish/frog/flower | `docs/audit/f-play-1/STILL-QA.md` |
+| little f | **PASS soft** firetruck/fox/fairy | `docs/audit/f-little-play-1/STILL-QA.md` |
+| Big G | **PASS soft** giraffe/grapes/guitar | `docs/audit/g-play-1/STILL-QA.md` |
+| little g | **PASS soft** garden-face (soft 9-ish glyph) | `docs/audit/g-little-play-1/STILL-QA.md` |
+
+### Builder ball
+Remake **B films** (attribution + cast + boat lock) + **little c / Big D / little e** stills.  
+**Ash film go** only on soft-PASS letters not blocked. **No I2V on FAILs.**
 
 ## Plans (remind, don’t start unless they say)
 

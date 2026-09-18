@@ -83,6 +83,13 @@ Keep these even when scenery looks pretty:
 Little letters: half stature, single-story **a**, match Meet intro not the
 home tile.
 
+
+## Standing gates — Friends listen / cast / boat (v0.340)
+
+- **Listen attribution:** speaking mouth matches the line. Same-voice-all = **FAIL**.
+- **Cast count every end frame** (butterfly/duck clones = FAIL).
+- **Inanimate product-shape lock** through the whole clip (boat must stay sailboat).
+
 ## Procedure (every take)
 
 1. `python3 scripts/qa-word-frames.py VIDEO.mp4` → `docs/audit/<id>/`

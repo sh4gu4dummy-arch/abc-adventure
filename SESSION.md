@@ -1,12 +1,22 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.339
+**Version:** v0.340
+
+
+## v0.340 — QA ship (ABC-Adventure-Bot1)
+
+Docs only. No I2V.
+- B films **FAIL**: attribution (+ cast on Big B; boat drift on little b). QA.md + boat stills.
+- C remake stills: Big C **PASS soft**; little c **FAIL** missing letter.
+- D–G still QA: Big D FAIL (2 ducks+ball); little e FAIL (elbow); others PASS soft.
+- Standing gates in qa-howto + self-audit: listen attribution / end-frame cast count / boat shape lock.
+- Issues #5 #6 #7 commented.
 
 ## A Meets Friends
 
 Big A take 2 PASS-for-now. **little a take 1 FAIL** (inventory kept).
 **Take 2** listen: anchor line failed (no face). Keep take 2; do not remake A.
-Notes: D–G stills. Builder self-audit: little g remade (garden face). Issue #7.
+Notes: v0.340 QA — B film FAILs; C remake; D–G stills. Issues #5–#7.
 
 Meet A = intro only. **A MEETS FRIENDS** = play-1 (apple/ant/plane), own button on Big A.
 

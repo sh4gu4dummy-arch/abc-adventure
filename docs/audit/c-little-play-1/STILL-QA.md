@@ -1,7 +1,7 @@
-# Still QA — little c Friends
+# Still QA — little c Friends (remake)
 
 **Still:** `docs/audit/c-little-play-1/00-source-still.jpg`  
-**Issue:** #6 · **v0.335**
+**Issue:** #6 · **v0.340**
 
 ## Paths opened (required)
 
@@ -14,21 +14,15 @@ Cup:         public/posters/c-cup.webp
 
 Trio = last-3: Cloud / Cookie / Cup.
 
-## Verdict: **FAIL (human)**
+## Verdict: **FAIL (missing hero letter)**
 
 | Check | Gate |
 |---|---|
-| Cookie + cup + cloud present | yes |
-| **Live boy / human in frame** | **FAIL hard** |
-| little c brown hair-fluff vs Meet | soft on remake |
+| Cookie smile + cup + cloud present | yes (toy mouths OK) |
+| Live boy / human | **cleared** (prior human FAIL gone) |
+| **little-c glyph in frame** | **FAIL hard** — no hero letter |
 
-Do **not** I2V. Rebuild: letter + cloud + cookie + cup **only** (no humans). One confirmed path.
+## Rebuild
 
-## Remake notes (locked)
-
-Rebuild = letter + **cloud + cookie + cup** only (no humans).
-
-- Cookie: I2I from `public/posters/c-cookie.webp` — **exclude the eater**; cookie **must have a toy smile** for dialogue.
-- Cloud / cup: toy mouths as needed for their lines.
-- Face-blank cookie + spoken line = FAIL still (Anchor class).
-
+Letter + cloud + cookie + cup. Keep cookie toy smile + cup + cloud.  
+Must include Meet-locked **little-c** glyph. One confirmed path. Do **not** I2V.

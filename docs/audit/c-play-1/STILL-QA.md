@@ -1,7 +1,7 @@
-# Still QA — Big C Friends
+# Still QA — Big C Friends (remake)
 
 **Still:** `docs/audit/c-play-1/00-source-still.jpg`  
-**Issue:** #6 · **v0.335**
+**Issue:** #6 · **v0.340**
 
 ## Paths opened (required)
 
@@ -12,16 +12,18 @@ Cake:        public/posters/c-cake.webp
 Car:         public/posters/c-car.webp
 ```
 
-Trio = `wordsForCase` first-3: Cat / Cake / Car.
+Trio = `wordsForCase` first-3: Cat / Cake / Car. Street location, no people.
 
-## Verdict: **FAIL (product-art look-lock — cake + car)**
+## Verdict: **PASS (soft location)**
 
 | Check | Gate |
 |---|---|
-| Street location (not empty grass) | PASS |
-| Cat = sleeping orange tabby vs poster | **PASS** family |
-| Cake: still pink/white sprinkle sidewalk cake vs poster chocolate oven cake (+ hearts) | **FAIL** look-lock |
-| Car: still orange toy vs poster **sky-blue** Beetle / headlight eyes | **FAIL** look-lock |
-| C arms vs Meet | soft only |
+| Street location (not empty grass) | **PASS** (soft — street set) |
+| Cat = orange tabby vs poster | **PASS** |
+| Cake = chocolate + hearts + toy face vs poster | **PASS** |
+| Car = sky-blue Beetle vs poster | **PASS** |
+| C vs Meet | soft |
+| Cast count 1 each / no people | **PASS** |
 
-Do **not** I2V. Rebuild via I2I/edit from `c-cake.webp` + `c-car.webp` (keep cat/street/C if they stay). One confirmed path next time.
+Remake cleared prior cake/car look-lock FAIL. Soft only on location / C arms.  
+Do **not** I2V until teacher **go**.
