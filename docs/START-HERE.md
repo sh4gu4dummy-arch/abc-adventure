@@ -188,6 +188,8 @@ Quality + creativity > rigid adherence (**all projects**, v0.347): if a rule hur
 ### Meet-asset debt · queued
 Little Meets that are Big-shaped (product bug — Friends cannot lock a lying Meet glyph): **p, s, v, w, x, z** (and review). See [`docs/meet-asset-debt.md`](meet-asset-debt.md). Queued Meet remakes — not shoot-now.
 
+**v0.353** Also filmed little j, K, k.
+
 **v0.352** Ash: film all PASS. Shipped little g, H, h, I, i, J. Still going: j–Z (skip V + little s until re-QA).
 
 **v0.351** Filmed little e + Big F + little f + Big G (listen not passed). Agree QA: remade v-play Violin mouth + s-little Smile (no Sun). Big E film HOLD.
