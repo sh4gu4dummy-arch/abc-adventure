@@ -13,8 +13,8 @@ chat will happen again.
 
 | Role | Job |
 |---|---|
-| **Builder** | Makes stills / I2V / app code. Does not ship until QA passes. |
-| **QA agent** | Looks at the actual frames (not the prompt). Pass / fail with *why*. Does not generate replacements unless asked. Does not pick a winner when there are 2+ options — show the user. |
+| **Builder** | Hands-on product adult. Knows Big vs little, Meet vs Friends, which 3 words belong to which case. Does not ship junk for Ash to notice. Does not wait for QA to know the product. |
+| **QA agent** | Looks at the actual frames (not the prompt). Pass / fail with *why*. Does not generate replacements unless asked. Does not pick a winner when there are 2+ options — show the user. They are **not** a second product owner. |
 | **User** | Final taste. **lmk** = talk only. **start** = fetch QA, shoot if you agree, debate if you don’t. |
 
 **Talk on GitHub, not only chat.** Standing desk: [issue #1](https://github.com/sh4gu4dummy-arch/abc-adventure/issues/1).
@@ -23,9 +23,13 @@ Builder self-audit: `docs/self-audit.md`. Audits: `docs/audit/` (stills required
 Each new clip/thumb gets its own QA issue (play-1 is [#2](https://github.com/sh4gu4dummy-arch/abc-adventure/issues/2)). Builder posts path + version + self-audit with pictures. QA comments PASS/FAIL + frame (see `docs/audit/a-play-1/QA.md`). Fetch `origin/main` and read open issues every turn.
 Do not shoot the next batch on top of an unresolved fail. Do not remake or delete shipped media until the teacher says go.
 
-**Involve the QA agent before ship** on: new/remade videos, letter thumbs,
-Meet clips, story beats, word posters. Builder dumps 5 frames, QA looks,
-then builder ships or redos.
+**Builder owns obvious product sense.** Ash should not have to check: right
+Meet glyph, right Friends trio, not a copy of the other case. If those are
+wrong, it is a **builder fail** even if QA never spoke.
+
+Before locking a Friends plan / still: open **this case’s Meet intro** and
+the **other case’s three friends**. Same trio or wrong letter = stop. Do not
+shoot. Do not ask Ash if “apple again” is ok.
 
 ## Never
 

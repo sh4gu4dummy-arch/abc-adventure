@@ -10,7 +10,11 @@ a nicety.
 
 ## Friends cast = case-specific (standing)
 
-Before any Friends **plan LOCK** (supervisor/QA):
+You are the **grown-up on the product**. QA does not know it like you.
+Ash does not exist to catch “wrong letter” or “same friends as Big.”
+That class of miss is **negligence**, not a QA gap.
+
+Before any Friends **plan LOCK** (and again before I2V):
 
 1. Paste/verify **Meet path** for that case (`…/a.mp4` vs `…/a-little.mp4`).
 2. Paste/verify **word trio** from product: `wordsForCase` / `alphabet.ts`

@@ -9,6 +9,10 @@ Builder self-audit: [`docs/self-audit.md`](self-audit.md).
 
 Desk: https://github.com/sh4gu4dummy-arch/abc-adventure/issues/1
 
+Builder is the product adult. QA audits pixels. **Do not** ship a wrong
+character or a copied Friends trio and hope QA/Ash notice. That is the
+builder’s job. Ash should never have to check something that obvious.
+
 ## Recursively get better
 
 Ash: mark requirements down, fine-tune SOPs, **get better every round**.
