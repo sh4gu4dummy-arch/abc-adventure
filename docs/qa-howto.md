@@ -3,9 +3,16 @@
 Teacher playbook adapted for **ABC Adventure** (`sh4gu4dummy-arch/abc-adventure`).
 If it is not in this repo, the other bot never saw it.
 
-**QA the source still for mouths.** If an inanimate talker has no face,
-fail the still — do not wait for listen. Little-a take 2: blank anchor →
-astronaut said “I'm Anchor.” That was foreseeable.
+## Still QA (before I2V)
+
+Builder posts the **source still** on the issue. You PASS/FAIL the still
+**before** they film.
+
+Fail the still if: wrong glyph (B pinched/creased into stacked blobs),
+talker with no mouth, wrong trio, letter already darker than Meet,
+photoreal kid in a helmet, extra friends.
+
+Do not say “film it and we’ll see.” The video will keep the bad letter.
 
 **Color:** 01 vs 05 letter hue. Drift darker = fail.
 

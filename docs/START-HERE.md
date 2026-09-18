@@ -27,9 +27,10 @@ Do not shoot the next batch on top of an unresolved fail. Do not remake or delet
 Meet glyph, right Friends trio, not a copy of the other case. If those are
 wrong, it is a **builder fail** even if QA never spoke.
 
-Before locking a Friends plan / still: open **this case’s Meet intro** and
-the **other case’s three friends**. Same trio or wrong letter = stop. Do not
-shoot. Do not ask Ash if “apple again” is ok.
+**Stills before I2V.** Post the source still on the GitHub issue. QA (and
+builder) must **PASS the still** before any clip is filmed. Glyph, mouths,
+trio, color vs Meet. A crease that splits a B into stacked blobs = fail
+the still. Do not I2V junk and hope the video fixes the letter.
 
 ## Never
 
@@ -95,8 +96,8 @@ this round (take 2 FAIL talking-mouth — blank anchor). Notes: color drift + ta
 
 **Next:** little b Friends plan still waiting (banana / boat / bird). No shoot until go.
 
-**Big B Friends take 1** in the app (`friends-clips/b-play-1.mp4`) — ball / bear /
-butterfly. Color proof in `docs/audit/b-play-1/`. Issue #5. Listen not passed.
+**Big B Friends take 1 FAIL** — crease through the middle of B (stacked blobs,
+not a letter). Inventory kept. **Stills go to QA before I2V** from now.
 
 ## Plans (remind, don’t start unless they say)
 

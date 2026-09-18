@@ -10,9 +10,10 @@ a nicety.
 
 ## Friends cast = case-specific (standing)
 
-You are the **grown-up on the product**. QA does not know it like you.
-Ash does not exist to catch “wrong letter” or “same friends as Big.”
-That class of miss is **negligence**, not a QA gap.
+**Stills before I2V.** Dump the source still. Compare to Meet 01. If the
+glyph does not read as the letter (B with a waist crease = two blobs),
+**fail the still**. Post it on the issue. Do not film until QA comments
+PASS on that still. Film cannot un-crease a broken letter.
 
 Before any Friends **plan LOCK** (and again before I2V):
 
