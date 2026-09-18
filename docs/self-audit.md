@@ -31,7 +31,10 @@ wrong trio, or eat-poster humans as Friends cast.
 Do this **before** I2V. Skipping it is how we shipped a random orange ball.
 
 1. Trio = `wordsForCase` (Big first-3 / little last-3).
-2. Pull **Meet 01** of this case + the **three product posters**
+2. Glyph of record = **home tile** `public/letters/{l}.webp` (or `-little`).
+   Then Meet 01 of this case. **If Meet ≠ home tile, remake Meet first.**
+   Do not I2I Friends from a stale Meet (fat-U / lump-Z came back that way).
+   Then the **three product posters**
    `public/posters/{l}-{slug}.webp` (or `posters-scene/` if that is the word
    card — document which set).
 3. Make a ref board (Meet + 3 posters) if you need more than 3 image inputs.

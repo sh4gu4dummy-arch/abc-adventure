@@ -50,6 +50,7 @@ SOP fold: I2I/edit from product posters first (every letter); one confirmed stil
 - Restart the preview / vite. They refresh when they want.
 - Paint-out / clone-stamp / mask-cut a letter thumb. **Remake the still.**
 - Restore a rejected thumb from git history, chat, or an old path.
+- I2I a Friends still from a **stale Meet** whose glyph does not match the home tile. That is how fat-U / blob-Z / hole-Q came back.
 - Concat story/Meet files into one mp4. Files stay split; the app chains them.
 - Batch B–Z (or 26 Meet plays) until they approve the trial.
 - Push `.grok/`, `attachments/`, platform `AGENTS.md`. GitHub is the kids app.
@@ -64,6 +65,7 @@ SOP fold: I2I/edit from product posters first (every letter); one confirmed stil
 - Videos **are in git**. Restore old takes with git. No local `art-archive`.
 - New Meet / play videos **480×720**, native diegetic sound in the MP4 (no teacher baked in).
 - After a miss: patch **START-HERE + self-audit + qa-howto + the plan** the same turn.
+- **Home tile is the glyph of record.** `public/letters/{l}.webp` (or `-little`). Before any Friends I2I, open home tile **and** Meet 01. If they disagree, remake Meet from the home tile first. Never lock a killed shape (fat-base U, lump Z, hole-less Q).
 
 ## How QA a video
 
@@ -182,6 +184,8 @@ Quality + creativity > rigid adherence (**all projects**, v0.347): if a rule hur
 
 ### Meet-asset debt · queued
 Little Meets that are Big-shaped (product bug — Friends cannot lock a lying Meet glyph): **p, s, v, w, x, z** (and review). See [`docs/meet-asset-debt.md`](meet-asset-debt.md). Queued Meet remakes — not shoot-now.
+
+**v0.349** Fat-base Big U was still in Meet `u.mp4` (Sep 10) after home tile was fixed (v0.219). Friends I2I from Meet → killed glyph came back. Purged Meet U + remade Friends still from home tile. SOP: home tile = glyph of record.
 
 **v0.348** Ash start: remade O–Z FAIL stills (q/s/s-little/u/u-little/v/v-little/y/y-little/z-little) + little-k stylized king. Filmed Big E (`friends-clips/e-play-1.mp4`). Re-QA those stills. Next F–N films + B remakes + film HOLDs.
 

@@ -1,6 +1,6 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.348
+**Version:** v0.349
 
 ## v0.342 — QA ship (ABC-Adventure-Bot1)
 

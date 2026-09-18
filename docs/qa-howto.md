@@ -14,7 +14,9 @@ Builder posts the **source still** on the issue. You PASS/FAIL the still
 - Friends: `public/posters/{letter}-{slug}.webp`. If `posters-scene/` exists for
   that slug and is what the word card shows (`posterPath`), lock **that** and
   paste which set you used in the audit.
-- Letter: Meet intro of **that case** + `public/letters/…` as needed.
+- Letter: **home tile first** (`public/letters/…`) then Meet intro of **that case**.
+  If Meet glyph ≠ home tile, FAIL the still (stale Meet) and do not I2V.
+  Killed shapes that must not return: fat-base U, lump Z, hole-less Q.
 - Fail if same *word* but wrong *character* (generic teddy ≠ product bear).
 - Cast-name match alone is **not** a PASS. **Glyph/crease-only PASS is banned.**
 - Pipeline: I2I/edit from product images first.
