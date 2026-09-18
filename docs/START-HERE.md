@@ -109,15 +109,15 @@ this round (take 2 FAIL talking-mouth — blank anchor). Notes: color drift + ta
 
 **Next:** little b Friends plan still waiting (banana / boat / bird). No shoot until go.
 
-**Big B take 2 stills FAIL** (generic friends, not product posters). Rebuild
-from `public/posters/b-ball.webp` + bear + butterfly + Meet B. One still,
-one path. No I2V. Issue #5. SOP: friend look lock.
+**Confirmed stills (one each, no I2V until QA PASS + go).** Issue #5.
+- Big B: `docs/audit/b-play-2/00-source-still.jpg` (poster-locked ball/bear/butterfly)
+- little b: `docs/audit/b-little-play-1/00-source-still.jpg` (banana/boat/bird)
 
 ## Plans (remind, don’t start unless they say)
 
 | Ask | File / section |
 |---|---|
-| Big B Friends take 2 (still + prompts) | `docs/b-meets-friends-take2-plan.md` |
+| little b Friends still | `docs/audit/b-little-play-1/00-source-still.jpg` |
 | little a meets friends take 2 | `docs/a-meets-friends-little-a-take2-plan.md` |
 | little a take 1 FAIL | `docs/a-meets-friends-little-a-plan.md` |
 | A Meets Friends take 2 (speech) | `docs/a-meets-friends-play-1-take2-plan.md` |

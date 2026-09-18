@@ -8,12 +8,19 @@
 
 SOP fold: (1) I2I/edit from product art first — same friends, every letter. (2) Update plan/SOP so it cannot recur. (3) One confirmed still path to Ash (two unlabeled = process FAIL).
 
-## VOID — prior still
+## CONFIRMED still (product-locked) — awaiting QA PASS
 
-`docs/audit/b-play-2/00-source-still.jpg` (v0.330 PASS) is **VOID** — product-art look-lock FAIL. See `docs/audit/b-play-2/STILL-QA.md`. Do not film from it.
+`docs/audit/b-play-2/00-source-still.jpg`
+
+I2I from Meet B 01 + poster strip (`b-ball` / `b-bear` / `b-butterfly`).
+Red/white/blue ball, scarf teddy, rainbow butterfly. Wide yard. One of each.
+
+VOID old orange still: `docs/audit/b-play-2/VOID-orange-ball.jpg`
 
 Take 1 FAIL inventory: `friends-clips/b-play-1.mp4` (crease).  
 Reject: `still-B-REJECT-two-balls.jpg`.
+
+**Do not I2V until QA PASSes this still + teacher go.**
 
 ## Product lock (I2I / edit-image FIRST)
 
