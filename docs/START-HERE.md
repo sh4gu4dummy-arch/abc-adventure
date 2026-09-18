@@ -58,7 +58,7 @@ Checklist (glaring only):
 - Count: ONE of each prop/limb. Extra crayon tip, extra banana, extra gator = fail
 - Letter: hole = **background color** (not black); face on **front only**; eyes on the body, not in a hole; glyph still reads as that letter in a small crop
 - little letters: Comic-sans **single-story a** (no upper tail); smaller stature; q = one right stem, no extra lumps
-- Food has no face if a kid eats it. State-change is one-way (peel stays off)
+- Food: no human body. **Friends speech:** tiny toy smile OK so it can talk; no arms/legs/human head. Word-lesson eat clips: no face if a kid eats it. State-change is one-way (peel stays off)
 - Thumb for a word card = **frame 1** written to `public/posters-scene/{letter}-{slug}.webp` *and* `public/posters/`
 
 **Pass:** “ship” + one line why. **Fail:** what’s wrong + which frame. Do not
@@ -74,7 +74,7 @@ blocky background unlike the set.
 
 ## Meet A play / Friends
 
-**Remake plan (QA this, no shoot):** `docs/a-meets-friends-play-1-remake.md`
+**Remake plan (QA this, no shoot):** `docs/a-meets-friends-play-1-remake.md` (supervisor gates **v0.308**)
 
 **Meet A** = intro only. **A MEETS FRIENDS** = play-1 trial
 (`videos/imagine/a-play-1.mp4`). Teacher: art OK; next take A + apple/ant/plane

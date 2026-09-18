@@ -1,12 +1,12 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.307
+**Version:** v0.308
 
 
 ## A Meets Friends remake (plan only)
 
 `docs/a-meets-friends-play-1-remake.md` — 15s, four name lines, true-nature rule.
-QA issue #3. No generate until go.
+QA issue #3. Supervisor gates **v0.308**: loudness −32…−18 / max ≤ −3; bury-speech hard; nub-foot only; hop not run. No generate until go.
 
 Meet A = intro only. **A MEETS FRIENDS** = play-1 (apple/ant/plane), own button on Big A.
 Play-1 audio loudnormed (−55 dB → mean −17.8 / max −1.0). Picture unchanged.

@@ -3,6 +3,7 @@
 Saved 2026-09-17. **PLAN ONLY. Do not generate until the teacher says go.**
 
 QA: audit this file (and the prompt) on GitHub **before** a shoot.
+Supervisor-aligned amendments logged **v0.308**.
 Desk: https://github.com/sh4gu4dummy-arch/abc-adventure/issues/1  
 This round’s issue: https://github.com/sh4gu4dummy-arch/abc-adventure/issues/3
 
@@ -116,11 +117,14 @@ Bake a **full mix** as if there will be no overlay:
 - Light happy music under, quieter than voices
 - **No** UI beeps, no reverse whoosh, no scary stingers
 
-Loudness after encode (standing):
+Loudness after encode (standing — Friends talking clips):
 
-- mean **−32…−20 dB**, max **≤ −3 dB**
-- mean **< −40 dB** = do not ship
+- mean **−32…−18 dB**, max **≤ −3 dB** (hard)
+- mean **&lt; −40 dB** = hard quiet fail
+- Inventory gain that hit max **−1.0** = fail; do not soft-pass hot peaks because “voices are clear”
+- Prefer duck music / balance mix over slamming peaks
 - Proof with `volumedetect` on `/tmp` before replacing the public file
+
 
 ---
 
@@ -154,7 +158,7 @@ No readable text on screen.
 Beat 1: A hops toward camera on its nub feet and says in a clear USA
 cartoon kid voice, slowly: "I'm Big A!"
 
-Beat 2: A bumps the apple with a foot. The apple ROLLS like a real fruit
+Beat 2: A bumps the apple with a **nub foot / body only** (never a hand or arm). The apple ROLLS like a real fruit
 (round, stem up). The apple is still an apple. A tiny toy smile is OK so
 it can talk — no arms, no legs, no human head. Apple says: "I'm Apple!"
 
@@ -163,8 +167,7 @@ flying, not walking upright). Ant is clearly an ant. It says: "I'm Ant!"
 A hops beside the ant and does not squash it.
 
 Beat 4: The toy airplane taxis then LIFTS and FLIES FORWARD to the right
-(never backward). It says: "I'm Airplane!" A runs along the grass under
-it.
+(never backward). It says: "I'm Airplane!" A **hops on nub feet beside the plane on the grass** (never runs — run invites arms).
 
 Sound: all four lines clearly spoken, one at a time. Foley: grass hops,
 apple roll, tiny ant crawl ticks, plane engine and whoosh on takeoff.
@@ -172,18 +175,20 @@ Light happy music under the voices, quieter than speech. No beeps, no
 horror, no teacher narrator.
 
 USA English only. Do not add extra words. Do not say letter sounds or
-phonetics.
+phonetics. No on-screen captions, no karaoke subtitles, no phonetics glyphs.
 ```
 
 Negatives to keep in the tool call / retry:
 
-- zero human arms, zero hands, zero second A
+- zero human arms, zero hands, zero fingers, zero limbs that are not the letter legs
+- every A contact = nub foot / body bump only
 - plane never flies backward
 - ant never flies, never stands up
 - apple never grows limbs, never becomes a person
 - hole in A never black / scribbled
 - no face on the back of A
-- no on-screen captions
+- no on-screen captions, no karaoke subtitles, no phonetics glyphs
+- exactly one A, one apple, one ant, one plane
 
 ---
 
@@ -193,34 +198,34 @@ Dump 5 frames (`01-start` … `05-end`) plus listen to the audio.
 
 **Hard fail**
 
-- Missing any of the four lines (or wrong words)
-- Extra A / human arms / apple with a human body
+- Missing any of the four lines, wrong words, overlap, garble, or rushed into “IMBIGA” (listen gate — all four intelligible, one at a time)
+- Music burying any spoken line (bury-speech)
+- Extra A / human arms / hands / fingers / apple with a human body
+- A contact done with anything but nub foot / body
 - Plane reverse
 - Ant flying or walking like a person
 - Apple not a fruit
 - Treadmill (end pose = start, no travel, no contact)
-- Not 480×720, or mean < −40 dB
-- Teacher voice / phonetics / extra sentence
+- Mid still is a group photo (props present, no contact/action)
+- Not 480×720; mean &lt; −40 dB; **max &gt; −3 dB**
+- Teacher voice / phonetics / extra sentence / on-screen captions
 - Hero left the frame for good (gone, not a soft edge crop)
 
 **Soft miss** (list even if you ship a trial)
 
-- Lines rushed / overlap
-- Weak crawl or weak takeoff
-- Quiet music covering speech
+- Lines slightly rushed but still clear and non-overlapping
+- Weak crawl or weak takeoff if the job is still true
 - End crop of A (still readable = soft)
 
-**Mid still:** someone is **doing** the current beat (roll / crawl / fly),
+**Mid still:** someone is **doing** the current beat (roll / crawl / fly / hop-beside),
 not a group photo.
 
 Two usable takes: **show the teacher both**. Do not pick.
 
 ---
 
-## Open for QA (debate before go)
+## QA amendments (v0.308 — supervisor-aligned)
 
-1. **15s vs 10s** — four lines + play in 10s will rush. Plan is 15s.
-2. **Apple toy-smile** — needed to say “I'm Apple!” without growing a body.
-3. Prompt: anything that will spawn arms / clone A / reverse the plane?
+Locked before go: Friends loudness **−32…−18** / max **≤ −3**; bury-speech hard fail; listen gate hard; prompt = nub-foot contacts + hop beside plane (not run); no captions. Soft = edge crop / weak-but-true crawl-takeoff / rushed-but-clear lines.
 
-Do **not** shoot until the teacher says **go** after this audit.
+Do **not** shoot until the teacher says **go**.
