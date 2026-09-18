@@ -239,8 +239,6 @@ export default defineConfig(({ command, isPreview }) => ({
         "**/public/art-archive/**",
         "**/public/review/**",
         "**/artifacts/**",
-        "**/src/**",
-        "**/VERSION",
         "**/node_modules/**",
         "**/.git/**",
       ],

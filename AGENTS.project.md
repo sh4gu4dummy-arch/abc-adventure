@@ -36,9 +36,10 @@ After every GitHub push, **tell them the version** in chat (v0.112, etc.).
 
 ## Preview: they refresh. Git/version: always.
 
-They hunt bugs in the live preview. **Do not restart vite / the preview
-server.** `server.hmr: false` and `src` is not watched — edits must not
-auto-reload. They refresh when they want.
+They hunt bugs in the live preview. **Do not restart vite** unless they
+say a refresh still shows an old version (badge stuck). `server.hmr:
+false` — no auto-reload. `src` **is** watched so a manual refresh gets
+new code. Do not ignore `src` in `watch.ignored`.
 
 **Do still bump `APP_VERSION` and `git push origin main`** on every
 product change. Version in chat after the push. Preview refresh ≠ skip
