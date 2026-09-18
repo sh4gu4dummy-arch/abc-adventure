@@ -1,6 +1,10 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.350
+**Version:** v0.351
+
+## v0.351 — builder (Ash start)
+
+Filmed little e / Big F / little f Friends (listen not passed). Agree QA: remake v-play Violin mouth + s-little Smile (no Sun). G filming. Big E HOLD.
 
 ## v0.350 — QA ship (ABC-Adventure-Bot1)
 
