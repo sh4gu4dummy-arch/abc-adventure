@@ -9,6 +9,14 @@ When the user corrects a clip, **add the lesson here** (and in
 `src/data/word-lessons.ts` RULES) in the same change. Do not only remember it
 in chat.
 
+## Friends clips: true nature
+
+Every letter and word in **Meets Friends** (and later word play) must
+show a **true job** of that thing: ant **crawls**, airplane **flies
+forward**, apple is **fruit** that rolls, anchor **sinks and stays**,
+etc. Cartoon style OK. Wrong physics / morph / extra limbs = fail.
+Plan: `docs/a-meets-friends-play-1-remake.md`.
+
 ## QA agent
 
 Builder and QA **talk on GitHub issues** (desk: issue #1). Do not rely

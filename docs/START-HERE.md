@@ -72,21 +72,20 @@ Fail: extra lumps, huge googly eyes vs tiny black dots, missing hole, hole
 not matching the bg, little z / q “surgery” ghosts, letter cut off, extra
 blocky background unlike the set.
 
-## Meet A play
+## Meet A play / Friends
 
-Plan: `docs/meet-a-play-plan.md`
+**Remake plan (QA this, no shoot):** `docs/a-meets-friends-play-1-remake.md`
 
-**Meet A** = intro only. **A MEETS FRIENDS** (Big A page button) = play-1
-(`videos/imagine/a-play-1.mp4`, apple/ant/plane). Play-2 / little-a not shot.
-Audio on play-1 was boosted (was −55 dB mean → −17.8). Picture unchanged. 480×720.
-QA: FAIL brief / PASS anatomy; teacher kept as trial inventory. Next picture
-shoots still need real play action.
+**Meet A** = intro only. **A MEETS FRIENDS** = play-1 trial
+(`videos/imagine/a-play-1.mp4`). Teacher: art OK; next take A + apple/ant/plane
+say their names and act like the real things. 480×720.
 
 ## Plans (remind, don’t start unless they say)
 
 | Ask | File / section |
 |---|---|
-| Meet A plays with words | `docs/meet-a-play-plan.md` |
+| A Meets Friends play-1 remake | `docs/a-meets-friends-play-1-remake.md` |
+| Meet A plays with words (old) | `docs/meet-a-play-plan.md` |
 | Lowercase / little letters | `AGENTS.project.md` → Lowercase plan |
 | Tracing rewrite | `AGENTS.project.md` → Trace rewrite plan |
 | Story / video quality | `AGENTS.project.md` → Video QA + Story lines |
