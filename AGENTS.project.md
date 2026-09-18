@@ -20,7 +20,9 @@ Do not cover a prop completely then spawn a second one (apple behind A
 → new apple). Scenery quality was good — keep it. Sound: more exciting
 play foley, not beeps.
 
-Little a plan: `docs/a-meets-friends-little-a-plan.md`.
+**Big Friends ≠ little Friends.** Do not reuse the same three words.
+A split: Big = apple, ant, airplane. little = alligator, astronaut, anchor.
+Look lock little a to **Meet `a-little.mp4`**, not a melted cousin.
 
 ## QA agent
 

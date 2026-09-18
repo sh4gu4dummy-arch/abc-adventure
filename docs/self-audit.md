@@ -38,8 +38,10 @@ Keep these even when scenery looks pretty:
    Apple: tiny toy smile OK; **no feet / legs / arms**.
 7. **Sound** — interesting play foley (hops, roll, crawl, whoosh). Not silent,
    not beep-spam. Voices on top of music (bury-speech = fail).
-8. **Keep scenery quality** Ash already liked. Don’t cheapen the yard to
-   “fix” a miss.
+9. **Look lock** — still + every frame must match the **Meet intro** of that
+   case (Meet little a, not a lumpy cousin, not the home tile).
+10. **Big Friends ≠ little Friends.** Do not copy the other case’s three
+    words. A: Big = apple/ant/airplane; little = alligator/astronaut/anchor.
 
 ### Method B (multi-clip concat)
 

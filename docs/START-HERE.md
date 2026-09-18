@@ -83,20 +83,20 @@ blocky background unlike the set.
 
 Big A take 2 **PASS for now**. Seek bar shipped.
 
-**little a meets friends take 1** is in little-abc Friends (`friends-clips/a-little-play-1.mp4`,
-~24s, method B). Audit: `docs/audit/a-little-play-1/`. Issue #4.
-Cast lock on stills looks OK (hero in 05-end). Listen not passed.
+**little a take 1 FAIL** (teacher / supervisor). Wrong glyph. Copied Big A friends.
+Little uses last-3 A words: alligator, astronaut, anchor. Inventory kept.
 
-v0.317 404: preview **ignores new files in `public/videos/**`**. Friends clips live in
-`public/friends-clips/` (same reason stories use `story-clips/`).
+Plans (no shoot): `docs/a-meets-friends-little-a-take2-plan.md` ·
+`docs/a-meets-friends-little-a-plan.md` (QA FAIL). Issue #4.
 
+Standing: **Big Friends ≠ little Friends.** Split the 6 words.
 
-**Little a take 1 FAIL (product):** wrong font + same friends as Big. Remake = alligator / astronaut / anchor (`wordsForCase` last-3). Inventory kept.
 ## Plans (remind, don’t start unless they say)
 
 | Ask | File / section |
 |---|---|
-| little a meets friends | `docs/a-meets-friends-little-a-plan.md` (take 1 FAIL product; remake v0.320) |
+| little a meets friends take 2 | `docs/a-meets-friends-little-a-take2-plan.md` |
+| little a take 1 FAIL | `docs/a-meets-friends-little-a-plan.md` |
 | A Meets Friends take 2 (speech) | `docs/a-meets-friends-play-1-take2-plan.md` |
 | A Meets Friends play-1 remake | `docs/a-meets-friends-play-1-remake.md` |
 | Meet A plays with words (old) | `docs/meet-a-play-plan.md` |
