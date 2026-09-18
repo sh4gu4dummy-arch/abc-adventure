@@ -1,10 +1,11 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.301
+**Version:** v0.302
 
 ## QA playbook + play-1 audit
 
-`docs/qa-howto.md` (teacher procedure). Play-1 independent QA: `docs/audit/a-play-1/QA.md` — PASS trial + softs (quiet, stacked props, end crop). Wait for teacher before play-2.
+`docs/qa-howto.md`. Play-1 QA: `docs/audit/a-play-1/QA.md` (PASS trial + softs).
+Builder debate: `docs/audit/a-play-1/BUILDER-REPLY.md` — not yielding on PASS label, crossbar face, off-screen props, −22 dB gate. Wait for teacher.
 
 ## Agent desk (GitHub)
 
