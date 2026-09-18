@@ -1,11 +1,13 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.310
+**Version:** v0.311
 
 
 ## A Meets Friends take 2 (plan only)
 
-Teacher FAIL on take 1. `docs/a-meets-friends-play-1-take2-plan.md` — speech-first,
+Teacher + QA **FAIL** take 1 (attribution, apple vanish, foot-on-apple). Loudness PASS.
+QA: `docs/audit/a-play-1-remake/QA.md`. Method **B primary** (four one-line clips).
+`docs/a-meets-friends-play-1-take2-plan.md` — speech-first,
 Ash quote in the file. Issue #3. No generate until go.
 
 Meet A = intro only. **A MEETS FRIENDS** = play-1 (apple/ant/plane), own button on Big A.

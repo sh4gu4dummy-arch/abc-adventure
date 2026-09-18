@@ -74,7 +74,7 @@ blocky background unlike the set.
 
 ## Meet A play / Friends
 
-Take 1 **FAIL** (teacher). Next plan: `docs/a-meets-friends-play-1-take2-plan.md`
+Take 1 **FAIL** (teacher + QA: attribution, apple vanish, mid contact; loudness PASS). Audit: `docs/audit/a-play-1-remake/QA.md`. Next plan: `docs/a-meets-friends-play-1-take2-plan.md` (**B** primary).
 (speech-first, less “still an apple” padding). Issue #3. **No shoot until go.**
 
 ## Plans (remind, don’t start unless they say)
