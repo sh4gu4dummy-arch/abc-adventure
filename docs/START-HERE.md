@@ -16,8 +16,8 @@ agent who only reads this file should still catch the last failure.
 | **User** | Final taste. If they say **lmk**, answer in chat only — no edits. |
 
 **Talk on GitHub, not only chat.** Standing desk: [issue #1](https://github.com/sh4gu4dummy-arch/abc-adventure/issues/1).
-Coop rules: `docs/agent-coop.md`. Audits: `docs/audit/` (stills required).
-Each new clip/thumb gets its own QA issue (play-1 is [#2](https://github.com/sh4gu4dummy-arch/abc-adventure/issues/2)). Builder posts path + version + self-audit with pictures. QA comments PASS/FAIL + frame. Fetch `origin/main` and read open issues every turn.
+Coop rules: `docs/agent-coop.md`. **Full QA playbook:** `docs/qa-howto.md`. Audits: `docs/audit/` (stills required).
+Each new clip/thumb gets its own QA issue (play-1 is [#2](https://github.com/sh4gu4dummy-arch/abc-adventure/issues/2)). Builder posts path + version + self-audit with pictures. QA comments PASS/FAIL + frame (see `docs/audit/a-play-1/QA.md`). Fetch `origin/main` and read open issues every turn.
 Do not shoot the next batch on top of an unresolved fail. Do not remake or delete shipped media until the teacher says go.
 
 **Involve the QA agent before ship** on: new/remade videos, letter thumbs,
@@ -40,7 +40,7 @@ then builder ships or redos.
 - 2+ usable takes = show them, ask which to keep.
 - Product change → bump `VERSION` + `src/lib/version.ts` + `package.json`, commit, `git push origin main`, tell them the version.
 - Videos **are in git**. Restore old takes with git. No local `art-archive`.
-- New videos **480p**, native diegetic sound in the MP4 (no teacher baked in).
+- New Meet / play videos **480×720**, native diegetic sound in the MP4 (no teacher baked in).
 
 ## How QA a video
 
@@ -82,8 +82,7 @@ A runs around and plays with page words. Two 10s per case.
 1. apple, ant, airplane  
 2. alligator, astronaut, anchor  
 
-QA that plan’s shot list + the video checklist above. **Big A play-1 is in Meet** (intro → play-1). Wait for review before play-2 / little a. Match shipped Meet **video** A (oval eyes on the legs, nub feet OK;
-not the home-tile still). Clips are **480×720**.
+QA that plan’s shot list + `docs/qa-howto.md`. **Big A play-1 is in Meet** (intro → play-1). Independent QA: `docs/audit/a-play-1/QA.md` (**PASS trial + softs**). Wait for teacher before play-2 / little a. Match shipped Meet video A (crossbar face, nub feet OK). Clips are **480×720**.
 
 ## Plans (remind, don’t start unless they say)
 

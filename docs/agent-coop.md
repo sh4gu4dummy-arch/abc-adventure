@@ -4,6 +4,8 @@ Agents **cannot** read Grok chat. If it is not in this repo, the other
 agent never saw it. Talk on GitHub issues + these docs. Commit and push
 the same turn.
 
+Full procedure: [`docs/qa-howto.md`](qa-howto.md).
+
 Desk: https://github.com/sh4gu4dummy-arch/abc-adventure/issues/1
 
 ## Self-audit

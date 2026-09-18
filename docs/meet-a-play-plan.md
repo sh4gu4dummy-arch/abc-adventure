@@ -86,6 +86,14 @@ Sunny kid-yard. A runs (real distance).
 - Intro Meet still owns the name line. Play clips do not repeat “Hi I’m Big A.”
 - Narration vs Video-sound toggle: Meet intro is self-voice; play clips follow the same Meet rule (clip sound, no teacher stack).
 
+## Loudness (play clips)
+
+Target mean roughly **−22…−18 dB**. mean **< −40 dB** = soft fail (too quiet for a play clip). Proof with `volumedetect` before READY.
+
+## One prop per beat
+
+Mid still (`03-mid`) must show the **active** word’s prop as the clear play partner. Do not keep apple+ant+plane as a group photo for the whole 10s.
+
 ## QA before ship (every take)
 
 **QA agent** looks at the 5-frame dump before anything replaces a public
