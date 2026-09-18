@@ -75,9 +75,8 @@ blocky background unlike the set.
 
 ## Meet A play / Friends
 
-Take 1 **FAIL** (attribution / apple vanish / stand-on).  
-**Take 2 in Friends now** (`a-play-1.mp4`, ~24s, four 6s clips concat).
-Method **B**. Audit: `docs/audit/a-play-1-take2/`. Issue #3. Listen not passed.
+Take 2 **PASS for now** (teacher). `a-play-1.mp4` ~24s, method B.  
+Meet/Friends have a **seek bar** (scrubber) like word videos. Issue #3.
 
 ## Plans (remind, don’t start unless they say)
 

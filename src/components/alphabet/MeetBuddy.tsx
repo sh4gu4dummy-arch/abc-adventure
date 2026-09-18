@@ -94,10 +94,14 @@ export function MeetBuddyModal({
   const [clipIdx, setClipIdx] = useState(0);
   const [paused, setPaused] = useState(true);
   const [failed, setFailed] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [seekReady, setSeekReady] = useState(false);
 
   useEffect(() => {
     setIdx(letterIndex(entry.letter));
     setClipIdx(0);
+    setProgress(0);
+    setSeekReady(false);
   }, [entry.letter, kind]);
 
   const current = LETTERS[idx]!;
@@ -130,6 +134,8 @@ export function MeetBuddyModal({
     setFailed(false);
     setPaused(true);
     setClipIdx(0);
+    setProgress(0);
+    setSeekReady(false);
     let i = idx;
     for (let n = 0; n < LETTERS.length; n++) {
       i = (i + dir + LETTERS.length) % LETTERS.length;
@@ -163,6 +169,8 @@ export function MeetBuddyModal({
     v.src = src;
     v.muted = !playUnmuted;
     v.volume = 1;
+    setProgress(0);
+    setSeekReady(false);
     const tryPlay = () => {
       void v.play().catch(() => {
         /* autoplay may wait for tap — keep the player visible */
@@ -185,6 +193,21 @@ export function MeetBuddyModal({
       }
     };
   }, [src, title, selfVoice, kind, playUnmuted]);
+
+  function fractionFromEvent(el: HTMLElement, clientX: number) {
+    const rect = el.getBoundingClientRect();
+    if (rect.width <= 0) return 0;
+    return Math.min(1, Math.max(0, (clientX - rect.left) / rect.width));
+  }
+
+  function applySeek(frac: number) {
+    const v = videoRef.current;
+    const f = Math.min(1, Math.max(0, frac));
+    if (v && v.duration && Number.isFinite(v.duration) && v.duration > 0) {
+      v.currentTime = f * v.duration;
+    }
+    setProgress(f);
+  }
 
   return (
     <div
@@ -240,6 +263,16 @@ export function MeetBuddyModal({
               onError={() => setFailed(true)}
               onPlay={() => setPaused(false)}
               onPause={() => setPaused(true)}
+              onLoadedMetadata={(e) => {
+                const d = e.currentTarget.duration;
+                if (d && Number.isFinite(d) && d > 0) setSeekReady(true);
+              }}
+              onTimeUpdate={(e) => {
+                const v = e.currentTarget;
+                if (v.duration && Number.isFinite(v.duration) && v.duration > 0) {
+                  setProgress(v.currentTime / v.duration);
+                }
+              }}
               onClick={(e) => {
                 const v = e.currentTarget;
                 if (v.paused) void v.play();
@@ -257,7 +290,8 @@ export function MeetBuddyModal({
           {paused && !failed && src && (
             <button
               type="button"
-              className="absolute inset-0 z-[2] grid place-items-center"
+              className="absolute inset-x-0 top-0 z-[2] grid place-items-center"
+              style={{ bottom: seekReady ? "2.75rem" : 0 }}
               onClick={() => void videoRef.current?.play()}
               aria-label="Play"
             >
@@ -291,6 +325,42 @@ export function MeetBuddyModal({
                 <ChevronRight className="size-7" />
               </button>
             </>
+          )}
+          {src && !failed && seekReady && (
+            <div
+              className="absolute inset-x-0 bottom-0 z-[6] h-11 cursor-pointer touch-none px-2"
+              role="slider"
+              aria-label="Video time"
+              aria-valuemin={0}
+              aria-valuemax={100}
+              aria-valuenow={Math.round(progress * 100)}
+              onPointerDown={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                (e.currentTarget as HTMLDivElement).setPointerCapture(e.pointerId);
+                applySeek(fractionFromEvent(e.currentTarget, e.clientX));
+              }}
+              onPointerMove={(e) => {
+                if (e.buttons === 0) return;
+                e.preventDefault();
+                e.stopPropagation();
+                applySeek(fractionFromEvent(e.currentTarget, e.clientX));
+              }}
+            >
+              <div className="absolute inset-x-3 bottom-3 h-2.5 overflow-hidden rounded-full bg-black/40">
+                <div
+                  className="h-full rounded-full"
+                  style={{ width: `${progress * 100}%`, background: current.accent }}
+                />
+              </div>
+              <div
+                className="pointer-events-none absolute bottom-[0.45rem] size-4 rounded-full border-2 border-white shadow"
+                style={{
+                  left: `calc(${progress * 100}% * 0.92 + 0.75rem)`,
+                  background: current.accent,
+                }}
+              />
+            </div>
           )}
         </div>
       </div>
