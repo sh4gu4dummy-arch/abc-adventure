@@ -120,6 +120,16 @@ what Ash sees. Also print the git path as plain text for QA.
 - little c: `docs/audit/c-little-play-1/00-source-still.jpg` (picnic)
 B I2V prompts: `docs/b-i2v-prompts.md`. B stills #5. C stills #6.
 
+
+## Friends stills status (v0.335)
+
+- **Big B** `docs/audit/b-play-2/` — still **PASS (soft scarf)**. Film pending Ash go. `#5`
+- **little b** `docs/audit/b-little-play-1/` — still **PASS (soft feet)**. Film pending Ash go. `#5`
+- **Big C** `docs/audit/c-play-1/` — still **FAIL** cake/car look-lock vs posters. Rebuild I2I. `#6`
+- **little c** `docs/audit/c-little-play-1/` — still **FAIL** (live human). Rebuild letter+cloud+cookie+cup only. `#6`
+
+No I2V on FAILs. Builder owns C remakes; QA again when one-path stills land.
+
 ## Plans (remind, don’t start unless they say)
 
 | Ask | File / section |

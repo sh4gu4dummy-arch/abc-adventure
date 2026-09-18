@@ -1,29 +1,29 @@
-# Still QA — Big B Friends take 2 source
+# Still QA — Big B Friends take 2 (product-locked)
 
-**Still:** `00-source-still.jpg`  
-**Issue:** #5 · **v0.331**
+**Still:** `docs/audit/b-play-2/00-source-still.jpg`  
+**Issue:** #5 · **v0.335**
 
-## Verdict: **PASS VOID — FAIL (product-art look-lock)**
-
-Prior **PASS (soft arms)** at v0.330 is **void**. Do **not** I2V from this still.
-
-Cast *names* matched (ball/bear/butterfly). Friend **LOOKS** did not match product posters. Glyph/crease-only PASS is banned.
-
-### Paths that must be opened side-by-side (Big B lock)
+## Paths opened (required)
 
 ```
-Letter/Meet: public/videos/imagine/b.mp4  (+ public/letters/b.webp / docs/audit/b-play-2/meet-b-01.jpg)
+Letter/Meet: docs/audit/b-play-2/meet-b-01.jpg  (+ public/videos/imagine/b.mp4 / public/letters/b.webp)
 Ball:        public/posters/b-ball.webp
 Bear:        public/posters/b-bear.webp
 Butterfly:   public/posters/b-butterfly.webp
 ```
 
-No `public/posters-scene/b-*` on disk — lock **`public/posters/`** for B.
+Old orange cousin archived: `VOID-orange-ball.jpg`.
+
+## Verdict: **PASS (soft scarf)**
 
 | Check | Gate |
 |---|---|
-| Glyph (no waist crease) | was pass — insufficient alone |
-| Product bear / ball / butterfly looks | **FAIL** — invented cousins vs posters |
-| Cast-name match alone | **not a PASS** |
+| One confirmed path | PASS |
+| Glyph sky-blue B, no waist crease | PASS |
+| Ball = red + blue patches (product family) | **PASS** |
+| Bear = honey-pot product family | **PASS** |
+| Butterfly = rainbow / fuzzy product family | **PASS** |
+| Scarf on still bear (poster has no scarf) | **soft** — still-locked prop only, not product identity |
+| Cast count 1 each / wide | PASS |
 
-Next: I2I/edit from the poster paths above → **one** confirmed still → paste paths in audit → QA + supervisor re-open posters|still before any PASS. Plan: `docs/b-meets-friends-take2-plan.md`.
+Do **not** I2V until teacher **go**. Prompts: `docs/b-i2v-prompts.md` (scarf = still prop).

@@ -11,7 +11,7 @@ Vary locations (not plain grass every time). One still per case in chat
 ## Big B — confirmed still
 
 `docs/audit/b-play-2/00-source-still.jpg`  
-(red/white/blue ball, scarf bear, rainbow butterfly, wide yard)
+(red/white/blue ball, bear from the confirmed still (scarf is still-locked prop only, not product identity), rainbow butterfly, wide yard)
 
 Start every clip from that still / prior 05-end. Camera **stays wide**.
 B never hops into the lens. One ball through 05-end.
@@ -24,7 +24,7 @@ Nobody else talks. Closed smiles on ball, bear, butterfly. No narrator. No capti
 
 CAMERA STAYS WIDE AND BACK. No zoom. No dolly-in. B stays small in the yard and hops **beside** friends, NEVER toward the camera, NEVER filling the screen.
 
-Keep this EXACT B (straight left stem, sky-blue, do not darken). Keep the EXACT red-white-blue ball, scarf teddy, rainbow butterfly from the still. One of each. Air between them. Hero in last frame.
+Keep this EXACT B (straight left stem, sky-blue, do not darken). Keep the EXACT red-white-blue ball, bear from the confirmed still, rainbow butterfly from the still. One of each. Air between them. Hero in last frame.
 
 Foley: grass hops. Voice on top. No beeps.
 
@@ -42,7 +42,7 @@ Foley: bounce. Voice on top. No beeps.
 
 ### Clip 3 — Bear (6s, 480p)
 
-MOST IMPORTANT — VOICE. Only the scarf teddy talks. One line. Warm USA cartoon kid. Bear's mouth: "I'm Bear!"
+MOST IMPORTANT — VOICE. Only the bear from the confirmed still talks. One line. Warm USA cartoon kid. Bear's mouth: "I'm Bear!"
 
 Nobody else talks. CAMERA STAYS WIDE. Bear takes a step or a friendly wave. Does not eat B. No extra bears. Still ONE ball.
 
