@@ -173,13 +173,13 @@ Plan: `docs/oz-friends-stills.md`.
 | Verdict | Cases |
 |---|---|
 | **PASS / PASS soft** | o, o-little (soft), p, p-little (soft), **q**, q-little (soft), r, r-little (soft), **s**, t, t-little, **u** (home-tile lock), **u-little**, **v-little**, w, w-little (soft), x (soft), x-little (soft), **y**, **y-little**, z (soft), **z-little** |
-| **FAIL** (rebuild queued) | **v-play** (blank Violin); **s-little** (Sun≠Smile) |
+| **FAIL** (rebuild queued) | **v-play** / **s-little** — remade again v0.356 (violin face punched; Smile on dock, no sun). Re-QA. |
 
 Quality + creativity > rigid adherence (**all projects**, v0.347): if a rule hurts the product, flag QAsupervisor — do not blind-enforce. Not limited to King/people softs. Standing ban (v0.345): no ring of kids / classroom audience on Friends stills, and no cookie-eater bleed into Friends. King/Queen/Question may be a stylized person / crown figure when natural and readable; do not force toy-only. Random kid stand-ins, dual-letter mess, blank talkers, wrong trio, and eat-poster humans as Friends cast still FAIL.
 
 ### Rebuild inventory **QUEUED** (not shoot-now)
-- **v-play-1 still** — mouthed toy Violin (blank-talker FAIL) + Volcano + Van; no human
-- **s-little-play-1 still** — Ship / **Smile** / Sock (no Sun); flag Meet-little-s debt when remaking
+- **v-play-1 still** — remade v0.356: poster-lock violin face (unmissable). Re-QA.
+- **s-little-play-1 still** — remade v0.356: Smile on dock (no sun/rays). Re-QA.
 - **E film cast remake later** — letter E missing end; Earth missing mid; keep still; clean letter intro mouths
 - **Film HOLDs (unchanged):** little-c (loudness + attribution); Big D / little-d attribution; B films still FAIL
 - Remakes postponed unless Ash goes.
@@ -187,6 +187,8 @@ Quality + creativity > rigid adherence (**all projects**, v0.347): if a rule hur
 
 ### Meet-asset debt · queued
 Little Meets that are Big-shaped (product bug — Friends cannot lock a lying Meet glyph): **p, s, v, w, x, z** (and review). See [`docs/meet-asset-debt.md`](meet-asset-debt.md). Queued Meet remakes — not shoot-now.
+
+**v0.356** Remade FAIL stills: Big V violin face punched from `v-violin.webp`; little s Smile on dock from `s-smile.webp` (no sun). Re-QA. No I2V.
 
 **v0.355** H–N Friends films complete (little m, N, n). O–Z PASS still remaining (skip V + little s).
 

@@ -1,6 +1,15 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.355
+**Version:** v0.356
+
+## v0.356 — FAIL still remakes
+
+- `v-play-1` violin face punched from `public/posters/v-violin.webp`
+- `s-little-play-1` Smile on dock from `public/posters/s-smile.webp` (no sun)
+- Re-QA. No I2V.
+
+## v0.355 — builder (Ash start)
+
 
 ## v0.351 — builder (Ash start)
 
