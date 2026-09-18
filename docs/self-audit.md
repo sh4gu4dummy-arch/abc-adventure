@@ -17,6 +17,8 @@ I2I **drops the human** and **adds a toy smile** on the food. Blank food + line 
 Oven-mitt arms / cookie eater = product-scene only, not Friends cast.
 
 
+**Quality + creativity > rigid rule:** if a gate forces worse product, flag QAsupervisor instead of blind enforce. Still hard: wrong trio, blank talkers, cookie-eater bleed, kid rings.
+
 **Standing ban — kids audience / person-word flexibility:** no ring of kids /
 classroom audience on Friends stills, and no cookie-eater bleed into Friends.
 **King / Queen / Question** (and similar person-words) may use a **stylized

@@ -1,8 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.345
+**Version:** v0.346
 
-## v0.345 — QA follow-up (ABC-Adventure-Bot1)
+## v0.346 — QA follow-up (ABC-Adventure-Bot1)
 
 Docs only. No I2V. No Ash messaging.
 - Softened the Friends rule: ban ring-of-kids / classroom audiences and cookie-eater bleed, not all person-shaped friends.
