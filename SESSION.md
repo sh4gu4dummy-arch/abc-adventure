@@ -1,14 +1,14 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.357
+**Version:** v0.358
 
-## v0.357 — FAIL still remakes
+## v0.358 — O–Q films
 
-- `v-play-1` violin face punched from `public/posters/v-violin.webp`
-- `s-little-play-1` Smile on dock from `public/posters/s-smile.webp` (no sun)
-- Re-QA. No I2V.
+Filmed O, little o, P, little p, Q, little q. Remaining PASS R–Z except V + little s.
 
-## v0.357 — builder (Ash start)
+## v0.357 — QA Imagine auth (pulled)
+
+Key-first Imagine + I2I edits script. No generate. No new Friends QA.
 
 
 ## v0.351 — builder (Ash start)
