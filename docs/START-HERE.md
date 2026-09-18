@@ -74,15 +74,14 @@ blocky background unlike the set.
 
 ## Meet A play / Friends
 
-**Remake take 1 is in Friends** (`a-play-1.mp4`, 15s). Self-audit:
-`docs/audit/a-play-1-remake/` — not a listen PASS yet. QA issue #3. (supervisor gates **v0.308**)
-
-**Meet A** = intro only. **A MEETS FRIENDS** plays the 15s remake take 1.
+Take 1 **FAIL** (teacher). Next plan: `docs/a-meets-friends-play-1-take2-plan.md`
+(speech-first, less “still an apple” padding). Issue #3. **No shoot until go.**
 
 ## Plans (remind, don’t start unless they say)
 
 | Ask | File / section |
 |---|---|
+| A Meets Friends take 2 (speech) | `docs/a-meets-friends-play-1-take2-plan.md` |
 | A Meets Friends play-1 remake | `docs/a-meets-friends-play-1-remake.md` |
 | Meet A plays with words (old) | `docs/meet-a-play-plan.md` |
 | Lowercase / little letters | `AGENTS.project.md` → Lowercase plan |
