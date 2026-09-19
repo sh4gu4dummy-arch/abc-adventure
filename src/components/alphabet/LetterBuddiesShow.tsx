@@ -58,7 +58,7 @@ export function LetterBuddiesShow({ autoPlay = false }: { autoPlay?: boolean }) 
       void speak("The letter A");
     });
     later(14200, () => {
-      void speak("A says ah, like apple!");
+      void speak("The letter A says ah, like apple!");
     });
 
     later(22000, () => {
