@@ -98,6 +98,8 @@ Builder self-audit SOP: [`docs/self-audit.md`](self-audit.md).
 ## Standing gates — Friends listen / cast / product shape (v0.340)
 
 - **Listen attribution:** speaking mouth matches the line. Same-voice-all cast = **FAIL**.
+  Friends whose names share a first letter (Ball / Bear / Butterfly) swap lines — play the clip; wrong spoken name = **FAIL** even if frames look fine.
+
 - **Cast count every end frame:** count named friends in `05-end` (butterfly/duck clones = FAIL).
 - **Inanimate friends product-shape lock:** boat (etc.) must keep product shape through the whole clip (sailboat must stay sailboat — tug morph = FAIL).
 

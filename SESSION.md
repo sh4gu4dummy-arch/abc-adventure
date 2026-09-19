@@ -1,6 +1,10 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.361
+**Version:** v0.362
+
+## v0.362 — Big B name-swap (plan only)
+
+Bear said I'm Butterfly. Still kept. Plan: `docs/audit/b-play-3-plan.md`. No I2V until Ash go.
 
 ## v0.361 — remaining PASS Friends films
 

@@ -42,15 +42,17 @@ Foley: bounce. Voice on top. No beeps.
 
 ### Clip 3 — Bear (6s, 480p)
 
-MOST IMPORTANT — VOICE. Only the bear from the confirmed still talks. One line. Warm USA cartoon kid. Bear's mouth: "I'm Bear!"
+MOST IMPORTANT — VOICE. Only the bear from the confirmed still talks. One line. Warm USA cartoon kid. Bear's mouth: "I'm Bear!" The bear does NOT say Butterfly. The bear does NOT say Ball.
 
 Nobody else talks. CAMERA STAYS WIDE. Bear takes a step or a friendly wave. Does not eat B. No extra bears. Still ONE ball.
 
 Hero in last frame. Foley: soft steps. Voice on top. No beeps.
 
+Ash v0.362: clip 3 shipped with Butterfly's line. Listen before concat. Remake plan: `docs/audit/b-play-3-plan.md`.
+
 ### Clip 4 — Butterfly (6s, 480p)
 
-MOST IMPORTANT — VOICE. Only the rainbow butterfly talks. One line. Light USA cartoon kid: "I'm Butterfly!"
+MOST IMPORTANT — VOICE. Only the rainbow butterfly talks. One line. Light USA cartoon kid: "I'm Butterfly!" The butterfly does NOT say Bear. The butterfly does NOT say Ball.
 
 Nobody else talks. CAMERA STAYS WIDE. Butterfly flutters FORWARD in the sky, majority in frame, not reverse. No extra butterflies. Count balls = 1.
 

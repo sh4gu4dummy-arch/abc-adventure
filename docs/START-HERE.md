@@ -192,6 +192,8 @@ Quality + creativity > rigid adherence (**all projects**, v0.347): if a rule hur
 ### Meet-asset debt · queued
 Little Meets that are Big-shaped (product bug — Friends cannot lock a lying Meet glyph): **p, s, v, w, x, z** (and review). See [`docs/meet-asset-debt.md`](meet-asset-debt.md). Queued Meet remakes — not shoot-now.
 
+**v0.362** Ash: Big B Bear said "I'm Butterfly." Same-letter names swap. Still kept; remake plan `docs/audit/b-play-3-plan.md`. No I2V until go. SOP: listen every clip; ban the other names in the prompt.
+
 **v0.361** Filmed remaining PASS Friends: R/r, S, T/t, U/u, little v, W/w, X/x, Y/y, Z/z. Still skipped: Big V + little s (re-QA). Listen not passed.
 
 **v0.358** Filmed O/o/P/p/Q/q Friends (listen not passed). Remaining PASS: R–Z except V + little s. v0.357 Imagine auth pulled. No new QA on V/s-little.

@@ -82,6 +82,9 @@ Keep these even when scenery looks pretty:
    (not only a tip exiting the frame).
 5. **Speech** — the **right mouth** says the **right line**. Same kid voice
    on everyone / letter mouths `I'm Apple!` = fail. Words-on-the-track is not enough.
+   **Same-letter names** (Ball / Bear / Butterfly) swap lines. Ban the other
+   names in the prompt. **Listen every clip before concat.** Frame stills cannot catch a wrong name.
+
 6. **True job** — each friend does its real job (see the round plan table).
    Toy smiles OK; no human bodies on props unless the plan allows.
 7. **Sound** — interesting play foley (hops, roll, crawl, whoosh). Not silent,
@@ -105,6 +108,8 @@ home tile.
 ## Standing gates — Friends listen / cast / boat (v0.340)
 
 - **Listen attribution:** speaking mouth matches the line. Same-voice-all = **FAIL**.
+  Same-letter names (Bear vs Butterfly) = extra listen. Wrong name = FAIL even if the right mouth moves.
+
 - **Cast count every end frame** (butterfly/duck clones = FAIL).
 - **Inanimate product-shape lock** through the whole clip (boat must stay sailboat).
 
