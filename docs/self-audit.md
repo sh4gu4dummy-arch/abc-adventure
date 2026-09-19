@@ -100,6 +100,9 @@ Keep these even when scenery looks pretty:
 - **Source still** must pass cast lock + count==1 **before** any I2V (Ash OK).
 - **Each clip’s 05-end** must pass cast + count==1 **before** you chain the
   next I2V or concat. Broken end → re-shoot that clip (frame-lock poison).
+- **Remake scope (hard):** pin clip number + speaker + line. Remake **that
+  clip only** unless Ash says otherwise or the next join actually jumps.
+  Do not remake clips whose lines Ash said are fine. See `docs/remake-scope.md`.
 
 Little letters: half stature, single-story **a**, match Meet intro not the
 home tile.

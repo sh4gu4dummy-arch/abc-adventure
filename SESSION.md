@@ -1,6 +1,10 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.362
+**Version:** v0.363
+
+## v0.363 — remake-scope SOP
+
+Diagnose the moment (clip + line), not the character. Default remake = one clip. `docs/remake-scope.md`. Big B: clip 4 only, waiting go.
 
 ## v0.362 — Big B name-swap (plan only)
 

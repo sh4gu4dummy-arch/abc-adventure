@@ -99,6 +99,7 @@ Builder self-audit SOP: [`docs/self-audit.md`](self-audit.md).
 
 - **Listen attribution:** speaking mouth matches the line. Same-voice-all cast = **FAIL**.
   Friends whose names share a first letter (Ball / Bear / Butterfly) swap lines — play the clip; wrong spoken name = **FAIL** even if frames look fine.
+- **Remake scope:** pin clip # + speaker + line. Default remake = that clip only (`docs/remake-scope.md`). Do not FAIL a whole 4-clip letter when one beat is wrong.
 
 - **Cast count every end frame:** count named friends in `05-end` (butterfly/duck clones = FAIL).
 - **Inanimate friends product-shape lock:** boat (etc.) must keep product shape through the whole clip (sailboat must stay sailboat — tug morph = FAIL).

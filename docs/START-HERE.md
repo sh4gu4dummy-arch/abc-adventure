@@ -19,6 +19,12 @@ chat will happen again.
 | **QA agent** | Looks at the actual frames (not the prompt). Pass / fail with *why*. Does not generate replacements unless asked. Does not pick a winner when there are 2+ options — show the user. They are **not** a second product owner. |
 | **User** | Final taste. **lmk** = talk only. **start** = fetch QA, shoot if you agree, debate if you don’t. |
 
+**Remake scope (hard):** pin the fail to **clip number + speaker + line**
+before proposing a remake. Default = that clip only. Keep list vs remake
+list. Do not remake all 4 because one line swapped. If Ash says a line is
+fine, keep that clip. Ambiguous report → one question, not a 4-clip plan.
+Full: [`docs/remake-scope.md`](remake-scope.md).
+
 **Talk on GitHub, not only chat.** Standing desk: [issue #1](https://github.com/sh4gu4dummy-arch/abc-adventure/issues/1).
 Coop rules: `docs/agent-coop.md`. **Full QA playbook:** `docs/qa-howto.md`.
 Builder self-audit: `docs/self-audit.md`. Audits: `docs/audit/` (stills required).
@@ -191,6 +197,8 @@ Quality + creativity > rigid adherence (**all projects**, v0.347): if a rule hur
 
 ### Meet-asset debt · queued
 Little Meets that are Big-shaped (product bug — Friends cannot lock a lying Meet glyph): **p, s, v, w, x, z** (and review). See [`docs/meet-asset-debt.md`](meet-asset-debt.md). Queued Meet remakes — not shoot-now.
+
+**v0.363** Remake-scope SOP (Ash): diagnose the *moment* not the *character*. Default remake = one clip. `docs/remake-scope.md`. Big B still waiting go — clip 4 only.
 
 **v0.362** Ash: Big B Bear said "I'm Butterfly." Same-letter names swap. Still kept; remake plan `docs/audit/b-play-3-plan.md`. No I2V until go. SOP: listen every clip; ban the other names in the prompt.
 

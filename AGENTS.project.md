@@ -28,6 +28,8 @@ Look lock little a to **Meet `a-little.mp4`**, not a melted cousin.
 or they steal someone else’s line (blank anchor → astronaut said I'm Anchor).
 **Same-letter names swap** (Bear said I'm Butterfly). Prompt must ban the
 other names. **Listen every clip** — frames cannot catch a wrong spoken name.
+**Remake scope:** diagnose the *moment* (clip N + line), not the character.
+Default remake = that clip only. Full: `docs/remake-scope.md`.
 **Color lock:** letter does not darken over the clip.
 
 **Friend look lock:** I2I from Meet frame + `public/posters/{l}-{slug}.webp`.
