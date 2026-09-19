@@ -9,6 +9,8 @@ thumb, or workflow, add the lesson here (short) *and* in
 Both bots **recursively improve** the SOPs — a miss that only lives in
 chat will happen again.
 
+**QA supervisor / meta-QA (handoff + Ash-direct routing):** [`docs/QA-SUPERVISOR.md`](QA-SUPERVISOR.md).
+
 ## Who does what
 
 | Role | Job |
@@ -27,7 +29,7 @@ Do not shoot the next batch on top of an unresolved fail. Do not remake or delet
 Meet glyph, right Friends trio, not a copy of the other case. If those are
 wrong, it is a **builder fail** even if QA never spoke.
 
-**QA-box Imagine:** stills/I2V need env `XAI_API_KEY` (installed via QAsupervisor secret — **never paste in chat**). JWT `/root/.grok/auth.json` remains the Builder-machine path. See `scripts/README-imagine.md` + `scripts/imagine_auth.py`.
+**QA-box Imagine:** stills/I2V need env `XAI_API_KEY` (installed via secure secret (historically QAsup) — **never paste in chat**). JWT `/root/.grok/auth.json` remains the Builder-machine path. See `scripts/README-imagine.md` + `scripts/imagine_auth.py`.
 
 **Friend look lock.** Friends stills are I2I/edit from **product art**, not
 invented cousins. Letter = that case’s Meet frame. Each friend =
@@ -177,7 +179,7 @@ Plan: `docs/oz-friends-stills.md`.
 | **PASS / PASS soft** | o, o-little (soft), p, p-little (soft), **q**, q-little (soft), r, r-little (soft), **s**, t, t-little, **u** (home-tile lock), **u-little**, **v-little**, w, w-little (soft), x (soft), x-little (soft), **y**, **y-little**, z (soft), **z-little** |
 | **FAIL** (rebuild queued) | **v-play** / **s-little** — remade again v0.356 (violin face punched; Smile on dock, no sun). Re-QA. |
 
-Quality + creativity > rigid adherence (**all projects**, v0.347): if a rule hurts the product, flag QAsupervisor — do not blind-enforce. Not limited to King/people softs. Standing ban (v0.345): no ring of kids / classroom audience on Friends stills, and no cookie-eater bleed into Friends. King/Queen/Question may be a stylized person / crown figure when natural and readable; do not force toy-only. Random kid stand-ins, dual-letter mess, blank talkers, wrong trio, and eat-poster humans as Friends cast still FAIL.
+Quality + creativity > rigid adherence (**all projects**, v0.347): if a rule hurts the product, flag Ash (or QAsup when awake) — do not blind-enforce. Not limited to King/people softs. Standing ban (v0.345): no ring of kids / classroom audience on Friends stills, and no cookie-eater bleed into Friends. King/Queen/Question may be a stylized person / crown figure when natural and readable; do not force toy-only. Random kid stand-ins, dual-letter mess, blank talkers, wrong trio, and eat-poster humans as Friends cast still FAIL.
 
 ### Rebuild inventory **QUEUED** (not shoot-now)
 - **v-play-1 still** — remade v0.356: poster-lock violin face (unmissable). Re-QA.
@@ -210,7 +212,7 @@ Little Meets that are Big-shaped (product bug — Friends cannot lock a lying Me
 
 **v0.348** Ash start: remade O–Z FAIL stills (q/s/s-little/u/u-little/v/v-little/y/y-little/z-little) + little-k stylized king. Filmed Big E (`friends-clips/e-play-1.mp4`). Re-QA those stills. Next F–N films + B remakes + film HOLDs.
 
-**v0.347** quality>rigid = all projects. **v0.346** quality>rigid flag-to-QAsup. **v0.345** QA follow-up: soften the King/person-word rule; ban is kid rings/classroom audience, not all person-shaped Friends.
+**v0.347** quality>rigid = all projects. **v0.346** quality>rigid flag-to-Ash. **v0.345** QA follow-up: soften the King/person-word rule; ban is kid rings/classroom audience, not all person-shaped Friends.
 
 ## Plans (remind, don’t start unless they say)
 

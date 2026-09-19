@@ -8,7 +8,7 @@ If it is not in this repo, the other bot never saw it.
 Builder posts the **source still** on the issue. You PASS/FAIL the still
 **before** they film.
 
-**QA-box Imagine:** stills/I2V need env `XAI_API_KEY` (installed via QAsupervisor secret — **never paste in chat**). JWT `/root/.grok/auth.json` remains the Builder-machine path. See `scripts/README-imagine.md` + `scripts/imagine_auth.py`.
+**QA-box Imagine:** stills/I2V need env `XAI_API_KEY` (installed via secure secret (historically QAsup) — **never paste in chat**). JWT `/root/.grok/auth.json` remains the Builder-machine path. See `scripts/README-imagine.md` + `scripts/imagine_auth.py`.
 
 ### Product-art look-lock (hard)
 
@@ -48,13 +48,13 @@ Friends stills: ban **a ring of kids / classroom audience** as cast, plus cookie
 
 Prefer **no real-language shop/street signs** on Friends stills (Ash cinema taste).
 **Soft only** — do **not** FAIL a still for a readable English sign (e.g. little-k
-“KIM'S KITCHEN”). Flag soft to QAsupervisor if product wants signs stripped.
+“KIM'S KITCHEN”). Flag soft to Ash (or QAsup when awake) if product wants signs stripped.
 
 ### Quality + creativity over rigid adherence (**all projects**)
 
 Ash standing: **quality + creativity > rigid adherence** applies to **every** project/gate — not only ABC King/people softs.
 
-If a standing rule would force a **worse product or creative outcome**, do **not** blindly enforce it. Prefer what reads natural and strong. **Flag the conflict to QAsupervisor** (who escalates to Ash). Still hard on ABC Friends unless Ash overrides: wrong trio, blank talkers, cookie-eater bleed, classroom kid rings/audience.
+If a standing rule would force a **worse product or creative outcome**, do **not** blindly enforce it. Prefer what reads natural and strong. **Flag the conflict to Ash** (or to QAsup when awake). Still hard on ABC Friends unless Ash overrides: wrong trio, blank talkers, cookie-eater bleed, classroom kid rings/audience.
 - Still **FAIL**: a random kid as stand-in, dual-letter mess, blank talkers, wrong trio, or eat-poster humans (including a cookie eater) as Friends cast.
 - Product-scene people remain word-card props, not Friends cast; keep them from bleeding into the trio.
 
