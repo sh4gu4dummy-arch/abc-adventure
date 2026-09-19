@@ -1,6 +1,10 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.358
+**Version:** v0.361
+
+## v0.361 — remaining PASS Friends films
+
+R/r S T/t U/u little-v W/w X/x Y/y Z/z. Skipped Big V + little s.
 
 ## v0.358 — O–Q films
 

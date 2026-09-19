@@ -618,6 +618,14 @@ const FRIENDS_UPPER: Partial<Record<string, string[]>> = {
   o: ["friends-clips/o-play-1.mp4"],
   p: ["friends-clips/p-play-1.mp4"],
   q: ["friends-clips/q-play-1.mp4"],
+  r: ["friends-clips/r-play-1.mp4"],
+  s: ["friends-clips/s-play-1.mp4"],
+  t: ["friends-clips/t-play-1.mp4"],
+  u: ["friends-clips/u-play-1.mp4"],
+  w: ["friends-clips/w-play-1.mp4"],
+  x: ["friends-clips/x-play-1.mp4"],
+  y: ["friends-clips/y-play-1.mp4"],
+  z: ["friends-clips/z-play-1.mp4"],
 };
 const FRIENDS_LOWER: Partial<Record<string, string[]>> = {
   a: ["friends-clips/a-little-play-2.mp4"],
@@ -637,6 +645,14 @@ const FRIENDS_LOWER: Partial<Record<string, string[]>> = {
   o: ["friends-clips/o-little-play-1.mp4"],
   p: ["friends-clips/p-little-play-1.mp4"],
   q: ["friends-clips/q-little-play-1.mp4"],
+  r: ["friends-clips/r-little-play-1.mp4"],
+  t: ["friends-clips/t-little-play-1.mp4"],
+  u: ["friends-clips/u-little-play-1.mp4"],
+  v: ["friends-clips/v-little-play-1.mp4"],
+  w: ["friends-clips/w-little-play-1.mp4"],
+  x: ["friends-clips/x-little-play-1.mp4"],
+  y: ["friends-clips/y-little-play-1.mp4"],
+  z: ["friends-clips/z-little-play-1.mp4"],
 };
 
 export function letterMeetPlaylist(letter: string, kind: CaseKind = "upper"): string[] {
