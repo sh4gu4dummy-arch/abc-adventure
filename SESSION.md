@@ -1,6 +1,10 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.365
+**Version:** v0.366
+
+## v0.366 — offline local preview
+
+`OPEN-OFFLINE.md` at repo root. Node 22 + npm. Python not needed.
 
 ## v0.365 — Big C clip 2 only (Cat)
 
