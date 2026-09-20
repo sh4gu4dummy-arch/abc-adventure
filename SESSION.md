@@ -1,6 +1,10 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.370
+**Version:** v0.371
+
+## v0.371 — Big I clip 4 only (Island)
+
+Island was saying I'm Big I. Remade Island clip only.
 
 ## v0.370 — Big H clip 1 only
 

@@ -198,6 +198,8 @@ Quality + creativity > rigid adherence (**all projects**, v0.347): if a rule hur
 ### Meet-asset debt · queued
 Little Meets that are Big-shaped (product bug — Friends cannot lock a lying Meet glyph): **p, s, v, w, x, z** (and review). See [`docs/meet-asset-debt.md`](meet-asset-debt.md). Queued Meet remakes — not shoot-now.
 
+**v0.371** Big I Friends: Island said I'm Big I. Remade **clip 4 only**. Ice cream/Igloo/I kept. Hard-refresh `i-play-1.mp4`.
+
 **v0.370** Big H Friends: H said I'm House. Remade **clip 1 only** (I'm Big H). Hat/House/Horse kept. Hard-refresh `h-play-1.mp4`.
 
 **v0.369** Big G Friends: extra eyes = clips 1–2; grape juice = clip 3. Remade 1–3, kept Guitar. Grapes take 3 (first two still sprayed). STT: I'm Big G / Giraffe / Grapes / Guitar.
