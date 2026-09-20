@@ -1,6 +1,10 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.366
+**Version:** v0.367
+
+## v0.367 — offline doc: already cloned
+
+If git is up to date, skip clone. `npm install` once, then `npm run dev`.
 
 ## v0.366 — offline local preview
 
