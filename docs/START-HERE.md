@@ -25,6 +25,10 @@ list. Do not remake all 4 because one line swapped. If Ash says a line is
 fine, keep that clip. Ambiguous report → one question, not a 4-clip plan.
 Full: [`docs/remake-scope.md`](remake-scope.md).
 
+**Friends STT ship gate (hard):** after concat, before public replace:
+`python3 scripts/friends-stt-check.py FILE --letter X --friends A B C`
+must be `"ok": true`. Letter clip saying a friend name = remake clip 1 only.
+
 **Talk on GitHub, not only chat.** Standing desk: [issue #1](https://github.com/sh4gu4dummy-arch/abc-adventure/issues/1).
 Coop rules: `docs/agent-coop.md`. **Full QA playbook:** `docs/qa-howto.md`.
 Builder self-audit: `docs/self-audit.md`. Audits: `docs/audit/` (stills required).
@@ -197,6 +201,8 @@ Quality + creativity > rigid adherence (**all projects**, v0.347): if a rule hur
 
 ### Meet-asset debt · queued
 Little Meets that are Big-shaped (product bug — Friends cannot lock a lying Meet glyph): **p, s, v, w, x, z** (and review). See [`docs/meet-asset-debt.md`](meet-asset-debt.md). Queued Meet remakes — not shoot-now.
+
+**v0.372** Big M: M said I'm Moon. Remade **clip 1 only**. Moon/Monkey/Mouse kept. Ship gate: `scripts/friends-stt-check.py` (STT; clip 1 must not say a friend name). Hard-refresh `m-play-1.mp4`.
 
 **v0.371** Big I Friends: Island said I'm Big I. Remade **clip 4 only**. Ice cream/Igloo/I kept. Hard-refresh `i-play-1.mp4`.
 

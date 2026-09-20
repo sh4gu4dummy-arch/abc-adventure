@@ -28,6 +28,8 @@ Look lock little a to **Meet `a-little.mp4`**, not a melted cousin.
 or they steal someone else’s line (blank anchor → astronaut said I'm Anchor).
 **Same-letter names swap** (Bear said I'm Butterfly). Prompt must ban the
 other names. **Listen every clip** — frames cannot catch a wrong spoken name.
+Run `python3 scripts/friends-stt-check.py` before replacing a Friends mp4.
+Clip 1 saying a friend name (M+Moon both "I'm Moon") = remake **clip 1 only**.
 **Remake scope:** diagnose the *moment* (clip N + line), not the character.
 Default remake = that clip only. Full: `docs/remake-scope.md`.
 **Color lock:** letter does not darken over the clip.

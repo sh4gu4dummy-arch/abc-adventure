@@ -1,6 +1,10 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.371
+**Version:** v0.372
+
+## v0.372 — Big M clip 1 + Friends STT gate
+
+M said I'm Moon. Remade letter clip only. `scripts/friends-stt-check.py` is now a ship gate.
 
 ## v0.371 — Big I clip 4 only (Island)
 

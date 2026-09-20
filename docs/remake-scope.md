@@ -35,6 +35,18 @@ not invent a full-letter reshoot.
 
 Wrong spoken name on friend 3’s beat = clip 4.
 
+**Letter AND friend both say the friend’s line** (Ash: M and Moon both
+“I'm Moon”, H and House both “I'm House”): the **friend clip is correct**.
+Remake **clip 1** (the letter) only. Do not remake the friend.
+
+**Ship gate:** `python3 scripts/friends-stt-check.py FILE --letter X --friends A B C`
+must print `"ok": true` before you replace the public mp4. Clip 1 must not
+contain a friend name.
+
+Center-object leak: if a friend fills the middle of the still (moon, house,
+cake), clip 1 prompt names the letter’s **side** and bans all three friend
+names. Frames cannot catch this — STT can.
+
 ## Plan shape Ash expects
 
 Keep: clips …  
