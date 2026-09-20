@@ -1,6 +1,10 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.368
+**Version:** v0.369
+
+## v0.369 — Big G clips 1–3
+
+Extra eyes + grape puke. Kept Guitar. Hard-refresh `g-play-1.mp4`.
 
 ## v0.368 — Big F clip 2 only (Fish)
 
