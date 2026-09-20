@@ -1,6 +1,10 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.369
+**Version:** v0.370
+
+## v0.370 — Big H clip 1 only
+
+H was saying I'm House. Letter clip remade; House clip kept.
 
 ## v0.369 — Big G clips 1–3
 
