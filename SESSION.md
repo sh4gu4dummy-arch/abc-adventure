@@ -1,6 +1,10 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.363
+**Version:** v0.364
+
+## v0.364 — leftover mp4 cleanup
+
+Removed unused `a-little-play-1`, `b-play-1`, and imagine Friends duplicates from the tree. History still has them.
 
 ## v0.363 — remake-scope SOP
 

@@ -198,6 +198,8 @@ Quality + creativity > rigid adherence (**all projects**, v0.347): if a rule hur
 ### Meet-asset debt · queued
 Little Meets that are Big-shaped (product bug — Friends cannot lock a lying Meet glyph): **p, s, v, w, x, z** (and review). See [`docs/meet-asset-debt.md`](meet-asset-debt.md). Queued Meet remakes — not shoot-now.
 
+**v0.364** Clone cleanup: removed unused leftover mp4s from the tree only (`friends-clips/a-little-play-1`, `b-play-1`, duplicate `videos/imagine/a-play-1` + `a-little-play-1`). Still restorable from git history. App still uses `a-little-play-2` / `b-play-2`.
+
 **v0.363** Remake-scope SOP (Ash): diagnose the *moment* not the *character*. Default remake = one clip. `docs/remake-scope.md`. Big B still waiting go — clip 4 only.
 
 **v0.362** Ash: Big B Bear said "I'm Butterfly." Same-letter names swap. Still kept; remake plan `docs/audit/b-play-3-plan.md`. No I2V until go. SOP: listen every clip; ban the other names in the prompt.
