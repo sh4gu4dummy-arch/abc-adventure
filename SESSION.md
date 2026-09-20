@@ -1,6 +1,10 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.364
+**Version:** v0.365
+
+## v0.365 — Big C clip 2 only (Cat)
+
+Cat said I'm Cake. Remade Cat clip only; Cake kept. Same file path `c-play-1.mp4`.
 
 ## v0.364 — leftover mp4 cleanup
 
