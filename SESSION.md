@@ -1,6 +1,10 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.367
+**Version:** v0.368
+
+## v0.368 — Big F clip 2 only (Fish)
+
+Fish was repeating I'm Big F. Remade clip 2 only. STT: I'm fish. Hard-refresh.
 
 ## v0.367 — offline doc: already cloned
 

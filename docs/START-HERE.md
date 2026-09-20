@@ -198,6 +198,8 @@ Quality + creativity > rigid adherence (**all projects**, v0.347): if a rule hur
 ### Meet-asset debt · queued
 Little Meets that are Big-shaped (product bug — Friends cannot lock a lying Meet glyph): **p, s, v, w, x, z** (and review). See [`docs/meet-asset-debt.md`](meet-asset-debt.md). Queued Meet remakes — not shoot-now.
 
+**v0.368** Big F Friends: remade **clip 2 only** (Fish). STT: I'm fish, not I'm Big F. Same filename — hard-refresh. If ears still hear Big F, line needs to change (F vs fish too close), same lesson as Cat/Cake.
+
 **v0.367** `OPEN-OFFLINE.md`: if git is already up to date, just `npm install` (first time) then `npm run dev`. Clone is a footnote.
 
 **v0.366** Offline run on Ash's machine: repo root `OPEN-OFFLINE.md` (+ `start-offline.cmd` / `.sh`). Node 22 + npm. No Python. `npm install` then `npm run dev` → http://localhost:8080
