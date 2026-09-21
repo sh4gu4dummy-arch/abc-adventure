@@ -1,6 +1,10 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.374
+**Version:** v0.375
+
+## v0.375 — Friends play in the scene
+
+Future clips: interact with the environment, not only hop-and-talk. SOP only; no remakes.
 
 ## v0.374 — Big O clip 4 Ocean
 

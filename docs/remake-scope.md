@@ -49,6 +49,10 @@ names. Frames cannot catch this — STT can.
 
 **N Friends (Ash):** inanimate nest/nose talking is too weird. Letter **N** is the only speaker: "This is a nest." then "This is a nose." Do not make the objects say I'm Nest / I'm Nose. Do not apply this to other letters until Ash says so.
 
+**Future I2V (Ash):** each clip’s action is play in the scene, not only
+jumping forward + the line. Prompt names a real-job beat (waves, crawl,
+roll). Camera stays wide. Do not remake old letters for this unless asked.
+
 ## Plan shape Ash expects
 
 Keep: clips …  

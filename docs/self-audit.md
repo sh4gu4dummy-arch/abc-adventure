@@ -85,12 +85,15 @@ Keep these even when scenery looks pretty:
    **Same-letter names** (Ball / Bear / Butterfly) swap lines. Ban the other
    names in the prompt. **Listen every clip before concat.** Frame stills cannot catch a wrong name.
 
-6. **True job** — each friend does its real job (see the round plan table).
+6. **True job + play** — each friend does its real job **in the scene**
+   (crawl, fly, splash, roll, sniff, sit in the nest). Not only hop toward
+   the camera and talk. Wide shot so the environment is used. Hop-at-camera
+   as the *only* action = weak; don't ship that as the plan for new clips.
    Toy smiles OK; no human bodies on props unless the plan allows.
 7. **Sound** — interesting play foley (hops, roll, crawl, whoosh). Not silent,
    not beep-spam. Voices on top of music (bury-speech = fail).
 8. **Ocean / water friends** — stay water. Becoming a whale/fish/animal = fail that clip.
- — photoreal kid face through a clear helmet = fail the still (toy face / opaque visor).
+9. **Helmet / clear-face props** — photoreal kid face through a clear helmet = fail the still (toy face / opaque visor).
 10. **Look lock** — still + every frame must match the **Meet intro** of that
    case (Meet little a, not a lumpy cousin, not the home tile).
 11. **Big Friends ≠ little Friends.** Do not copy the other case’s three

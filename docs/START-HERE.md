@@ -25,6 +25,8 @@ list. Do not remake all 4 because one line swapped. If Ash says a line is
 fine, keep that clip. Ambiguous report → one question, not a 4-clip plan.
 Full: [`docs/remake-scope.md`](remake-scope.md).
 
+**Friends play (future clips):** speaker uses the scene — splash, crawl, roll, fly a loop, sit in the nest — not only jump toward camera and talk. Wide shot. True-job still applies (ocean stays water, etc.).
+
 **Friends STT ship gate (hard):** after concat, before public replace:
 `python3 scripts/friends-stt-check.py FILE --letter X --friends A B C`
 must be `"ok": true`. Letter clip saying a friend name = remake clip 1 only.
@@ -201,6 +203,8 @@ Quality + creativity > rigid adherence (**all projects**, v0.347): if a rule hur
 
 ### Meet-asset debt · queued
 Little Meets that are Big-shaped (product bug — Friends cannot lock a lying Meet glyph): **p, s, v, w, x, z** (and review). See [`docs/meet-asset-debt.md`](meet-asset-debt.md). Queued Meet remakes — not shoot-now.
+
+**v0.375** Future Friends: play in the environment (true job in the scene). Do not plan clips as only hop-forward + talk. Camera stays wide. Don't remake old letters unless Ash asks.
 
 **v0.374** Big O Friends: Ocean clip only (clip 4). Was saying I'm Big O and turning into a whale. Now STT: I'm Ocean. Water blob, no leap. Orange/Owl/O kept. Hard-refresh `o-play-1.mp4`.
 
