@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.395
+**Version:** v0.396
+
+## v0.396 — Big Z full remake (zebra small/far), awaiting approve
 
 ## v0.395 — scatter+zoom SOP; Big Y full remake awaiting approve
 

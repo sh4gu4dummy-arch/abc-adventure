@@ -61,6 +61,8 @@ For **full remakes** (not clip-isolates):
 4. **Surfaces differ** — grass vs wood vs stone vs water so the model can
    name the speaker by *spot*, not by “the left ones.”
 5. **Far friend is smaller** (perspective). Biggest face steals the line.
+   If one friend (zebra, whale, …) says **every remaining clip**, that still
+   is the bug. **Full remake** — do not chain 2–4 off it. Shrink the thief.
 
 Still FAIL if it looks like four toys at the corners of a lawn.
 
