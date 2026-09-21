@@ -27,6 +27,10 @@ Full: [`docs/remake-scope.md`](remake-scope.md).
 
 **Friends play (future clips):** speaker uses the scene — splash, crawl, roll, fly a loop, sit in the nest — not only jump toward camera and talk. Wide shot. True-job still applies (ocean stays water, etc.).
 
+**Friends clip-1 speech lock (hard):** Imagine will make the letter say a friend name (R/Rainbow, M/Moon, H/House). STT often still hears "I'm Big X" so it cannot catch it. Before public replace:
+`python3 scripts/friends-lock-letter-line.py FILE.mp4 --letter X`
+then `friends-stt-check.py`. Clip 1 audio is TTS "I'm Big X!" over ducked foley. Do not ship clip 1 speech from Imagine alone.
+
 **Friends STT ship gate (hard):** after concat, before public replace:
 `python3 scripts/friends-stt-check.py FILE --letter X --friends A B C`
 must be `"ok": true`. Letter clip saying a friend name = remake clip 1 only.
@@ -203,6 +207,8 @@ Quality + creativity > rigid adherence (**all projects**, v0.347): if a rule hur
 
 ### Meet-asset debt · queued
 Little Meets that are Big-shaped (product bug — Friends cannot lock a lying Meet glyph): **p, s, v, w, x, z** (and review). See [`docs/meet-asset-debt.md`](meet-asset-debt.md). Queued Meet remakes — not shoot-now.
+
+**v0.377** Big R: letter said Rainbow. Did **not** remake all 4. TTS-locked clip 1 to "I'm Big R!" (`scripts/friends-lock-letter-line.py`). Rainbow/Robot/Rocket kept. This is now the ship gate for every Friends letter clip.
 
 **v0.376** Big P Friends: remade clips 2–3 only (Pizza was saying Penguin; Penguin was saying Pig). P and Pig kept. Full STT: I'm Big P / I'm Pizza / I'm Penguin / I'm Pig. Hard-refresh `p-play-1.mp4`.
 

@@ -1,6 +1,10 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.376
+**Version:** v0.377
+
+## v0.377 — clip-1 TTS lock
+
+R said Rainbow. TTS-locked letter line. Script is now the Friends ship gate.
 
 ## v0.376 — Big P clips 2–3
 
