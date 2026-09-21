@@ -91,6 +91,9 @@ Keep these even when scenery looks pretty:
     `"I'm under the table!"` while doing it. No talking-table mascot.
 6e. **Letter vs friend name** — clip 1 is `"I'm Big U!"` only. U must not
     say Umbrella. Spots + quoted line.
+6i. **Speaker lock** — STT right-word is not enough. Two mouths or a
+    clone of the speaker = FAIL. Clip STT empty / two names / letter
+    borrowed the friend’s name → reshoot that clip before concat.
 6j. **Scatter + zoom (full remakes)** — even 2×2 / four corners / left-pair
     vs right-pair = FAIL the still. Different depths+heights, more empty
     ground, different surfaces. Biggest face steals the line.
