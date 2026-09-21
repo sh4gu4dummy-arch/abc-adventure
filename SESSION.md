@@ -1,6 +1,10 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.372
+**Version:** v0.373
+
+## v0.373 — Big N narrator
+
+N says This is a nest / This is a nose. Objects silent. ~12s.
 
 ## v0.372 — Big M clip 1 + Friends STT gate
 

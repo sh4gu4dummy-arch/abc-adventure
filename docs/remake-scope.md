@@ -47,6 +47,8 @@ Center-object leak: if a friend fills the middle of the still (moon, house,
 cake), clip 1 prompt names the letter’s **side** and bans all three friend
 names. Frames cannot catch this — STT can.
 
+**N Friends (Ash):** inanimate nest/nose talking is too weird. Letter **N** is the only speaker: "This is a nest." then "This is a nose." Do not make the objects say I'm Nest / I'm Nose. Do not apply this to other letters until Ash says so.
+
 ## Plan shape Ash expects
 
 Keep: clips …  
