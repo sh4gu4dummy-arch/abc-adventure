@@ -204,6 +204,8 @@ Quality + creativity > rigid adherence (**all projects**, v0.347): if a rule hur
 ### Meet-asset debt · queued
 Little Meets that are Big-shaped (product bug — Friends cannot lock a lying Meet glyph): **p, s, v, w, x, z** (and review). See [`docs/meet-asset-debt.md`](meet-asset-debt.md). Queued Meet remakes — not shoot-now.
 
+**v0.376** Big P Friends: remade clips 2–3 only (Pizza was saying Penguin; Penguin was saying Pig). P and Pig kept. Full STT: I'm Big P / I'm Pizza / I'm Penguin / I'm Pig. Hard-refresh `p-play-1.mp4`.
+
 **v0.375** Future Friends: play in the environment (true job in the scene). Do not plan clips as only hop-forward + talk. Camera stays wide. Don't remake old letters unless Ash asks.
 
 **v0.374** Big O Friends: Ocean clip only (clip 4). Was saying I'm Big O and turning into a whale. Now STT: I'm Ocean. Water blob, no leap. Orange/Owl/O kept. Hard-refresh `o-play-1.mp4`.

@@ -1,6 +1,10 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.375
+**Version:** v0.376
+
+## v0.376 — Big P clips 2–3
+
+Pizza/Penguin name swap. Penguin/Pig name swap. Letter + Pig kept.
 
 ## v0.375 — Friends play in the scene
 
