@@ -27,7 +27,7 @@ Full: [`docs/remake-scope.md`](remake-scope.md).
 
 **Glyph lock (hard):** Friends letter = `public/letters/{l}.webp` (or `-little`).
 Q is **purple**, small black-dot eyes, hole. Orange huge-eye Q is a killed cousin.
-If still ≠ home tile, FAIL. Do not film.
+U is **uniform-width**, **no legs**, **no fat base**. If still ≠ home tile, FAIL. Do not film.
 
 **Friends play (future clips):** speaker uses the scene — splash, crawl, roll, fly a loop, sit in the nest — not only jump toward camera and talk. Wide shot. True-job still applies (ocean stays water, etc.).
 
@@ -227,7 +227,13 @@ Quality + creativity > rigid adherence (**all projects**, v0.347): if a rule hur
 ### Meet-asset debt · queued
 Little Meets that are Big-shaped (product bug — Friends cannot lock a lying Meet glyph): **p, s, v, w, x, z** (and review). See [`docs/meet-asset-debt.md`](meet-asset-debt.md). Queued Meet remakes — not shoot-now.
 
+**v0.393** Big U full redo from home glyph (no legs / no fat-base). Preview only.
+
 **v0.392** Place-first: spots inside a real place, don’t nuke to empty lawn. Big T clips 2–3 remake in preview.
+
+**Killed:** fat-base U, lump Z, hole-less Q, **orange big-eye Q**.
+   Q home = purple, black-dot eyes, hole. Orange Q still = FAIL, don't I2V.
+   Fat-base U = FAIL. Home tile `letters/u.webp` is the only Big U glyph.
 
 **v0.391** Big Z Friends from-scratch with SOP. Preview only.
 

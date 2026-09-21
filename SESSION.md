@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.392
+**Version:** v0.393
+
+## v0.393 — Big U full redo (no fat-base / no legs), awaiting approve
 
 ## v0.392 — place-first SOP; Big T clips 2–3 awaiting approve
 
