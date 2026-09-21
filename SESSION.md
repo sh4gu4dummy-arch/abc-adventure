@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.387
+**Version:** v0.388
+
+## v0.388 — no smash / no merge / no chorus; W clips 3–4 awaiting approve
 
 ## v0.387 — product friends + abstract Under; Big U take 2 awaiting approve
 

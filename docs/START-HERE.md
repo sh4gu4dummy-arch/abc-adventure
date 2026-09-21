@@ -31,9 +31,10 @@ If still ≠ home tile, FAIL. Do not film.
 
 **Friends play (future clips):** speaker uses the scene — splash, crawl, roll, fly a loop, sit in the nest — not only jump toward camera and talk. Wide shot. True-job still applies (ocean stays water, etc.).
 
-**Friends stills:** I2I from **product posters** (the app’s unicorn, not a
-random horse). Abstract words (Under) = letter does the action and says
-`"I'm under the table!"` — no fake mascot. Unique **spots**. `docs/friends-dialogue.md`.
+**Friends stills:** I2I from **product posters**. Abstract words (Under) =
+letter does the action (`"I'm under the table!"`). Unique spots. Don’t smash
+another friend’s patch; letter never merges; no chorus. Clip-isolate remakes.
+`docs/friends-dialogue.md`.
 
 **Friends spots:** each friend has a **unique patch** (tracks, yellow grass, leaf pile, path) so they don’t share a voice. Crowded huddle = double-talk. `docs/friends-dialogue.md`.
 
@@ -224,6 +225,8 @@ Quality + creativity > rigid adherence (**all projects**, v0.347): if a rule hur
 
 ### Meet-asset debt · queued
 Little Meets that are Big-shaped (product bug — Friends cannot lock a lying Meet glyph): **p, s, v, w, x, z** (and review). See [`docs/meet-asset-debt.md`](meet-asset-debt.md). Queued Meet remakes — not shoot-now.
+
+**v0.388** Don’t smash a friend’s spot; letter never merges; no chorus. Clip-isolate. Big W 3–4 remake in preview.
 
 **v0.387** Friends SOP: product-poster stills; abstract words (Under) = letter says `"I'm under the table!"`. Big U remake #2 in preview.
 

@@ -26,6 +26,7 @@ Look lock little a to **Meet `a-little.mp4`**, not a melted cousin.
 
 **Friends stills:** I2I from **product posters**. Abstract word (Under) =
 letter does the action (`"I'm under the table!"`), no mascot. Unique spots.
+Don’t smash a friend’s patch; letter never merges; no chorus. Clip-isolate.
 `docs/friends-dialogue.md`.
 
 **Friends spots:** unique patch per friend (tracks, yellow grass, leaf pile) so two don’t share a voice. `docs/friends-dialogue.md`.
