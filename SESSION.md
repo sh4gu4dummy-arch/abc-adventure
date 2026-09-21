@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.389
+**Version:** v0.390
+
+## v0.390 — Big Y Friends from scratch, awaiting approve
 
 ## v0.389 — no extra clones; Big X 3–4 awaiting approve
 
