@@ -45,7 +45,26 @@ one beat is wrong unless Ash says so.
    if they want. TTS-lock is optional and **lips will not match**.
 4. Glyph / whale / extra eyes = picture remake (same: Ash can still say go).
 
+## Speaker lock (Ash v0.394)
+
+STT spelling the right word is **not** a pass if two mouths move.
+A **clone of the speaker** (second xylophone, second box) is a second
+voice. Count 1 or the line is a lie.
+
+Prompt order (do not skip):
+
+1. **COUNT 1** — name all four, “no second [speaker]”
+2. **SPEAKER** — object + spot (`the xylophone on the floor, front-right`)
+3. **EXACT LINE** — `says "I'm Xylophone!"`
+4. **SEALED** — name the other three; mouths are thin sealed lines; no voice
+5. **FORBIDDEN words** — the other three names must not be spoken
+6. **Letter does not borrow** the friend’s name (X never says Box)
+
+If that clip’s STT is empty, has two names, or the letter’s name leaked:
+reshoot **that clip** before concat.
+
 ## Place first (Ash v0.392)
+
 
 Spots are **patches inside a real place**, not a replacement for scenery.
 Do **not** nuke the world into empty lawn + four toys. Distant trees,

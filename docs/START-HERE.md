@@ -34,7 +34,9 @@ U is **uniform-width**, **no legs**, **no fat base**. If still ≠ home tile, FA
 **Friends stills:** I2I from **product posters**. Abstract words (Under) =
 letter does the action (`"I'm under the table!"`). Unique spots **inside a
 real place** — do not nuke the background into empty lawn. Don’t smash
-another friend’s patch; letter never merges; no chorus. Clip-isolate remakes.
+another friend’s patch; letter never merges; no chorus. **Speaker lock:**
+count 1, quoted line, other three sealed, forbidden names, no clones of the
+speaker (a second xylophone is a second voice). Clip-isolate remakes.
 `docs/friends-dialogue.md`.
 
 **Friends spots:** each friend has a **unique patch** (tracks, yellow grass, leaf pile, path) so they don’t share a voice. Crowded huddle = double-talk. `docs/friends-dialogue.md`.
@@ -226,6 +228,8 @@ Quality + creativity > rigid adherence (**all projects**, v0.347): if a rule hur
 
 ### Meet-asset debt · queued
 Little Meets that are Big-shaped (product bug — Friends cannot lock a lying Meet glyph): **p, s, v, w, x, z** (and review). See [`docs/meet-asset-debt.md`](meet-asset-debt.md). Queued Meet remakes — not shoot-now.
+
+**v0.394** Speaker lock: count 1 + quoted line + sealed others + forbidden names + no speaker-clones. Big X 3–4 remake in preview.
 
 **v0.393** Big U full redo from home glyph (no legs / no fat-base). Preview only.
 

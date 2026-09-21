@@ -91,9 +91,9 @@ Keep these even when scenery looks pretty:
     `"I'm under the table!"` while doing it. No talking-table mascot.
 6e. **Letter vs friend name** — clip 1 is `"I'm Big U!"` only. U must not
     say Umbrella. Spots + quoted line.
-6h. **Place first** — still is a real place (park, station, zoo), not a
-    green void with four toys. Spots sit on top of scenery. Empty-lawn
-    full-redo = FAIL the still.
+6i. **Speaker lock** — STT right-word is not enough. Two mouths or a
+    clone of the speaker = FAIL. Clip STT empty / two names / letter
+    borrowed the friend’s name → reshoot that clip before concat.
 7. **Sound** — interesting play foley (hops, roll, crawl, whoosh). Not silent,
    not beep-spam. Voices on top of music (bury-speech = fail).
 8. **Ocean / water friends** — stay water. Becoming a whale/fish/animal = fail that clip.

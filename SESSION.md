@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.393
+**Version:** v0.394
+
+## v0.394 — speaker-lock SOP; Big X 3–4 awaiting approve
 
 ## v0.393 — Big U full redo (no fat-base / no legs), awaiting approve
 
