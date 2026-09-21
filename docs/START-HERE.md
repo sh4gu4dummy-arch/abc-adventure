@@ -32,7 +32,8 @@ If still ≠ home tile, FAIL. Do not film.
 **Friends play (future clips):** speaker uses the scene — splash, crawl, roll, fly a loop, sit in the nest — not only jump toward camera and talk. Wide shot. True-job still applies (ocean stays water, etc.).
 
 **Friends stills:** I2I from **product posters**. Abstract words (Under) =
-letter does the action (`"I'm under the table!"`). Unique spots. Don’t smash
+letter does the action (`"I'm under the table!"`). Unique spots **inside a
+real place** — do not nuke the background into empty lawn. Don’t smash
 another friend’s patch; letter never merges; no chorus. Clip-isolate remakes.
 `docs/friends-dialogue.md`.
 
@@ -225,6 +226,8 @@ Quality + creativity > rigid adherence (**all projects**, v0.347): if a rule hur
 
 ### Meet-asset debt · queued
 Little Meets that are Big-shaped (product bug — Friends cannot lock a lying Meet glyph): **p, s, v, w, x, z** (and review). See [`docs/meet-asset-debt.md`](meet-asset-debt.md). Queued Meet remakes — not shoot-now.
+
+**v0.392** Place-first: spots inside a real place, don’t nuke to empty lawn. Big T clips 2–3 remake in preview.
 
 **v0.391** Big Z Friends from-scratch with SOP. Preview only.
 

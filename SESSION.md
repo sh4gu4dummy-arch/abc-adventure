@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.391
+**Version:** v0.392
+
+## v0.392 — place-first SOP; Big T clips 2–3 awaiting approve
 
 ## v0.391 — Big Z Friends from scratch, awaiting approve
 

@@ -91,7 +91,9 @@ Keep these even when scenery looks pretty:
     `"I'm under the table!"` while doing it. No talking-table mascot.
 6e. **Letter vs friend name** — clip 1 is `"I'm Big U!"` only. U must not
     say Umbrella. Spots + quoted line.
-6g. **No extra clones** — second xylophone / second box mid-clip = FAIL.
+6h. **Place first** — still is a real place (park, station, zoo), not a
+    green void with four toys. Spots sit on top of scenery. Empty-lawn
+    full-redo = FAIL the still.
 7. **Sound** — interesting play foley (hops, roll, crawl, whoosh). Not silent,
    not beep-spam. Voices on top of music (bury-speech = fail).
 8. **Ocean / water friends** — stay water. Becoming a whale/fish/animal = fail that clip.

@@ -45,7 +45,16 @@ one beat is wrong unless Ash says so.
    if they want. TTS-lock is optional and **lips will not match**.
 4. Glyph / whale / extra eyes = picture remake (same: Ash can still say go).
 
+## Place first (Ash v0.392)
+
+Spots are **patches inside a real place**, not a replacement for scenery.
+Do **not** nuke the world into empty lawn + four toys. Distant trees,
+buildings, sky, tracks, water stay. A full-redo that looks like a green
+void = fail the still. Adjust each friend’s patch **on top of** the
+place.
+
 ## Don't wreck the set (Ash v0.388)
+
 
 - **Do not smash / empty / delete** another friend’s spot. Whale does not
   slap the water away. Water **stays in frame** the whole clip.
