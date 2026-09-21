@@ -1,6 +1,10 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.373
+**Version:** v0.374
+
+## v0.374 — Big O clip 4 Ocean
+
+Ocean said I'm Big O + became a whale. Remade Ocean only.
 
 ## v0.373 — Big N narrator
 

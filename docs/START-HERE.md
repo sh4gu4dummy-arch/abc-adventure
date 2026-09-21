@@ -202,6 +202,8 @@ Quality + creativity > rigid adherence (**all projects**, v0.347): if a rule hur
 ### Meet-asset debt · queued
 Little Meets that are Big-shaped (product bug — Friends cannot lock a lying Meet glyph): **p, s, v, w, x, z** (and review). See [`docs/meet-asset-debt.md`](meet-asset-debt.md). Queued Meet remakes — not shoot-now.
 
+**v0.374** Big O Friends: Ocean clip only (clip 4). Was saying I'm Big O and turning into a whale. Now STT: I'm Ocean. Water blob, no leap. Orange/Owl/O kept. Hard-refresh `o-play-1.mp4`.
+
 **v0.373** Big N Friends: objects don't talk. N says "This is a nest." / "This is a nose." (~12s, same path `n-play-1.mp4`). Night stays in the picture, silent. Hard-refresh.
 
 **v0.372** Big M: M said I'm Moon. Remade **clip 1 only**. Moon/Monkey/Mouse kept. Ship gate: `scripts/friends-stt-check.py` (STT; clip 1 must not say a friend name). Hard-refresh `m-play-1.mp4`.
