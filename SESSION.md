@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.388
+**Version:** v0.389
+
+## v0.389 — no extra clones; Big X 3–4 awaiting approve
 
 ## v0.388 — no smash / no merge / no chorus; W clips 3–4 awaiting approve
 

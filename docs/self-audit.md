@@ -91,9 +91,7 @@ Keep these even when scenery looks pretty:
     `"I'm under the table!"` while doing it. No talking-table mascot.
 6e. **Letter vs friend name** — clip 1 is `"I'm Big U!"` only. U must not
     say Umbrella. Spots + quoted line.
-6f. **Don’t wreck the set** — no smashing water away, no letter-merge
-    (W≠water). Water stays visible. Chorus (`everyone I'm Window`) = FAIL.
-    Remake only the bad clips if Ash kept 1–2.
+6g. **No extra clones** — second xylophone / second box mid-clip = FAIL.
 7. **Sound** — interesting play foley (hops, roll, crawl, whoosh). Not silent,
    not beep-spam. Voices on top of music (bury-speech = fail).
 8. **Ocean / water friends** — stay water. Becoming a whale/fish/animal = fail that clip.

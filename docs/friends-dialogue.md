@@ -52,6 +52,8 @@ one beat is wrong unless Ash says so.
 - Letter **never merges** with a friend (W ≠ water, S ≠ snake).
 - **No chorus.** If everyone says the last name (`I'm Window`), that clip
   failed. Only the named speaker talks; others sealed.
+- **No extra clones.** A second xylophone or second box mid-clip is a
+  fail. Count stays 1 the whole 6s.
 - **Clip isolation:** if Ash says 1–2 are OK, remake **only** 3–4 from
   clip-2’s last frame. Do not reshoot the good beats.
 
