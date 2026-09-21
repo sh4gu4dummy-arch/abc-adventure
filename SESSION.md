@@ -1,6 +1,10 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.379
+**Version:** v0.380
+
+## v0.380 — stop spending Imagine on dialogue
+
+Silent I2V + TTS. See docs/friends-dialogue.md.
 
 ## v0.379 — mute Imagine, TTS all 4 Friends lines
 

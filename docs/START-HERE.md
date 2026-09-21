@@ -31,6 +31,10 @@ If still ≠ home tile, FAIL. Do not film.
 
 **Friends play (future clips):** speaker uses the scene — splash, crawl, roll, fly a loop, sit in the nest — not only jump toward camera and talk. Wide shot. True-job still applies (ocean stays water, etc.).
 
+**Friends dialogue (quota):** Imagine is a **one-speaker** model. Wide 4-face
+shots make speech stick to the biggest object. **Do not remake I2V for a wrong
+name.** Silent play I2V + `friends-lock-lines.py` (TTS). Full: `docs/friends-dialogue.md`.
+
 **Friends speech lock (hard):** Imagine audio is **muted**. TTS owns all 4 lines
 (`scripts/friends-lock-lines.py --letter X --friends A B C`). Duck-10% leaked
 Rainbow under "I'm Big R." One name per 6s. Then `friends-stt-check.py`.
@@ -212,6 +216,8 @@ Quality + creativity > rigid adherence (**all projects**, v0.347): if a rule hur
 
 ### Meet-asset debt · queued
 Little Meets that are Big-shaped (product bug — Friends cannot lock a lying Meet glyph): **p, s, v, w, x, z** (and review). See [`docs/meet-asset-debt.md`](meet-asset-debt.md). Queued Meet remakes — not shoot-now.
+
+**v0.380** Dialogue protocol: stop burning Imagine on wrong names. I2V = silent play; TTS = lines. Research: Imagine lip-sync is one talking head, not 4-wide. `docs/friends-dialogue.md`.
 
 **v0.379** Big R: mute Imagine audio, TTS all 4 lines (I'm Big R / Rainbow / Robot / Rocket). Duck-10% was the leak. Metric: one TTS name per 6s, STT must match. Picture mouths may still move — audio cannot double-talk.
 

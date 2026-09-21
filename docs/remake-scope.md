@@ -39,6 +39,9 @@ Wrong spoken name on friend 3’s beat = clip 4.
 “I'm Moon”, H and House both “I'm House”): the **friend clip is correct**.
 Remake **clip 1** (the letter) only. Do not remake the friend.
 
+**Wrong spoken name is not an Imagine remake.** Mute + TTS
+(`docs/friends-dialogue.md`). Spend Imagine only on **picture** fails, one retry.
+
 **Friends speech is TTS, Imagine is muted (hard).** Ducking leaked. Run
 `scripts/friends-lock-lines.py FILE --letter X --friends A B C` so each 6s
 beat is one TTS line. STT after must be those four names, one per beat.
