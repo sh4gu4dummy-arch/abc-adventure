@@ -24,6 +24,8 @@ play foley, not beeps.
 A split: Big = apple, ant, airplane. little = alligator, astronaut, anchor.
 Look lock little a to **Meet `a-little.mp4`**, not a melted cousin.
 
+**Friends spots:** unique patch per friend (tracks, yellow grass, leaf pile) so two don’t share a voice. `docs/friends-dialogue.md`.
+
 **Friends play:** each clip uses a **prop** (tracks, canopy, path). Idle hop is not play. `docs/friends-dialogue.md`.
 
 **Friends dialogue:** Keep Imagine audio when the line is right (lips match). TTS-over-mute does not lip-sync. Remakes are Ash’s call. `docs/friends-dialogue.md`.

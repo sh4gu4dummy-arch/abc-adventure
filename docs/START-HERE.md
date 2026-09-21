@@ -31,6 +31,8 @@ If still ≠ home tile, FAIL. Do not film.
 
 **Friends play (future clips):** speaker uses the scene — splash, crawl, roll, fly a loop, sit in the nest — not only jump toward camera and talk. Wide shot. True-job still applies (ocean stays water, etc.).
 
+**Friends spots:** each friend has a **unique patch** (tracks, yellow grass, leaf pile, path) so they don’t share a voice. Crowded huddle = double-talk. `docs/friends-dialogue.md`.
+
 **Friends play:** each clip names a **real action with the set** (train on
 tracks, shade of the tree, walk the path). Idle hop is not enough.
 `docs/friends-dialogue.md`.
@@ -218,6 +220,8 @@ Quality + creativity > rigid adherence (**all projects**, v0.347): if a rule hur
 
 ### Meet-asset debt · queued
 Little Meets that are Big-shaped (product bug — Friends cannot lock a lying Meet glyph): **p, s, v, w, x, z** (and review). See [`docs/meet-asset-debt.md`](meet-asset-debt.md). Queued Meet remakes — not shoot-now.
+
+**v0.386** Friends SOP: unique SPOTS so two friends don’t say the same line. Big T remake #2 in preview (not committed).
 
 **v0.385** Big V + little s Friends filmed (were missing). V: violin has a face, no boy. little s: Ship/Smile/Sock, not Sun. STT pass. T/U remakes still local until Ash approves.
 

@@ -85,10 +85,8 @@ Keep these even when scenery looks pretty:
    **Same-letter names** (Ball / Bear / Butterfly) swap lines. Ban the other
    names in the prompt. **Listen every clip before concat.** Frame stills cannot catch a wrong name.
 
-6. **True job + play** — each friend does its real job **with the scenery**
-   (train rolls on tracks, sit under the tree, pad through grass). Not hop
-   toward the camera. Prompt names a **prop**. Wide shot. Hop-only = weak.
-   Toy smiles OK; no human bodies on props unless the plan allows.
+6b. **Spots** — each friend has a unique patch (tracks vs yellow grass vs
+    leaf pile). Huddle on one lawn = two talkers. Fail if two names leak.
 7. **Sound** — interesting play foley (hops, roll, crawl, whoosh). Not silent,
    not beep-spam. Voices on top of music (bury-speech = fail).
 8. **Ocean / water friends** — stay water. Becoming a whale/fish/animal = fail that clip.

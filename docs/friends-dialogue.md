@@ -45,10 +45,27 @@ one beat is wrong unless Ash says so.
    if they want. TTS-lock is optional and **lips will not match**.
 4. Glyph / whale / extra eyes = picture remake (same: Ash can still say go).
 
+## Spots (Ash v0.386) — stop double-talk
+
+Four friends in one pile of grass share a voice. Give **each one a
+personalized patch** so the model can tell them apart:
+
+- **Train** on **tracks**
+- **Tiger** in a **yellow grass pile** (not the same green as the lawn)
+- **Tree** with **fallen leaves** around the trunk
+- Letter on its **own path / patch**
+
+Still: they sit in **corners**, not a huddle. Prompt names **spot +
+speaker** (`ONLY the tiger in the yellow grass talks`). Other three stay
+in their patches and mouths sealed.
+
+If two names leak (Tiger + Tree both “I'm Tree”), the still was too
+crowded — remake the still, don't just yell at I2V.
+
 ## Play in the scene (Ash v0.384)
 
 A tiny hop-in-place is **not** play. Each 6s beat names **one real action
-with the scenery or another friend**:
+with the scenery or another friend**, **inside that friend’s spot**.
 
 - sit in the tree’s shade / rustle leaves
 - train **rolls on tracks** (not floating)
@@ -64,15 +81,17 @@ Keep: count 1, glyph = home tile, no morph, one speaker, quoted line.
 ## Prompt shape (one speaker)
 
 ```
-PLACE: [clearing / tracks / shore — name the set].
-Wide. Keep four visible: [letter], [f1], [f2], [f3]. Count 1.
-ONLY [speaker — color + place] talks. They say: "I'm [Name]!"
-Slow USA cartoon kid. One line. Others' mouths sealed.
-PLAY: [concrete action with a prop — rolls on the tracks / walks under
-the canopy / pads through the grass]. Not hop-at-camera. Not idle bounce.
-Sound: that one voice + [matching foley]. No second speaker. No beeps.
-Letter stays a LETTER. No morph into a friend.
+PLACE: [clearing] with FOUR SEPARATE SPOTS (not a huddle).
+SPOTS: [tree + leaf pile | tiger + yellow grass | train on tracks | letter on path].
+Wide. Keep four visible. Count 1.
+ONLY [speaker] in [their spot] talks. They say: "I'm [Name]!"
+The other three stay in their own spots. Mouths sealed. No second voice.
+Slow USA cartoon kid. One line.
+PLAY: [action in that spot]. Not hop-at-camera.
+Sound: that one voice + [foley]. No beeps.
+Letter stays a LETTER.
 ```
+
 
 
 ## Metrics
