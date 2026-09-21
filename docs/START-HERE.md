@@ -215,6 +215,8 @@ Quality + creativity > rigid adherence (**all projects**, v0.347): if a rule hur
 ### Meet-asset debt · queued
 Little Meets that are Big-shaped (product bug — Friends cannot lock a lying Meet glyph): **p, s, v, w, x, z** (and review). See [`docs/meet-asset-debt.md`](meet-asset-debt.md). Queued Meet remakes — not shoot-now.
 
+**v0.383** Big S Friends (Ash approved): S stayed a letter (holes), snake separate. Old still was already a snake-S. STT: I'm Big S / Sun / Star / Snake.
+
 **v0.382** Git: purged leftover `a-little-play-1` / `b-play-1` + old remake blobs (C/F/G/H/I/M/N/O/P/R). Live 50 Friends files unchanged. Do not commit remade Friends until Ash approves.
 
 **v0.381** Dialogue: TTS ≠ lip-sync (Ash). Remakes are Ash’s call — dropped “never remake names.” Keep Imagine audio when the 6s STT is right.

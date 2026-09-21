@@ -1,6 +1,10 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.382
+**Version:** v0.383
+
+## v0.383 — Big S Friends approved
+
+S no longer morphs into the snake.
 
 ## v0.382 — history purge A+B
 
