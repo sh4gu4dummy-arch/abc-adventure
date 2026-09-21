@@ -25,6 +25,10 @@ list. Do not remake all 4 because one line swapped. If Ash says a line is
 fine, keep that clip. Ambiguous report → one question, not a 4-clip plan.
 Full: [`docs/remake-scope.md`](remake-scope.md).
 
+**Glyph lock (hard):** Friends letter = `public/letters/{l}.webp` (or `-little`).
+Q is **purple**, small black-dot eyes, hole. Orange huge-eye Q is a killed cousin.
+If still ≠ home tile, FAIL. Do not film.
+
 **Friends play (future clips):** speaker uses the scene — splash, crawl, roll, fly a loop, sit in the nest — not only jump toward camera and talk. Wide shot. True-job still applies (ocean stays water, etc.).
 
 **Friends clip-1 speech lock (hard):** Imagine will make the letter say a friend name (R/Rainbow, M/Moon, H/House). STT often still hears "I'm Big X" so it cannot catch it. Before public replace:
@@ -207,6 +211,8 @@ Quality + creativity > rigid adherence (**all projects**, v0.347): if a rule hur
 
 ### Meet-asset debt · queued
 Little Meets that are Big-shaped (product bug — Friends cannot lock a lying Meet glyph): **p, s, v, w, x, z** (and review). See [`docs/meet-asset-debt.md`](meet-asset-debt.md). Queued Meet remakes — not shoot-now.
+
+**v0.378** Why Q mixed: Friends still I2I'd an orange big-eye cousin instead of home purple Q. SOP already said home-tile lock; we didn't do it. Named kill + still-vs-`letters/q.webp` FAIL before I2V.
 
 **v0.377** Big R: letter said Rainbow. Did **not** remake all 4. TTS-locked clip 1 to "I'm Big R!" (`scripts/friends-lock-letter-line.py`). Rainbow/Robot/Rocket kept. This is now the ship gate for every Friends letter clip.
 

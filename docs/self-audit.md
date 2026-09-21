@@ -94,8 +94,10 @@ Keep these even when scenery looks pretty:
    not beep-spam. Voices on top of music (bury-speech = fail).
 8. **Ocean / water friends** — stay water. Becoming a whale/fish/animal = fail that clip.
 9. **Helmet / clear-face props** — photoreal kid face through a clear helmet = fail the still (toy face / opaque visor).
-10. **Look lock** — still + every frame must match the **Meet intro** of that
-   case (Meet little a, not a lumpy cousin, not the home tile).
+10. **Look lock** — still + every frame must match the **home tile**
+   `public/letters/{l}.webp` (then Meet of that case). Color, eyes, hole.
+   **Killed:** fat-base U, lump Z, hole-less Q, **orange big-eye Q**.
+   Q home = purple, black-dot eyes, hole. Orange Q still = FAIL, don't I2V.
 11. **Big Friends ≠ little Friends.** Do not copy the other case’s three
     words. A: Big = apple/ant/airplane; little = alligator/astronaut/anchor.
 

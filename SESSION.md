@@ -1,6 +1,10 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.377
+**Version:** v0.378
+
+## v0.378 — why Q mixed + glyph lock
+
+Friends Q was an orange cousin. Home tile is purple. Named kill. No Q remake until Ash says go.
 
 ## v0.377 — clip-1 TTS lock
 

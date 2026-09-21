@@ -24,6 +24,8 @@ play foley, not beeps.
 A split: Big = apple, ant, airplane. little = alligator, astronaut, anchor.
 Look lock little a to **Meet `a-little.mp4`**, not a melted cousin.
 
+**Glyph lock:** Friends letter = home tile `public/letters/{l}.webp`. Q = purple small-eye hole-Q. Orange big-eye Q is killed. Still ≠ home → FAIL, no I2V.
+
 **Friends play (future clips):** use the environment (splash, crawl, fly a loop, sit in the nest). Do not plan “hop toward camera and talk” as the only action. Wide shot. True-job still applies.
 
 **Talking mouth:** inanimate Friends get a tiny toy smile **on the still**

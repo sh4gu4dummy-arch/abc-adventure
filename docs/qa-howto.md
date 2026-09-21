@@ -21,7 +21,11 @@ Builder posts the **source still** on the issue. You PASS/FAIL the still
   FAIL the Friends still if it locked a stale Meet. Do not I2V until Meet matches home.
   Friends I2I must lock the **home tile** when Meet has drifted (fat-U / lump-Z / hole-Q
   came back from Meet-locked I2I). Killed shapes that must not return: fat-base U,
-  lump Z, hole-less Q.
+  lump Z, hole-less Q, **orange big-eye Q** (Big Q Friends still used a cousin;
+  home `letters/q.webp` is purple, small black-dot eyes, hole in the Q).
+- **Color + glyph match (hard).** Put `public/letters/{l}.webp` next to the
+  Friends still. If the letter is a different color, different eyes, or missing
+  the hole, **FAIL** — do not I2V. Cast names matching is not enough.
 - Fail if same *word* but wrong *character* (generic teddy ≠ product bear).
 - Cast-name match alone is **not** a PASS. **Glyph/crease-only PASS is banned.**
 - Pipeline: I2I/edit from product images first (home tile + posters).
