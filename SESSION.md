@@ -1,6 +1,10 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.381
+**Version:** v0.382
+
+## v0.382 — history purge A+B
+
+Removed leftover a-little-play-1 / b-play-1 and old remake blobs. App Friends files unchanged. No remade Friends commit until Ash approves.
 
 ## v0.381 — lip-sync honesty; Ash calls remakes
 

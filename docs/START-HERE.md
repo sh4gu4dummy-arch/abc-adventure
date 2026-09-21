@@ -31,6 +31,9 @@ If still ≠ home tile, FAIL. Do not film.
 
 **Friends play (future clips):** speaker uses the scene — splash, crawl, roll, fly a loop, sit in the nest — not only jump toward camera and talk. Wide shot. True-job still applies (ocean stays water, etc.).
 
+**Friends remakes:** do **not** commit/push a remade Friends mp4 until Ash
+approves it. Keep the take local (or in chat) until they say ship.
+
 **Friends dialogue:** Imagine lips+audio are one pass. **TTS over mute does
 not lip-sync** — don’t sell it as the default. Keep native audio when STT
 on that 6s is the right line. Wrong line → tell Ash; remakes are **Ash’s
@@ -211,6 +214,8 @@ Quality + creativity > rigid adherence (**all projects**, v0.347): if a rule hur
 
 ### Meet-asset debt · queued
 Little Meets that are Big-shaped (product bug — Friends cannot lock a lying Meet glyph): **p, s, v, w, x, z** (and review). See [`docs/meet-asset-debt.md`](meet-asset-debt.md). Queued Meet remakes — not shoot-now.
+
+**v0.382** Git: purged leftover `a-little-play-1` / `b-play-1` + old remake blobs (C/F/G/H/I/M/N/O/P/R). Live 50 Friends files unchanged. Do not commit remade Friends until Ash approves.
 
 **v0.381** Dialogue: TTS ≠ lip-sync (Ash). Remakes are Ash’s call — dropped “never remake names.” Keep Imagine audio when the 6s STT is right.
 
