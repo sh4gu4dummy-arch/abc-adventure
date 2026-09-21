@@ -24,6 +24,10 @@ play foley, not beeps.
 A split: Big = apple, ant, airplane. little = alligator, astronaut, anchor.
 Look lock little a to **Meet `a-little.mp4`**, not a melted cousin.
 
+**Friends stills:** I2I from **product posters**. Abstract word (Under) =
+letter does the action (`"I'm under the table!"`), no mascot. Unique spots.
+`docs/friends-dialogue.md`.
+
 **Friends spots:** unique patch per friend (tracks, yellow grass, leaf pile) so two don’t share a voice. `docs/friends-dialogue.md`.
 
 **Friends play:** each clip uses a **prop** (tracks, canopy, path). Idle hop is not play. `docs/friends-dialogue.md`.

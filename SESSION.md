@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.386
+**Version:** v0.387
+
+## v0.387 — product friends + abstract Under; Big U take 2 awaiting approve
 
 ## v0.386 — isolated spots SOP; Big T take 2 awaiting approve
 

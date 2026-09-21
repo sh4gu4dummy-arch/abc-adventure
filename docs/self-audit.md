@@ -85,8 +85,12 @@ Keep these even when scenery looks pretty:
    **Same-letter names** (Ball / Bear / Butterfly) swap lines. Ban the other
    names in the prompt. **Listen every clip before concat.** Frame stills cannot catch a wrong name.
 
-6b. **Spots** — each friend has a unique patch (tracks vs yellow grass vs
-    leaf pile). Huddle on one lawn = two talkers. Fail if two names leak.
+6c. **Product friends** — still matches posters (unicorn = `u-unicorn.webp`).
+    Invented horse = FAIL. Scrap still.
+6d. **Abstract words** — Under/Up are actions. Letter says
+    `"I'm under the table!"` while doing it. No talking-table mascot.
+6e. **Letter vs friend name** — clip 1 is `"I'm Big U!"` only. U must not
+    say Umbrella. Spots + quoted line.
 7. **Sound** — interesting play foley (hops, roll, crawl, whoosh). Not silent,
    not beep-spam. Voices on top of music (bury-speech = fail).
 8. **Ocean / water friends** — stay water. Becoming a whale/fish/animal = fail that clip.

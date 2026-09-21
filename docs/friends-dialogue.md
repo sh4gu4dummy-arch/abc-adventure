@@ -45,7 +45,28 @@ one beat is wrong unless Ash says so.
    if they want. TTS-lock is optional and **lips will not match**.
 4. Glyph / whale / extra eyes = picture remake (same: Ash can still say go).
 
+## Product friends (Ash v0.387) — stop inventing
+
+Still **must** I2I from the **product posters** for that letter
+(`public/posters/u-unicorn.webp`, not a random white horse). If the
+unicorn on the still is not the app’s unicorn, **scrap the still**. Same
+for every friend. Home tile is the letter glyph.
+
+## Abstract words (Ash v0.387)
+
+**Under, Up, Over, …** are not characters. Do **not** make a talking table
+say `"I'm Under!"`.
+
+The **letter** (or an existing friend) **does the action** and says a
+real sentence:
+
+- Under → U crawls under the picnic table and says `"I'm under the table!"`
+- Not a mascot named Under.
+
+Clip 4 is still one speaker. Table stays a table.
+
 ## Spots (Ash v0.386) — stop double-talk
+
 
 Four friends in one pile of grass share a voice. Give **each one a
 personalized patch** so the model can tell them apart:
