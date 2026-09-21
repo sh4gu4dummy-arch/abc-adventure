@@ -34,8 +34,7 @@ or they steal someone else’s line (blank anchor → astronaut said I'm Anchor)
 other names. **N Friends (Ash):** letter narrates "This is a nest / This is a nose." Nest and nose do not talk. Other letters stay I'm X until Ash says otherwise.
 
 **Listen every clip** — frames cannot catch a wrong spoken name.
-Run `python3 scripts/friends-lock-letter-line.py` on clip 1, then `friends-stt-check.py`, before replacing a Friends mp4.
-Clip 1 saying a friend name (M+Moon both "I'm Moon") = remake **clip 1 only** (or TTS-lock it). Do not trust Imagine for the letter line.
+Run `python3 scripts/friends-lock-lines.py FILE --letter X --friends A B C` (Imagine muted, TTS all 4), then `friends-stt-check.py`. Duck-10% leaked.
 **Remake scope:** diagnose the *moment* (clip N + line), not the character.
 Default remake = that clip only. Full: `docs/remake-scope.md`.
 **Color lock:** letter does not darken over the clip.

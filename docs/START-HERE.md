@@ -31,9 +31,10 @@ If still ≠ home tile, FAIL. Do not film.
 
 **Friends play (future clips):** speaker uses the scene — splash, crawl, roll, fly a loop, sit in the nest — not only jump toward camera and talk. Wide shot. True-job still applies (ocean stays water, etc.).
 
-**Friends clip-1 speech lock (hard):** Imagine will make the letter say a friend name (R/Rainbow, M/Moon, H/House). STT often still hears "I'm Big X" so it cannot catch it. Before public replace:
-`python3 scripts/friends-lock-letter-line.py FILE.mp4 --letter X`
-then `friends-stt-check.py`. Clip 1 audio is TTS "I'm Big X!" over ducked foley. Do not ship clip 1 speech from Imagine alone.
+**Friends speech lock (hard):** Imagine audio is **muted**. TTS owns all 4 lines
+(`scripts/friends-lock-lines.py --letter X --friends A B C`). Duck-10% leaked
+Rainbow under "I'm Big R." One name per 6s. Then `friends-stt-check.py`.
+Do not ship Imagine dialogue.
 
 **Friends STT ship gate (hard):** after concat, before public replace:
 `python3 scripts/friends-stt-check.py FILE --letter X --friends A B C`
@@ -211,6 +212,8 @@ Quality + creativity > rigid adherence (**all projects**, v0.347): if a rule hur
 
 ### Meet-asset debt · queued
 Little Meets that are Big-shaped (product bug — Friends cannot lock a lying Meet glyph): **p, s, v, w, x, z** (and review). See [`docs/meet-asset-debt.md`](meet-asset-debt.md). Queued Meet remakes — not shoot-now.
+
+**v0.379** Big R: mute Imagine audio, TTS all 4 lines (I'm Big R / Rainbow / Robot / Rocket). Duck-10% was the leak. Metric: one TTS name per 6s, STT must match. Picture mouths may still move — audio cannot double-talk.
 
 **v0.378** Why Q mixed: Friends still I2I'd an orange big-eye cousin instead of home purple Q. SOP already said home-tile lock; we didn't do it. Named kill + still-vs-`letters/q.webp` FAIL before I2V.
 

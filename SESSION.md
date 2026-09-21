@@ -1,6 +1,10 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.378
+**Version:** v0.379
+
+## v0.379 — mute Imagine, TTS all 4 Friends lines
+
+R: I'm Big R / Rainbow / Robot / Rocket. Duck-10% was leaking Rainbow.
 
 ## v0.378 — why Q mixed + glyph lock
 

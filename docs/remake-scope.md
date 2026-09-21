@@ -39,7 +39,9 @@ Wrong spoken name on friend 3’s beat = clip 4.
 “I'm Moon”, H and House both “I'm House”): the **friend clip is correct**.
 Remake **clip 1** (the letter) only. Do not remake the friend.
 
-**Clip 1 speech is TTS, not Imagine (hard).** "Letter also says the friend" keeps happening and STT lies. Run `scripts/friends-lock-letter-line.py` so clip 1 *is* "I'm Big X!" / "I'm little x!". I2V picture can stay.
+**Friends speech is TTS, Imagine is muted (hard).** Ducking leaked. Run
+`scripts/friends-lock-lines.py FILE --letter X --friends A B C` so each 6s
+beat is one TTS line. STT after must be those four names, one per beat.
 
 **Ship gate:** `python3 scripts/friends-stt-check.py FILE --letter X --friends A B C`
 must print `"ok": true` before you replace the public mp4. Clip 1 must not

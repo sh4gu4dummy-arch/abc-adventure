@@ -127,11 +127,9 @@ home tile.
 1. `python3 scripts/qa-word-frames.py VIDEO.mp4` → `docs/audit/<id>/`
 2. Open **all five**. Count heroes and props **in each**.
 3. Probe duration, 480×720, `volumedetect`.
-4. **Listen with STT** before replacing a Friends mp4:
-   First lock clip 1: `python3 scripts/friends-lock-letter-line.py FILE --letter X`
-   Then `python3 scripts/friends-stt-check.py FILE --letter X --friends A B C`
-   `"ok": false` = do not ship. Clip 1 saying a friend name = remake or re-lock clip 1.
-   Frames cannot catch a wrong spoken name. Do not trust Imagine for the letter line.
+4. **Friends audio = TTS, Imagine muted.** 
+   `python3 scripts/friends-lock-lines.py FILE --letter X --friends A B C`
+   then `friends-stt-check.py`. One name per 6s. Duck-10% is banned (leaked).
 5. Write `docs/audit/<id>/README.md`: hard fails, softs, numbers.
    “All pass” with no caveats is a process fail.
 6. Post the same on the GitHub issue (stills in git, not only chat).

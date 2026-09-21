@@ -117,9 +117,11 @@ def main() -> int:
         n = clip["clip"]
         if not has_word(t, name):
             fails.append(f"clip {n} missing {name!r}: {t!r}")
-        for other in friends:
-            if other.lower() == name.lower():
-                continue
+        others = [x for x in friends if x.lower() != name.lower()]
+        spoken_friends = [x for x in friends if has_word(t, x)]
+        if len(spoken_friends) > 1:
+            fails.append(f"clip {n} has two friend names {spoken_friends}: {t!r}")
+        for other in others:
             if has_word(t, other):
                 fails.append(f"clip {n} ({name}) also says {other!r}: {t!r}")
         for other in friends:
