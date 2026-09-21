@@ -1,6 +1,10 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.383
+**Version:** v0.384
+
+## v0.384 — play-in-set SOP; Big T awaiting approve
+
+T/Tree/Tiger/Train in a forest with tracks. Video not committed yet.
 
 ## v0.383 — Big S Friends approved
 

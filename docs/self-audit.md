@@ -85,10 +85,9 @@ Keep these even when scenery looks pretty:
    **Same-letter names** (Ball / Bear / Butterfly) swap lines. Ban the other
    names in the prompt. **Listen every clip before concat.** Frame stills cannot catch a wrong name.
 
-6. **True job + play** — each friend does its real job **in the scene**
-   (crawl, fly, splash, roll, sniff, sit in the nest). Not only hop toward
-   the camera and talk. Wide shot so the environment is used. Hop-at-camera
-   as the *only* action = weak; don't ship that as the plan for new clips.
+6. **True job + play** — each friend does its real job **with the scenery**
+   (train rolls on tracks, sit under the tree, pad through grass). Not hop
+   toward the camera. Prompt names a **prop**. Wide shot. Hop-only = weak.
    Toy smiles OK; no human bodies on props unless the plan allows.
 7. **Sound** — interesting play foley (hops, roll, crawl, whoosh). Not silent,
    not beep-spam. Voices on top of music (bury-speech = fail).

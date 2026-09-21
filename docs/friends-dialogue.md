@@ -45,16 +45,35 @@ one beat is wrong unless Ash says so.
    if they want. TTS-lock is optional and **lips will not match**.
 4. Glyph / whale / extra eyes = picture remake (same: Ash can still say go).
 
+## Play in the scene (Ash v0.384)
+
+A tiny hop-in-place is **not** play. Each 6s beat names **one real action
+with the scenery or another friend**:
+
+- sit in the tree’s shade / rustle leaves
+- train **rolls on tracks** (not floating)
+- tiger **walks through grass**
+- letter **walks along the path**, peeks under, waves at the train
+
+Prompt must say the **prop** (tracks, canopy, grass, path). Camera stays
+**wide** so the place is visible. Still should be a *place* (clearing,
+tracks, shore), not four toys on empty lawn.
+
+Keep: count 1, glyph = home tile, no morph, one speaker, quoted line.
+
 ## Prompt shape (one speaker)
 
 ```
-Wide enough that all four stay visible: [letter], [f1], [f2], [f3]. Count 1.
-ONLY [speaker — color + place in frame] talks. They say: "I'm [Name]!"
-Slow USA cartoon kid. One line. Nobody else makes a voice.
-[Other three] mouths sealed shut the whole 6s.
-PLAY: [true job]. Not hop-at-camera.
-Sound: that one voice + [foley]. No second speaker. No beeps.
+PLACE: [clearing / tracks / shore — name the set].
+Wide. Keep four visible: [letter], [f1], [f2], [f3]. Count 1.
+ONLY [speaker — color + place] talks. They say: "I'm [Name]!"
+Slow USA cartoon kid. One line. Others' mouths sealed.
+PLAY: [concrete action with a prop — rolls on the tracks / walks under
+the canopy / pads through the grass]. Not hop-at-camera. Not idle bounce.
+Sound: that one voice + [matching foley]. No second speaker. No beeps.
+Letter stays a LETTER. No morph into a friend.
 ```
+
 
 ## Metrics
 
