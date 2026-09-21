@@ -1,6 +1,10 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.380
+**Version:** v0.381
+
+## v0.381 — lip-sync honesty; Ash calls remakes
+
+TTS ≠ mouths. Dropped never-remake-names. Keep Imagine audio when STT is right.
 
 ## v0.380 — stop spending Imagine on dialogue
 

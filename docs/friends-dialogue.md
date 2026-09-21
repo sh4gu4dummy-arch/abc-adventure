@@ -1,64 +1,64 @@
-# Friends dialogue — quota-first
+# Friends dialogue
 
-Ash: too many Imagine takes burned on “who said the line.”
+Ash (v0.381): TTS-over-muted **does not** match mouths. Remakes are **Ash’s
+call** — do not invent a “never remake names” rule.
 
-## What the model actually is
+## Lip-sync (honest)
 
-Grok Imagine video (native audio) is built for **one talking head**:
+Imagine makes **lips and audio in the same pass**. If we mute that audio and
+lay TTS on top, the mouth is still saying whatever Imagine invented (Rainbow)
+while the ear hears “I'm Big R.” That is a mismatch. Do not ship that as the
+default “fix.”
 
-- named speaker
-- **quoted** line (`says "I'm Pizza!"`)
-- emotion / pace
-- shot size (usually **medium, face in frame**)
-- sound bed
+TTS is only a **hearing patch** when Ash says “I just need the right words
+and we’ll remake picture later” — or as a temp. It is not lip-sync.
 
-Skip a slot and it invents. A **wide shot of four faces** is the failure mode:
-speech sticks to the **biggest / center** object (Rainbow, House, Moon, Cake).
-Bans in the prompt do not beat that. STT often still hears the *intended* line.
+To match mouth + voice we have to **keep Imagine’s audio** on takes where
+the line is right.
 
-Sources we used: Imagine dialogue needs speaker + quoted line + shot + audio;
-lip-sync guides assume a **front-facing single subject**, not a 4-cast wide.
+## What the model needs (when we want native speech)
 
-## Quota rule (hard)
+One talking head, not a 4-way argument:
 
-Video is expensive (~seconds of Imagine per take). **Do not remake an I2V
-because the spoken name was wrong.**
+1. **Speaker** — who, where in the frame (left / the pizza, not “someone”)
+2. **Quoted line** — `says "I'm Pizza!"` (not “introduces itself”)
+3. **Others** — mouths **sealed shut**, no voice
+4. **Play** — true job in the scene, wide enough to keep the other three
+5. **Sound** — that one voice + foley, no second talker
 
-| Fail | Spend Imagine? |
-|---|---|
-| Wrong / extra / mixed **picture** (glyph, whale, extra eyes) | Yes — **one** retry, then ask Ash |
-| Wrong **spoken name**, two talkers, letter says friend | **No.** Mute + TTS |
-| Hop-only / boring motion | Ask Ash before a remake |
+Wide four faces still biases speech to the biggest object. If a take sticks
+to Rainbow, **tell Ash** and remake if they want — don’t quietly TTS over it
+and call it done.
 
-Default pipeline for **new** Friends clips:
+## Remakes
 
-1. I2V prompt = **silent play** (foley + true job). **No dialogue. No quoted names.**
-2. Concat pictures.
-3. `python3 scripts/friends-lock-lines.py FILE --letter X --friends A B C`  
-   Imagine audio **muted**; TTS one line per 6s.
-4. `friends-stt-check.py` — must be those four names, one per beat.
+Ash decides. Builder may **recommend** (this take is picture-only vs line
+vs both). Do not refuse a remake because of quota. Do not remake all 4 when
+one beat is wrong unless Ash says so.
 
-## Silent I2V prompt (copy)
+## Pipeline
+
+1. I2V with the **quoted line** for that beat (lip-sync attempt) + play.
+2. STT that 6s **before** concat. Keep native audio if the line is right
+   and only one name is in the window.
+3. If the line is wrong or two talkers: **report to Ash**. Remake that clip
+   if they want. TTS-lock is optional and **lips will not match**.
+4. Glyph / whale / extra eyes = picture remake (same: Ash can still say go).
+
+## Prompt shape (one speaker)
 
 ```
-Wide shot. Keep EXACTLY these four visible, count 1 each: [letter], [f1], [f2], [f3].
-PLAY: [true job in the scene — crawl / splash / waddle / sit]. Not hop-at-camera.
-NO SPEECH. Nobody talks. No words. No "I'm …". Mouths closed or a tiny frozen smile.
-Sound: [foley only]. No voices. No beeps. No extra characters.
+Wide enough that all four stay visible: [letter], [f1], [f2], [f3]. Count 1.
+ONLY [speaker — color + place in frame] talks. They say: "I'm [Name]!"
+Slow USA cartoon kid. One line. Nobody else makes a voice.
+[Other three] mouths sealed shut the whole 6s.
+PLAY: [true job]. Not hop-at-camera.
+Sound: that one voice + [foley]. No second speaker. No beeps.
 ```
 
-Do **not** put the line in the Imagine prompt. That is what caused Rainbow/Moon/House.
+## Metrics
 
-## If we ever need native lip-sync (don't, unless Ash asks)
-
-Then it is a **separate medium shot of ONE speaker**, quoted line, others not
-in close-up. That is a new take + join risk. It is not the default. Do not
-spend 4 talking-head takes to replace TTS.
-
-## Metrics that count
-
-- Imagine takes per letter (target: **4 silent clips, 0 speech remakes**)
-- STT after TTS: exactly the 4 lines
-- Visual audit: glyph = home tile, no morph, count=1
-
-Metrics that **don't** count: “prompt said only X talks.”
+- STT on the **kept Imagine audio** matches the beat’s line
+- One name per 6s
+- Mouth of the named speaker moves; others don’t (frames)
+- Remake count is whatever Ash asked for

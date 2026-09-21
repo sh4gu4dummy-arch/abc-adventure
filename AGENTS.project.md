@@ -24,7 +24,7 @@ play foley, not beeps.
 A split: Big = apple, ant, airplane. little = alligator, astronaut, anchor.
 Look lock little a to **Meet `a-little.mp4`**, not a melted cousin.
 
-**Friends quota:** I2V is silent play (no quoted names). TTS is the dialogue. Do not spend Imagine takes on “who talked.” See `docs/friends-dialogue.md`.
+**Friends dialogue:** Keep Imagine audio when the line is right (lips match). TTS-over-mute does not lip-sync. Remakes are Ash’s call. `docs/friends-dialogue.md`.
 
 **Glyph lock:** Friends letter = home tile `public/letters/{l}.webp`. Q = purple small-eye hole-Q. Orange big-eye Q is killed. Still ≠ home → FAIL, no I2V.
 
@@ -36,7 +36,7 @@ or they steal someone else’s line (blank anchor → astronaut said I'm Anchor)
 other names. **N Friends (Ash):** letter narrates "This is a nest / This is a nose." Nest and nose do not talk. Other letters stay I'm X until Ash says otherwise.
 
 **Listen every clip** — frames cannot catch a wrong spoken name.
-Run `python3 scripts/friends-lock-lines.py FILE --letter X --friends A B C` (Imagine muted, TTS all 4), then `friends-stt-check.py`. Duck-10% leaked.
+STT the 6s; keep native audio if the line is right. TTS-lock is a hearing patch only.
 **Remake scope:** diagnose the *moment* (clip N + line), not the character.
 Default remake = that clip only. Full: `docs/remake-scope.md`.
 **Color lock:** letter does not darken over the clip.
