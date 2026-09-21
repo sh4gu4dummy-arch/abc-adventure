@@ -26,9 +26,11 @@ Look lock little a to **Meet `a-little.mp4`**, not a melted cousin.
 
 **Friends stills:** I2I from **product posters**. Abstract word (Under) =
 letter does the action (`"I'm under the table!"`), no mascot. Unique spots
-**inside a real place** (don’t nuke to empty lawn). Don’t smash a friend’s
-patch; letter never merges; no chorus. **Speaker lock:** count 1, quoted
-line, other three sealed, forbidden names, no speaker-clones. Clip-isolate.
+**inside a real place** (don’t nuke to empty lawn). **Full remakes: scatter
++ zoom out** — not an even 2×2; left-pair/right-pair talking is a fail.
+Don’t smash a friend’s patch; letter never merges; no chorus. **Speaker
+lock:** count 1, quoted line, other three sealed, forbidden names, no
+speaker-clones. Clip-isolate.
 `docs/friends-dialogue.md`.
 
 **Friends spots:** unique patch per friend (tracks, yellow grass, leaf pile) so two don’t share a voice. `docs/friends-dialogue.md`.

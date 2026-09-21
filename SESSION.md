@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.394
+**Version:** v0.395
+
+## v0.395 — scatter+zoom SOP; Big Y full remake awaiting approve
 
 ## v0.394 — speaker-lock SOP; Big X 3–4 awaiting approve
 

@@ -45,7 +45,27 @@ one beat is wrong unless Ash says so.
    if they want. TTS-lock is optional and **lips will not match**.
 4. Glyph / whale / extra eyes = picture remake (same: Ash can still say go).
 
+## Scatter + zoom (Ash v0.395)
+
+Even spacing is a **speech bug**. A 2×2 grid / four corners / “left pair vs
+right pair” makes two mouths on the same side talk together.
+
+For **full remakes** (not clip-isolates):
+
+1. **Scatter** — different depths AND heights. Not a rectangle. Not lined up.
+   One on a branch, one on a rock, one far on a hill, letter closer on a path.
+2. **Zoom out** — more sky/ground, smaller toys, room between them. Tight
+   huddle = chorus.
+3. **Don’t pair sides** — no two friends sharing the left half at the same
+   size; same for the right.
+4. **Surfaces differ** — grass vs wood vs stone vs water so the model can
+   name the speaker by *spot*, not by “the left ones.”
+5. **Far friend is smaller** (perspective). Biggest face steals the line.
+
+Still FAIL if it looks like four toys at the corners of a lawn.
+
 ## Speaker lock (Ash v0.394)
+
 
 STT spelling the right word is **not** a pass if two mouths move.
 A **clone of the speaker** (second xylophone, second box) is a second
