@@ -226,6 +226,8 @@ Quality + creativity > rigid adherence (**all projects**, v0.347): if a rule hur
 ### Meet-asset debt · queued
 Little Meets that are Big-shaped (product bug — Friends cannot lock a lying Meet glyph): **p, s, v, w, x, z** (and review). See [`docs/meet-asset-debt.md`](meet-asset-debt.md). Queued Meet remakes — not shoot-now.
 
+**v0.391** Big Z Friends from-scratch with SOP. Preview only.
+
 **v0.390** Big Y Friends from-scratch with SOP (spots, product posters, no clones). Preview only.
 
 **v0.389** No extra clones (second xylophone/box). Big X clips 3–4 remake in preview.
