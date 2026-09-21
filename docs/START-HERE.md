@@ -219,6 +219,8 @@ Quality + creativity > rigid adherence (**all projects**, v0.347): if a rule hur
 ### Meet-asset debt · queued
 Little Meets that are Big-shaped (product bug — Friends cannot lock a lying Meet glyph): **p, s, v, w, x, z** (and review). See [`docs/meet-asset-debt.md`](meet-asset-debt.md). Queued Meet remakes — not shoot-now.
 
+**v0.385** Big V + little s Friends filmed (were missing). V: violin has a face, no boy. little s: Ship/Smile/Sock, not Sun. STT pass. T/U remakes still local until Ash approves.
+
 **v0.384** Friends play SOP: each clip names a real action with the set (tracks, canopy, path). Big T remake is in preview only until Ash approves.
 
 **v0.383** Big S Friends (Ash approved): S stayed a letter (holes), snake separate. Old still was already a snake-S. STT: I'm Big S / Sun / Star / Snake.

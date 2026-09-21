@@ -1,6 +1,10 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.384
+**Version:** v0.385
+
+## v0.385 — Big V + little s Friends
+
+Filled the two missing Meet Friends videos.
 
 ## v0.384 — play-in-set SOP; Big T awaiting approve
 
