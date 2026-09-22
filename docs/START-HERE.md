@@ -38,7 +38,9 @@ on full remakes** — not an even 2×2; left-pair/right-pair talking is a fail.
 If one friend says every remaining line, full remake and shrink that face.
 Don’t smash another friend’s patch; letter never merges; no chorus.
 **Speaker lock:** count 1, quoted line, other three sealed, forbidden names,
-no clones of the speaker. Clip-isolate remakes.
+no clones of the speaker. Clip-isolate remakes: chain from the last frame — **do not I2I a new
+still** that dumps everyone on the grass.
+
 `docs/friends-dialogue.md`.
 
 **Friends spots:** each friend has a **unique patch** (tracks, yellow grass, leaf pile, path) so they don’t share a voice. Crowded huddle = double-talk. `docs/friends-dialogue.md`.
@@ -230,6 +232,8 @@ Quality + creativity > rigid adherence (**all projects**, v0.347): if a rule hur
 
 ### Meet-asset debt · queued
 Little Meets that are Big-shaped (product bug — Friends cannot lock a lying Meet glyph): **p, s, v, w, x, z** (and review). See [`docs/meet-asset-debt.md`](meet-asset-debt.md). Queued Meet remakes — not shoot-now.
+
+**v0.401** Clip-isolate: never I2I a new still. Little b 3–4 boat stays in pond.
 
 **v0.400** Little b clips 3–4 (Boat, Bird) remake in preview.
 

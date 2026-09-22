@@ -45,6 +45,12 @@ one beat is wrong unless Ash says so.
    if they want. TTS-lock is optional and **lips will not match**.
 4. Glyph / whale / extra eyes = picture remake (same: Ash can still say go).
 
+## Clip-isolate (Ash v0.401)
+
+**Do not I2I a “clean still”** that moves friends. Chain I2V from the
+**previous clip’s last frame**. Boat in water stays in water. Grass I2I
+= FAIL.
+
 ## Scatter + zoom (Ash v0.395)
 
 Even spacing is a **speech bug**. A 2×2 grid / four corners / “left pair vs

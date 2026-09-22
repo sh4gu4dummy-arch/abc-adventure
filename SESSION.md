@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.400
+**Version:** v0.401
+
+## v0.401 — little b boat stays in pond; no I2I relocate
 
 ## v0.400 — little b clips 3-4 remake, awaiting approve
 
