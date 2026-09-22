@@ -234,6 +234,8 @@ Quality + creativity > rigid adherence (**all projects**, v0.347): if a rule hur
 ### Meet-asset debt · queued
 Little Meets that are Big-shaped (product bug — Friends cannot lock a lying Meet glyph): **p, s, v, w, x, z** (and review). See [`docs/meet-asset-debt.md`](meet-asset-debt.md). Queued Meet remakes — not shoot-now.
 
+**v0.404** Little c clip 2 (Cloud) remake in preview; 1,3,4 kept.
+
 **v0.403** Little b clip 3 (Boat) chorus remake in preview — pond kept.
 
 **v0.402** Clip-isolate relocate named FAIL (little-b boat on grass) in SOP + QA.
