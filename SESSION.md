@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.402
+**Version:** v0.403
+
+## v0.403 — little b clip 3 boat chorus remake, awaiting approve
 
 ## v0.402 — SOP: clip-isolate I2I relocate is a named FAIL
 
