@@ -521,6 +521,14 @@ html[data-layout="desktop"] .letters-grid {
 html[data-case="lower"] .letter-tile-art {
   object-fit: contain;
   object-position: center;
+  /* little a–o, r–y sit small in the square; zoom toward p/q/z fill */
+  transform: scale(1.32);
+}
+
+html[data-case="lower"] .letter-tile[data-letter="p"] .letter-tile-art,
+html[data-case="lower"] .letter-tile[data-letter="q"] .letter-tile-art,
+html[data-case="lower"] .letter-tile[data-letter="z"] .letter-tile-art {
+  transform: none;
 }
 
 .letter-tile-glyph {

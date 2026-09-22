@@ -117,6 +117,7 @@ function Home() {
                 to="/letter/$letter"
                 params={{ letter: L.letter.toLowerCase() }}
                 className="letter-tile"
+                data-letter={L.letter.toLowerCase()}
                 style={{
                   background: `linear-gradient(160deg, ${L.hue}55, ${L.hue}18 55%, var(--color-surface))`,
                 }}

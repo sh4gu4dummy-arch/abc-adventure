@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.396
+**Version:** v0.397
+
+## v0.397 — little home thumbs zoom (p/q/z stay)
 
 ## v0.396 — Big Z full remake (zebra small/far), awaiting approve
 
