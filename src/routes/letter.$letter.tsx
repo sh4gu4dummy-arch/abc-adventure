@@ -38,7 +38,9 @@ import {
 import { cn } from "@/lib/utils";
 import { VersionBadge } from "@/components/alphabet/VersionBadge";
 import { CaseToggle } from "@/components/alphabet/CaseToggle";
+import { DevRemakesPanel } from "@/components/alphabet/DevRemakesPanel";
 import { useCaseMode } from "@/lib/case-mode";
+import { useDevPanel } from "@/lib/dev-panel";
 
 export const Route = createFileRoute("/letter/$letter")({
   component: LetterPage,
@@ -101,6 +103,7 @@ function LetterPage() {
   const [meetOpen, setMeetOpen] = useState(false);
   const [friendsOpen, setFriendsOpen] = useState(false);
   const { mode: caseKind } = useCaseMode();
+  const { open: devOpen } = useDevPanel();
 
   useEffect(() => {
     if (
@@ -309,6 +312,7 @@ function LetterPage() {
         <CaseToggle letter={entry.letter} accent={entry.accent} compact />
         <LetterCompleteBanner letter={entry.letter} accent={entry.accent} />
       </div>
+      {devOpen && <DevRemakesPanel focusLetter={entry.letter} />}
 
       <nav
         className="mb-4 flex flex-wrap gap-1.5"

@@ -16,7 +16,9 @@ import {
 } from "@/components/alphabet/ProfileGate";
 import { DailyPath } from "@/components/alphabet/DailyPath";
 import { CaseToggle } from "@/components/alphabet/CaseToggle";
+import { DevRemakesPanel } from "@/components/alphabet/DevRemakesPanel";
 import { useCaseMode } from "@/lib/case-mode";
+import { useDevPanel } from "@/lib/dev-panel";
 import { VersionBadge } from "@/components/alphabet/VersionBadge";
 import {
   LETTER_BUDDIES_EPISODES,
@@ -32,6 +34,7 @@ function Home() {
   const [switching, setSwitching] = useState(false);
   const completePct = Math.round((completed.length / 26) * 100);
   const { mode: caseKind } = useCaseMode();
+  const { open: devOpen } = useDevPanel();
 
   return (
     <main className="app-shell">
@@ -107,6 +110,9 @@ function Home() {
           </p>
         </div>
         <CaseToggle className="mb-3" />
+        {devOpen ? (
+          <DevRemakesPanel />
+        ) : (
         <div className="letters-grid">
           {LETTERS.map((L) => {
             const done = completed.includes(L.letter);
@@ -147,6 +153,7 @@ function Home() {
             );
           })}
         </div>
+        )}
       </section>
 
       <StickerShelf />

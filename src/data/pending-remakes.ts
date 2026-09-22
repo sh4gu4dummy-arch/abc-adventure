@@ -1,0 +1,144 @@
+/**
+ * Local remakes Ash has not confirmed yet.
+ * Builder: add a row when a clip is in the app but not on GitHub.
+ * After Ash pastes CONFIRM in chat: commit that file, delete the row.
+ * After REJECT: revert the file, delete the row.
+ */
+export type PendingKind = "friends" | "meet" | "story" | "word";
+
+export type PendingRemake = {
+  id: string;
+  title: string;
+  letter: string;
+  caseKind: "upper" | "lower";
+  kind: PendingKind;
+  clips: string;
+  file: string;
+  since: string;
+  notes: string;
+};
+
+export const PENDING_REMAKES: PendingRemake[] = [
+  {
+    id: "little-a-friends",
+    title: "little a meets friends",
+    letter: "a",
+    caseKind: "lower",
+    kind: "friends",
+    clips: "4 only (1–3 kept)",
+    file: "friends-clips/a-little-play-2.mp4",
+    since: "v0.400",
+    notes: "Clip 4 remake. 1–3 were OK.",
+  },
+  {
+    id: "little-b-friends",
+    title: "little b meets friends",
+    letter: "b",
+    caseKind: "lower",
+    kind: "friends",
+    clips: "3–4 (1–2 kept)",
+    file: "friends-clips/b-little-play-1.mp4",
+    since: "v0.403",
+    notes: "Boat stays in the pond. Clip 3 chorus remake. Clip 4 kept.",
+  },
+  {
+    id: "little-c-friends",
+    title: "little c meets friends",
+    letter: "c",
+    caseKind: "lower",
+    kind: "friends",
+    clips: "2 only (1, 3, 4 kept)",
+    file: "friends-clips/c-little-play-1.mp4",
+    since: "v0.404",
+    notes: "Clip 2 was saying I'm Cookie. Now I'm Cloud. Cloud in the sky.",
+  },
+  {
+    id: "little-d-friends",
+    title: "little d meets friends",
+    letter: "d",
+    caseKind: "lower",
+    kind: "friends",
+    clips: "all 4",
+    file: "friends-clips/d-little-play-1.mp4",
+    since: "v0.405",
+    notes:
+      "Full remake from 01 face (round hole, black-dot eyes). Each beat re-anchored so the face does not drift.",
+  },
+  {
+    id: "big-t-friends",
+    title: "Big T meets friends",
+    letter: "t",
+    caseKind: "upper",
+    kind: "friends",
+    clips: "local remake",
+    file: "friends-clips/t-play-1.mp4",
+    since: "local vs git",
+    notes: "File differs from GitHub. Watch, then confirm or reject.",
+  },
+  {
+    id: "big-u-friends",
+    title: "Big U meets friends",
+    letter: "u",
+    caseKind: "upper",
+    kind: "friends",
+    clips: "local remake",
+    file: "friends-clips/u-play-1.mp4",
+    since: "local vs git",
+    notes: "File differs from GitHub. Watch, then confirm or reject.",
+  },
+  {
+    id: "big-v-friends",
+    title: "Big V meets friends",
+    letter: "v",
+    caseKind: "upper",
+    kind: "friends",
+    clips: "local remake",
+    file: "friends-clips/v-play-1.mp4",
+    since: "local vs git",
+    notes: "File differs from GitHub. Watch, then confirm or reject.",
+  },
+  {
+    id: "big-w-friends",
+    title: "Big W meets friends",
+    letter: "w",
+    caseKind: "upper",
+    kind: "friends",
+    clips: "local remake",
+    file: "friends-clips/w-play-1.mp4",
+    since: "local vs git",
+    notes: "File differs from GitHub. Watch, then confirm or reject.",
+  },
+  {
+    id: "big-x-friends",
+    title: "Big X meets friends",
+    letter: "x",
+    caseKind: "upper",
+    kind: "friends",
+    clips: "local remake",
+    file: "friends-clips/x-play-1.mp4",
+    since: "local vs git",
+    notes: "File differs from GitHub. Watch, then confirm or reject.",
+  },
+  {
+    id: "big-y-friends",
+    title: "Big Y meets friends",
+    letter: "y",
+    caseKind: "upper",
+    kind: "friends",
+    clips: "local remake",
+    file: "friends-clips/y-play-1.mp4",
+    since: "local vs git",
+    notes: "File differs from GitHub. Watch, then confirm or reject.",
+  },
+  {
+    id: "big-z-friends",
+    title: "Big Z meets friends",
+    letter: "z",
+    caseKind: "upper",
+    kind: "friends",
+    clips: "local remake",
+    file: "friends-clips/z-play-1.mp4",
+    since: "local vs git",
+    notes: "File differs from GitHub. Watch, then confirm or reject.",
+  },
+];

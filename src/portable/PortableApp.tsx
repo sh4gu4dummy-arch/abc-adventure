@@ -36,7 +36,9 @@ import { StoryMode } from "@/components/alphabet/StoryMode";
 import { CaseHunt } from "@/components/alphabet/CaseHunt";
 import { LayoutToggle } from "@/components/alphabet/LayoutToggle";
 import { CaseToggle } from "@/components/alphabet/CaseToggle";
+import { DevRemakesPanel } from "@/components/alphabet/DevRemakesPanel";
 import { useCaseMode } from "@/lib/case-mode";
+import { useDevPanel } from "@/lib/dev-panel";
 import { GfxToggle } from "@/components/alphabet/GfxToggle";
 import { VersionBadge, VersionCorner } from "@/components/alphabet/VersionBadge";
 import { StarBar } from "@/components/alphabet/StarBar";
@@ -112,6 +114,7 @@ function HomeView() {
   const [imgFail, setImgFail] = useState<Record<string, boolean>>({});
   const progressPct = Math.round((visited.length / 26) * 100);
   const { mode: caseKind } = useCaseMode();
+  const { open: devOpen } = useDevPanel();
 
   return (
     <main className="mx-auto min-h-dvh w-full max-w-6xl px-4 pb-16 pt-4 sm:px-6 sm:pt-6">
@@ -166,7 +169,9 @@ function HomeView() {
         </button>
       </div>
       <CaseToggle className="mb-3" />
-
+      {devOpen ? (
+        <DevRemakesPanel />
+      ) : (
       <div className="stagger grid grid-cols-3 gap-2.5 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-7 sm:gap-3">
         {LETTERS.map((L) => {
           const seen = visited.includes(L.letter);
@@ -197,6 +202,7 @@ function HomeView() {
           );
         })}
       </div>
+      )}
 
       <section className="card-surface mt-8 rounded-[var(--radius-lg)] p-3 sm:p-4">
         <p className="mb-2 text-xs font-bold tracking-wide text-muted">
@@ -221,6 +227,7 @@ function LetterView({ entry }: { entry: LetterEntry }) {
   const [tab, setTab] = useState<Tab>("words");
   const [openWord, setOpenWord] = useState<WordEntry | null>(null);
   const { mode: caseKind } = useCaseMode();
+  const { open: devOpen } = useDevPanel();
   const progress = useProgress();
   const pendingSlug = useRef<string | null>(null);
 
@@ -344,6 +351,7 @@ function LetterView({ entry }: { entry: LetterEntry }) {
       <div className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1.5">
         <CaseToggle letter={entry.letter} accent={entry.accent} compact />
       </div>
+      {devOpen && <DevRemakesPanel focusLetter={entry.letter} />}
 
       <div className="mb-4 flex gap-1 overflow-x-auto pb-1">
         {TABS.map((t) => {

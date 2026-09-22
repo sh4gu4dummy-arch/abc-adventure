@@ -59,7 +59,10 @@ Default remake = that clip only. Full: `docs/remake-scope.md`.
 
 **Friend look lock:** I2I from Meet frame + `public/posters/{l}-{slug}.webp`.
 Same toys as the word cards, not generic cousins.
-**One still to Ash:** one path. Rejects named `*REJECT*`.
+**Dev tab:** pending remakes live in `src/data/pending-remakes.ts`. Add a
+row when a remake is in the preview but not on GitHub. Ash Confirm/Reject
+in the tab copies a paste block. After they paste CONFIRM, commit that
+file and delete the row. REJECT = revert file, delete the row.
 
 ## QA agent
 

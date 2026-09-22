@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.405
+**Version:** v0.406
+
+## v0.406 — Dev tab pending remake queue
 
 ## v0.405 — letter face lock SOP; little d remake awaiting approve
 
