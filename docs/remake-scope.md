@@ -25,6 +25,8 @@ not invent a full-letter reshoot.
   not clip 3. If Ash says “I'm Bear is fine,” do not remake clip 3.
 - Reshoot the *next* clip only if the new last frame cannot join (visible jump).
   Not before you see a jump.
+- **Do not I2I a new layout** to start the remade clip. I2V from the
+  previous last frame. Relocate (boat on grass vs in pond) = FAIL.
 
 ## Friends 4-clip map (so you don’t guess)
 

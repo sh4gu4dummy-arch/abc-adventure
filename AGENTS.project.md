@@ -30,7 +30,8 @@ letter does the action (`"I'm under the table!"`), no mascot. Unique spots
 + zoom out** — not an even 2×2; left-pair/right-pair talking is a fail.
 Don’t smash a friend’s patch; letter never merges; no chorus. **Speaker
 lock:** count 1, quoted line, other three sealed, forbidden names, no
-speaker-clones. Clip-isolate.
+speaker-clones. **Clip-isolate:** I2V from the previous last frame. Do **not**
+I2I a “clean still” that relocates (little-b boat beached on grass = FAIL).
 `docs/friends-dialogue.md`.
 
 **Friends spots:** unique patch per friend (tracks, yellow grass, leaf pile) so two don’t share a voice. `docs/friends-dialogue.md`.

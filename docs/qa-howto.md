@@ -3,6 +3,13 @@
 Teacher playbook adapted for **ABC Adventure** (`sh4gu4dummy-arch/abc-adventure`).
 If it is not in this repo, the other bot never saw it.
 
+## Clip-isolate remakes (hard)
+
+If builder kept clips 1–2 and remade 3–4: **clip 3 frame 0.3 must match
+clip 2 last frame** (same pond/branch/spots). FAIL if friends jumped to
+a dry lawn. I2I “clean still” that relocates = FAIL (little-b boat
+beached). STT “I'm Boat” does not save a grass boat.
+
 ## Still QA (before I2V)
 
 Builder posts the **source still** on the issue. You PASS/FAIL the still

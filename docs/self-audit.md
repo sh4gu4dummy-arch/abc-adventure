@@ -68,6 +68,13 @@ Before any Friends **plan LOCK** (and again before I2V):
    That miss is obvious; Ash should not catch it on listen.
 6. **Color lock.** Compare letter paint 01 vs 05. Darker / muddier = fail.
 
+## Clip-isolate (before you concat)
+
+Compare **clip N start** to **clip N−1 last frame**. Same pond, same
+branch, same spots. If the boat was in water and is now on grass, FAIL
+even if STT is right. Do **not** I2I a “delete extras” still — that is
+how little-b beached the boat. Re-I2V from the same last frame. `docs/friends-dialogue.md`.
+
 ## Ash requirements that keep biting us (Friends)
 
 Keep these even when scenery looks pretty:

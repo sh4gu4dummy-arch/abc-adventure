@@ -47,9 +47,19 @@ one beat is wrong unless Ash says so.
 
 ## Clip-isolate (Ash v0.401)
 
-**Do not I2I a “clean still”** that moves friends. Chain I2V from the
-**previous clip’s last frame**. Boat in water stays in water. Grass I2I
-= FAIL.
+**Do not I2I a “clean still”** that moves friends. Chain **I2V from the
+previous clip’s last frame** as-is.
+
+Named miss (little b, v0.400): I2I “delete extras” **beached the boat
+onto the grass**. Clip 2 had the boat **in the pond**. That I2I is a FAIL
+even if STT says “I'm Boat.”
+
+Trap: “tiny I2I then I2V” to kill clones. Clones ≠ license to relocate.
+If extras appear, I2V again from the **same last frame** — do not invent
+a new layout still.
+
+Boat in water stays in water. Bird on a branch stays on the branch.
+Grass I2I = FAIL.
 
 ## Scatter + zoom (Ash v0.395)
 

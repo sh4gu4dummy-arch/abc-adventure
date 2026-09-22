@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.401
+**Version:** v0.402
+
+## v0.402 — SOP: clip-isolate I2I relocate is a named FAIL
 
 ## v0.401 — little b boat stays in pond; no I2I relocate
 
