@@ -3,6 +3,12 @@
 Teacher playbook adapted for **ABC Adventure** (`sh4gu4dummy-arch/abc-adventure`).
 If it is not in this repo, the other bot never saw it.
 
+## Letter face lock (hard)
+
+Clip-1 start vs clip-2 mid: the **letter** must be the same face (hole,
+eyes, cheeks). FAIL white sclera / pink cheeks / new hole (little d).
+STT does not save a new face.
+
 ## Clip-isolate remakes (hard)
 
 If builder kept clips 1–2 and remade 3–4: **clip 3 frame 0.3 must match

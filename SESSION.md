@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.404
+**Version:** v0.405
+
+## v0.405 — letter face lock SOP; little d remake awaiting approve
 
 ## v0.404 — little c clip 2 Cloud remake, awaiting approve
 

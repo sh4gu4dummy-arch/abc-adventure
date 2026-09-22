@@ -45,6 +45,21 @@ one beat is wrong unless Ash says so.
    if they want. TTS-lock is optional and **lips will not match**.
 4. Glyph / whale / extra eyes = picture remake (same: Ash can still say go).
 
+## Letter face lock (Ash v0.405)
+
+The **letter’s face** is look-lock, not just the body.
+
+Named miss (little d): `01-start` had round hole + black-dot eyes.
+`02-25` grew white sclera, pink cheeks, a new hole. Open mouth is OK.
+A **new face** is FAIL.
+
+Before concat: put clip-1 t0.3 next to clip-2 t3. Same hole, same eyes,
+same cheeks. If they disagree, FAIL even if STT is right.
+
+If chaining the last frame **already drifted** the letter, do **not**
+keep chaining that face. Re-I2V that beat from the **locked still**
+(`01-start` / home tile). Wrong face > a small cut.
+
 ## Clip-isolate (Ash v0.401)
 
 **Do not I2I a “clean still”** that moves friends. Chain **I2V from the

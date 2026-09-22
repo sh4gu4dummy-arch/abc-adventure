@@ -68,6 +68,13 @@ Before any Friends **plan LOCK** (and again before I2V):
    That miss is obvious; Ash should not catch it on listen.
 6. **Color lock.** Compare letter paint 01 vs 05. Darker / muddier = fail.
 
+## Letter face lock (before concat)
+
+Clip-1 t0.3 vs clip-2 t3 **of the letter only**. Same hole, same eyes,
+same cheeks. Open mouth OK. White sclera / pink cheeks / new hole =
+FAIL (little d 01 vs 02). If last-frame chain already grew a new face,
+re-I2V from the locked still. `docs/friends-dialogue.md`.
+
 ## Clip-isolate (before you concat)
 
 Compare **clip N start** to **clip N−1 last frame**. Same pond, same
