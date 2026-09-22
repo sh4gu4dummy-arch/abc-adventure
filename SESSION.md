@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.398
+**Version:** v0.399
+
+## v0.399 — little a clip 4 Anchor remake, awaiting approve
 
 ## v0.398 — extra zoom little c d f m t y thumbs
 
