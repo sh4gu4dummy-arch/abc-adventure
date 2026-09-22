@@ -231,6 +231,8 @@ Quality + creativity > rigid adherence (**all projects**, v0.347): if a rule hur
 ### Meet-asset debt · queued
 Little Meets that are Big-shaped (product bug — Friends cannot lock a lying Meet glyph): **p, s, v, w, x, z** (and review). See [`docs/meet-asset-debt.md`](meet-asset-debt.md). Queued Meet remakes — not shoot-now.
 
+**v0.398** Little c/d/f/m/t/y thumbs extra zoom.
+
 **v0.397** Little home thumbs: zoom a–o/r–y toward p/q/z fill; p, q, z stay.
 
 **v0.396** Biggest-face thief = full remake (don’t chain 2–4). Big Z scatter remake in preview. Zebra stays small/far.

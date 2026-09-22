@@ -525,6 +525,15 @@ html[data-case="lower"] .letter-tile-art {
   transform: scale(1.32);
 }
 
+html[data-case="lower"] .letter-tile[data-letter="c"] .letter-tile-art,
+html[data-case="lower"] .letter-tile[data-letter="d"] .letter-tile-art,
+html[data-case="lower"] .letter-tile[data-letter="f"] .letter-tile-art,
+html[data-case="lower"] .letter-tile[data-letter="m"] .letter-tile-art,
+html[data-case="lower"] .letter-tile[data-letter="t"] .letter-tile-art,
+html[data-case="lower"] .letter-tile[data-letter="y"] .letter-tile-art {
+  transform: scale(1.5);
+}
+
 html[data-case="lower"] .letter-tile[data-letter="p"] .letter-tile-art,
 html[data-case="lower"] .letter-tile[data-letter="q"] .letter-tile-art,
 html[data-case="lower"] .letter-tile[data-letter="z"] .letter-tile-art {

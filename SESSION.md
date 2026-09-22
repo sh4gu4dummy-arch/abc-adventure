@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.397
+**Version:** v0.398
+
+## v0.398 — extra zoom little c d f m t y thumbs
 
 ## v0.397 — little home thumbs zoom (p/q/z stay)
 
