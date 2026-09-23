@@ -124,9 +124,9 @@ export const PENDING_REMAKES: PendingRemake[] = [
     letter: "z",
     caseKind: "upper",
     kind: "friends",
-    clips: "local remake",
+    clips: "all 4, full redo",
     file: "friends-clips/z-play-1.mp4",
-    since: "local vs git",
-    notes: "File differs from GitHub. Watch, then confirm or reject.",
+    since: "v0.419",
+    notes: "No bag. Zipper is the cloth zipper. Zoo is a place with no mouth. Z says This is the Zoo. Not confirmed.",
   },
 ];

@@ -32,11 +32,7 @@ U is **uniform-width**, **no legs**, **no fat base**, **no square bottom bar**, 
 
 **Friends play (future clips):** speaker uses the scene — splash, crawl, roll, fly a loop, sit in the nest — not only jump toward camera and talk. True-job still applies (ocean stays water, etc.). Camera can be close or the high wide Big Y shot. Keep the shot the clip already has. Do not make the wide shot the only look.
 
-**Friends stills:** I2I from **product posters**. Abstract words (Under) =
-the person doing it talks (`"I'm under the table!"`). The letter does not
-say that line. Unique spots **inside a real place** — do not nuke the
-background into empty lawn. **Scatter + zoom on full remakes** — not an
-even 2×2; left-pair/right-pair talking is a fail.
+**Friends stills:** I2I from **product posters**. Two abstract cases: a person already in the poster talks (the girl says `"I'm under the table!"`); a place does not talk (Z says `"This is the Zoo."`, the gate has no mouth). Big Z’s friend is the zipper poster, not a bag. Unique spots **inside a real place** — do not nuke the background into empty lawn. **Scatter + zoom on full remakes** — not an even 2×2; left-pair/right-pair talking is a fail.
 If one friend says every remaining line, full remake and shrink that face.
 Don’t smash another friend’s patch; letter never merges; no chorus.
 **Speaker lock (standing — Ash should not have to repeat it):** on a friend
@@ -244,6 +240,8 @@ Little Meets that are Big-shaped (product bug — Friends cannot lock a lying Me
 confirmed. Confirm/Reject copies a paste block for chat. Source:
 `src/data/pending-remakes.ts`. Add a row when a remake is local-only.
 Remove the row after CONFIRM (commit) or REJECT (revert).
+
+**v0.419** Big Z full redo, local only. Zipper instead of a bag. Zoo is a place. Z says "This is the Zoo." Not on GitHub until confirm.
 
 **v0.418** Big Y clips 2–4 redone locally. Same wide shot. Y does not say the friends' lines. Not on GitHub until confirm.
 

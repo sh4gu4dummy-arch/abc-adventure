@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.418
+**Version:** v0.419
+
+## v0.419 — Big Z full redo: zipper, zoo is a place
 
 ## v0.418 — Big Y clips 2–4, letter mouth stays shut
 

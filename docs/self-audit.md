@@ -101,8 +101,10 @@ Keep these even when scenery looks pretty:
 
 6c. **Product friends** — still matches posters (unicorn = `u-unicorn.webp`).
     Invented horse = FAIL. Scrap still.
-6d. **Abstract words** — Under/Up are actions. The person doing it talks
-    (`"I'm under the table!"`). The letter does not say the friend's line.
+6d. **Abstract words** — two cases. A person doing the action talks
+    (girl: `"I'm under the table!"`). A place does not: Z says
+    `"This is the Zoo."` A gate with a mouth is a fail. A bag standing in
+    for the zipper poster is a fail.
 6e. **Letter vs friend name** — clip 1 is `"I'm Big U!"` only. On clips 2–4
     the letter's mouth stays shut the whole 6 seconds. Open mouth on the
     letter during a friend's line = fail, even if STT printed one name.

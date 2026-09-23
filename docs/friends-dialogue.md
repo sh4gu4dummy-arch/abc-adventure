@@ -211,18 +211,22 @@ Still **must** I2I from the **product posters** for that letter
 unicorn on the still is not the app’s unicorn, **scrap the still**. Same
 for every friend. Home tile is the letter glyph.
 
-## Abstract words (Ash v0.387)
+## Abstract words (Ash v0.419)
 
-**Under, Up, Over, …** are not characters. Do **not** make a talking table
-say `"I'm Under!"`.
+Some words are not characters. Do not give them a mouth.
 
-The **letter** (or an existing friend) **does the action** and says a
-real sentence:
+Two cases. Do not mix them up.
 
-- Under → U crawls under the picnic table and says `"I'm under the table!"`
-- Not a mascot named Under.
+1. **A person already does the action.** Under is the girl under the picnic
+   table. She says `"I'm under the table!"` The letter does not say it.
+   The table stays a table.
+2. **The word is a place.** Zoo is a place. A zoo gate does not talk.
+   The letter looks at it and says `"This is the Zoo."` Named miss: Big Z
+   clip 3, a gate with a face said `"I'm Zoo."` That is a fail.
 
-Clip 4 is still one speaker. Table stays a table.
+Also: do not swap a friend for a bag. Big Z’s third friend is the
+**zipper** from `public/posters/z-zipper.webp` (metal teeth on cloth),
+not an orange bag. If the still shows a bag, scrap it. Do not film.
 
 ## Spots (Ash v0.386) — stop double-talk
 
