@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.423
+**Version:** v0.424
+
+## v0.424 — Audit folder has only the unconfirmed clips. Game still plays the full videos.
 
 ## v0.423 — Big U eyes drop out at 0.3s. Still is fine.
 

@@ -243,6 +243,8 @@ confirmed. Confirm/Reject copies a paste block for chat. Source:
 `src/data/pending-remakes.ts`. Add a row when a remake is local-only.
 Remove the row after CONFIRM (commit) or REJECT (revert).
 
+**v0.424** Unconfirmed clips copied as separate files in `docs/audit-clips/` (local only). The game still plays the full videos.
+
 **v0.423** Note only. Big U eyes vanish at 0.3s. The still is fine.
 
 **v0.422** Note only. Big U still is fine. Dot eyes, thin base. Arms are not a fail.
