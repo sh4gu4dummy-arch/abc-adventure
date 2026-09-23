@@ -164,7 +164,8 @@ fail. “Thin sealed line” was not enough on Big T — the tiger talked under
 seconds. No teeth.”** Name the animal. Check that frame before the next clip.
 
 **Homophone (same miss):** “I'm Tree!” was heard as “I'm three.” Say
-**“I'm a tree!”** when the name is Tree. Do not ship the number.
+**“I'm a tree!”** when the name is Tree. “I'm Boat!” was heard as
+“I'm Bolt!” Say **“I'm a boat!”** Do not ship the wrong word.
 
 ## Place first (Ash v0.392)
 

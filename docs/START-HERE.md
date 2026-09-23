@@ -241,6 +241,8 @@ confirmed. Confirm/Reject copies a paste block for chat. Source:
 `src/data/pending-remakes.ts`. Add a row when a remake is local-only.
 Remove the row after CONFIRM (commit) or REJECT (revert).
 
+**v0.420** Little b clip 3 redone locally. Boat says "I'm a boat." Others stay shut. Not on GitHub until confirm.
+
 **v0.419** Big Z full redo, local only. Zipper instead of a bag. Zoo is a place. Z says "This is the Zoo." Not on GitHub until confirm.
 
 **v0.418** Big Y clips 2–4 redone locally. Same wide shot. Y does not say the friends' lines. Not on GitHub until confirm.

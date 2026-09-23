@@ -25,10 +25,10 @@ export const PENDING_REMAKES: PendingRemake[] = [
     letter: "b",
     caseKind: "lower",
     kind: "friends",
-    clips: "3–4 (1–2 kept)",
+    clips: "3 only (1, 2, 4 kept)",
     file: "friends-clips/b-little-play-1.mp4",
-    since: "v0.403",
-    notes: "Boat stays in the pond. Clip 3 chorus remake. Clip 4 kept.",
+    since: "v0.420",
+    notes: "Clip 3 redone. Boat says I'm a boat. Bird, banana, and little b stay shut. Boat stays in the water. Not confirmed.",
   },
   {
     id: "little-c-friends",
