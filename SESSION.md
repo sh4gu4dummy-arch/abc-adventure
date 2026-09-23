@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.420
+**Version:** v0.421
+
+## v0.421 — Big T clip 2, tree only. No new subtitles.
 
 ## v0.420 — little b clip 3, boat only
 

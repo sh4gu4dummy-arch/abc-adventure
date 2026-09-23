@@ -35,6 +35,8 @@ U is **uniform-width**, **no legs**, **no fat base**, **no square bottom bar**, 
 **Friends stills:** I2I from **product posters**. Two abstract cases: a person already in the poster talks (the girl says `"I'm under the table!"`); a place does not talk (Z says `"This is the Zoo."`, the gate has no mouth). Big Z’s friend is the zipper poster, not a bag. Unique spots **inside a real place** — do not nuke the background into empty lawn. **Scatter + zoom on full remakes** — not an even 2×2; left-pair/right-pair talking is a fail.
 If one friend says every remaining line, full remake and shrink that face.
 Don’t smash another friend’s patch; letter never merges; no chorus.
+**No subtitles.** Do not print the line on the picture. A caption is a fail. Named miss: Big T clip 3, left as-is.
+
 **Speaker lock (standing — Ash should not have to repeat it):** on a friend
 clip the letter’s mouth stays frozen shut all 6 seconds. Open the speech
 frame. If the letter’s mouth is open, reshoot before concat. Count 1,
@@ -240,6 +242,8 @@ Little Meets that are Big-shaped (product bug — Friends cannot lock a lying Me
 confirmed. Confirm/Reject copies a paste block for chat. Source:
 `src/data/pending-remakes.ts`. Add a row when a remake is local-only.
 Remove the row after CONFIRM (commit) or REJECT (revert).
+
+**v0.421** Big T clip 2 redone locally. Tree only. Clip 3 subtitles left. Not on GitHub until confirm.
 
 **v0.420** Little b clip 3 redone locally. Boat says "I'm a boat." Others stay shut. Not on GitHub until confirm.
 

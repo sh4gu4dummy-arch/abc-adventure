@@ -204,8 +204,14 @@ place.
 - **Clip isolation:** if Ash says 1–2 are OK, remake **only** 3–4 from
   clip-2’s last frame. Do not reshoot the good beats.
 
-## Product friends (Ash v0.387) — stop inventing
+## No subtitles (Ash v0.421)
 
+Do not burn words onto the picture. No captions, no name labels, no
+“I'M TIGER!” across the grass. Named miss: Big T clip 3. Leave that clip.
+A new take with writing on the screen is a fail. Reshoot it. The line is
+spoken, not printed.
+
+## Product friends (Ash v0.387) — stop inventing
 
 Still **must** I2I from the **product posters** for that letter
 (`public/posters/u-unicorn.webp`, not a random white horse). If the

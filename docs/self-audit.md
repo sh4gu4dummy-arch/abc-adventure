@@ -112,9 +112,9 @@ Keep these even when scenery looks pretty:
 6i. **Speaker lock** — STT right-word is not enough. Two mouths or a
     clone of the speaker = FAIL. Clip STT empty / two names / letter
     borrowed the friend’s name → reshoot that clip before concat.
-6j. **Scatter + zoom (full remakes)** — even 2×2 / four corners / left-pair
-    vs right-pair = FAIL the still. Different depths+heights, more empty
-    ground, different surfaces. Biggest face steals the line.
+6k. **No subtitles.** Words printed on the picture (a caption, a name
+    label) = fail that take. Speech is heard, not written. Named miss:
+    Big T clip 3. Do not add text to “help” the line.
 7. **Sound** — interesting play foley (hops, roll, crawl, whoosh). Not silent,
    not beep-spam. Voices on top of music (bury-speech = fail).
 8. **Ocean / water friends** — stay water. Becoming a whale/fish/animal = fail that clip.
