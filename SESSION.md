@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.422
+**Version:** v0.423
+
+## v0.423 — Big U eyes drop out at 0.3s. Still is fine.
 
 ## v0.422 — Big U still is fine. Arms are not a face fail.
 

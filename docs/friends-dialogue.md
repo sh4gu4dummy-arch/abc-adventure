@@ -70,6 +70,11 @@ Before any Friends still:
    kept plain dot eyes and the thin base. It grew arms. That is fine. Do not
    call that still a face swap, and do not claim white eyes if the eyes are
    still dots.
+5. Check the first half-second, not only the speech frame. Big U’s still
+   and the talking frame both have plain dot eyes. At 0.3s the eyes are
+   gone and only the mouth line is left. That blank face is the instant
+   change. A take with missing eyes at the start is a fail even when the
+   still is right.
 
 Before concat: put clip-1 t0.3 next to clip-2 t3 and next to the home tile.
 Same hole, same eyes, same stroke. If they disagree, FAIL even if STT is
