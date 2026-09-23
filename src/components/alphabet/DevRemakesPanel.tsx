@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Check, Copy, RotateCcw, X } from "lucide-react";
+import { Check, Copy, Play, RotateCcw, X } from "lucide-react";
 import { PENDING_REMAKES, type PendingRemake } from "@/data/pending-remakes";
 import { assetUrl } from "@/lib/assets";
 import { setCaseMode } from "@/lib/case-mode";
@@ -62,6 +62,7 @@ export function DevRemakesPanel({ focusLetter }: { focusLetter?: string }) {
   const [copied, setCopied] = useState<string | null>(null);
   const [showDecided, setShowDecided] = useState(false);
   const [paste, setPaste] = useState("");
+  const [playingId, setPlayingId] = useState<string | null>(null);
 
   const { openItems, decidedItems } = useMemo(() => {
     const open: PendingRemake[] = [];
@@ -173,13 +174,24 @@ export function DevRemakesPanel({ focusLetter }: { focusLetter?: string }) {
                 <br />
                 {item.notes}
               </p>
-              <video
-                className="mb-2 w-full max-h-64 rounded-[var(--radius-sm)] bg-black object-contain"
-                src={src}
-                controls
-                playsInline
-                preload="metadata"
-              />
+              {playingId === item.id ? (
+                <video
+                  className="mb-2 w-full max-h-64 rounded-[var(--radius-sm)] bg-black object-contain"
+                  src={src}
+                  controls
+                  autoPlay
+                  playsInline
+                  preload="none"
+                />
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setPlayingId(item.id)}
+                  className="pressable mb-2 flex min-h-24 w-full items-center justify-center gap-2 rounded-[var(--radius-sm)] bg-ink text-sm font-bold text-white"
+                >
+                  <Play className="size-4 fill-current" /> Play
+                </button>
+              )}
               <textarea
                 data-case-lock
                 rows={2}

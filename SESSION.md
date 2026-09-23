@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.408
+**Version:** v0.409
+
+## v0.409 — Dev remake queue loads one video on Play
 
 ## v0.408 — Meet/Friends load the file on tap, not on open or arrow
 
