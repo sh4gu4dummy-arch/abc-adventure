@@ -153,6 +153,15 @@ place.
 
 - **Do not smash / empty / delete** another friend’s spot. Whale does not
   slap the water away. Water **stays in frame** the whole clip.
+- **Gate, not a slogan (Ash v0.416).** The sentence above was already
+  written and the whale still emptied the pond. Before concat, open the
+  clip’s **first frame and last frame** side by side. The pond, tracks,
+  table, or nest from frame 1 must still be there on the last frame, same
+  place, not a splash cloud and not bare grass. If the water is gone, the
+  take is a fail even when the line is right. Do not chain the next clip
+  off a smashed set. Prompt that must be in the whale/water beat: the pond
+  stays calm, the whale floats, it does not raise its tail, it does not
+  splash the water out.
 - Letter **never merges** with a friend (W ≠ water, S ≠ snake).
 - **No chorus.** If everyone says the last name (`I'm Window`), that clip
   failed. Only the named speaker talks; others sealed.

@@ -114,6 +114,7 @@ Keep these even when scenery looks pretty:
 7. **Sound** — interesting play foley (hops, roll, crawl, whoosh). Not silent,
    not beep-spam. Voices on top of music (bury-speech = fail).
 8. **Ocean / water friends** — stay water. Becoming a whale/fish/animal = fail that clip.
+9. **Pond still there.** Open the first frame and the last frame. If the whale splashed the pond away, fail the clip. Do not chain the next clip off that frame.
 9. **Helmet / clear-face props** — photoreal kid face through a clear helmet = fail the still (toy face / opaque visor).
 10. **Look lock** — still + every frame must match the **home tile**
    `public/letters/{l}.webp` (then Meet of that case). Color, eyes, hole.

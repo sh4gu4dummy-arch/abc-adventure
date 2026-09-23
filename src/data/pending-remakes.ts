@@ -91,10 +91,10 @@ export const PENDING_REMAKES: PendingRemake[] = [
     letter: "w",
     caseKind: "upper",
     kind: "friends",
-    clips: "local remake",
+    clips: "3 and 4 redone, 1 and 2 kept",
     file: "friends-clips/w-play-1.mp4",
-    since: "local vs git",
-    notes: "File differs from GitHub. Watch, then confirm or reject.",
+    since: "v0.416",
+    notes: "Pond stays full. Whale floats, no tail slap. Water says I'm Water. Window says I'm Window. Not confirmed.",
   },
   {
     id: "big-x-friends",
