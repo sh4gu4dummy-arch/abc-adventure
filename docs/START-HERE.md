@@ -239,6 +239,8 @@ confirmed. Confirm/Reject copies a paste block for chat. Source:
 `src/data/pending-remakes.ts`. Add a row when a remake is local-only.
 Remove the row after CONFIRM (commit) or REJECT (revert).
 
+**v0.414** Big T clips 2 and 3 redone locally. Tree says "I'm a tree." Tiger says "I'm Tiger." Other mouths shut during the words. Clips 1 and 4 kept. Not on GitHub.
+
 **v0.413** Little d: clips 1 and 3 redone locally, clip 2 kept. Clip 4 still heard as "I'm Doc," not Duck. Not on GitHub.
 
 **v0.412** Little c clip 2 reshot locally (cloud only says "I'm Cloud"). Not on GitHub until Ash confirms. Clips 1, 3, 4 kept.

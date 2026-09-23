@@ -116,6 +116,15 @@ Prompt order (do not skip):
 If that clip’s STT is empty, has two names, or the letter’s name leaked:
 reshoot **that clip** before concat.
 
+**Mouth check (Ash v0.414):** STT of one line is not a pass. Open the frame
+at the word’s timestamp. If any other mouth is open then, the take is a
+fail. “Thin sealed line” was not enough on Big T — the tiger talked under
+“I'm Tree.” The prompt that held: **“Freeze its mouth shut for all 6
+seconds. No teeth.”** Name the animal. Check that frame before the next clip.
+
+**Homophone (same miss):** “I'm Tree!” was heard as “I'm three.” Say
+**“I'm a tree!”** when the name is Tree. Do not ship the number.
+
 ## Place first (Ash v0.392)
 
 

@@ -58,10 +58,10 @@ export const PENDING_REMAKES: PendingRemake[] = [
     letter: "t",
     caseKind: "upper",
     kind: "friends",
-    clips: "local remake",
+    clips: "2 and 3 redone, 1 and 4 kept",
     file: "friends-clips/t-play-1.mp4",
-    since: "local vs git",
-    notes: "File differs from GitHub. Watch, then confirm or reject.",
+    since: "v0.414",
+    notes: "Clips 2 and 3 redone. Tree says I'm a tree, mouth only. Tiger says I'm Tiger, mouth only. 1 and 4 kept. Not confirmed.",
   },
   {
     id: "big-u-friends",

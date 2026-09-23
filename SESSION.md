@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.413
+**Version:** v0.414
+
+## v0.414 — Big T clips 2 and 3 redone locally
 
 ## v0.413 — little d clips 1 and 3 redone; clip 4 still says Doc
 
