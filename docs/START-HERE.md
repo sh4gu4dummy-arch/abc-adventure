@@ -26,8 +26,9 @@ fine, keep that clip. Ambiguous report → one question, not a 4-clip plan.
 Full: [`docs/remake-scope.md`](remake-scope.md).
 
 **Glyph lock (hard):** Friends letter = `public/letters/{l}.webp` (or `-little`).
+The first still is an edit of that file plus the friend posters. Never invent a new letter.
 Q is **purple**, small black-dot eyes, hole. Orange huge-eye Q is a killed cousin.
-U is **uniform-width**, **no legs**, **no fat base**. If still ≠ home tile, FAIL. Do not film.
+U is **uniform-width**, **no legs**, **no fat base**, **no square bottom bar**, **black-dot eyes**, **no white eyes**, **no pink cheeks**. That square toy U is a killed cousin. If the still or clip 1 does not match the home tile, FAIL. Do not film. Do not chain the next clip off a new face.
 
 **Friends play (future clips):** speaker uses the scene — splash, crawl, roll, fly a loop, sit in the nest — not only jump toward camera and talk. Wide shot. True-job still applies (ocean stays water, etc.).
 
@@ -238,6 +239,8 @@ Little Meets that are Big-shaped (product bug — Friends cannot lock a lying Me
 confirmed. Confirm/Reject copies a paste block for chat. Source:
 `src/data/pending-remakes.ts`. Add a row when a remake is local-only.
 Remove the row after CONFIRM (commit) or REJECT (revert).
+
+**v0.415** Big U full redo, local only. Started from the home-tile U (thin even stroke, black-dot eyes). The square-base U is banned. Not on GitHub.
 
 **v0.414** Big T clips 2 and 3 redone locally. Tree says "I'm a tree." Tiger says "I'm Tiger." Other mouths shut during the words. Clips 1 and 4 kept. Not on GitHub.
 

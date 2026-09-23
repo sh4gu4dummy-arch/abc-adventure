@@ -69,10 +69,10 @@ export const PENDING_REMAKES: PendingRemake[] = [
     letter: "u",
     caseKind: "upper",
     kind: "friends",
-    clips: "local remake",
+    clips: "all 4, full redo",
     file: "friends-clips/u-play-1.mp4",
-    since: "local vs git",
-    notes: "File differs from GitHub. Watch, then confirm or reject.",
+    since: "v0.415",
+    notes: "Full redo from the home-tile U. Thin even stroke, black-dot eyes, no square base. Not confirmed.",
   },
   {
     id: "big-v-friends",

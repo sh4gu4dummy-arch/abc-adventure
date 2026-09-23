@@ -53,8 +53,22 @@ Named miss (little d): `01-start` had round hole + black-dot eyes.
 `02-25` grew white sclera, pink cheeks, a new hole. Open mouth is OK.
 A **new face** is FAIL.
 
-Before concat: put clip-1 t0.3 next to clip-2 t3. Same hole, same eyes,
-same cheeks. If they disagree, FAIL even if STT is right.
+Named miss (Big U, v0.414): the home tile is a thin even U with black-dot
+eyes. The film started from a **different** U — thick square base, white
+eyes, pink cheeks. Later clips kept redrawing that face. The square base
+was not in the home tile. It was baked into `u-play-4/00-source-still.jpg`
+because that still was a new drawing, not an edit of `public/letters/u.webp`.
+
+Before any Friends still:
+
+1. Edit from `public/letters/{letter}.webp` plus the friend posters.
+2. Put the home tile beside the still. Stroke, eyes, and base must match.
+3. White eyes, pink cheeks, or a fatter base = a different character. Delete
+   the still. Do not film it.
+
+Before concat: put clip-1 t0.3 next to clip-2 t3 and next to the home tile.
+Same hole, same eyes, same stroke. If they disagree, FAIL even if STT is
+right.
 
 If chaining the last frame **already drifted** the letter, do **not**
 keep chaining that face. Re-I2V that beat from the **locked still**
