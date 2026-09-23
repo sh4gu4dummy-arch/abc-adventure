@@ -41,8 +41,9 @@ one beat is wrong unless Ash says so.
 1. I2V with the **quoted line** for that beat (lip-sync attempt) + play.
 2. STT that 6s **before** concat. Keep native audio if the line is right
    and only one name is in the window.
-3. If the line is wrong or two talkers: **report to Ash**. Remake that clip
-   if they want. TTS-lock is optional and **lips will not match**.
+3. If the letter’s mouth is open on a friend beat, or two names are in the
+   clip: **reshoot that clip before concat.** Do not wait for Ash to say
+   “lock the voice” again. That rule is standing.
 4. Glyph / whale / extra eyes = picture remake (same: Ash can still say go).
 
 ## Letter face lock (Ash v0.405)
@@ -73,6 +74,32 @@ right.
 If chaining the last frame **already drifted** the letter, do **not**
 keep chaining that face. Re-I2V that beat from the **locked still**
 (`01-start` / home tile). Wrong face > a small cut.
+
+## Letter does not steal the line (standing)
+
+Ash should not have to repeat this. On a friend clip the **letter’s mouth
+stays frozen shut for all 6 seconds.** Named miss: Big Y clips 2–4. Y’s
+mouth stayed open and Y said “I'm Yo-yo,” “I'm Yellow,” and “I'm Yak.”
+STT printing one line is not a pass. Open the speech frame. If the letter’s
+mouth is open, throw the take out and reshoot from the previous last frame.
+Prompt that held on other letters: **“Freeze its mouth shut for all 6
+seconds. No teeth. It does not say [the friend’s name].”**
+
+## Camera variety (Ash v0.418)
+
+Big Y clip 1 is a liked shot: high and wide, friends small, lots of empty
+grass and sky, not a lineup filling the frame. When remaking the later Y
+clips, **keep that camera.** Do not zoom in to “fix” it.
+
+Do **not** make every letter this shot. A closer yard, a street, a table,
+a dock are still wanted. Variety is the point. One note is not a new
+default.
+
+## Fold the note in (standing)
+
+Every correction Ash gives gets written into this file the same turn.
+If the new line fights an older line, rewrite or delete the old line.
+Do not leave two rules that disagree.
 
 ## Clip-isolate (Ash v0.401)
 

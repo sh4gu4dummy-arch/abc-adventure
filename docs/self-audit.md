@@ -101,10 +101,12 @@ Keep these even when scenery looks pretty:
 
 6c. **Product friends** — still matches posters (unicorn = `u-unicorn.webp`).
     Invented horse = FAIL. Scrap still.
-6d. **Abstract words** — Under/Up are actions. Letter says
-    `"I'm under the table!"` while doing it. No talking-table mascot.
-6e. **Letter vs friend name** — clip 1 is `"I'm Big U!"` only. U must not
-    say Umbrella. Spots + quoted line.
+6d. **Abstract words** — Under/Up are actions. The person doing it talks
+    (`"I'm under the table!"`). The letter does not say the friend's line.
+6e. **Letter vs friend name** — clip 1 is `"I'm Big U!"` only. On clips 2–4
+    the letter's mouth stays shut the whole 6 seconds. Open mouth on the
+    letter during a friend's line = fail, even if STT printed one name.
+    Ash does not have to repeat this.
 6i. **Speaker lock** — STT right-word is not enough. Two mouths or a
     clone of the speaker = FAIL. Clip STT empty / two names / letter
     borrowed the friend’s name → reshoot that clip before concat.
@@ -122,6 +124,10 @@ Keep these even when scenery looks pretty:
    Q home = purple, black-dot eyes, hole. Orange Q still = FAIL, don't I2V.
 11. **Big Friends ≠ little Friends.** Do not copy the other case’s three
     words. A: Big = apple/ant/airplane; little = alligator/astronaut/anchor.
+12. **Camera variety.** A high wide shot with small friends and lots of
+    empty ground (Big Y clip 1) is a good occasional look. Keep it when
+    remaking that letter. Do not make it the default for every letter.
+    Do not zoom a liked wide shot tighter.
 
 ### Method B (multi-clip concat)
 

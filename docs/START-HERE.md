@@ -30,18 +30,23 @@ The first still is an edit of that file plus the friend posters. Never invent a 
 Q is **purple**, small black-dot eyes, hole. Orange huge-eye Q is a killed cousin.
 U is **uniform-width**, **no legs**, **no fat base**, **no square bottom bar**, **black-dot eyes**, **no white eyes**, **no pink cheeks**. That square toy U is a killed cousin. If the still or clip 1 does not match the home tile, FAIL. Do not film. Do not chain the next clip off a new face.
 
-**Friends play (future clips):** speaker uses the scene — splash, crawl, roll, fly a loop, sit in the nest — not only jump toward camera and talk. Wide shot. True-job still applies (ocean stays water, etc.).
+**Friends play (future clips):** speaker uses the scene — splash, crawl, roll, fly a loop, sit in the nest — not only jump toward camera and talk. True-job still applies (ocean stays water, etc.). Camera can be close or the high wide Big Y shot. Keep the shot the clip already has. Do not make the wide shot the only look.
 
 **Friends stills:** I2I from **product posters**. Abstract words (Under) =
-letter does the action (`"I'm under the table!"`). Unique spots **inside a
-real place** — do not nuke the background into empty lawn. **Scatter + zoom
-on full remakes** — not an even 2×2; left-pair/right-pair talking is a fail.
+the person doing it talks (`"I'm under the table!"`). The letter does not
+say that line. Unique spots **inside a real place** — do not nuke the
+background into empty lawn. **Scatter + zoom on full remakes** — not an
+even 2×2; left-pair/right-pair talking is a fail.
 If one friend says every remaining line, full remake and shrink that face.
 Don’t smash another friend’s patch; letter never merges; no chorus.
-**Speaker lock:** count 1, quoted line, other three sealed, forbidden names,
-no clones of the speaker. **Letter face lock:** clip-1 vs clip-2 of the
-letter — same hole/eyes/cheeks (little-d white-eyes + pink-cheeks = FAIL).
-If the chain drifted the face, re-I2V from the locked still.
+**Speaker lock (standing — Ash should not have to repeat it):** on a friend
+clip the letter’s mouth stays frozen shut all 6 seconds. Open the speech
+frame. If the letter’s mouth is open, reshoot before concat. Count 1,
+quoted line, other mouths sealed, forbidden names, no clones.
+**Letter face lock:** clip-1 vs clip-2 of the letter — same hole/eyes/cheeks
+(little-d white-eyes + pink-cheeks = FAIL). If the chain drifted the face,
+re-I2V from the locked still. Every Ash correction gets written here the
+same turn. Delete the old line if it disagrees.
 
 `docs/friends-dialogue.md`.
 
@@ -239,6 +244,8 @@ Little Meets that are Big-shaped (product bug — Friends cannot lock a lying Me
 confirmed. Confirm/Reject copies a paste block for chat. Source:
 `src/data/pending-remakes.ts`. Add a row when a remake is local-only.
 Remove the row after CONFIRM (commit) or REJECT (revert).
+
+**v0.418** Big Y clips 2–4 redone locally. Same wide shot. Y does not say the friends' lines. Not on GitHub until confirm.
 
 **v0.417** Big X clip 4 redone locally. The box already beside X talks. No second box. Not on GitHub until confirm.
 

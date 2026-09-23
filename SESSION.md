@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.417
+**Version:** v0.418
+
+## v0.418 — Big Y clips 2–4, letter mouth stays shut
 
 ## v0.417 — Big X clip 4, the box already beside X
 

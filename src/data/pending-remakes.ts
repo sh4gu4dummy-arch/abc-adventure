@@ -113,10 +113,10 @@ export const PENDING_REMAKES: PendingRemake[] = [
     letter: "y",
     caseKind: "upper",
     kind: "friends",
-    clips: "local remake",
+    clips: "2–4 redone, 1 kept",
     file: "friends-clips/y-play-1.mp4",
-    since: "local vs git",
-    notes: "File differs from GitHub. Watch, then confirm or reject.",
+    since: "v0.418",
+    notes: "Same wide shot. Yo-yo, Yellow, and Yak each say their own line. Y's mouth stays shut on those clips. Not confirmed.",
   },
   {
     id: "big-z-friends",
