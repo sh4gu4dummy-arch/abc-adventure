@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.407
+**Version:** v0.408
+
+## v0.408 — Meet/Friends load the file on tap, not on open or arrow
 
 ## v0.407 — story videos load on play, next scene only while playing
 

@@ -93,6 +93,7 @@ export function MeetBuddyModal({
   const [idx, setIdx] = useState(() => letterIndex(entry.letter));
   const [clipIdx, setClipIdx] = useState(0);
   const [paused, setPaused] = useState(true);
+  const [started, setStarted] = useState(false);
   const [failed, setFailed] = useState(false);
   const [progress, setProgress] = useState(0);
   const [seekReady, setSeekReady] = useState(false);
@@ -102,6 +103,7 @@ export function MeetBuddyModal({
     setClipIdx(0);
     setProgress(0);
     setSeekReady(false);
+    setStarted(false);
   }, [entry.letter, kind]);
 
   const current = LETTERS[idx]!;
@@ -133,6 +135,7 @@ export function MeetBuddyModal({
     primeAudioFromGesture();
     setFailed(false);
     setPaused(true);
+    setStarted(false);
     setClipIdx(0);
     setProgress(0);
     setSeekReady(false);
@@ -163,6 +166,7 @@ export function MeetBuddyModal({
   });
 
   useEffect(() => {
+    if (!started) return;
     const v = videoRef.current;
     if (!v || !src) return;
     stopSpeech();
@@ -173,7 +177,7 @@ export function MeetBuddyModal({
     setSeekReady(false);
     const tryPlay = () => {
       void v.play().catch(() => {
-        /* autoplay may wait for tap — keep the player visible */
+        /* tap already happened — keep the poster if play is blocked */
       });
     };
     v.addEventListener("canplay", tryPlay, { once: true });
@@ -192,7 +196,7 @@ export function MeetBuddyModal({
         /* ignore */
       }
     };
-  }, [src, title, selfVoice, kind, playUnmuted]);
+  }, [started, src, title, selfVoice, kind, playUnmuted]);
 
   function fractionFromEvent(el: HTMLElement, clientX: number) {
     const rect = el.getBoundingClientRect();
@@ -247,17 +251,16 @@ export function MeetBuddyModal({
             alt=""
             className={cn(
               "absolute inset-0 h-full w-full object-cover",
-              !failed && src && "opacity-0",
+              !failed && started && "opacity-0",
             )}
           />
-          {src && !failed && (
+          {started && src && !failed && (
             <video
               key={src}
               ref={videoRef}
               playsInline
               muted={!playUnmuted}
-              autoPlay
-              preload="auto"
+              preload="none"
               poster={poster}
               className="absolute inset-0 h-full w-full object-cover"
               onError={() => setFailed(true)}
@@ -287,7 +290,23 @@ export function MeetBuddyModal({
               }}
             />
           )}
-          {paused && !failed && src && (
+          {!started && src && (
+            <button
+              type="button"
+              className="absolute inset-0 z-[2] grid place-items-center"
+              onClick={() => {
+                primeAudioFromGesture();
+                setStarted(true);
+                setPaused(false);
+              }}
+              aria-label="Play"
+            >
+              <span className="grid size-16 place-items-center rounded-full bg-white/90 text-ink shadow-lg">
+                <Play className="size-7 fill-current" />
+              </span>
+            </button>
+          )}
+          {started && paused && !failed && src && (
             <button
               type="button"
               className="absolute inset-x-0 top-0 z-[2] grid place-items-center"

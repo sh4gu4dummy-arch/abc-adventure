@@ -239,6 +239,8 @@ confirmed. Confirm/Reject copies a paste block for chat. Source:
 `src/data/pending-remakes.ts`. Add a row when a remake is local-only.
 Remove the row after CONFIRM (commit) or REJECT (revert).
 
+**v0.408** Meet and Friends keep the still until you tap play. Arrows do not download the next letter.
+
 **v0.407** Story videos wait for play. Next scene downloads only while the current one is playing.
 
 **v0.406** Dev tab: pending remake queue + copy Confirm/Reject for chat.
