@@ -47,11 +47,10 @@ export const PENDING_REMAKES: PendingRemake[] = [
     letter: "d",
     caseKind: "lower",
     kind: "friends",
-    clips: "all 4",
+    clips: "1 and 3 redone, 2 kept, 4 still Doc",
     file: "friends-clips/d-little-play-1.mp4",
-    since: "v0.405",
-    notes:
-      "Full remake from 01 face (round hole, black-dot eyes). Each beat re-anchored so the face does not drift.",
+    since: "v0.413",
+    notes: "Clip 2 kept (I'm Donut). Clips 1 and 3 redone. Clip 4 still says I'm Doc, not I'm Duck. Not confirmed.",
   },
   {
     id: "big-t-friends",
