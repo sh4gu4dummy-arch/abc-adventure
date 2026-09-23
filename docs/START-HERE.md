@@ -243,6 +243,8 @@ confirmed. Confirm/Reject copies a paste block for chat. Source:
 `src/data/pending-remakes.ts`. Add a row when a remake is local-only.
 Remove the row after CONFIRM (commit) or REJECT (revert).
 
+**v0.422** Note only. Big U still is fine. Dot eyes, thin base. Arms are not a fail.
+
 **v0.421** Big T clip 2 redone locally. Tree only. Clip 3 subtitles left. Not on GitHub until confirm.
 
 **v0.420** Little b clip 3 redone locally. Boat says "I'm a boat." Others stay shut. Not on GitHub until confirm.

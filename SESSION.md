@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.421
+**Version:** v0.422
+
+## v0.422 — Big U still is fine. Arms are not a face fail.
 
 ## v0.421 — Big T clip 2, tree only. No new subtitles.
 

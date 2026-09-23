@@ -66,6 +66,10 @@ Before any Friends still:
 2. Put the home tile beside the still. Stroke, eyes, and base must match.
 3. White eyes, pink cheeks, or a fatter base = a different character. Delete
    the still. Do not film it.
+4. Arms on an otherwise matching letter are not a face fail. Big U’s still
+   kept plain dot eyes and the thin base. It grew arms. That is fine. Do not
+   call that still a face swap, and do not claim white eyes if the eyes are
+   still dots.
 
 Before concat: put clip-1 t0.3 next to clip-2 t3 and next to the home tile.
 Same hole, same eyes, same stroke. If they disagree, FAIL even if STT is
