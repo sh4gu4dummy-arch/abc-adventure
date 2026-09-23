@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.411
+**Version:** v0.412
+
+## v0.412 — little c clip 2 reshot, local only until confirm
 
 ## v0.411 — little a Friends confirmed; little c clip 2 still multi-voice
 

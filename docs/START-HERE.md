@@ -239,6 +239,8 @@ confirmed. Confirm/Reject copies a paste block for chat. Source:
 `src/data/pending-remakes.ts`. Add a row when a remake is local-only.
 Remove the row after CONFIRM (commit) or REJECT (revert).
 
+**v0.412** Little c clip 2 reshot locally (cloud only says "I'm Cloud"). Not on GitHub until Ash confirms. Clips 1, 3, 4 kept.
+
 **v0.411** Confirmed little a Friends (clip 4). Little c is not confirmed — clip 2 still has more than one voice.
 
 **v0.410** Dev Show decided is its own box at the top. Confirm no longer hides the card in the waiting list with no place to see it.

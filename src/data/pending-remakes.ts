@@ -38,8 +38,8 @@ export const PENDING_REMAKES: PendingRemake[] = [
     kind: "friends",
     clips: "2 only (1, 3, 4 kept)",
     file: "friends-clips/c-little-play-1.mp4",
-    since: "v0.411",
-    notes: "Ash: clip 2 still multiple voices. Clips 1, 3, 4 kept. Not confirmed.",
+    since: "v0.412",
+    notes: "Clip 2 reshot. Only the cloud says I'm Cloud. Cookie smile opens a little after the line. 1, 3, 4 kept. Not confirmed.",
   },
   {
     id: "little-d-friends",
