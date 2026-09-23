@@ -57,10 +57,9 @@ async function copyText(text: string): Promise<boolean> {
 }
 
 export function DevRemakesPanel({ focusLetter }: { focusLetter?: string }) {
-  const { votes, setVote, clearVote } = useDevPanel();
+  const { votes, setVote, clearVote, showDecided, toggleShowDecided } = useDevPanel();
   const [notes, setNotes] = useState<Record<string, string>>({});
   const [copied, setCopied] = useState<string | null>(null);
-  const [showDecided, setShowDecided] = useState(false);
   const [paste, setPaste] = useState("");
   const [playingId, setPlayingId] = useState<string | null>(null);
 
@@ -80,8 +79,6 @@ export function DevRemakesPanel({ focusLetter }: { focusLetter?: string }) {
     };
     return { openItems: rank(open), decidedItems: rank(decided) };
   }, [focusLetter, votes]);
-
-  const visible = showDecided ? [...openItems, ...decidedItems] : openItems;
 
   async function runCopy(
     item: PendingRemake,
@@ -106,45 +103,7 @@ export function DevRemakesPanel({ focusLetter }: { focusLetter?: string }) {
     setCopied(ok ? "all" : "fail-all");
   }
 
-  return (
-    <section
-      className="mb-6 rounded-[var(--radius-lg)] border-2 border-dashed border-ink/25 bg-surface p-3 sm:p-4"
-      data-case-lock
-      aria-label="Dev remake queue"
-    >
-      <div className="mb-3 flex flex-wrap items-end justify-between gap-2">
-        <div>
-          <h2 className="font-display text-lg font-bold text-ink">Dev</h2>
-          <p className="text-xs font-semibold text-muted">
-            {openItems.length} waiting · paste Confirm/Reject in chat
-          </p>
-        </div>
-        <div className="flex flex-wrap gap-1.5">
-          <button
-            type="button"
-            onClick={() => void copyAllOpen()}
-            className="pressable inline-flex min-h-9 items-center gap-1 rounded-[var(--radius-pill)] border-2 border-border bg-surface px-3 text-xs font-bold text-ink"
-          >
-            <Copy className="size-3.5" /> Copy all open
-          </button>
-          <button
-            type="button"
-            onClick={() => setShowDecided((v) => !v)}
-            className="pressable inline-flex min-h-9 items-center rounded-[var(--radius-pill)] border-2 border-border bg-surface px-3 text-xs font-bold text-ink-soft"
-          >
-            {showDecided ? "Hide decided" : `Show decided (${decidedItems.length})`}
-          </button>
-        </div>
-      </div>
-
-      {visible.length === 0 && (
-        <p className="text-sm font-semibold text-ink-soft">
-          No pending remakes. Builder adds them here when a clip is local-only.
-        </p>
-      )}
-
-      <ul className="grid gap-3">
-        {visible.map((item) => {
+  function renderCard(item: PendingRemake) {
           const vote = votes[item.id];
           const src = `${assetUrl(item.file)}?v=${item.id}`;
           return (
@@ -253,7 +212,72 @@ export function DevRemakesPanel({ focusLetter }: { focusLetter?: string }) {
               )}
             </li>
           );
-        })}
+  }
+
+  return (
+    <section
+      className="mb-6 rounded-[var(--radius-lg)] border-2 border-dashed border-ink/25 bg-surface p-3 sm:p-4"
+      data-case-lock
+      aria-label="Dev remake queue"
+    >
+      <div className="mb-3 flex flex-wrap items-end justify-between gap-2">
+        <div>
+          <h2 className="font-display text-lg font-bold text-ink">Dev</h2>
+          <p className="text-xs font-semibold text-muted">
+            {openItems.length} waiting · paste Confirm/Reject in chat
+          </p>
+        </div>
+        <div className="flex flex-wrap gap-1.5">
+          <button
+            type="button"
+            onClick={() => void copyAllOpen()}
+            className="pressable inline-flex min-h-9 items-center gap-1 rounded-[var(--radius-pill)] border-2 border-border bg-surface px-3 text-xs font-bold text-ink"
+          >
+            <Copy className="size-3.5" /> Copy all open
+          </button>
+          <button
+            type="button"
+            onClick={toggleShowDecided}
+            aria-pressed={showDecided}
+            className={cn(
+              "pressable inline-flex min-h-9 items-center rounded-[var(--radius-pill)] border-2 px-3 text-xs font-bold",
+              showDecided
+                ? "border-ink bg-ink text-white"
+                : "border-border bg-surface text-ink",
+            )}
+          >
+            {showDecided ? "Hide decided" : `Show decided (${decidedItems.length})`}
+          </button>
+        </div>
+      </div>
+
+      {showDecided && (
+        <div className="mb-3 rounded-[var(--radius-md)] border-2 border-ink bg-surface-soft p-2">
+          <p className="mb-2 text-xs font-bold text-ink">
+            Decided · {decidedItems.length}
+          </p>
+          {decidedItems.length === 0 ? (
+            <p className="text-sm font-semibold text-ink-soft">
+              None yet. Confirm or Reject a card and it shows up here.
+            </p>
+          ) : (
+            <ul className="grid gap-3">
+              {decidedItems.map((item) => renderCard(item))}
+            </ul>
+          )}
+        </div>
+      )}
+
+      {openItems.length === 0 && (
+        <p className="mb-3 text-sm font-semibold text-ink-soft">
+          {decidedItems.length > 0
+            ? "Nothing waiting. Open Show decided to see Confirm / Reject."
+            : "No pending remakes. Builder adds them here when a clip is local-only."}
+        </p>
+      )}
+
+      <ul className="grid gap-3">
+        {openItems.map((item) => renderCard(item))}
       </ul>
 
       <label className="mt-3 block text-[11px] font-bold uppercase tracking-wide text-muted">

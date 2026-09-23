@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.409
+**Version:** v0.410
+
+## v0.410 — Dev Show decided is a real section, not a silent filter
 
 ## v0.409 — Dev remake queue loads one video on Play
 
