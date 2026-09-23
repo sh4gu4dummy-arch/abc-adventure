@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.410
+**Version:** v0.411
+
+## v0.411 — little a Friends confirmed; little c clip 2 still multi-voice
 
 ## v0.410 — Dev Show decided is a real section, not a silent filter
 

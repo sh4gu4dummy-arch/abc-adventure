@@ -20,17 +20,6 @@ export type PendingRemake = {
 
 export const PENDING_REMAKES: PendingRemake[] = [
   {
-    id: "little-a-friends",
-    title: "little a meets friends",
-    letter: "a",
-    caseKind: "lower",
-    kind: "friends",
-    clips: "4 only (1–3 kept)",
-    file: "friends-clips/a-little-play-2.mp4",
-    since: "v0.400",
-    notes: "Clip 4 remake. 1–3 were OK.",
-  },
-  {
     id: "little-b-friends",
     title: "little b meets friends",
     letter: "b",
@@ -49,8 +38,8 @@ export const PENDING_REMAKES: PendingRemake[] = [
     kind: "friends",
     clips: "2 only (1, 3, 4 kept)",
     file: "friends-clips/c-little-play-1.mp4",
-    since: "v0.404",
-    notes: "Clip 2 was saying I'm Cookie. Now I'm Cloud. Cloud in the sky.",
+    since: "v0.411",
+    notes: "Ash: clip 2 still multiple voices. Clips 1, 3, 4 kept. Not confirmed.",
   },
   {
     id: "little-d-friends",

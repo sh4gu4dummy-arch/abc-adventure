@@ -239,6 +239,8 @@ confirmed. Confirm/Reject copies a paste block for chat. Source:
 `src/data/pending-remakes.ts`. Add a row when a remake is local-only.
 Remove the row after CONFIRM (commit) or REJECT (revert).
 
+**v0.411** Confirmed little a Friends (clip 4). Little c is not confirmed — clip 2 still has more than one voice.
+
 **v0.410** Dev Show decided is its own box at the top. Confirm no longer hides the card in the waiting list with no place to see it.
 
 **v0.409** Dev tab loads a remake only when you press Play on that card.
