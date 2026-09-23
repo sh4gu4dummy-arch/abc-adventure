@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.416
+**Version:** v0.417
+
+## v0.417 — Big X clip 4, the box already beside X
 
 ## v0.416 — Big W clips 3–4 redone, pond must still be there
 

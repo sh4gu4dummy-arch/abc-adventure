@@ -102,10 +102,10 @@ export const PENDING_REMAKES: PendingRemake[] = [
     letter: "x",
     caseKind: "upper",
     kind: "friends",
-    clips: "local remake",
+    clips: "4 only, 1–3 kept",
     file: "friends-clips/x-play-1.mp4",
-    since: "local vs git",
-    notes: "File differs from GitHub. Watch, then confirm or reject.",
+    since: "v0.417",
+    notes: "Clip 4 redone. The box already on the right next to X says I'm Box. No second box. Not confirmed.",
   },
   {
     id: "big-y-friends",

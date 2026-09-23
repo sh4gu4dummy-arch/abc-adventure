@@ -167,6 +167,12 @@ place.
   failed. Only the named speaker talks; others sealed.
 - **No extra clones.** A second xylophone or second box mid-clip is a
   fail. Count stays 1 the whole 6s.
+- **Clone gate (Ash v0.417).** Big X clip 4 grew a new box in the center
+  and let that new box talk. The box already on the right, next to X, was
+  the friend. Before keeping the clip, count that object on the **start
+  frame** and again on the **speech frame**. If a second one appeared, the
+  take is a fail. The speaker is the object already in the start frame,
+  named by its spot. Do not chain the next clip off a clone.
 - **Clip isolation:** if Ash says 1–2 are OK, remake **only** 3–4 from
   clip-2’s last frame. Do not reshoot the good beats.
 
