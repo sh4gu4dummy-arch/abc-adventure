@@ -239,6 +239,8 @@ confirmed. Confirm/Reject copies a paste block for chat. Source:
 `src/data/pending-remakes.ts`. Add a row when a remake is local-only.
 Remove the row after CONFIRM (commit) or REJECT (revert).
 
+**v0.407** Story videos wait for play. Next scene downloads only while the current one is playing.
+
 **v0.406** Dev tab: pending remake queue + copy Confirm/Reject for chat.
 
 **v0.405** Letter face lock SOP. Little d Friends remake in preview.

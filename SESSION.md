@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.406
+**Version:** v0.407
+
+## v0.407 — story videos load on play, next scene only while playing
 
 ## v0.406 — Dev tab pending remake queue
 

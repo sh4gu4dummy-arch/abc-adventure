@@ -41,6 +41,13 @@ const StoryReel = forwardRef<
 
   useEffect(() => {
     idxRef.current = beatIdx;
+    if (runRef.current) return;
+    const v = ref.current;
+    if (!v) return;
+    v.pause();
+    v.removeAttribute("src");
+    v.load();
+    setLive(false);
   }, [beatIdx]);
 
   useEffect(() => {
@@ -157,12 +164,11 @@ const StoryReel = forwardRef<
       />
       <video
         ref={ref}
-        src={srcAt(beatIdx)}
         poster={posterSrc}
         className="absolute inset-0 z-[1] h-full w-full object-cover"
         playsInline
         loop={false}
-        preload="auto"
+        preload="none"
         onPlaying={() => {
           setLive(true);
           setEnded(false);
@@ -170,7 +176,7 @@ const StoryReel = forwardRef<
         onEnded={onClipEnded}
         onError={() => setLive(false)}
       />
-      {nextClip && (
+      {live && !ended && nextClip && (
         <video
           className="pointer-events-none invisible absolute h-0 w-0"
           src={srcAt(beatIdx + 1)}
