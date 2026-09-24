@@ -243,6 +243,8 @@ confirmed. Confirm/Reject copies a paste block for chat. Source:
 `src/data/pending-remakes.ts`. Add a row when a remake is local-only.
 Remove the row after CONFIRM (commit) or REJECT (revert).
 
+**v0.451** Big Z all 4 redone. Gate has no face. Zebra is bare. Zipper is a zipper. Full-redo checklist is in the prompt file.
+
 **v0.450** Big Y clip 4 redone. Clip 3 kept. Only the yak talks. Y stays shut.
 
 **v0.449** Big W all 4 redone wider. Same blue W. Whale, water, window. Clips are in docs/library/pending.

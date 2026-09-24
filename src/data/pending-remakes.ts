@@ -113,9 +113,9 @@ export const PENDING_REMAKES: PendingRemake[] = [
     letter: "z",
     caseKind: "upper",
     kind: "friends",
-    clips: "3 and 4 redone, 1 and 2 kept",
+    clips: "all 4 redone",
     file: "friends-clips/z-play-1.mp4",
-    since: "v0.443",
-    notes: "Clip 4 redone. The sweater is gone. The zebra stays shut. The zipper says I'm Zipper. Clip 3 still has the sweater, so that cut jumps. Not confirmed.",
+    since: "v0.451",
+    notes: "All 4 redone. 1 Big Z. 2 bare zebra. 3 Z says This is the Zoo, gate has no face. 4 zipper, not a bag. Not confirmed.",
   },
 ];

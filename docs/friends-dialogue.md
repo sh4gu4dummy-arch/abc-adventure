@@ -378,6 +378,28 @@ in their patches and mouths sealed.
 If two names leak (Tiger + Tree both “I'm Tree”), the still was too
 crowded — remake the still, don't just yell at I2V.
 
+## Full redo gate (Ash v0.451)
+
+Named miss: Big Z. The lines were right and the pictures were still
+wrong. A transcript is not a pass.
+
+Before the first frame of a full redo, the still has to clear every
+line. If one fails, do not film.
+
+1. Home tile beside the still. Same color. Eyes on the same bar.
+   Big Z: two dots on the top bar only. A face on the diagonal is a
+   different letter.
+2. Each friend matches its poster, except a place. Zoo is a gate with
+   no eyes and no mouth, even if the poster drew a face. A gate with a
+   mouth is a fail.
+3. Zipper is metal teeth on cloth. A bag is a fail. Zebra is bare
+   stripes. A sweater is a fail.
+4. Gaps. Nobody is cut off. Nobody touches.
+5. No words on the picture.
+6. After each clip, crop every face at the speech time. The speaker's
+   mouth is the only one open. Then check the last frame before the
+   next still. Do not chain a drifted face.
+
 ## Play in the scene (Ash v0.384)
 
 A tiny hop-in-place is **not** play. Standing still and saying the line

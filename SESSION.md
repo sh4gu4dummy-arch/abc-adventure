@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.450
+**Version:** v0.451
+
+## v0.451 — Big Z all four redone. Full-redo gate added.
 
 ## v0.450 — Big Y clip 4 redone. Yak talks. Y stays shut.
 
