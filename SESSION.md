@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.464
+**Version:** v0.465
+
+## v0.465 — Friends URL had the version mark twice. The new file never loaded.
 
 ## v0.464 — Big Y 3 and 4 redone. One letter.
 
