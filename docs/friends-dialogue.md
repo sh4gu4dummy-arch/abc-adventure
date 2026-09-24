@@ -8,7 +8,19 @@ friends are is `src/data/alphabet.ts`, not a plan file.
 Ash (v0.381): TTS-over-muted **does not** match mouths. Remakes are **Ash’s
 call** — do not invent a “never remake names” rule.
 
-## Lip-sync (honest)
+## Before you send it
+
+Look at the clip. If it is obviously wrong, remake it. Do not send it.
+
+1. **Count the letters.** One letter. A second letter is a fail, even if it
+   is smaller. Named miss: Big W. The saved file had two Ws, and a second
+   pair of eyes floating over the big one. That clip does not ship.
+2. **Count the faces.** The letter has the face already on it. Eyes in the
+   air above it are a second face. Remake.
+3. **The file you checked is the file that gets saved.** A clean local copy
+   does not count if the saved game file is still the trash.
+
+
 
 Imagine makes **lips and audio in the same pass**. If we mute that audio and
 lay TTS on top, the mouth is still saying whatever Imagine invented (Rainbow)

@@ -93,8 +93,8 @@ export const PENDING_REMAKES: PendingRemake[] = [
     kind: "friends",
     clips: "all 4 redone",
     file: "friends-clips/w-play-1.mp4",
-    since: "v0.449",
-    notes: "All 4 redone wider. 1 Big W. 2 whale. 3 water drop. 4 window, small mouth, no teeth. Same blue W. Not confirmed.",
+    since: "v0.469",
+    notes: "The two-W file is gone from the saved game. One W. No eyes in the air. Not confirmed.",
   },
   {
     id: "big-y-friends",

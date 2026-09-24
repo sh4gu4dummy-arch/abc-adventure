@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.468
+**Version:** v0.469
+
+## v0.469 — Saved Big W is one letter. Two letters do not ship.
 
 ## v0.468 — Big V clip 3, volcano only.
 

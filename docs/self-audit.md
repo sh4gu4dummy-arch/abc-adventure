@@ -155,7 +155,11 @@ home tile.
 ## Procedure (every take)
 
 1. `python3 scripts/qa-word-frames.py VIDEO.mp4` → `docs/audit/<id>/`
-2. Open **all five**. Count heroes and props **in each**.
+2. Open **all five**. Count the letters in each frame. One letter. Two
+   letters is a fail. Remake it before you send it. Named miss: Big W,
+   two Ws plus a second pair of eyes in the air. The file you checked
+   must be the file that gets saved. A clean local copy does not count
+   if the saved game file is still the trash.
 3. Probe duration, 480×720, `volumedetect`.
 4. **Friends audio = TTS, Imagine muted.** 
    `python3 scripts/friends-lock-lines.py FILE --letter X --friends A B C`
