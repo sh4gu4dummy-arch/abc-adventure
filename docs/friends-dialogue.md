@@ -110,21 +110,24 @@ Every correction Ash gives gets written into this file the same turn.
 If the new line fights an older line, rewrite or delete the old line.
 Do not leave two rules that disagree.
 
+## Action + frame lock (Ash v0.426)
+
+A clip that only says its line is a fail. Six seconds of a closed scene is
+boring. Named miss: Big T clip 2, rejected. The speaker does **one real
+thing with the place** while they talk. Leaves fall. The train rolls a
+short way on the tracks. The tiger paws the yellow grass. Not a hop at
+the camera. Not a new place. Not a new friend.
+
+1. The previous clip’s **last frame** is the lock.
+2. **I2I that frame.** Same camera, same spots, same faces. Pose the
+   action. Do not move a friend. Boat in water stays in water. Named
+   miss: little b, an I2I beached the boat on the grass. That is still
+   a fail.
+3. **I2V from that I2I still**, not from a new drawing.
+4. Save this clip’s **last frame**. That file is the lock for the next
+   still. Do not start the next clip from a fresh picture.
+
 ## Clip-isolate (Ash v0.401)
-
-**Do not I2I a “clean still”** that moves friends. Chain **I2V from the
-previous clip’s last frame** as-is.
-
-Named miss (little b, v0.400): I2I “delete extras” **beached the boat
-onto the grass**. Clip 2 had the boat **in the pond**. That I2I is a FAIL
-even if STT says “I'm Boat.”
-
-Trap: “tiny I2I then I2V” to kill clones. Clones ≠ license to relocate.
-If extras appear, I2V again from the **same last frame** — do not invent
-a new layout still.
-
-Boat in water stays in water. Bird on a branch stays on the branch.
-Grass I2I = FAIL.
 
 ## Scatter + zoom (Ash v0.395)
 
@@ -264,7 +267,8 @@ crowded — remake the still, don't just yell at I2V.
 
 ## Play in the scene (Ash v0.384)
 
-A tiny hop-in-place is **not** play. Each 6s beat names **one real action
+A tiny hop-in-place is **not** play. Standing still and saying the line
+is **not** play. Each 6s beat names **one real action
 with the scenery or another friend**, **inside that friend’s spot**.
 
 - sit in the tree’s shade / rustle leaves

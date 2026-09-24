@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.425
+**Version:** v0.426
+
+## v0.426 — Big T clip 2 rejected. Redone with falling leaves. Action + frame lock is the rule.
 
 ## v0.425 — docs/library sorts live, pending, and old. No videos deleted.
 

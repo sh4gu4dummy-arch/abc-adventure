@@ -58,10 +58,10 @@ export const PENDING_REMAKES: PendingRemake[] = [
     letter: "t",
     caseKind: "upper",
     kind: "friends",
-    clips: "2 only, 1 and 3–4 kept",
+    clips: "2 only, rejected and redone",
     file: "friends-clips/t-play-1.mp4",
-    since: "v0.421",
-    notes: "Clip 2 redone. Only the tree says I'm a tree. Tiger, T, and train stay shut. No new subtitles. Clip 3 captions left as-is. Not confirmed.",
+    since: "v0.426",
+    notes: "Clip 2 rejected for being a still line. Redone: tree says I'm a tree while leaves fall. Tiger, T, and train stay shut. End frame saved as the next lock. Not confirmed.",
   },
   {
     id: "big-u-friends",
