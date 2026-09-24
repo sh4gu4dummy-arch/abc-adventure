@@ -97,17 +97,6 @@ export const PENDING_REMAKES: PendingRemake[] = [
     notes: "Clip 3 redone. No glass. The pond drop says I'm Water. Clip 4 redone. The window says I'm Window. Pond stays full. Not confirmed.",
   },
   {
-    id: "big-x-friends",
-    title: "Big X meets friends",
-    letter: "x",
-    caseKind: "upper",
-    kind: "friends",
-    clips: "4 only, 1–3 kept",
-    file: "friends-clips/x-play-1.mp4",
-    since: "v0.417",
-    notes: "Clip 4 redone. The box already on the right next to X says I'm Box. No second box. Not confirmed.",
-  },
-  {
     id: "big-y-friends",
     title: "Big Y meets friends",
     letter: "y",

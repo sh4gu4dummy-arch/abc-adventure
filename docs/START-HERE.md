@@ -243,6 +243,8 @@ confirmed. Confirm/Reject copies a paste block for chat. Source:
 `src/data/pending-remakes.ts`. Add a row when a remake is local-only.
 Remove the row after CONFIRM (commit) or REJECT (revert).
 
+**v0.430** Big X clip 4 confirmed. It is in the game and on GitHub.
+
 **v0.429** Big W clips 3 and 4 redone. The water stays the pond drop. No glass.
 
 **v0.428** Big V clip 2 kept. Clip 3 redone so only the volcano talks.

@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.429
+**Version:** v0.430
+
+## v0.430 — Big X clip 4 confirmed and committed.
 
 ## v0.429 — Big W clips 3 and 4 redone. Water is the pond drop, not a glass.
 
