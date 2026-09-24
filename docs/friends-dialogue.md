@@ -141,6 +141,11 @@ the camera. Not a new place. Not a new friend.
    a fail, and the later clips have to be redone from the locked frame.
    If an edit doubles the friend, throw that still out. Do not film it.
    Film from the locked frame instead.
+7. **Feet plant.** A walk is steps, not a glide. Named miss: Big Z clip 3.
+   The zebra’s sweater was already in clip 2’s last frame. The redo slid
+   that body toward the gate. That slide is a fail. Each friend lifts a
+   foot and puts it down. Clothes stay on the body. They do not crawl
+   across the ground.
 
 ## Clip-isolate (Ash v0.401)
 

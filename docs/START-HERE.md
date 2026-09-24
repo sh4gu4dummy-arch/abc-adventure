@@ -243,6 +243,8 @@ confirmed. Confirm/Reject copies a paste block for chat. Source:
 `src/data/pending-remakes.ts`. Add a row when a remake is local-only.
 Remove the row after CONFIRM (commit) or REJECT (revert).
 
+**v0.433** Big Z clip 3 redone. They step toward the gate instead of sliding. Clip 4 follows.
+
 **v0.432** Big Z clips 1 and 2 kept. Clip 3 walks to the zoo, then Z says the line. Clip 4 redone from that end.
 
 **v0.431** Big Y clips 2–4 redone. The yo-yo by the tree is the only yo-yo.

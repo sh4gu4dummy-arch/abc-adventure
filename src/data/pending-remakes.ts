@@ -115,7 +115,7 @@ export const PENDING_REMAKES: PendingRemake[] = [
     kind: "friends",
     clips: "3 and 4 redone, 1 and 2 kept",
     file: "friends-clips/z-play-1.mp4",
-    since: "v0.432",
-    notes: "Clips 1 and 2 kept. Clip 3: they walk to the gate, then Z says This is the Zoo. The gate does not talk. Clip 4: the zipper says I'm Zipper. Not confirmed.",
+    since: "v0.433",
+    notes: "Clips 1 and 2 kept. Clip 3 redone again: real steps toward the gate, then Z says This is the Zoo. The sweater was already on the zebra in clip 2. Clip 4 follows that end. The zipper says I'm Zipper. Not confirmed.",
   },
 ];

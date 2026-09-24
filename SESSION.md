@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.432
+**Version:** v0.433
+
+## v0.433 — Big Z clip 3 stepped instead of slid. The sweater was already in clip 2.
 
 ## v0.432 — Big Z clips 1–2 kept. Clip 3 walks to the zoo. Clip 4 follows that end.
 
