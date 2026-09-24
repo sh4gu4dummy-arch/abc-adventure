@@ -58,10 +58,10 @@ export const PENDING_REMAKES: PendingRemake[] = [
     letter: "t",
     caseKind: "upper",
     kind: "friends",
-    clips: "1 redone again, 2 3 4 still orange",
+    clips: "1 ok. 2 3 4 still orange",
     file: "friends-clips/t-play-1.mp4",
-    since: "v0.466",
-    notes: "Clip 1 redone. Olive matches the home tile and does not go lime. Only Big T says I'm Big T. Clips 2-4 are still orange, so the cut jumps. Not confirmed.",
+    since: "v0.470",
+    notes: "Clip 1 confirmed. Olive Big T says I'm Big T. Clips 2-4 are still orange, so the cut jumps. Those are not confirmed.",
   },
   {
     id: "big-u-friends",

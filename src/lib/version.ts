@@ -12,7 +12,7 @@
  * Grok Publish: still remind at v0.070, v0.080… so the public link can match.
  */
 
-export const APP_VERSION = "0.469";
+export const APP_VERSION = "0.470";
 export const APP_VERSION_LABEL = `v${APP_VERSION}`;
 export const APP_SLUG = "abc-adventure";
 export const APP_DISPLAY_NAME = "ABC Adventure";

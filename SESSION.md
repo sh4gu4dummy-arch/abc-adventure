@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.469
+**Version:** v0.470
+
+## v0.470 — Big T clip 1 confirmed.
 
 ## v0.469 — Saved Big W is one letter. Two letters do not ship.
 
