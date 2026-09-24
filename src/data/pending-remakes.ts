@@ -104,8 +104,8 @@ export const PENDING_REMAKES: PendingRemake[] = [
     kind: "friends",
     clips: "2–4 redone, 1 kept",
     file: "friends-clips/y-play-1.mp4",
-    since: "v0.431",
-    notes: "Clip 2 redone. The yo-yo by the tree is the only yo-yo and it says I'm Yo-yo. No second yo-yo. Clip 3: yellow crayon says I'm Yellow. Clip 4: yak says I'm Yak. Wide shot kept. Not confirmed.",
+    since: "v0.439",
+    notes: "Clip 2 redone again. One yo-yo, the one by the tree. It says I'm Yo-yo. Y stays shut. Clips 3 and 4 are the older takes, so the cut can jump. Not confirmed.",
   },
   {
     id: "big-z-friends",

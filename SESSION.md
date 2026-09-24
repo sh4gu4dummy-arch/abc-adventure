@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.438
+**Version:** v0.439
+
+## v0.439 — Big Y clip 2 redone. One yo-yo by the tree. Later clips left in place.
 
 ## v0.438 — Big W clip 4 redone. Mouth stays small. No teeth.
 
