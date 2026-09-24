@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.474
+**Version:** v0.475
+
+## v0.475 — Big Y clip 3 confirmed.
 
 ## v0.474 — Big T clip 2 redone. 3 and 4 locked to it.
 

@@ -102,9 +102,9 @@ export const PENDING_REMAKES: PendingRemake[] = [
     letter: "y",
     caseKind: "upper",
     kind: "friends",
-    clips: "3 and 4 redone, 2 ok",
+    clips: "3 ok. 4 still waiting",
     file: "friends-clips/y-play-1.mp4",
-    since: "v0.464",
-    notes: "Clip 2 kept. Clip 3 redone, only the crayon says I'm Yellow. Clip 4 redone, one Y only, the yak says I'm Yak. No second letter. Not confirmed.",
+    since: "v0.475",
+    notes: "Clip 3 confirmed. Only the crayon says I'm Yellow. Clip 4 is still waiting. One Y. The yak says I'm Yak.",
   },
 ];
