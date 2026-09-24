@@ -134,6 +134,20 @@ The prompt names every non-speaker, not just the letter:
 Before concat, crop every face at the speech time. Two open mouths is a
 fail even when the words match.
 
+## Color does not drift
+
+Named miss: little d. Clip 1 is the light blue of `public/letters/d.webp`.
+Clip 2 is brighter. Clips 3 and 4 are dark blue. That is a different
+letter. Ash asked for a full redo.
+
+On every still and every clip:
+
+1. Put the home tile beside the still. Same blue. A darker letter is a fail.
+2. The prompt says "Keep little d the same light blue. Do not darken it.
+   Do not change the duck, the donut, or the drum."
+3. If a clip's last frame is darker, do not chain it. Correct the color
+   from the home tile before the next still, or reshoot.
+
 ## Camera variety (Ash v0.418)
 
 Big Y clip 1 is a liked shot: high and wide, friends small, lots of empty
