@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.470
+**Version:** v0.471
+
+## v0.471 — Big T 2–4 match the olive clip 1.
 
 ## v0.470 — Big T clip 1 confirmed.
 

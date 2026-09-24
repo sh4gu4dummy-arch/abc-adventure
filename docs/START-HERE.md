@@ -240,6 +240,8 @@ confirmed. Confirm/Reject copies a paste block for chat. Source:
 `src/data/pending-remakes.ts`. Add a row when a remake is local-only.
 Remove the row after CONFIRM (commit) or REJECT (revert).
 
+**v0.471** Big T clips 2–4 redone. Same olive as the confirmed clip 1. Not orange.
+
 **v0.470** Big T clip 1 confirmed and saved. Clips 2–4 are still the orange T.
 
 **v0.469** The saved Big W had two Ws. Replaced it. One W. Count the letters before a clip ships.
