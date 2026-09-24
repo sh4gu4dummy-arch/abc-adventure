@@ -155,6 +155,21 @@ On every still and every clip:
 3. If a clip's last frame drifted, do not chain it. Correct the color
    from the home tile before the next still, or reshoot.
 
+## Later stills against the original
+
+Named miss: Big U. Clip 1 was the right U, both eyes on the left upright.
+The next still grew a girl, a picnic, and a floating head. The eyes were
+no longer checked against `public/letters/u.webp`.
+
+Before filming any clip after the first:
+
+1. Open the home tile and the previous clip's last frame beside the new still.
+2. Same eyes, same stem, same color. Big U's two dots stay on the left
+   upright. A dot on the right upright is a different letter. Throw it out.
+3. No new person. No floating head. No picnic that was not in the previous
+   frame. A new body is a fail even if the line is right.
+4. Do not film a still that fails this. Do not splice it.
+
 ## Camera variety (Ash v0.418)
 
 Big Y clip 1 is a liked shot: high and wide, friends small, lots of empty

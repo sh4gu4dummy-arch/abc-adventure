@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.446
+**Version:** v0.447
+
+## v0.447 — Big U picnic clip redone. Still must match the home tile.
 
 ## v0.446 — Big T all four redone. Same red-orange.
 
