@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.435
+**Version:** v0.436
+
+## v0.436 — Big V clip 3 redone. Only the volcano talks.
 
 ## v0.435 — Big U clip 1 redone. Two eyes, not four.
 
