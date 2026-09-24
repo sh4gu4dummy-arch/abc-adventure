@@ -243,6 +243,8 @@ confirmed. Confirm/Reject copies a paste block for chat. Source:
 `src/data/pending-remakes.ts`. Add a row when a remake is local-only.
 Remove the row after CONFIRM (commit) or REJECT (revert).
 
+**v0.442** Big Z clip 3 redone. They walk toward the gate, then Z says the line. Clip 4 can jump.
+
 **v0.441** Big Y clip 4 redone. The yak says the line. Y stays shut. The prompt guide now says the letter is a silent prop, and a clean transcript is not a pass.
 
 **v0.440** Big Y clip 3 redone from the new clip 2 ending. Only the crayon talks. Clip 4 can still jump.

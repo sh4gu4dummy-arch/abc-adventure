@@ -154,11 +154,14 @@ the camera. Not a new place. Not a new friend.
    a fail, and the later clips have to be redone from the locked frame.
    If an edit doubles the friend, throw that still out. Do not film it.
    Film from the locked frame instead.
-7. **Feet plant.** A walk is steps, not a glide. Named miss: Big Z clip 3.
-   The zebra’s sweater was already in clip 2’s last frame. The redo slid
-   that body toward the gate. That slide is a fail. Each friend lifts a
-   foot and puts it down. Clothes stay on the body. They do not crawl
-   across the ground.
+7. **Feet plant.** A walk is steps, not a glide. If the start frame and
+   the frame before the line show the same feet in the same place, they
+   did not walk. That is a fail. Named miss: Big Z clip 3. The prompt said
+   walk to the gate. Everyone stood still, then Z talked. The camera stays
+   still so the steps are visible. Each friend lifts a foot and puts it
+   down before the line. Named miss: the zebra’s sweater was already in
+   clip 2’s last frame. A redo slid that body toward the gate. That slide
+   is a fail. Clothes stay on the body. They do not crawl across the ground.
 8. **A mouth does not grow.** The friend keeps the small mouth already
    on its face. It may open a little. It does not grow teeth, fangs, or
    a hole. Named miss: Big W clip 4. The prompt said the window talks.
