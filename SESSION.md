@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.465
+**Version:** v0.466
+
+## v0.466 — Big T clip 1 stays olive.
 
 ## v0.465 — Friends URL had the version mark twice. The new file never loaded.
 

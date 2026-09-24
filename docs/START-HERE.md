@@ -240,6 +240,8 @@ confirmed. Confirm/Reject copies a paste block for chat. Source:
 `src/data/pending-remakes.ts`. Add a row when a remake is local-only.
 Remove the row after CONFIRM (commit) or REJECT (revert).
 
+**v0.466** Big T clip 1 redone. Olive stays. Clips 2–4 are still orange.
+
 **v0.465** Friends video address was broken (`?v=` twice). The new file never loaded. Fixed. One version mark only.
 
 **v0.464** Big Y clips 3 and 4 redone. One Y. Clip 2 kept.
