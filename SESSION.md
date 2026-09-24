@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.447
+**Version:** v0.448
+
+## v0.448 — Big V clip 3 redone. No writing. Volcano talks.
 
 ## v0.447 — Big U picnic clip redone. Still must match the home tile.
 

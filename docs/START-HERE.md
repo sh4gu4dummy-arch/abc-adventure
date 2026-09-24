@@ -243,6 +243,8 @@ confirmed. Confirm/Reject copies a paste block for chat. Source:
 `src/data/pending-remakes.ts`. Add a row when a remake is local-only.
 Remove the row after CONFIRM (commit) or REJECT (revert).
 
+**v0.448** Big V clip 3 redone. The words on the grass are gone. V stays shut. Only the volcano talks.
+
 **v0.447** Big U girl-picnic clip redone. Same U as clip 1. Eyes stay on the left. No new person. Later stills now have to match the home tile before filming.
 
 **v0.446** Big T all 4 redone. The letter stays the home-tile red-orange. Clip 2 alone had not fixed the color.

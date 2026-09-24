@@ -319,9 +319,12 @@ place.
 ## No subtitles (Ash v0.421)
 
 Do not burn words onto the picture. No captions, no name labels, no
-“I'M TIGER!” across the grass. Named miss: Big T clip 3. Leave that clip.
-A new take with writing on the screen is a fail. Reshoot it. The line is
-spoken, not printed.
+“I'M TIGER!” across the grass. Named miss: Big T clip 3. Named miss:
+Big V clip 3, the words “I'M VOLCANO!” sat on the grass while V's mouth
+was open. A new take with writing on the screen is a fail. Look at the
+speech frame for letters before concat. Reshoot it. The line is spoken,
+not printed. Saying “no subtitles” in the prompt is not a pass if the
+frame still has words.
 
 ## Product friends (Ash v0.387) — stop inventing
 
