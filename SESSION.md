@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.449
+**Version:** v0.450
+
+## v0.450 — Big Y clip 4 redone. Yak talks. Y stays shut.
 
 ## v0.449 — Big W all four redone wider.
 

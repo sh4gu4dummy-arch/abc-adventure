@@ -102,10 +102,10 @@ export const PENDING_REMAKES: PendingRemake[] = [
     letter: "y",
     caseKind: "upper",
     kind: "friends",
-    clips: "2–4 redone, 1 kept",
+    clips: "4 redone, 3 ok",
     file: "friends-clips/y-play-1.mp4",
-    since: "v0.441",
-    notes: "Clip 4 redone from the new clip 3 ending. The yak says I'm Yak. Y's mouth stays painted shut. One yo-yo by the tree. Not confirmed.",
+    since: "v0.450",
+    notes: "Clip 3 kept. Clip 4 redone. The yak says I'm Yak. Y's mouth stays shut. One yo-yo by the tree. Not confirmed.",
   },
   {
     id: "big-z-friends",
