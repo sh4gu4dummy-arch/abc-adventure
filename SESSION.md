@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.437
+**Version:** v0.438
+
+## v0.438 — Big W clip 4 redone. Mouth stays small. No teeth.
 
 ## v0.437 — Big W clip 3 redone. Only the pond drop talks.
 

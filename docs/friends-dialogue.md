@@ -149,6 +149,12 @@ the camera. Not a new place. Not a new friend.
    that body toward the gate. That slide is a fail. Each friend lifts a
    foot and puts it down. Clothes stay on the body. They do not crawl
    across the ground.
+8. **A mouth does not grow.** The friend keeps the small mouth already
+   on its face. It may open a little. It does not grow teeth, fangs, or
+   a hole. Named miss: Big W clip 4. The prompt said the window talks.
+   Imagine turned that into a wide toothy monster mouth. Say the mouth
+   stays small and grows no teeth. If a frame grows teeth, throw the
+   take out.
 
 ## Clip-isolate (Ash v0.401)
 

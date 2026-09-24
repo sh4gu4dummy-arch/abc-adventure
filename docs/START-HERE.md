@@ -243,6 +243,8 @@ confirmed. Confirm/Reject copies a paste block for chat. Source:
 `src/data/pending-remakes.ts`. Add a row when a remake is local-only.
 Remove the row after CONFIRM (commit) or REJECT (revert).
 
+**v0.438** Big W clip 4 redone. The window's mouth stays small. No teeth.
+
 **v0.437** Big W clip 3 redone. Only the pond drop talks. No glass.
 
 **v0.436** Big V clip 3 redone. Only the volcano talks. V stays shut.
