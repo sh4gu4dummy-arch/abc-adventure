@@ -49,7 +49,8 @@ one beat is wrong unless Ash says so.
 3. If the letter’s mouth is open on a friend beat, or two names are in the
    clip: **reshoot that clip before concat.** Do not wait for Ash to say
    “lock the voice” again. That rule is standing.
-4. Glyph / whale / extra eyes = picture remake (same: Ash can still say go).
+4. A second face is a fail. Extra eyes, a floating head, or a new glyph
+   means reshoot that clip. Do not ship it and hope the next frame is fine.
 
 ## Letter face lock (Ash v0.405)
 
@@ -58,6 +59,12 @@ The **letter’s face** is look-lock, not just the body.
 Named miss (little d): `01-start` had round hole + black-dot eyes.
 `02-25` grew white sclera, pink cheeks, a new hole. Open mouth is OK.
 A **new face** is FAIL.
+
+Named miss (Big W): the letter already had its small face on the body,
+and a second huge pair of eyes floated in the air above it. That is two
+faces. Checking the mouth is not enough. Look at the empty space above
+the letter on the still and on 5 frames. Eyes up there are a fail. Scrap
+the clip.
 
 Named miss (Big U, v0.414): the home tile is a thin even U with black-dot
 eyes. The film started from a **different** U — thick square base, white
