@@ -60,8 +60,8 @@ export const PENDING_REMAKES: PendingRemake[] = [
     kind: "friends",
     clips: "1 ok. 2 redone, 3 and 4 locked to it",
     file: "friends-clips/t-play-1.mp4",
-    since: "v0.474",
-    notes: "Clip 1 stays. Clip 2 redone, only the tree says I'm a tree. Clips 3 and 4 redone so they still connect. 3 tiger says I'm Tiger. 4 train says I'm Train. Same olive. One T. Not confirmed.",
+    since: "v0.479",
+    notes: "Clip 1 stays. Clip 2 redone again. Only the tree says I'm a tree. Big T's mouth stays shut. Clips 3 and 4 redone so they still connect. 3 tiger says I'm Tiger. 4 train says I'm Train. Same olive. One T. Not confirmed.",
   },
   {
     id: "big-u-friends",

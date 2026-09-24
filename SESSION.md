@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.478
+**Version:** v0.479
+
+## v0.479 — Big T clip 2 redone again.
 
 ## v0.478 — Little c clip 2 redone. 3 and 4 locked to it.
 
