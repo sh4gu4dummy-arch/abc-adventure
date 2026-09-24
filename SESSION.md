@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.467
+**Version:** v0.468
+
+## v0.468 — Big V clip 3, volcano only.
 
 ## v0.467 — Saved Big U no longer has an eye on each side.
 
