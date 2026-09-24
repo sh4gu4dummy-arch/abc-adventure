@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.460
+**Version:** v0.461
+
+## v0.461 — Video URLs carry the version so an old Big U cannot stick.
 
 ## v0.460 — Big U clip 1 confirmed. Clip 2 still waiting.
 

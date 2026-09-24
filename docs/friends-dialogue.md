@@ -83,6 +83,9 @@ Before any Friends still:
 6. **U’s eyes are both on the left upright.** The home tile
    `public/letters/u.webp` has two black dots on the left stem and a blank
    right stem. A U with one eye on each side is a different character.
+   Named miss, again: the phone kept playing that split-eye U because the
+   video URL never changed, so the new file never loaded. Friends and Meet
+   URLs include the app version. Do not ship a still URL.
    Named miss: Big U v0.426, clip 1. Do not film that face. Do not use a
    bad frame as the I2I source. Start the still from the home tile.
    Four eyes is also a fail. Named miss: Big U clip 1, two pairs stacked

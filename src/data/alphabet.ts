@@ -590,12 +590,12 @@ const LITTLE_MEET = new Set("abcdefghijklmnopqrstuvwxyz".split(""));
 export function letterBuddyVideoPath(letter: string, kind: CaseKind = "upper"): string {
   const l = letter.toLowerCase();
   if (kind === "lower" && LITTLE_MEET.has(l)) {
-    return assetUrl(`videos/imagine/${l}-little.mp4`);
+    return assetUrl(`videos/imagine/${l}-little.mp4?v=${APP_VERSION}`);
   }
   if (IMAGINE_BUDDY.has(l)) {
-    return assetUrl(`videos/imagine/${l}.mp4`);
+    return assetUrl(`videos/imagine/${l}.mp4?v=${APP_VERSION}`);
   }
-  return assetUrl(`videos/buddies/${l}.mp4`);
+  return assetUrl(`videos/buddies/${l}.mp4?v=${APP_VERSION}`);
 }
 
 /** Play-with-words clips. Files live in `public/friends-clips/` (not
@@ -667,7 +667,7 @@ export function letterFriendsPlaylist(
 ): string[] {
   const table = kind === "upper" ? FRIENDS_UPPER : FRIENDS_LOWER;
   const files = table[letter.toLowerCase()] ?? [];
-  return files.map((p) => assetUrl(p));
+  return files.map((p) => assetUrl(`${p}?v=${APP_VERSION}`));
 }
 
 export function letterHasFriends(letter: string, kind: CaseKind = "upper"): boolean {
