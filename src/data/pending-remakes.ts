@@ -69,10 +69,10 @@ export const PENDING_REMAKES: PendingRemake[] = [
     letter: "u",
     caseKind: "upper",
     kind: "friends",
-    clips: "3 redone, 1 and 2 kept, 4 still the girl under the table",
+    clips: "2 redone, 1 kept",
     file: "friends-clips/u-play-1.mp4",
-    since: "v0.447",
-    notes: "The girl-and-picnic clip is redone. Same purple U, both eyes on the left upright. The unicorn says I'm Unicorn. No girl. No floating head. Clip 4 still has the girl under the table, so that cut jumps. Not confirmed.",
+    since: "v0.457",
+    notes: "Clip 1 kept. Clip 2 redone. Both eyes stay on the left upright. Only the umbrella says I'm Umbrella. Not confirmed.",
   },
   {
     id: "big-v-friends",

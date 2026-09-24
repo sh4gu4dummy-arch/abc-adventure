@@ -184,6 +184,10 @@ Before filming any clip after the first:
 3. No new person. No floating head. No picnic that was not in the previous
    frame. A new body is a fail even if the line is right.
 4. Do not film a still that fails this. Do not splice it.
+5. Check the speech frame too, not only the still. Named miss: Big U
+   clip 2. Clip 1 had both eyes on the left upright. By the next clip
+   one eye had jumped to the right upright. A face that moves during
+   the clip is a fail. Reject it. Do not carry that face forward.
 
 ## Not cramped
 

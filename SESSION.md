@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.456
+**Version:** v0.457
+
+## v0.457 — Big U clip 2. Eyes stay on the left upright.
 
 ## v0.456 — Big T clip 2 reshot. Only the tree talks.
 
