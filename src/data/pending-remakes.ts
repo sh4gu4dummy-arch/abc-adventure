@@ -104,7 +104,7 @@ export const PENDING_REMAKES: PendingRemake[] = [
     kind: "friends",
     clips: "3 ok. 4 still waiting",
     file: "friends-clips/y-play-1.mp4",
-    since: "v0.476",
-    notes: "Clip 3 stays confirmed. Clip 4 redone. Only the yak says I'm Yak. One Y. No second letter. Not confirmed.",
+    since: "v0.480",
+    notes: "Clip 3 stays confirmed. Clip 4 redone again. Only the yak says I'm Yak. One voice. One Y. No second letter. Not confirmed.",
   },
 ];
