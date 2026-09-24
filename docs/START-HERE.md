@@ -243,6 +243,8 @@ confirmed. Confirm/Reject copies a paste block for chat. Source:
 `src/data/pending-remakes.ts`. Add a row when a remake is local-only.
 Remove the row after CONFIRM (commit) or REJECT (revert).
 
+**v0.455** Big T clip 2 reshot with Ash's short prompt. Only the top-left tree talks.
+
 **v0.454** Little b clip 3 redone. Only the boat's mouth moves. The others stay speechless.
 
 **v0.453** Big Z confirmed. All 4 clips are on GitHub. Off the pending list.

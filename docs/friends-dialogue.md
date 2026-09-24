@@ -139,6 +139,17 @@ The prompt names every non-speaker, and it says the mouth action:
 Before concat, crop every face at the speech time. If any mouth except
 the boat's is open, delete the take and shoot again. Do not splice it.
 
+## Ash's short prompt (Big T clip 2, v0.455)
+
+The long silent-prop list was scrapped for this clip. The video prompt
+was:
+
+Only the top left tree talks. It says "I'm a tree!" as leaves fall from
+it. Other characters move and play but remain silent. All 4 characters
+remain visible at all times. No words on the screen.
+
+The last line is the only addition. It blocks captions.
+
 ## Color does not drift
 
 The letter's color is part of the character. A lighter or darker letter is

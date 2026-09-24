@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.454
+**Version:** v0.455
+
+## v0.455 — Big T clip 2 reshot with Ash's short prompt.
 
 ## v0.454 — Little b clip 3. Only the boat's mouth moves.
 
