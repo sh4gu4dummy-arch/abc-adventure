@@ -58,10 +58,10 @@ export const PENDING_REMAKES: PendingRemake[] = [
     letter: "t",
     caseKind: "upper",
     kind: "friends",
-    clips: "2 only, rejected and redone",
+    clips: "all 4 redone",
     file: "friends-clips/t-play-1.mp4",
-    since: "v0.434",
-    notes: "Clip 2 redone again. T's mouth stays shut. The tiger's mouth stays shut. Only the tree says I'm a tree. Leaves fall. Not confirmed.",
+    since: "v0.446",
+    notes: "All 4 redone so Big T stays the home-tile red-orange. 1 Big T. 2 the tree. 3 the tiger. 4 the train. Not confirmed.",
   },
   {
     id: "big-u-friends",

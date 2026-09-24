@@ -243,6 +243,8 @@ confirmed. Confirm/Reject copies a paste block for chat. Source:
 `src/data/pending-remakes.ts`. Add a row when a remake is local-only.
 Remove the row after CONFIRM (commit) or REJECT (revert).
 
+**v0.446** Big T all 4 redone. The letter stays the home-tile red-orange. Clip 2 alone had not fixed the color.
+
 **v0.445** Little c clip 2 redone. Only the cloud talks. Little d all 4 redone so the letter stays light blue. The duck says quack, I'm a duck.
 
 **v0.444** Little b clip 3 redone. Only the boat talks. The prompt now names every silent friend, not just the letter.

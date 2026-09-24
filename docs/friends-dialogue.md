@@ -136,16 +136,23 @@ fail even when the words match.
 
 ## Color does not drift
 
-Named miss: little d. Clip 1 is the light blue of `public/letters/d.webp`.
-Clip 2 is brighter. Clips 3 and 4 are dark blue. That is a different
-letter. Ash asked for a full redo.
+The letter's color is part of the character. A lighter or darker letter is
+a different letter.
+
+Named miss: little d. Clip 1 matches the light blue of
+`public/letters/d.webp`. Clip 2 is brighter. Clips 3 and 4 are dark blue.
+
+Named miss: Big T. Clip 1 is the red-orange of `public/letters/t.webp`.
+Clip 2 is brighter orange. Clip 3 is darker red. Clip 4 is bright orange
+again. Updating one clip for speech does not fix the color.
 
 On every still and every clip:
 
-1. Put the home tile beside the still. Same blue. A darker letter is a fail.
-2. The prompt says "Keep little d the same light blue. Do not darken it.
-   Do not change the duck, the donut, or the drum."
-3. If a clip's last frame is darker, do not chain it. Correct the color
+1. Put the home tile beside the still. Same color. A lighter or darker
+   letter is a fail.
+2. The prompt names the color: "Keep Big T the same red-orange. Do not
+   lighten it. Do not darken it."
+3. If a clip's last frame drifted, do not chain it. Correct the color
    from the home tile before the next still, or reshoot.
 
 ## Camera variety (Ash v0.418)
