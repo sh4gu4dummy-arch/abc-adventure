@@ -158,12 +158,12 @@ tail on the right, nothing growing off the left of the bowl.
 background color, don’t smear. **Never mask-cut a letter onto a new field** —
 that made little z a broken 3-shape. Generate a new still.
 
-## Meet A play-with-words plan (remind on ask)
+## Meet A play-with-words (remind on ask)
 
-If they ask for the Meet-play / “A plays with apple” plan, **remind them
-from `docs/meet-a-play-plan.md` — don’t shoot until they say go.**
-Intro Meet stays. New play clips (two 10s per case, 3 words each). Files
-stay split; Meet modal auto-chains intro → play-1 → play-2. Trial A only.
+If they ask for the Meet-play plan, remind them of this. Do not shoot
+unless they say go. Intro Meet stays. Extra play clips are new files,
+two 10s shots per case, 3 words each. The app chains intro then play.
+The long plan file was retired in v0.458.
 
 ## Lowercase / small-letter plan (remind on ask)
 

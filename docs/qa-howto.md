@@ -141,7 +141,7 @@ Stable set on `main`:
 | `AGENTS.project.md` | Standing taste / invariants |
 | `docs/agent-coop.md` | Builder ↔ QA coop rules (short) |
 | **`docs/qa-howto.md`** | **This file** — full QA procedure |
-| Round plan e.g. `docs/meet-a-play-plan.md` | PLAN until go; prompts, gates, encode |
+| `docs/friends-dialogue.md` | Mouths, face, speech. No new letter plans. |
 | `docs/audit/<clip>/` | Still dumps + AUDIT README / QA reply |
 | GitHub issues | Desk [#1](https://github.com/sh4gu4dummy-arch/abc-adventure/issues/1); per-clip QA issues (play-1 = [#2](https://github.com/sh4gu4dummy-arch/abc-adventure/issues/2)) |
 

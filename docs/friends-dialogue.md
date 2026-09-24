@@ -1,5 +1,10 @@
 # Friends dialogue
 
+One-shot shoot plans were retired in v0.458 (A/B take sheets, D–Z still
+lists, `b-i2v-prompts`, Meet-A play). The rules from those files live
+here, in `docs/self-audit.md`, and in `docs/remake-scope.md`. Who the
+friends are is `src/data/alphabet.ts`, not a plan file.
+
 Ash (v0.381): TTS-over-muted **does not** match mouths. Remakes are **Ash’s
 call** — do not invent a “never remake names” rule.
 

@@ -159,7 +159,7 @@ Big A take 2 **PASS for now** (color-drift noted — don’t darken next rounds)
 **little a take 1 FAIL** (inventory kept).
 **little a take 2** listen: **anchor line failed** (no face on the anchor →
 astronaut said “I'm Anchor”). Keep take 2 in the player; **do not remake A**
-this round (take 2 FAIL talking-mouth — blank anchor). Notes: color drift + talking-mouth rule. B plans: `docs/b-meets-friends-plan.md` (#5).
+this round (take 2 FAIL talking-mouth — blank anchor). Notes: color drift + talking-mouth rule.
 
 **Locations vary.** Friends stills are not always a grass field. Boat/lake,
 street, picnic, etc. Match the friends.
@@ -215,10 +215,7 @@ Take 1 crease inventory kept (`b-play-1.mp4`).
 | Big N | **PASS soft nose/bubble** | `n-play-1` |
 | **little n** | **PASS soft** (Meet little-n locked — NOT rebuild) | `n-little-play-1` |
 
-Plan ref: `docs/hn-friends-stills.md`.
-
 ### O–Z stills · `#9`
-Plan: `docs/oz-friends-stills.md`.
 
 | Verdict | Cases |
 |---|---|
@@ -242,6 +239,8 @@ Little Meets that are Big-shaped (product bug — Friends cannot lock a lying Me
 confirmed. Confirm/Reject copies a paste block for chat. Source:
 `src/data/pending-remakes.ts`. Add a row when a remake is local-only.
 Remove the row after CONFIRM (commit) or REJECT (revert).
+
+**v0.458** Retired the one-shot A/B/D–Z plans. Rules stay in the living docs.
 
 **v0.457** Big U clip 2 redone. Eyes stay on the left upright. Clip 1 kept.
 
@@ -463,19 +462,20 @@ Remove the row after CONFIRM (commit) or REJECT (revert).
 
 **v0.347** quality>rigid = all projects. **v0.346** quality>rigid flag-to-Ash. **v0.345** QA follow-up: soften the King/person-word rule; ban is kid rings/classroom audience, not all person-shaped Friends.
 
-## Plans (remind, don’t start unless they say)
+## What to read
 
-| Ask | File / section |
+Living rules only. Do not write a new letter plan.
+
+| Doc | Use |
 |---|---|
-| little b Friends still | `docs/audit/b-little-play-1/00-source-still.jpg` |
-| little a meets friends take 2 | `docs/a-meets-friends-little-a-take2-plan.md` |
-| little a take 1 FAIL | `docs/a-meets-friends-little-a-plan.md` |
-| A Meets Friends take 2 (speech) | `docs/a-meets-friends-play-1-take2-plan.md` |
-| A Meets Friends play-1 remake | `docs/a-meets-friends-play-1-remake.md` |
-| Meet A plays with words (old) | `docs/meet-a-play-plan.md` |
-| Lowercase / little letters | `AGENTS.project.md` → Lowercase plan |
-| Tracing rewrite | `AGENTS.project.md` → Trace rewrite plan |
-| Story / video quality | `AGENTS.project.md` → Video QA + Story lines |
+| `docs/friends-dialogue.md` | Mouths, face lock, color, speech |
+| `docs/self-audit.md` | Check before you call a take done |
+| `docs/remake-scope.md` | Which clip to redo |
+| `docs/qa-howto.md` | How QA looks at frames |
+| `docs/meet-asset-debt.md` | Little Meets that are still Big-shaped |
+| `src/data/alphabet.ts` | Which three friends belong to the letter |
+
+Retired in v0.458: the A/B take plans, D–Z still sheets, and the Meet-A play plan. Those shoots already happened.
 
 ## Product map (short)
 

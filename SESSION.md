@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.457
+**Version:** v0.458
+
+## v0.458 — Retired the one-shot Friends plans. Rules stay in the living docs.
 
 ## v0.457 — Big U clip 2. Eyes stay on the left upright.
 
