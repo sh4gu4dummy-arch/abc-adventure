@@ -36,10 +36,10 @@ export const PENDING_REMAKES: PendingRemake[] = [
     letter: "c",
     caseKind: "lower",
     kind: "friends",
-    clips: "2 only (1, 3, 4 kept)",
+    clips: "2 redone, 3 and 4 locked to it",
     file: "friends-clips/c-little-play-1.mp4",
-    since: "v0.445",
-    notes: "Clip 2 redone. Only the cloud says I'm Cloud. Little c, the cookie, and the cup stay shut. Not confirmed.",
+    since: "v0.478",
+    notes: "Clip 1 stays. Clip 2 redone. Only the cloud says I'm Cloud. Clips 3 and 4 redone so they still connect. 3 the cup says I'm Cup. 4 the cookie says I'm Cookie. Not confirmed.",
   },
   {
     id: "little-d-friends",

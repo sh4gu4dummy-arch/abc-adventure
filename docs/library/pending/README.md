@@ -5,7 +5,7 @@ Do not commit the mp4 files.
 
 Waiting:
 - little-b-clip3 and little-b-clip4
-- little-c-clip2
+- little-c-clip2, little-c-clip3, and little-c-clip4
 - little-d-clip1 through little-d-clip4
 - big-t-clip2 through big-t-clip4 (clip 1 is confirmed)
 - big-u-clip2 through big-u-clip4 (clip 1 is confirmed, these are the saved left-eye file)
