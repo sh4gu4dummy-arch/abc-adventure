@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.426
+**Version:** v0.427
+
+## v0.427 — Big U full redo. Home tile has both eyes on the left stem. The old clip did not.
 
 ## v0.426 — Big T clip 2 rejected. Redone with falling leaves. Action + frame lock is the rule.
 

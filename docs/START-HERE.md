@@ -243,6 +243,8 @@ confirmed. Confirm/Reject copies a paste block for chat. Source:
 `src/data/pending-remakes.ts`. Add a row when a remake is local-only.
 Remove the row after CONFIRM (commit) or REJECT (revert).
 
+**v0.427** Big U redone from the home tile. Both eyes stay on the left upright. The old clip had one eye on each side.
+
 **v0.426** Big T clip 2 rejected and redone. Leaves fall while the tree talks. New rule: action, I2I from the locked frame, save the end frame.
 
 **v0.425** Video library: `docs/library/live` (shortcuts to the game), `pending` (copies, not committed), `old` (the dump, nothing deleted).
