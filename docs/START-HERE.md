@@ -240,6 +240,8 @@ confirmed. Confirm/Reject copies a paste block for chat. Source:
 `src/data/pending-remakes.ts`. Add a row when a remake is local-only.
 Remove the row after CONFIRM (commit) or REJECT (revert).
 
+**v0.464** Big Y clips 3 and 4 redone. One Y. Clip 2 kept.
+
 **v0.463** Big W's floating second pair of eyes is now a hard fail in the dialogue rules. Look above the letter, not only at the mouth.
 
 **v0.462** Big V clip 3 redone. Only the volcano talks.

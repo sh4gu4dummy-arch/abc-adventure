@@ -254,6 +254,9 @@ the camera. Not a new place. Not a new friend.
    was already by the tree. A new yo-yo appeared in front of Y. The one
    already in the scene is the one that talks and moves. A second toy is
    a fail, and the later clips have to be redone from the locked frame.
+   Named miss: Big Y clip 4. A second Y grew on the rock, and it had one
+   eye. There is one letter. A second letter is a fail even if it is
+   smaller and far away. Count the letters before you ship.
    If an edit doubles the friend, throw that still out. Do not film it.
    Film from the locked frame instead.
 7. **Feet plant.** A walk is steps, not a glide. If the start frame and
