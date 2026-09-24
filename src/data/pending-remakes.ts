@@ -107,15 +107,4 @@ export const PENDING_REMAKES: PendingRemake[] = [
     since: "v0.450",
     notes: "Clip 3 kept. Clip 4 redone. The yak says I'm Yak. Y's mouth stays shut. One yo-yo by the tree. Not confirmed.",
   },
-  {
-    id: "big-z-friends",
-    title: "Big Z meets friends",
-    letter: "z",
-    caseKind: "upper",
-    kind: "friends",
-    clips: "3 and 4 redone, 1 and 2 kept",
-    file: "friends-clips/z-play-1.mp4",
-    since: "v0.452",
-    notes: "1 and 2 kept. Clip 3 the zipper says I'm Zipper. Clip 4 they all say Let's go to the zoo, then run to the gate. Not confirmed.",
-  },
 ];

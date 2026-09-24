@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.452
+**Version:** v0.453
+
+## v0.453 — Big Z confirmed and committed.
 
 ## v0.452 — Big Z clip 3 is the zipper. Clip 4 they run to the zoo.
 
