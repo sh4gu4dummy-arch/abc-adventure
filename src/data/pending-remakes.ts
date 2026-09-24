@@ -69,10 +69,10 @@ export const PENDING_REMAKES: PendingRemake[] = [
     letter: "u",
     caseKind: "upper",
     kind: "friends",
-    clips: "2 redone, 1 kept",
+    clips: "1 confirmed, 2 still waiting",
     file: "friends-clips/u-play-1.mp4",
-    since: "v0.457",
-    notes: "Clip 1 kept. Clip 2 redone. Both eyes stay on the left upright. Only the umbrella says I'm Umbrella. Not confirmed.",
+    since: "v0.460",
+    notes: "Clip 1 is OK and stays in the game. Clip 2 is the reshoot, not confirmed. Clips 3 and 4 were not confirmed.",
   },
   {
     id: "big-v-friends",

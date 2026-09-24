@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.459
+**Version:** v0.460
+
+## v0.460 — Big U clip 1 confirmed. Clip 2 still waiting.
 
 ## v0.459 — Big T clip 1 is the yellow-green home tile.
 
