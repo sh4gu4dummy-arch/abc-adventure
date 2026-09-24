@@ -112,6 +112,12 @@ The friend-clip prompt must say these three things, in this order:
 Before concat, crop the letter's mouth at the speech time. If that mouth
 is open, throw the take out. Do not splice it.
 
+Also crop the other friends. Named miss: Big Z clip 4. STT said "I'm
+Zipper." The zebra's mouth was the one open. The zipper was shut. A right
+transcript with the wrong mouth is a fail. The zebra poster is bare
+stripes. A sweater on the zebra is not the character. Named miss: Big Z
+clip 4. Remove it. Do not carry a costume forward.
+
 ## Camera variety (Ash v0.418)
 
 Big Y clip 1 is a liked shot: high and wide, friends small, lots of empty
