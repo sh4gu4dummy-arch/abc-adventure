@@ -400,6 +400,10 @@ line. If one fails, do not film.
    mouth is the only one open. Then check the last frame before the
    next still. Do not chain a drifted face.
 
+Ash can ask for a group line. Big Z clip 4 is one. All three say
+"Let's go to the zoo!" and then run to the gate. Do not "fix" that
+back to one speaker.
+
 ## Play in the scene (Ash v0.384)
 
 A tiny hop-in-place is **not** play. Standing still and saying the line

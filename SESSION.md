@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.451
+**Version:** v0.452
+
+## v0.452 — Big Z clip 3 is the zipper. Clip 4 they run to the zoo.
 
 ## v0.451 — Big Z all four redone. Full-redo gate added.
 
