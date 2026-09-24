@@ -131,6 +131,10 @@ the camera. Not a new place. Not a new friend.
 3. **I2V from that I2I still**, not from a new drawing.
 4. Save this clip’s **last frame**. That file is the lock for the next
    still. Do not start the next clip from a fresh picture.
+5. **Do not invent a new object for a friend that is already in the
+   frame.** Named miss: Big W clip 3. Water is the blue drop in the pond
+   (`w-water.webp`). A drinking glass appeared beside it. That glass is a
+   fail. Keep the poster’s object. No cup, no bottle, no second water.
 
 ## Clip-isolate (Ash v0.401)
 

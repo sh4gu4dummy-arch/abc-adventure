@@ -93,8 +93,8 @@ export const PENDING_REMAKES: PendingRemake[] = [
     kind: "friends",
     clips: "3 and 4 redone, 1 and 2 kept",
     file: "friends-clips/w-play-1.mp4",
-    since: "v0.416",
-    notes: "Pond stays full. Whale floats, no tail slap. Water says I'm Water. Window says I'm Window. Not confirmed.",
+    since: "v0.429",
+    notes: "Clip 3 redone. No glass. The pond drop says I'm Water. Clip 4 redone. The window says I'm Window. Pond stays full. Not confirmed.",
   },
   {
     id: "big-x-friends",

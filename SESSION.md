@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.428
+**Version:** v0.429
+
+## v0.429 — Big W clips 3 and 4 redone. Water is the pond drop, not a glass.
 
 ## v0.428 — Big V clip 2 kept. Clip 3 redone. Only the volcano talks.
 

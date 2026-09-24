@@ -243,6 +243,8 @@ confirmed. Confirm/Reject copies a paste block for chat. Source:
 `src/data/pending-remakes.ts`. Add a row when a remake is local-only.
 Remove the row after CONFIRM (commit) or REJECT (revert).
 
+**v0.429** Big W clips 3 and 4 redone. The water stays the pond drop. No glass.
+
 **v0.428** Big V clip 2 kept. Clip 3 redone so only the volcano talks.
 
 **v0.427** Big U redone from the home tile. Both eyes stay on the left upright. The old clip had one eye on each side.
