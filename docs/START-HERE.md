@@ -243,6 +243,8 @@ confirmed. Confirm/Reject copies a paste block for chat. Source:
 `src/data/pending-remakes.ts`. Add a row when a remake is local-only.
 Remove the row after CONFIRM (commit) or REJECT (revert).
 
+**v0.440** Big Y clip 3 redone from the new clip 2 ending. Only the crayon talks. Clip 4 can still jump.
+
 **v0.439** Big Y clip 2 redone. One yo-yo, the one by the tree. Later clips were left, so the cut can jump.
 
 **v0.438** Big W clip 4 redone. The window's mouth stays small. No teeth.

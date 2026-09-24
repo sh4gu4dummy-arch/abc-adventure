@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.439
+**Version:** v0.440
+
+## v0.440 — Big Y clip 3 redone from the new clip 2 ending.
 
 ## v0.439 — Big Y clip 2 redone. One yo-yo by the tree. Later clips left in place.
 
