@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.448
+**Version:** v0.449
+
+## v0.449 — Big W all four redone wider.
 
 ## v0.448 — Big V clip 3 redone. No writing. Volcano talks.
 

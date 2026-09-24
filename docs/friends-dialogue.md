@@ -170,6 +170,16 @@ Before filming any clip after the first:
    frame. A new body is a fail even if the line is right.
 4. Do not film a still that fails this. Do not splice it.
 
+## Not cramped
+
+Named miss: Big W. The four friends filled the frame and overlapped, so
+the wrong mouth kept talking. Ash asked for all four clips again.
+
+Before filming, look at the still. If a friend is cut off, or two friends
+touch, pull the camera back and make the still again. Leave grass and sky
+around them. Do not strip the place down to empty grass. Space is not a
+new background.
+
 ## Camera variety (Ash v0.418)
 
 Big Y clip 1 is a liked shot: high and wide, friends small, lots of empty

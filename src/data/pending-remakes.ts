@@ -91,10 +91,10 @@ export const PENDING_REMAKES: PendingRemake[] = [
     letter: "w",
     caseKind: "upper",
     kind: "friends",
-    clips: "3 and 4 redone, 1 and 2 kept",
+    clips: "all 4 redone",
     file: "friends-clips/w-play-1.mp4",
-    since: "v0.438",
-    notes: "Clip 3: only the pond drop says I'm Water. Clip 4 redone. The window says I'm Window. Its mouth stays small. No teeth. Not confirmed.",
+    since: "v0.449",
+    notes: "All 4 redone wider. 1 Big W. 2 whale. 3 water drop. 4 window, small mouth, no teeth. Same blue W. Not confirmed.",
   },
   {
     id: "big-y-friends",
