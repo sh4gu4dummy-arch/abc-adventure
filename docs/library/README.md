@@ -27,7 +27,7 @@ Not on GitHub. Do not commit this folder's mp4 files.
 - little-d clips 1, 3, 4
 - big-t clip 2
 - big-u clips 1–4
-- big-v clips 2, 3
+- big-v clip 3
 - big-w clips 3, 4
 - big-x clip 4
 - big-y clips 2–4

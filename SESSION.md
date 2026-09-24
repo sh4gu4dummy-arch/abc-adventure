@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.427
+**Version:** v0.428
+
+## v0.428 — Big V clip 2 kept. Clip 3 redone. Only the volcano talks.
 
 ## v0.427 — Big U full redo. Home tile has both eyes on the left stem. The old clip did not.
 
