@@ -71,8 +71,8 @@ export const PENDING_REMAKES: PendingRemake[] = [
     kind: "friends",
     clips: "1 confirmed, 2 still waiting",
     file: "friends-clips/u-play-1.mp4",
-    since: "v0.460",
-    notes: "Clip 1 is OK and stays in the game. Clip 2 is the reshoot, not confirmed. Clips 3 and 4 were not confirmed.",
+    since: "v0.467",
+    notes: "The split-eye file is gone from the saved game. Both eyes stay on the left stem. Clip 1 was already OK. Clip 2 is the reshoot. Not fully confirmed.",
   },
   {
     id: "big-v-friends",

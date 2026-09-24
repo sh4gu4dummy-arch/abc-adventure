@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.466
+**Version:** v0.467
+
+## v0.467 — Saved Big U no longer has an eye on each side.
 
 ## v0.466 — Big T clip 1 stays olive.
 
