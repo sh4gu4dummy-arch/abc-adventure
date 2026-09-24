@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.433
+**Version:** v0.434
+
+## v0.434 — Big T clip 2 redone. Only the tree's mouth opens.
 
 ## v0.433 — Big Z clip 3 stepped instead of slid. The sweater was already in clip 2.
 
