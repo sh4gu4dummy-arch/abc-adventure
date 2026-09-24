@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.453
+**Version:** v0.454
+
+## v0.454 — Little b clip 3. Only the boat's mouth moves.
 
 ## v0.453 — Big Z confirmed and committed.
 

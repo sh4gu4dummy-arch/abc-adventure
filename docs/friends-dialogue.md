@@ -120,19 +120,24 @@ clip 4. Remove it. Do not carry a costume forward.
 
 ## Every other friend is silent too
 
-Freezing only the letter is not enough. Named miss: little b clip 3.
-The line was "I'm a boat." Little b's mouth was open at the same time.
-A one-line transcript hides a chorus, because they say the same words.
+Freezing only the letter is not enough. Named miss: little b clip 3,
+twice. The line was "I'm a boat." Little b, the banana, and the bird
+all had open mouths at the same time. A one-line transcript hides a
+chorus, because they say the same words. The take was shipped anyway.
+That is the miss. A right transcript with two open mouths is a fail.
 
-The prompt names every non-speaker, not just the letter:
+Before filming, the still already shows every non-speaker with a thin
+closed mouth. Do not film a still where another friend is mid-word.
 
-1. "Little b is a silent prop. Its mouth is painted shut."
-2. "The banana is a silent prop. Its mouth is painted shut."
-3. "The bird is a silent prop. Its mouth is painted shut."
-4. "The voice comes only from the boat."
+The prompt names every non-speaker, and it says the mouth action:
 
-Before concat, crop every face at the speech time. Two open mouths is a
-fail even when the words match.
+1. "Little b closes its mouth and remains speechless. Its mouth does not open."
+2. "The banana closes its mouth and remains speechless. Its mouth does not open."
+3. "The bird closes its mouth and remains speechless. Its mouth does not open."
+4. "Only the boat's mouth moves. The boat says the line."
+
+Before concat, crop every face at the speech time. If any mouth except
+the boat's is open, delete the take and shoot again. Do not splice it.
 
 ## Color does not drift
 
