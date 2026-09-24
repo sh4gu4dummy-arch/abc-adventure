@@ -60,8 +60,8 @@ export const PENDING_REMAKES: PendingRemake[] = [
     kind: "friends",
     clips: "2 redone, 1 3 4 kept",
     file: "friends-clips/t-play-1.mp4",
-    since: "v0.455",
-    notes: "Clip 2 reshot with Ash's short prompt. Only the top-left tree talks. Leaves fall. The others play and stay silent. Not confirmed.",
+    since: "v0.456",
+    notes: "Clip 2 reshot again with Ash's stricter prompt. Only the tree talks. T, the tiger, and the train stay speechless. Not confirmed.",
   },
   {
     id: "big-u-friends",

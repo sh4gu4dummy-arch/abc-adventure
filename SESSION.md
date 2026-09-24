@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.455
+**Version:** v0.456
+
+## v0.456 — Big T clip 2 reshot. Only the tree talks.
 
 ## v0.455 — Big T clip 2 reshot with Ash's short prompt.
 
