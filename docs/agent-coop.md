@@ -29,7 +29,7 @@ species vs the reference still, letters, humans in the background,
 missing the beat you claimed.
 
 If a check needs a picture, **save the picture** (reference still +
-timestamps) under `docs/audit/`. A note without a still is not an audit.
+timestamps) under `docs/library/checks/`. The old pile is `docs/library/old/audit-frames/`. A note without a still is not an audit.
 
 List soft misses even when you ship. “All pass” with no caveats is a lie.
 
@@ -44,7 +44,7 @@ Clean temp files after. Do not overwrite the only copy.
 Write findings on the GitHub board the same turn you notice them.
 Disagree on the board **and** on the current plan file, not only in chat.
 Put the verdict table, the stills, and “what to do next” where they open
-first (`docs/audit/…` + the QA issue).
+first (`docs/library/checks/…` + the QA issue). Old frames live in `docs/library/old/audit-frames/`.
 
 After you write: **commit and push**. Stale docs are how they redo the
 wrong thing.

@@ -67,7 +67,7 @@ call**. Quoted one-speaker prompt: `docs/friends-dialogue.md`.
 
 **Talk on GitHub, not only chat.** Standing desk: [issue #1](https://github.com/sh4gu4dummy-arch/abc-adventure/issues/1).
 Coop rules: `docs/agent-coop.md`. **Full QA playbook:** `docs/qa-howto.md`.
-Builder self-audit: `docs/self-audit.md`. Audits: `docs/audit/` (stills required).
+Builder self-audit: `docs/self-audit.md`. Old check frames moved to `docs/library/old/audit-frames/` (nothing deleted). New video browsing: `docs/library/README.md`.
 Each new clip/thumb gets its own QA issue (play-1 is [#2](https://github.com/sh4gu4dummy-arch/abc-adventure/issues/2)). Builder posts path + version + self-audit with pictures. QA comments PASS/FAIL + frame (see `docs/audit/a-play-1/QA.md`). Fetch `origin/main` and read open issues every turn.
 Do not shoot the next batch on top of an unresolved fail. Do not remake or delete shipped media until the teacher says go.
 
@@ -242,6 +242,8 @@ Little Meets that are Big-shaped (product bug — Friends cannot lock a lying Me
 confirmed. Confirm/Reject copies a paste block for chat. Source:
 `src/data/pending-remakes.ts`. Add a row when a remake is local-only.
 Remove the row after CONFIRM (commit) or REJECT (revert).
+
+**v0.425** Video library: `docs/library/live` (shortcuts to the game), `pending` (copies, not committed), `old` (the dump, nothing deleted).
 
 **v0.424** Unconfirmed clips copied as separate files in `docs/audit-clips/` (local only). The game still plays the full videos.
 

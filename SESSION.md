@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.424
+**Version:** v0.425
+
+## v0.425 — docs/library sorts live, pending, and old. No videos deleted.
 
 ## v0.424 — Audit folder has only the unconfirmed clips. Game still plays the full videos.
 

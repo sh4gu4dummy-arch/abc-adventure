@@ -67,6 +67,3 @@ abc-adventure-tracing.txt
 # QA scratch only — not app media
 public/review/
 
-# Local review slices of unconfirmed clips. Not the app files. Do not commit.
-docs/audit-clips/
-
