@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.431
+**Version:** v0.432
+
+## v0.432 — Big Z clips 1–2 kept. Clip 3 walks to the zoo. Clip 4 follows that end.
 
 ## v0.431 — Big Y clips 2–4 redone. The tree yo-yo stays the only yo-yo.
 
