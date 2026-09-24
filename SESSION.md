@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.472
+**Version:** v0.473
+
+## v0.473 — Pending clips recut from the game videos.
 
 ## v0.472 — Big U stills, no remake.
 

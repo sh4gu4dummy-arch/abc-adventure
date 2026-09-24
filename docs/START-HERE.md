@@ -240,6 +240,8 @@ confirmed. Confirm/Reject copies a paste block for chat. Source:
 `src/data/pending-remakes.ts`. Add a row when a remake is local-only.
 Remove the row after CONFIRM (commit) or REJECT (revert).
 
+**v0.473** docs/library/pending recut from the videos in the game. Old Big Z copies removed.
+
 **v0.472** Big U stills are in docs/see-big-u. The saved file is not the split-eye picture.
 
 **v0.471** Big T clips 2–4 redone. Same olive as the confirmed clip 1. Not orange.
