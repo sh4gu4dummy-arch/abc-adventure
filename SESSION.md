@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.475
+**Version:** v0.476
+
+## v0.476 — Big Y clip 4 redone.
 
 ## v0.475 — Big Y clip 3 confirmed.
 

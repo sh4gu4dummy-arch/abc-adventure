@@ -240,6 +240,8 @@ confirmed. Confirm/Reject copies a paste block for chat. Source:
 `src/data/pending-remakes.ts`. Add a row when a remake is local-only.
 Remove the row after CONFIRM (commit) or REJECT (revert).
 
+**v0.476** Big Y clip 4 redone. Only the yak talks. Clip 3 stays.
+
 **v0.475** Big Y clip 3 confirmed and saved. Clip 4 is still waiting.
 
 **v0.474** Big T clip 2 redone. Clips 3 and 4 redone so they still connect. Clip 1 stays.
