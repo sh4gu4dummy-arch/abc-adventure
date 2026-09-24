@@ -80,6 +80,9 @@ Before any Friends still:
    right stem. A U with one eye on each side is a different character.
    Named miss: Big U v0.426, clip 1. Do not film that face. Do not use a
    bad frame as the I2I source. Start the still from the home tile.
+   Four eyes is also a fail. Named miss: Big U clip 1, two pairs stacked
+   on the left stem. Count the dots. Exactly two. A third or fourth dot
+   means throw the still out.
 
 Before concat: put clip-1 t0.3 next to clip-2 t3 and next to the home tile.
 Same hole, same eyes, same stroke. If they disagree, FAIL even if STT is

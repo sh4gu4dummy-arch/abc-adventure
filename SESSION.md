@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.434
+**Version:** v0.435
+
+## v0.435 — Big U clip 1 redone. Two eyes, not four.
 
 ## v0.434 — Big T clip 2 redone. Only the tree's mouth opens.
 

@@ -69,10 +69,10 @@ export const PENDING_REMAKES: PendingRemake[] = [
     letter: "u",
     caseKind: "upper",
     kind: "friends",
-    clips: "all 4, full redo",
+    clips: "1 redone, 2–4 kept",
     file: "friends-clips/u-play-1.mp4",
-    since: "v0.427",
-    notes: "Full redo from the home tile. Both eyes stay on the left upright. Right side is blank. Lines: I'm Big U, I'm Umbrella, I'm Unicorn, I'm under the table. Not confirmed.",
+    since: "v0.435",
+    notes: "Clip 1 redone. Exactly two eyes on the left upright. The extra pair is gone. Clips 2–4 kept for now. Not confirmed.",
   },
   {
     id: "big-v-friends",

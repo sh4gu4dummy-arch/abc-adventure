@@ -100,7 +100,7 @@ Local git is enabled so we can restore after mistakes.
 
 - Branch: `main`
 - **Commit after every change.** Don't wait to ask.
-- **Bump version on every change** (`VERSION` + `src/lib/version.ts`, 0.434, 0.434, …).
+- **Bump version on every change** (`VERSION` + `src/lib/version.ts`, 0.435, 0.435, …).
 - **Refresh the code-only ZIP** every change (`npm run build:code` → `abc-adventure-vX.YYY-code.zip`).
 - **Do not rebuild portable ZIP, full codebase ZIP, or APK** unless the user asks.
 - Not a cloud backup — lives with this workspace session
