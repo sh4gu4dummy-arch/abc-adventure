@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.440
+**Version:** v0.441
+
+## v0.441 — Big Y clip 4 redone. Yak talks. Y stays a silent prop.
 
 ## v0.440 — Big Y clip 3 redone from the new clip 2 ending.
 

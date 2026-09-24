@@ -94,13 +94,23 @@ keep chaining that face. Re-I2V that beat from the **locked still**
 
 ## Letter does not steal the line (standing)
 
-Ash should not have to repeat this. On a friend clip the **letter’s mouth
-stays frozen shut for all 6 seconds.** Named miss: Big Y clips 2–4. Y’s
-mouth stayed open and Y said “I'm Yo-yo,” “I'm Yellow,” and “I'm Yak.”
-STT printing one line is not a pass. Open the speech frame. If the letter’s
-mouth is open, throw the take out and reshoot from the previous last frame.
-Prompt that held on other letters: **“Freeze its mouth shut for all 6
-seconds. No teeth. It does not say [the friend’s name].”**
+Ash should not have to repeat this. On a friend clip the letter is a
+**silent prop.** Its mouth is painted shut and does not move for all 6
+seconds.
+
+"One voice" is not enough. The letter is the biggest shape, so Imagine
+gives it the line. Named miss that survived the shorter sentence: Big Y
+clip 4. STT said "I'm Yak." Y's mouth was the one open. The yak was shut.
+STT printing one clean line is not a pass.
+
+The friend-clip prompt must say these three things, in this order:
+
+1. "The letter Y is a silent prop. Its mouth is painted shut and does not move for all 6 seconds."
+2. "It does not say Yak."
+3. "The voice comes only from the yak on the right."
+
+Before concat, crop the letter's mouth at the speech time. If that mouth
+is open, throw the take out. Do not splice it.
 
 ## Camera variety (Ash v0.418)
 
