@@ -118,6 +118,22 @@ transcript with the wrong mouth is a fail. The zebra poster is bare
 stripes. A sweater on the zebra is not the character. Named miss: Big Z
 clip 4. Remove it. Do not carry a costume forward.
 
+## Every other friend is silent too
+
+Freezing only the letter is not enough. Named miss: little b clip 3.
+The line was "I'm a boat." Little b's mouth was open at the same time.
+A one-line transcript hides a chorus, because they say the same words.
+
+The prompt names every non-speaker, not just the letter:
+
+1. "Little b is a silent prop. Its mouth is painted shut."
+2. "The banana is a silent prop. Its mouth is painted shut."
+3. "The bird is a silent prop. Its mouth is painted shut."
+4. "The voice comes only from the boat."
+
+Before concat, crop every face at the speech time. Two open mouths is a
+fail even when the words match.
+
 ## Camera variety (Ash v0.418)
 
 Big Y clip 1 is a liked shot: high and wide, friends small, lots of empty

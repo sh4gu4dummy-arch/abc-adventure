@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.443
+**Version:** v0.444
+
+## v0.444 — Little b clip 3 redone. Only the boat talks.
 
 ## v0.443 — Big Z clip 4 redone. Bare zebra. Zipper talks.
 

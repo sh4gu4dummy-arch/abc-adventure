@@ -243,6 +243,8 @@ confirmed. Confirm/Reject copies a paste block for chat. Source:
 `src/data/pending-remakes.ts`. Add a row when a remake is local-only.
 Remove the row after CONFIRM (commit) or REJECT (revert).
 
+**v0.444** Little b clip 3 redone. Only the boat talks. The prompt now names every silent friend, not just the letter.
+
 **v0.443** Big Z clip 4 redone. No sweater. The zipper says the line. The zebra stays shut. Clip 3 still has the sweater.
 
 **v0.442** Big Z clip 3 redone. They walk toward the gate, then Z says the line. Clip 4 can jump.
