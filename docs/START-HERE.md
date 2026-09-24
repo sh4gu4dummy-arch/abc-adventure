@@ -240,6 +240,8 @@ confirmed. Confirm/Reject copies a paste block for chat. Source:
 `src/data/pending-remakes.ts`. Add a row when a remake is local-only.
 Remove the row after CONFIRM (commit) or REJECT (revert).
 
+**v0.462** Big V clip 3 redone. Only the volcano talks.
+
 **v0.461** Friends and Meet video URLs include the version so the phone cannot keep an old file. Big U's split eyes were that old file.
 
 **v0.460** Big U clip 1 confirmed. It stays in the game. Clip 2 is still waiting.

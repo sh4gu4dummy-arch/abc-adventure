@@ -82,8 +82,8 @@ export const PENDING_REMAKES: PendingRemake[] = [
     kind: "friends",
     clips: "3 only, 2 kept",
     file: "friends-clips/v-play-1.mp4",
-    since: "v0.448",
-    notes: "Clip 3 redone. No writing on the screen. V's mouth stays shut. Both eyes stay on the left stroke. Only the volcano says I'm Volcano. Not confirmed.",
+    since: "v0.462",
+    notes: "Clip 3 redone again. Only the volcano says I'm Volcano. V, the van, and the violin stay speechless. No text. Not confirmed.",
   },
   {
     id: "big-w-friends",

@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.461
+**Version:** v0.462
+
+## v0.462 — Big V clip 3, only the volcano talks.
 
 ## v0.461 — Video URLs carry the version so an old Big U cannot stick.
 
