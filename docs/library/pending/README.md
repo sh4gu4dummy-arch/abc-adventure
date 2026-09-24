@@ -4,7 +4,7 @@ The game does not play this folder.
 Do not commit the mp4 files.
 
 Waiting:
-- little-b-clip3
+- little-b-clip3 and little-b-clip4
 - little-c-clip2
 - little-d-clip1 through little-d-clip4
 - big-t-clip2 through big-t-clip4 (clip 1 is confirmed)

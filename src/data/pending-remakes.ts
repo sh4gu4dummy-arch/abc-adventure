@@ -25,10 +25,10 @@ export const PENDING_REMAKES: PendingRemake[] = [
     letter: "b",
     caseKind: "lower",
     kind: "friends",
-    clips: "3 only (1, 2, 4 kept)",
+    clips: "3 redone, 4 locked to it",
     file: "friends-clips/b-little-play-1.mp4",
-    since: "v0.454",
-    notes: "Clip 3 redone. Only the boat's mouth moves. Little b, the banana, and the bird stay speechless. Not confirmed.",
+    since: "v0.477",
+    notes: "Clips 1 and 2 stay. Clip 3 redone. Only the boat says I'm a boat. They stay on the boat. Clip 4 redone so it still connects. Only the bird says I'm Bird. Not confirmed.",
   },
   {
     id: "little-c-friends",
