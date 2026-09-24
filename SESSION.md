@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.458
+**Version:** v0.459
+
+## v0.459 — Big T clip 1 is the yellow-green home tile.
 
 ## v0.458 — Retired the one-shot Friends plans. Rules stay in the living docs.
 

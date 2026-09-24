@@ -240,6 +240,8 @@ confirmed. Confirm/Reject copies a paste block for chat. Source:
 `src/data/pending-remakes.ts`. Add a row when a remake is local-only.
 Remove the row after CONFIRM (commit) or REJECT (revert).
 
+**v0.459** Big T clip 1 redone in the real home-tile yellow-green. Clips 2–4 are still orange.
+
 **v0.458** Retired the one-shot A/B/D–Z plans. Rules stay in the living docs.
 
 **v0.457** Big U clip 2 redone. Eyes stay on the left upright. Clip 1 kept.

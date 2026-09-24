@@ -58,10 +58,10 @@ export const PENDING_REMAKES: PendingRemake[] = [
     letter: "t",
     caseKind: "upper",
     kind: "friends",
-    clips: "2 redone, 1 3 4 kept",
+    clips: "1 redone, 2 3 4 still orange",
     file: "friends-clips/t-play-1.mp4",
-    since: "v0.456",
-    notes: "Clip 2 reshot again with Ash's stricter prompt. Only the tree talks. T, the tiger, and the train stay speechless. Not confirmed.",
+    since: "v0.459",
+    notes: "Clip 1 redone. Big T is the yellow-green home tile, not orange. Only Big T says I'm Big T. Clips 2-4 are still the old orange T, so the cut jumps. Not confirmed.",
   },
   {
     id: "big-u-friends",
