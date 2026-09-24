@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.471
+**Version:** v0.472
+
+## v0.472 — Big U stills, no remake.
 
 ## v0.471 — Big T 2–4 match the olive clip 1.
 
