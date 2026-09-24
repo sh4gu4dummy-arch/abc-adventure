@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.430
+**Version:** v0.431
+
+## v0.431 — Big Y clips 2–4 redone. The tree yo-yo stays the only yo-yo.
 
 ## v0.430 — Big X clip 4 confirmed and committed.
 

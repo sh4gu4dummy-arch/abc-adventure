@@ -135,6 +135,12 @@ the camera. Not a new place. Not a new friend.
    frame.** Named miss: Big W clip 3. Water is the blue drop in the pond
    (`w-water.webp`). A drinking glass appeared beside it. That glass is a
    fail. Keep the poster’s object. No cup, no bottle, no second water.
+6. **Do not spawn a second copy.** Named miss: Big Y clip 2. The yo-yo
+   was already by the tree. A new yo-yo appeared in front of Y. The one
+   already in the scene is the one that talks and moves. A second toy is
+   a fail, and the later clips have to be redone from the locked frame.
+   If an edit doubles the friend, throw that still out. Do not film it.
+   Film from the locked frame instead.
 
 ## Clip-isolate (Ash v0.401)
 

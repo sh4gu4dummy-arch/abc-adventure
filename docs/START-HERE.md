@@ -243,6 +243,8 @@ confirmed. Confirm/Reject copies a paste block for chat. Source:
 `src/data/pending-remakes.ts`. Add a row when a remake is local-only.
 Remove the row after CONFIRM (commit) or REJECT (revert).
 
+**v0.431** Big Y clips 2–4 redone. The yo-yo by the tree is the only yo-yo.
+
 **v0.430** Big X clip 4 confirmed. It is in the game and on GitHub.
 
 **v0.429** Big W clips 3 and 4 redone. The water stays the pond drop. No glass.
