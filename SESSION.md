@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.481
+**Version:** v0.482
+
+## v0.482 — Little b clip 3 redone. Clip 4 kept.
 
 ## v0.481 — Dev tab plays one short clip at a time.
 
