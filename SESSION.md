@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.486
+**Version:** v0.487
+
+## v0.487 — Little b clip 3 is a shared line. Clip 4 locked to it.
 
 ## v0.486 — Big U clip 2 redone. Clips 3-4 locked to it.
 

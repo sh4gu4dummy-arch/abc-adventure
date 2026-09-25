@@ -154,6 +154,9 @@ twice. The line was "I'm a boat." Little b, the banana, and the bird
 all had open mouths at the same time. A one-line transcript hides a
 chorus, because they say the same words. The take was shipped anyway.
 That is the miss. A right transcript with two open mouths is a fail.
+Exception, v0.487: Ash asked for a chorus on this one clip only.
+All four say "We are on a boat!" together. That shared line is the
+assignment. It does not change the silent-friend rule on other clips.
 
 Before filming, the still already shows every non-speaker with a thin
 closed mouth. Do not film a still where another friend is mid-word.
