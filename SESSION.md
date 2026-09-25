@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.487
+**Version:** v0.488
+
+## v0.488 — Little b clips 3 and 4 confirmed. Removed from Dev tab.
 
 ## v0.487 — Little b clip 3 is a shared line. Clip 4 locked to it.
 

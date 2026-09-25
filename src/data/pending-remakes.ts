@@ -30,21 +30,6 @@ function clip(name: string, n: number): PendingPart {
 
 export const PENDING_REMAKES: PendingRemake[] = [
   {
-    id: "little-b-friends",
-    title: "little b meets friends",
-    letter: "b",
-    caseKind: "lower",
-    kind: "friends",
-    clips: "3 redone, 4 locked to it",
-    file: "friends-clips/b-little-play-1.mp4",
-    parts: [
-      clip("little-b-clip3.mp4", 3),
-      clip("little-b-clip4.mp4", 4),
-    ],
-    since: "v0.487",
-    notes: "Clip 3: all four say We are on a boat. They stay on the boat. Clip 4 locked. Only the bird says I'm Bird.",
-  },
-  {
     id: "little-c-friends",
     title: "little c meets friends",
     letter: "c",

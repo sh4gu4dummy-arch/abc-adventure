@@ -19,6 +19,8 @@ chat will happen again.
 | **QA agent** | Looks at the actual frames (not the prompt). Pass / fail with *why*. Does not generate replacements unless asked. Does not pick a winner when there are 2+ options — show the user. They are **not** a second product owner. |
 | **User** | Final taste. **lmk** = talk only. **start** = fetch QA, shoot if you agree, debate if you don’t. |
 
+**v0.488** Little b clips 3 and 4 confirmed. Off the Dev tab. Still in the game.
+
 **v0.487** Little b clip 3: all four say "We are on a boat!" Clip 4 locked to it.
 
 **v0.486** Big U clip 2 redone from the clip 1 U. Clips 3 and 4 locked to it.

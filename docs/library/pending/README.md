@@ -4,7 +4,6 @@ The letter page still plays the full video.
 Do not commit the mp4 files. `public/dev-clips` is a link to this folder.
 
 Waiting:
-- little-b-clip3 and little-b-clip4 (clip 3 is the shared boat line)
 - little-c-clip2, little-c-clip3, and little-c-clip4
 - little-d-clip1 through little-d-clip4
 - big-t-clip1 through big-t-clip4 (clip 1 redone, 2-4 locked to it)
