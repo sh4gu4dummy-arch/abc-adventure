@@ -19,6 +19,8 @@ chat will happen again.
 | **QA agent** | Looks at the actual frames (not the prompt). Pass / fail with *why*. Does not generate replacements unless asked. Does not pick a winner when there are 2+ options — show the user. They are **not** a second product owner. |
 | **User** | Final taste. **lmk** = talk only. **start** = fetch QA, shoot if you agree, debate if you don’t. |
 
+**v0.491** Big T clip 2 redone. Only the tree says "I'm a tree!" Clips 3 and 4 locked to it.
+
 **v0.490** Little d still and all 4 clips redone. Smile is on the body. The hole is empty.
 
 **v0.489** Little c clip 1 redone. Clips 2-4 locked to it.

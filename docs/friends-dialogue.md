@@ -183,6 +183,11 @@ remain visible at all times. No collective dialogue. Only tree talking.
 T letter, train, tiger, all remain speechless. Strict warning of
 dialogue, mandatory compliance.
 
+Named miss, v0.491: the transcript said "I'm a tree" and Big T was the
+one saying it. A right transcript is not a pass. Before splicing, look
+at Big T's mouth during the line. If that mouth is open, delete the take.
+Close Big T's mouth on the still before filming.
+
 ## Color does not drift
 
 The letter's color is part of the character. A lighter or darker letter is

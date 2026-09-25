@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.490
+**Version:** v0.491
+
+## v0.491 — Big T clip 2 redone. Only the tree talks. Clips 3-4 locked.
 
 ## v0.490 — Little d still and clips redone. Mouth is on the body, not in the hole.
 

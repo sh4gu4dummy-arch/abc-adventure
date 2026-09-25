@@ -6,7 +6,7 @@ Do not commit the mp4 files. `public/dev-clips` is a link to this folder.
 Waiting:
 - little-c-clip1 through little-c-clip4 (clip 1 redone, 2-4 locked to it)
 - little-d-clip1 through little-d-clip4
-- big-t-clip1 through big-t-clip4 (clip 1 redone, 2-4 locked to it)
+- big-t-clip2 through big-t-clip4 (clip 1 stays, clip 2 redone)
 - big-u-clip2 through big-u-clip4 (clip 1 stays, clip 2 redone)
 - big-v-clip3
 - big-w-clip1 through big-w-clip4 (the one-W file)
