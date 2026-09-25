@@ -97,15 +97,15 @@ export const PENDING_REMAKES: PendingRemake[] = [
     letter: "u",
     caseKind: "upper",
     kind: "friends",
-    clips: "2, 3, and 4 only",
+    clips: "2 redone, 3 and 4 locked to it",
     file: "friends-clips/u-play-1.mp4",
     parts: [
       clip("big-u-clip2.mp4", 2),
       clip("big-u-clip3.mp4", 3),
       clip("big-u-clip4.mp4", 4),
     ],
-    since: "v0.473",
-    notes: "Clip 1 stays. These three are the saved file. Eyes stay on the left stem.",
+    since: "v0.486",
+    notes: "Clip 1 stays. Clip 2 redone. Eyes stay on the left stem. Uniform width. No fat base. 2 umbrella. 3 unicorn. 4 the girl says I'm under the table.",
   },
   {
     id: "big-v-friends",
