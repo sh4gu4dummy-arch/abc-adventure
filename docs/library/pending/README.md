@@ -1,7 +1,7 @@
 Copies of the clips still waiting on you. One file is one clip.
-Cut from the video that is in the game right now.
-The game does not play this folder.
-Do not commit the mp4 files.
+The Dev tab plays these files, not the full four-clip video.
+The letter page still plays the full video.
+Do not commit the mp4 files. `public/dev-clips` is a link to this folder.
 
 Waiting:
 - little-b-clip3 and little-b-clip4

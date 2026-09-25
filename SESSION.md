@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.480
+**Version:** v0.481
+
+## v0.481 — Dev tab plays one short clip at a time.
 
 ## v0.480 — Big Y clip 4 redone again.
 

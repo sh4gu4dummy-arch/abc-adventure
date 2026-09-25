@@ -19,6 +19,8 @@ chat will happen again.
 | **QA agent** | Looks at the actual frames (not the prompt). Pass / fail with *why*. Does not generate replacements unless asked. Does not pick a winner when there are 2+ options — show the user. They are **not** a second product owner. |
 | **User** | Final taste. **lmk** = talk only. **start** = fetch QA, shoot if you agree, debate if you don’t. |
 
+**v0.481** Dev tab plays the short pending clips only (`docs/library/pending`), not the full four-clip file.
+
 **Remake scope (hard):** pin the fail to **clip number + speaker + line**
 before proposing a remake. Default = that clip only. Keep list vs remake
 list. Do not remake all 4 because one line swapped. If Ash says a line is

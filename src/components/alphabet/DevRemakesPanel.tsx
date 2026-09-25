@@ -23,11 +23,13 @@ function pasteBlock(
   extraNotes: string,
 ) {
   const notes = extraNotes.trim() || item.notes;
+  const shorts = item.parts.map((part) => part.file.replace(/^dev-clips\//, "")).join(", ");
   return [
     `${decision} ${item.id}`,
     `title: ${item.title}`,
     `letter: ${item.caseKind === "upper" ? "Big" : "little"} ${item.letter}`,
     `clips: ${item.clips}`,
+    `short files: ${shorts}`,
     `file: ${item.file}`,
     `app: ${APP_VERSION_LABEL}`,
     `notes: ${notes}`,
@@ -105,7 +107,6 @@ export function DevRemakesPanel({ focusLetter }: { focusLetter?: string }) {
 
   function renderCard(item: PendingRemake) {
           const vote = votes[item.id];
-          const src = `${assetUrl(item.file)}?v=${item.id}`;
           return (
             <li
               key={item.id}
@@ -133,24 +134,37 @@ export function DevRemakesPanel({ focusLetter }: { focusLetter?: string }) {
                 <br />
                 {item.notes}
               </p>
-              {playingId === item.id ? (
-                <video
-                  className="mb-2 w-full max-h-64 rounded-[var(--radius-sm)] bg-black object-contain"
-                  src={src}
-                  controls
-                  autoPlay
-                  playsInline
-                  preload="none"
-                />
-              ) : (
-                <button
-                  type="button"
-                  onClick={() => setPlayingId(item.id)}
-                  className="pressable mb-2 flex min-h-24 w-full items-center justify-center gap-2 rounded-[var(--radius-sm)] bg-ink text-sm font-bold text-white"
-                >
-                  <Play className="size-4 fill-current" /> Play
-                </button>
-              )}
+              <div className="mb-2 grid gap-2">
+                {item.parts.map((part) => {
+                  const partId = `${item.id}:${part.label}`;
+                  const src = `${assetUrl(part.file)}?v=${item.since}`;
+                  return (
+                    <div key={partId}>
+                      <p className="mb-1 text-[11px] font-bold uppercase tracking-wide text-ink">
+                        {part.label} only
+                      </p>
+                      {playingId === partId ? (
+                        <video
+                          className="w-full max-h-64 rounded-[var(--radius-sm)] bg-black object-contain"
+                          src={src}
+                          controls
+                          autoPlay
+                          playsInline
+                          preload="none"
+                        />
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={() => setPlayingId(partId)}
+                          className="pressable flex min-h-16 w-full items-center justify-center gap-2 rounded-[var(--radius-sm)] bg-ink text-sm font-bold text-white"
+                        >
+                          <Play className="size-4 fill-current" /> Play {part.label}
+                        </button>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
               <textarea
                 data-case-lock
                 rows={2}
@@ -224,7 +238,7 @@ export function DevRemakesPanel({ focusLetter }: { focusLetter?: string }) {
         <div>
           <h2 className="font-display text-lg font-bold text-ink">Dev</h2>
           <p className="text-xs font-semibold text-muted">
-            {openItems.length} waiting · paste Confirm/Reject in chat
+            {openItems.length} waiting · each button is one short clip
           </p>
         </div>
         <div className="flex flex-wrap gap-1.5">

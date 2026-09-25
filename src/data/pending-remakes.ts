@@ -1,10 +1,15 @@
 /**
  * Local remakes Ash has not confirmed yet.
- * Builder: add a row when a clip is in the app but not on GitHub.
- * After Ash pastes CONFIRM in chat: commit that file, delete the row.
- * After REJECT: revert the file, delete the row.
+ * `parts` are the short clips in docs/library/pending (served at /dev-clips).
+ * The Dev tab plays those, not the full four-clip file.
+ * `file` is the full video the letter page still uses.
  */
 export type PendingKind = "friends" | "meet" | "story" | "word";
+
+export type PendingPart = {
+  label: string;
+  file: string;
+};
 
 export type PendingRemake = {
   id: string;
@@ -14,9 +19,14 @@ export type PendingRemake = {
   kind: PendingKind;
   clips: string;
   file: string;
+  parts: PendingPart[];
   since: string;
   notes: string;
 };
+
+function clip(name: string, n: number): PendingPart {
+  return { label: `Clip ${n}`, file: `dev-clips/${name}` };
+}
 
 export const PENDING_REMAKES: PendingRemake[] = [
   {
@@ -25,10 +35,11 @@ export const PENDING_REMAKES: PendingRemake[] = [
     letter: "b",
     caseKind: "lower",
     kind: "friends",
-    clips: "3 redone, 4 locked to it",
+    clips: "3 and 4 only",
     file: "friends-clips/b-little-play-1.mp4",
+    parts: [clip("little-b-clip3.mp4", 3), clip("little-b-clip4.mp4", 4)],
     since: "v0.477",
-    notes: "Clips 1 and 2 stay. Clip 3 redone. Only the boat says I'm a boat. They stay on the boat. Clip 4 redone so it still connects. Only the bird says I'm Bird. Not confirmed.",
+    notes: "Clip 3: only the boat says I'm a boat. Clip 4: only the bird says I'm Bird. They stay on the boat.",
   },
   {
     id: "little-c-friends",
@@ -36,10 +47,15 @@ export const PENDING_REMAKES: PendingRemake[] = [
     letter: "c",
     caseKind: "lower",
     kind: "friends",
-    clips: "2 redone, 3 and 4 locked to it",
+    clips: "2, 3, and 4 only",
     file: "friends-clips/c-little-play-1.mp4",
+    parts: [
+      clip("little-c-clip2.mp4", 2),
+      clip("little-c-clip3.mp4", 3),
+      clip("little-c-clip4.mp4", 4),
+    ],
     since: "v0.478",
-    notes: "Clip 1 stays. Clip 2 redone. Only the cloud says I'm Cloud. Clips 3 and 4 redone so they still connect. 3 the cup says I'm Cup. 4 the cookie says I'm Cookie. Not confirmed.",
+    notes: "Clip 2: cloud says I'm Cloud. Clip 3: cup says I'm Cup. Clip 4: cookie says I'm Cookie.",
   },
   {
     id: "little-d-friends",
@@ -47,10 +63,16 @@ export const PENDING_REMAKES: PendingRemake[] = [
     letter: "d",
     caseKind: "lower",
     kind: "friends",
-    clips: "all 4 redone",
+    clips: "all 4, one at a time",
     file: "friends-clips/d-little-play-1.mp4",
+    parts: [
+      clip("little-d-clip1.mp4", 1),
+      clip("little-d-clip2.mp4", 2),
+      clip("little-d-clip3.mp4", 3),
+      clip("little-d-clip4.mp4", 4),
+    ],
     since: "v0.445",
-    notes: "All 4 redone so little d stays light blue. 1 little d. 2 donut. 3 drum. 4 the duck says Quack, I'm a duck. Not confirmed.",
+    notes: "1 little d. 2 donut. 3 drum. 4 the duck says Quack, I'm a duck.",
   },
   {
     id: "big-t-friends",
@@ -58,10 +80,15 @@ export const PENDING_REMAKES: PendingRemake[] = [
     letter: "t",
     caseKind: "upper",
     kind: "friends",
-    clips: "1 ok. 2 redone, 3 and 4 locked to it",
+    clips: "2, 3, and 4 only",
     file: "friends-clips/t-play-1.mp4",
+    parts: [
+      clip("big-t-clip2.mp4", 2),
+      clip("big-t-clip3.mp4", 3),
+      clip("big-t-clip4.mp4", 4),
+    ],
     since: "v0.479",
-    notes: "Clip 1 stays. Clip 2 redone again. Only the tree says I'm a tree. Big T's mouth stays shut. Clips 3 and 4 redone so they still connect. 3 tiger says I'm Tiger. 4 train says I'm Train. Same olive. One T. Not confirmed.",
+    notes: "Clip 1 stays. Clip 2: only the tree says I'm a tree. Clip 3: tiger. Clip 4: train.",
   },
   {
     id: "big-u-friends",
@@ -69,10 +96,15 @@ export const PENDING_REMAKES: PendingRemake[] = [
     letter: "u",
     caseKind: "upper",
     kind: "friends",
-    clips: "2 3 4 from the saved file, 1 confirmed",
+    clips: "2, 3, and 4 only",
     file: "friends-clips/u-play-1.mp4",
+    parts: [
+      clip("big-u-clip2.mp4", 2),
+      clip("big-u-clip3.mp4", 3),
+      clip("big-u-clip4.mp4", 4),
+    ],
     since: "v0.473",
-    notes: "Clip 1 stays confirmed. Clips 2-4 in docs/library/pending are cut from the saved file. Both eyes on the left stem. Not fully confirmed.",
+    notes: "Clip 1 stays. These three are the saved file. Eyes stay on the left stem.",
   },
   {
     id: "big-v-friends",
@@ -80,10 +112,11 @@ export const PENDING_REMAKES: PendingRemake[] = [
     letter: "v",
     caseKind: "upper",
     kind: "friends",
-    clips: "3 only, again",
+    clips: "3 only",
     file: "friends-clips/v-play-1.mp4",
+    parts: [clip("big-v-clip3.mp4", 3)],
     since: "v0.468",
-    notes: "Clip 3 redone again. Only the volcano says I'm Volcano. Big V's mouth stays shut. No text. Not confirmed.",
+    notes: "Only the volcano says I'm Volcano. Big V's mouth stays shut. No text.",
   },
   {
     id: "big-w-friends",
@@ -91,10 +124,16 @@ export const PENDING_REMAKES: PendingRemake[] = [
     letter: "w",
     caseKind: "upper",
     kind: "friends",
-    clips: "all 4 redone",
+    clips: "all 4, one at a time",
     file: "friends-clips/w-play-1.mp4",
+    parts: [
+      clip("big-w-clip1.mp4", 1),
+      clip("big-w-clip2.mp4", 2),
+      clip("big-w-clip3.mp4", 3),
+      clip("big-w-clip4.mp4", 4),
+    ],
     since: "v0.469",
-    notes: "The two-W file is gone from the saved game. One W. No eyes in the air. Not confirmed.",
+    notes: "One W. No eyes in the air.",
   },
   {
     id: "big-y-friends",
@@ -102,9 +141,10 @@ export const PENDING_REMAKES: PendingRemake[] = [
     letter: "y",
     caseKind: "upper",
     kind: "friends",
-    clips: "3 ok. 4 still waiting",
+    clips: "4 only",
     file: "friends-clips/y-play-1.mp4",
+    parts: [clip("big-y-clip4.mp4", 4)],
     since: "v0.480",
-    notes: "Clip 3 stays confirmed. Clip 4 redone again. Only the yak says I'm Yak. One voice. One Y. No second letter. Not confirmed.",
+    notes: "Clip 3 stays. Clip 4: only the yak says I'm Yak. One Y.",
   },
 ];
