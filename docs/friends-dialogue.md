@@ -89,7 +89,9 @@ Before any Friends still:
 1. Edit from `public/letters/{letter}.webp` plus the friend posters.
 2. Put the home tile beside the still. Stroke, eyes, and base must match.
 3. White eyes, pink cheeks, or a fatter base = a different character. Delete
-   the still. Do not film it.
+   the still. Do not film it. A mouth or eyes inside the letter's hole is
+   also a fail. Named miss: little d. The smile belongs on the body. The
+   hole stays empty.
 4. Arms on an otherwise matching letter are not a face fail. Big U’s still
    kept plain dot eyes and the thin base. It grew arms. That is fine. Do not
    call that still a face swap, and do not claim white eyes if the eyes are

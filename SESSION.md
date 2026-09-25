@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.489
+**Version:** v0.490
+
+## v0.490 — Little d still and clips redone. Mouth is on the body, not in the hole.
 
 ## v0.489 — Little c clip 1 redone. Clips 2-4 locked to it.
 
