@@ -7,7 +7,7 @@ Waiting:
 - little-b-clip3 (clip 4 is confirmed)
 - little-c-clip2, little-c-clip3, and little-c-clip4
 - little-d-clip1 through little-d-clip4
-- big-t-clip2 through big-t-clip4 (clip 1 is confirmed)
+- big-t-clip1 through big-t-clip4 (clip 1 redone, 2-4 locked to it)
 - big-u-clip2 through big-u-clip4 (clip 1 is confirmed, these are the saved left-eye file)
 - big-v-clip3
 - big-w-clip1 through big-w-clip4 (the one-W file)
