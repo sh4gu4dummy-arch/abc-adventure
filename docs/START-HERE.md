@@ -19,6 +19,8 @@ chat will happen again.
 | **QA agent** | Looks at the actual frames (not the prompt). Pass / fail with *why*. Does not generate replacements unless asked. Does not pick a winner when there are 2+ options — show the user. They are **not** a second product owner. |
 | **User** | Final taste. **lmk** = talk only. **start** = fetch QA, shoot if you agree, debate if you don’t. |
 
+**v0.484** Little d clip 1 redone with black dot eyes. Clips 2-4 locked to that face.
+
 **v0.483** Little c clips 2, 3, and 4 redone again. Clip 1 stays.
 
 **v0.482** Little b clip 3 redone. Clip 4 stays.

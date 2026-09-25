@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.483
+**Version:** v0.484
+
+## v0.484 — Little d clip 1 redone. Clips 2-4 locked to the new face.
 
 ## v0.483 — Little c clips 2-4 redone again.
 

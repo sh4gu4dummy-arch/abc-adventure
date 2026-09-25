@@ -71,8 +71,8 @@ export const PENDING_REMAKES: PendingRemake[] = [
       clip("little-d-clip3.mp4", 3),
       clip("little-d-clip4.mp4", 4),
     ],
-    since: "v0.445",
-    notes: "1 little d. 2 donut. 3 drum. 4 the duck says Quack, I'm a duck.",
+    since: "v0.484",
+    notes: "Clip 1 redone. Black dot eyes, no white eyes, no pink cheeks. Clips 2-4 locked to that face. 1 little d. 2 donut. 3 drum. 4 the duck says Quack, I'm a duck.",
   },
   {
     id: "big-t-friends",
