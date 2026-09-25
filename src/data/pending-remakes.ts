@@ -54,8 +54,8 @@ export const PENDING_REMAKES: PendingRemake[] = [
       clip("little-c-clip3.mp4", 3),
       clip("little-c-clip4.mp4", 4),
     ],
-    since: "v0.478",
-    notes: "Clip 2: cloud says I'm Cloud. Clip 3: cup says I'm Cup. Clip 4: cookie says I'm Cookie.",
+    since: "v0.483",
+    notes: "Clip 1 stays. Clips 2, 3, and 4 redone again. 2 cloud says I'm Cloud. 3 cup says I'm Cup. 4 cookie says I'm Cookie. Same kitchen. One little c.",
   },
   {
     id: "little-d-friends",
