@@ -11,6 +11,8 @@ chat will happen again.
 
 **QA supervisor / meta-QA (handoff + Ash-direct routing):** [`docs/QA-SUPERVISOR.md`](QA-SUPERVISOR.md).
 
+**Offline local viewer (not Vite :8080):** `npm run view` → http://127.0.0.1:26233/ (needs `npm run build:portable` once, or `npm run view:build`). Port override: `ABC_VIEWER_PORT`.
+
 ## Who does what
 
 | Role | Job |

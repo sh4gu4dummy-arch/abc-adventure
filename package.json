@@ -19,7 +19,9 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "build:apk": "node scripts/build-apk.mjs",
-    "cap:sync": "npx cap sync android"
+    "cap:sync": "npx cap sync android",
+    "view": "node scripts/local-viewer.mjs",
+    "view:build": "node scripts/local-viewer.mjs --build"
   },
   "dependencies": {
     "@capacitor/android": "^8.5.0",
@@ -98,5 +100,5 @@
     "typescript-eslint": "^8.56.1",
     "vite": "^8.1.0"
   },
-  "version": "0.491"
+  "version": "0.492"
 }
