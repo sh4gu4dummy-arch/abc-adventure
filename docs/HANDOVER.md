@@ -21,7 +21,7 @@ on a product rule, the SOP that was edited more recently wins. Fix the stale one
 - **Owner:** Ash (GitHub `sh4gu4dummy-arch`). Ash has final taste and is the hard gate.
 - **Repo:** https://github.com/sh4gu4dummy-arch/abc-adventure. It is private, the branch is `main`, and the slug is lowercase.
 - **Local clone on the shared box:** `/workspace/abc-adventure`.
-- **Version at handover:** **v0.493** (this commit). The previous ship was v0.492, the offline local viewer.
+- **Version at handover:** **v0.493** (handover guide), plus **v0.494** (§12–§13 local-only + final leftover audit, docs only). v0.492 was the offline local viewer.
 - **Outgoing bot role:** QA and audit of frames, stills, and audio against product art, plus
   writing and shipping the docs and plans the Builder must act on. QA is **not** a second
   product owner. See the roles table in `docs/START-HERE.md`.
@@ -272,3 +272,59 @@ does, plan it as one coordinated `git filter-repo` with every agent told to re-c
   details, `.grok/`, `attachments/`.
 - **Before every push:** grep the diff for GitHub token prefixes (classic and fine-grained),
   JWT headers, OpenAI-style and AWS key prefixes, and `password` / `token` assignments. Abort if anything matches.
+
+## 12. Local-only by design
+
+These things exist on the shared box but are **not** in git, on purpose. Never commit secret values.
+
+| Path | Why it is local | How Ash recovers / regenerates |
+|---|---|---|
+| `.grok/` (in the clone) | Grok platform sandbox internals (`status`, generic platform `skills/`). Ash rule: **never push `.grok/`**. | Recreated by the platform; nothing ABC-specific lives there. See the tracked-skills note in §13. |
+| `/home/box/agent-data/user-memory/by-agent/ed616290-1a68-48f9-9cc8-5e61e7e58bce/` | Outgoing bot's memory (profile + journal). Every rule in it is already copied into §2–§3. | Read it on the box if needed; nothing extra to recover. |
+| `/home/box/agent-data/agents/ed616290-1a68-48f9-9cc8-5e61e7e58bce/` | Bot platform data: profile, settings, a store DB with only system entries, and 13 chat-attachment jpgs. | All 13 attachments are already tracked in git (matched by hash). Nothing to recover. |
+| `node_modules/`, `dist/`, `public/portable/*` builds, `android/app/build/`, zips/APK | Build output, ignored in `.gitignore`. | `npm install`; `npm run build:portable` (or `npm run view:build`); `npm run cap:sync` + `npm run build:apk`; `npm run build:code`. |
+| `public/review/` | QA scratch, ignored. Not app media. | Not needed; regenerate frames from the tracked mp4s if a QA needs them. |
+| `docs/library/pending/*` media | Clips waiting on Ash's yes/no; never committed by convention (only its README is tracked). | Re-shoot from the plan in the pending README if Ash still wants them. |
+| Secrets: GitHub push credential, `XAI_API_KEY` (Imagine), box/host secrets | Never in git. | Ask Ash / box agent secrets folder / the secure secret path (historically QAsupervisor). See §11. **No values here.** |
+
+## 13. Final local-leftover audit (2026-11-05)
+
+Ash's rule (2026-11-05): **the repo must hold everything a future agent needs; anything local-only is
+documented here.** Ash's priority: **preserve the current live product in git.** Trial and QA scratch do
+**not** need preserving and may be deleted heavy-handedly.
+
+**Checked (read-only):**
+- Repo: `git fetch`, `git status` (bounded), `git stash list` (empty), `git branch -a -vv` (only `main`),
+  `git worktree list` (one), `git status --ignored` (nothing ignored on disk), `git log origin/main..` (nothing unpushed).
+- `.grok/`: listed and grepped for ABC terms. Only generic platform skills plus `status`. Nothing ABC-specific.
+- `/workspace` top level (abc*, meet, friends, still, letter, draft, qa, tmp, backups, handoffs, recover, data,
+  i2v, voice), `/tmp` (depth 3 + recent media/md), `/home/box/Downloads`, `/home/box/reference`.
+- This bot's agent store (empty), agent-data folder, user-memory, and `/home/box/agent-data/workflows`
+  (3 skills, none ABC-specific).
+- Every ABC side file was hash-compared against all tracked blobs.
+
+**Result:**
+- Repo clean and in sync with origin; nothing unpushed or stashed.
+- ABC side folders (`abc-adventure-drafts/`, `abc-adventure-qa-draft-v0341/0343/0349.md`, `abc-b-qa/`,
+  `abc-qa-341/343/349/`, `abc-qa-batch/`, `abc-still-qa/`, `abc-sound-tts-test/`) were trial/QA scratch.
+  Their stills and frames were already tracked by hash; the rest were PNG copies of tracked posters, frame
+  grabs, superseded auth/I2I drafts (shipped as `scripts/imagine_auth.py` and `scripts/imagine-api-i2i.py`),
+  old QA drafts, and Sound A trial takes. **QAsupervisor deleted these folders on Ash's go (2026-11-05,
+  11:35–11:38 AM ET). This was intentional.**
+- **Sound A trial mp3s: do NOT regenerate them.** The live v0.359 cue stays in git at
+  `public/audio/f6b30e3c87fa64e4.mp3` plus the buddy copy `public/audio/buddy/f6b30e3c87fa64e4.mp3`.
+  The final Sound A line is still waiting on Ash (§6).
+- Other box files (`letterbox-*.jpg`, `ultra-home-films.md`, `imagine-videos-into-the-app.md`,
+  `public-video-urls.txt`, `voice-samples/`, `qa/`, `audit/`, `tmp/`) belong to other projects or are not
+  referenced by ABC. They were left alone.
+- **Suggestion awaiting Ash (not done):** 64 files under `.grok/skills/` (generic platform skills) have been
+  tracked since the baseline commit `35e7eac`, which conflicts with "never push `.grok/`". A normal
+  `git rm -r --cached .grok/skills` + `.gitignore` line would untrack them without a history rewrite.
+  **Do not untrack them until Ash says so.**
+
+**Chat-only decisions recorded here (2026-11-05):**
+- QAsupervisor audited this handover at `09632c1` (v0.493) and gave it a **PASS**.
+- The `docs/QA-SUPERVISOR.md` "sleeping" status line is **held for Ash. Do not edit that file.**
+- Ash: the repo holds everything; local-only items are documented (this section and §12).
+- **Never push `.grok/`.**
+- **Never rewrite history** (no clear, rewrite, force-push, or filter). History cleanups are suggestions only (§10).

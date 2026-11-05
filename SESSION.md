@@ -1,6 +1,8 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.493
+**Version:** v0.494
+
+## v0.494 — HANDOVER local-only + final leftover audit notes (docs only).
 
 ## v0.493 — docs/HANDOVER.md replacement-agent handover guide (docs only).
 
