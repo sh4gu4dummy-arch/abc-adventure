@@ -67,3 +67,6 @@ abc-adventure-tracing.txt
 # QA scratch only — not app media
 public/review/
 
+
+# Entire Grok sandbox (skills were wrongly tracked at first commit)
+.grok/

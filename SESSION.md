@@ -1,3 +1,5 @@
+## v0.495 — Stop tracking `.grok/skills` in git (sandbox junk; ignore `.grok/`).
+
 # Session compact — ABC Adventure
 
 **Version:** v0.494
