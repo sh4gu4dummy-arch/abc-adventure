@@ -9,6 +9,8 @@ thumb, or workflow, add the lesson here (short) *and* in
 Both bots **recursively improve** the SOPs — a miss that only lives in
 chat will happen again.
 
+**New/replacement agent? Read [`docs/HANDOVER.md`](HANDOVER.md) first** (memory, status, waits on Ash, ports, secrets-where).
+
 **QA supervisor / meta-QA (handoff + Ash-direct routing):** [`docs/QA-SUPERVISOR.md`](QA-SUPERVISOR.md).
 
 **Offline local viewer (not Vite :8080):** `npm run view` → http://127.0.0.1:26233/ (needs `npm run build:portable` once, or `npm run view:build`). Port override: `ABC_VIEWER_PORT`.

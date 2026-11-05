@@ -1,6 +1,10 @@
 # Session compact — ABC Adventure
 
-**Version:** v0.491
+**Version:** v0.493
+
+## v0.493 — docs/HANDOVER.md replacement-agent handover guide (docs only).
+
+## v0.492 — Offline local viewer `npm run view` on :26233.
 
 ## v0.491 — Big T clip 2 redone. Only the tree talks. Clips 3-4 locked.
 
